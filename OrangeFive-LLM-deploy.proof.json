@@ -1,0 +1,76 @@
+{
+  "schema": "orangefive.deploy-release-proof.v1",
+  "status": "PROVEN",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "generatedAt": "2026-08-27T16:11:03.446Z",
+  "zip": {
+    "file": "OrangeFive-LLM-deploy.zip",
+    "sha256": "fd66fdf8d660d746bd5b5d00fd6bc65a9aebdd747376e2a3791d5bba9234f596",
+    "sidecarVerified": true
+  },
+  "extractedPayload": {
+    "lockVerified": true,
+    "lockSha256": "54c955e1bc14161f0d7a39b1685547757261211b4be41fc9edf2aa20628d8343",
+    "fileCount": 2386,
+    "catalogSha256": "b9012f31e065e38a2f0d703c41592bbd6614dee7cae630b0bd3f6c6cfbfe16ad",
+    "acquisitionCatalogSha256": "2a4b8a3c39375767cf7fa0bd3ca4b8b3ba7161aad8bcca27cdcafaecb3bdadc5",
+    "resolvedCatalogSha256": "189458b48038e4b905e3bd7206fe9d1da0cde646f2c38c86d238562a319c2da0"
+  },
+  "approval": {
+    "planSha256": "55418b2487b730436d8c09e50fa4412417703b9f81102355d8e88d786f1d0bde",
+    "modelSetSha256": null,
+    "noModelsSelected": true
+  },
+  "hashEnforcement": {
+    "wrongPlanApprovalRejectedBeforeMutation": true,
+    "invalidModelSetRejectedBeforeMutation": true
+  },
+  "cleanInstall": {
+    "stateAbsentBeforeApply": true,
+    "stateCreatedOutsidePayload": true,
+    "allDryRunsCompletedBeforeMutation": true,
+    "dataRoot": "state"
+  },
+  "apply": {
+    "file": "apply-2026-08-27T16-11-11-007Z-be7822de8fa7.json",
+    "schema": "orange.deploy.stage-receipt.v1",
+    "status": "APPLIED",
+    "sha256": "7a7a2be8f5aa55c169b15100a2d077be97add8ca53ae8ec08122af40c294c9a7"
+  },
+  "readiness": {
+    "file": "readiness-55418b2487b730436d8c09e50fa4412417703b9f81102355d8e88d786f1d0bde.json",
+    "schema": "orange.deploy.readiness.v1",
+    "status": "READY",
+    "sha256": "79ad0f6ca3bfc635337293610cf3f469ab095094ee4e09a844c5ee91cd22362b"
+  },
+  "rollback": {
+    "file": "rollback-2026-08-27T16-11-18-800Z-8213b28029d7.json",
+    "schema": "orange.deploy.stage-receipt.v1",
+    "status": "ROLLED_BACK_DATA_PRESERVED",
+    "sha256": "7c7fae212b90b5688dd5760d33283962be8545786c45712932e562e71bf858e6"
+  },
+  "postRollback": {
+    "status": "ROLLED_BACK",
+    "ready": false,
+    "blockerCount": 7
+  },
+  "preservation": {
+    "sentinelSha256": "5f532e556499f2f18d5fb3c7ec18cd12b976e3b277c4e6d3dad42b3d46598ec3",
+    "preservedAfterRollback": true
+  },
+  "payloadUnchangedAfterRollback": true,
+  "proofMode": "deterministic-extracted-payload-no-external-mutation",
+  "externalMutation": false,
+  "limitations": [
+    "Does not install or launch external Bun, Ollama, Hermes, model runtimes, or model weights.",
+    "Does not prove network availability of pinned upstream model URLs.",
+    "Runtime and model readiness still require live probes on the approved target topology."
+  ],
+  "receiptPath": "C:\\Users\\a\\Downloads\\Orange-AI-Computer-release\\OrangeFive-LLM-deploy.proof.json",
+  "safeTemporaryRoot": {
+    "parent": "C:\\Users\\a\\AppData\\Local\\Temp",
+    "namingPolicy": "orangefive-release-proof-*",
+    "removed": true
+  }
+}
