@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "atomic-orange-source-license-manifest.v1",
+  "auditedAt": "2026-08-27",
+  "repository": {
+    "name": "Atomic Orange V1",
+    "path": "02-ATOMIC-ORANGE-V1",
+    "visibility": "private",
+    "parentRepositoryHeadAtAudit": "2f8ac2feea2c3fdf32bf8d5b5aaebe20920ab452",
+    "parentTrackingAtAudit": "untracked",
+    "upstream": {
+      "repository": "AtomicBot-ai/Atomic-Chat",
+      "tag": "v2.0.23",
+      "commit": "9097a05f33e43156ab48278e1e619f4faaa95dd2",
+      "importedAt": "2026-08-25",
+      "evidence": "ORANGE_UPSTREAM.md"
+    }
+  },
+  "scope": {
+    "kind": "source-only",
+    "redistributionStatus": "not-cleared",
+    "statement": "This manifest records license declarations supported by the current private source tree. It does not clear a binary, installer, font, media, model, archive, or dependency bundle for redistribution.",
+    "resolutionOrder": [
+      "excludedAndPending entries always take precedence",
+      "a component backed by its own package manifest overrides the repository fallback",
+      "the Apache-2.0 fallback applies only to remaining Atomic Chat and Menlo source portions"
+    ]
+  },
+  "licenses": [
+    {
+      "id": "Apache-2.0",
+      "textPath": "LICENSES/Apache-2.0.txt",
+      "textSha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "textProvenance": {
+        "kind": "local-copy",
+        "sourcePath": "node_modules/@tauri-apps/api/LICENSE_APACHE-2.0",
+        "retrievedAt": "2026-08-27"
+      }
+    },
+    {
+      "id": "AGPL-3.0",
+      "textPath": "LICENSES/AGPL-3.0.txt",
+      "textSha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "textProvenance": {
+        "kind": "official-network-copy",
+        "url": "https://www.gnu.org/licenses/agpl-3.0.txt",
+        "retrievedAt": "2026-08-27"
+      },
+      "identifierNote": "Local package manifests use the legacy declaration AGPL-3.0; this manifest preserves that declaration without adding an or-later claim."
+    },
+    {
+      "id": "MIT",
+      "textPath": "LICENSES/MIT.txt",
+      "textSha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "textProvenance": {
+        "kind": "official-network-copy",
+        "url": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/MIT.txt",
+        "retrievedAt": "2026-08-27"
+      },
+      "identifierNote": "The canonical SPDX text contains placeholders. Component authors below come from local manifests; missing copyright years or holder notices are not inferred."
+    }
+  ],
+  "repositoryFallback": {
+    "id": "atomic-menlo-apache-source",
+    "name": "Atomic Chat and Menlo source portions",
+    "license": "Apache-2.0",
+    "evidence": {
+      "path": "LICENSE",
+      "copyrightNotices": [
+        "Copyright 2026 Atomic Chat (https://atomic.chat)",
+        "Copyright 2025 Menlo Research (https://menlo.ai)"
+      ]
+    },
+    "sourceInclude": [
+      "**/*"
+    ],
+    "sourceExclude": [
+      "core/**",
+      "extensions/**",
+      "src-tauri/**",
+      "every path matched by excludedAndPending"
+    ],
+    "note": "This is not a claim that every file in the repository is Apache-2.0. It covers only remaining source and text portions after narrower package rules and all exclusions are applied."
+  },
+  "components": [
+    {
+      "id": "janhq-core",
+      "componentRoot": "core",
+      "license": "AGPL-3.0",
+      "manifest": {
+        "path": "core/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/core",
+        "version": "0.1.10",
+        "declaredLicense": "AGPL-3.0",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "janhq-assistant-extension",
+      "componentRoot": "extensions/assistant-extension",
+      "license": "AGPL-3.0",
+      "manifest": {
+        "path": "extensions/assistant-extension/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/assistant-extension",
+        "version": "1.0.2",
+        "declaredLicense": "AGPL-3.0",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "janhq-download-extension",
+      "componentRoot": "extensions/download-extension",
+      "license": "AGPL-3.0",
+      "manifest": {
+        "path": "extensions/download-extension/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/download-extension",
+        "version": "1.0.0",
+        "declaredLicense": "AGPL-3.0",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "janhq-foundation-models-extension",
+      "componentRoot": "extensions/foundation-models-extension",
+      "license": "AGPL-3.0",
+      "manifest": {
+        "path": "extensions/foundation-models-extension/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/foundation-models-extension",
+        "version": "1.0.0",
+        "declaredLicense": "AGPL-3.0",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "janhq-llamacpp-extension",
+      "componentRoot": "extensions/llamacpp-extension",
+      "license": "AGPL-3.0",
+      "manifest": {
+        "path": "extensions/llamacpp-extension/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/llamacpp-extension",
+        "version": "1.0.1",
+        "declaredLicense": "AGPL-3.0",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "janhq-llamacpp-upstream-extension",
+      "componentRoot": "extensions/llamacpp-upstream-extension",
+      "license": "AGPL-3.0",
+      "manifest": {
+        "path": "extensions/llamacpp-upstream-extension/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/llamacpp-upstream-extension",
+        "version": "1.0.0",
+        "declaredLicense": "AGPL-3.0",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "janhq-mlx-extension",
+      "componentRoot": "extensions/mlx-extension",
+      "license": "AGPL-3.0",
+      "manifest": {
+        "path": "extensions/mlx-extension/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/mlx-extension",
+        "version": "1.0.0",
+        "declaredLicense": "AGPL-3.0",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "janhq-rag-extension",
+      "componentRoot": "extensions/rag-extension",
+      "license": "AGPL-3.0",
+      "manifest": {
+        "path": "extensions/rag-extension/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/rag-extension",
+        "version": "0.1.0",
+        "declaredLicense": "AGPL-3.0",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "janhq-vector-db-extension",
+      "componentRoot": "extensions/vector-db-extension",
+      "license": "AGPL-3.0",
+      "manifest": {
+        "path": "extensions/vector-db-extension/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/vector-db-extension",
+        "version": "0.1.0",
+        "declaredLicense": "AGPL-3.0",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "janhq-conversational-extension",
+      "componentRoot": "extensions/conversational-extension",
+      "license": "MIT",
+      "manifest": {
+        "path": "extensions/conversational-extension/package.json",
+        "format": "package-json",
+        "packageName": "@janhq/conversational-extension",
+        "version": "1.0.0",
+        "declaredLicense": "MIT",
+        "author": "Jan <service@jan.ai>"
+      }
+    },
+    {
+      "id": "atomic-chat-tauri",
+      "componentRoot": "src-tauri",
+      "componentExclude": [
+        "src-tauri/plugins/**",
+        "src-tauri/utils/**",
+        "src-tauri/resources/**",
+        "src-tauri/icons/**",
+        "src-tauri/static/**",
+        "every path matched by excludedAndPending"
+      ],
+      "license": "MIT",
+      "manifest": {
+        "path": "src-tauri/Cargo.toml",
+        "format": "cargo-toml",
+        "packageName": "Atomic-Chat",
+        "version": "1.0.0",
+        "declaredLicense": "MIT",
+        "authors": [
+          "AtomEons Systems Laboratory"
+        ]
+      }
+    },
+    {
+      "id": "tauri-plugin-foundation-models",
+      "componentRoot": "src-tauri/plugins/tauri-plugin-foundation-models",
+      "license": "MIT",
+      "manifest": {
+        "path": "src-tauri/plugins/tauri-plugin-foundation-models/Cargo.toml",
+        "format": "cargo-toml",
+        "packageName": "tauri-plugin-foundation-models",
+        "version": "0.6.599",
+        "declaredLicense": "MIT",
+        "authors": [
+          "Jan <service@jan.ai>"
+        ]
+      }
+    },
+    {
+      "id": "tauri-plugin-hardware",
+      "componentRoot": "src-tauri/plugins/tauri-plugin-hardware",
+      "license": "MIT",
+      "manifest": {
+        "path": "src-tauri/plugins/tauri-plugin-hardware/Cargo.toml",
+        "format": "cargo-toml",
+        "packageName": "tauri-plugin-hardware",
+        "version": "0.6.599",
+        "declaredLicense": "MIT",
+        "authors": [
+          "Jan <service@jan.ai>"
+        ]
+      }
+    },
+    {
+      "id": "tauri-plugin-llamacpp",
+      "componentRoot": "src-tauri/plugins/tauri-plugin-llamacpp",
+      "license": "MIT",
+      "manifest": {
+        "path": "src-tauri/plugins/tauri-plugin-llamacpp/Cargo.toml",
+        "format": "cargo-toml",
+        "packageName": "tauri-plugin-llamacpp",
+        "version": "0.6.599",
+        "declaredLicense": "MIT",
+        "authors": [
+          "Jan <service@jan.ai>"
+        ]
+      }
+    },
+    {
+      "id": "tauri-plugin-llamacpp-upstream",
+      "componentRoot": "src-tauri/plugins/tauri-plugin-llamacpp-upstream",
+      "license": "MIT",
+      "manifest": {
+        "path": "src-tauri/plugins/tauri-plugin-llamacpp-upstream/Cargo.toml",
+        "format": "cargo-toml",
+        "packageName": "tauri-plugin-llamacpp-upstream",
+        "version": "0.6.599",
+        "declaredLicense": "MIT",
+        "authors": [
+          "Atomic Chat <service@atomic.chat>"
+        ]
+      }
+    },
+    {
+      "id": "tauri-plugin-mlx",
+      "componentRoot": "src-tauri/plugins/tauri-plugin-mlx",
+      "license": "MIT",
+      "manifest": {
+        "path": "src-tauri/plugins/tauri-plugin-mlx/Cargo.toml",
+        "format": "cargo-toml",
+        "packageName": "tauri-plugin-mlx",
+        "version": "0.6.599",
+        "declaredLicense": "MIT",
+        "authors": [
+          "Jan <service@jan.ai>"
+        ]
+      }
+    },
+    {
+      "id": "tauri-plugin-rag",
+      "componentRoot": "src-tauri/plugins/tauri-plugin-rag",
+      "license": "MIT",
+      "manifest": {
+        "path": "src-tauri/plugins/tauri-plugin-rag/Cargo.toml",
+        "format": "cargo-toml",
+        "packageName": "tauri-plugin-rag",
+        "version": "0.1.0",
+        "declaredLicense": "MIT",
+        "authors": [
+          "Jan <service@jan.ai>"
+        ]
+      }
+    },
+    {
+      "id": "tauri-plugin-vector-db",
+      "componentRoot": "src-tauri/plugins/tauri-plugin-vector-db",
+      "license": "MIT",
+      "manifest": {
+        "path": "src-tauri/plugins/tauri-plugin-vector-db/Cargo.toml",
+        "format": "cargo-toml",
+        "packageName": "tauri-plugin-vector-db",
+        "version": "0.1.0",
+        "declaredLicense": "MIT",
+        "authors": [
+          "Jan <service@jan.ai>"
+        ]
+      }
+    }
+  ],
+  "excludedAndPending": [
+    {
+      "id": "unresolved-binaries-and-archives",
+      "status": "pending-provenance-excluded-from-license-claim",
+      "pathPatterns": [
+        "downloads/**",
+        "pre-install/**",
+        "core/package.tgz",
+        "extensions/**/*.tgz",
+        "scripts/dist/**",
+        "src-tauri/resources/bin/**",
+        "src-tauri/resources/pre-install/**",
+        "src-tauri/resources/llamacpp-backend/**",
+        "src-tauri/resources/llamacpp-backend-upstream/**",
+        "**/*.{dll,exe,so,dylib,node,wasm,bin,dmg,appimage,msi,tgz,tar,gz,zip,7z}"
+      ],
+      "reason": "The current tree does not contain a complete per-payload license and provenance ledger. Presence or a source-package license does not establish redistribution rights for a built or downloaded payload."
+    },
+    {
+      "id": "unresolved-fonts",
+      "status": "pending-provenance-excluded-from-license-claim",
+      "pathPatterns": [
+        "web-app/public/fonts/**",
+        "docs/public/assets/fonts/**",
+        "**/*.{ttf,otf,woff,woff2,eot}"
+      ],
+      "reason": "Font files require their own license and attribution evidence; none is asserted by this source manifest."
+    },
+    {
+      "id": "unresolved-media-and-brand-assets",
+      "status": "pending-provenance-excluded-from-license-claim",
+      "pathPatterns": [
+        "assets/**",
+        "demo.gif",
+        ".github/scripts/*.{png,jpg,jpeg,gif,webp,svg}",
+        "web-app/public/images/**",
+        "web-app/public/svg/**",
+        "docs/**/*.{png,jpg,jpeg,gif,webp,svg,ico,mp4,webm,mov,mp3,wav,flac}",
+        "src-tauri/app-icon.png",
+        "src-tauri/icons/**",
+        "src-tauri/static/swagger-ui/**/*.{png,jpg,jpeg,gif,webp,svg,ico}",
+        "**/*.{png,jpg,jpeg,gif,webp,bmp,svg,ico,icns,mp4,webm,mov,mp3,wav,flac}"
+      ],
+      "reason": "Logos, screenshots, provider marks, icons, recordings, and other media may have distinct owners or trademark restrictions. No redistribution claim is made."
+    },
+    {
+      "id": "unlicensed-nested-source-package",
+      "status": "pending-license-declaration-excluded-from-license-claim",
+      "pathPatterns": [
+        "src-tauri/utils/**"
+      ],
+      "evidence": "src-tauri/utils/Cargo.toml declares package jan-utils 0.1.0 but has no license field.",
+      "reason": "A parent package declaration is not used to infer a license for this separate Cargo package."
+    },
+    {
+      "id": "third-party-static-bundle",
+      "status": "pending-provenance-excluded-from-license-claim",
+      "pathPatterns": [
+        "src-tauri/static/swagger-ui/**"
+      ],
+      "reason": "The checked-in static bundle needs a separate component inventory and attribution review."
+    },
+    {
+      "id": "dependencies-and-generated-output",
+      "status": "excluded-out-of-source-audit",
+      "pathPatterns": [
+        "**/node_modules/**",
+        "**/.yarn/**",
+        "**/target/**",
+        "**/dist/**",
+        "**/build/**",
+        "**/.next/**",
+        ".probe/**",
+        "coverage/**",
+        "*.log"
+      ],
+      "reason": "Installed dependencies and generated outputs retain their own licenses and require a separate release-time software bill of materials and notice bundle."
+    }
+  ],
+  "limitations": [
+    "No copyright owner, year, license exception, or redistribution permission is inferred when it is absent from local evidence.",
+    "No dependency license conclusion is derived from yarn.lock, Cargo.lock, node_modules, or generated output.",
+    "No source license in this manifest is extended to a compiled binary, downloaded backend, extension archive, font, media file, model, provider logo, or trademark.",
+    "A release requires a fresh inventory for the exact shipped payload and resolution of every pending entry."
+  ]
+}

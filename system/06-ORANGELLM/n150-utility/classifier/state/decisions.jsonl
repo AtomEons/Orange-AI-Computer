@@ -1,0 +1,11 @@
+{"ts":"2026-06-24T23:53:17.274Z","origin":"receipt.cobra.write","event_metadata_keys":null,"decision":{"lane":"reality","confidence":1,"source":"origin_rule"}}
+{"ts":"2026-06-24T23:53:17.291Z","origin":"chat.user.msg","event_metadata_keys":null,"decision":{"lane":"thought","confidence":1,"source":"origin_rule"}}
+{"ts":"2026-06-24T23:53:17.294Z","origin":"weird.unknown.origin","event_metadata_keys":["x"],"decision":{"lane":"thought","confidence":0.5,"source":"model_unreachable_default_thought","tiebreak_attempted":true}}
+{"ts":"2026-06-24T23:53:17.302Z","origin":"novel.signal.x","event_metadata_keys":["fd"],"decision":{"lane":"reality","confidence":0.75,"source":"model_tiebreak","model":"qwen3:0.6b"}}
+{"ts":"2026-06-24T23:53:17.304Z","origin":"very.unknown.prefix","event_metadata_keys":null,"decision":{"lane":"thought","confidence":0.5,"source":"model_unreachable_default_thought","tiebreak_attempted":true}}
+{"ts":"2026-06-24T23:53:17.312Z","origin":42,"event_metadata_keys":null,"decision":{"lane":"thought","confidence":0,"source":"invalid_input_default_thought","reason":"origin must be a string"}}
+{"ts":"2026-06-25T00:01:57.684Z","origin":"receipt.x.y","event_metadata_keys":null,"decision":{"lane":"reality","confidence":1,"source":"origin_rule"}}
+{"ts":"2026-06-25T00:02:05.500Z","origin":"receipt.cobra.write","event_metadata_keys":["id"],"decision":{"lane":"reality","confidence":1,"source":"origin_rule"}}
+{"ts":"2026-06-25T00:02:05.710Z","origin":"chat.user.msg","event_metadata_keys":[],"decision":{"lane":"thought","confidence":1,"source":"origin_rule"}}
+{"ts":"2026-06-25T00:02:05.727Z","origin":"novel.unknown.prefix","event_metadata_keys":["k"],"decision":{"lane":"thought","confidence":0.5,"source":"model_unreachable_default_thought","tiebreak_attempted":true}}
+{"ts":"2026-06-25T00:02:05.735Z","origin":null,"event_metadata_keys":null,"decision":{"lane":"thought","confidence":0.5,"source":"model_unreachable_default_thought","tiebreak_attempted":true}}

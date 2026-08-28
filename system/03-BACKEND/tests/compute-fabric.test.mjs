@@ -51,6 +51,40 @@ describe('Orange compute fabric', () => {
     expect(endpoints.navigatorNodeId).toBe(endpoints.inferenceNodeId);
   });
 
+  test('publishes AE Phase as execution truth while retaining direct endpoints only for recovery', async () => {
+    const paths = tempState();
+    await discoverComputeFabric({
+      ...paths,
+      fetchFn: fakeFetch({
+        '10.0.0.4:11434/api/tags': { models: [{ name: 'orange-navigator:ornith-1.5-9b-q4km' }] },
+        '10.0.0.4:8097/health': { body: { status: 'VERIFIED', tokenConfigured: true } },
+        '10.0.0.4:8097/receipts': [],
+      }),
+      tcpFn: async () => ({ reachable: true, latencyMs: 2 }),
+      persist: true,
+    });
+    const endpoints = resolveComputeEndpointsSync({
+      env: {
+        ...process.env,
+        ORANGE5_CROSS_NODE_TRANSPORT: 'ae-phase',
+        ORANGE5_CODEXA_HEAVY_MODEL: 'qwen3.8:27b-current',
+      },
+      statePath: paths.statePath,
+    });
+    expect(endpoints).toMatchObject({
+      crossNodeTransport: 'ae-phase',
+      phaseUrl: 'http://127.0.0.1:8907',
+      inferenceUrl: 'ae-phase://CODEXA',
+      navigatorUrl: 'ae-phase://CODEXA',
+      navigatorKind: 'ae-phase',
+      heavyUrl: 'ae-phase://CODEXA',
+      heavyModel: 'qwen3.8:27b-current',
+      railUrl: null,
+    });
+    expect(endpoints.recovery.inferenceUrl).toBe('http://10.0.0.4:11434');
+    expect(endpoints.recovery.railUrl).toMatch(/^http:\/\/(?:10\.0\.99\.1|10\.0\.0\.4):8097$/);
+  });
+
   test('falls back to one machine when no trusted network worker answers', async () => {
     const paths = tempState();
     const state = await discoverComputeFabric({

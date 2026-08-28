@@ -1,0 +1,71 @@
+Atomic Orange V1 - source licensing and provenance notice
+
+This private source tree is multi-licensed. The machine-readable authority for
+the current audit is LICENSES/source-license-manifest.json. More-specific
+component entries override the repository fallback.
+
+Repository source fallback
+--------------------------
+
+Remaining Atomic Chat and Menlo source portions are licensed under Apache-2.0
+after the component overrides and exclusions in the manifest are applied.
+The imported root LICENSE records:
+
+  Copyright 2026 Atomic Chat (https://atomic.chat)
+  Copyright 2025 Menlo Research (https://menlo.ai)
+
+Jan components
+--------------
+
+The local package manifests for @janhq/core and the assistant, download,
+foundation-models, llamacpp, llamacpp-upstream, mlx, rag, and vector-db
+extensions declare AGPL-3.0. Their manifests identify the author as:
+
+  Jan <service@jan.ai>
+
+The @janhq/conversational-extension manifest declares MIT and identifies the
+same author. No missing copyright years or ownership notices are inferred.
+
+MIT Cargo components
+--------------------
+
+The Atomic-Chat Tauri Cargo package and seven nested Tauri plugin Cargo
+packages declare MIT. The application manifest identifies:
+
+  AtomEons Systems Laboratory
+
+Six plugin manifests identify Jan <service@jan.ai> as author; the
+llamacpp-upstream plugin identifies Atomic Chat <service@atomic.chat>. These
+author fields do not establish copyright years or holder notices, so this audit
+does not invent them. The separate src-tauri/utils Cargo package has no license
+field and remains pending.
+
+Not cleared for redistribution
+------------------------------
+
+This notice and manifest document source declarations; they are not a release
+clearance. Downloaded or compiled binaries, extension archives, fonts, media,
+logos, provider marks, icons, screenshots, recordings, models, installed
+dependencies, and generated output are excluded or pending. In particular,
+pre-install/, downloads/, scripts/dist/, src-tauri/resources/, source-tree
+archives, web and docs fonts/media, src-tauri/icons/, and the checked-in Swagger
+UI static bundle require payload-specific provenance and license review before
+redistribution.
+
+Canonical texts and provenance
+------------------------------
+
+  LICENSES/Apache-2.0.txt
+    Local canonical copy from node_modules/@tauri-apps/api/LICENSE_APACHE-2.0
+
+  LICENSES/AGPL-3.0.txt
+    Official GNU text retrieved 2026-08-27 from
+    https://www.gnu.org/licenses/agpl-3.0.txt
+
+  LICENSES/MIT.txt
+    Official SPDX License List text retrieved 2026-08-27 from
+    https://raw.githubusercontent.com/spdx/license-list-data/main/text/MIT.txt
+
+Installed third-party dependencies retain their own licenses. A distributable
+build needs a fresh software bill of materials, complete attribution bundle,
+and resolution of every pending manifest entry for the exact shipped payload.

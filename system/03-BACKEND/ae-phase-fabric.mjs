@@ -76,6 +76,8 @@ function resolvePaths(options = {}) {
       || path.join(dataRoot, 'secrets', 'ae-phase-key.txt'),
     signal: process.env.ORANGE5_AE_PHASE_SIGNAL
       || path.join(dataRoot, 'topology', 'ae-phase-signal.json'),
+    inbox: process.env.ORANGE5_AE_PHASE_INBOX
+      || path.join(dataRoot, 'topology', 'ae-phase-inbox.jsonl'),
   };
 }
 
@@ -201,6 +203,42 @@ function decodePayload(buffer) {
   catch (error) { throw new Error(`AE Phase payload is invalid JSON: ${error.message}`); }
 }
 
+function normalizeEnvelope(input = {}) {
+  if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('AE Phase envelope must be an object');
+  const id = clean(input.id, 96);
+  const kind = clean(input.kind, 48);
+  if (!id || !kind) throw new Error('AE Phase envelope requires id and kind');
+  const body = input.body ?? null;
+  const bodyJson = stableJson(body);
+  const bodyBytes = Buffer.byteLength(bodyJson);
+  if (bodyBytes > MAX_STATE_BYTES - 2_048) throw new Error(`AE Phase envelope body exceeds ${MAX_STATE_BYTES - 2_048} bytes`);
+  const bodyHash = sha256(Buffer.from(bodyJson, 'utf8'));
+  if (input.bodyHash && input.bodyHash !== bodyHash) throw new Error('AE Phase envelope body hash mismatch');
+  return {
+    schema: 'orange.ae-phase.envelope.v1',
+    id,
+    kind,
+    correlationId: clean(input.correlationId || id, 96),
+    body,
+    bodyHash,
+    bodyBytes,
+    createdAt: input.createdAt || new Date().toISOString(),
+  };
+}
+
+function appendEnvelopeInbox(paths, envelope, peer) {
+  fs.mkdirSync(path.dirname(paths.inbox), { recursive: true });
+  const row = {
+    schema: 'orange.ae-phase.inbox.v1',
+    receivedAt: new Date().toISOString(),
+    sender: peer?.sender || null,
+    nodeId: peer?.nodeId || null,
+    ...envelope,
+  };
+  fs.appendFileSync(paths.inbox, `${JSON.stringify(row)}\n`, 'utf8');
+  return row;
+}
+
 function encodeAckPayload(root) {
   return root && /^[a-f0-9]{64}$/.test(root)
     ? Buffer.from(root, 'hex')
@@ -323,6 +361,7 @@ function createFabric(options = {}) {
   const epoch = NODE_BOOT_EPOCH;
   const port = Number(options.port || process.env.ORANGE5_AE_PHASE_PORT || AE_PHASE_PORT);
   const healthPort = Number(options.healthPort || process.env.ORANGE5_AE_PHASE_HEALTH_PORT || AE_PHASE_HEALTH_PORT);
+  const controlPort = Number(options.controlPort || process.env.ORANGE5_AE_PHASE_CONTROL_PORT || AE_PHASE_CONTROL_PORT);
   const targets = mode === 'client' ? (options.targets || parseTargets()) : [];
   const peers = new Map();
   const pending = new Map();
@@ -342,6 +381,8 @@ function createFabric(options = {}) {
   let wireBytesSent = 0;
   let wireBytesReceived = 0;
   let droppedSends = 0;
+  let envelopesSent = 0;
+  let envelopesReceived = 0;
   let lastMeaningfulAt = null;
   let lastDeltaAckMs = null;
   let lastDeltaAckRoot = null;
@@ -416,6 +457,8 @@ function createFabric(options = {}) {
         authFailures,
         hydrationRequests,
         droppedSends,
+        envelopesSent,
+        envelopesReceived,
       },
       deltaAck: {
         lastMs: lastDeltaAckMs,
@@ -427,6 +470,7 @@ function createFabric(options = {}) {
       lastMeaningfulAt,
       statePath: paths.snapshot,
       eventPath: paths.events,
+      inboxPath: paths.inbox,
       at: new Date().toISOString(),
     };
   };
@@ -664,6 +708,24 @@ function createFabric(options = {}) {
         record({ kind: 'peer_online', peer: peer.sender, nodeId: peer.nodeId, endpoint: destination.key }, health);
         sendHello(peer, [destination]);
       }
+    } else if (frame.type === AE_PHASE_TYPES.ENVELOPE) {
+      try {
+        const envelope = normalizeEnvelope(payload?.envelope);
+        const row = appendEnvelopeInbox(paths, envelope, peer);
+        envelopesReceived += 1;
+        lastMeaningfulAt = row.receivedAt;
+        record({
+          kind: 'envelope_received',
+          peer: peer.sender,
+          envelopeId: envelope.id,
+          envelopeKind: envelope.kind,
+          correlationId: envelope.correlationId,
+          bodyHash: envelope.bodyHash,
+          bodyBytes: envelope.bodyBytes,
+        }, health);
+      } catch (error) {
+        record({ kind: 'envelope_rejected', peer: peer.sender, error: clean(error.message, 256) }, health);
+      }
     } else if (frame.type === AE_PHASE_TYPES.DELTA) {
       const applied = applyPhaseDelta(peer.remoteState, payload?.delta);
       peer.remoteState = applied.state;
@@ -716,23 +778,59 @@ function createFabric(options = {}) {
     try {
       const frame = decodePhaseFrame(datagram, { baseKey });
       const payload = decodePayload(frame.payload);
-      if (frame.type !== AE_PHASE_TYPES.DELTA || payload?.control !== 'signal'
-        || (!payload.clear && !payload.signal?.id)) {
+      if (frame.type !== AE_PHASE_TYPES.DELTA || !['signal', 'envelope'].includes(payload?.control)) {
         throw new Error('invalid local phase control frame');
       }
-      localSignal = payload.clear ? null : {
-        id: clean(payload.signal.id, 96),
-        kind: clean(payload.signal.kind, 48),
-        referenceHash: clean(payload.signal.referenceHash, 64),
-        referenceBytes: Math.max(0, Number(payload.signal.referenceBytes || 0)),
-        at: new Date().toISOString(),
+      if (payload.control === 'signal') {
+        if (!payload.clear && !payload.signal?.id) throw new Error('invalid local phase signal');
+        localSignal = payload.clear ? null : {
+          id: clean(payload.signal.id, 96),
+          kind: clean(payload.signal.kind, 48),
+          referenceHash: clean(payload.signal.referenceHash, 64),
+          referenceBytes: Math.max(0, Number(payload.signal.referenceBytes || 0)),
+          at: new Date().toISOString(),
+        };
+        flushState();
+        fs.promises.mkdir(path.dirname(paths.signal), { recursive: true })
+          .then(() => (payload.clear
+            ? fs.promises.rm(paths.signal, { force: true })
+            : fs.promises.writeFile(paths.signal, `${JSON.stringify(localSignal)}\n`, 'utf8')))
+          .catch((error) => { record.lastError = clean(error.message, 256); });
+        return;
+      }
+
+      const envelope = normalizeEnvelope(payload.envelope);
+      const requestedPeer = clean(payload.destinationSender, 16);
+      const destinationPeer = requestedPeer ? peers.get(requestedPeer) : null;
+      if (requestedPeer && !destinationPeer) throw new Error(`AE Phase destination peer is unavailable: ${requestedPeer}`);
+      const sendToPeer = (peer) => {
+        const sent = sendFrame(AE_PHASE_TYPES.ENVELOPE, { envelope }, {
+          peer,
+          critical: true,
+          burst: true,
+        });
+        if (sent) envelopesSent += 1;
       };
-      flushState();
-      fs.promises.mkdir(path.dirname(paths.signal), { recursive: true })
-        .then(() => (payload.clear
-          ? fs.promises.rm(paths.signal, { force: true })
-          : fs.promises.writeFile(paths.signal, `${JSON.stringify(localSignal)}\n`, 'utf8')))
-        .catch((error) => { record.lastError = clean(error.message, 256); });
+      if (destinationPeer) sendToPeer(destinationPeer);
+      else if (peers.size) for (const peer of peers.values()) sendToPeer(peer);
+      else if (mode === 'client') {
+        const sent = sendFrame(AE_PHASE_TYPES.ENVELOPE, { envelope }, {
+          destinations: targets,
+          critical: true,
+          burst: true,
+        });
+        if (sent) envelopesSent += 1;
+      } else throw new Error('AE Phase has no peer for local envelope');
+      lastMeaningfulAt = new Date().toISOString();
+      record({
+        kind: 'envelope_sent',
+        envelopeId: envelope.id,
+        envelopeKind: envelope.kind,
+        correlationId: envelope.correlationId,
+        destinationSender: requestedPeer || null,
+        bodyHash: envelope.bodyHash,
+        bodyBytes: envelope.bodyBytes,
+      }, health);
     } catch (error) {
       record({ kind: 'local_control_rejected', code: error.code || 'invalid_control' }, health);
     }
@@ -781,14 +879,12 @@ function createFabric(options = {}) {
           },
         },
       });
-      if (mode === 'client') {
-        controlSocket = await Bun.udpSocket({
-          port: Number(process.env.ORANGE5_AE_PHASE_CONTROL_PORT || AE_PHASE_CONTROL_PORT),
-          hostname: '127.0.0.1',
-          binaryType: 'buffer',
-          socket: { data: receiveControl },
-        });
-      }
+      controlSocket = await Bun.udpSocket({
+        port: controlPort,
+        hostname: '127.0.0.1',
+        binaryType: 'buffer',
+        socket: { data: receiveControl },
+      });
       healthServer = startHealthServer(healthPort, health);
       const closeTopologyWatch = watchTopology(paths.topology, flushState);
       const closeSignalWatch = watchTopology(paths.signal, flushState);
@@ -842,8 +938,60 @@ async function sendLocalControl(payload, options = {}) {
   const sent = udp.send(packet, Number(options.controlPort || AE_PHASE_CONTROL_PORT), '127.0.0.1');
   await Bun.sleep(1);
   udp.close();
-  if (!sent) throw new Error('AE Phase local signal hit UDP backpressure');
+  if (!sent) throw new Error('AE Phase local control hit UDP backpressure');
   return { schema: 'orange.ae-phase.local-control.v1', ok: true };
+}
+
+export async function sendLocalAEPhaseEnvelope(envelope, options = {}) {
+  const normalized = normalizeEnvelope(envelope);
+  const result = await sendLocalControl({
+    control: 'envelope',
+    envelope: normalized,
+    destinationSender: clean(options.destinationSender, 16) || null,
+  }, options);
+  return {
+    ...result,
+    schema: 'orange.ae-phase.local-envelope.v1',
+    id: normalized.id,
+    kind: normalized.kind,
+    correlationId: normalized.correlationId,
+    bodyHash: normalized.bodyHash,
+    bodyBytes: normalized.bodyBytes,
+  };
+}
+
+export function readAEPhaseEnvelopes(criteria = {}, options = {}) {
+  const paths = resolvePaths(options);
+  let rows = [];
+  try {
+    rows = fs.readFileSync(paths.inbox, 'utf8')
+      .split(/\r?\n/)
+      .filter(Boolean)
+      .map((line) => JSON.parse(line));
+  } catch {}
+  const sinceMs = criteria.sinceAt ? Date.parse(criteria.sinceAt) : 0;
+  const filtered = rows.filter((row) => {
+    if (criteria.id && row.id !== criteria.id) return false;
+    if (criteria.kind && row.kind !== criteria.kind) return false;
+    if (criteria.correlationId && row.correlationId !== criteria.correlationId) return false;
+    if (criteria.sender && row.sender !== criteria.sender) return false;
+    if (sinceMs && Date.parse(row.receivedAt || row.createdAt || 0) < sinceMs) return false;
+    return true;
+  });
+  const limit = Math.max(1, Math.min(10_000, Number(criteria.limit || 100)));
+  return filtered.slice(-limit);
+}
+
+export async function waitForAEPhaseEnvelope(criteria = {}, options = {}) {
+  const timeoutMs = Math.max(1, Number(options.timeoutMs || 240_000));
+  const pollMs = Math.max(5, Number(options.pollMs || 20));
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const matches = readAEPhaseEnvelopes({ ...criteria, limit: 1 }, options);
+    if (matches.length) return matches[0];
+    await Bun.sleep(pollMs);
+  }
+  throw new Error(`AE Phase envelope timeout: ${criteria.kind || '*'} ${criteria.correlationId || criteria.id || '*'}`);
 }
 
 export async function sendLocalAEPhaseSignal(signal, options = {}) {
@@ -882,6 +1030,10 @@ if (import.meta.main) {
     const raw = process.argv.slice(3).join(' ');
     const signal = raw ? JSON.parse(raw) : { id: `signal-${randomUUID()}`, kind: 'semantic_signal' };
     process.stdout.write(`${JSON.stringify(await sendLocalAEPhaseSignal(signal))}\n`);
+  } else if (mode === 'envelope') {
+    const raw = process.argv.slice(3).join(' ');
+    if (!raw) throw new Error('AE Phase envelope mode requires a JSON envelope');
+    process.stdout.write(`${JSON.stringify(await sendLocalAEPhaseEnvelope(JSON.parse(raw)))}\n`);
   } else {
     const fabric = mode === 'server'
       ? await startAEPhaseFabricServer()

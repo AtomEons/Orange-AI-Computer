@@ -1,0 +1,118 @@
+{
+  "currents": {
+    "current_1785305978479_39": {
+      "id": "current_1785305978479_39",
+      "title": "t",
+      "description": "",
+      "pressure": 0.5,
+      "owner_department": "AE0",
+      "status": "in_progress",
+      "assigned_agent": "agent_1785305978479_41",
+      "acceptance": {
+        "receipt_required": true,
+        "approval_required": false,
+        "validator": null
+      },
+      "created_at": 1785305978479,
+      "updated_at": 1785305978479,
+      "closed_at": null,
+      "closed_receipt": null
+    },
+    "current_1785305993020_1": {
+      "id": "current_1785305993020_1",
+      "title": "t",
+      "description": "",
+      "pressure": 1,
+      "owner_department": "AE0",
+      "status": "pending",
+      "assigned_agent": null,
+      "acceptance": {
+        "receipt_required": true,
+        "approval_required": false,
+        "validator": null
+      },
+      "created_at": 1785305993020,
+      "updated_at": 1785305993020,
+      "closed_at": null,
+      "closed_receipt": null,
+      "origin": "gateway/v1/flow/order"
+    },
+    "current_1785305993256_3": {
+      "id": "current_1785305993256_3",
+      "title": "dispatched order test",
+      "description": "",
+      "pressure": 0.3,
+      "owner_department": "AE0",
+      "status": "pending",
+      "assigned_agent": null,
+      "acceptance": {
+        "receipt_required": true,
+        "approval_required": false,
+        "validator": null
+      },
+      "created_at": 1785305993256,
+      "updated_at": 1785305993256,
+      "closed_at": null,
+      "closed_receipt": null,
+      "origin": "gateway/v1/flow/order"
+    }
+  },
+  "agents": {
+    "agent_1785305978479_41": {
+      "id": "agent_1785305978479_41",
+      "role": "orangellm-light",
+      "state": "riding",
+      "current_id": "current_1785305978479_39",
+      "last_tick": 1,
+      "capability": {
+        "lane": "reflex"
+      }
+    }
+  },
+  "deltas": [
+    {
+      "id": "delta_1785305978479_40",
+      "ts": 1785305978479,
+      "kind": "current_pressure_change",
+      "subject_id": "current_1785305978479_39",
+      "payload": {
+        "pressure": 0.5,
+        "status": "pending"
+      }
+    },
+    {
+      "id": "delta_1785305978479_42",
+      "ts": 1785305978479,
+      "kind": "agent_assigned",
+      "subject_id": "agent_1785305978479_41",
+      "payload": {
+        "current_id": "current_1785305978479_39",
+        "role": "orangellm-light"
+      }
+    },
+    {
+      "id": "delta_1785305993020_2",
+      "ts": 1785305993020,
+      "kind": "current_pressure_change",
+      "subject_id": "current_1785305993020_1",
+      "payload": {
+        "pressure": 1,
+        "status": "pending",
+        "origin": "gateway"
+      }
+    },
+    {
+      "id": "delta_1785305993256_4",
+      "ts": 1785305993256,
+      "kind": "current_pressure_change",
+      "subject_id": "current_1785305993256_3",
+      "payload": {
+        "pressure": 0.3,
+        "status": "pending",
+        "origin": "gateway"
+      }
+    }
+  ],
+  "tick": 1,
+  "last_tick_at": 1785305978479
+}

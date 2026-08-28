@@ -1,0 +1,119 @@
+import { useState, useRef } from 'react'
+import { useNavigate } from '@tanstack/react-router'
+import { useTranslation } from '@/i18n/react-i18next-compat'
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+  DialogFooter,
+  DialogHeader,
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import { IconTrash } from '@tabler/icons-react'
+import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
+import { toast } from 'sonner'
+import { route } from '@/constants/routes'
+import type { SidebarMode } from '@/hooks/useAgentMode'
+
+interface DeleteAllThreadsDialogProps {
+  onDeleteAll: () => void
+  onDropdownClose?: () => void
+  mode?: SidebarMode
+}
+
+export function DeleteAllThreadsDialog({
+  onDeleteAll,
+  onDropdownClose,
+  mode = 'chat',
+}: DeleteAllThreadsDialogProps) {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const [isOpen, setIsOpen] = useState(false)
+  const deleteButtonRef = useRef<HTMLButtonElement>(null)
+
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open)
+    if (!open && onDropdownClose) {
+      onDropdownClose()
+    }
+  }
+
+  const handleDeleteAll = () => {
+    onDeleteAll()
+    setIsOpen(false)
+    if (onDropdownClose) onDropdownClose()
+    const translationScope =
+      mode === 'agent' ? 'deleteAllAgentThreads' : 'deleteAllThreads'
+    toast.success(t(`common:toast.${translationScope}.title`), {
+      id: 'delete-all-threads',
+      description: t(`common:toast.${translationScope}.description`),
+    })
+    setTimeout(() => {
+      navigate({ to: route.home })
+    }, 0)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleDeleteAll()
+    }
+  }
+
+  return (
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+      <DialogTrigger asChild>
+        <DropdownMenuItem
+          variant="destructive"
+          onSelect={(e) => e.preventDefault()}
+        >
+          <IconTrash size={16} />
+          <span>{t('common:deleteAll')}</span>
+        </DropdownMenuItem>
+      </DialogTrigger>
+      <DialogContent
+        onOpenAutoFocus={(e) => {
+          e.preventDefault()
+          deleteButtonRef.current?.focus()
+        }}
+      >
+        <DialogHeader>
+          <DialogTitle>
+            {t(
+              `common:dialogs.${
+                mode === 'agent' ? 'deleteAllAgentThreads' : 'deleteAllThreads'
+              }.title`
+            )}
+          </DialogTitle>
+          <DialogDescription>
+            {t(
+              `common:dialogs.${
+                mode === 'agent' ? 'deleteAllAgentThreads' : 'deleteAllThreads'
+              }.description`
+            )}
+          </DialogDescription>
+          <DialogFooter className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2">
+            <DialogClose asChild>
+              <Button variant="ghost" size="sm" className="w-full sm:w-auto">
+                {t('common:cancel')}
+              </Button>
+            </DialogClose>
+            <Button
+              ref={deleteButtonRef}
+              variant="destructive"
+              onClick={handleDeleteAll}
+              onKeyDown={handleKeyDown}
+              size="sm"
+              className="w-full sm:w-auto"
+              aria-label={t('common:deleteAll')}
+            >
+              {t('common:deleteAll')}
+            </Button>
+          </DialogFooter>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  )
+}

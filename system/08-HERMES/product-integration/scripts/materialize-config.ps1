@@ -7,7 +7,7 @@ param(
   [string]$OrangeModelUrl = 'http://127.0.0.1:11434/v1',
   [string]$HermesAgentModel = 'orange-navigator:ornith-1.5-9b-q4km',
   [string]$OrangeMcpUrl = 'http://127.0.0.1:7431/mcp',
-  [ValidateSet('Auto', 'Compact', 'Balanced', 'Codexa')]
+  [ValidateSet('Auto', 'Compact', 'Balanced', 'Codexa', 'Codexa70')]
   [string]$SwarmProfile = 'Auto'
 )
 
@@ -16,7 +16,7 @@ $ErrorActionPreference = 'Stop'
 $PackRoot = Split-Path -Parent $PSScriptRoot
 $TemplateRoot = Join-Path $PackRoot 'config'
 $HermesHome = Join-Path $DataRoot '.hermes'
-$Profiles = @('navigator', 'builder', 'researcher', 'reviewer', 'visual', 'misfit')
+$Profiles = @('navigator', 'builder', 'researcher', 'reviewer', 'visual', 'misfit', 'human-operator')
 
 function Get-SwarmSizing {
   $computer = Get-CimInstance Win32_ComputerSystem
@@ -32,6 +32,7 @@ function Get-SwarmSizing {
     Compact = @{ width = 2; depth = 1; nested = $false; api = 3; durable = 3; perProfile = 1; memory = [math]::Max(6, [math]::Min(12, [math]::Floor($ramGb * 0.55))) }
     Balanced = @{ width = 4; depth = 2; nested = $true; api = 6; durable = 6; perProfile = 2; memory = [math]::Max(12, [math]::Min(28, [math]::Floor($ramGb * 0.60))) }
     Codexa = @{ width = 6; depth = 2; nested = $true; api = 8; durable = 8; perProfile = 2; memory = [math]::Min(50, [math]::Floor($ramGb * 0.55)) }
+    Codexa70 = @{ width = 6; depth = 2; nested = $true; api = 12; durable = 8; perProfile = 2; memory = 70 }
   }
   $size = $table[$selected]
   return [ordered]@{ profile = $selected.ToLowerInvariant(); detectedRamGb = $ramGb; logicalCores = $logicalCores; width = $size.width; depth = $size.depth; nested = $size.nested; api = $size.api; durable = $size.durable; perProfile = $size.perProfile; liveMemoryBudgetGb = $size.memory }

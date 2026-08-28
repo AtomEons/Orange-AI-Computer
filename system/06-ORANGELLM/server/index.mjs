@@ -10,6 +10,11 @@ import { boundary } from "./boundary.mjs";
 import { handleV1ChatCompletions, handleV1Models } from "./routes/v1.mjs";
 import { handleHealthz } from "./routes/healthz.mjs";
 import { __memoryHandlers, createMemoryRouteConfig } from "./routes/memory.mjs";
+import { dispatchCobra, isCobraPath } from "./routes/cobra.mjs";
+import {
+  startRailTokenWatcher,
+  stopRailTokenWatcher,
+} from "./middleware/rail-token-watcher.mjs";
 import { dispatchGuardrails, isGuardrailsPath } from "./routes/guardrails.mjs";
 import { completionToSse } from "./openai-sse.mjs";
 import { startLearningQueueWorker, stopLearningQueueWorker } from "../../03-BACKEND/learning-queue.mjs";
@@ -75,6 +80,7 @@ const VERSION = "orange5.orangellm.v0.7.0-party-line";
 const MEMORY_CFG = createMemoryRouteConfig();
 const LEARNING_WORKER = startLearningQueueWorker();
 const CONTINUUM_WORKER = startProjectContinuumWorker();
+const RAIL_TOKEN_WATCHER = await startRailTokenWatcher();
 
 function jsonResponse(res, body, status = 200) {
   res.writeHead(status, { "Content-Type": "application/json" });
@@ -219,6 +225,14 @@ const server = createServer(async (req, res) => {
       const result = await handleBuildRuns(method, url, body);
       return jsonResponse(res, result.body, result.status);
     }
+    if (isCobraPath(path)) {
+      const result = await dispatchCobra(req, url, { readBody });
+      if (result) {
+        const status = result._ae_http_status || 200;
+        delete result._ae_http_status;
+        return jsonResponse(res, result, status);
+      }
+    }
     if (method === "GET" && path === "/v1/memory/healthz") {
       return jsonResponse(res, await __memoryHandlers.handleMemoryHealth(MEMORY_CFG));
     }
@@ -342,11 +356,13 @@ server.listen(PORT, HOST, () => {
   console.log(`[orangellm] default: orange-auto deterministic conductor -> least sufficient live lane`);
   console.log(`[orangellm] upstream: smart-skinny @ http://127.0.0.1:8797 (PR-03 wired)`);
   console.log(`[orangellm] durable learning queue: ${LEARNING_WORKER.path}`);
+  console.log(`[orangellm] rail token watcher: ${RAIL_TOKEN_WATCHER.disabled ? "disabled" : "active"}`);
 });
 
-const shutdown = (signal) => {
+const shutdown = async (signal) => {
   console.log(`[orangellm] ${signal} received, closing`);
-  server.close(() => {
+  server.close(async () => {
+    await stopRailTokenWatcher();
     stopLearningQueueWorker();
     process.exit(0);
   });

@@ -1,18 +1,28 @@
 {
   "schema": "orange5.hermes-product-integration.v1",
-  "name": "OrangeFive Hermes Product Integration",
+  "name": "AE Staff - Powered by Hermes",
+  "phase": "Wave 4: A 50-Person Company on Your Desktop",
   "governor": "OrangeFive",
   "receiptAuthority": "OrangeFive",
   "gatewayOwner": "default",
   "orchestratorProfile": "navigator",
-  "profiles": [
+  "orchestratorCount": 1,
+  "projectLeadMode": "working-specialist",
+  "executionProfiles": [
     "navigator",
     "builder",
     "researcher",
     "reviewer",
     "visual",
-    "misfit"
+    "misfit",
+    "human-operator"
   ],
+  "staffRoster": {
+    "source": "config/staff-roster.json",
+    "logicalRoleCount": 50,
+    "consumer": "StaffReactor",
+    "materializedAsHermesProfiles": false
+  },
   "board": "default",
   "dispatcherCount": 1,
   "api": {

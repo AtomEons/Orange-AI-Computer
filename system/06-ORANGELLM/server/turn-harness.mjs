@@ -61,6 +61,33 @@ function sha256(value) {
   return createHash('sha256').update(String(value)).digest('hex');
 }
 
+function compactWorkObjectEvidence(workObject) {
+  const kernel = workObject?.wave3Kernel || {};
+  return {
+    schema: workObject?.schema || 'orange.work-object.v1',
+    workId: workObject?.workId || null,
+    project: workObject?.project || null,
+    authority: workObject?.authority || null,
+    riskLevel: workObject?.riskLevel || null,
+    source: {
+      sha256: workObject?.source?.sha256 || null,
+      byteLength: Number(workObject?.source?.byteLength || 0),
+    },
+    compilationHash: workObject?.compilationHash || null,
+    wave3Kernel: {
+      manifestHash: kernel.manifestHash || null,
+      mechanismAbiHash: kernel.mechanismAbiHash || null,
+      worksetHash: kernel.worksetHash || null,
+      activationBitset: kernel.activationBitset || null,
+      activeMechanismIds: kernel.activeMechanismIds || [],
+      selectedOrganIds: (kernel.selectedOrgans || []).map((item) => item.organId).filter(Boolean),
+      obligationHashes: (kernel.obligations || []).map((item) => item.obligationHash).filter(Boolean),
+      constitutionHash: kernel.constitution?.resolutionHash || null,
+      sleepingMechanismCount: Number(kernel.sleepingMechanismCount || 0),
+    },
+  };
+}
+
 const SPINE_GENESIS = sha256('orange5-spine-genesis');
 
 function latestUserText(messages = []) {
@@ -596,6 +623,7 @@ export async function prepareChatTurn(body, orderId, deps = {}) {
     projectSelected: locked.crystal?.selected || [],
     memoryMessages: (memory.body?.messages || []).slice(0, injectedMemoryCount),
   });
+  const workObjectAir = renderWorkObjectAir(workObject);
   const order = {
     id: orderId,
     orderId,
@@ -629,8 +657,8 @@ export async function prepareChatTurn(body, orderId, deps = {}) {
       failure_last_resolution_at: failure.meta?.lastResolutionAt || null,
       governed_context_evidence_count: governedEvidence.items.length,
       governed_context_evidence_sha256: governedEvidence.items.length ? sha256(JSON.stringify(governedEvidence.items)) : null,
-      work_object: workObject,
-      work_object_air: renderWorkObjectAir(workObject),
+      work_object: compactWorkObjectEvidence(workObject),
+      work_object_air_sha256: sha256(workObjectAir),
       work_object_hash: workObject.compilationHash,
     },
   };
@@ -724,7 +752,7 @@ export async function finalizeChatTurn({
   receiptQueue = receiptTask.then(() => undefined, () => undefined);
   const result = await receiptTask;
 
-  const reflexCrystallized = routeMode === 'deterministic_reflex';
+  const reflexCrystallized = ['deterministic_reflex', 'navigator_kernel'].includes(routeMode);
   const internalRefuterProof = turn.order.payload.internal_refuter === true;
   const learningSkipReason = internalRefuterProof
     ? 'internal refuter proof is already bound to its parent turn; duplicate learning is suppressed'

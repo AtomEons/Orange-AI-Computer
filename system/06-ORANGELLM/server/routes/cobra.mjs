@@ -8,13 +8,9 @@
 //     mirrored in memory/ae-cobra/schemas/agent-turn.schema.json. The
 //     belt-and-suspenders parser-layer validator lives at
 //     memory/ae-cobra/grammar/validator.mjs.
-//   - The daemon listens on 127.0.0.1:9100 INSIDE Codexa's WSL2 distro.
-//     Codexa exposes it to the LAN via a WSL2 port-forward; the gateway
-//     (running on N150) reaches it via the configured AE_COBRA_DAEMON_URL
-//     (default http://10.0.0.4:9100 — the Codexa-side Wi-Fi host:port).
-//   - N150 CANNOT speak to the daemon directly. Every Cobra interaction
-//     from N150 (cockpit, AECommand Center, frontier model) crosses this
-//     gateway. The gateway is the boundary.
+//   - The active daemon listens on N150 loopback at 127.0.0.1:7419. Local
+//     memory IPC stays local. Cobra model work enters OrangeBrain, whose
+//     cross-computer leases use authenticated AE Phase exclusively.
 //   - Rail-token auth is enforced HERE (in the handlers), not in the main
 //     boundary. The main boundary cannot do it because the token must be
 //     read at request time from the rail-token-watcher singleton (the
@@ -34,8 +30,8 @@
 //                                mlock, Flux lanes reachable, prior-sha
 //                                chain unbroken (last verified). This is
 //                                the read-only summary the cockpit shows.
-//   GET  /v1/cobra/flux/tail   — read-only tail of /mnt/ae_flux/reality
-//                                .jsonl and /mnt/ae_flux/thought.jsonl.
+//   GET  /v1/cobra/flux/tail   — read-only tail of the canonical daily
+//                                Reality and Thought JSONL ledgers.
 //                                Query: ?lane=reality|thought|both
 //                                (default: both), ?n=1..200 (default: 50).
 //                                Merged in append order. No write surface.
@@ -45,7 +41,9 @@
 //   Error:   { error: { code, message, ... }, _ae_http_status: N }
 
 import { createHash } from "node:crypto";
+import { join } from "node:path";
 import { validateAgentTurn } from "../../memory/ae-cobra/grammar/validator.mjs";
+import { canonicalFluxRoot } from "../../memory/ae-cobra/paths.mjs";
 import {
   getToken,
   getTokenFingerprint,
@@ -64,14 +62,14 @@ export { COBRA_ALLOWED, isCobraRouteAllowed, isCobraPath };
 // Config — env-bound, never hardcoded secrets.
 // ---------------------------------------------------------------------------
 
-const DAEMON_URL = (process.env.AE_COBRA_DAEMON_URL || "http://10.0.0.4:9100").replace(/\/+$/, "");
-const DAEMON_COMPLETION_PATH = process.env.AE_COBRA_COMPLETION_PATH || "/completion";
-const DAEMON_HEALTH_PATH = process.env.AE_COBRA_HEALTH_PATH || "/health";
+const DAEMON_URL = (process.env.AE_COBRA_DAEMON_URL || "http://127.0.0.1:7419").replace(/\/+$/, "");
 const DAEMON_TIMEOUT_MS = clampInt(process.env.AE_COBRA_TIMEOUT_MS, 30_000, 1_000, 120_000);
 
-// Flux lanes — read-only from the gateway side. The daemon writes; we tail.
-const FLUX_REALITY_PATH = process.env.AE_FLUX_REALITY || "/mnt/ae_flux/reality.jsonl";
-const FLUX_THOUGHT_PATH = process.env.AE_FLUX_THOUGHT || "/mnt/ae_flux/thought.jsonl";
+// Flux lanes are daily JSONL directories in the canonical on-disk ledger.
+// Explicit env values may still point at a single JSONL file for compatibility.
+const FLUX_ROOT = canonicalFluxRoot();
+const FLUX_REALITY_PATH = process.env.AE_FLUX_REALITY || join(FLUX_ROOT, "events", "reality");
+const FLUX_THOUGHT_PATH = process.env.AE_FLUX_THOUGHT || join(FLUX_ROOT, "events", "thought");
 
 // 14-point activation gate — published constants the cockpit reads off
 // /v1/cobra/healthz so it can render the badge without doing math.
@@ -167,16 +165,13 @@ function checkRail(headers) {
 // Fetch with timeout — mirrors upstream.mjs pattern.
 // ---------------------------------------------------------------------------
 
-async function fetchWithTimeout(url, options = {}, timeoutMs = DAEMON_TIMEOUT_MS) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  const started = Date.now();
-  try {
-    const res = await fetch(url, { ...options, signal: controller.signal });
-    return { res, elapsed_ms: Date.now() - started };
-  } finally {
-    clearTimeout(timer);
-  }
+async function fetchLocalCobra(path, options, timeoutMs = DAEMON_TIMEOUT_MS) {
+  const started = performance.now();
+  const response = await fetch(`${DAEMON_URL}${path}`, {
+    ...options,
+    signal: AbortSignal.timeout(timeoutMs),
+  });
+  return { response, elapsed_ms: Math.round(performance.now() - started) };
 }
 
 // ---------------------------------------------------------------------------
@@ -195,8 +190,8 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = DAEMON_TIMEOUT_MS
 // Behavior:
 //   1. Rail-token gate (fail-closed).
 //   2. Body validation (size cap, type checks).
-//   3. POST to daemon at AE_COBRA_DAEMON_URL + AE_COBRA_COMPLETION_PATH
-//      with grammar="<gbnf>" hint so the daemon enforces logit-layer JSON.
+//   3. Call the N150-local Cobra memory organ. Any model work requested by
+//      Cobra crosses OrangeBrain and therefore AE Phase; local IPC stays local.
 //   4. Parse JSON. Run validateAgentTurn() (parser-layer belt-and-
 //      suspenders). If invalid, return 502 with the validator errors —
 //      DO NOT pass invalid AgentTurn through to callers and DO NOT
@@ -252,64 +247,51 @@ export async function handleCobraTurn(body, headers) {
   // boot (see memory/ae-cobra/bin/start.sh), so we do not need to ship
   // the grammar in every request. We DO pass a lane hint via the body so
   // the daemon can route Reality vs Thought appends accordingly.
+  const origin = lane === "reality"
+    ? "operator"
+    : lane === "merge"
+      ? "merge_synthesis"
+      : "orangellm_reasoning";
   const upstreamBody = {
-    prompt,
-    n_predict: max_tokens,
-    temperature,
-    stop,
-    // Lane hint for the daemon's Flow Direct layer. The daemon decides
-    // the final lane and may emit "merge" when synthesizing; the GBNF
-    // constrains the output enum so we trust it.
-    lane_hint: lane || null,
-    // Cache key for the daemon's micro-cache (idempotent reads return
-    // the same AgentTurn). Optional; daemon may ignore.
-    cache_hint: null,
+    origin,
+    fallback_lane: lane || "thought",
+    event: {
+      event_type: "observation",
+      summary: prompt,
+      entities: [],
+      files: [],
+      commands: [],
+      risk: "low",
+      next_action: "Return the governed AgentTurn to OrangeLLM.",
+      confidence: 1,
+      generation: { max_tokens, temperature, stop },
+    },
   };
 
-  const url = DAEMON_URL + DAEMON_COMPLETION_PATH;
   let upstream;
   try {
-    upstream = await fetchWithTimeout(url, {
+    upstream = await fetchLocalCobra("/event", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "content-type": "application/json" },
       body: JSON.stringify(upstreamBody),
-    }, DAEMON_TIMEOUT_MS);
+    });
   } catch (e) {
-    const reason = e?.name === "AbortError" ? "daemon_timeout" : "daemon_unreachable";
+    const reason = /timed out/i.test(String(e?.message || e)) ? "daemon_timeout" : "daemon_unreachable";
     return err(504, reason, `Æ Cobra daemon at ${DAEMON_URL} ${reason}: ${String(e?.message || e)}`);
   }
 
-  const { res, elapsed_ms } = upstream;
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    return err(502, "daemon_http_error", `Daemon returned ${res.status}`, {
-      upstream_status: res.status,
-      upstream_body: text.slice(0, 500),
+  const { response, elapsed_ms } = upstream;
+  const parsed = await response.json().catch(() => null);
+  if (!response.ok || !parsed?.ok || parsed.accepted === false) {
+    return err(response.ok ? 422 : 502, parsed?.reason || "daemon_http_error", parsed?.error || `Daemon returned ${response.status}`, {
+      upstream_status: response.status,
+      upstream_body: parsed,
       elapsed_ms,
     });
   }
 
-  let parsed;
-  try {
-    parsed = await res.json();
-  } catch (e) {
-    return err(502, "daemon_non_json",
-      "Daemon response was not valid JSON. This violates the GBNF logit constraint and warrants investigation.",
-      { elapsed_ms });
-  }
-
-  // The daemon's Flow Direct layer wraps the AgentTurn in an envelope that
-  // also surfaces Flux append metadata. We accept either:
-  //   - { agent_turn: {...}, flux: { lane, prior_sha256, new_sha256, line_no } }
-  //   - the bare AgentTurn (older daemon builds; treated as no-flux)
-  let agentTurn;
-  let flux = null;
-  if (parsed && typeof parsed === "object" && parsed.agent_turn) {
-    agentTurn = parsed.agent_turn;
-    if (parsed.flux && typeof parsed.flux === "object") flux = parsed.flux;
-  } else {
-    agentTurn = parsed;
-  }
+  const agentTurn = parsed.agent_turn;
+  const flux = { id: parsed.id || null, lane: parsed.lane || agentTurn?.lane || null, accepted: true };
 
   // Parser-layer belt-and-suspenders. The GBNF should have already made
   // this impossible to fail, but we check anyway — Mom's Law: receipts
@@ -339,6 +321,7 @@ export async function handleCobraTurn(body, headers) {
       elapsed_ms,
       within_ttft_budget,
       ttft_budget_ms: GATE_TTFT_MAX_MS,
+      transport: "loopback-local",
     },
   });
 }
@@ -359,17 +342,17 @@ export async function handleCobraHealthz(headers) {
     return err(gate.status, "rail_gate_denied", gate.detail, { reason: gate.reason });
   }
 
-  const url = DAEMON_URL + DAEMON_HEALTH_PATH;
   let probe;
   let elapsed_ms = null;
   let live = false;
   let daemon_payload = null;
   let probe_error = null;
   try {
-    probe = await fetchWithTimeout(url, { method: "GET" }, 3_000);
+    probe = await fetchLocalCobra("/healthz", { method: "GET" }, 3_000);
     elapsed_ms = probe.elapsed_ms;
-    live = probe.res.ok;
-    daemon_payload = await probe.res.json().catch(() => null);
+    live = probe.response.ok;
+    daemon_payload = await probe.response.json().catch(() => null);
+    probe_error = live ? null : `HTTP ${probe.response.status}`;
   } catch (e) {
     probe_error = String(e?.message || e);
   }
@@ -382,11 +365,13 @@ export async function handleCobraHealthz(headers) {
       elapsed_ms,
       payload: daemon_payload,
       error: probe_error,
+      transport: "loopback-local",
     },
     flux: {
       reality_path: FLUX_REALITY_PATH,
       thought_path: FLUX_THOUGHT_PATH,
-      note: "Flux liveness from the gateway side is approximate — the daemon owns the hash-chain. See GET /v1/cobra/flux/tail for read confirmation.",
+      storage: "canonical-daily-jsonl",
+      note: "Flux liveness from the gateway side is approximate; the daemon owns writes. GET /v1/cobra/flux/tail verifies the current on-disk tail.",
     },
     activation_gate: {
       ctx_size_max: GATE_CTX_MAX,
@@ -478,9 +463,9 @@ export async function handleCobraFluxTail(url, headers) {
   });
 }
 
-// Tail-N implementation: read the file, split on newline, take last N,
-// parse each, verify hash chain. Zero deps; uses node:fs/promises.
-async function tailLane(path, n, laneName) {
+// Tail-N implementation for a daily-file lane directory or an explicit single
+// JSONL file. Reads newest files first until N records are available.
+export async function tailLane(path, n, laneName) {
   let fs;
   try {
     fs = await import("node:fs/promises");
@@ -494,9 +479,19 @@ async function tailLane(path, n, laneName) {
       error: `fs import failed: ${String(e?.message || e)}`,
     };
   }
-  let raw;
+  let files;
   try {
-    raw = await fs.readFile(path, { encoding: "utf8" });
+    const source = await fs.stat(path);
+    if (source.isFile()) {
+      files = [path];
+    } else if (source.isDirectory()) {
+      files = (await fs.readdir(path, { withFileTypes: true }))
+        .filter((entry) => entry.isFile() && entry.name.endsWith(".jsonl"))
+        .map((entry) => join(path, entry.name))
+        .sort((a, b) => a.localeCompare(b));
+    } else {
+      files = [];
+    }
   } catch (e) {
     if (e && e.code === "ENOENT") {
       return {
@@ -505,7 +500,7 @@ async function tailLane(path, n, laneName) {
         present: false,
         entries: [],
         chain_unbroken: "indeterminate",
-        note: "lane file not present (daemon may not have written yet)",
+        note: "lane source not present (daemon may not have written yet)",
       };
     }
     return {
@@ -518,29 +513,47 @@ async function tailLane(path, n, laneName) {
     };
   }
 
-  // Split, drop trailing empty line, take last N. We do not stream the
-  // file because Night-1 caps n at 200 and the JSONL lines are tiny.
-  const lines = raw.split(/\r?\n/);
-  while (lines.length && lines[lines.length - 1] === "") lines.pop();
-  const lineCount = lines.length;
-  const startIdx = Math.max(0, lineCount - n);
-  const slice = lines.slice(startIdx);
+  if (!files.length) {
+    return {
+      lane: laneName,
+      path,
+      present: false,
+      entries: [],
+      chain_unbroken: "indeterminate",
+      note: "lane source contains no JSONL files",
+    };
+  }
 
-  const entries = slice.map((line, i) => {
-    const line_no = startIdx + i + 1;
+  const selected = [];
+  let remaining = n;
+  for (let index = files.length - 1; index >= 0 && remaining > 0; index--) {
+    const file = files[index];
+    const raw = await fs.readFile(file, { encoding: "utf8" });
+    const lines = raw.split(/\r?\n/);
+    while (lines.length && lines[lines.length - 1] === "") lines.pop();
+    const start = Math.max(0, lines.length - remaining);
+    selected.unshift(...lines.slice(start).map((line, offset) => ({
+      file,
+      line,
+      line_no: start + offset + 1,
+    })));
+    remaining = n - selected.length;
+  }
+
+  const entries = selected.map(({ file, line, line_no }) => {
     try {
       const parsed = JSON.parse(line);
       const sha = createHash("sha256").update(line).digest("hex");
-      return { line_no, parsed, sha256_of_line: sha };
+      return { file, line_no, parsed, sha256_of_line: sha };
     } catch (e) {
-      return { line_no, error: "json_parse_failed", raw: line.slice(0, 500) };
+      return { file, line_no, error: "json_parse_failed", raw: line.slice(0, 500) };
     }
   });
 
-  // Hash-chain verification: for each entry i>0, entry[i].parsed.prior_sha256
-  // must equal entry[i-1].sha256_of_line. We can only verify the chain
-  // WITHIN the tail we read; older breaks are invisible here. Surface as
-  // "indeterminate" when the tail is too short to verify.
+  // Current Flux records chain declared `prev_hash` to the prior record's
+  // declared `hash`. Legacy records may use `prior_sha256`, in which case we
+  // compare with the prior raw-line digest. Verification is bounded to the
+  // returned tail; older history is intentionally outside this endpoint.
   let chain_unbroken;
   if (entries.length < 2) {
     chain_unbroken = "indeterminate";
@@ -549,7 +562,11 @@ async function tailLane(path, n, laneName) {
     for (let i = 1; i < entries.length; i++) {
       const prev = entries[i - 1];
       const cur = entries[i];
-      if (!prev.sha256_of_line || !cur.parsed || cur.parsed.prior_sha256 !== prev.sha256_of_line) {
+      const expected = cur.parsed?.prev_hash ?? cur.parsed?.prior_sha256;
+      const actual = cur.parsed?.prev_hash !== undefined
+        ? prev.parsed?.hash
+        : prev.sha256_of_line;
+      if (!expected || !actual || expected !== actual) {
         unbroken = false;
         break;
       }
@@ -561,7 +578,9 @@ async function tailLane(path, n, laneName) {
     lane: laneName,
     path,
     present: true,
-    file_line_count: lineCount,
+    source_type: files.length === 1 && files[0] === path ? "file" : "daily-directory",
+    files_available: files.length,
+    files_read: [...new Set(selected.map((entry) => entry.file))],
     returned: entries.length,
     chain_unbroken,
     entries,

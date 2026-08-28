@@ -4,7 +4,7 @@ param([string]$DataRoot = 'C:\AtomEons\ai-box\hermes-product\data')
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $HermesHome = Join-Path $DataRoot '.hermes'
-$Profiles = @('navigator', 'builder', 'researcher', 'reviewer', 'visual', 'misfit')
+$Profiles = @('navigator', 'builder', 'researcher', 'reviewer', 'visual', 'misfit', 'human-operator')
 
 function Read-Key([string]$Path) {
   $line = Get-Content -LiteralPath $Path | Where-Object { $_ -match '^API_SERVER_KEY=' } | Select-Object -First 1

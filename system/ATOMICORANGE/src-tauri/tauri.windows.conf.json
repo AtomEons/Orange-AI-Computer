@@ -1,0 +1,45 @@
+{
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Atomic Orange",
+        "width": 1200,
+        "minWidth": 1024,
+        "height": 800,
+        "minHeight": 740,
+        "resizable": true,
+        "fullscreen": false,
+        "zoomHotkeysEnabled": true,
+        "center": true,
+        "visible": false,
+        "hiddenTitle": true,
+        "transparent": false,
+        "decorations": true,
+        "titleBarStyle": "Overlay",
+        "windowEffects": {
+          "effects": ["fullScreenUI", "mica", "tabbed", "blur", "acrylic"],
+          "state": "active"
+        },
+        "dragDropEnabled": true
+      }
+    ]
+  },
+  "bundle": {
+    "targets": ["nsis", "msi"],
+    "resources": ["resources/pre-install/**/*", "resources/LICENSE", "resources/agent-skills/**/*", "resources/bin/jan-cli.exe", "resources/llamacpp-backend-upstream/**/*", "resources/llamacpp-backend/**/*"],
+    "externalBin": ["resources/bin/bun", "resources/bin/uv"],
+    "windows": {
+      "wix": {
+        "upgradeCode": "00f0d4b5-059b-5f15-9ef2-a6aee285f634"
+      },
+      "nsis": {
+        "installerHooks": "./windows/hooks.nsh"
+      },
+      "webviewInstallMode": {
+        "silent": true,
+        "type": "downloadBootstrapper"
+      }
+    }
+  }
+}

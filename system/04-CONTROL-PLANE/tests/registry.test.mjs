@@ -10,7 +10,8 @@ const adapters = list();
 assert(adapters.length === 4, `4 default adapters registered (got ${adapters.length})`);
 assert(get("mock-local-deterministic")?.status === "READY", "mock is READY");
 assert(get("local-llama-cpp-listener")?.lane === "local_endpoint", "llama.cpp lane is local_endpoint");
-assert(get("ai-box-triad-readonly")?.status === "PLANNED", "triad-readonly is PLANNED until token wired");
+assert(get("ai-box-triad-readonly")?.status === "READY", "triad-readonly is READY through AE Phase");
+assert(get("ai-box-triad-readonly")?.lane === "ae_phase", "triad-readonly uses AE Phase");
 assert(get("ai-box-allowlisted-command")?.allowlist?.length >= 10, "allowlist has ≥10 commands");
 
 const mock = get("mock-local-deterministic");

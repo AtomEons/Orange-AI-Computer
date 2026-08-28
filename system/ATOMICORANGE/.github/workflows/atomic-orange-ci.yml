@@ -1,0 +1,59 @@
+name: Atomic Orange CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atomic-orange-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  governed-contract:
+    name: Governed contract (Windows)
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+
+      - name: Install locked dependencies
+        shell: pwsh
+        run: corepack yarn install --immutable
+
+      - name: Build shared core workspace
+        shell: pwsh
+        run: corepack yarn workspace @janhq/core build
+
+      - name: Verify Orange runtime contract
+        shell: pwsh
+        run: >-
+          corepack yarn workspace @janhq/web-app vitest --run
+          src/lib/__tests__/model-factory.test.ts
+          src/lib/__tests__/orange-runtime-status.test.ts
+          src/lib/__tests__/custom-chat-transport.harness.test.ts
+          src/lib/__tests__/custom-chat-transport-helpers.test.ts
+          src/components/__tests__/PromptProgress.test.tsx
+
+      - name: Verify TypeScript
+        shell: pwsh
+        run: corepack yarn workspace @janhq/web-app exec tsc -b
+
+      - name: Verify backend manifest resolver
+        shell: pwsh
+        run: bun test tests/upstream-backend-resolver.test.mjs

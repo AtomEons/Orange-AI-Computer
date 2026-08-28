@@ -82,12 +82,15 @@ describe('OrangeFive single boot authority', () => {
     expect(retiredVulkanEnsure).toContain('-WindowStyle Hidden');
   });
 
-  test('gateway adoption proves the routed model rather than only the listening port', () => {
-    expect(nativeControl).toContain('result.body?.upstream?.navigator?.preferred_route === "direct_ollama"');
+  test('gateway adoption proves the routed model and AE Phase rather than only the listening port', () => {
+    expect(nativeControl).toContain('result.body?.upstream?.navigator?.preferred_route === "ae-phase"');
+    expect(nativeControl).toContain('result.body?.fabric?.crossNodeTransport === "ae-phase"');
     expect(nativeControl).toContain('sameModel(result.body?.upstream?.navigator?.model, process.env.ORANGE5_NAVIGATOR_MODEL)');
-    expect(runtime).toContain("$gatewayNavigator.preferred_route -eq 'direct_ollama'");
+    expect(runtime).toContain("$gatewayNavigator.preferred_route -eq 'ae-phase'");
+    expect(runtime).toContain("$gatewayHealth.fabric.crossNodeTransport -eq 'ae-phase'");
     expect(runtime).toContain('$gatewayNavigator.model -eq $env:ORANGE5_NAVIGATOR_MODEL');
-    expect(hiddenGateway).toContain("$navigator.preferred_route -eq 'direct_ollama'");
+    expect(hiddenGateway).toContain("$navigator.preferred_route -eq 'ae-phase'");
+    expect(hiddenGateway).toContain("$health.fabric.crossNodeTransport -eq 'ae-phase'");
     expect(hiddenGateway).toContain('$navigator.model -eq $env:ORANGE5_NAVIGATOR_MODEL');
   });
 });

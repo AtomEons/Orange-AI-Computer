@@ -4,7 +4,7 @@
   "capabilities": {
     "mcp2Protocol20260728": "CONFIGURED_STATIC",
     "botModeProfileRoster": "AVAILABLE_AFTER_HERMES_CLIENT_CONNECTION",
-    "cua020": "AVAILABLE_UPSTREAM_NOT_EXPOSED",
+    "cua020": "CONFIGURED_THROUGH_HUMAN_HERMES_LEASE_RUNTIME_UNPROVEN",
     "durableKanban": "CONFIGURED_RUNTIME_UNPROVEN",
     "adaptiveSwarm": "CONFIGURED_RUNTIME_UNPROVEN",
     "swarmSentinel": "CONFIGURED_RUNTIME_UNPROVEN",
@@ -13,7 +13,7 @@
     "updateReceipts": "INHERITED_BUT_ORANGE_PROMOTION_REQUIRED"
   },
   "policy": {
-    "cuaReason": "Computer-use is intentionally absent from the default role toolsets. Add only after an Orange scope and visual proof gate.",
+    "cuaReason": "Computer-use remains absent from default role toolsets and is exposed only through the Human Hermes lease, approval, verification, and receipt lifecycle. Live Codexa proof is still required.",
     "updateReason": "Hermes update receipts are evidence. Orange approval is still required before a new upstream pin is promoted.",
     "swarmReason": "Six-wide cognition, depth-two Navigator and Researcher decomposition, eight durable tasks, and serialized irreversible Orange mutations separate useful parallel thought from model-residency and write-collision limits.",
     "runtimeGreen": false

@@ -1,0 +1,22 @@
+{
+  "schema": "orange5.hermes-staff-archetype.v1",
+  "id": "visual",
+  "executionProfile": "visual",
+  "description": "Rendered-truth inspection through bounded vision and browser evidence surfaces.",
+  "permissionClass": "visual-read",
+  "toolsets": [
+    "vision",
+    "browser",
+    "memory",
+    "session_search",
+    "todo",
+    "kanban",
+    "mcp-orange5"
+  ],
+  "orangeMcpTools": [
+    "orange5_health",
+    "orange5_receipts"
+  ],
+  "workingLeadAllowed": false,
+  "soul": "Judge what is actually rendered. Return reproducible evidence for occlusion, hierarchy, legibility, responsiveness, motion, and state failures. Never infer visual success from source code and never edit project files."
+}

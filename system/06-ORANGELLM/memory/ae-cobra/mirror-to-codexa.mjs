@@ -1,26 +1,17 @@
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { readdir, readFile, mkdir, writeFile } from "node:fs/promises";
 import { relative, join, dirname, sep } from "node:path";
 import { homedir } from "node:os";
 import { pathToFileURL } from "node:url";
 import { canonicalFluxRoot } from "./paths.mjs";
 import { writeChainedJsonReceipt } from "../../../10-RECEIPTS/tools/json-receipt-chain.mjs";
+import { sendLocalAEPhaseEnvelope, waitForAEPhaseEnvelope } from "../../../03-BACKEND/ae-phase-fabric.mjs";
 
 const SOURCE = canonicalFluxRoot();
 const REMOTE_ROOT = process.env.AE_COBRA_CODEXA_BACKUP_ROOT ||
   "C:\\Users\\Atom\\OrangeBox-Data\\orange5\\ae-cobra-backup";
-const RAIL = (process.env.ORANGE5_CODEXA_RAIL_URL || "http://10.0.0.4:8097").replace(/\/$/, "");
-function railToken() {
-  if (process.env.ORANGEBOX_RAIL_TOKEN) return process.env.ORANGEBOX_RAIL_TOKEN;
-  if (process.platform !== "win32") return "";
-  const probe = Bun.spawnSync([
-    "powershell.exe", "-NoProfile", "-NonInteractive", "-Command",
-    "[Environment]::GetEnvironmentVariable('ORANGEBOX_RAIL_TOKEN','User')",
-  ]);
-  return probe.exitCode === 0 ? probe.stdout.toString().trim() : "";
-}
-const TOKEN = railToken();
-const RAIL_TIMEOUT_MS = Math.max(5_000, Number(process.env.AE_COBRA_MIRROR_RAIL_TIMEOUT_MS || 30_000));
+const PHASE_TIMEOUT_MS = Math.max(5_000, Number(process.env.AE_COBRA_MIRROR_PHASE_TIMEOUT_MS || 30_000));
+const PHASE_CHUNK_BYTES = Math.min(24 * 1024, Math.max(1024, Number(process.env.AE_COBRA_MIRROR_PHASE_CHUNK_BYTES || 24 * 1024)));
 const STATE_PATH = process.env.AE_COBRA_MIRROR_STATE ||
   join(homedir(), "OrangeBox-Data", "orange5", "ae-cobra-mirror-state.json");
 const RECEIPT_DIR = join(
@@ -53,32 +44,86 @@ async function readState() {
   }
 }
 
-async function put(path, bytes) {
-  const hash = sha256(bytes);
-  const response = await fetch(`${RAIL}/put-file`, {
-    method: "POST",
-    signal: AbortSignal.timeout(RAIL_TIMEOUT_MS),
-    headers: {
-      "content-type": "application/json",
-      "x-orangebox-token": TOKEN,
-    },
-    body: JSON.stringify({
-      path,
-      base64: bytes.toString("base64"),
-      sha256: hash,
-      confirmFullAccess: true,
-    }),
-  });
-  const result = await response.json();
-  if (!response.ok || result.status !== "VERIFIED" || result.sha256 !== hash) {
-    throw new Error(`Codexa put-file verification failed for ${path}: ${JSON.stringify(result)}`);
+async function put(relativePath, payloadBytes, options = {}) {
+  const mode = options.mode === "append" ? "append" : "replace";
+  const fileBytes = Number(options.fileBytes ?? payloadBytes.length);
+  const fileSha256 = options.fileSha256 || sha256(payloadBytes);
+  const baseBytes = Number(options.baseBytes || 0);
+  const baseSha256 = options.baseSha256 || null;
+  const transferId = `ae-cobra-${randomUUID()}`;
+  const count = Math.max(1, Math.ceil(payloadBytes.length / PHASE_CHUNK_BYTES));
+  let finalReport = null;
+  for (let index = 0; index < count; index += 1) {
+    const chunk = payloadBytes.subarray(
+      index * PHASE_CHUNK_BYTES,
+      Math.min(payloadBytes.length, (index + 1) * PHASE_CHUNK_BYTES),
+    );
+    const envelopeId = `ae-artifact-${randomUUID()}`;
+    await sendLocalAEPhaseEnvelope({
+      id: envelopeId,
+      kind: "ae_artifact_chunk",
+      correlationId: transferId,
+      body: {
+        transferId,
+        relativePath,
+        mode,
+        baseBytes,
+        baseSha256,
+        fileBytes,
+        index,
+        count,
+        fileSha256,
+        chunkSha256: sha256(chunk),
+        dataBase64: chunk.toString("base64"),
+      },
+    });
+    const response = await waitForAEPhaseEnvelope({
+      kind: "ae_artifact_chunk_report",
+      correlationId: envelopeId,
+    }, { timeoutMs: PHASE_TIMEOUT_MS });
+    if (response.body?.ok !== true || response.body?.index !== index || response.body?.fileSha256 !== fileSha256) {
+      throw new Error(`Codexa AE Phase artifact verification failed for ${relativePath} chunk ${index}`);
+    }
+    finalReport = { ...response.body, phaseResponseEnvelopeId: response.id, phaseResponseBodyHash: response.bodyHash };
   }
-  return { path, bytes: bytes.length, sha256: hash, railReceiptPath: result.receiptPath };
+  if (finalReport?.status !== "VERIFIED") throw new Error(`Codexa AE Phase artifact did not reach VERIFIED for ${relativePath}`);
+  return {
+    path: finalReport.destination,
+    relativePath,
+    bytes: fileBytes,
+    transferredBytes: payloadBytes.length,
+    sha256: fileSha256,
+    mode,
+    transport: "ae-phase",
+    transferId,
+    phaseReceipt: finalReport,
+  };
+}
+
+async function mirrorChangedFile(relativePath, bytes, prior) {
+  const fileSha256 = sha256(bytes);
+  const priorBytes = Number(prior?.bytes || 0);
+  const canAppend = priorBytes > 0
+    && bytes.length > priorBytes
+    && sha256(bytes.subarray(0, priorBytes)) === prior?.sha256;
+  if (canAppend) {
+    try {
+      return await put(relativePath, bytes.subarray(priorBytes), {
+        mode: "append",
+        baseBytes: priorBytes,
+        baseSha256: prior.sha256,
+        fileBytes: bytes.length,
+        fileSha256,
+      });
+    } catch (error) {
+      const replacement = await put(relativePath, bytes, { fileBytes: bytes.length, fileSha256 });
+      return { ...replacement, appendFallbackReason: error.message };
+    }
+  }
+  return put(relativePath, bytes, { fileBytes: bytes.length, fileSha256 });
 }
 
 export async function runMirror({ force = false } = {}) {
-  if (!TOKEN) throw new Error("ORANGEBOX_RAIL_TOKEN is required");
-
   const startedAt = new Date().toISOString();
   const priorState = await readState();
   const nextFiles = {};
@@ -94,7 +139,10 @@ export async function runMirror({ force = false } = {}) {
     const item = { path: remote, relativePath: rel, bytes: bytes.length, sha256: hash };
     nextFiles[rel] = item;
     files.push(item);
-    if (force || priorState.files?.[rel]?.sha256 !== hash) changed.push(await put(remote, bytes));
+    if (force || priorState.files?.[rel]?.sha256 !== hash) {
+      const relativePath = rel.split(sep).join("/");
+      changed.push(await mirrorChangedFile(relativePath, bytes, force ? null : priorState.files?.[rel]));
+    }
   }
 
   const completedAt = new Date().toISOString();
@@ -108,14 +156,14 @@ export async function runMirror({ force = false } = {}) {
     fileCount: files.length,
     changedFileCount: changed.length,
     totalBytes: files.reduce((sum, item) => sum + item.bytes, 0),
-    transferredBytes: changed.reduce((sum, item) => sum + item.bytes, 0),
+    transferredBytes: changed.reduce((sum, item) => sum + item.transferredBytes, 0),
     files,
     changed,
   };
 
   if (changed.length) {
     const manifestBytes = Buffer.from(JSON.stringify(manifest, null, 2));
-    manifest.remoteManifest = await put(`${REMOTE_ROOT}\\mirror-manifest.json`, manifestBytes);
+    manifest.remoteManifest = await put("mirror-manifest.json", manifestBytes);
     manifest.manifestSha256 = sha256(manifestBytes);
   }
 

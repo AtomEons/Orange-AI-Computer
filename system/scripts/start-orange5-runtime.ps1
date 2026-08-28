@@ -10,6 +10,8 @@ New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 # Canonical OrangeEye runtime wiring. Child processes inherit these values, so
 # the gateway uses the same loopback-only topology after every reboot.
 $env:ORANGE5_VISUAL_ENABLED = '1'
+$env:ORANGE5_CROSS_NODE_TRANSPORT = 'ae-phase'
+$env:ORANGE5_AE_PHASE_URL = 'http://127.0.0.1:8907'
 if (-not $env:ORANGE5_NAVIGATOR_MODEL) { $env:ORANGE5_NAVIGATOR_MODEL = 'orange-navigator:ornith-1.5-9b-q4km' }
 $env:ORANGE5_NAVIGATOR_TRANSPORT = 'ollama'
 if (-not $env:ORANGE5_NAVIGATOR_KEEP_ALIVE) { $env:ORANGE5_NAVIGATOR_KEEP_ALIVE = '15m' }
@@ -194,7 +196,7 @@ $gatewayOk = Ensure-ProcessEndpoint -Name 'OrangeBrain gateway' `
   -HealthUrl 'http://127.0.0.1:1337/healthz' `
   -FilePath 'bun' `
   -ArgumentList @((Join-Path $root '06-ORANGELLM\server\index.mjs')) `
-  -WaitSeconds 5
+  -WaitSeconds 30
 if ($gatewayOk) {
   try {
     $gatewayHealth = Invoke-RestMethod 'http://127.0.0.1:1337/healthz' -TimeoutSec 8
@@ -203,7 +205,8 @@ if ($gatewayOk) {
       -and $gatewayHealth.status -eq 'ok' `
       -and $gatewayNavigator.live -eq $true `
       -and $gatewayNavigator.model -eq $env:ORANGE5_NAVIGATOR_MODEL `
-      -and $gatewayNavigator.preferred_route -eq 'direct_ollama'
+      -and $gatewayNavigator.preferred_route -eq 'ae-phase' `
+      -and $gatewayHealth.fabric.crossNodeTransport -eq 'ae-phase'
     Log "OrangeBrain routed Navigator health: $gatewayOk model=$($gatewayNavigator.model) route=$($gatewayNavigator.preferred_route)"
   } catch {
     $gatewayOk = $false

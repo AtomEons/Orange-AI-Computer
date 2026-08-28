@@ -9,17 +9,17 @@
 //     2. Graph Weaver embedder         (nomic-embed-text)
 //     3. Emergency chat fallback       (qwen3:0.6b)   <-- this daemon
 //
-//   The fallback is asleep until the Codexa rail (primary chat path) has
+//   The fallback is asleep until the authenticated Codexa AE Phase peer has
 //   been UNREACHABLE for >60 seconds. Only then does it activate and start
 //   serving /chat. While Codexa is healthy the fallback returns 503 with a
 //   `degraded: false, gated: true` body so callers cannot accidentally
-//   downgrade themselves to qwen3:0.6b when the real rail is up.
+//   downgrade themselves to qwen3:0.6b when the real compute fabric is up.
 //
 //   Every response served while activated carries:
 //     X-AE-Degraded: true
-//     X-AE-Reason:   codexa-rail-unreachable
+//     X-AE-Reason:   codexa-phase-unreachable
 //   ...and the JSON body has { degraded: true, model: "qwen3:0.6b", ... }
-//   so no caller can mistake the response for primary-rail quality.
+//   so no caller can mistake the response for primary-compute quality.
 //
 //   When Codexa returns (3 consecutive healthy probes), the daemon
 //   auto-deactivates: /chat returns 503 again until the next outage.
@@ -39,7 +39,7 @@ export const DEFAULT_HOST              = "127.0.0.1";
 export const DEFAULT_PORT              = 7481;
 export const DEFAULT_OLLAMA_BASE_URL   = "http://127.0.0.1:11434";
 export const DEFAULT_CHAT_MODEL        = "qwen3:0.6b";
-export const DEFAULT_CODEXA_BASE_URL   = "http://10.0.0.4:8097";
+export const DEFAULT_CODEXA_BASE_URL   = "http://127.0.0.1:8907";
 // Activation hysteresis: Codexa must be down ≥60 s before we light up, and
 // up for 3 consecutive probes (≈15 s) before we go dark again.
 export const ACTIVATION_GRACE_MS       = 60_000;
@@ -62,7 +62,7 @@ export const STOCK_QWEN3_PATTERN = /^qwen3:[0-9a-z._-]+$/i;
 
 function createState({
   ollamaBaseUrl = process.env.OLLAMA_BASE_URL ?? DEFAULT_OLLAMA_BASE_URL,
-  codexaBaseUrl = process.env.CODEXA_RAIL_BASE ?? DEFAULT_CODEXA_BASE_URL,
+  codexaBaseUrl = process.env.ORANGE5_AE_PHASE_URL ?? DEFAULT_CODEXA_BASE_URL,
   chatModel     = process.env.N150_FALLBACK_MODEL ?? DEFAULT_CHAT_MODEL,
   activationGraceMs   = ACTIVATION_GRACE_MS,
   probeIntervalMs     = PROBE_INTERVAL_MS,
@@ -109,7 +109,7 @@ function createState({
 }
 
 // ---------------------------------------------------------------------------
-// Codexa rail probe
+// Codexa AE Phase probe
 // ---------------------------------------------------------------------------
 
 async function probeCodexa(state) {
@@ -117,12 +117,19 @@ async function probeCodexa(state) {
   const t = setTimeout(() => ctrl.abort(), state.probeTimeoutMs);
   let ok = false;
   try {
-    const res = await state.fetchImpl(`${state.codexaBaseUrl}/healthz`, {
+    const res = await state.fetchImpl(`${state.codexaBaseUrl}/health`, {
       method: "GET",
       signal: ctrl.signal,
-      // No keepalive; this is a heartbeat, not a hot path.
     });
-    ok = res.ok;
+    const body = res.ok ? await res.json().catch(() => null) : null;
+    ok = Boolean(
+      res.ok
+      && body?.ok === true
+      && body?.status === 'AE_PHASE_FABRIC_ACTIVE'
+      && body?.authenticated === true
+      && Number(body?.connectedPeers || 0) > 0
+      && body?.backpressured !== true
+    );
   } catch {
     ok = false;
   } finally {
@@ -275,7 +282,7 @@ const DEGRADED_HEADERS = Object.freeze({
   "X-AE-Host":     "n150",
   "X-AE-Lane":     "utility-fallback-chat",
   "X-AE-Degraded": "true",
-  "X-AE-Reason":   "codexa-rail-unreachable",
+  "X-AE-Reason":   "codexa-phase-unreachable",
   "Cache-Control": "no-store",
 });
 
@@ -368,7 +375,7 @@ export function createHandler(state) {
         return jsonResponse(
           {
             error: "fallback_not_active",
-            reason: "codexa_rail_healthy_or_grace_period_not_elapsed",
+            reason: "codexa_phase_healthy_or_grace_period_not_elapsed",
             rail_healthy: state.railHealthy,
             codexa_down_for_ms: state.firstFailureAt
               ? state.now() - state.firstFailureAt : 0,
@@ -424,7 +431,7 @@ export function createHandler(state) {
         return jsonResponse(
           {
             degraded: true,
-            reason: "codexa-rail-unreachable",
+            reason: "codexa-phase-unreachable",
             model: out.model,
             host: "n150",
             content: out.content,
@@ -433,7 +440,7 @@ export function createHandler(state) {
               total_duration_ns: out.ollama_total_duration_ns,
               eval_count: out.ollama_eval_count,
             },
-            note: "This response was served by a degraded emergency fallback (qwen3:0.6b on N150). Quality is intentionally lower than the primary Codexa rail. Treat as best-effort.",
+            note: "This response was served by the optional degraded N150 fallback because no authenticated Codexa peer was available through AE Phase. Treat it as best-effort.",
           },
           { status: 200, degraded: true }
         );

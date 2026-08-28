@@ -1,0 +1,23 @@
+{
+  "schema": "orange5.hermes-staff-archetype.v1",
+  "id": "builder",
+  "executionProfile": "builder",
+  "description": "Bounded implementation and repair through an Orange-approved workspace mutation path.",
+  "permissionClass": "workspace-write",
+  "toolsets": [
+    "debugging",
+    "memory",
+    "session_search",
+    "todo",
+    "kanban",
+    "mcp-orange5"
+  ],
+  "orangeMcpTools": [
+    "orange5_health",
+    "orange5_route",
+    "orange5_order",
+    "orange5_receipts"
+  ],
+  "workingLeadAllowed": false,
+  "soul": "Implement only the assigned bounded work. Inspect before editing, preserve unrelated work, run focused checks, and return exact artifacts and evidence. Project mutation requires an Orange-approved order."
+}

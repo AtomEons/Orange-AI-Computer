@@ -1,7 +1,7 @@
 # OrangeFive Not-Green Ledger
 
 **Schema:** `orange5.not-green-ledger.v3`
-**Last refreshed:** 2026-08-27
+**Last refreshed:** 2026-08-28
 **Status:** OPEN - all required live operations are green; perceptual
 studio-media certification remains pending and is not promoted by technical proof.
 
@@ -25,6 +25,9 @@ promote a later failing, narrower path.
 | Hermes Brain MCP delegation | Complete in `9395.53 ms`; parent execution mediated, one child completed, synthesis completed, all eight LOOM gates authorized, lease revoked | `2026-08-27T17-31-43-840Z-brain-mcp-delegation-live-proof.json` |
 | AE Cobra live recall | 10/10 gateway queries served by AE Cobra; no fallback; p50 `155.1 ms`, p95 `274.65 ms`, max `809.92 ms` | `2026-08-27T17-36-41-438Z-memory-hot-path-proof.json` |
 | Doctrine guardrails | 27/27 pass after frontier-egress, receipt-chain, project-source, and continuity repairs | Fresh guardrail run `2026-08-27` |
+| Source-backed Navigator Kernel | Canonical Orange memory/topology questions compile locally in `805 ms`; model inference measured `0.01 ms`; open-ended work still leases the Navigator | `2026-08-28T14-38-05-420Z-memory-phase-conversation-proof.json` plus focused route-boundary tests |
+| Memory + AE Phase conversation path | 17/17 live checks: AE Cobra source truth, disk fallback, Codexa mirror, Phase system/model probes, natural conversation, Party Line, and Atomic Orange build | `2026-08-28T14-38-05-420Z-memory-phase-conversation-proof.json` |
+| Native startup authority | Hidden Bun worker returns `ORANGE5_STARTUP_CONTROL_COMPLETE`; gateway and Phase are healthy; popup surface is `none`; PowerShell is not the runtime | `10-RECEIPTS/orange5-build/runtime-logs/orange5-runtime-supervisor-latest.json` |
 
 Do not publish a fixed full-verifier pass count in operator guidance. Test totals
 change as coverage lands; cite the command and the fresh result from the run
@@ -70,6 +73,10 @@ Q4_K_M candidate, and fresh semantic health now names the promoted
   `10-RECEIPTS/orange5-build/2026-08-27T17-31-43-840Z-brain-mcp-delegation-live-proof.json`
 - Current AE Cobra hot-path proof:
   `10-RECEIPTS/orange5-build/2026-08-27T17-36-41-438Z-memory-hot-path-proof.json`
+- Current memory/Phase/conversation proof:
+  `10-RECEIPTS/orange5-build/2026-08-28T14-38-05-420Z-memory-phase-conversation-proof.json`
+- Current native startup proof:
+  `10-RECEIPTS/orange5-build/runtime-logs/orange5-runtime-supervisor-latest.json`
 
 ## Claim Boundaries
 
@@ -88,5 +95,7 @@ Q4_K_M candidate, and fresh semantic health now names the promoted
 **Bottom line:** OrangeFive has a green operational spine: live Q4KM Ornith
 primary routing, authenticated Codexa, current dual-transport MCP, completed
 Hermes delegation, live low-latency AE Cobra memory, held-out Context Crystal
-quality proof, and technically valid media. The ledger stays open only for the
-separate studio-media perceptual quality claim. No fake green.
+quality proof, source-backed sub-second canonical system answers, an AE Phase
+startup authority with no popup shell, and technically valid media. The ledger
+stays open only for the separate studio-media perceptual quality claim. No fake
+green.

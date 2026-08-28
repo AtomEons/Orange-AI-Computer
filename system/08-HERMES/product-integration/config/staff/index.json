@@ -1,0 +1,1042 @@
+{
+  "schema": "orange5.hermes-compiled-role-index.v1",
+  "generatedBy": "scripts/generate-staff-profiles.mjs",
+  "product": "AE Staff",
+  "phase": "Wave 4: A 50-Person Company on Your Desktop",
+  "engine": "Hermes",
+  "source": "config/staff-roster.json",
+  "roleCount": 50,
+  "archetypeCount": 7,
+  "executionProfileCount": 7,
+  "executionProfiles": [
+    {
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "permissionClass": "workspace-write",
+      "toolsets": [
+        "debugging",
+        "memory",
+        "session_search",
+        "todo",
+        "kanban",
+        "mcp-orange5"
+      ],
+      "orangeMcpTools": [
+        "orange5_health",
+        "orange5_route",
+        "orange5_order",
+        "orange5_receipts"
+      ]
+    },
+    {
+      "archetype": "human-operator",
+      "executionProfile": "human-operator",
+      "permissionClass": "governed-computer-use",
+      "toolsets": [
+        "memory",
+        "session_search",
+        "todo",
+        "kanban",
+        "mcp-orange5"
+      ],
+      "orangeMcpTools": [
+        "orange5_health",
+        "orange5_order",
+        "orange5_receipts",
+        "orange5_route"
+      ]
+    },
+    {
+      "archetype": "misfit",
+      "executionProfile": "misfit",
+      "permissionClass": "advisory-only",
+      "toolsets": [
+        "memory",
+        "session_search",
+        "todo",
+        "kanban",
+        "mcp-orange5"
+      ],
+      "orangeMcpTools": [
+        "orange5_health",
+        "orange5_receipts"
+      ]
+    },
+    {
+      "archetype": "navigator",
+      "executionProfile": "navigator",
+      "permissionClass": "governed-orchestration",
+      "toolsets": [
+        "memory",
+        "session_search",
+        "todo",
+        "delegation",
+        "kanban",
+        "mcp-orange5"
+      ],
+      "orangeMcpTools": [
+        "orange5_health",
+        "orange5_route",
+        "orange5_order",
+        "orange5_receipts",
+        "orange5_delegate"
+      ]
+    },
+    {
+      "archetype": "researcher",
+      "executionProfile": "researcher",
+      "permissionClass": "network-read",
+      "toolsets": [
+        "web",
+        "browser",
+        "memory",
+        "session_search",
+        "todo",
+        "delegation",
+        "kanban",
+        "mcp-orange5"
+      ],
+      "orangeMcpTools": [
+        "orange5_health",
+        "orange5_receipts",
+        "orange5_delegate"
+      ]
+    },
+    {
+      "archetype": "reviewer",
+      "executionProfile": "reviewer",
+      "permissionClass": "evidence-read",
+      "toolsets": [
+        "memory",
+        "session_search",
+        "todo",
+        "kanban",
+        "mcp-orange5"
+      ],
+      "orangeMcpTools": [
+        "orange5_health",
+        "orange5_receipts"
+      ]
+    },
+    {
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "permissionClass": "visual-read",
+      "toolsets": [
+        "vision",
+        "browser",
+        "memory",
+        "session_search",
+        "todo",
+        "kanban",
+        "mcp-orange5"
+      ],
+      "orangeMcpTools": [
+        "orange5_health",
+        "orange5_receipts"
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "id": "accessibility-engineer",
+      "title": "Accessibility Engineer",
+      "studio": "Product Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/accessibility-engineer/ROLE.md",
+      "roleRecord": "config/staff/accessibility-engineer/role.json"
+    },
+    {
+      "id": "accessibility-reviewer",
+      "title": "Accessibility Reviewer",
+      "studio": "Proof and Safety",
+      "archetype": "reviewer",
+      "executionProfile": "reviewer",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/accessibility-reviewer/ROLE.md",
+      "roleRecord": "config/staff/accessibility-reviewer/role.json"
+    },
+    {
+      "id": "assumption-breaker",
+      "title": "Assumption Breaker",
+      "studio": "Constructive Dissent",
+      "archetype": "misfit",
+      "executionProfile": "misfit",
+      "canLead": false,
+      "modelTier": "heavy",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/assumption-breaker/ROLE.md",
+      "roleRecord": "config/staff/assumption-breaker/role.json"
+    },
+    {
+      "id": "automation-engineer",
+      "title": "Automation Engineer",
+      "studio": "Runtime Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/automation-engineer/ROLE.md",
+      "roleRecord": "config/staff/automation-engineer/role.json"
+    },
+    {
+      "id": "behavior-reviewer",
+      "title": "Behavior Reviewer",
+      "studio": "Proof and Safety",
+      "archetype": "reviewer",
+      "executionProfile": "reviewer",
+      "canLead": false,
+      "modelTier": "navigator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/behavior-reviewer/ROLE.md",
+      "roleRecord": "config/staff/behavior-reviewer/role.json"
+    },
+    {
+      "id": "brand-identity-designer",
+      "title": "Brand Identity Designer",
+      "studio": "Brand Studio",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/brand-identity-designer/ROLE.md",
+      "roleRecord": "config/staff/brand-identity-designer/role.json"
+    },
+    {
+      "id": "cinematography-specialist",
+      "title": "Cinematography Specialist",
+      "studio": "Motion Studio",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/cinematography-specialist/ROLE.md",
+      "roleRecord": "config/staff/cinematography-specialist/role.json"
+    },
+    {
+      "id": "content-designer",
+      "title": "Content Designer",
+      "studio": "Experience Design",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "navigator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/content-designer/ROLE.md",
+      "roleRecord": "config/staff/content-designer/role.json"
+    },
+    {
+      "id": "creative-technologist",
+      "title": "Creative Technologist",
+      "studio": "Creative Technology",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/creative-technologist/ROLE.md",
+      "roleRecord": "config/staff/creative-technologist/role.json"
+    },
+    {
+      "id": "data-contract-engineer",
+      "title": "Data Contract Engineer",
+      "studio": "Product Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/data-contract-engineer/ROLE.md",
+      "roleRecord": "config/staff/data-contract-engineer/role.json"
+    },
+    {
+      "id": "evidence-auditor",
+      "title": "Evidence Auditor",
+      "studio": "Proof and Safety",
+      "archetype": "reviewer",
+      "executionProfile": "reviewer",
+      "canLead": false,
+      "modelTier": "heavy",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/evidence-auditor/ROLE.md",
+      "roleRecord": "config/staff/evidence-auditor/role.json"
+    },
+    {
+      "id": "false-green-hunter",
+      "title": "False-Green Hunter",
+      "studio": "Constructive Dissent",
+      "archetype": "misfit",
+      "executionProfile": "misfit",
+      "canLead": false,
+      "modelTier": "heavy",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/false-green-hunter/ROLE.md",
+      "roleRecord": "config/staff/false-green-hunter/role.json"
+    },
+    {
+      "id": "generative-image-artist",
+      "title": "Generative Image Artist",
+      "studio": "Generative Media",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "creative",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/generative-image-artist/ROLE.md",
+      "roleRecord": "config/staff/generative-image-artist/role.json"
+    },
+    {
+      "id": "human-factors-researcher",
+      "title": "Human Factors Researcher",
+      "studio": "Evidence Research",
+      "archetype": "researcher",
+      "executionProfile": "researcher",
+      "canLead": true,
+      "modelTier": "navigator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "flat-working-lead",
+        "max_concurrent_children": 6,
+        "max_spawn_depth": 1,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/human-factors-researcher/ROLE.md",
+      "roleRecord": "config/staff/human-factors-researcher/role.json"
+    },
+    {
+      "id": "human-interface-operator",
+      "title": "Human Interface Operator",
+      "studio": "Human Operations",
+      "archetype": "human-operator",
+      "executionProfile": "human-operator",
+      "canLead": false,
+      "modelTier": "human-operator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/human-interface-operator/ROLE.md",
+      "roleRecord": "config/staff/human-interface-operator/role.json"
+    },
+    {
+      "id": "illustration-artist",
+      "title": "Illustration Artist",
+      "studio": "Brand Studio",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "creative",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/illustration-artist/ROLE.md",
+      "roleRecord": "config/staff/illustration-artist/role.json"
+    },
+    {
+      "id": "information-designer",
+      "title": "Information Designer",
+      "studio": "Experience Design",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/information-designer/ROLE.md",
+      "roleRecord": "config/staff/information-designer/role.json"
+    },
+    {
+      "id": "integration-engineer",
+      "title": "Integration Engineer",
+      "studio": "Product Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/integration-engineer/ROLE.md",
+      "roleRecord": "config/staff/integration-engineer/role.json"
+    },
+    {
+      "id": "interaction-designer",
+      "title": "Interaction Designer",
+      "studio": "Experience Design",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/interaction-designer/ROLE.md",
+      "roleRecord": "config/staff/interaction-designer/role.json"
+    },
+    {
+      "id": "interface-engineer",
+      "title": "Interface Engineer",
+      "studio": "Product Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/interface-engineer/ROLE.md",
+      "roleRecord": "config/staff/interface-engineer/role.json"
+    },
+    {
+      "id": "media-capture-operator",
+      "title": "Media Capture Operator",
+      "studio": "Human Operations",
+      "archetype": "human-operator",
+      "executionProfile": "human-operator",
+      "canLead": false,
+      "modelTier": "human-operator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/media-capture-operator/ROLE.md",
+      "roleRecord": "config/staff/media-capture-operator/role.json"
+    },
+    {
+      "id": "media-quality-reviewer",
+      "title": "Media Quality Reviewer",
+      "studio": "Creative Quality",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/media-quality-reviewer/ROLE.md",
+      "roleRecord": "config/staff/media-quality-reviewer/role.json"
+    },
+    {
+      "id": "model-evaluation-researcher",
+      "title": "Model Evaluation Researcher",
+      "studio": "Evaluation Science",
+      "archetype": "researcher",
+      "executionProfile": "researcher",
+      "canLead": true,
+      "modelTier": "heavy",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "flat-working-lead",
+        "max_concurrent_children": 6,
+        "max_spawn_depth": 1,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/model-evaluation-researcher/ROLE.md",
+      "roleRecord": "config/staff/model-evaluation-researcher/role.json"
+    },
+    {
+      "id": "motion-designer",
+      "title": "Motion Designer",
+      "studio": "Motion Studio",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "creative",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/motion-designer/ROLE.md",
+      "roleRecord": "config/staff/motion-designer/role.json"
+    },
+    {
+      "id": "music-composer",
+      "title": "Music Composer",
+      "studio": "Audio Studio",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "creative",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/music-composer/ROLE.md",
+      "roleRecord": "config/staff/music-composer/role.json"
+    },
+    {
+      "id": "orange-hermes-navigator",
+      "title": "AE Staff Navigator",
+      "studio": "Navigation",
+      "archetype": "navigator",
+      "executionProfile": "navigator",
+      "canLead": true,
+      "modelTier": "navigator",
+      "reportsTo": "operator",
+      "orchestration": {
+        "mode": "nested-orchestrator",
+        "max_concurrent_children": 6,
+        "max_spawn_depth": 2,
+        "orchestrator_enabled": true
+      },
+      "roleDocument": "config/staff/orange-hermes-navigator/ROLE.md",
+      "roleRecord": "config/staff/orange-hermes-navigator/role.json"
+    },
+    {
+      "id": "performance-engineer",
+      "title": "Performance Engineer",
+      "studio": "Runtime Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/performance-engineer/ROLE.md",
+      "roleRecord": "config/staff/performance-engineer/role.json"
+    },
+    {
+      "id": "performance-reviewer",
+      "title": "Performance Reviewer",
+      "studio": "Proof and Safety",
+      "archetype": "reviewer",
+      "executionProfile": "reviewer",
+      "canLead": false,
+      "modelTier": "heavy",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/performance-reviewer/ROLE.md",
+      "roleRecord": "config/staff/performance-reviewer/role.json"
+    },
+    {
+      "id": "primary-source-researcher",
+      "title": "Primary Source Researcher",
+      "studio": "Evidence Research",
+      "archetype": "researcher",
+      "executionProfile": "researcher",
+      "canLead": true,
+      "modelTier": "navigator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "flat-working-lead",
+        "max_concurrent_children": 6,
+        "max_spawn_depth": 1,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/primary-source-researcher/ROLE.md",
+      "roleRecord": "config/staff/primary-source-researcher/role.json"
+    },
+    {
+      "id": "privacy-rights-reviewer",
+      "title": "Privacy and Rights Reviewer",
+      "studio": "Proof and Safety",
+      "archetype": "reviewer",
+      "executionProfile": "reviewer",
+      "canLead": false,
+      "modelTier": "navigator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/privacy-rights-reviewer/ROLE.md",
+      "roleRecord": "config/staff/privacy-rights-reviewer/role.json"
+    },
+    {
+      "id": "product-experience-designer",
+      "title": "Product Experience Designer",
+      "studio": "Experience Design",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/product-experience-designer/ROLE.md",
+      "roleRecord": "config/staff/product-experience-designer/role.json"
+    },
+    {
+      "id": "product-researcher",
+      "title": "Product and Audience Researcher",
+      "studio": "Evidence Research",
+      "archetype": "researcher",
+      "executionProfile": "researcher",
+      "canLead": true,
+      "modelTier": "navigator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "flat-working-lead",
+        "max_concurrent_children": 6,
+        "max_spawn_depth": 1,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/product-researcher/ROLE.md",
+      "roleRecord": "config/staff/product-researcher/role.json"
+    },
+    {
+      "id": "product-systems-builder",
+      "title": "Product Systems Builder",
+      "studio": "Product Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/product-systems-builder/ROLE.md",
+      "roleRecord": "config/staff/product-systems-builder/role.json"
+    },
+    {
+      "id": "provenance-researcher",
+      "title": "Provenance Researcher",
+      "studio": "Evidence Research",
+      "archetype": "researcher",
+      "executionProfile": "researcher",
+      "canLead": false,
+      "modelTier": "navigator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/provenance-researcher/ROLE.md",
+      "roleRecord": "config/staff/provenance-researcher/role.json"
+    },
+    {
+      "id": "release-acceptance-operator",
+      "title": "Release Acceptance Operator",
+      "studio": "Human Operations",
+      "archetype": "human-operator",
+      "executionProfile": "human-operator",
+      "canLead": false,
+      "modelTier": "human-operator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/release-acceptance-operator/ROLE.md",
+      "roleRecord": "config/staff/release-acceptance-operator/role.json"
+    },
+    {
+      "id": "release-proof-reviewer",
+      "title": "Release Proof Reviewer",
+      "studio": "Proof and Safety",
+      "archetype": "reviewer",
+      "executionProfile": "reviewer",
+      "canLead": false,
+      "modelTier": "heavy",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/release-proof-reviewer/ROLE.md",
+      "roleRecord": "config/staff/release-proof-reviewer/role.json"
+    },
+    {
+      "id": "reliability-engineer",
+      "title": "Reliability Engineer",
+      "studio": "Runtime Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/reliability-engineer/ROLE.md",
+      "roleRecord": "config/staff/reliability-engineer/role.json"
+    },
+    {
+      "id": "scope-contrarian",
+      "title": "Scope Contrarian",
+      "studio": "Constructive Dissent",
+      "archetype": "misfit",
+      "executionProfile": "misfit",
+      "canLead": false,
+      "modelTier": "navigator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/scope-contrarian/ROLE.md",
+      "roleRecord": "config/staff/scope-contrarian/role.json"
+    },
+    {
+      "id": "security-boundary-engineer",
+      "title": "Security Boundary Engineer",
+      "studio": "Trust Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/security-boundary-engineer/ROLE.md",
+      "roleRecord": "config/staff/security-boundary-engineer/role.json"
+    },
+    {
+      "id": "security-reviewer",
+      "title": "Security Reviewer",
+      "studio": "Proof and Safety",
+      "archetype": "reviewer",
+      "executionProfile": "reviewer",
+      "canLead": false,
+      "modelTier": "heavy",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/security-reviewer/ROLE.md",
+      "roleRecord": "config/staff/security-reviewer/role.json"
+    },
+    {
+      "id": "sound-designer",
+      "title": "Sound Designer",
+      "studio": "Audio Studio",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "creative",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/sound-designer/ROLE.md",
+      "roleRecord": "config/staff/sound-designer/role.json"
+    },
+    {
+      "id": "storyboard-artist",
+      "title": "Storyboard Artist",
+      "studio": "Motion Studio",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/storyboard-artist/ROLE.md",
+      "roleRecord": "config/staff/storyboard-artist/role.json"
+    },
+    {
+      "id": "technical-standards-researcher",
+      "title": "Technical Standards Researcher",
+      "studio": "Evidence Research",
+      "archetype": "researcher",
+      "executionProfile": "researcher",
+      "canLead": true,
+      "modelTier": "navigator",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "flat-working-lead",
+        "max_concurrent_children": 6,
+        "max_spawn_depth": 1,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/technical-standards-researcher/ROLE.md",
+      "roleRecord": "config/staff/technical-standards-researcher/role.json"
+    },
+    {
+      "id": "test-harness-engineer",
+      "title": "Test Harness Engineer",
+      "studio": "Runtime Engineering",
+      "archetype": "builder",
+      "executionProfile": "builder",
+      "canLead": false,
+      "modelTier": "code",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/test-harness-engineer/ROLE.md",
+      "roleRecord": "config/staff/test-harness-engineer/role.json"
+    },
+    {
+      "id": "three-d-scene-artist",
+      "title": "3D Scene Artist",
+      "studio": "Spatial Media",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "creative",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/three-d-scene-artist/ROLE.md",
+      "roleRecord": "config/staff/three-d-scene-artist/role.json"
+    },
+    {
+      "id": "typography-designer",
+      "title": "Typography Designer",
+      "studio": "Experience Design",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/typography-designer/ROLE.md",
+      "roleRecord": "config/staff/typography-designer/role.json"
+    },
+    {
+      "id": "usability-reviewer",
+      "title": "Usability Reviewer",
+      "studio": "Proof and Safety",
+      "archetype": "reviewer",
+      "executionProfile": "reviewer",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/usability-reviewer/ROLE.md",
+      "roleRecord": "config/staff/usability-reviewer/role.json"
+    },
+    {
+      "id": "video-synthesis-artist",
+      "title": "Video Synthesis Artist",
+      "studio": "Generative Media",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "creative",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/video-synthesis-artist/ROLE.md",
+      "roleRecord": "config/staff/video-synthesis-artist/role.json"
+    },
+    {
+      "id": "visual-systems-designer",
+      "title": "Visual Systems Designer",
+      "studio": "Experience Design",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "visual",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/visual-systems-designer/ROLE.md",
+      "roleRecord": "config/staff/visual-systems-designer/role.json"
+    },
+    {
+      "id": "voice-dialogue-designer",
+      "title": "Voice and Dialogue Designer",
+      "studio": "Audio Studio",
+      "archetype": "visual",
+      "executionProfile": "visual",
+      "canLead": false,
+      "modelTier": "creative",
+      "reportsTo": "orange-hermes-navigator",
+      "orchestration": {
+        "mode": "none",
+        "max_concurrent_children": 0,
+        "max_spawn_depth": 0,
+        "orchestrator_enabled": false
+      },
+      "roleDocument": "config/staff/voice-dialogue-designer/ROLE.md",
+      "roleRecord": "config/staff/voice-dialogue-designer/role.json"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+/.sync-state.json
+/latest.json
+/shadow-meta.json
+/*.jsonl
+/sync.log

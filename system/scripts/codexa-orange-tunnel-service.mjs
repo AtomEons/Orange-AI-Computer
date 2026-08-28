@@ -13,15 +13,22 @@ const user = process.env.ORANGE5_CODEXA_USER || "Atom";
 const expectedMarkers = [
   "-R 11337:127.0.0.1:1337", "-R 17431:127.0.0.1:7431",
   "-L 11437:127.0.0.1:11434", "-L 18097:127.0.0.1:8097",
+  "-L 18643:127.0.0.1:8643",
   `${user}@${host}`,
 ];
 
 if (!["start", "stop", "restart", "status"].includes(action)) fail("usage: start|stop|restart|status");
 let pid = readPid();
+let stalePid = null;
 if (pid) {
   const owner = inspectProcess(pid);
   if (!isExactTunnelProcess(owner, { key, expectedMarkers })) {
-    fail(`pid ${pid} is not the exact OrangeFive Codexa tunnel; refusing process control`);
+    // PIDs are reusable. A stale pid file must never grant authority over the
+    // unrelated process that inherited the number, but it must not prevent
+    // the governed tunnel from recovering either.
+    stalePid = pid;
+    fs.rmSync(pidFile, { force: true });
+    pid = null;
   }
 }
 if ((action === "stop" || action === "restart") && pid) {
@@ -45,6 +52,7 @@ if (action === "start" || action === "restart") {
     "-R", "11337:127.0.0.1:1337", "-R", "17431:127.0.0.1:7431",
     "-L", "11437:127.0.0.1:11434",
     "-L", "11436:127.0.0.1:8642",
+    "-L", "18643:127.0.0.1:8643",
     "-L", "18097:127.0.0.1:8097",
     "-L", "7440:127.0.0.1:7440",
     "-L", "6333:127.0.0.1:6333",
@@ -57,7 +65,7 @@ if (action === "start" || action === "restart") {
   await Bun.sleep(1_000);
 }
 
-process.stdout.write(`${JSON.stringify({ schema: "orange5.codexa-tunnel-service.v1", action, ok: Boolean(pid), pid, pidFile, host, reversePorts: [11337, 17431], localPorts: [6333, 7440, 11436, 11437, 18097] })}\n`);
+process.stdout.write(`${JSON.stringify({ schema: "orange5.codexa-tunnel-service.v1", action, ok: Boolean(pid), pid, stalePid, pidFile, host, reversePorts: [11337, 17431], localPorts: [6333, 7440, 11436, 11437, 18097, 18643] })}\n`);
 
 function readPid() {
   try { const n = Number(fs.readFileSync(pidFile, "utf8").trim()); return Number.isInteger(n) && n > 0 ? n : null; }

@@ -384,10 +384,15 @@ export function verifyPartyLineChain(events = []) {
   return { ok: errors.length === 0, checked: events.length, errors };
 }
 
+const PARTY_LINE_STOP_TERMS = new Set([
+  'atomic', 'chat', 'exactly', 'explain', 'live', 'navigator', 'orange', 'orange5',
+  'please', 'reply', 'system', 'tell',
+]);
+
 const termsFor = (query) => [...new Set(
   (cleanText(query, 8_000).toLowerCase().match(/[a-z0-9][a-z0-9._-]{2,}/g) || [])
     .map((term) => term.replace(/[._-]+$/g, ''))
-    .filter((term) => term.length >= 3),
+    .filter((term) => term.length >= 3 && !PARTY_LINE_STOP_TERMS.has(term)),
 )];
 
 export async function hydratePartyLine({
@@ -398,6 +403,7 @@ export async function hydratePartyLine({
 } = {}) {
   const normalizeEcho = (value) => cleanText(value, 8_000).toLowerCase().replace(/[.!?]+$/g, '').trim();
   const normalizedQuery = normalizeEcho(query);
+  const hasQuery = normalizedQuery.length > 0;
   const terms = termsFor(query);
   const page = await readPartyLine({ filePath, limit: 500, detail: 'wire', tail: true });
   const now = Date.now();
@@ -412,9 +418,13 @@ export async function hydratePartyLine({
       event.tags,
       event.wave3Kernel,
     ]).toLowerCase();
+    let matchedTerms = 0;
+    let identifierMatched = false;
     const lexical = terms.reduce((score, term) => {
       if (!haystack.includes(term)) return score;
+      matchedTerms += 1;
       const identifier = term.length >= 16 || /\d.*[-_]|[-_].*\d/.test(term);
+      if (identifier) identifierMatched = true;
       // Exact receipt/order/proof ids must outrank a pile of generic chat
       // words. Otherwise prior questions about "the proof" bury the record
       // that actually owns the requested id.
@@ -432,13 +442,18 @@ export async function hydratePartyLine({
     const echoPenalty = normalizedQuery && eventText === normalizedQuery ? -100 : 0;
     return {
       event,
+      matchedTerms,
+      identifierMatched,
       score: lexical * 2 + recency + project + event.importance + blocker
         + operational + sourced + messagePenalty + modelMessagePenalty + echoPenalty,
     };
   });
   scored.sort((a, b) => b.score - a.score || b.event.createdAt.localeCompare(a.event.createdAt));
+  const minimumTermMatches = Math.min(2, terms.length);
   const selected = scored
-    .filter((item) => terms.length === 0 || item.score > 1.5)
+    .filter((item) => (terms.length === 0
+      ? !hasQuery
+      : (item.identifierMatched || item.matchedTerms >= minimumTermMatches)))
     .slice(0, Math.max(1, Math.min(20, Number(limit) || 8)))
     .map(({ event, score }) => ({ ...projectPartyLineEvent(event, 'deep'), relevance: Number(score.toFixed(3)) }));
   const context = selected.length

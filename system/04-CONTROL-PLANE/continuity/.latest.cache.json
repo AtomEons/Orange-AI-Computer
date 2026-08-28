@@ -1,0 +1,142 @@
+{
+  "schema": "orange5.continuity-packet.v1",
+  "source": "local_file:C:\\AtomEons\\Orange5\\01-DOCTRINE\\27-guardrails\\state\\continuity\\2026-07-29.json",
+  "cached_at": 1785305976089,
+  "sha256": "3bc0b707d9ed2722da1be8f1ea60505b3ccbfa19caffdde43f8fb5d30d331788",
+  "packet": {
+    "schema": "orange5.continuity-packet.v1",
+    "date": "2026-07-29",
+    "progress": [],
+    "open_blockers": [],
+    "tomorrow_first_action": "Ride current: t (pressure 1.00)",
+    "hot_currents": [],
+    "fresh_receipts": [],
+    "notes": {
+      "generator": "04-CONTROL-PLANE/continuity/generator.mjs",
+      "hot_currents": [
+        {
+          "id": "current_1785305546358_1",
+          "title": "t",
+          "pressure": 1,
+          "owner_department": "AE0",
+          "status": "pending",
+          "assigned_agent": null,
+          "created_at": 1785305546358,
+          "updated_at": 1785305546358
+        },
+        {
+          "id": "current_1785305500085_39",
+          "title": "t",
+          "pressure": 0.5,
+          "owner_department": "AE0",
+          "status": "in_progress",
+          "assigned_agent": "agent_1785305500085_41",
+          "created_at": 1785305500085,
+          "updated_at": 1785305500085
+        },
+        {
+          "id": "current_1785305548667_3",
+          "title": "dispatched order test",
+          "pressure": 0.3,
+          "owner_department": "AE0",
+          "status": "pending",
+          "assigned_agent": null,
+          "created_at": 1785305548667,
+          "updated_at": 1785305548667
+        }
+      ],
+      "fresh_receipts": [],
+      "flux_counts": {},
+      "tomorrows_first_action_full": {
+        "action": "Ride current: t (pressure 1.00)",
+        "reason": "highest_pressure_current",
+        "source": {
+          "kind": "flow_current",
+          "id": "current_1785305546358_1",
+          "owner_department": "AE0"
+        }
+      },
+      "soul_genome_ref": {
+        "path": "C:\\AtomEons\\Orange5\\01-DOCTRINE\\27-guardrails\\state\\soul-genome.json",
+        "sha256": "9f9c17958364f9345aae54244ac2f4d2d0022708c588cd11b20cbd45eab2cda3",
+        "bytes": 1075
+      },
+      "packet_sha256": "8c736622403d3781b4ff4350238c82f3eb3675173ae797409d942f212c372e66",
+      "flux_root": "/no/such/root"
+    },
+    "guardrails_summary": {
+      "run_id": "gr_1785305774329_8389e359",
+      "ok": true,
+      "violations": 0,
+      "finished_at": 1785305923160
+    },
+    "written_at": 1785305973718,
+    "raw": {
+      "schema": "orange5.continuity-packet.v1",
+      "date": "2026-07-29",
+      "written_at": 1785305973718,
+      "progress": [],
+      "open_blockers": [],
+      "tomorrow_first_action": "Ride current: t (pressure 1.00)",
+      "notes": {
+        "generator": "04-CONTROL-PLANE/continuity/generator.mjs",
+        "hot_currents": [
+          {
+            "id": "current_1785305546358_1",
+            "title": "t",
+            "pressure": 1,
+            "owner_department": "AE0",
+            "status": "pending",
+            "assigned_agent": null,
+            "created_at": 1785305546358,
+            "updated_at": 1785305546358
+          },
+          {
+            "id": "current_1785305500085_39",
+            "title": "t",
+            "pressure": 0.5,
+            "owner_department": "AE0",
+            "status": "in_progress",
+            "assigned_agent": "agent_1785305500085_41",
+            "created_at": 1785305500085,
+            "updated_at": 1785305500085
+          },
+          {
+            "id": "current_1785305548667_3",
+            "title": "dispatched order test",
+            "pressure": 0.3,
+            "owner_department": "AE0",
+            "status": "pending",
+            "assigned_agent": null,
+            "created_at": 1785305548667,
+            "updated_at": 1785305548667
+          }
+        ],
+        "fresh_receipts": [],
+        "flux_counts": {},
+        "tomorrows_first_action_full": {
+          "action": "Ride current: t (pressure 1.00)",
+          "reason": "highest_pressure_current",
+          "source": {
+            "kind": "flow_current",
+            "id": "current_1785305546358_1",
+            "owner_department": "AE0"
+          }
+        },
+        "soul_genome_ref": {
+          "path": "C:\\AtomEons\\Orange5\\01-DOCTRINE\\27-guardrails\\state\\soul-genome.json",
+          "sha256": "9f9c17958364f9345aae54244ac2f4d2d0022708c588cd11b20cbd45eab2cda3",
+          "bytes": 1075
+        },
+        "packet_sha256": "8c736622403d3781b4ff4350238c82f3eb3675173ae797409d942f212c372e66",
+        "flux_root": "/no/such/root"
+      },
+      "guardrails_summary": {
+        "run_id": "gr_1785305774329_8389e359",
+        "ok": true,
+        "violations": 0,
+        "finished_at": 1785305923160
+      }
+    }
+  }
+}

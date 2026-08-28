@@ -59,7 +59,7 @@ $failedSummary = if ($requiredFailed.Count) {
   @($requiredFailed | ForEach-Object { "$($_.name)=$($_.status)" }) -join ','
 } else { 'none' }
 $proofConstraints = @(
-  "Deployment artifact $($deploymentFile.Name) has SHA256 $deploymentHash and records six post-deploy profile hashes.",
+  "Deployment artifact $($deploymentFile.Name) has SHA256 $deploymentHash and records seven post-deploy profile hashes.",
   "Six deployed profile hash prefixes are $profileHashSummary.",
   "Hermes-only restart evidence is status=$($deployment.restart.status), listenerPid=$($deployment.restart.listenerPid); live listenerPid=$($listener.OwningProcess).",
   "Strict preflight artifact $($preflightFile.Name) has SHA256 $preflightHash and required checks $requiredPassed/$($requiredChecks.Count); failures=$failedSummary.",

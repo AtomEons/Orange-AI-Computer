@@ -137,4 +137,56 @@ describe('v1 identity and residency truth', () => {
     expect(tooLong._ae_http_status).toBe(413);
     expect(tooLong.error.code).toBe('evidence_packet_budget_exceeded');
   });
+
+  test('canonical Orange truth uses the governed Navigator Kernel and avoids inference', async () => {
+    let modelCalls = 0;
+    const response = await handleV1ChatCompletions({
+      model: 'orange-auto',
+      ae_response_mode: 'conversation',
+      ae_party_line: { enabled: false },
+      messages: [{
+        role: 'user',
+        content: 'Explain how Orange preserves project memory and sends heavy model work to Codexa. Name AE Phase and distinguish source truth from hot context.',
+      }],
+    }, {
+      proxyChatCompletions: async () => {
+        modelCalls += 1;
+        throw new Error('canonical truth must not lease a model');
+      },
+    });
+
+    expect(response._ae_http_status ?? 200).toBe(200);
+    expect(modelCalls).toBe(0);
+    expect(response.ae_route_mode).toBe('navigator_kernel');
+    expect(response.ae_turn.route.execution_tier).toBe('navigator_kernel');
+    expect(response.ae_turn.route.effective_model).toBe('bun-navigator-kernel');
+    expect(response.choices[0].message.content).toContain('AE Phase');
+    expect(response.choices[0].message.content).toContain('hot context');
+  });
+
+  test('open-ended Orange architecture work still reaches a model', async () => {
+    let modelCalls = 0;
+    const response = await handleV1ChatCompletions({
+      model: 'orange-auto',
+      ae_response_mode: 'conversation',
+      ae_party_line: { enabled: false },
+      messages: [{ role: 'user', content: 'How should we improve AE Phase and hot context for the next architecture?' }],
+    }, {
+      proxyChatCompletions: async () => {
+        modelCalls += 1;
+        return {
+          status: 200,
+          body: {
+            model: 'test-navigator',
+            choices: [{ index: 0, message: { role: 'assistant', content: 'Use measured constraints and preserve authority.' }, finish_reason: 'stop' }],
+          },
+        };
+      },
+    });
+
+    expect(response._ae_http_status ?? 200).toBe(200);
+    expect(modelCalls).toBe(1);
+    expect(response.ae_route_mode).not.toBe('navigator_kernel');
+    expect(response.choices[0].message.content).toBe('Use measured constraints and preserve authority.');
+  });
 });

@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { compileDelegation } from "../navigator-kernel.mjs";
-import { executeDelegation, toHermesOrder } from "../orange5-headless-core.mjs";
+import { createAeStaffClient, executeDelegation, toHermesOrder } from "../orange5-headless-core.mjs";
 
 describe("Navigator Kernel hierarchy", () => {
   test("Hermes child packets preserve the action required by orange.order.v1", () => {
@@ -23,13 +23,18 @@ describe("Navigator Kernel hierarchy", () => {
     });
   });
 
-  test("routes code to a Little Navigator with a bounded Hermes subset", () => {
+  test("routes code to a named AE Staff crew over bounded Hermes profiles", () => {
     const plan = compileDelegation({ action: "build.feature", intent: "Implement TypeScript code", riskLevel: "medium" });
     expect(plan.topNavigator.modelResident).toBe(false);
+    expect(plan.topNavigator.id).toBe("orange-hermes-navigator");
     expect(plan.littleNavigator.department).toBe("AE6_CODE");
-    expect(plan.littleNavigator.agents).toEqual(["implementer", "test-engineer", "code-reviewer"]);
+    expect(plan.littleNavigator.agents).toContain("product-systems-builder");
+    expect(plan.littleNavigator.executionProfiles).toContain("builder");
+    expect(plan.aeStaff.invariants.permanentMiddleManagers).toBe(0);
     expect(plan.hermesLease.allowedTools).toContain("filesystem");
-    expect(plan.hermesLease.maxConcurrentAgents).toBeLessThanOrEqual(3);
+    expect(plan.hermesLease.maxConcurrentAgents).toBeLessThanOrEqual(plan.littleNavigator.agents.length);
+    expect(plan.handoffCapsule.capsuleHash).toMatch(/^[a-f0-9]{64}$/);
+    expect(plan.hermesLease.handoffCapsule.capsuleHash).toBe(plan.handoffCapsule.capsuleHash);
   });
 
   test("a build order that includes tests remains a code mission", () => {
@@ -40,13 +45,14 @@ describe("Navigator Kernel hierarchy", () => {
     });
     expect(plan.littleNavigator.department).toBe("AE6_CODE");
     expect(plan.route.lane).not.toBe("ae-eyes");
-    expect(plan.littleNavigator.agents[0]).toBe("implementer");
+    expect(plan.littleNavigator.agents[0]).toBe("product-systems-builder");
   });
 
   test("security receives only security agents and tools", () => {
     const plan = compileDelegation({ action: "audit.security", intent: "Scan secrets and threats" });
     expect(plan.littleNavigator.department).toBe("AE11_SECURITY");
-    expect(plan.hermesLease.allowedAgents).toContain("security-auditor");
+    expect(plan.hermesLease.allowedAgents).toContain("security-boundary-engineer");
+    expect(plan.hermesLease.allowedExecutionProfiles).toContain("builder");
     expect(plan.hermesLease.allowedTools).toContain("secret-scan");
     expect(plan.hermesLease.allowedTools).not.toContain("git");
   });
@@ -99,6 +105,7 @@ describe("Navigator Kernel hierarchy", () => {
     expect(orders[0].payload.parentOrder).toMatchObject({
       scope: 'orange5.runtime', objective: 'reject unsupported claims', constraints: ['no fake green'], evidence: sourceEvidence,
     });
+    expect(orders.every((order) => order.handoffCapsule?.capsuleHash === order.payload.parentOrder.handoffCapsule?.capsuleHash)).toBe(true);
   });
 
   test("executed delegation mediates every specialist and one parent synthesis", async () => {
@@ -332,5 +339,42 @@ describe("Navigator Kernel hierarchy", () => {
     expect(result.governance.currentAwareness).toMatchObject({ status: 'CURRENT_EVIDENCE_READY', sourceCount: 1, cacheHit: false });
     expect(orders[0].payload.researchEvidence.sources[0]).toMatchObject({ title: 'lab/fresh-mcp', lifecycle: 'BENCHMARK_REQUIRED' });
     expect(orders[0].evidence[0]).toContain('awareness:eeeeeeeeeeee');
+  });
+
+  test("AE Staff client requires a valid role report and proves all 50 observed the order", async () => {
+    const original = process.env.ORANGE5_AE_STAFF_API_KEY;
+    process.env.ORANGE5_AE_STAFF_API_KEY = "test-staff-key";
+    try {
+      const client = createAeStaffClient(async (_url, init) => {
+        expect(init.headers.authorization).toBe("Bearer test-staff-key");
+        const body = JSON.parse(init.body);
+        expect(body.targetRoles).toEqual(["product-systems-builder"]);
+        return Response.json({
+          observedCount: 50,
+          addressed: [{ roleId: "product-systems-builder", relevance: 1 }],
+          results: [{
+            roleId: "product-systems-builder",
+            ok: true,
+            result: {
+              schema: "orange.report.v1", orderId: "order-1", status: "completed", confidence: 1,
+              actionsTaken: ["built"], evidence: ["receipt:build"], blockers: [], nextAction: "review",
+              receiptPath: "C:/receipt.json", receiptSha256: "a".repeat(64), executionProfile: "builder",
+            },
+          }],
+        });
+      });
+      const completed = await client.execute({
+        roleId: "product-systems-builder",
+        order: { orderId: "order-1", action: "analyze.agent", intent: "build", targetProject: "Orange" },
+        plan: { delegationId: "delegation-1", handoffCapsule: {}, workObject: { objective: "build" }, hermesLease: { leaseId: "lease-1" } },
+        sourceOrder: { action: "build.feature", intent: "build" },
+      });
+      expect(completed.ok).toBeTrue();
+      expect(completed.aeStaff.observedCount).toBe(50);
+      expect(completed.result.receipt.hash).toBe("a".repeat(64));
+    } finally {
+      if (original == null) delete process.env.ORANGE5_AE_STAFF_API_KEY;
+      else process.env.ORANGE5_AE_STAFF_API_KEY = original;
+    }
   });
 });

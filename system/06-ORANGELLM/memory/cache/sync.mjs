@@ -1,250 +1,145 @@
-#!/usr/bin/env node
-// sync.mjs — N150 shadow cache sync
-// Pulls last-24h Flux events from each lane on the Codexa command rail
-// and writes them to local JSONL files for offline StateBrief fallback.
-//
-// Runtime: Bun or Node 20+. No third-party deps.
-//
-// Env:
-//   ORANGEBOX_RAIL_TOKEN   required — bearer token for 10.0.99.1:8097
-//   ORANGEBOX_RAIL_HOST    optional — defaults to 10.0.99.1
-//   ORANGEBOX_RAIL_PORT    optional — defaults to 8097
-//   ORANGE5_LANES          optional CSV — defaults to canonical 4-lane set
-//   ORANGE5_CACHE_DIR      optional — defaults to dir of this file
-//   ORANGE5_SYNC_TIMEOUT_MS optional — defaults to 15000
-//
-// Exit codes:
-//   0  success (all lanes synced)
-//   1  config error (missing token)
-//   2  network error (rail unreachable for ALL lanes)
-//   3  partial success (some lanes failed) — state file still updated for the lanes that succeeded
-//
-// Mirage doctrine: this is mirage/memory shadow material. Read-write per
-// Sovereign. Reality (Codexa) overrides Thought (this cache) on conflict.
+#!/usr/bin/env bun
+// Compatibility snapshot for degraded memory fallback. The canonical Cobra
+// ledger already lives on N150 disk, so this never calls a network rail.
 
-import { mkdir, writeFile, readFile, stat } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { mkdir, readFile, readdir, rename, writeFile } from 'node:fs/promises';
+import { appendFileSync, existsSync, mkdirSync } from 'node:fs';
+import os from 'node:os';
+import { join, resolve } from 'node:path';
 
-// ---- config -----------------------------------------------------------------
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const CACHE_DIR = resolve(process.env.ORANGE5_CACHE_DIR || __dirname);
-const STATE_FILE = join(CACHE_DIR, '.sync-state.json');
-
-const RAIL_HOST = process.env.ORANGEBOX_RAIL_HOST || '10.0.0.4';
-const RAIL_PORT = Number(process.env.ORANGEBOX_RAIL_PORT || 8097);
-const RAIL_TOKEN = process.env.ORANGEBOX_RAIL_TOKEN || '';
-const RAIL_BASE = `http://${RAIL_HOST}:${RAIL_PORT}`;
-const TIMEOUT_MS = Number(process.env.ORANGE5_SYNC_TIMEOUT_MS || 15000);
-
-// Canonical Flux lanes. Override via ORANGE5_LANES env if needed.
-const DEFAULT_LANES = ['reality', 'thought', 'receipts', 'conflicts'];
-const LANES = (process.env.ORANGE5_LANES || DEFAULT_LANES.join(','))
-  .split(',')
-  .map((s) => s.trim())
-  .filter(Boolean);
-
-const WINDOW_MS = 24 * 60 * 60 * 1000;
-
-// ---- helpers ----------------------------------------------------------------
-
-function isoDate(ts = Date.now()) {
-  return new Date(ts).toISOString().slice(0, 10); // YYYY-MM-DD
+function argValue(flag) {
+  const index = process.argv.indexOf(flag);
+  return index >= 0 ? process.argv[index + 1] : null;
 }
 
-function log(msg, extra) {
-  const line = { t: new Date().toISOString(), msg, ...(extra || {}) };
-  // eslint-disable-next-line no-console
-  console.log(JSON.stringify(line));
-}
+const USER_DATA_ROOT = join(process.env.USERPROFILE || os.homedir(), 'OrangeBox-Data', 'orange5');
+const SNAPSHOT_DIR = resolve(argValue('--cache-dir') || process.env.ORANGE5_CACHE_DIR || join(USER_DATA_ROOT, 'memory-shadow'));
+const STATE_FILE = join(SNAPSHOT_DIR, '.sync-state.json');
+const LOG_FILE = join(SNAPSHOT_DIR, 'sync.log');
+const SOURCE_ROOT = resolve(
+  argValue('--source-root')
+  || process.env.ORANGE5_COBRA_FLUX_ROOT
+  || join(process.env.USERPROFILE || os.homedir(), 'OrangeBox-Data', 'orange5', 'ae-cobra-flux', 'events'),
+);
+const LANES = (process.env.ORANGE5_LANES || 'reality,thought').split(',').map((value) => value.trim()).filter(Boolean);
+const WINDOW_MS = Math.max(60_000, Number(process.env.ORANGE5_SYNC_WINDOW_MS || 24 * 60 * 60 * 1_000));
 
-async function readJson(path, fallback) {
+function log(message, extra = {}) {
+  const line = JSON.stringify({ at: new Date().toISOString(), message, ...extra });
+  console.log(line);
   try {
-    const raw = await readFile(path, 'utf8');
-    return JSON.parse(raw);
+    mkdirSync(SNAPSHOT_DIR, { recursive: true });
+    appendFileSync(LOG_FILE, `${line}\n`, 'utf8');
   } catch {
-    return fallback;
+    // Logging must not change snapshot truth or exit status.
   }
 }
 
-async function writeJsonAtomic(path, data) {
-  const tmp = `${path}.tmp.${process.pid}.${Date.now()}`;
-  await writeFile(tmp, JSON.stringify(data, null, 2), 'utf8');
-  // rename is atomic on same filesystem
-  const { rename } = await import('node:fs/promises');
-  await rename(tmp, path);
+function timestamp(record) {
+  const value = record?.ts ?? record?.t ?? record?.timestamp ?? record?.created_at_ms ?? record?.createdAt;
+  const number = Number(value);
+  if (Number.isFinite(number) && number > 0) return number;
+  const parsed = Date.parse(String(value || ''));
+  return Number.isFinite(parsed) ? parsed : 0;
 }
 
-async function fetchWithTimeout(url, opts = {}, timeoutMs = TIMEOUT_MS) {
-  const ctrl = new AbortController();
-  const id = setTimeout(() => ctrl.abort(), timeoutMs);
-  try {
-    return await fetch(url, { ...opts, signal: ctrl.signal });
-  } finally {
-    clearTimeout(id);
-  }
+function day(value) {
+  return new Date(value).toISOString().slice(0, 10);
 }
 
-// ---- rail client ------------------------------------------------------------
+async function writeJsonAtomic(filePath, value) {
+  const temporary = `${filePath}.${process.pid}.tmp`;
+  await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+  await rename(temporary, filePath);
+}
 
-/**
- * Fetch Flux events for a lane within [sinceMs, untilMs).
- * Rail contract: GET /flux/events?lane=<lane>&since=<isoOrMs>&until=<isoOrMs>
- * Returns NDJSON or JSON array. We accept both.
- */
-async function fetchLane(lane, sinceMs, untilMs) {
-  const url =
-    `${RAIL_BASE}/flux/events` +
-    `?lane=${encodeURIComponent(lane)}` +
-    `&since=${sinceMs}` +
-    `&until=${untilMs}`;
-
-  const res = await fetchWithTimeout(url, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${RAIL_TOKEN}`,
-      'X-Orangebox-Token': RAIL_TOKEN,
-      Accept: 'application/x-ndjson, application/json',
-      'User-Agent': 'orange5-n150-shadow-sync/1.0',
-    },
-  });
-
-  if (!res.ok) {
-    const body = await res.text().catch(() => '');
-    throw new Error(`rail ${res.status} ${res.statusText} :: ${body.slice(0, 200)}`);
-  }
-
-  const ct = (res.headers.get('content-type') || '').toLowerCase();
-  const text = await res.text();
-
-  let records = [];
-  if (ct.includes('ndjson') || ct.includes('jsonl') || text.includes('\n{')) {
-    for (const line of text.split('\n')) {
-      const trimmed = line.trim();
-      if (!trimmed) continue;
+async function readLane(lane, since) {
+  const laneRoot = join(SOURCE_ROOT, lane);
+  if (!existsSync(laneRoot)) throw new Error(`canonical Cobra lane is missing: ${laneRoot}`);
+  const earliestDay = day(since);
+  const names = (await readdir(laneRoot))
+    .filter((name) => /^\d{4}-\d{2}-\d{2}\.jsonl$/.test(name) && name.slice(0, 10) >= earliestDay)
+    .sort();
+  const records = [];
+  for (const name of names) {
+    const text = await readFile(join(laneRoot, name), 'utf8');
+    for (const line of text.split(/\r?\n/)) {
+      if (!line.trim()) continue;
       try {
-        records.push(JSON.parse(trimmed));
-      } catch (e) {
-        log('parse_skip', { lane, err: String(e), line: trimmed.slice(0, 120) });
+        const record = JSON.parse(line);
+        if (timestamp(record) >= since) records.push(record);
+      } catch (error) {
+        log('parse_skip', { lane, source: name, error: error.message });
       }
     }
-  } else if (ct.includes('json')) {
-    const parsed = JSON.parse(text);
-    if (Array.isArray(parsed)) records = parsed;
-    else if (Array.isArray(parsed.events)) records = parsed.events;
-    else if (Array.isArray(parsed.records)) records = parsed.records;
-    else throw new Error(`unexpected JSON shape from rail for ${lane}`);
-  } else {
-    throw new Error(`unexpected content-type from rail: ${ct}`);
   }
-
   return records;
 }
 
-// ---- writer -----------------------------------------------------------------
-
-function recordTs(rec) {
-  // Tolerate a handful of common field names. Otherwise stamp now.
-  return Number(rec.ts ?? rec.t ?? rec.timestamp ?? rec.created_at_ms ?? Date.now());
-}
-
-async function writeLaneRecords(lane, records) {
-  // Group by UTC date so each file stays manageable and aligns with cron rotation.
-  const byDate = new Map();
-  for (const r of records) {
-    const d = isoDate(recordTs(r));
-    if (!byDate.has(d)) byDate.set(d, []);
-    byDate.get(d).push(r);
+async function writeLane(lane, records) {
+  const grouped = new Map();
+  for (const record of records) {
+    const key = day(timestamp(record) || Date.now());
+    const values = grouped.get(key) || [];
+    values.push(record);
+    grouped.set(key, values);
   }
-
-  const filesWritten = [];
-  for (const [d, recs] of byDate) {
-    const path = join(CACHE_DIR, `${lane}-${d}.jsonl`);
-    const lines = recs.map((r) => JSON.stringify(r)).join('\n') + (recs.length ? '\n' : '');
-    // Overwrite: the rail is source of truth for the 24h window. Idempotent.
-    await writeFile(path, lines, 'utf8');
-    filesWritten.push({ path, count: recs.length });
+  const files = [];
+  for (const [date, values] of grouped) {
+    const filePath = join(SNAPSHOT_DIR, `${lane}-${date}.jsonl`);
+    await writeFile(filePath, `${values.map(JSON.stringify).join('\n')}\n`, 'utf8');
+    files.push({ path: filePath, count: values.length });
   }
-  return filesWritten;
+  return files;
 }
-
-// ---- main -------------------------------------------------------------------
 
 async function main() {
-  if (!RAIL_TOKEN) {
-    log('config_error', { reason: 'ORANGEBOX_RAIL_TOKEN not set' });
-    process.exit(1);
-  }
-
-  if (!existsSync(CACHE_DIR)) {
-    await mkdir(CACHE_DIR, { recursive: true });
-  }
-
-  const prevState = await readJson(STATE_FILE, { lanes: {}, version: 1 });
-
+  await mkdir(SNAPSHOT_DIR, { recursive: true });
   const now = Date.now();
+  const nowIso = new Date(now).toISOString();
   const since = now - WINDOW_MS;
-
+  let previous = {};
+  try {
+    previous = JSON.parse(await readFile(STATE_FILE, 'utf8'));
+  } catch {
+    previous = {};
+  }
   const results = [];
-  let anySuccess = false;
-  let anyFailure = false;
-
   for (const lane of LANES) {
-    const t0 = Date.now();
+    const started = Date.now();
     try {
-      const records = await fetchLane(lane, since, now);
-      const files = await writeLaneRecords(lane, records);
-      const elapsed = Date.now() - t0;
-      results.push({ lane, ok: true, count: records.length, files, elapsed_ms: elapsed });
-      prevState.lanes[lane] = {
-        last_sync_at: new Date(now).toISOString(),
-        last_sync_ms: now,
-        count: records.length,
-        ok: true,
-      };
-      anySuccess = true;
-      log('lane_ok', { lane, count: records.length, elapsed_ms: elapsed });
-    } catch (e) {
-      anyFailure = true;
-      const elapsed = Date.now() - t0;
-      results.push({ lane, ok: false, err: String(e), elapsed_ms: elapsed });
-      // keep the previous successful sync stamp; record the failure attempt
-      const prior = prevState.lanes[lane] || {};
-      prevState.lanes[lane] = {
-        ...prior,
-        last_attempt_at: new Date(now).toISOString(),
-        last_attempt_ms: now,
-        last_error: String(e),
-        ok: false,
-      };
-      log('lane_fail', { lane, err: String(e), elapsed_ms: elapsed });
+      const records = await readLane(lane, since);
+      const files = await writeLane(lane, records);
+      results.push({ lane, ok: true, records: records.length, files, durationMs: Date.now() - started });
+    } catch (error) {
+      results.push({ lane, ok: false, error: error.message, durationMs: Date.now() - started });
     }
   }
-
-  prevState.last_run_at = new Date(now).toISOString();
-  prevState.last_run_ms = now;
-  prevState.window_ms = WINDOW_MS;
-  prevState.rail = { host: RAIL_HOST, port: RAIL_PORT };
-
-  await writeJsonAtomic(STATE_FILE, prevState);
-
-  const summary = {
-    ok_lanes: results.filter((r) => r.ok).length,
-    fail_lanes: results.filter((r) => !r.ok).length,
-    total_records: results.reduce((a, r) => a + (r.count || 0), 0),
+  const successful = results.filter((row) => row.ok);
+  const lanes = { ...(previous.lanes || {}) };
+  for (const result of results) {
+    const prior = lanes[result.lane] || {};
+    lanes[result.lane] = result.ok
+      ? { ok: true, last_sync_ms: now, last_sync_at: nowIso, records: result.records, files: result.files }
+      : { ...prior, ok: false, last_error_at: nowIso, error: result.error };
+  }
+  const state = {
+    schema: 'orange.memory-disk-snapshot.v1',
+    status: results.every((row) => row.ok) ? 'VERIFIED' : (results.some((row) => row.ok) ? 'PARTIAL' : 'FAILED'),
+    generatedAt: nowIso,
+    last_run_ms: successful.length ? now : Number(previous.last_run_ms || 0),
+    last_run_at: successful.length ? nowIso : (previous.last_run_at || null),
+    lanes,
+    windowMs: WINDOW_MS,
+    source: { type: 'canonical-cobra-flux', transport: 'local-disk', root: SOURCE_ROOT },
+    results,
   };
-  log('sync_complete', summary);
-
-  if (!anySuccess) process.exit(2);
-  if (anyFailure) process.exit(3);
-  process.exit(0);
+  await writeJsonAtomic(STATE_FILE, state);
+  log('snapshot_complete', { status: state.status, lanes: results.length, records: results.reduce((sum, row) => sum + Number(row.records || 0), 0) });
+  process.exit(state.status === 'VERIFIED' ? 0 : state.status === 'PARTIAL' ? 3 : 2);
 }
 
-main().catch((e) => {
-  log('fatal', { err: String(e), stack: e?.stack });
+main().catch((error) => {
+  log('fatal', { error: error.message });
   process.exit(2);
 });

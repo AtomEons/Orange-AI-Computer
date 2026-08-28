@@ -36,7 +36,20 @@ export const DEFAULT_SERVICE_CUPS = Object.freeze({
     ],
     semantic: (body) => body?.ok === true || /ready|healthy|ok/i.test(String(body?.status || '')),
   },
+  ae_phase: {
+    healthPath: '/health',
+    candidates: [
+      { url: 'http://127.0.0.1:8907', transport: 'loopback' },
+      { url: 'http://localhost:8907', transport: 'local_hostname' },
+    ],
+    semantic: (body) => body?.ok === true
+      && body?.status === 'AE_PHASE_FABRIC_ACTIVE'
+      && body?.authenticated === true
+      && Number(body?.connectedPeers || 0) > 0
+      && body?.backpressured !== true,
+  },
   codexa_rail: {
+    purpose: 'recovery_only',
     healthPath: '/health',
     candidates: [
       { url: 'http://10.0.99.1:8097', transport: 'direct_ethernet' },
@@ -48,6 +61,7 @@ export const DEFAULT_SERVICE_CUPS = Object.freeze({
     semantic: (body, status) => status === 401 || body?.ok === true || /ready|healthy|unauthorized/i.test(String(body?.status || body?.error || '')),
   },
   codexa_ollama: {
+    purpose: 'recovery_only',
     healthPath: '/api/tags',
     candidates: [
       { url: 'http://10.0.99.1:11434', transport: 'direct_ethernet' },
@@ -125,6 +139,7 @@ export async function fillCup(serviceId, options = {}) {
   const record = {
     serviceId,
     identity: `service:${serviceId}`,
+    purpose: (options.spec || DEFAULT_SERVICE_CUPS[serviceId])?.purpose || 'active',
     status: selected ? 'ready' : 'unreachable',
     selectedUrl: selected?.url || null,
     transport: selected?.transport || null,

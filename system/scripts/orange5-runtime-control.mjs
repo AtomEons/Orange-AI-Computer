@@ -213,10 +213,6 @@ async function ensureMirror() {
     log(`AE Cobra mirror adopted pid=${pid} state=${status?.state || "unknown"}`);
     return { ok: true, reused: true, state: status?.state || "running", pid };
   }
-  if (!process.env.ORANGEBOX_RAIL_TOKEN) {
-    log("AE Cobra mirror cannot start: ORANGEBOX_RAIL_TOKEN missing from runtime environment");
-    return { ok: false, reused: false, state: "blocked", reason: "missing_user_rail_token" };
-  }
   const entry = join(ROOT, "06-ORANGELLM", "memory", "ae-cobra", "mirror-daemon.mjs");
   const started = startDetached("AE Cobra mirror", BUN_EXE, [entry], dirname(entry));
   if (!started.ok) return started;
@@ -241,6 +237,8 @@ function applyRuntimeEnvironment() {
   // variable may be stale from OrangeFive's 4B development phase.
   process.env.ORANGE5_NAVIGATOR_MODEL = process.env.ORANGE5_RUNTIME_NAVIGATOR_MODEL
     || "orange-navigator:ornith-1.5-9b-q4km";
+  process.env.ORANGE5_CROSS_NODE_TRANSPORT ||= "ae-phase";
+  process.env.ORANGE5_AE_PHASE_URL ||= "http://127.0.0.1:8907";
   process.env.ORANGE5_NAVIGATOR_TRANSPORT = "ollama";
   process.env.ORANGE5_NAVIGATOR_KEEP_ALIVE ||= "15m";
   process.env.ORANGE5_CORTEX_MODEL ||= "gemma4:e2b";
@@ -334,7 +332,8 @@ export async function ensureRuntime() {
         && result.body?.status === "ok"
         && result.body?.upstream?.navigator?.live === true
         && sameModel(result.body?.upstream?.navigator?.model, process.env.ORANGE5_NAVIGATOR_MODEL)
-        && result.body?.upstream?.navigator?.preferred_route === "direct_ollama",
+        && result.body?.upstream?.navigator?.preferred_route === "ae-phase"
+        && result.body?.fabric?.crossNodeTransport === "ae-phase",
     },
     { name: "Brain MCP HTTP", serviceName: "brain-mcp", healthUrl: "http://127.0.0.1:7431/health", validate: (result) => result.ok },
   ]);

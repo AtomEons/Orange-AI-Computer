@@ -1,0 +1,7 @@
+{
+  "name": "human-operator",
+  "description": "Human Hermes: a governed computer-use worker that observes, proposes, leases, acts, verifies, and reports without impersonating a person.",
+  "model": "orange-navigator",
+  "permissionClass": "governed-computer-use",
+  "kanbanWorker": true
+}

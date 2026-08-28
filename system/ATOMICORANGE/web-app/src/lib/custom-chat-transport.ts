@@ -1,0 +1,1026 @@
+import { type UIMessage } from '@ai-sdk/react'
+import {
+  convertToModelMessages,
+  streamText,
+  NoSuchToolError,
+  type ChatRequestOptions,
+  type ChatTransport,
+  type LanguageModel,
+  type UIMessageChunk,
+  type Tool,
+  type LanguageModelUsage,
+  type TextStreamPart,
+} from 'ai'
+import { repairToolCallArguments } from './repairToolCall'
+import { prepareToolResultImagesForModel } from './toolResultImages'
+import {
+  buildToolsRecord,
+  splitAnthropicSerialToolUse,
+} from './custom-chat-transport-helpers'
+import type { MCPTool } from '@/types/completion'
+
+/// Hugging Face special-token convention (`<|im_end|>`, `<|eot_id|>`,
+/// `<|endoftext|>`, etc.). Some MLX backends — most visibly the DFlash
+/// custom `stream_generate` path — leak the EOS marker as plain text in
+/// the final delta instead of using it purely as a stop signal. These
+/// markers never appear in well-formed assistant output, so we strip
+/// them unconditionally before the chunk reaches the UI or the saved
+/// message body.
+const SPECIAL_TOKEN_REGEX = /<\|[a-zA-Z0-9_]+\|>/g
+
+/// `streamText` transform that scrubs the special-token markers from
+/// every `text-delta`. We pass `unknown` for `TOOLS` because the
+/// transform doesn't introspect tools.
+const stripSpecialTokensTransform = () =>
+  new TransformStream<TextStreamPart<never>, TextStreamPart<never>>({
+    transform(chunk, controller) {
+      if (chunk.type === 'text-delta') {
+        const cleaned = chunk.text.replace(SPECIAL_TOKEN_REGEX, '')
+        if (cleaned.length === 0) {
+          /// Emit a whitespace delta so the UI shows streaming state while
+          /// reasoning / special-token-only prefixes are stripped.
+          controller.enqueue({ ...chunk, text: ' ' })
+          return
+        }
+        controller.enqueue({ ...chunk, text: cleaned })
+        return
+      }
+      controller.enqueue(chunk)
+    },
+  })
+import { useServiceStore } from '@/hooks/useServiceHub'
+import { useToolAvailable } from '@/hooks/useToolAvailable'
+import { ModelFactory } from './model-factory'
+import { useModelProvider } from '@/hooks/useModelProvider'
+import { getSamplingParamsForThread } from '@/lib/samplingParams'
+import { withRecommendedSampling } from '@/lib/predefinedParams'
+import { useGeneralSetting } from '@/hooks/useGeneralSetting'
+import { useThreads } from '@/hooks/useThreads'
+import { useAttachments } from '@/hooks/useAttachments'
+import { useAppState } from '@/hooks/useAppState'
+import { useAgentMode } from '@/hooks/useAgentMode'
+import { ExtensionManager } from '@/lib/extension'
+import { ExtensionTypeEnum, VectorDBExtension } from '@janhq/core'
+import { ttftMark } from '@/lib/ttft-timing'
+import { extractModelErrorMessage } from '@/lib/modelErrorMessage'
+import type { ServiceHub } from '@/services'
+import { ensureRemoteProviderReady } from '@/utils/ensureRemoteProviderReady'
+import { isLocalProvider as isLocalProviderName } from '@/utils/registerRemoteProvider'
+import {
+  ORANGE_BRAIN_PROVIDER,
+  resolveOrangeChatCrossing,
+} from './orange-crossing'
+import { announceBuildRunUpdated } from './orange-build-runs'
+import type { OrangeTurnMetadata } from './orange-turn-metadata'
+
+/// Local inference backends (mlx, llamacpp, llamacpp-upstream,
+/// foundation-models) get special handling at the `streamText` boundary:
+///   * when tools are also active, the assistant system prompt is not passed
+///     as a `system` message — gemma-4 and similar local models reliably
+///     auto-emit a chain-of-thought block whenever the rendered prompt
+///     contains BOTH a system message and tools, even with
+///     `chat_template_kwargs.enable_thinking=false`. To avoid silently losing
+///     the user's instructions they are instead folded into the first user
+///     message (see foldSystemIntoFirstUserMessage). When no tools are active
+///     there is no CoT risk, so the system prompt is sent normally.
+/// Tool inclusion is **independent of the reasoning toggle** for all
+/// providers: tools are forwarded whenever the tools on/off setting has
+/// them enabled and the model supports tool calling.
+/// Remote providers (OpenAI, Anthropic, …) are unaffected.
+const LOCAL_INFERENCE_PROVIDERS = new Set<string>([
+  'mlx',
+  'llamacpp',
+  'llamacpp-upstream',
+  'foundation-models',
+])
+
+/// Map an audio MIME type to the `format` string expected by the OpenAI-style
+/// `input_audio` content part (which the MLX/omni backend consumes).
+function audioMediaTypeToFormat(mediaType: string): string {
+  const mt = mediaType.toLowerCase()
+  if (mt.includes('mpeg') || mt.includes('mp3')) return 'mp3'
+  if (mt.includes('wav') || mt.includes('wave')) return 'wav'
+  if (mt.includes('ogg')) return 'ogg'
+  if (mt.includes('flac')) return 'flac'
+  // Fall back to the subtype (audio/<x> → <x>); the backend rejects unknowns.
+  return mt.split('/')[1] ?? 'mp3'
+}
+
+/// Pull audio attachments out of the latest user message as `input_audio`
+/// payloads. Audio is carried in the UI as a `file` part with an `audio/*`
+/// media type, but the `@ai-sdk/openai-compatible` message converter only
+/// understands `image/*` file parts and throws `UnsupportedFunctionalityError`
+/// on anything else — so audio never travels through the normal message path.
+/// Instead we extract it here and inject it at the MLX fetch layer.
+export function extractAudioInputParts(
+  messages: UIMessage[]
+): Array<{ data: string; format: string }> {
+  for (let i = messages.length - 1; i >= 0; i--) {
+    const message = messages[i]
+    if (message.role !== 'user') continue
+    const parts = Array.isArray(message.parts) ? message.parts : []
+    const audio: Array<{ data: string; format: string }> = []
+    for (const part of parts as Array<Record<string, unknown>>) {
+      if (
+        part.type === 'file' &&
+        typeof part.mediaType === 'string' &&
+        part.mediaType.startsWith('audio/') &&
+        typeof part.url === 'string'
+      ) {
+        const url = part.url as string
+        const data = url.includes(',') ? url.slice(url.indexOf(',') + 1) : url
+        audio.push({ data, format: audioMediaTypeToFormat(part.mediaType) })
+      }
+    }
+    // Only the most recent user turn can carry freshly attached audio.
+    return audio
+  }
+  return []
+}
+
+/// Whether a part may travel to the model as-is.
+///
+/// `image/*` is the only file part any converter we route to accepts:
+/// `@ai-sdk/openai-compatible` (and `@ai-sdk/xai`) throw
+/// `UnsupportedFunctionalityError` on everything else, and Anthropic — which
+/// does understand `application/pdf` — would receive our `url`, a local
+/// filesystem path the SDK cannot resolve, as the document body. Every other
+/// attachment kind reaches the model through its own channel: audio as
+/// `input_audio` at the MLX fetch layer (see `extractAudioInputParts`),
+/// documents as text folded in by `mapUserInlineAttachments` or retrieved by
+/// the RAG tools. So a non-image file part is never information — only a way
+/// to break the request.
+function isModelSupportedPart(part: unknown): boolean {
+  const candidate = part as { type?: unknown; mediaType?: unknown }
+  if (candidate.type !== 'file') return true
+  return (
+    typeof candidate.mediaType === 'string' &&
+    candidate.mediaType.startsWith('image/')
+  )
+}
+
+/// Return a copy of `messages` with every non-image `file` part removed.
+/// Untouched messages are preserved by reference.
+export function stripUnsupportedFileParts(messages: UIMessage[]): UIMessage[] {
+  return messages.map((message) => {
+    const parts = Array.isArray(message.parts) ? message.parts : []
+    if (parts.every(isModelSupportedPart)) return message
+    return {
+      ...message,
+      parts: parts.filter(isModelSupportedPart),
+    } as UIMessage
+  })
+}
+
+/// Fold the assistant system prompt into the first user message.
+///
+/// Local backends (gemma-4 et al.) reliably emit a spurious chain-of-thought
+/// block when the rendered prompt contains BOTH a `system` message and tools,
+/// so we cannot pass `system` alongside tools. Dropping it entirely, however,
+/// means the user's assistant instructions are silently ignored whenever an
+/// MCP/RAG tool is active. Instead we prepend the instructions to the first
+/// user turn — the same position a system prompt occupies once gemma's chat
+/// template merges it — so the model still honors them without the CoT trigger.
+export function foldSystemIntoFirstUserMessage<
+  T extends { role: string; content: unknown },
+>(messages: T[], system: string): T[] {
+  const idx = messages.findIndex((m) => m.role === 'user')
+  if (idx === -1) {
+    return [{ role: 'user', content: system } as unknown as T, ...messages]
+  }
+
+  const target = messages[idx]
+  const content = target.content
+  let newContent: unknown
+  if (typeof content === 'string') {
+    newContent = `${system}\n\n${content}`
+  } else if (Array.isArray(content)) {
+    newContent = [{ type: 'text', text: `${system}\n\n` }, ...content]
+  } else {
+    newContent = system
+  }
+
+  const copy = [...messages]
+  copy[idx] = { ...target, content: newContent } as T
+  return copy
+}
+
+export function shouldSuppressToolsForUpstreamDflash(
+  providerId: string,
+  settings: readonly ProviderSetting[] | undefined
+): boolean {
+  return (
+    providerId === 'llamacpp-upstream' &&
+    settings?.some(
+      (setting) =>
+        setting.key === 'dflash' && setting.controller_props.value === true
+    ) === true
+  )
+}
+
+export function withUpstreamDflashSampling(
+  providerId: string,
+  settings: readonly ProviderSetting[] | undefined,
+  params: Record<string, unknown>
+): Record<string, unknown> {
+  if (!shouldSuppressToolsForUpstreamDflash(providerId, settings)) return params
+  return {
+    ...params,
+    temperature: 0,
+    top_k: 1,
+    repeat_penalty: 1,
+    presence_penalty: 0,
+    frequency_penalty: 0,
+  }
+}
+
+export function withUpstreamDflashReasoningOverride(
+  providerId: string,
+  settings: readonly ProviderSetting[] | undefined,
+  override: Record<string, unknown>
+): Record<string, unknown> {
+  if (!shouldSuppressToolsForUpstreamDflash(providerId, settings)) {
+    return override
+  }
+
+  const existingTemplateKwargs =
+    typeof override.chat_template_kwargs === 'object' &&
+    override.chat_template_kwargs !== null &&
+    !Array.isArray(override.chat_template_kwargs)
+      ? (override.chat_template_kwargs as Record<string, unknown>)
+      : {}
+
+  return {
+    ...override,
+    chat_template_kwargs: {
+      ...existingTemplateKwargs,
+      enable_thinking: false,
+    },
+    reasoning_budget: 0,
+  }
+}
+
+export type TokenUsageCallback = (
+  usage: LanguageModelUsage,
+  messageId: string
+) => void
+export type StreamingTokenSpeedCallback = (
+  tokenCount: number,
+  elapsedMs: number
+) => void
+export type OnFinishCallback = (params: {
+  message: UIMessage
+  isAbort?: boolean
+}) => void
+export type OnToolCallCallback = (params: {
+  toolCall: { toolCallId: string; toolName: string; input: unknown }
+}) => void
+
+/**
+ * Wraps a UIMessageChunk stream so that when the first `text-start` chunk
+ * arrives, a `text-delta` carrying `prefixText` is immediately injected into
+ * the same text block. This makes the new message show the partial content
+ * right away while continuation tokens stream in after it.
+ */
+function prependTextDeltaToUIStream(
+  stream: ReadableStream<UIMessageChunk>,
+  prefixText: string
+): ReadableStream<UIMessageChunk> {
+  const reader = stream.getReader()
+  let prefixEmitted = false
+  return new ReadableStream<UIMessageChunk>({
+    async pull(controller) {
+      try {
+        const { done, value } = await reader.read()
+        if (done) {
+          controller.close()
+          return
+        }
+        controller.enqueue(value)
+        if (
+          !prefixEmitted &&
+          (value as { type: string }).type === 'text-start'
+        ) {
+          prefixEmitted = true
+          const id = (value as { type: 'text-start'; id: string }).id
+          controller.enqueue({
+            type: 'text-delta',
+            id,
+            delta: prefixText,
+          } as UIMessageChunk)
+        }
+      } catch (error) {
+        controller.error(error)
+      }
+    },
+    cancel() {
+      reader.cancel()
+    },
+  })
+}
+
+export class CustomChatTransport implements ChatTransport<UIMessage> {
+  public model: LanguageModel | null = null
+  private tools: Record<string, Tool> = {}
+  private onTokenUsage?: TokenUsageCallback
+  private hasDocuments = false
+  private modelSupportsTools = false
+  private ragFeatureAvailable = false
+  private systemMessage?: string
+  private serviceHub: ServiceHub | null
+  private threadId?: string
+  private continueFromContent: string | null = null
+  private toolsCacheKey = ''
+  private toolsCacheValid = false
+
+  constructor(systemMessage?: string, threadId?: string) {
+    this.systemMessage = systemMessage
+    this.threadId = threadId
+    this.serviceHub = useServiceStore.getState().serviceHub
+    // Tools will be loaded when updateRagToolsAvailability is called with model capabilities
+  }
+
+  updateSystemMessage(systemMessage: string | undefined) {
+    this.systemMessage = systemMessage
+  }
+
+  /** Thread this transport is bound to. RAG/project lookups key off it. */
+  getThreadId(): string | undefined {
+    return this.threadId
+  }
+
+  setOnTokenUsage(callback: TokenUsageCallback | undefined) {
+    this.onTokenUsage = callback
+  }
+
+  /**
+   * Update RAG tools availability based on thread metadata and model capabilities
+   * @param hasDocuments - Whether the thread has documents attached
+   * @param modelSupportsTools - Whether the current model supports tool calling
+   * @param ragFeatureAvailable - Whether RAG features are available on the platform
+   */
+  async updateRagToolsAvailability(
+    hasDocuments: boolean,
+    modelSupportsTools: boolean,
+    ragFeatureAvailable: boolean
+  ) {
+    this.hasDocuments = hasDocuments
+    this.modelSupportsTools = modelSupportsTools
+    this.ragFeatureAvailable = ragFeatureAvailable
+
+    // Update tools based on current state
+    await this.refreshTools()
+  }
+
+  /**
+   * Refresh tools based on current state
+   * Reloads both RAG and MCP tools and merges them
+   * Filters out disabled tools based on thread settings
+   * @private
+   */
+  invalidateToolsCache() {
+    this.toolsCacheValid = false
+  }
+
+  private buildToolsCacheKey(
+    disabledToolKeys: string[],
+    hasDocuments: boolean,
+    ragFeatureAvailable: boolean,
+    modelSupportsTools: boolean
+  ): string {
+    const mcp = [...useAppState.getState().mcpToolNames].sort().join(',')
+    const rag = [...useAppState.getState().ragToolNames].sort().join(',')
+    return [
+      this.threadId ?? '',
+      hasDocuments,
+      ragFeatureAvailable,
+      modelSupportsTools,
+      disabledToolKeys.join(','),
+      mcp,
+      rag,
+    ].join('|')
+  }
+
+  async refreshTools(force = false) {
+    if (!this.serviceHub) {
+      this.tools = {}
+      this.toolsCacheValid = false
+      return
+    }
+
+    const getDisabledToolsForThread =
+      useToolAvailable.getState().getDisabledToolsForThread
+    const disabledToolKeys = this.threadId
+      ? getDisabledToolsForThread(this.threadId)
+      : useToolAvailable.getState().getDefaultDisabledTools()
+
+    const selectedModel = useModelProvider.getState().selectedModel
+    const modelSupportsTools =
+      selectedModel?.capabilities?.includes('tools') ?? this.modelSupportsTools
+
+    let hasDocuments = this.hasDocuments
+    let ragFeatureAvailable = this.ragFeatureAvailable
+
+    if (!hasDocuments && this.threadId) {
+      const thread = useThreads.getState().threads[this.threadId]
+      hasDocuments = Boolean(thread?.metadata?.hasDocuments)
+    }
+    if (!ragFeatureAvailable) {
+      ragFeatureAvailable = Boolean(useAttachments.getState().enabled)
+    }
+
+    const cacheKey = this.buildToolsCacheKey(
+      disabledToolKeys,
+      hasDocuments,
+      ragFeatureAvailable,
+      modelSupportsTools
+    )
+    if (!force && this.toolsCacheValid && cacheKey === this.toolsCacheKey) {
+      return
+    }
+
+    let ragTools: MCPTool[] = []
+    let mcpTools: MCPTool[] = []
+
+    if (modelSupportsTools) {
+      if (!hasDocuments && this.threadId) {
+        const thread = useThreads.getState().threads[this.threadId]
+        const hasThreadDocuments = Boolean(thread?.metadata?.hasDocuments)
+
+        const projectId = thread?.metadata?.project?.id
+        if (projectId) {
+          try {
+            const ext = ExtensionManager.getInstance().get<VectorDBExtension>(
+              ExtensionTypeEnum.VectorDB
+            )
+            if (ext?.listAttachmentsForProject) {
+              const projectFiles =
+                await ext.listAttachmentsForProject(projectId)
+              hasDocuments = hasThreadDocuments || projectFiles.length > 0
+            }
+          } catch (error) {
+            console.warn('Failed to check project files:', error)
+            hasDocuments = hasThreadDocuments
+          }
+        } else {
+          hasDocuments = hasThreadDocuments
+        }
+      }
+
+      if (!ragFeatureAvailable) {
+        ragFeatureAvailable = Boolean(useAttachments.getState().enabled)
+      }
+
+      // Load RAG tools if documents are available
+      if (hasDocuments && ragFeatureAvailable) {
+        try {
+          const availableRagTools = await this.serviceHub.rag().getTools()
+          if (Array.isArray(availableRagTools)) {
+            ragTools = availableRagTools as MCPTool[]
+          }
+        } catch (error) {
+          console.warn('Failed to load RAG tools:', error)
+        }
+      }
+
+      // Read MCP tools from the global store (populated once at app
+      // startup by useTools and refreshed on MCP_UPDATE events). Avoids a
+      // cold ~1.8s round-trip into the MCP service on every new thread's
+      // first sendMessages call.
+      try {
+        const availableMcpTools = useAppState.getState().tools
+        if (Array.isArray(availableMcpTools)) {
+          mcpTools = availableMcpTools
+        }
+      } catch (error) {
+        console.warn('Failed to load MCP tools:', error)
+      }
+    }
+
+    this.tools = buildToolsRecord(ragTools, mcpTools, disabledToolKeys)
+    this.toolsCacheKey = cacheKey
+    this.toolsCacheValid = true
+  }
+
+  /**
+   * Get current tools
+   */
+  getTools(): Record<string, Tool> {
+    return this.tools
+  }
+
+  /**
+   * Set partial assistant content to send as a prefill on the next request,
+   * so the model continues generation from where it left off.
+   */
+  setContinueFromContent(content: string) {
+    this.continueFromContent = content
+  }
+
+  async sendMessages(
+    options: {
+      chatId: string
+      messages: UIMessage[]
+      abortSignal: AbortSignal | undefined
+    } & {
+      trigger: 'submit-message' | 'regenerate-message'
+      messageId: string | undefined
+    } & ChatRequestOptions
+  ): Promise<ReadableStream<UIMessageChunk>> {
+    const requestStartedAt = Date.now()
+    ttftMark('gammaStart')
+    await this.refreshTools()
+    ttftMark('gammaEnd')
+
+    // Capture the effective provider name early so the Anthropic serial
+    // tool-use repair later uses the same value that was used to create the
+    // model, even if the user switches provider mid-request.
+    // Atomic Orange has one inference crossing: OrangeBrain. The model picker
+    // selects an Orange lane, never a provider bypass. Local and cloud engines
+    // remain manageable in Settings, but chat cannot call them directly.
+    const requestedProvider = useModelProvider.getState().selectedProvider
+    const requestedModel = useModelProvider.getState().selectedModel?.id
+    const { providerId, modelId } = resolveOrangeChatCrossing(
+      requestedProvider,
+      requestedModel
+    )
+    // Keep this typed as string because the upstream transport retains
+    // provider-specific compatibility branches below. Runtime value remains
+    // structurally fixed to ORANGE_BRAIN_PROVIDER by the resolver above.
+    const effectiveProviderName: string = providerId
+    const provider = useModelProvider.getState().getProviderByName(providerId)
+    if (this.serviceHub && modelId && provider) {
+      try {
+        const updatedProvider = useModelProvider
+          .getState()
+          .getProviderByName(providerId)
+
+        // Sampling parameters of the assistant this chat is bound to, injected
+        // verbatim into local-backend request bodies by ModelFactory. For
+        // Gemma 4 QAT, Google's recommended sampler (temp 1.0 / top_p 0.95 /
+        // top_k 64) is layered on at request time unless the user has tuned
+        // that assistant's sampling — non-destructive, follows the active model.
+        const sampling = getSamplingParamsForThread(this.threadId)
+        const providerSettings = updatedProvider?.settings ?? provider.settings
+        const inferenceParams = withUpstreamDflashSampling(
+          providerId,
+          providerSettings,
+          withRecommendedSampling(
+            modelId,
+            sampling.params,
+            sampling.overridden
+          )
+        )
+
+        // Global "Disable reasoning" setting — best-effort: dispatch the
+        // provider-specific flag that skips the thinking phase. Unknown keys
+        // are silently ignored by most providers, but we still branch per
+        // provider to stay safe with stricter APIs (e.g. Anthropic).
+        //
+        // The override is kept SEPARATE from `inferenceParams` so local-only
+        // fields (top_k, repeat_penalty, …) never leak into cloud-provider
+        // request bodies. See ModelFactory for the fetch wiring.
+        const { disableReasoning, reasoningBudget } =
+          useGeneralSetting.getState()
+        const reasoningOverride: Record<string, unknown> = {}
+        const reasoningBudgetTokens: Record<
+          typeof reasoningBudget,
+          number | undefined
+        > = {
+          off: 0,
+          low: 256,
+          medium: 1024,
+          high: 4096,
+          unlimited: undefined,
+        }
+        if (disableReasoning || reasoningBudget === 'off') {
+          switch (effectiveProviderName) {
+            case 'llamacpp':
+            case 'llamacpp-upstream':
+            case 'mlx':
+              reasoningOverride.chat_template_kwargs = {
+                enable_thinking: false,
+              }
+              reasoningOverride.reasoning_budget = 0
+              break
+            case 'anthropic':
+              reasoningOverride.thinking = { type: 'disabled' }
+              break
+            case 'openai':
+              reasoningOverride.reasoning_effort = 'minimal'
+              break
+            case 'xai':
+              reasoningOverride.reasoning_effort = 'low'
+              break
+            case 'google':
+            case 'gemini':
+              reasoningOverride.reasoning_effort = 'minimal'
+              reasoningOverride.extra_body = {
+                google: { thinking_config: { thinking_budget: 0 } },
+              }
+              break
+            case 'moonshot':
+              // Moonshot (Kimi) accepts only high|low|medium|max|xhigh; rejects
+              // `minimal`. `low` is the closest analogue to "skip thinking".
+              reasoningOverride.reasoning_effort = 'low'
+              break
+            default:
+              // Unknown / user-added custom providers: do NOT inject
+              // `reasoning_effort` — strict OpenAI-compatible schemas
+              // (e.g. Moonshot, some self-hosted gateways) reject unknown
+              // variants like `minimal`. The chat_template_kwargs hint is
+              // safe: most servers ignore unknown keys.
+              reasoningOverride.chat_template_kwargs = {
+                enable_thinking: false,
+              }
+          }
+        } else if (
+          (effectiveProviderName === 'llamacpp' ||
+            effectiveProviderName === 'llamacpp-upstream' ||
+            effectiveProviderName === 'mlx') &&
+          reasoningBudgetTokens[reasoningBudget] !== undefined
+        ) {
+          reasoningOverride.reasoning_budget =
+            reasoningBudgetTokens[reasoningBudget]
+        }
+        const effectiveReasoningOverride = withUpstreamDflashReasoningOverride(
+          providerId,
+          providerSettings,
+          reasoningOverride
+        )
+        const hasOverride = Object.keys(effectiveReasoningOverride).length > 0
+
+        // Audio attachments (omni/audio-capable models, MLX backend) are
+        // injected as `input_audio` at the MLX fetch layer rather than as
+        // file parts — the OpenAI-compatible converter rejects audio file
+        // parts. Only the MLX provider consumes them today.
+        const audioInputParts =
+          effectiveProviderName === 'mlx'
+            ? extractAudioInputParts(options.messages)
+            : []
+
+        ttftMark('deltaStart')
+        const effectiveProvider = updatedProvider ?? provider
+        // OrangeBrain is already the governed OpenAI-compatible server. Do
+        // not start Atomic Chat's legacy local proxy on the same :1337 port.
+        if (
+          effectiveProvider.provider !== ORANGE_BRAIN_PROVIDER &&
+          !isLocalProviderName(effectiveProvider.provider)
+        ) {
+          await ensureRemoteProviderReady(effectiveProvider, this.serviceHub)
+        }
+        const workspace = this.threadId
+          ? useAgentMode.getState().getWorkspace(this.threadId)
+          : { externalRoots: [] }
+        const orangeRunParameters =
+          effectiveProvider.provider === ORANGE_BRAIN_PROVIDER && this.threadId
+            ? {
+                ...(inferenceParams ?? {}),
+                ae_thread_id: this.threadId,
+                ae_project_root: workspace.primaryRoot?.path ?? '',
+                ae_workspace_roots: [
+                  workspace.primaryRoot?.path,
+                  ...workspace.externalRoots.map((root) => root.path),
+                ].filter((root): root is string => Boolean(root)),
+                ae_build_mode: useAgentMode
+                  .getState()
+                  .isAgentMode(this.threadId)
+                  ? 'execute'
+                  : 'plan',
+              }
+            : (inferenceParams ?? {})
+        this.model = await ModelFactory.createModel(
+          modelId,
+          effectiveProvider,
+          orangeRunParameters,
+          hasOverride ? effectiveReasoningOverride : undefined,
+          audioInputParts.length > 0 ? audioInputParts : undefined
+        )
+        ttftMark('deltaEnd')
+      } catch (error) {
+        console.error('Failed to create model:', error)
+        throw new Error(
+          `Failed to create model: ${extractModelErrorMessage(error)}`
+        )
+      }
+    } else {
+      throw new Error('ServiceHub not initialized or model/provider missing.')
+    }
+
+    // Fix for Anthropic serial tool-use (error 400): when an assistant message
+    // contains tool parts interleaved with text parts (serial tool calls),
+    // split it into separate messages so convertToModelMessages produces the
+    // tool_use / tool_result pairing that the Claude API requires.
+    // See: https://platform.claude.com/docs/en/agents-and-tools/tool-use/implement-tool-use#parallel-tool-use
+    const messagesToConvert =
+      effectiveProviderName === 'anthropic'
+        ? splitAnthropicSerialToolUse(options.messages)
+        : options.messages
+
+    // Convert UI messages to model messages. Non-image file parts are stripped
+    // first — the converters accept `image/*` and nothing else. Order matters:
+    // `mapUserInlineAttachments` folds document text into the message before
+    // the strip runs, and `extractAudioInputParts` ran earlier against the
+    // untouched `options.messages`, so neither loses anything.
+    let preparedMessages = stripUnsupportedFileParts(
+      this.mapUserInlineAttachments(messagesToConvert)
+    )
+    // Local backends serialize tool results to a `role: "tool"` text message
+    // (JSON.stringify), so an image in a tool result (e.g. an MCP screenshot
+    // tool) would otherwise be sent as full base64 TEXT and flood the context
+    // window — the root cause of ATO-208's MLX 400s. Strip the base64 out of
+    // the model payload (placeholder) and, for vision models, re-attach the
+    // image as a proper multimodal user message. Cloud providers are left
+    // untouched (they have large contexts and handle this differently).
+    if (LOCAL_INFERENCE_PROVIDERS.has(effectiveProviderName)) {
+      const supportsVision =
+        useModelProvider
+          .getState()
+          .selectedModel?.capabilities?.includes('vision') ?? false
+      preparedMessages = prepareToolResultImagesForModel(preparedMessages, {
+        supportsVision,
+      })
+    }
+    const baseMessages = convertToModelMessages(preparedMessages)
+
+    // If continuing a truncated response, append the partial assistant content as a
+    // prefill so the model resumes from where it left off rather than regenerating.
+    const continueContent = this.continueFromContent
+    this.continueFromContent = null
+    const modelMessages = continueContent
+      ? [
+          ...baseMessages,
+          { role: 'assistant' as const, content: continueContent },
+        ]
+      : baseMessages
+
+    // Local-providers (mlx, llamacpp, llamacpp-upstream, foundation-models):
+    // when tools are also active we don't pass a `system` message (gemma-4 and
+    // similar local models reliably auto-emit a chain-of-thought block whenever
+    // the rendered prompt contains BOTH a system message and tools). Instead of
+    // discarding the user's assistant instructions, they are folded into the
+    // first user message below so the model still honors them. Without tools
+    // there is no CoT risk, so the system prompt is forwarded normally.
+    // See LOCAL_INFERENCE_PROVIDERS for rationale. Tool inclusion is
+    // independent of the reasoning toggle and governed solely by the tools
+    // on/off setting (via refreshTools -> useToolAvailable).
+    const isLocalProvider = LOCAL_INFERENCE_PROVIDERS.has(effectiveProviderName)
+
+    const hasTools = Object.keys(this.tools).length > 0
+    const selectedModel = useModelProvider.getState().selectedModel
+    const modelSupportsTools =
+      selectedModel?.capabilities?.includes('tools') ?? this.modelSupportsTools
+    const suppressToolsForDflash = shouldSuppressToolsForUpstreamDflash(
+      effectiveProviderName,
+      provider.settings
+    )
+    // OrangeBrain is the tool orchestrator. Passing Atomic Chat's local MCP
+    // inventory through this OpenAI-compatible crossing duplicates authority
+    // and can make llama.cpp reject complex tool schemas while compiling its
+    // constrained-output grammar. The gateway receives the user turn only;
+    // it selects and receipts Orange tools behind its own boundary.
+    const shouldEnableTools =
+      effectiveProviderName !== ORANGE_BRAIN_PROVIDER &&
+      hasTools &&
+      modelSupportsTools &&
+      !suppressToolsForDflash
+
+    const dropSystemForTools =
+      isLocalProvider && shouldEnableTools && !!this.systemMessage
+    const effectiveSystemMessage = dropSystemForTools
+      ? undefined
+      : this.systemMessage
+
+    // When we drop the `system` field for the gemma+tools CoT workaround, fold
+    // the instructions into the first user message so they still reach the
+    // model instead of being silently lost.
+    const finalModelMessages =
+      dropSystemForTools && this.systemMessage
+        ? foldSystemIntoFirstUserMessage(modelMessages, this.systemMessage)
+        : modelMessages
+
+    // Track stream timing and token count for token speed calculation.
+    // We start the clock on the *first generated delta* (text or reasoning),
+    // not on the `start` event, so the wall-clock fallback measures decode
+    // throughput rather than (TTFT + prefill + decode). Without this, long
+    // system prompts and MTP/dflash spin-up artificially deflate the
+    // displayed tokens/sec.
+    let streamStartTime: number | undefined
+
+    const maxOutputTokens = getSamplingParamsForThread(this.threadId).params
+      ?.max_output_tokens as number | undefined
+
+    const result = streamText({
+      model: this.model,
+      messages: finalModelMessages,
+      abortSignal: options.abortSignal,
+      tools: shouldEnableTools ? this.tools : undefined,
+      toolChoice: shouldEnableTools ? 'auto' : undefined,
+      system: effectiveSystemMessage,
+      maxOutputTokens,
+      experimental_transform: stripSpecialTokensTransform,
+      experimental_repairToolCall: async ({ toolCall, error }) => {
+        if (NoSuchToolError.isInstance(error)) return null
+        const repaired = repairToolCallArguments(toolCall.input)
+        if (repaired === null) return null
+        return { ...toolCall, input: repaired }
+      },
+    })
+
+    let tokensPerSecond = 0
+    let draftTokensTotal: number | null = null
+    let draftTokensAccepted: number | null = null
+    let orangeTurn: OrangeTurnMetadata | null = null
+
+    const uiStream = result.toUIMessageStream({
+      messageMetadata: ({ part }) => {
+        // Start the wall-clock timer on the first generated delta (text or
+        // reasoning), NOT on `start` — the latter fires before prefill, so
+        // including it would tank the fallback TPS on long prompts.
+        if (
+          !streamStartTime &&
+          (part.type === 'text-delta' || part.type === 'reasoning-delta')
+        ) {
+          streamStartTime = Date.now()
+        }
+
+        if (part.type === 'finish-step') {
+          const pm = part.providerMetadata?.providerMetadata as
+            | Record<string, unknown>
+            | undefined
+          tokensPerSecond = (pm?.tokensPerSecond as number) || 0
+          draftTokensTotal = (pm?.draftTokensTotal as number) ?? null
+          draftTokensAccepted = (pm?.draftTokensAccepted as number) ?? null
+          orangeTurn = (pm?.orange as OrangeTurnMetadata) ?? null
+          if (orangeTurn?.buildRun?.runId) announceBuildRunUpdated()
+        }
+
+        // Add usage and token speed to metadata on finish
+        if (part.type === 'finish') {
+          const finishPart = part as {
+            type: 'finish'
+            totalUsage: LanguageModelUsage
+            finishReason: string
+          }
+          const usage = finishPart.totalUsage
+          const durationMs = streamStartTime ? Date.now() - streamStartTime : 0
+          const durationSec = durationMs / 1000
+
+          // Use provider's outputTokens, or llama.cpp completionTokens, or fall back to text delta count
+          const outputTokens = usage?.outputTokens ?? 0
+          const inputTokens = usage?.inputTokens
+
+          // Prefer the provider-reported decode TPS (mlx-vlm `generation_tps`
+          // or llama.cpp / dflash `predicted_per_second`). Fall back to a
+          // wall-clock estimate measured from the first delta — but only if
+          // the timer ever started AND we actually produced tokens (e.g. a
+          // pure tool-call response yields 0 tokens and no delta, so the
+          // fallback would otherwise divide by zero).
+          let tokenSpeed: number
+          if (tokensPerSecond > 0) {
+            tokenSpeed = tokensPerSecond
+          } else if (
+            streamStartTime !== undefined &&
+            durationSec > 0 &&
+            outputTokens > 0
+          ) {
+            tokenSpeed = outputTokens / durationSec
+          } else {
+            tokenSpeed = 0
+          }
+
+          return {
+            finishReason: finishPart.finishReason,
+            activityDurationMs: Math.max(0, Date.now() - requestStartedAt),
+            // Provider-agnostic time to first token: `streamStartTime` is the
+            // first generated delta, set above. The α→θ stage breakdown in
+            // `ttft-timing` only spans the Tauri/proxy path, so this is the
+            // value that is comparable across local and cloud providers.
+            ttftMs: streamStartTime
+              ? Math.max(0, streamStartTime - requestStartedAt)
+              : null,
+            // The model/provider a message was produced by was previously not
+            // recorded anywhere, so a finished turn could not be attributed.
+            modelId,
+            providerId,
+            orange: orangeTurn,
+            usage: {
+              inputTokens: inputTokens,
+              outputTokens: outputTokens,
+              totalTokens:
+                usage?.totalTokens ?? (inputTokens ?? 0) + outputTokens,
+            },
+            tokenSpeed: {
+              tokenSpeed: Math.round(tokenSpeed * 10) / 10, // Round to 1 decimal
+              tokenCount: outputTokens,
+              durationMs,
+              ...(draftTokensTotal != null && draftTokensTotal > 0
+                ? {
+                    draftTokensTotal,
+                    draftTokensAccepted: draftTokensAccepted ?? 0,
+                  }
+                : {}),
+            },
+          }
+        }
+
+        return undefined
+      },
+      onError: (error) => {
+        const errorMessage =
+          error == null
+            ? 'Unknown error'
+            : typeof error === 'string'
+              ? error
+              : error instanceof Error
+                ? error.message
+                : JSON.stringify(error)
+
+        return errorMessage
+      },
+      onFinish: ({ responseMessage }) => {
+        // Call the token usage callback with usage data when stream completes
+        if (responseMessage) {
+          const metadata = responseMessage.metadata as
+            | Record<string, unknown>
+            | undefined
+          const usage = metadata?.usage as LanguageModelUsage | undefined
+          if (usage) {
+            this.onTokenUsage?.(usage, responseMessage.id)
+          }
+        }
+      },
+    })
+
+    // When continuing a truncated response, inject the partial content as the
+    // very first text-delta so the new message immediately shows it and the
+    // user sees a seamless continuation rather than an empty box.
+    const finalStream = continueContent
+      ? prependTextDeltaToUIStream(uiStream, continueContent)
+      : uiStream
+
+    return finalStream
+  }
+
+  async reconnectToStream(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _options: {
+      chatId: string
+    } & ChatRequestOptions
+  ): Promise<ReadableStream<UIMessageChunk> | null> {
+    // This function normally handles reconnecting to a stream on the backend, e.g. /api/chat
+    // Since this project has no backend, we can't reconnect to a stream, so this is intentionally no-op.
+    return null
+  }
+
+  /**
+   *  Map user messages to include inline attachments in the message parts
+   * @param messages
+   * @returns
+   */
+  mapUserInlineAttachments(messages: UIMessage[]): UIMessage[] {
+    return messages.map((message) => {
+      if (message.role === 'user') {
+        const metadata = message.metadata as
+          | {
+              inline_file_contents?: Array<{ name?: string; content?: string }>
+            }
+          | undefined
+        const inlineFileContents = Array.isArray(metadata?.inline_file_contents)
+          ? metadata.inline_file_contents.filter((f) => f?.content)
+          : []
+        // Tool messages have content as array of ToolResultPart
+        if (inlineFileContents.length > 0) {
+          if (message.parts.length > 0) {
+            const inlineBlock = inlineFileContents
+              .map((f) => `File: ${f.name || 'attachment'}\n${f.content ?? ''}`)
+              .join('\n\n')
+            const lastTextIdx = message.parts.reduce(
+              (acc, part, index) => (part.type === 'text' ? index : acc),
+              -1
+            )
+            if (lastTextIdx >= 0) {
+              const parts = [...message.parts]
+              const part = parts[lastTextIdx]
+              if (part.type === 'text') {
+                const base = part.text ?? ''
+                parts[lastTextIdx] = {
+                  type: 'text' as const,
+                  text: base ? `${base}\n\n${inlineBlock}` : inlineBlock,
+                }
+              }
+              message.parts = parts
+            } else {
+              message.parts = [
+                ...message.parts,
+                { type: 'text' as const, text: inlineBlock },
+              ]
+            }
+          }
+        }
+      }
+
+      return message
+    })
+  }
+}

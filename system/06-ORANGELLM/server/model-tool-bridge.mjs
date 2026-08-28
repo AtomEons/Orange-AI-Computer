@@ -100,10 +100,18 @@ export const MODEL_TOOL_DEFINITIONS = Object.freeze(
 );
 
 export function shouldUseGovernedModelTools({ responseMode, reflex = false, tier, body = {} } = {}) {
+  const latestUser = [...(Array.isArray(body.messages) ? body.messages : [])]
+    .reverse()
+    .find((message) => message?.role === 'user');
+  const userText = typeof latestUser?.content === 'string'
+    ? latestUser.content
+    : JSON.stringify(latestUser?.content || '');
+  const toolIntent = /\b(?:build|change|check|deploy|edit|execute|file|fix|health|inspect|list|open|read|receipt|route|run|status|test|write)\b/i.test(userText);
   return responseMode === 'conversation'
     && reflex !== true
     && tier !== 'visual'
-    && body.tool_choice !== 'none';
+    && body.tool_choice !== 'none'
+    && (body.ae_tools_enabled === true || body.tool_choice === 'required' || toolIntent);
 }
 
 export function prepareGovernedModelToolRequest(body = {}) {
@@ -111,6 +119,7 @@ export function prepareGovernedModelToolRequest(body = {}) {
     tools: _callerTools,
     tool_choice: _callerToolChoice,
     parallel_tool_calls: _parallelToolCalls,
+    ae_tools_enabled: _toolsEnabled,
     ...bounded
   } = body;
   return {

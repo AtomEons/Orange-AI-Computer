@@ -17,7 +17,7 @@ function mockFetch(statusByUrl = {}) {
 describe('OrangeFive operational executor', () => {
   test('canonical topology contains only current OrangeFive organs', () => {
     expect(Object.keys(OPERATIONAL_ENDPOINTS)).toEqual([
-      'ollama', 'navigator_kernel', 'orangebrain', 'cobra', 'hermes', 'ae_eyes', 'atomsmasher', 'codexa_rail',
+      'ollama', 'navigator_kernel', 'orangebrain', 'cobra', 'hermes', 'ae_eyes', 'atomsmasher', 'ae_phase',
     ]);
     expect(JSON.stringify(OPERATIONAL_ENDPOINTS)).not.toContain('8797');
   });
@@ -69,7 +69,7 @@ describe('OrangeFive operational executor', () => {
     expect(evaluateOperationalSemantics('ollama', { models: [{ name: 'nomic-embed-text:latest' }] }).ok).toBe(true);
     expect(evaluateOperationalSemantics('ae_eyes', { ok: true, backend: 'transformers:xpu', resident_worker: { state: 'ready', failures: 0 } }).ok).toBe(true);
     expect(evaluateOperationalSemantics('atomsmasher', { ok: true, service: 'atomsmasher2', counts: { features: 620 } }).ok).toBe(true);
-    expect(evaluateOperationalSemantics('codexa_rail', { status: 'VERIFIED', tokenConfigured: true, fullAccess: 'AVAILABLE_WITH_TOKEN_AND_confirmFullAccess', machine: { hostname: 'CODEXA' } }).ok).toBe(true);
+    expect(evaluateOperationalSemantics('ae_phase', { ok: true, status: 'AE_PHASE_FABRIC_ACTIVE', authenticated: true, connectedPeers: 1, backpressured: false }).ok).toBe(true);
   });
 
   test('read.status reports a failed observation as error', async () => {

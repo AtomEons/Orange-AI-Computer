@@ -1,18 +1,21 @@
 #!/usr/bin/env bun
+import { randomUUID } from "node:crypto";
+import path from "node:path";
 import readline from "node:readline";
 import { dispatchTool, executeOrder, healthSnapshot, readReceipts, ROOT } from "./orange5-headless-core.mjs";
+import { sendLocalAEPhaseEnvelope, waitForAEPhaseEnvelope } from "./ae-phase-fabric.mjs";
 import { executeGovernedTool } from "./hermes-effector.mjs";
 import { executeBrowserWorkflow } from "./browser-mcp-effector.mjs";
 import { McpTaskStore } from "./mcp-task-store.mjs";
 import { dryRunRoute as planSuperstackLease, inventory as superstackInventory, loadManifest as loadSuperstackManifest, writeReceipt as writeSuperstackReceipt } from "../14-SUPERSTACK/captain-planet-governor.mjs";
 import { appendPartyLineEvent, hydratePartyLine, readPartyLine } from "../04-CONTROL-PLANE/party-line/ledger.mjs";
 
-export const SERVER = { name: "orangefive-brain", version: "1.2.0" };
+export const SERVER = { name: "orangefive-brain", version: "1.3.0" };
 export const CURRENT_PROTOCOL = "2026-07-28";
 export const SUPPORTED_PROTOCOLS = [CURRENT_PROTOCOL, "2025-11-25", "2025-06-18"];
 const SERVER_INFO_META_KEY = "io.modelcontextprotocol/serverInfo";
 const TASK_EXTENSION = "io.modelcontextprotocol/tasks";
-const TASKABLE_TOOLS = new Set(["orange5_order", "orange5_chat", "orange5_delegate", "orange5_execute", "orange5_browser", "orange5_model_lease"]);
+const TASKABLE_TOOLS = new Set(["orange5_order", "orange5_chat", "orange5_delegate", "orange5_execute", "orange5_browser", "orange5_model_lease", "ae_staff_order"]);
 const TASK_STORE = new McpTaskStore();
 const TASK_JOBS = new Map();
 const WORKER_ID = `brain-mcp-${process.pid}`;
@@ -26,9 +29,32 @@ const SWARM_MCP_ORDERS = Object.freeze({
     intent: "Inspect supplied swarm reports with Swarm Sentinel.",
   }),
 });
+const AE_STAFF_MCP_TOOLS = new Set(["ae_staff_health", "ae_staff_list", "ae_staff_order"]);
+const CURRENT_PROTOCOL_ONLY_TOOLS = new Set([...Object.keys(SWARM_MCP_ORDERS), ...AE_STAFF_MCP_TOOLS]);
 
 const TOOLS = [
   tool("orange5_health", "Live OrangeFive gateway, brain, reflex, Codexa, and receipt health.", {}),
+  tool("ae_staff_health", "Read live AE Staff reactor health through the authenticated AE Phase fabric.", {}),
+  tool("ae_staff_list", "List the live AE Staff roster and role state through the authenticated AE Phase fabric.", {}),
+  tool("ae_staff_order", "Dispatch one canonical orange.order.v1 to an explicit AE Staff crew and return validated orange.report.v1 results.", {
+    order: {
+      type: "object",
+      additionalProperties: true,
+      properties: {
+        schema: { type: "string", const: "orange.order.v1" },
+        orderId: { type: "string", minLength: 1 },
+        action: { type: "string", minLength: 1 },
+        intent: { type: "string" },
+        targetProject: { type: "string" },
+        requiresReceipt: { type: "boolean" }
+      },
+      required: ["schema", "orderId", "action"]
+    },
+    targetRoles: { type: "array", minItems: 1, maxItems: 50, uniqueItems: true, items: { type: "string", minLength: 1 } },
+    correlationId: { type: "string" },
+    commitments: { type: "array", items: { type: "string" } },
+    sourceRefs: { type: "array", items: {} }
+  }, ["order", "targetRoles"]),
   tool("orange5_order", "Execute a governed OrangeFive action through the canonical spine.", {
     order: { type: "object", description: "Order with action and payload." },
     learn: { type: "boolean", description: "Close the governed learning loop after successful execution." }
@@ -86,8 +112,9 @@ const TOOLS = [
     steps: { type: "array", minItems: 1, maxItems: 20, items: { type: "object", properties: { tool: { type: "string" }, args: { type: "object" } }, required: ["tool"] } }
   }, ["steps"])
 ];
+const DEFAULT_AE_STAFF_CLIENT = createAeStaffMcpClient();
 
-export async function handleMcp(message) {
+export async function handleMcp(message, { aeStaffClient = DEFAULT_AE_STAFF_CLIENT } = {}) {
   if (!message || message.jsonrpc !== "2.0") return null;
   // JSON-RPC notifications have no response channel. Never let an id-less
   // request invoke a tool, create a task, or mutate task state.
@@ -128,7 +155,7 @@ export async function handleMcp(message) {
           scheduleTask(task.taskId);
           return ok(id, task);
         }
-        return ok(id, await executeToolCall(name, args));
+        return ok(id, await executeToolCall(name, args, null, { aeStaffClient }));
       }
       case "tasks/get": {
         if (!hasTaskExtension(message.params)) return missingTaskCapability(id);
@@ -153,7 +180,7 @@ export async function handleMcp(message) {
         return ok(id, { resultType: "complete" });
       }
       case "resources/list": return ok(id, listResult(message, { resources: resources() }));
-      case "resources/read": return ok(id, await readResource(message.params?.uri));
+      case "resources/read": return ok(id, await readResource(message.params?.uri, aeStaffClient));
       case "prompts/list": return ok(id, listResult(message, { prompts: prompts() }));
       case "prompts/get": return ok(id, getPrompt(message.params?.name));
       default: return fail(id, -32601, `method not found: ${message.method}`);
@@ -168,7 +195,7 @@ function modernCapabilities() {
 }
 
 function serverInstructions() {
-  return "Use orange5_health first. Use orange5_route before mutating work. Receipts outrank claims. Atomic Orange is optional; this gateway is headless. Long work supports durable MCP Tasks for 2026-07-28 extension clients.";
+  return "Use orange5_health first. Use orange5_route before mutating work. For staff control, use ae_staff_health and ae_staff_list before ae_staff_order; preserve orange.order.v1 and orange.report.v1. Receipts outrank claims. Atomic Orange is optional; this gateway is headless. Long work supports durable MCP Tasks for 2026-07-28 extension clients.";
 }
 
 function listResult(message, value) {
@@ -178,15 +205,18 @@ function listResult(message, value) {
 
 function listedTools(message) {
   if (requestProtocol(message) === CURRENT_PROTOCOL) return TOOLS;
-  return TOOLS.filter((item) => !Object.prototype.hasOwnProperty.call(SWARM_MCP_ORDERS, item.name));
+  return TOOLS.filter((item) => !CURRENT_PROTOCOL_ONLY_TOOLS.has(item.name));
 }
 
 export function requestProtocol(message) {
   return message?.params?._meta?.["io.modelcontextprotocol/protocolVersion"] || null;
 }
 
-async function executeToolCall(name, args, taskId = null) {
-  const result = name === "orange5_superstack" ? await superstackStatus()
+async function executeToolCall(name, args, taskId = null, { aeStaffClient = DEFAULT_AE_STAFF_CLIENT } = {}) {
+  const result = name === "ae_staff_health" ? await aeStaffClient.health()
+    : name === "ae_staff_list" ? await aeStaffClient.list()
+    : name === "ae_staff_order" ? await aeStaffClient.order(assertCanonicalAeStaffMcpArguments(args))
+    : name === "orange5_superstack" ? await superstackStatus()
     : name === "orange5_model_lease" ? await executeModelLease(args)
     : name === "orange5_party_line_read" ? await readPartyLine({
         cursor: args.cursor,
@@ -233,6 +263,219 @@ export function buildSwarmMcpOrder(name, args) {
     riskLevel: "read_only",
     requiresReceipt: true,
   };
+}
+
+export function createAeStaffMcpClient({
+  sendEnvelope = sendLocalAEPhaseEnvelope,
+  waitEnvelope = waitForAEPhaseEnvelope,
+  readTimeoutMs = timeoutValue(process.env.ORANGE5_AE_STAFF_READ_TIMEOUT_MS, 10_000),
+  dispatchTimeoutMs = timeoutValue(process.env.ORANGE5_AE_STAFF_TIMEOUT_MS, 240_000),
+} = {}) {
+  if (typeof sendEnvelope !== "function" || typeof waitEnvelope !== "function") {
+    throw new TypeError("AE Staff Phase client requires send and wait implementations");
+  }
+
+  const query = async (operation) => {
+    const requestId = `ae-staff-query-${randomUUID()}`;
+    await sendEnvelope({
+      id: requestId,
+      kind: "ae_staff_query",
+      correlationId: requestId,
+      body: { operation },
+    });
+    const response = await waitEnvelope({
+      kind: "ae_staff_query_report",
+      correlationId: requestId,
+    }, { timeoutMs: readTimeoutMs });
+    if (!response?.body || typeof response.body !== "object" || Array.isArray(response.body)) {
+      throw new Error(`AE Staff Phase ${operation} returned no response object`);
+    }
+    return response.body;
+  };
+
+  const health = async () => {
+    const payload = await query("health");
+    if (typeof payload.ok !== "boolean" || typeof payload.roleCount !== "number") {
+      throw new Error("AE Staff health response is missing live status fields");
+    }
+    return payload;
+  };
+  const list = async () => {
+    const payload = await query("list");
+    if (payload.schema !== "orange.hermes-staff-reactor.v1" || !Array.isArray(payload.roles)) {
+      throw new Error("AE Staff roster response does not match orange.hermes-staff-reactor.v1");
+    }
+    return payload;
+  };
+  const dispatch = async (args) => {
+    const event = buildAeStaffOrderEvent(args);
+    const requestId = `ae-staff-order-${randomUUID()}`;
+    await sendEnvelope({
+      id: requestId,
+      kind: "ae_staff_order",
+      correlationId: event.correlationId,
+      body: { event },
+    });
+    const response = await waitEnvelope({
+      kind: "ae_staff_report",
+      correlationId: requestId,
+    }, { timeoutMs: dispatchTimeoutMs });
+    return validateAeStaffDispatch(response.body, event.order, event.targetRoles);
+  };
+  return { health, list, order: dispatch, dispatch };
+}
+
+export function buildAeStaffOrderEvent(args = {}) {
+  if (!args || typeof args !== "object" || Array.isArray(args)) throw new TypeError("ae_staff_order arguments must be an object");
+  const order = normalizeAeStaffOrder(args.order);
+  if (!Array.isArray(args.targetRoles) || args.targetRoles.length === 0) throw new TypeError("ae_staff_order requires at least one target role");
+  if (args.targetRoles.some((roleId) => typeof roleId !== "string" || !roleId.trim())) {
+    throw new TypeError("ae_staff_order target roles must be non-empty strings");
+  }
+  const targetRoles = args.targetRoles.map((roleId) => roleId.trim());
+  if (new Set(targetRoles).size !== targetRoles.length) throw new TypeError("ae_staff_order target roles must be unique");
+  if (targetRoles.length > 50) throw new TypeError("ae_staff_order cannot target more than 50 roles");
+  const intent = typeof order.intent === "string" && order.intent.trim() ? order.intent.trim() : order.action.trim();
+  return {
+    id: order.orderId.trim(),
+    type: "staff.order",
+    topic: order.action.trim(),
+    summary: intent,
+    body: intent,
+    projectId: String(order.targetProject || order.scope || "OrangeFive"),
+    correlationId: String(args.correlationId || order.orderId),
+    order,
+    authority: order.authority || "orange-hermes-navigator",
+    custody: order.custody || null,
+    cancellation: order.cancellation || { supported: true, requested: false },
+    handoffCapsule: order.handoffCapsule || null,
+    commitments: Array.isArray(args.commitments) ? args.commitments.map(String) : (intent ? [intent] : []),
+    sourceRefs: Array.isArray(args.sourceRefs) ? args.sourceRefs : (Array.isArray(order.evidence) ? order.evidence : []),
+    targetRoles,
+    requiresModel: order.requiresModel !== false,
+  };
+}
+
+function assertCanonicalAeStaffMcpArguments(args) {
+  if (!args?.order || args.order.schema !== "orange.order.v1") {
+    throw new TypeError("ae_staff_order requires order.schema orange.order.v1");
+  }
+  for (const field of ["orderId", "action"]) {
+    if (typeof args.order[field] !== "string" || !args.order[field].trim()) {
+      throw new TypeError(`ae_staff_order requires non-empty order.${field}`);
+    }
+  }
+  buildAeStaffOrderEvent(args);
+  return args;
+}
+
+function normalizeAeStaffOrder(input) {
+  if (!input || typeof input !== "object" || Array.isArray(input)) throw new TypeError("ae_staff_order requires an order object");
+  if (typeof input.action !== "string" || !input.action.trim()) throw new TypeError("ae_staff_order requires non-empty order.action");
+  if (input.schema && input.schema !== "orange.order.v1") throw new TypeError("ae_staff_order requires order.schema orange.order.v1");
+  if (input.requiresReceipt === false) throw new TypeError("ae_staff_order refuses orders that disable receipts");
+  if (input.schema === "orange.order.v1" && typeof input.orderId === "string" && input.orderId.trim()) return input;
+  const action = input.action.trim();
+  const targetProject = String(input.targetProject || input.scope || "OrangeFive");
+  return {
+    ...input,
+    schema: "orange.order.v1",
+    orderId: typeof input.orderId === "string" && input.orderId.trim() ? input.orderId.trim() : `ae-staff-${randomUUID()}`,
+    action,
+    intent: typeof input.intent === "string" && input.intent.trim() ? input.intent.trim() : action,
+    scope: input.scope || targetProject,
+    allowedActions: Array.isArray(input.allowedActions) && input.allowedActions.length ? input.allowedActions : [action],
+    forbiddenActions: Array.isArray(input.forbiddenActions) ? input.forbiddenActions : ["destructive_write", "production_deploy", "scope_expansion"],
+    targetProject,
+    riskLevel: input.riskLevel || "medium",
+    requiresReceipt: true,
+    payload: input.payload && typeof input.payload === "object" && !Array.isArray(input.payload) ? input.payload : {},
+  };
+}
+
+function validateAeStaffDispatch(payload, order, targetRoles) {
+  if (payload?.event?.order?.schema !== "orange.order.v1"
+    || payload.event.order.orderId !== order.orderId
+    || payload.event.order.action !== order.action) {
+    throw new Error("AE Staff dispatch did not preserve the canonical orange.order.v1");
+  }
+  if (!Array.isArray(payload.results)) throw new Error("AE Staff dispatch returned no role results");
+  const byRole = new Map(payload.results.filter(Boolean).map((item) => [item.roleId, item]));
+  const reports = [];
+  const failures = [];
+  for (const roleId of targetRoles) {
+    const item = byRole.get(roleId);
+    if (!item) throw new Error(`AE Staff dispatch omitted target role ${roleId}`);
+    if (item.ok !== true) {
+      failures.push({ roleId, status: "blocked", error: item.result?.error || "AE Staff role did not complete" });
+      continue;
+    }
+    const report = validateAeStaffReport(item.result, order.orderId, roleId);
+    reports.push(report);
+    if (report.status !== "completed") {
+      failures.push({ roleId, status: report.status, blockers: report.blockers, nextAction: report.nextAction });
+    }
+  }
+  const ok = failures.length === 0 && reports.length === targetRoles.length;
+  return {
+    schema: "orange.ae-staff-mcp-dispatch.v1",
+    ok,
+    status: ok ? "completed" : "needs_attention",
+    order,
+    event: payload.event,
+    observedCount: payload.observedCount,
+    addressed: payload.addressed,
+    candidates: payload.candidates,
+    reports,
+    failures,
+    reactor: summarizeAeStaffSnapshot(payload.snapshot),
+  };
+}
+
+function validateAeStaffReport(report, orderId, roleId) {
+  if (!report || typeof report !== "object" || report.schema !== "orange.report.v1") {
+    throw new Error(`AE Staff role ${roleId} did not return orange.report.v1`);
+  }
+  if (![orderId, `${orderId}:${roleId}`].includes(report.orderId)) {
+    throw new Error(`AE Staff role ${roleId} returned a report for the wrong order`);
+  }
+  if (!["completed", "blocked", "needs_attention"].includes(report.status)) {
+    throw new Error(`AE Staff role ${roleId} returned invalid report status ${report.status || "missing"}`);
+  }
+  if (!Number.isFinite(report.confidence) || report.confidence < 0 || report.confidence > 1) {
+    throw new Error(`AE Staff role ${roleId} returned invalid report confidence`);
+  }
+  for (const field of ["actionsTaken", "evidence", "blockers"]) {
+    if (!Array.isArray(report[field])) throw new Error(`AE Staff role ${roleId} report ${field} must be an array`);
+  }
+  if (report.status === "completed" && report.evidence.length === 0) {
+    throw new Error(`AE Staff role ${roleId} claimed completion without evidence`);
+  }
+  if (typeof report.receiptPath !== "string" || !report.receiptPath.trim()) {
+    throw new Error(`AE Staff role ${roleId} returned no receipt path`);
+  }
+  return report;
+}
+
+function summarizeAeStaffSnapshot(snapshot) {
+  if (!snapshot || typeof snapshot !== "object") return null;
+  return {
+    schema: snapshot.schema,
+    status: snapshot.status,
+    roleCount: snapshot.roleCount,
+    readyCount: snapshot.readyCount,
+    runningCount: snapshot.runningCount,
+    queuedCount: snapshot.queuedCount,
+    inferenceLimit: snapshot.inferenceLimit,
+    inferenceActive: snapshot.inferenceActive,
+    toolLimit: snapshot.toolLimit,
+    toolActive: snapshot.toolActive,
+  };
+}
+
+function timeoutValue(value, fallback) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
 
 async function superstackStatus() {
@@ -328,14 +571,18 @@ function fail(id, code, message) { return { jsonrpc: "2.0", id, error: { code, m
 function resources() {
   return [
     { uri: "orange5://health", name: "OrangeFive Live Health", mimeType: "application/json" },
+    { uri: "orange5://ae-staff/health", name: "ae_staff_health", mimeType: "application/json" },
+    { uri: "orange5://ae-staff/list", name: "ae_staff_list", mimeType: "application/json" },
     { uri: "orange5://receipts/latest", name: "OrangeFive Latest Receipts", mimeType: "application/json" },
     { uri: "orange5://manual", name: "OrangeFive Operator Manual", mimeType: "text/markdown" },
     { uri: "orange5://superstack", name: "Captain Planet Model Superset", mimeType: "application/json" },
     { uri: "orange5://party-line/latest", name: "Orange Party Line", mimeType: "application/json" }
   ];
 }
-async function readResource(uri) {
+async function readResource(uri, aeStaffClient = DEFAULT_AE_STAFF_CLIENT) {
   if (uri === "orange5://health") return contents(uri, JSON.stringify(await healthSnapshot(), null, 2), "application/json");
+  if (uri === "orange5://ae-staff/health") return contents(uri, JSON.stringify(await aeStaffClient.health(), null, 2), "application/json");
+  if (uri === "orange5://ae-staff/list") return contents(uri, JSON.stringify(await aeStaffClient.list(), null, 2), "application/json");
   if (uri === "orange5://receipts/latest") return contents(uri, JSON.stringify(readReceipts(10), null, 2), "application/json");
   if (uri === "orange5://manual") {
     const file = Bun.file(`${ROOT}/00-CHARTER/ORANGEFIVE_HOW_TO_USE.md`);

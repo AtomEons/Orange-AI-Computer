@@ -4,6 +4,7 @@ param(
   [string]$DataRoot = 'C:\AtomEons\ai-box\hermes-product\data',
   [string]$OrangeModelUrl = 'http://127.0.0.1:11434/v1',
   [string]$OrangeMcpUrl = 'http://127.0.0.1:7431/mcp',
+  [string]$StaffReactorUrl = 'http://127.0.0.1:8643',
   [switch]$ProbeAgentInference,
   [int]$AgentInferenceTimeoutSec = 90,
   [switch]$WriteReceipt
@@ -15,7 +16,12 @@ $PackRoot = Split-Path -Parent $PSScriptRoot
 $Lock = Get-Content -LiteralPath (Join-Path $PackRoot 'upstream.lock.json') -Raw | ConvertFrom-Json
 $HermesHome = Join-Path $DataRoot '.hermes'
 $Checks = New-Object Collections.Generic.List[object]
-$ExpectedProfiles = @('navigator', 'builder', 'researcher', 'reviewer', 'visual', 'misfit')
+$ExecutionProfilePolicy = @('builder', 'human-operator', 'misfit', 'navigator', 'researcher', 'reviewer', 'visual')
+$ExpectedProfiles = @($ExecutionProfilePolicy)
+$StaffRosterPath = Join-Path $PackRoot 'config\staff-roster.json'
+$LogicalRoles = @()
+$NavigatorRoleId = ''
+$NavigatorProfile = 'navigator'
 $ExpectedMcpTools = @('orange5_delegate', 'orange5_health', 'orange5_order', 'orange5_receipts', 'orange5_route')
 $ExpectedProfileTools = @{
   navigator = @('orange5_delegate', 'orange5_health', 'orange5_order', 'orange5_receipts', 'orange5_route')
@@ -24,6 +30,7 @@ $ExpectedProfileTools = @{
   reviewer = @('orange5_health', 'orange5_receipts')
   visual = @('orange5_health', 'orange5_receipts')
   misfit = @('orange5_health', 'orange5_receipts')
+  'human-operator' = @('orange5_health', 'orange5_order', 'orange5_receipts', 'orange5_route')
 }
 $ExpectedNativeToolsets = @('memory', 'session_search', 'todo')
 $ExpectedProfileNativeToolsets = @{
@@ -33,6 +40,7 @@ $ExpectedProfileNativeToolsets = @{
   reviewer = @('memory', 'session_search', 'todo')
   visual = @('browser', 'memory', 'session_search', 'todo', 'vision')
   misfit = @('memory', 'session_search', 'todo')
+  'human-operator' = @('memory', 'session_search', 'todo')
 }
 
 function Add-Check([string]$Name, [string]$Status, [string]$Evidence, [bool]$Required = $true) {
@@ -57,6 +65,109 @@ function Get-OptionalProperty([object]$Object, [string]$Name) {
   if ($property) { return $property.Value }
   return $null
 }
+
+function Test-ExactStringSet([object[]]$Actual, [string[]]$Expected) {
+  $actualSorted = @($Actual | ForEach-Object { [string]$_ } | Sort-Object -Unique)
+  $expectedSorted = @($Expected | Sort-Object -Unique)
+  return $actualSorted.Count -eq $expectedSorted.Count -and -not (Compare-Object $actualSorted $expectedSorted)
+}
+
+function Test-NonEmptyStringList([object]$Value) {
+  if ($null -eq $Value -or $Value -is [string]) { return $false }
+  $items = @($Value)
+  return $items.Count -gt 0 -and @($items | Where-Object { $_ -isnot [string] -or [string]::IsNullOrWhiteSpace([string]$_) }).Count -eq 0
+}
+
+function Get-AeStaffRosterAssessment([string]$Path) {
+  if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) {
+    return [ordered]@{ status = 'BLOCKED'; ok = $false; error = "missing=$Path"; organization = $null; roles = @(); profiles = @(); declaredProfiles = @(); navigators = @(); navigatorId = ''; organizationOk = $false; idsOk = $false; profilesOk = $false; navigatorOk = $false; contractsOk = $false; workingStaffOk = $false; contractFailures = @(); managerialOnly = @(); reportingFailures = @() }
+  }
+  try {
+    $parsed = Get-Content -LiteralPath $Path -Raw | ConvertFrom-Json
+    $organization = Get-OptionalProperty $parsed 'organization'
+    $roles = @((Get-OptionalProperty $parsed 'roles'))
+    $ids = @($roles | ForEach-Object { [string](Get-OptionalProperty $_ 'id') })
+    $uniqueIds = @($ids | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Sort-Object -Unique)
+    $invalidIds = @($ids | Where-Object { [string]::IsNullOrWhiteSpace($_) -or $_ -notmatch '^[a-z0-9]+(?:-[a-z0-9]+)*$' })
+    $profiles = @($roles | ForEach-Object { [string](Get-OptionalProperty $_ 'archetype') } | Where-Object { $_ } | Sort-Object -Unique)
+    $declaredProfiles = @((Get-OptionalProperty $organization 'executionProfiles'))
+    $navigators = @($roles | Where-Object { (Get-OptionalProperty $_ 'archetype') -eq 'navigator' })
+    $navigatorId = [string](Get-OptionalProperty $organization 'navigatorId')
+    $contractFailures = @($roles | Where-Object {
+      [string]::IsNullOrWhiteSpace([string](Get-OptionalProperty $_ 'id')) -or
+      [string]::IsNullOrWhiteSpace([string](Get-OptionalProperty $_ 'title')) -or
+      [string]::IsNullOrWhiteSpace([string](Get-OptionalProperty $_ 'purpose')) -or
+      -not (Test-NonEmptyStringList (Get-OptionalProperty $_ 'concreteOutputs')) -or
+      -not (Test-NonEmptyStringList (Get-OptionalProperty $_ 'completionContract'))
+    })
+    $managerialOnly = @($roles | Where-Object {
+      (Get-OptionalProperty $_ 'managerialOnly') -eq $true -or
+      ([string](Get-OptionalProperty $_ 'roleMode')).ToLowerInvariant() -in @('managerial-only', 'management-only')
+    })
+    $reportingFailures = @($roles | Where-Object {
+      $roleId = [string](Get-OptionalProperty $_ 'id')
+      $reportsTo = [string](Get-OptionalProperty $_ 'reportsTo')
+      if ($roleId -eq $navigatorId) { return $reportsTo -ne 'operator' }
+      return $reportsTo -ne $navigatorId
+    })
+    $organizationOk = (Get-OptionalProperty $organization 'productName') -eq 'AE Staff' -and
+      ([string](Get-OptionalProperty $organization 'workTitle')).StartsWith('Wave 4:') -and
+      (Get-OptionalProperty $organization 'structure') -eq 'flat' -and
+      [int](Get-OptionalProperty $organization 'roleCount') -eq 50 -and
+      [int](Get-OptionalProperty $organization 'logicalActionRoleCount') -eq 50 -and
+      [int](Get-OptionalProperty $organization 'executionProfileCount') -eq 7
+    $idsOk = $roles.Count -eq 50 -and $ids.Count -eq 50 -and $uniqueIds.Count -eq 50 -and $invalidIds.Count -eq 0
+    $profilesOk = (Test-ExactStringSet $profiles $ExecutionProfilePolicy) -and (Test-ExactStringSet $declaredProfiles $ExecutionProfilePolicy)
+    $navigatorOk = $navigators.Count -eq 1 -and $navigatorId -and [string](Get-OptionalProperty $navigators[0] 'id') -eq $navigatorId
+    $contractsOk = $contractFailures.Count -eq 0 -and $roles.Count -eq 50
+    $workingStaffOk = $managerialOnly.Count -eq 0 -and $reportingFailures.Count -eq 0 -and $contractsOk
+    $ok = $organizationOk -and $idsOk -and $profilesOk -and $navigatorOk -and $workingStaffOk
+    return [ordered]@{
+      status = if ($ok) { 'PASS' } else { 'FAIL' }
+      ok = $ok
+      error = ''
+      organization = $organization
+      roles = $roles
+      profiles = $profiles
+      declaredProfiles = $declaredProfiles
+      navigators = $navigators
+      navigatorId = $navigatorId
+      organizationOk = $organizationOk
+      idsOk = $idsOk
+      profilesOk = $profilesOk
+      navigatorOk = $navigatorOk
+      contractsOk = $contractsOk
+      workingStaffOk = $workingStaffOk
+      contractFailures = $contractFailures
+      managerialOnly = $managerialOnly
+      reportingFailures = $reportingFailures
+    }
+  } catch {
+    return [ordered]@{ status = 'FAIL'; ok = $false; error = $_.Exception.Message; organization = $null; roles = @(); profiles = @(); declaredProfiles = @(); navigators = @(); navigatorId = ''; organizationOk = $false; idsOk = $false; profilesOk = $false; navigatorOk = $false; contractsOk = $false; workingStaffOk = $false; contractFailures = @(); managerialOnly = @(); reportingFailures = @() }
+  }
+}
+
+$RosterAssessment = Get-AeStaffRosterAssessment $StaffRosterPath
+$LogicalRoles = @($RosterAssessment.roles)
+if ($RosterAssessment.profilesOk) { $ExpectedProfiles = @($RosterAssessment.profiles) }
+if ($RosterAssessment.navigatorOk) {
+  $NavigatorRoleId = [string]$RosterAssessment.navigatorId
+  $NavigatorProfile = [string](Get-OptionalProperty $RosterAssessment.navigators[0] 'archetype')
+}
+$contractFailureIds = @($RosterAssessment.contractFailures | ForEach-Object { [string](Get-OptionalProperty $_ 'id') })
+$managerialOnlyIds = @($RosterAssessment.managerialOnly | ForEach-Object { [string](Get-OptionalProperty $_ 'id') })
+$reportingFailureIds = @($RosterAssessment.reportingFailures | ForEach-Object { [string](Get-OptionalProperty $_ 'id') })
+Add-Check 'ae-staff-wave4-roster-contract' $RosterAssessment.status "roles=$($LogicalRoles.Count);organization=$($RosterAssessment.organizationOk);uniqueIds=$($RosterAssessment.idsOk);contracts=$($RosterAssessment.contractsOk);error=$($RosterAssessment.error)"
+Add-Check 'ae-staff-wave4-seven-profile-mapping' $(if ($RosterAssessment.profilesOk) { 'PASS' } else { $RosterAssessment.status }) "mapped=$(@($RosterAssessment.profiles) -join ',');expected=$($ExecutionProfilePolicy -join ',')"
+Add-Check 'ae-staff-wave4-single-navigator' $(if ($RosterAssessment.navigatorOk) { 'PASS' } else { $RosterAssessment.status }) "roleId=$NavigatorRoleId;profile=$NavigatorProfile;count=$(@($RosterAssessment.navigators).Count)"
+Add-Check 'ae-staff-wave4-role-contracts' $(if ($RosterAssessment.contractsOk) { 'PASS' } else { $RosterAssessment.status }) $(if ($contractFailureIds.Count) { $contractFailureIds -join ',' } else { 'all-50-have-concrete-outputs-and-completion-contracts' })
+$rosterStructure = [string](Get-OptionalProperty $RosterAssessment.organization 'structure')
+Add-Check 'ae-staff-wave4-no-managerial-only-roles' $(if ($RosterAssessment.workingStaffOk) { 'PASS' } else { $RosterAssessment.status }) "managerialOnly=$($managerialOnlyIds -join ',');reportingFailures=$($reportingFailureIds -join ',');structure=$rosterStructure"
+$permissionMappingFailures = @($LogicalRoles | Where-Object {
+  $profile = [string](Get-OptionalProperty $_ 'archetype')
+  -not $ExpectedProfileTools.ContainsKey($profile) -or -not $ExpectedProfileNativeToolsets.ContainsKey($profile)
+})
+Add-Check 'ae-staff-wave4-profile-permission-mapping' $(if ($permissionMappingFailures.Count -eq 0 -and $LogicalRoles.Count -eq 50) { 'PASS' } else { $RosterAssessment.status }) $(if ($permissionMappingFailures.Count) { @($permissionMappingFailures | ForEach-Object { Get-OptionalProperty $_ 'id' }) -join ',' } else { '50-logical-roles-map-to-seven-profile-permission-sets' })
 
 function Get-ProcessOwnerIdentity([object]$Process) {
   try {
@@ -258,7 +369,14 @@ Add-Check 'isolated-profiles' $(if ($missingProfiles.Count -eq 0) { 'PASS' } els
 
 $ownerConfig = Join-Path $HermesHome 'config.yaml'
 $ownerConfigText = if (Test-Path -LiteralPath $ownerConfig) { Get-Content -LiteralPath $ownerConfig -Raw } else { '' }
-$ownerConfigOk = $ownerConfigText -match '(?m)^\s*multiplex_profiles:\s*true\s*$' -and $ownerConfigText -match '(?m)^\s*dispatch_in_gateway:\s*true\s*$'
+$allowlistMatch = [regex]::Match($ownerConfigText, '(?ms)^\s{2}multiplex_profile_allowlist:\s*\r?\n(?<items>(?:\s{4}-\s*[^\r\n]+\r?\n)+)')
+$ownerAllowlist = if ($allowlistMatch.Success) {
+  @([regex]::Matches($allowlistMatch.Groups['items'].Value, '(?m)^\s{4}-\s*(?<profile>[^\s#]+)\s*$') | ForEach-Object { $_.Groups['profile'].Value })
+} else { @() }
+$ownerAllowlistOk = Test-ExactStringSet $ownerAllowlist $ExpectedProfiles
+$ownerConfigOk = $ownerConfigText -match '(?m)^\s*multiplex_profiles:\s*true\s*$' -and
+  $ownerConfigText -match '(?m)^\s*dispatch_in_gateway:\s*true\s*$' -and
+  $ownerAllowlistOk
 $missingNamedConfigs = @($ExpectedProfiles | Where-Object { -not (Test-Path -LiteralPath (Join-Path $HermesHome "profiles\$_\config.yaml")) })
 $namedConfigBad = @($ExpectedProfiles | Where-Object {
   $path = Join-Path $HermesHome "profiles\$_\config.yaml"
@@ -272,7 +390,7 @@ $namedConfigBad = @($ExpectedProfiles | Where-Object {
 if (-not (Test-Path -LiteralPath $ownerConfig) -or $missingNamedConfigs.Count) {
   Add-Check 'single-dispatcher-config' 'BLOCKED' "ownerPresent=$(Test-Path -LiteralPath $ownerConfig);missingNamed=$($missingNamedConfigs -join ',')"
 } else {
-  Add-Check 'single-dispatcher-config' $(if ($ownerConfigOk -and $namedConfigBad.Count -eq 0) { 'PASS' } else { 'FAIL' }) "owner=$ownerConfigOk;badNamed=$($namedConfigBad -join ',')"
+  Add-Check 'single-dispatcher-config' $(if ($ownerConfigOk -and $namedConfigBad.Count -eq 0) { 'PASS' } else { 'FAIL' }) "owner=$ownerConfigOk;allowlist=$($ownerAllowlist -join ',');expected=$($ExpectedProfiles -join ',');badNamed=$($namedConfigBad -join ',')"
 }
 
 $launchPath = Join-Path $DataRoot 'gateway-launch.json'
@@ -288,7 +406,8 @@ if ($listenerOwner.status -eq 'PASS') {
   $entrypointOk = $process.CommandLine -and $process.CommandLine.IndexOf($hermes, [StringComparison]::OrdinalIgnoreCase) -ge 0
   $exeOk = $directExeOk -or $entrypointOk
   $homeOk = [IO.Path]::GetFullPath([string]$launch.hermesHome) -eq [IO.Path]::GetFullPath($HermesHome)
-  $namedGateway = @($listenerOwner.chain.processes | Where-Object { $_.CommandLine -match '(?i)(?:--profile|-p)\s+(navigator|builder|researcher|reviewer|visual|misfit)' }).Count -gt 0
+  $namedProfilePattern = @($ExpectedProfiles | ForEach-Object { [regex]::Escape($_) }) -join '|'
+  $namedGateway = @($listenerOwner.chain.processes | Where-Object { $_.CommandLine -match "(?i)(?:--profile|-p)\s+(?:$namedProfilePattern)(?:\s|$)" }).Count -gt 0
   $gatewayCommands = @($listenerOwner.chain.processes | Where-Object {
     $_.CommandLine -and $_.CommandLine -match '(?i)gateway\s+run' -and $_.CommandLine -match '(?i)--external-supervisor'
   })
@@ -330,6 +449,21 @@ try {
   Add-Check 'orange-brain-mcp' $(if ($mcpOk) { 'PASS' } else { 'FAIL' }) "url=$OrangeMcpUrl;protocol=$($mcpHealth.protocol);transport=$($mcpHealth.transport)"
 } catch { Add-Check 'orange-brain-mcp' 'BLOCKED' "url=$OrangeMcpUrl;error=$($_.Exception.Message)" }
 
+try {
+  $staffHealth = Invoke-RestMethod -Uri "$($StaffReactorUrl.TrimEnd('/'))/health" -TimeoutSec 5
+  $activeActors = [int]$staffHealth.readyCount + [int]$staffHealth.runningCount
+  $staffLive = $staffHealth.ok -eq $true -and
+    $staffHealth.schema -eq 'orange.hermes-staff-reactor.v1' -and
+    $staffHealth.status -eq 'LIVE' -and
+    [int]$staffHealth.roleCount -eq 50 -and
+    $activeActors -eq 50 -and
+    [int]$staffHealth.inferenceLimit -gt 0 -and
+    [int]$staffHealth.inferenceLimit -lt 50
+  Add-Check 'ae-staff-wave4-live-actors' $(if ($staffLive) { 'PASS' } else { 'FAIL' }) "url=$StaffReactorUrl;status=$($staffHealth.status);roles=$($staffHealth.roleCount);active=$activeActors;inferenceLimit=$($staffHealth.inferenceLimit)"
+} catch {
+  Add-Check 'ae-staff-wave4-live-actors' 'BLOCKED' "url=$StaffReactorUrl;error=$($_.Exception.Message)"
+}
+
 $ownerEnv = Join-Path $HermesHome '.env'
 $apiKey = $null
 if (Test-Path -LiteralPath $ownerEnv) {
@@ -359,6 +493,7 @@ $uniqueKeys = @($nonEmptyKeys | Sort-Object -Unique)
 $keysDistinct = $nonEmptyKeys.Count -eq ($ExpectedProfiles.Count + 1) -and $uniqueKeys.Count -eq $nonEmptyKeys.Count
 Add-Check 'profile-api-keys-distinct' $(if ($keysDistinct) { 'PASS' } elseif ($aclMissing.Count) { 'BLOCKED' } else { 'FAIL' }) "present=$($nonEmptyKeys.Count);unique=$($uniqueKeys.Count);expected=$($ExpectedProfiles.Count + 1)"
 
+$inferenceRequests = 0
 if ($apiKey) {
   $positive = Get-HttpStatus 'http://127.0.0.1:8642/v1/capabilities' @{ Authorization = "Bearer $apiKey" }
   $noAuth = Get-HttpStatus 'http://127.0.0.1:8642/v1/capabilities'
@@ -403,18 +538,22 @@ if ($apiKey) {
   Add-Check 'cross-profile-auth-rejection' $(if ($crossAuthFailures.Count -eq 0 -and $keysDistinct) { 'PASS' } else { 'FAIL' }) $(if ($crossAuthFailures.Count) { $crossAuthFailures -join ',' } else { 'owner-and-peer-keys-rejected' })
 
   if ($ProbeAgentInference) {
-    if ($surfaceFailures.Count -gt 0) {
-      Add-Check 'navigator-agent-inference' 'BLOCKED' 'filtered-profile-surface-not-ready;inference-not-sent'
+    if (-not $RosterAssessment.ok) {
+      Add-Check 'ae-staff-wave4-navigator-inference' 'BLOCKED' 'roster-contract-not-ready;inference-not-sent'
+    } elseif ($surfaceFailures.Count -gt 0) {
+      Add-Check 'ae-staff-wave4-navigator-inference' 'BLOCKED' 'filtered-profile-surface-not-ready;inference-not-sent'
+    } elseif (-not $profileKeys.ContainsKey($NavigatorProfile)) {
+      Add-Check 'ae-staff-wave4-navigator-inference' 'BLOCKED' "navigator-profile-key-missing=$NavigatorProfile;inference-not-sent"
     } else {
       $nonce = "HERMES_CODEXA_PROOF_$([Guid]::NewGuid().ToString('N').Substring(0, 12).ToUpperInvariant())"
       $agentHeaders = @{
-        Authorization = "Bearer $($profileKeys['navigator'])"
+        Authorization = "Bearer $($profileKeys[$NavigatorProfile])"
         'Content-Type' = 'application/json'
         'X-Hermes-Session-Id' = "preflight-$([Guid]::NewGuid().ToString('N'))"
-        'X-Hermes-Session-Key' = 'orange5-hermes-preflight'
+        'X-Hermes-Session-Key' = 'ae-staff-wave4-preflight'
       }
       $agentBody = [ordered]@{
-        model = 'navigator'
+        model = $NavigatorProfile
         messages = @(@{ role = 'user'; content = "Reply with exactly $nonce and nothing else. Do not use tools." })
         max_tokens = 64
         temperature = 0
@@ -422,7 +561,8 @@ if ($apiKey) {
       } | ConvertTo-Json -Depth 8 -Compress
       $agentStarted = Get-Date
       try {
-        $agentResponse = Invoke-WebRequest -UseBasicParsing -Uri 'http://127.0.0.1:8642/p/navigator/v1/chat/completions' -Method Post -Headers $agentHeaders -Body $agentBody -TimeoutSec $AgentInferenceTimeoutSec
+        $inferenceRequests += 1
+        $agentResponse = Invoke-WebRequest -UseBasicParsing -Uri "http://127.0.0.1:8642/p/$NavigatorProfile/v1/chat/completions" -Method Post -Headers $agentHeaders -Body $agentBody -TimeoutSec $AgentInferenceTimeoutSec
         $agentParsed = $agentResponse.Content | ConvertFrom-Json
         $agentContent = [string]$agentParsed.choices[0].message.content
         $agentLatencyMs = [int]((Get-Date) - $agentStarted).TotalMilliseconds
@@ -437,14 +577,14 @@ if ($apiKey) {
             $null -ne $compiled.blockers -and -not [string]::IsNullOrWhiteSpace([string]$compiled.nextAction)
         } catch { $validOrangeReport = $false }
         $agentOk = $agentResponse.StatusCode -eq 200 -and ($containsNonce -or $validOrangeReport)
-        Add-Check 'navigator-agent-inference' $(if ($agentOk) { 'PASS' } else { 'FAIL' }) "status=$($agentResponse.StatusCode);model=$($agentParsed.model);containsNonce=$containsNonce;validOrangeReport=$validOrangeReport;latencyMs=$agentLatencyMs"
+        Add-Check 'ae-staff-wave4-navigator-inference' $(if ($agentOk -and $inferenceRequests -eq 1) { 'PASS' } else { 'FAIL' }) "roleId=$NavigatorRoleId;profile=$NavigatorProfile;requests=$inferenceRequests;status=$($agentResponse.StatusCode);model=$($agentParsed.model);containsNonce=$containsNonce;validOrangeReport=$validOrangeReport;latencyMs=$agentLatencyMs"
       } catch {
         $agentLatencyMs = [int]((Get-Date) - $agentStarted).TotalMilliseconds
-        Add-Check 'navigator-agent-inference' 'FAIL' "error=$($_.Exception.Message);latencyMs=$agentLatencyMs"
+        Add-Check 'ae-staff-wave4-navigator-inference' 'FAIL' "roleId=$NavigatorRoleId;profile=$NavigatorProfile;requests=$inferenceRequests;error=$($_.Exception.Message);latencyMs=$agentLatencyMs"
       }
     }
   } else {
-    Add-Check 'navigator-agent-inference' 'SKIPPED' 'enable-with=-ProbeAgentInference' $false
+    Add-Check 'ae-staff-wave4-navigator-inference' 'SKIPPED' "roleId=$NavigatorRoleId;profile=$NavigatorProfile;requests=0;enable-with=-ProbeAgentInference" $false
   }
 } else {
   Add-Check 'openai-loopback-api' 'BLOCKED' 'runtime-api-key-missing'
@@ -452,7 +592,7 @@ if ($apiKey) {
   Add-Check 'multiplex-profile-api-routes' 'BLOCKED' 'runtime-api-key-missing'
   Add-Check 'profile-filtered-mcp-surfaces' 'BLOCKED' 'runtime-api-key-missing'
   Add-Check 'cross-profile-auth-rejection' 'BLOCKED' 'runtime-api-key-missing'
-  Add-Check 'navigator-agent-inference' 'BLOCKED' 'runtime-api-key-missing' ([bool]$ProbeAgentInference)
+  Add-Check 'ae-staff-wave4-navigator-inference' 'BLOCKED' "roleId=$NavigatorRoleId;profile=$NavigatorProfile;requests=0;runtime-api-key-missing" ([bool]$ProbeAgentInference)
 }
 
 try {
@@ -469,6 +609,17 @@ $report = [ordered]@{
   status = $overall
   pinnedVersion = $Lock.packageVersion
   pinnedCommit = $Lock.commit
+  aeStaff = [ordered]@{
+    wave = 4
+    productName = 'AE Staff'
+    rosterPath = $StaffRosterPath
+    logicalRoleCount = $LogicalRoles.Count
+    executionProfiles = $ExpectedProfiles
+    navigatorRoleId = $NavigatorRoleId
+    navigatorProfile = $NavigatorProfile
+    staffReactorUrl = $StaffReactorUrl
+    inferenceRequests = $inferenceRequests
+  }
   checks = $Checks
   blockers = @($requiredBad | ForEach-Object { $_.name })
   receiptPath = $null

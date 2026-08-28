@@ -10,8 +10,8 @@
 //   - Reality always overrides Thought on conflict. Receipts override
 //     recollection. The StateBrief shape must surface conflicts honestly
 //     rather than silently picking a winner.
-//   - Æ Cobra daemon at 127.0.0.1:7419 is the live source. On unreachable
-//     fall back to the N150 shadow cache under 06-ORANGELLM/memory/cache/.
+//   - AE Cobra daemon at 127.0.0.1:7419 is the live source. On unreachable,
+//     fall back to the N150 shadow snapshot under OrangeBox-Data.
 //
 // Exports:
 //   registerMemoryRoutes(server, opts)
@@ -19,7 +19,7 @@
 //     - opts   : {
 //         cobraUrl?:     string    // default http://127.0.0.1:7419
 //         cobraTimeoutMs?: number  // default 1500
-//         cacheDir?:     string    // default <repo>/06-ORANGELLM/memory/cache
+//         cacheDir?:     string    // default %USERPROFILE%/OrangeBox-Data/orange5/memory-shadow
 //         defaults?:     { lanes, time_range_ms, max_records,
 //                          include_conflicts } // applied by /recall
 //         log?:          (line) => void
@@ -36,8 +36,9 @@
 
 import { URL } from "node:url";
 import { promises as fs } from "node:fs";
+import os from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { readShadowCache } from "../../memory/cache/shadow-reader.mjs";
 
 // ---------------------------------------------------------------------------
 // Defaults
@@ -69,10 +70,17 @@ const MAX_BODY_BYTES = 256 * 1024; // 256 KiB caps memory request bodies
 // ---------------------------------------------------------------------------
 
 function resolveDefaultCacheDir() {
-  // <repo>/06-ORANGELLM/memory/cache, located relative to this file.
-  const here = path.dirname(fileURLToPath(import.meta.url));
-  // server/routes/memory.mjs -> server/routes -> server -> 06-ORANGELLM
-  return path.resolve(here, "..", "..", "memory", "cache");
+  return path.resolve(
+    process.env.ORANGE5_CACHE_DIR
+      || path.join(process.env.USERPROFILE || os.homedir(), "OrangeBox-Data", "orange5", "memory-shadow"),
+  );
+}
+
+function resolveDefaultEventsDir() {
+  return path.resolve(
+    process.env.ORANGE5_COBRA_FLUX_ROOT
+      || path.join(process.env.USERPROFILE || os.homedir(), "OrangeBox-Data", "orange5", "ae-cobra-flux", "events"),
+  );
 }
 
 function jsonResponse(res, body, status = 200) {
@@ -331,7 +339,7 @@ function filterShadowSnapshot(snapshot, normalized) {
 // Handlers (pure-ish; take config, return body)
 // ---------------------------------------------------------------------------
 
-async function handleStateBrief(rawBody, cfg) {
+async function handleStateBriefLegacy(rawBody, cfg) {
   const normalized = normalizeStateBriefBody(rawBody, STATE_BRIEF_DEFAULTS);
 
   // Try Æ Cobra first.
@@ -398,6 +406,96 @@ async function handleStateBrief(rawBody, cfg) {
   };
 }
 
+async function handleStateBrief(rawBody, cfg) {
+  const normalized = normalizeStateBriefBody(rawBody, STATE_BRIEF_DEFAULTS);
+  try {
+    const data = await callCobraStateBrief(cfg.cobraUrl, normalized, cfg.cobraTimeoutMs);
+    return {
+      status: 200,
+      body: {
+        ...data,
+        source: data.source || "ae_cobra",
+        degraded: false,
+        served_by: "ae_cobra",
+        generated_at: data.generated_at || nowIso(),
+        echo_request: normalized,
+      },
+    };
+  } catch (error) {
+    cfg.log(`[memory] AE Cobra unreachable: ${error.message}; reading canonical disk ledger`);
+  }
+
+  let disk;
+  try {
+    const now = Date.now();
+    const requestedLanes = [...new Set(normalized.lanes.map((lane) => ({ receipt: "reality", conflict: "reality" }[lane] || lane)))];
+    disk = await readShadowCache({
+      lanes: requestedLanes,
+      startMs: now - normalized.time_range_ms,
+      endMs: now,
+      maxRecords: Math.max(normalized.max_records * 4, 64),
+      sourceDir: cfg.eventsDir,
+    });
+  } catch (error) {
+    cfg.log(`[memory] canonical disk read failed: ${error.message}`);
+  }
+
+  if (!disk || disk.records.length === 0) {
+    return {
+      status: 503,
+      body: {
+        error: {
+          message: "memory plane unreachable: AE Cobra down and no canonical ledger records are readable",
+          type: "memory_unavailable",
+          code: 503,
+        },
+        served_by: "none",
+        cobra_url: cfg.cobraUrl,
+        events_dir: cfg.eventsDir,
+        echo_request: normalized,
+      },
+    };
+  }
+
+  const queryTerms = normalized.query.toLowerCase().match(/[a-z0-9][a-z0-9._-]+/g) || [];
+  const rank = (record) => {
+    const text = [record.summary, record.kind, record.origin, ...(record.entities || []), ...(record.files || [])]
+      .filter(Boolean).join(" ").toLowerCase();
+    return queryTerms.reduce((score, term) => score + (text.includes(term) ? 1 : 0), 0);
+  };
+  const select = (lane) => (disk.by_lane[lane] || [])
+    .map((record) => ({ record, score: rank(record) }))
+    .filter((item) => queryTerms.length === 0 || item.score > 0)
+    .sort((a, b) => b.score - a.score || Number(b.record.ts || 0) - Number(a.record.ts || 0))
+    .slice(0, normalized.max_records)
+    .map((item) => item.record);
+  const reality = select("reality");
+  const thought = select("thought");
+  return {
+    status: 200,
+    body: {
+      schema: "orange5.state-brief.disk-fallback.v1",
+      query: normalized.query,
+      reality,
+      thought,
+      conflicts: [],
+      recommended_next_action: thought[0]?.next_action || reality[0]?.next_action || null,
+      confidence: queryTerms.length === 0 ? 0.7 : Math.min(0.8, (reality.length + thought.length) / Math.max(1, normalized.max_records)),
+      retrieval: {
+        method: "canonical_disk_ranked_token_overlap_v1",
+        source: disk.source,
+        source_dir: disk.source_dir,
+        freshness: disk.freshness,
+      },
+      degraded: true,
+      served_by: "canonical_disk_fallback",
+      cobra_url: cfg.cobraUrl,
+      generated_at: nowIso(),
+      echo_request: normalized,
+    },
+  };
+}
+
 async function handleRecall(rawBody, cfg) {
   const src = rawBody && typeof rawBody === "object" ? rawBody : {};
   if (typeof src.query !== "string" || !src.query.trim()) {
@@ -425,7 +523,7 @@ async function handleRecall(rawBody, cfg) {
   return handleStateBrief(merged, cfg);
 }
 
-async function handleMemoryHealth(cfg) {
+async function handleMemoryHealthLegacy(cfg) {
   const [cobra, shadow] = await Promise.all([
     probeCobra(cfg.cobraUrl, cfg.cobraTimeoutMs),
     shadowHealth(cfg.cacheDir),
@@ -449,6 +547,25 @@ async function handleMemoryHealth(cfg) {
   };
 }
 
+async function handleMemoryHealth(cfg) {
+  const [cobra, disk] = await Promise.all([
+    probeCobra(cfg.cobraUrl, cfg.cobraTimeoutMs),
+    readShadowCache({ lanes: ["reality", "thought"], maxRecords: 1, sourceDir: cfg.eventsDir })
+      .then((result) => ({ live: result.records.length > 0, source: result.source, path: result.source_dir, freshness: result.freshness }))
+      .catch((error) => ({ live: false, path: cfg.eventsDir, reason: error.message })),
+  ]);
+  const serving = cobra.live ? "ae_cobra" : (disk.live ? "canonical_disk_fallback" : "none");
+  return {
+    status: serving === "none" ? "down" : (cobra.live ? "ok" : "degraded"),
+    service: "orangellm-memory",
+    serving,
+    cobra,
+    canonical_disk: disk,
+    law: "Reality > Thought on conflict. Receipts > recollection. Canonical disk is the degraded daemon fallback.",
+    generated_at: nowIso(),
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Public: registerMemoryRoutes(server, opts)
 // ---------------------------------------------------------------------------
@@ -460,6 +577,7 @@ export function createMemoryRouteConfig(opts = {}) {
       ? opts.cobraTimeoutMs
       : COBRA_DEFAULT_TIMEOUT_MS,
     cacheDir: opts.cacheDir || resolveDefaultCacheDir(),
+    eventsDir: opts.eventsDir || resolveDefaultEventsDir(),
     recallDefaults: { ...RECALL_DEFAULTS, ...(opts.defaults || {}) },
     log: typeof opts.log === "function" ? opts.log : (line) => {
       // eslint-disable-next-line no-console

@@ -2,28 +2,29 @@ import { describe, expect, test } from 'bun:test';
 import { chat, healthSnapshot } from '../orange5-headless-core.mjs';
 
 describe('OrangeFive governed chat', () => {
-  test('health discovery never rewrites live compute-fabric state', async () => {
-    let options = null;
-    await healthSnapshot({
-      discoverFabric: async (input) => {
-        options = input;
-        return { status: 'OPERATIONAL_DISTRIBUTED', operational: true, selections: {}, nodes: [] };
+  test('health reads the local AE Phase fabric without probing direct Codexa services', async () => {
+    let phaseUrl = null;
+    const result = await healthSnapshot({
+      fetchBrain: async () => ({ ok: true, body: { primary: { live: true } } }),
+      fetchPhase: async (url) => {
+        phaseUrl = url;
+        return { ok: true, body: { ok: true, status: 'AE_PHASE_FABRIC_ACTIVE', authenticated: true, connectedPeers: 1, backpressured: false, peers: [{ nodeId: 'CODEXA', stateConverged: true }] } };
       },
+      resolveFabric: () => ({ crossNodeTransport: 'ae-phase', phaseUrl: 'http://127.0.0.1:8907', inferenceHost: 'CODEXA', inferenceNodeId: 'codexa' }),
     });
-    expect(options).toMatchObject({ timeoutMs: 900, persist: false });
+    expect(phaseUrl).toBe('http://127.0.0.1:8907/health');
+    expect(result.codexa).toMatchObject({ reachable: true, authorized: true, executable: true, transport: 'ae-phase' });
   });
 
   test('Codexa offline is explicit while the local brain remains honestly operational', async () => {
     const result = await healthSnapshot({
       fetchBrain: async () => ({ ok: true, status: 200, latencyMs: 2, body: { version: 'test', primary: { tier: 'reflex', model: 'deterministic', host: 'local', live: true } } }),
-      discoverFabric: async () => ({
-        status: 'OPERATIONAL_SINGLE_MACHINE', operational: true, operatorDecisionRequired: false,
-        selections: { rail: null, inference: { nodeId: 'local', host: '127.0.0.1' } }, nodes: [],
-      }),
+      fetchPhase: async () => ({ ok: true, body: { ok: true, status: 'AE_PHASE_FABRIC_ACTIVE', authenticated: true, connectedPeers: 0, backpressured: false, peers: [] } }),
+      resolveFabric: () => ({ crossNodeTransport: 'ae-phase', phaseUrl: 'http://127.0.0.1:8907', inferenceHost: 'CODEXA', inferenceNodeId: 'codexa' }),
     });
     expect(result.status).toBe('OPERATIONAL');
     expect(result.codexa).toMatchObject({ reachable: false, authorized: false, executable: false });
-    expect(result.blockers).toContain('Codexa command rail is unavailable; Orange continues in local-only mode.');
+    expect(result.blockers).toContain('AE Phase has no authenticated Codexa compute peer; Orange continues in local-only mode.');
   });
 
   test('ordinary chat crosses the spine and closes the learning loop', async () => {

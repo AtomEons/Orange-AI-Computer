@@ -122,7 +122,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-owner.ps1 -A
 ```
 
 Do not start gateways for Navigator, Builder, Researcher, Reviewer, Visual, or
-Misfit. The default gateway multiplexes all six and owns the only dispatcher.
+Misfit, and Human Operator. The default gateway multiplexes all seven and owns the only dispatcher.
 The owner starts hidden with `hermes gateway run --external-supervisor`; plain
 `hermes gateway` is not a valid production launch command.
 
@@ -145,7 +145,7 @@ an agent run with unintended capabilities.
 `READY` requires all of these to pass at the same time:
 
 - installed version and commit
-- six materialized profiles
+- seven materialized profiles
 - exactly one TCP listener at `127.0.0.1:8642`, owned by a process descended
   from the recorded gateway launch PID
 - listener-to-launch process ownership restricted to the invoking user or SYSTEM

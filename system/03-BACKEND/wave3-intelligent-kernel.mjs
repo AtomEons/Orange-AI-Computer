@@ -1,4 +1,10 @@
 import { createHash } from 'node:crypto';
+import {
+  createWave3MechanismAbi,
+  describeWave3MechanismAbi,
+  rankWave3Mechanisms,
+  resolveWave3Constitution,
+} from './wave3-mechanism-abi.mjs';
 
 export const WAVE3_KERNEL_SCHEMA = 'orange.wave3-intelligent-kernel.v1';
 export const WAVE3_WORKSET_SCHEMA = 'orange.wave3-intelligent-kernel.workset.v1';
@@ -231,6 +237,12 @@ export const WAVE3_NON_NEGOTIABLE_IDS = Object.freeze([
 
 const MECHANISM_IDS = Object.freeze(WAVE3_MECHANISMS.map(({ id }) => id));
 const MECHANISM_ID_SET = new Set(MECHANISM_IDS);
+export const WAVE3_MECHANISM_ABI = createWave3MechanismAbi({
+  mechanisms: WAVE3_MECHANISMS,
+  organs: WAVE3_KERNEL_ORGANS,
+  nonNegotiableIds: WAVE3_NON_NEGOTIABLE_IDS,
+});
+export const WAVE3_MECHANISM_ABI_MANIFEST = describeWave3MechanismAbi(WAVE3_MECHANISM_ABI);
 
 export function encodeWave3Activation(activeMechanismIds = []) {
   const requested = new Set(activeMechanismIds);
@@ -280,24 +292,29 @@ function containsKeyword(normalizedText, keyword) {
   return new RegExp(`\\b${normalizedKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(normalizedText);
 }
 
-function selectOrgans(text) {
+function selectedOrgans(text) {
   const normalized = String(text ?? '').toLowerCase();
-  const matched = WAVE3_KERNEL_ORGANS.map((organ) => {
-    const signals = organ.keywords.filter((keyword) => containsKeyword(normalized, keyword));
-    return { organ, signals };
-  }).filter(({ signals }) => signals.length > 0);
-
-  if (matched.length === 0) {
-    const fallback = WAVE3_KERNEL_ORGANS[1];
-    return [{ organ: fallback, signals: ['default_problem_formulation'] }];
-  }
-  return matched;
+  return WAVE3_KERNEL_ORGANS.map((organ) => Object.freeze({
+    organId: organ.id,
+    signals: Object.freeze(organ.keywords.filter((keyword) => containsKeyword(normalized, keyword))),
+  })).filter(({ signals }) => signals.length > 0);
 }
 
-export function compileWave3Kernel(work, { inheritedKernel = null } = {}) {
-  const selected = selectOrgans(workText(work));
-  const selectedOrganIds = new Set(selected.map(({ organ }) => organ.id));
+export function compileWave3Kernel(work, {
+  inheritedKernel = null,
+  maxMechanisms = 24,
+  maxPerOrgan = 3,
+} = {}) {
+  const text = workText(work);
+  const ranked = rankWave3Mechanisms({ text, abi: WAVE3_MECHANISM_ABI });
+  const organMatches = selectedOrgans(text);
   const activeIds = new Set(WAVE3_NON_NEGOTIABLE_IDS);
+  const selection = new Map(WAVE3_NON_NEGOTIABLE_IDS.map((mechanismId) => [mechanismId, Object.freeze({
+    mechanismId,
+    reason: 'constitutional_non_negotiable',
+    score: Number.POSITIVE_INFINITY,
+    signals: Object.freeze([]),
+  })]));
   if (inheritedKernel) {
     if (inheritedKernel.manifestHash && inheritedKernel.manifestHash !== WAVE3_KERNEL_MANIFEST_HASH) {
       throw new Error('inherited Wave 3 kernel manifest does not match the active manifest');
@@ -308,10 +325,57 @@ export function compileWave3Kernel(work, { inheritedKernel = null } = {}) {
     for (const id of inheritedIds) {
       if (!MECHANISM_ID_SET.has(id)) throw new Error(`unknown inherited Wave 3 mechanism id: ${id}`);
       activeIds.add(id);
+      if (!selection.has(id)) selection.set(id, Object.freeze({
+        mechanismId: id,
+        reason: 'inherited_active_law',
+        score: Number.POSITIVE_INFINITY,
+        signals: Object.freeze([]),
+      }));
     }
   }
-  for (const mechanism of WAVE3_MECHANISMS) {
-    if (selectedOrganIds.has(mechanism.organId)) activeIds.add(mechanism.id);
+
+  const explicitIds = Array.isArray(work?.requiredMechanismIds) ? [...new Set(work.requiredMechanismIds)] : [];
+  for (const id of explicitIds) {
+    if (!MECHANISM_ID_SET.has(id)) throw new Error(`unknown required Wave 3 mechanism id: ${id}`);
+    activeIds.add(id);
+    selection.set(id, Object.freeze({
+      mechanismId: id,
+      reason: 'work_object_required',
+      score: Number.POSITIVE_INFINITY,
+      signals: Object.freeze([]),
+    }));
+  }
+
+  const boundedMaximum = Math.max(activeIds.size, Math.min(100, Math.max(12, Number(maxMechanisms) || 24)));
+  const perOrganCount = new Map();
+  for (const id of activeIds) {
+    const organId = WAVE3_MECHANISMS.find((mechanism) => mechanism.id === id)?.organId;
+    if (organId) perOrganCount.set(organId, (perOrganCount.get(organId) ?? 0) + 1);
+  }
+  for (const candidate of ranked) {
+    if (activeIds.size >= boundedMaximum) break;
+    const { mechanismId, descriptor, score, signals } = candidate;
+    if (activeIds.has(mechanismId)) continue;
+    const selectedInOrgan = perOrganCount.get(descriptor.organId) ?? 0;
+    if (selectedInOrgan >= Math.max(1, Number(maxPerOrgan) || 3)) continue;
+    activeIds.add(mechanismId);
+    perOrganCount.set(descriptor.organId, selectedInOrgan + 1);
+    selection.set(mechanismId, Object.freeze({
+      mechanismId,
+      reason: 'task_signal_match',
+      score,
+      signals,
+    }));
+  }
+
+  if (ranked.length === 0 && !activeIds.has('W3K-010')) {
+    activeIds.add('W3K-010');
+    selection.set('W3K-010', Object.freeze({
+      mechanismId: 'W3K-010',
+      reason: 'default_problem_formulation',
+      score: 1,
+      signals: Object.freeze(['default_problem_formulation']),
+    }));
   }
 
   const activeMechanismIds = WAVE3_MECHANISMS
@@ -322,12 +386,31 @@ export function compileWave3Kernel(work, { inheritedKernel = null } = {}) {
     activationBitset,
     activeMechanismIds,
     manifestHash: WAVE3_KERNEL_MANIFEST_HASH,
+    mechanismAbiHash: WAVE3_MECHANISM_ABI_MANIFEST.abiHash,
   };
+  const workId = String(work?.workId ?? `work-${hash(text).slice(0, 20)}`);
+  const objective = String((work?.objective ?? text) || 'govern work');
+  const obligations = activeMechanismIds.map((mechanismId) => WAVE3_MECHANISM_ABI.get(mechanismId).enforce({
+    workId,
+    objective,
+    manifestHash: WAVE3_KERNEL_MANIFEST_HASH,
+  }));
+  const constitution = resolveWave3Constitution(obligations);
   const worksetHash = hash({
     ...payload,
+    obligations,
+    constitutionHash: constitution.resolutionHash,
     inheritedWorksetHash: inheritedKernel?.worksetHash || null,
     sourceWorkId: work?.workId ?? null,
-    sourceHash: work?.source?.sha256 ?? hash(workText(work)),
+    sourceHash: work?.source?.sha256 ?? hash(text),
   });
-  return Object.freeze({ ...payload, worksetHash });
+  return Object.freeze({
+    ...payload,
+    worksetHash,
+    selection: Object.freeze(activeMechanismIds.map((id) => selection.get(id))),
+    selectedOrgans: Object.freeze(organMatches),
+    obligations: Object.freeze(obligations),
+    constitution,
+    sleepingMechanismCount: WAVE3_MECHANISMS.length - activeMechanismIds.length,
+  });
 }

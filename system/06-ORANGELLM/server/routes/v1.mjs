@@ -6,8 +6,9 @@ import { UPSTREAM, coalesceSystemMessages, proxyChatCompletions, probeUpstreamBu
 import { compileCompletionEnvelope, explicitEvidenceFromMessages, isOperationalReportDraft, orderIdFromMessages, ORANGE_REPORT_SCHEMA, prepareOperationalRequest, validateExplicitEvidencePacket, validateOrangeReport } from "../../contracts/orange-report.mjs";
 import { isAutoModel, resolveAutoRoute } from "../auto-route.mjs";
 import { AE_EYES_TARGET, proxyAeEyesChat } from "../ae-eyes-route.mjs";
-import { compactNoEvidenceNavigatorMessages, injectOrangeSystem } from "../orange-system.mjs";
+import { compactNavigatorConversationMessages, compactNoEvidenceNavigatorMessages, injectOrangeSystem } from "../orange-system.mjs";
 import { compileReflexCompletion } from "../reflex-compiler.mjs";
+import { compileNavigatorKernelCompletion } from "../navigator-kernel.mjs";
 import { capabilityRepairInstruction, classifyCapabilityCovenant, enforceCapabilityFailure, specialistPolicyFor, validateCapabilityOutput } from "../capability-covenant.mjs";
 import { finalizeChatTurn, fitMessagesToBudget, prepareChatTurn, stabilizeLeadingSystemFrames } from "../turn-harness.mjs";
 import { loadState as loadFlowState } from "../../../05-FLOW/src/store.mjs";
@@ -86,15 +87,32 @@ ${context}`,
   return [...messages.slice(0, firstNonSystem), frame, ...messages.slice(firstNonSystem)];
 }
 
-function compactPartyLineAnchor(hydration, limit = 2) {
+function injectCompactPartyLineContext(messages, context) {
+  if (!context) return messages;
+  const frame = {
+    role: 'system',
+    content: `AIR:PARTY-ANCHOR.v2
+kind=conversation-continuity
+authority=unverified-unless-linked-receipt
+not_transport=true
+not_source_truth_without_governed_evidence=true
+active_cross_computer_transport=AE Phase
+${String(context).slice(0, 220)}`,
+  };
+  const firstNonSystem = messages.findIndex((message) => message?.role !== 'system');
+  if (firstNonSystem < 0) return [...messages, frame];
+  return [...messages.slice(0, firstNonSystem), frame, ...messages.slice(firstNonSystem)];
+}
+
+function compactPartyLineAnchor(hydration, limit = 2, compact = false) {
   const selected = Array.isArray(hydration?.selected) ? hydration.selected.slice(0, limit) : [];
   if (!selected.length) return '';
   return selected.map((event) => {
     const authority = event.eventType === 'message' ? 'conversation-unverified' : 'operational-record';
-    const boundedDetail = authority === 'operational-record' && event.body
+    const boundedDetail = !compact && authority === 'operational-record' && event.body
       ? ` detail=${String(event.body).replace(/\s+/g, ' ').slice(0, 240)}`
       : '';
-    return `[party:${event.id}] authority=${authority} type=${event.eventType} :: ${String(event.summary || '').slice(0, 240)}${boundedDetail}`;
+    return `[party:${event.id}] authority=${authority} type=${event.eventType} :: ${String(event.summary || '').slice(0, compact ? 120 : 240)}${boundedDetail}`;
   }).join('\n');
 }
 
@@ -315,6 +333,12 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
   // finalizer below.
   const responseContract = body.ae_response_contract
     ?? (isAutoModel(body.model) && responseMode !== 'conversation' ? ORANGE_REPORT_SCHEMA : null);
+  // Standard OpenAI-compatible clients do not know Orange-only request fields.
+  // An explicit model without a report contract is therefore a human chat
+  // surface by default; machine callers retain orange.report.v1 through
+  // orange-auto or an explicit contract.
+  const effectiveResponseMode = responseMode
+    ?? (responseContract === ORANGE_REPORT_SCHEMA ? 'report' : 'conversation');
   if (responseContract && responseContract !== ORANGE_REPORT_SCHEMA) {
     return {
       _ae_http_status: 400,
@@ -402,13 +426,22 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
     ae_project_root: _projectRoot,
     ae_workspace_roots: _workspaceRoots,
     ae_build_mode: _buildMode,
+    ae_tools_enabled: _toolsEnabled,
     ...baseBody
   } = body;
-  const reflex = responseContract === ORANGE_REPORT_SCHEMA
+  const reportReflex = responseContract === ORANGE_REPORT_SCHEMA
     && initialEvidencePolicy === 'none'
     && isAutoModel(baseBody.model)
     ? compileReflexCompletion({ messages: baseBody.messages, orderId, model: baseBody.model || 'orange-auto' })
     : null;
+  const navigatorKernel = !reportReflex
+    && responseContract == null
+    && effectiveResponseMode === 'conversation'
+    && initialEvidencePolicy === 'none'
+    && isAutoModel(baseBody.model)
+    ? compileNavigatorKernelCompletion({ messages: baseBody.messages, orderId, model: baseBody.model || 'orange-auto' })
+    : null;
+  const reflex = reportReflex || navigatorKernel;
   const harnessStarted = performance.now();
   const turn = await prepareChatTurn(baseBody, orderId, { internalRefuter, reflex: Boolean(reflex) });
   let partyLineHydration = null;
@@ -433,7 +466,7 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
         body: partyLineQuery,
         correlationId: orderId,
         detail: buildRunContext?.run?.runId ? { runId: buildRunContext.run.runId } : null,
-        tags: ['chat', responseMode || 'native'],
+        tags: ['chat', effectiveResponseMode],
         importance: 0.7,
       }, { filePath: runtime.partyLineFilePath })
     : null;
@@ -474,7 +507,7 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
       estimated_tokens_after: 0,
       model_input_tokens: 0,
       tokens_avoided: measured.meta.estimated_tokens_before,
-      mode: 'deterministic_reflex',
+      mode: reflex.envelope?.ae_route_mode || 'deterministic_reflex',
     };
   } else {
     // Preserve the compiler contract prepared above. Internal refuters get a
@@ -486,7 +519,7 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
     const stableMessages = stabilizeLeadingSystemFrames(contractMessages);
     cleanBody.messages = internalRefuter
       ? stableMessages
-      : injectOrangeSystem(stableMessages, { responseMode });
+      : injectOrangeSystem(stableMessages, { responseMode: effectiveResponseMode });
     const budgeted = fitMessagesToBudget(cleanBody.messages);
     cleanBody.messages = budgeted.messages;
     turn.context = budgeted.meta;
@@ -499,7 +532,7 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
   let autoRoute = null;
   let tier;
   if (reflex) {
-    tier = 'reflex';
+    tier = reflex.envelope?.ae_execution_tier || 'reflex';
   } else if (requestedModelRoute.mode === 'auto') {
     // FLOW is the live work-pressure field, not a second brain. Feed its
     // current snapshot into the deterministic conductor so active work,
@@ -520,13 +553,18 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
     const compactNoEvidenceNavigator = tier === 'navigator'
       && responseContract === ORANGE_REPORT_SCHEMA
       && evidencePolicy === 'none';
+    const compactNavigatorConversation = tier === 'navigator'
+      && effectiveResponseMode === 'conversation'
+      && responseContract == null;
     const specialistMessages = compactNoEvidenceNavigator
       ? coalesceSystemMessages(compactNoEvidenceNavigatorMessages(recurrence.messages))
-      : recurrence.messages;
+      : (compactNavigatorConversation
+          ? coalesceSystemMessages(compactNavigatorConversationMessages(recurrence.messages))
+          : recurrence.messages);
     const tierBudget = tier === 'heavy'
       ? 700
-      : (tier === 'code' ? 1_000 : (tier === 'navigator' ? (compactNoEvidenceNavigator ? 256 : 900) : 1_400));
-    const partyAnchor = compactPartyLineAnchor(partyLineHydration);
+      : (tier === 'code' ? 1_000 : (tier === 'navigator' ? ((compactNoEvidenceNavigator || compactNavigatorConversation) ? 256 : 900) : 1_400));
+    const partyAnchor = compactPartyLineAnchor(partyLineHydration, compactNavigatorConversation ? 1 : 2, compactNavigatorConversation);
     const unanchoredMessages = partyAnchor
       ? specialistMessages.filter((message) => !(message?.role === 'system' && String(message.content || '').includes('AIR:PARTY-LINE.v1')))
       : specialistMessages;
@@ -539,25 +577,39 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
       maxPasses: 32,
     });
     cleanBody.messages = partyAnchor
-      ? injectPartyLineContext(specialistFit.messages, partyAnchor)
+      ? (compactNavigatorConversation
+          ? injectCompactPartyLineContext(specialistFit.messages, partyAnchor)
+          : injectPartyLineContext(specialistFit.messages, partyAnchor))
       : specialistFit.messages;
     turn.context = {
       ...specialistFit.meta,
       initial_estimated_tokens: turn.context?.estimated_tokens_after ?? turn.context?.estimated_tokens_before ?? null,
       capability_tier: tier,
       mode: 'source_addressed_specialist_workbench',
+      conversation_compacted: compactNavigatorConversation,
       recurrence_guard: recurrence.meta,
     };
   }
   const routeMs = performance.now() - routeStarted;
-  const routeTarget = tier === 'visual' ? AE_EYES_TARGET : UPSTREAM[tier];
+  const routeTarget = reflex
+    ? {
+        model: reflex.envelope?.ae_effective_model || 'bun-reflex-compiler',
+        host: reflex.envelope?.ae_effective_host || 'n150',
+        node: reflex.envelope?.ae_effective_node || 'n150',
+      }
+    : (tier === 'visual' ? AE_EYES_TARGET : UPSTREAM[tier]);
   const capabilityCovenant = classifyCapabilityCovenant({ messages: body.messages, tier, autoRoute });
   const upstreamBody = reflex || tier === "light" ? cleanBody : {
     ...cleanBody,
     model: routeTarget.model,
     ae_specialist_policy: specialistPolicyFor(capabilityCovenant, tier),
   };
-  const modelToolLoopEnabled = shouldUseGovernedModelTools({ responseMode, reflex: Boolean(reflex), tier, body: upstreamBody });
+  const modelToolLoopEnabled = shouldUseGovernedModelTools({
+    responseMode: effectiveResponseMode,
+    reflex: Boolean(reflex),
+    tier,
+    body: { ...upstreamBody, ae_tools_enabled: body.ae_tools_enabled },
+  });
   const inferenceBody = modelToolLoopEnabled
     ? prepareGovernedModelToolRequest(upstreamBody)
     : upstreamBody;
@@ -571,7 +623,7 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
         : await modelProxy(inferenceBody, tier, {
             onChunk: modelToolLoopEnabled
               ? (chunk) => bufferedInitialChunks.push(structuredClone(chunk))
-              : (responseMode === 'conversation' ? runtime.onStreamChunk : null),
+              : (effectiveResponseMode === 'conversation' ? runtime.onStreamChunk : null),
           }));
   if (modelToolLoopEnabled) {
     result = await runGovernedModelToolLoop({
@@ -580,7 +632,7 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
       orderId,
       executeBrainMcp: runtime.executeBrainMcp,
       invokeModel: (synthesisBody) => modelProxy(synthesisBody, tier, {
-        onChunk: responseMode === 'conversation' ? runtime.onStreamChunk : null,
+        onChunk: effectiveResponseMode === 'conversation' ? runtime.onStreamChunk : null,
       }),
     });
     if (result.body?.ae_tool_loop?.calls?.length === 0 && result.streamed === true) {
@@ -695,7 +747,7 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
   const finalizeMs = performance.now() - finalizeStarted;
   result.body.ae_turn = turnReceipt;
   result.body.ae_order_id = orderId;
-  result.body.ae_response_mode = responseMode ?? (responseContract === ORANGE_REPORT_SCHEMA ? 'report' : 'native');
+  result.body.ae_response_mode = effectiveResponseMode;
   if (result.streamed === true) result.body._ae_live_streamed = true;
   const toolExecutionTruth = result.body.ae_tool_loop?.execution_truth || null;
   const toolReceiptPaths = result.body.ae_tool_loop?.receipt_paths || [];
@@ -760,7 +812,7 @@ export async function handleV1ChatCompletions(body, runtime = {}) {
           ? [{ uri: turnReceipt.receipt.path, hash: turnReceipt.receipt.hash, label: 'chat turn receipt' }]
           : [],
         correlationId: orderId,
-        tags: ['chat', responseMode || (responseContract === ORANGE_REPORT_SCHEMA ? 'report' : 'native')],
+        tags: ['chat', effectiveResponseMode],
         importance: responseContract === ORANGE_REPORT_SCHEMA ? 0.85 : 0.65,
       }, { filePath: runtime.partyLineFilePath })
     : null;

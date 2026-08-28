@@ -23,6 +23,7 @@ export const AE_PHASE_TYPES = Object.freeze({
   HYDRATE_REQUEST: 5,
   HYDRATE_SNAPSHOT: 6,
   CLOSE: 7,
+  ENVELOPE: 8,
 });
 
 const MAGIC_BYTES = Buffer.from(AE_PHASE_MAGIC, 'ascii');

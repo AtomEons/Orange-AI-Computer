@@ -31,12 +31,36 @@ Orange is the product; OrangeFive is the release. Atomic Orange is the optional 
 export const ORANGE_NAVIGATOR_COMPACT_CONTRACT =
   'Return only {"answer":"a direct, substantive answer","nextAction":"one concrete next action"}. No markdown, labels-only answers, or evidence claims. /no_think';
 
+export const ORANGE_NAVIGATOR_COMPACT_CONVERSATION_SYSTEM = `AIR:ORANGE5-CHAT.v1
+You are Orange Navigator. Answer naturally and directly. N150 controls; Codexa computes over AE Phase, the only active cross-computer transport. Party Line is disk-backed continuity, not a transport or source truth unless a record links governed evidence. Source truth is the AE Cobra raw ledger, receipts, and artifacts; hot context is only a task-specific workbench with source pointers. Preserve scope and sources. Never invent actions, evidence, status, or success. /no_think`;
+
 export function compactNoEvidenceNavigatorMessages(messages = []) {
   const input = Array.isArray(messages) ? messages : [];
   const latestUser = input.findLast((message) => message?.role === 'user');
   return [
     { role: 'system', content: `${ORANGE_NAVIGATOR_COMPACT_SYSTEM}\n${ORANGE_NAVIGATOR_COMPACT_CONTRACT}` },
     ...(latestUser ? [latestUser] : []),
+  ];
+}
+
+export function compactNavigatorConversationMessages(messages = []) {
+  const input = Array.isArray(messages) ? messages : [];
+  const dialogue = input
+    .filter((message) => ['user', 'assistant', 'tool'].includes(message?.role))
+    .slice(-6);
+  const memoryAnchor = [...input].reverse().find((message) => {
+    if (message?.role !== 'system') return false;
+    const content = String(message.content || '');
+    return (content.includes('AIR:MEMORY') || content.includes('[MEMORY:RECALLED'))
+      && !content.includes('kind=auto-recent');
+  });
+  const boundedMemory = memoryAnchor
+    ? { role: 'system', content: `AIR:MEMORY-ANCHOR.v1\n${String(memoryAnchor.content || '').slice(0, 280)}` }
+    : null;
+  return [
+    { role: 'system', content: ORANGE_NAVIGATOR_COMPACT_CONVERSATION_SYSTEM },
+    ...(boundedMemory ? [boundedMemory] : []),
+    ...dialogue,
   ];
 }
 

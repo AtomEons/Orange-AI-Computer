@@ -3,7 +3,9 @@ import { aelangHighToCore } from "../04-CONTROL-PLANE/aecode/compiler.mjs";
 import { pickLane } from "../06-ORANGELLM/router-least-action.mjs";
 import { summarizePressure } from "../06-ORANGELLM/flow-pressure.mjs";
 import { planSwarm } from "../08-HERMES/product-integration/scripts/swarmgate.mjs";
+import { compileStaffCrew } from "../08-HERMES/src/staff-router.mjs";
 import { compileProblem, WORK_OBJECT_SCHEMA } from "./problem-compiler.mjs";
+import { createWave3HandoffCapsule } from "./wave3-handoff-capsule.mjs";
 
 const DOMAIN = Object.freeze({
   AE2_RESEARCH: profile(["researcher", "source-verifier", "synthesizer"], ["read", "web-research", "receipts"]),
@@ -30,6 +32,7 @@ export function compileDelegation(order, flowState = {}) {
   const routeOrder = {
     schema: "orange.order.v1",
     orderId: order.orderId || `delegate-${crypto.randomUUID()}`,
+    action: order.action,
     intent: String(order.intent || order.payload?.intent || order.action),
     scope: typeof order.scope === "string"
       ? order.scope
@@ -46,17 +49,25 @@ export function compileDelegation(order, flowState = {}) {
         authority: "operator",
         owner: "navigator",
       });
-  const agents = domain.agents.slice(0, Math.max(1, Math.min(3, Number(order.maxAgents) || 3)));
+  const crew = compileStaffCrew({
+    ...order,
+    action: routeOrder.action,
+    intent: routeOrder.intent,
+    maxAgents: Math.max(1, Math.min(12, Number(order.maxAgents) || 5)),
+  });
+  const agents = crew.roles;
+  const roleContracts = new Map(crew.roleContracts.map((role) => [role.id, role]));
   const allowedTools = domain.tools.filter((tool) => !routeOrder.forbiddenActions.some((denied) => denied.includes(tool)));
-  const pressure = summarizePressure(flowState, { cap: Math.max(1, Number(order.maxAgents) || 3) });
-  const pressureWidth = Math.max(1, Math.floor((Number(order.maxAgents) || 3) * (1 - pressure.governor.backpressure)));
+  const pressure = summarizePressure(flowState, { cap: agents.length });
+  const pressureWidth = Math.max(1, Math.floor(agents.length * (1 - pressure.governor.backpressure)));
   const declaredTasks = Array.isArray(order.tasks) && order.tasks.length
     ? order.tasks
     : agents.map((agent, index) => ({
         id: `${routeOrder.orderId}:${agent}`,
         action: routeOrder.action,
         intent: `${agent} contribution to ${order.intent || routeOrder.action}`,
-        profile: agent,
+        staffRole: agent,
+        profile: roleContracts.get(agent)?.archetype || "builder",
         dependsOn: index === 0 ? [] : (order.parallelReview === false ? [`${routeOrder.orderId}:${agents[index - 1]}`] : []),
         reads: Array.isArray(order.reads) ? order.reads : [],
         writes: index === 0 && Array.isArray(order.writes) ? order.writes : [],
@@ -72,11 +83,20 @@ export function compileDelegation(order, flowState = {}) {
     reservedSystemMemoryGb: Number(order.reservedSystemMemoryGb || flowState?.reservedSystemMemoryGb || 12),
   });
   const issuedAt = new Date();
+  const handoffCapsule = createWave3HandoffCapsule({
+    workObject,
+    order: routeOrder,
+    route,
+    evidencePointers: Array.isArray(order.evidence)
+      ? order.evidence
+      : (Array.isArray(order.payload?.evidence) ? order.payload.evidence : []),
+    unresolved: Array.isArray(order.blockers) ? order.blockers : [],
+  });
   const plan = {
     schema: "orange.navigator-delegation.v1",
     delegationId: `nav-${crypto.randomUUID()}`,
     orderId: routeOrder.orderId,
-    topNavigator: { runtime: "bun-navigator-kernel", modelResident: false },
+    topNavigator: { id: crew.navigator, runtime: "bun-navigator-kernel", modelResident: false },
     route: { lane: route.lane, model: route.model, decisionId: route.decision_id },
     workObject: {
       schema: workObject.schema,
@@ -85,12 +105,17 @@ export function compileDelegation(order, flowState = {}) {
       compilationHash: workObject.compilationHash,
       wave3Kernel: workObject.wave3Kernel,
     },
+    handoffCapsule,
     flow: pressure,
     swarmGate: swarmPlan,
+    aeStaff: crew,
     littleNavigator: {
-      id: `${core.department.toLowerCase()}-navigator`,
+      id: crew.navigator,
       department: core.department,
       agents,
+      workingLead: crew.workingLead,
+      executionProfiles: crew.executionProfiles,
+      roleContracts: crew.roleContracts,
       allowedTools
     },
     hermesLease: {
@@ -98,11 +123,13 @@ export function compileDelegation(order, flowState = {}) {
       allowedActions: routeOrder.allowedActions,
       forbiddenActions: routeOrder.forbiddenActions,
       allowedAgents: agents,
+      allowedExecutionProfiles: crew.executionProfiles,
       allowedTools,
       maxConcurrentAgents: swarmPlan.maxParallelWorkers,
       executionMode: swarmPlan.maxParallelWorkers > 1 ? "bounded-parallel-waves" : "serial-receipt-safe",
       executionWaves: swarmPlan.executionWaves,
       wave3Kernel: workObject.wave3Kernel,
+      handoffCapsule,
       requiresReceipt: order.requiresReceipt !== false,
       issuedAt: issuedAt.toISOString(),
       expiresAt: new Date(issuedAt.getTime() + 30 * 60_000).toISOString()

@@ -32,7 +32,7 @@ export function operationalEndpoints(env = process.env) {
   hermes: { url: 'http://127.0.0.1:7430/healthz' },
   ae_eyes: { url: 'http://127.0.0.1:7440/health' },
   atomsmasher: { url: 'http://127.0.0.1:8901/health' },
-  codexa_rail: { url: `${process.env.ORANGE5_CODEXA_RAIL_URL || 'http://10.0.0.4:8097'}/health` },
+  ae_phase: { url: `${env.ORANGE5_AE_PHASE_URL || 'http://127.0.0.1:8907'}/health` },
   };
 }
 
@@ -45,7 +45,9 @@ const TARGET_ALIASES = Object.freeze({
   aeyes: 'ae_eyes',
   skinny: 'navigator_kernel',
   navigator: 'navigator_kernel',
-  rail: 'codexa_rail',
+  rail: 'ae_phase',
+  codexa: 'ae_phase',
+  phase: 'ae_phase',
 });
 
 function normalizeTarget(value) {
@@ -131,11 +133,12 @@ export function evaluateOperationalSemantics(name, body) {
       require(body.service === 'atomsmasher2', `unexpected AtomSmasher service ${body.service || 'missing'}`);
       require(Number(body.counts?.features || 0) >= 620, `AtomSmasher feature inventory is ${body.counts?.features ?? 0}, expected at least 620`);
       break;
-    case 'codexa_rail':
-      require(body.status === 'VERIFIED', `Codexa rail status is ${body.status || 'missing'}`);
-      require(body.tokenConfigured === true, 'Codexa rail token is not configured');
-      require(body.machine?.hostname === 'CODEXA', `unexpected Codexa hostname ${body.machine?.hostname || 'missing'}`);
-      require(String(body.fullAccess || '').startsWith('AVAILABLE_WITH_TOKEN'), 'Codexa full-access lease is unavailable');
+    case 'ae_phase':
+      require(body.ok === true, 'AE Phase envelope is not ok');
+      require(body.status === 'AE_PHASE_FABRIC_ACTIVE', `AE Phase status is ${body.status || 'missing'}`);
+      require(body.authenticated === true, 'AE Phase authentication is not active');
+      require(Number(body.connectedPeers || 0) > 0, 'AE Phase has no connected compute peer');
+      require(body.backpressured !== true, 'AE Phase is backpressured');
       break;
     default:
       require(body.status === 'ok' || body.ok === true, 'generic endpoint did not declare ok');

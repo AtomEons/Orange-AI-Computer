@@ -3,6 +3,7 @@
 // Every rejection logs to receipt. No silent allow.
 
 import { MEMORY_ALLOWED } from "./routes/memory-boundary.mjs";
+import { COBRA_ALLOWED } from "./routes/cobra-boundary.mjs";
 import {
   RECEIPTS_ALLOWED,
   isReceiptsPath,
@@ -56,6 +57,9 @@ const ALLOWED = [
   ...VISUAL_ALLOWED,
   // Mirage MEMORY plane (read-shaped triplet). DATA mounts are NOT exposed.
   ...MEMORY_ALLOWED,
+  // Authenticated AE Cobra operational memory surface. Route handlers enforce
+  // the rotating rail token at request time and remain fail-closed without it.
+  ...COBRA_ALLOWED,
   // Receipts read-only surface. Single-id route is dynamic; matched below.
   ...RECEIPTS_ALLOWED,
   // AE Misfit second-opinion gate (POST /v1/misfit/second-opinion).

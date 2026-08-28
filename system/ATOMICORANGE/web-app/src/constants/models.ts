@@ -1,0 +1,798 @@
+/**
+ * Model-related constants
+ */
+
+import type { CatalogModel } from '@/services/models/types'
+import type { Recommendation } from '@/services/recommended-models-registry'
+import type { HardwareTier } from '@/lib/hardware-tier'
+
+export const EMBEDDING_MODEL_ID = 'sentence-transformer-mini'
+
+/**
+ * Model offered by the bottom-right reminder that appears when onboarding is
+ * left without picking anything. Must stay in sync with the first entry of the
+ * onboarding manifest (`atomic-chat-conf/models/recommended.json`) so the
+ * reminder repeats the same recommendation the setup screen showed.
+ */
+export const ONBOARDING_REMINDER_MODEL_HF_REPO = 'AtomicChat/Qwen3.5-4B-GGUF'
+
+/** What the bottom-right reminder offers, keyed by hardware tier. */
+export type OnboardingReminderModel = {
+  /** Hugging Face repo id. */
+  repo: string
+  /** Display name — this card is not translated, matching its siblings. */
+  title: string
+  /** Quant pin; see `findPinnedQuant`. Omitted = house default. */
+  quant?: string
+  /** Vision models only: projector pin. */
+  mmprojQuant?: string
+}
+
+/**
+ * The reminder must offer what the machine can actually run, or it repeats the
+ * mistake the low-spec tier exists to fix: a weak device that skipped
+ * onboarding got nudged toward a 2.5 GB model it would struggle with.
+ *
+ * Keep the `standard` entry in sync with the first entry of
+ * `recommendations` in the onboarding manifest, and `low` with the first entry
+ * of `low_spec_recommendations`.
+ */
+export const ONBOARDING_REMINDER_MODELS: Record<
+  HardwareTier,
+  OnboardingReminderModel
+> = {
+  standard: {
+    repo: ONBOARDING_REMINDER_MODEL_HF_REPO,
+    title: 'Qwen3.5 4B',
+  },
+  low: {
+    repo: 'LiquidAI/LFM2.5-VL-450M-GGUF',
+    title: 'LFM2.5 VL 450M',
+    quant: 'Q8_0',
+    mmprojQuant: 'Q8_0',
+  },
+}
+export const JAN_CODE_HF_REPO = 'janhq/Jan-Code-4b-Gguf'
+export const DEFAULT_MODEL_QUANTIZATIONS = ['iq4_xs', 'q4_k_m']
+
+/**
+ * Quantizations to check for SetupScreen quick start
+ * Includes Q8 for higher quality on capable systems
+ */
+export const SETUP_SCREEN_QUANTIZATIONS = ['q4_k_m']
+
+/**
+ * Bundled fallback for the recommended-models registry. Mirrors the contents
+ * of `atomic-chat-conf/models/recommended.json` so the client can render the
+ * Recommended section on the very first launch (before the manifest fetch
+ * resolves) and when the network is unavailable.
+ *
+ * Platform filtering happens at runtime in
+ * `recommended-models-registry-store.ts` — keep `platforms` declarative here
+ * (do NOT inline `IS_MACOS` ternaries) so the baseline mirrors the manifest
+ * shape verbatim.
+ */
+export const BASELINE_RECOMMENDED_MODELS: ReadonlyArray<Recommendation> = [
+  {
+    model_name: 'AtomicChat/Qwen3.5-4B-GGUF',
+    description_key: 'hub:recEverydayUse',
+  },
+  {
+    model_name: 'AtomicChat/gemma-4-E2B-it-GGUF',
+    description_key: 'hub:recEverydayUse',
+  },
+]
+
+/**
+ * Mirror of the manifest's `low_spec_recommendations` array. Shown INSTEAD of
+ * {@link BASELINE_RECOMMENDED_MODELS} on machines `classifyHardwareTier` calls
+ * low-spec, so the first model a weak machine downloads is one it can run.
+ *
+ * Same rule as above: keep this declarative and identical to the manifest —
+ * no `IS_MACOS` ternaries, no computed quants. The `quant` pins are required,
+ * not cosmetic: both repos also ship a Q4_K_M, so a dropped pin downloads a
+ * working-but-wrong file and fails silently.
+ */
+export const BASELINE_LOW_SPEC_RECOMMENDED_MODELS: ReadonlyArray<Recommendation> =
+  [
+    {
+      model_name: 'LiquidAI/LFM2.5-2.6B-GGUF',
+      description_key: 'hub:recEverydayUse',
+      quant: 'Q4_K_M',
+    },
+    {
+      model_name: 'LiquidAI/LFM2.5-VL-450M-GGUF',
+      description_key: 'hub:recVisionKnowledge',
+      quant: 'Q8_0',
+      mmproj_quant: 'Q8_0',
+    },
+  ]
+
+const ATOMIC_GEMMA4_E4B_HF =
+  'https://huggingface.co/AtomicChat/gemma4-e4b-it-GGUF/resolve/main'
+const ATOMIC_QWEN35_4B_HF =
+  'https://huggingface.co/AtomicChat/qwen35-4b-GGUF/resolve/main'
+const ATOMIC_QWEN3_CODER_HF =
+  'https://huggingface.co/AtomicChat/qwen3-coder-30b-a3b-GGUF/resolve/main'
+const QWEN_MLX_HF =
+  'https://huggingface.co/mlx-community/Qwen3.5-9B-MLX-4bit/resolve/main'
+
+//! MLX-fallback инжектится только на macOS — иначе утекает через useState-инициализацию
+//! useResolvedRecommendedModels и через прямое чтение в routes/hub/$modelId.tsx
+const MLX_QWEN_FALLBACK: CatalogModel = {
+  model_name: 'mlx-community/Qwen3.5-9B-MLX-4bit',
+  developer: 'mlx-community',
+  library_name: 'mlx',
+  description:
+    '**Tags**: Image-Text-to-Text, MLX, Safetensors, qwen3_5, vision-language-model, 4-bit, conversational',
+  downloads: 73490,
+  num_safetensors: 1,
+  safetensors_files: [
+    {
+      model_id: 'mlx-community/Qwen3.5-9B-MLX-4bit',
+      path: `${QWEN_MLX_HF}/model.safetensors`,
+      file_size: '5.6 GB',
+    },
+  ],
+  is_mlx: true,
+  readme: `${QWEN_MLX_HF.replace('/resolve/main', '')}/resolve/main/README.md`,
+}
+
+export const RECOMMENDED_MODEL_FALLBACKS: Readonly<
+  Record<string, CatalogModel>
+> = {
+  'AtomicChat/gemma4-e4b-it-GGUF': {
+    model_name: 'AtomicChat/gemma4-e4b-it-GGUF',
+    developer: 'AtomicChat',
+    description:
+      '**Tags**: Image-Text-to-Text, GGUF, gemma4, atomic-chat, google, imatrix, conversational',
+    downloads: 0,
+    num_quants: 12,
+    quants: [
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q8_0',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q8_0.gguf`,
+        file_size: '8.0 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q6_K',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q6_K.gguf`,
+        file_size: '7.0 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q5_K_M',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q5_K_M.gguf`,
+        file_size: '5.5 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q5_K_S',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q5_K_S.gguf`,
+        file_size: '5.4 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-UD-Q4_K_XL',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-UD-Q4_K_XL.gguf`,
+        file_size: '5.1 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q4_K_M',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q4_K_M.gguf`,
+        file_size: '4.9 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q4_K_S',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q4_K_S.gguf`,
+        file_size: '4.7 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-IQ4_XS',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-IQ4_XS.gguf`,
+        file_size: '4.5 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q3_K_L',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q3_K_L.gguf`,
+        file_size: '4.4 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q3_K_M',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q3_K_M.gguf`,
+        file_size: '4.1 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-IQ3_M',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-IQ3_M.gguf`,
+        file_size: '3.8 GB',
+      },
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q2_K',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q2_K.gguf`,
+        file_size: '3.3 GB',
+      },
+    ],
+    num_mmproj: 1,
+    mmproj_models: [
+      {
+        model_id: 'mmproj-gemma4-e4b-it-f16',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/mmproj-gemma4-e4b-it-f16.gguf`,
+        file_size: '1.0 GB',
+      },
+    ],
+    readme: `${ATOMIC_GEMMA4_E4B_HF.replace('/resolve/main', '')}/resolve/main/README.md`,
+  },
+  'AtomicChat/qwen35-4b-GGUF': {
+    model_name: 'AtomicChat/qwen35-4b-GGUF',
+    developer: 'AtomicChat',
+    description: '**Tags**: text-generation, GGUF, qwen3, atomic-chat, imatrix, conversational',
+    downloads: 0,
+    num_quants: 0,
+    quants: [],
+    num_mmproj: 0,
+    mmproj_models: [],
+    readme: `${ATOMIC_QWEN35_4B_HF.replace('/resolve/main', '')}/resolve/main/README.md`,
+  },
+  'AtomicChat/qwen3-coder-30b-a3b-GGUF': {
+    model_name: 'AtomicChat/qwen3-coder-30b-a3b-GGUF',
+    developer: 'AtomicChat',
+    description: '**Tags**: text-generation, GGUF, qwen3, qwen3-coder, atomic-chat, imatrix, conversational',
+    downloads: 0,
+    num_quants: 0,
+    quants: [],
+    num_mmproj: 0,
+    mmproj_models: [],
+    readme: `${ATOMIC_QWEN3_CODER_HF.replace('/resolve/main', '')}/resolve/main/README.md`,
+  },
+  ...(IS_MACOS
+    ? { 'mlx-community/Qwen3.5-9B-MLX-4bit': MLX_QWEN_FALLBACK }
+    : {}),
+}
+
+/**
+ * Bundled offline-first fallback for the model catalog registry.
+ *
+ * Lives next to `RECOMMENDED_MODEL_FALLBACKS` above but serves a different
+ * purpose: this list seeds `useModelCatalogStore` when neither the
+ * `localStorage` cache nor the network fetch succeed (e.g. first launch on
+ * an air-gapped machine). Each entry follows the exact `CatalogModel` shape
+ * so the existing download pipeline can act on it without conversion.
+ *
+ * Keep it small (~10 entries) — the goal is for Hub to render something
+ * useful before the real catalog lands, not to mirror the full curated set.
+ */
+export const BASELINE_MODEL_CATALOG: ReadonlyArray<CatalogModel> = [
+  {
+    model_name: 'AtomicChat/gemma4-e4b-it-GGUF',
+    developer: 'AtomicChat',
+    description:
+      '**Tags**: gguf, gemma4, atomic-chat, google, imatrix, conversational, image-text-to-text',
+    downloads: 0,
+    num_quants: 1,
+    quants: [
+      {
+        model_id: 'AtomicChat/gemma4-e4b-it-Q4_K_M',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/gemma4-e4b-it-Q4_K_M.gguf`,
+        file_size: '4.9 GB',
+      },
+    ],
+    num_mmproj: 1,
+    mmproj_models: [
+      {
+        model_id: 'mmproj-gemma4-e4b-it-f16',
+        path: `${ATOMIC_GEMMA4_E4B_HF}/mmproj-gemma4-e4b-it-f16.gguf`,
+        file_size: '1.0 GB',
+      },
+    ],
+    num_safetensors: 0,
+    safetensors_files: [],
+    is_mlx: false,
+    readme: `${ATOMIC_GEMMA4_E4B_HF.replace('/resolve/main', '')}/resolve/main/README.md`,
+  },
+  {
+    model_name: 'AtomicChat/qwen35-4b-GGUF',
+    developer: 'AtomicChat',
+    description: '**Tags**: gguf, qwen3, atomic-chat, imatrix, conversational',
+    downloads: 0,
+    num_quants: 0,
+    quants: [],
+    num_mmproj: 0,
+    mmproj_models: [],
+    num_safetensors: 0,
+    safetensors_files: [],
+    is_mlx: false,
+    readme: `${ATOMIC_QWEN35_4B_HF.replace('/resolve/main', '')}/resolve/main/README.md`,
+  },
+  {
+    model_name: 'AtomicChat/qwen36-27b-GGUF',
+    developer: 'AtomicChat',
+    description: '**Tags**: gguf, qwen3, atomic-chat, imatrix, conversational',
+    downloads: 0,
+    num_quants: 0,
+    quants: [],
+    num_mmproj: 0,
+    mmproj_models: [],
+    num_safetensors: 0,
+    safetensors_files: [],
+    is_mlx: false,
+    readme: 'https://huggingface.co/AtomicChat/qwen36-27b-GGUF/resolve/main/README.md',
+  },
+  {
+    model_name: 'AtomicChat/qwen3-coder-30b-a3b-GGUF',
+    developer: 'AtomicChat',
+    description: '**Tags**: gguf, qwen3, qwen3-coder, atomic-chat, imatrix, conversational',
+    downloads: 0,
+    num_quants: 0,
+    quants: [],
+    num_mmproj: 0,
+    mmproj_models: [],
+    num_safetensors: 0,
+    safetensors_files: [],
+    is_mlx: false,
+    readme: `${ATOMIC_QWEN3_CODER_HF.replace('/resolve/main', '')}/resolve/main/README.md`,
+  },
+  {
+    model_name: 'unsloth/Llama-3.2-3B-Instruct-GGUF',
+    developer: 'unsloth',
+    description: '**Tags**: gguf, llama, unsloth, conversational',
+    downloads: 0,
+    num_quants: 0,
+    quants: [],
+    num_mmproj: 0,
+    mmproj_models: [],
+    num_safetensors: 0,
+    safetensors_files: [],
+    is_mlx: false,
+    readme:
+      'https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF/resolve/main/README.md',
+  },
+  {
+    model_name: 'mlx-community/Qwen3.5-9B-MLX-4bit',
+    developer: 'mlx-community',
+    library_name: 'mlx',
+    description:
+      '**Tags**: mlx, qwen3_5, vision-language-model, 4-bit, conversational',
+    downloads: 73490,
+    num_quants: 0,
+    quants: [],
+    num_mmproj: 0,
+    mmproj_models: [],
+    num_safetensors: 1,
+    safetensors_files: [
+      {
+        model_id: 'mlx-community/Qwen3.5-9B-MLX-4bit',
+        path: `${QWEN_MLX_HF}/model.safetensors`,
+        file_size: '5.6 GB',
+      },
+    ],
+    is_mlx: true,
+    readme: `${QWEN_MLX_HF.replace('/resolve/main', '')}/resolve/main/README.md`,
+  },
+  {
+    model_name: 'mlx-community/gemma-4-e4b-it-4bit',
+    developer: 'mlx-community',
+    library_name: 'mlx',
+    description: '**Tags**: mlx, gemma4, 4-bit, conversational',
+    downloads: 0,
+    num_quants: 0,
+    quants: [],
+    num_mmproj: 0,
+    mmproj_models: [],
+    num_safetensors: 0,
+    safetensors_files: [],
+    is_mlx: true,
+    readme:
+      'https://huggingface.co/mlx-community/gemma-4-e4b-it-4bit/resolve/main/README.md',
+  },
+]
+
+export const JAN_V2_VL_MODEL_HF_REPO = 'janhq/Jan-v2-VL-high-gguf'
+export const JAN_V2_VL_QUANTIZATIONS = ['q4_k_m', 'q4_k_s', 'q4_0', 'q3_k_m']
+
+/**
+ * Provider model capabilities - copied from token.js package
+ */
+export const providerModels = {
+  // OpenAI — set verified against the live /v1/models response on macOS build (Apr 2026).
+  // o3-mini is reasoning-only (text), so it is excluded from supportsImages.
+  'openai': {
+    models: [
+      'gpt-5.4',
+      'gpt-5.4-mini',
+      'gpt-5.4-nano',
+      'gpt-5',
+      'gpt-5-mini',
+      'gpt-4.5-preview',
+      'gpt-4.1',
+      'gpt-4o',
+      'gpt-4o-mini',
+      'o3-mini',
+      'gpt-4-turbo',
+    ],
+    supportsCompletion: true,
+    supportsStreaming: [
+      'gpt-5.4',
+      'gpt-5.4-mini',
+      'gpt-5.4-nano',
+      'gpt-5',
+      'gpt-5-mini',
+      'gpt-4.5-preview',
+      'gpt-4.1',
+      'gpt-4o',
+      'gpt-4o-mini',
+      'o3-mini',
+      'gpt-4-turbo',
+    ],
+    supportsJSON: [
+      'gpt-5.4',
+      'gpt-5.4-mini',
+      'gpt-5.4-nano',
+      'gpt-5',
+      'gpt-5-mini',
+      'gpt-4.5-preview',
+      'gpt-4.1',
+      'gpt-4o',
+      'gpt-4o-mini',
+      'o3-mini',
+      'gpt-4-turbo',
+    ],
+    supportsImages: [
+      'gpt-5.4',
+      'gpt-5.4-mini',
+      'gpt-5.4-nano',
+      'gpt-5',
+      'gpt-5-mini',
+      'gpt-4.5-preview',
+      'gpt-4.1',
+      'gpt-4o',
+      'gpt-4o-mini',
+      'gpt-4-turbo',
+    ],
+    supportsToolCalls: [
+      'gpt-5.4',
+      'gpt-5.4-mini',
+      'gpt-5.4-nano',
+      'gpt-5',
+      'gpt-5-mini',
+      'gpt-4.5-preview',
+      'gpt-4.1',
+      'gpt-4o',
+      'gpt-4o-mini',
+      'o3-mini',
+      'gpt-4-turbo',
+    ],
+    supportsN: true,
+  },
+  'ai21': {
+    models: ['jamba-instruct'],
+    supportsCompletion: true,
+    supportsStreaming: ['jamba-instruct'],
+    supportsJSON: [],
+    supportsImages: [],
+    supportsToolCalls: [],
+    supportsN: true,
+  },
+  // Anthropic — source: https://platform.claude.com/docs/en/about-claude/models/overview (Apr 21, 2026)
+  // Only current/active models. claude-sonnet-4 & claude-opus-4 deprecated (retire 15 Jun 2026).
+  // claude-3-* models retired.
+  'anthropic': {
+    models: [
+      'claude-opus-4-7',
+      'claude-sonnet-4-6',
+      'claude-haiku-4-5',
+      'claude-opus-4-6',
+      'claude-opus-4-5',
+      'claude-opus-4-1',
+      'claude-sonnet-4-5',
+    ],
+    supportsCompletion: true,
+    supportsStreaming: [
+      'claude-opus-4-7',
+      'claude-sonnet-4-6',
+      'claude-haiku-4-5',
+      'claude-opus-4-6',
+      'claude-opus-4-5',
+      'claude-opus-4-1',
+      'claude-sonnet-4-5',
+    ],
+    supportsJSON: [],
+    supportsImages: [
+      'claude-opus-4-7',
+      'claude-sonnet-4-6',
+      'claude-haiku-4-5',
+      'claude-opus-4-6',
+      'claude-opus-4-5',
+      'claude-opus-4-1',
+      'claude-sonnet-4-5',
+    ],
+    supportsToolCalls: [
+      'claude-opus-4-7',
+      'claude-sonnet-4-6',
+      'claude-haiku-4-5',
+      'claude-opus-4-6',
+      'claude-opus-4-5',
+      'claude-opus-4-1',
+      'claude-sonnet-4-5',
+    ],
+    supportsN: true,
+  },
+  // Gemini — source: https://ai.google.dev/gemini-api/docs/models (Apr 2026)
+  // 3.x line is preview; 2.5.x stable. 2.0-* scheduled for shutdown 1 Jun 2026; 1.5-* retired.
+  'gemini': {
+    models: [
+      'gemini-3.1-pro-preview',
+      'gemini-3-flash-preview',
+      'gemini-3.1-flash-lite-preview',
+      'gemini-2.5-pro',
+      'gemini-2.5-flash',
+      'gemini-2.5-flash-lite',
+    ],
+    supportsCompletion: true,
+    supportsStreaming: [
+      'gemini-3.1-pro-preview',
+      'gemini-3-flash-preview',
+      'gemini-3.1-flash-lite-preview',
+      'gemini-2.5-pro',
+      'gemini-2.5-flash',
+      'gemini-2.5-flash-lite',
+    ],
+    supportsJSON: [
+      'gemini-3.1-pro-preview',
+      'gemini-3-flash-preview',
+      'gemini-3.1-flash-lite-preview',
+      'gemini-2.5-pro',
+      'gemini-2.5-flash',
+      'gemini-2.5-flash-lite',
+    ],
+    supportsImages: [
+      'gemini-3.1-pro-preview',
+      'gemini-3-flash-preview',
+      'gemini-3.1-flash-lite-preview',
+      'gemini-2.5-pro',
+      'gemini-2.5-flash',
+      'gemini-2.5-flash-lite',
+    ],
+    supportsToolCalls: [
+      'gemini-3.1-pro-preview',
+      'gemini-3-flash-preview',
+      'gemini-3.1-flash-lite-preview',
+      'gemini-2.5-pro',
+      'gemini-2.5-flash',
+      'gemini-2.5-flash-lite',
+    ],
+    supportsN: true,
+  },
+  'cohere': {
+    models: [
+      'command-a-03-2025',
+      'command-r-08-2024',
+      'command-r-plus-08-2024',
+    ],
+    supportsCompletion: true,
+    supportsStreaming: [
+      'command-a-03-2025',
+      'command-r-08-2024',
+      'command-r-plus-08-2024',
+    ],
+    supportsJSON: [],
+    supportsImages: [],
+    supportsToolCalls: [
+      'command-a-03-2025',
+      'command-r-08-2024',
+      'command-r-plus-08-2024',
+    ],
+    supportsN: true,
+  },
+  'bedrock': {
+    models: [
+      'anthropic.claude-3-5-sonnet-20241022-v2:0',
+      'anthropic.claude-3-5-haiku-20241022-v1:0',
+      'cohere.command-r-plus-v1:0',
+      'cohere.command-r-v1:0',
+      'meta.llama3-70b-instruct-v1:0',
+      'meta.llama3-8b-instruct-v1:0',
+      'mistral.mistral-large-2402-v1:0',
+      'amazon.titan-text-express-v1',
+    ],
+    supportsCompletion: true,
+    supportsStreaming: [
+      'anthropic.claude-3-5-sonnet-20241022-v2:0',
+      'anthropic.claude-3-5-haiku-20241022-v1:0',
+      'cohere.command-r-plus-v1:0',
+      'cohere.command-r-v1:0',
+      'meta.llama3-70b-instruct-v1:0',
+      'meta.llama3-8b-instruct-v1:0',
+      'mistral.mistral-large-2402-v1:0',
+      'amazon.titan-text-express-v1',
+    ],
+    supportsJSON: [],
+    supportsImages: [
+      'anthropic.claude-3-5-sonnet-20241022-v2:0',
+      'anthropic.claude-3-5-haiku-20241022-v1:0',
+    ],
+    supportsToolCalls: [
+      'anthropic.claude-3-5-sonnet-20241022-v2:0',
+      'anthropic.claude-3-5-haiku-20241022-v1:0',
+      'cohere.command-r-plus-v1:0',
+      'cohere.command-r-v1:0',
+      'mistral.mistral-large-2402-v1:0',
+    ],
+    supportsN: true,
+  },
+  'mistral': {
+    models: [
+      'mistral-large-2411',
+      'magistral-medium-2509',
+      'magistral-small-2509',
+      'pixtral-large-2411',
+      'pixtral-12b-2409',
+      'codestral-2508',
+      'mistral-small-2506',
+      'mistral-nemo-2407',
+    ],
+    supportsCompletion: true,
+    supportsStreaming: [
+      'mistral-large-2411',
+      'magistral-medium-2509',
+      'magistral-small-2509',
+      'pixtral-large-2411',
+      'pixtral-12b-2409',
+      'codestral-2508',
+      'mistral-small-2506',
+      'mistral-nemo-2407',
+    ],
+    supportsJSON: ['mistral-large-2411', 'codestral-2508'],
+    supportsImages: [
+      'magistral-medium-2509',
+      'magistral-small-2509',
+      'pixtral-large-2411',
+      'pixtral-12b-2409',
+      'mistral-small-2506',
+    ],
+    supportsToolCalls: ['mistral-large-2411', 'mistral-small-2506'],
+    supportsN: true,
+  },
+  'groq': {
+    models: [
+      'meta-llama/llama-4-maverick-17b-128e-instruct',
+      'meta-llama/llama-4-scout-17b-16e-instruct',
+      'llama-3.3-70b-versatile',
+      'llama-3.1-8b-instant',
+      'moonshotai/kimi-k2-instruct-0905',
+      'qwen/qwen3-32b',
+      'openai/gpt-oss-120b',
+      'whisper-large-v3-turbo',
+    ],
+    supportsCompletion: true,
+    supportsStreaming: [
+      'meta-llama/llama-4-maverick-17b-128e-instruct',
+      'meta-llama/llama-4-scout-17b-16e-instruct',
+      'llama-3.3-70b-versatile',
+      'llama-3.1-8b-instant',
+      'moonshotai/kimi-k2-instruct-0905',
+      'qwen/qwen3-32b',
+      'openai/gpt-oss-120b',
+    ],
+    supportsJSON: [
+      'llama-3.3-70b-versatile',
+      'llama-3.1-8b-instant',
+      'openai/gpt-oss-120b',
+    ],
+    supportsImages: [
+      'meta-llama/llama-4-maverick-17b-128e-instruct',
+      'meta-llama/llama-4-scout-17b-16e-instruct',
+    ],
+    supportsToolCalls: [],
+    supportsN: true,
+  },
+  // xAI — source: https://docs.x.ai/developers/models (Apr 2026)
+  // grok-4.20 is flagship; 4-1-fast is cost-efficient; code-fast specialized.
+  // grok-3/grok-2-vision kept as legacy for thread back-compat.
+  'xai': {
+    models: [
+      'grok-4.20-0309-reasoning',
+      'grok-4.20-0309-non-reasoning',
+      'grok-4-1-fast-reasoning',
+      'grok-4-1-fast-non-reasoning',
+      'grok-code-fast-1',
+      'grok-3',
+      'grok-3-mini',
+      'grok-2-vision-1212',
+    ],
+    supportsCompletion: true,
+    supportsStreaming: [
+      'grok-4.20-0309-reasoning',
+      'grok-4.20-0309-non-reasoning',
+      'grok-4-1-fast-reasoning',
+      'grok-4-1-fast-non-reasoning',
+      'grok-code-fast-1',
+      'grok-3',
+      'grok-3-mini',
+      'grok-2-vision-1212',
+    ],
+    supportsJSON: [
+      'grok-4.20-0309-reasoning',
+      'grok-4.20-0309-non-reasoning',
+      'grok-4-1-fast-reasoning',
+      'grok-4-1-fast-non-reasoning',
+      'grok-code-fast-1',
+      'grok-3',
+      'grok-3-mini',
+    ],
+    supportsImages: [
+      'grok-4.20-0309-reasoning',
+      'grok-4.20-0309-non-reasoning',
+      'grok-4-1-fast-reasoning',
+      'grok-4-1-fast-non-reasoning',
+      'grok-2-vision-1212',
+    ],
+    supportsToolCalls: [
+      'grok-4.20-0309-reasoning',
+      'grok-4.20-0309-non-reasoning',
+      'grok-4-1-fast-reasoning',
+      'grok-4-1-fast-non-reasoning',
+      'grok-code-fast-1',
+      'grok-3',
+      'grok-3-mini',
+    ],
+    supportsN: true,
+  },
+  'perplexity': {
+    models: ['sonar', 'sonar-pro', 'sonar-reasoning-pro'],
+    supportsCompletion: true,
+    supportsStreaming: ['sonar', 'sonar-pro', 'sonar-reasoning-pro'],
+    supportsJSON: ['sonar', 'sonar-pro', 'sonar-reasoning-pro'],
+    supportsImages: [],
+    supportsToolCalls: ['sonar', 'sonar-pro', 'sonar-reasoning-pro'],
+    supportsN: true,
+  },
+  'minimax': {
+    models: [
+      'MiniMax-M2.7',
+      'MiniMax-M2.7-highspeed',
+      'MiniMax-M2.5',
+      'MiniMax-M2.5-highspeed',
+    ],
+    supportsCompletion: true,
+    supportsStreaming: [
+      'MiniMax-M2.7',
+      'MiniMax-M2.7-highspeed',
+      'MiniMax-M2.5',
+      'MiniMax-M2.5-highspeed',
+    ],
+    supportsJSON: [],
+    supportsImages: [],
+    supportsToolCalls: [
+      'MiniMax-M2.7',
+      'MiniMax-M2.7-highspeed',
+      'MiniMax-M2.5',
+      'MiniMax-M2.5-highspeed',
+    ],
+    supportsN: true,
+  },
+  'openrouter': {
+    models: true,
+    supportsCompletion: true,
+    supportsStreaming: true,
+    supportsJSON: true,
+    supportsImages: true,
+    supportsToolCalls: true,
+    supportsN: true,
+  },
+  'nvidia': {
+    models: ['moonshotai/kimi-k2.5', 'minimaxai/minimax-m2.5', 'z-ai/glm5'],
+    supportsCompletion: true,
+    supportsStreaming: true,
+    supportsJSON: true,
+    supportsImages: true,
+    supportsToolCalls: true,
+    supportsN: true,
+  },
+  'openai-compatible': {
+    models: true,
+    supportsCompletion: true,
+    supportsStreaming: true,
+    supportsJSON: true,
+    supportsImages: true,
+    supportsToolCalls: true,
+    supportsN: true,
+  },
+} as const

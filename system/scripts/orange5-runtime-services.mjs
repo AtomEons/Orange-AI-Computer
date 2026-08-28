@@ -295,6 +295,13 @@ function taskkill(pid) {
 
 function runtimeEnv(service) {
   const env = { ...process.env };
+  // Service-level control must preserve the same transport law as the full
+  // runtime controller. This keeps targeted restarts from silently falling
+  // back to direct-IP metadata while requests continue over AE Phase.
+  env.ORANGE5_CROSS_NODE_TRANSPORT ||= "ae-phase";
+  env.ORANGE5_AE_PHASE_URL ||= "http://127.0.0.1:8907";
+  env.ORANGE5_NAVIGATOR_MODEL ||= "orange-navigator:ornith-1.5-9b-q4km";
+  env.ORANGEBOX_RAIL_TOKEN_FILE ||= path.join(STATE, "secrets", "rail-token.txt");
   if (service.name === "orangellm" && /^http:\/\/(?:127\.0\.0\.1|localhost):11437\/?$/i.test(env.ORANGE5_CODEXA_OLLAMA_URL || "")) {
     delete env.ORANGE5_CODEXA_OLLAMA_URL;
   }

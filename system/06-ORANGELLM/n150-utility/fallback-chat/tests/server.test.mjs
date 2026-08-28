@@ -69,10 +69,10 @@ function makeFetch({
 } = {}) {
   return async function fakeFetch(url, opts = {}) {
     const u = String(url);
-    if (u.endsWith("/healthz")) {
+    if (u.endsWith("/health")) {
       const state = typeof rail === "function" ? rail() : rail;
       if (state === "up") {
-        return new Response(JSON.stringify({ ok: true }), { status: 200 });
+        return new Response(JSON.stringify({ ok: true, status: 'AE_PHASE_FABRIC_ACTIVE', authenticated: true, connectedPeers: 1, backpressured: false }), { status: 200 });
       }
       // Simulate unreachable host as a network error.
       throw new Error("ECONNREFUSED");
@@ -152,7 +152,7 @@ async function test3_activates_after_grace_then_serves_degraded() {
   const res = await handler(req("POST", "/chat", { prompt: "help me" }));
   assert(res.status === 200, "chat 200 once activated");
   assert(res.headers.get("X-AE-Degraded") === "true", "degraded header set");
-  assert(res.headers.get("X-AE-Reason") === "codexa-rail-unreachable", "reason header set");
+  assert(res.headers.get("X-AE-Reason") === "codexa-phase-unreachable", "reason header set");
   const body = await res.json();
   assert(body.degraded === true, "body degraded flag");
   assert(body.model === DEFAULT_CHAT_MODEL, "body model");

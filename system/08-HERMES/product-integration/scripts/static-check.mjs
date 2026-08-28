@@ -1,9 +1,21 @@
 #!/usr/bin/env bun
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const root = resolve(import.meta.dir, '..');
-const expectedProfiles = ['builder', 'misfit', 'navigator', 'researcher', 'reviewer', 'visual'];
+const executionProfilePolicy = ['builder', 'human-operator', 'misfit', 'navigator', 'researcher', 'reviewer', 'visual'];
+const staffRosterPath = join(root, 'config', 'staff-roster.json');
+let staffRoster = null;
+let staffRosterError = '';
+try {
+  staffRoster = JSON.parse(readFileSync(staffRosterPath, 'utf8'));
+} catch (error) {
+  staffRosterError = error.message;
+}
+const logicalRoles = Array.isArray(staffRoster?.roles) ? staffRoster.roles : [];
+const mappedProfiles = [...new Set(logicalRoles.map((role) => role?.archetype).filter(Boolean))].sort();
+const expectedProfiles = mappedProfiles.length ? mappedProfiles : executionProfilePolicy;
 const expectedTools = ['orange5_delegate', 'orange5_health', 'orange5_order', 'orange5_receipts', 'orange5_route'];
 const profileTools = {
   navigator: expectedTools,
@@ -12,6 +24,7 @@ const profileTools = {
   reviewer: ['orange5_health', 'orange5_receipts'],
   visual: ['orange5_health', 'orange5_receipts'],
   misfit: ['orange5_health', 'orange5_receipts'],
+  'human-operator': ['orange5_health', 'orange5_order', 'orange5_receipts', 'orange5_route'],
 };
 const delegationPosture = {
   navigator: { max_concurrent_children: 6, max_spawn_depth: 2, orchestrator_enabled: true },
@@ -20,12 +33,29 @@ const delegationPosture = {
   reviewer: { max_concurrent_children: 6, max_spawn_depth: 1, orchestrator_enabled: false },
   visual: { max_concurrent_children: 6, max_spawn_depth: 1, orchestrator_enabled: false },
   misfit: { max_concurrent_children: 6, max_spawn_depth: 1, orchestrator_enabled: false },
+  'human-operator': { max_concurrent_children: 1, max_spawn_depth: 1, orchestrator_enabled: false },
 };
 const failures = [];
 const passes = [];
 
 function check(condition, name, detail = '') {
   (condition ? passes : failures).push({ name, detail });
+}
+
+function nonEmptyText(value) {
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
+function nonEmptyTextList(value) {
+  return Array.isArray(value) && value.length > 0 && value.every(nonEmptyText);
+}
+
+function hasConcreteRoleContract(role) {
+  return nonEmptyText(role?.id)
+    && nonEmptyText(role?.title)
+    && nonEmptyText(role?.purpose)
+    && nonEmptyTextList(role?.concreteOutputs)
+    && nonEmptyTextList(role?.completionContract);
 }
 
 function walk(dir) {
@@ -59,6 +89,56 @@ check(lock.tag === 'v2026.8.19', 'pinned-tag', lock.tag);
 check(lock.tagObjectSha === 'b05e680e63d39d5a8e3ec0f5842a41d1c4209c03', 'pinned-tag-object', lock.tagObjectSha);
 check(lock.commit === 'fcbd1076a93841fa88855acce810e342a5b78101', 'pinned-commit', lock.commit);
 
+check(existsSync(staffRosterPath) && !staffRosterError, 'ae-staff-wave4-roster-readable', staffRosterError || relative(root, staffRosterPath));
+const organization = staffRoster?.organization || {};
+check(
+  organization.productName === 'AE Staff'
+    && nonEmptyText(organization.workTitle)
+    && organization.workTitle.startsWith('Wave 4:')
+    && organization.roleCount === 50
+    && organization.logicalActionRoleCount === 50,
+  'ae-staff-wave4-organization-contract',
+  `${organization.productName || ''};${organization.workTitle || ''};roles=${organization.roleCount};logical=${organization.logicalActionRoleCount}`,
+);
+const roleIds = logicalRoles.map((role) => role?.id);
+const duplicateIds = roleIds.filter((id, index) => roleIds.indexOf(id) !== index);
+const invalidIds = roleIds.filter((id) => !nonEmptyText(id) || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id));
+check(logicalRoles.length === 50, 'ae-staff-wave4-exact-50-logical-roles', `roles=${logicalRoles.length}`);
+check(roleIds.length === 50 && new Set(roleIds).size === 50 && invalidIds.length === 0, 'ae-staff-wave4-50-unique-role-ids', `unique=${new Set(roleIds).size};invalid=${invalidIds.join(',')};duplicates=${[...new Set(duplicateIds)].join(',')}`);
+const declaredProfiles = [...(organization.executionProfiles || [])].sort();
+check(
+  organization.executionProfileCount === 7
+    && JSON.stringify(declaredProfiles) === JSON.stringify(executionProfilePolicy)
+    && JSON.stringify(mappedProfiles) === JSON.stringify(executionProfilePolicy),
+  'ae-staff-wave4-seven-execution-profile-mapping',
+  `declared=${declaredProfiles.join(',')};mapped=${mappedProfiles.join(',')}`,
+);
+const navigators = logicalRoles.filter((role) => role?.archetype === 'navigator');
+check(
+  navigators.length === 1
+    && nonEmptyText(organization.navigatorId)
+    && navigators[0]?.id === organization.navigatorId
+    && /navigator/i.test(navigators[0]?.title || ''),
+  'ae-staff-wave4-single-navigator',
+  `count=${navigators.length};declared=${organization.navigatorId || ''};actual=${navigators[0]?.id || ''}`,
+);
+const incompleteRoles = logicalRoles.filter((role) => !hasConcreteRoleContract(role)).map((role) => role?.id || 'unknown');
+check(incompleteRoles.length === 0 && logicalRoles.length === 50, 'ae-staff-wave4-role-output-and-completion-contracts', incompleteRoles.join(','));
+const managerialOnlyRoles = logicalRoles.filter((role) => role?.managerialOnly === true || ['managerial-only', 'management-only'].includes(String(role?.roleMode || '').toLowerCase()));
+const reportingFailures = logicalRoles.filter((role) => role?.id === organization.navigatorId
+  ? role?.reportsTo !== 'operator'
+  : role?.reportsTo !== organization.navigatorId);
+check(
+  organization.structure === 'flat'
+    && managerialOnlyRoles.length === 0
+    && incompleteRoles.length === 0
+    && reportingFailures.length === 0,
+  'ae-staff-wave4-no-managerial-only-roles',
+  `structure=${organization.structure || ''};managerialOnly=${managerialOnlyRoles.map((role) => role.id).join(',')};reporting=${reportingFailures.map((role) => role.id).join(',')}`,
+);
+const unmappedPermissionRoles = logicalRoles.filter((role) => !profileTools[role?.archetype] || !delegationPosture[role?.archetype]);
+check(unmappedPermissionRoles.length === 0 && logicalRoles.length === 50, 'ae-staff-wave4-profile-permission-mapping', unmappedPermissionRoles.map((role) => role?.id || 'unknown').join(','));
+
 const profileRoot = join(root, 'config', 'profiles');
 const profiles = readdirSync(profileRoot, { withFileTypes: true }).filter((x) => x.isDirectory()).map((x) => x.name).sort();
 check(JSON.stringify(profiles) === JSON.stringify(expectedProfiles), 'exact-profile-roster', profiles.join(','));
@@ -76,13 +156,17 @@ check(owner?.gateway?.api_server?.max_concurrent_runs === 8, 'eight-concurrent-a
 check(owner?.delegation?.max_concurrent_children === 6, 'six-wide-delegated-swarm');
 check(owner?.delegation?.max_spawn_depth === 2, 'two-level-delegation-depth');
 check(owner?.delegation?.orchestrator_enabled === true, 'nested-orchestrator-enabled');
+const ownerAllowlist = [...(owner?.gateway?.multiplex_profile_allowlist || [])].sort();
+check(JSON.stringify(ownerAllowlist) === JSON.stringify(expectedProfiles), 'ae-staff-wave4-owner-seven-profile-allowlist', ownerAllowlist.join(','));
 const ownerTools = [...(owner?.mcp_servers?.orange5?.tools?.include || [])].sort();
 check(JSON.stringify(ownerTools) === JSON.stringify(expectedTools), 'minimal-orange-mcp-tools', ownerTools.join(','));
 check(owner?.mcp_servers?.orange5?.supports_parallel_tool_calls === false, 'serialized-orange-mutations');
 
+const workerOwnershipFailures = [];
 for (const profile of profiles) {
   const configPath = join(profileRoot, profile, 'config.yaml');
   const config = yamlDocs.get(configPath);
+  if (config?.gateway?.multiplex_profiles !== false || config?.kanban?.dispatch_in_gateway !== false) workerOwnershipFailures.push(profile);
   check(config?.gateway?.multiplex_profiles === false, `${profile}-no-gateway-owner`);
   check(config?.platforms?.api_server?.enabled === false, `${profile}-shared-api-listener-only`);
   check(config?.kanban?.dispatch_in_gateway === false, `${profile}-no-dispatcher`);
@@ -91,6 +175,29 @@ for (const profile of profiles) {
   const tools = [...(config?.mcp_servers?.orange5?.tools?.include || [])].sort();
   check(JSON.stringify(tools) === JSON.stringify([...profileTools[profile]].sort()), `${profile}-minimal-mcp`, tools.join(','));
   check(readFileSync(join(profileRoot, profile, 'SOUL.md'), 'utf8').length > 120, `${profile}-soul-present`);
+  const profileDefinition = JSON.parse(readFileSync(join(profileRoot, profile, 'profile.json'), 'utf8'));
+  check(nonEmptyText(profileDefinition.permissionClass), `${profile}-permission-class-present`, profileDefinition.permissionClass || '');
+}
+check(workerOwnershipFailures.length === 0 && profiles.length === 7, 'ae-staff-wave4-no-worker-owns-gateway-or-dispatcher', workerOwnershipFailures.join(','));
+
+if (staffRoster && logicalRoles.length === 50) {
+  try {
+    const reactorPath = resolve(root, '..', 'src', 'staff-reactor.mjs');
+    const { StaffReactor } = await import(pathToFileURL(reactorPath).href);
+    const reactorState = new StaffReactor({ roster: staffRoster, inferenceLimit: 8 }).start();
+    check(
+      reactorState.status === 'LIVE'
+        && reactorState.roleCount === 50
+        && reactorState.readyCount === 50
+        && reactorState.inferenceLimit < reactorState.roleCount,
+      'ae-staff-wave4-50-live-logical-actors',
+      `status=${reactorState.status};roles=${reactorState.roleCount};ready=${reactorState.readyCount};inferenceLimit=${reactorState.inferenceLimit}`,
+    );
+  } catch (error) {
+    check(false, 'ae-staff-wave4-50-live-logical-actors', error.message);
+  }
+} else {
+  check(false, 'ae-staff-wave4-50-live-logical-actors', 'staff-roster-invalid');
 }
 
 const policyScanFiles = files.filter((file) => file !== join(root, 'scripts', 'static-check.mjs'));
@@ -108,6 +215,7 @@ const preflightText = readFileSync(join(root, 'scripts', 'preflight.ps1'), 'utf8
 const leaseProofText = readFileSync(join(root, 'scripts', 'agent-lease-proof.ps1'), 'utf8');
 const deployProfilesText = readFileSync(join(root, 'scripts', 'deploy-codexa-profiles.ps1'), 'utf8');
 const delegationProofText = readFileSync(join(root, 'scripts', 'bounded-live-delegation-proof.ps1'), 'utf8');
+const loadedSurfacesText = readFileSync(join(root, 'scripts', 'probe-loaded-surfaces.ps1'), 'utf8');
 check(installerText.includes('tagObjectSha') && installerText.includes('Pinned tag object moved'), 'annotated-tag-object-enforced');
 check(installerText.includes('ExistingHermesExe') && installerText.includes('adopted-executable'), 'existing-hermes-overlay-adoption');
 check(installerText.includes('ReparsePoint') && materializerText.includes('ReparsePoint') && startText.includes('ReparsePoint'), 'reparse-point-defense');
@@ -115,6 +223,9 @@ check(startText.includes("@('gateway', 'run', '--external-supervisor')"), 'foreg
 check(preflightText.includes('profile-filtered-mcp-surfaces') && preflightText.includes('/v1/toolsets'), 'per-profile-live-tool-proof');
 check(preflightText.includes('navigator-agent-inference') && preflightText.includes('filtered-profile-surface-not-ready;inference-not-sent'), 'agent-inference-gated-by-filtered-surface');
 check(preflightText.includes('cross-profile-auth-rejection') && preflightText.includes('owner-and-peer-keys-rejected'), 'cross-profile-auth-proof');
+check(preflightText.includes('ae-staff-wave4-roster-contract') && preflightText.includes('ae-staff-wave4-live-actors'), 'ae-staff-wave4-preflight-runtime-proof-wired');
+check((preflightText.match(/\/v1\/chat\/completions/g) || []).length === 1 && preflightText.includes('$NavigatorProfile'), 'ae-staff-wave4-single-navigator-profile-inference');
+check(loadedSurfacesText.includes('staff-roster.json') && loadedSurfacesText.includes('ae-staff-wave4'), 'ae-staff-wave4-loaded-surfaces-proof-wired');
 check(preflightText.includes('secret-file-acls') && materializerText.includes('SetAccessRuleProtection'), 'secret-acl-apply-and-proof');
 check(!preflightText.includes("$processOwner -eq 'unknown' -or"), 'process-owner-fails-closed');
 check(leaseProofText.includes("execute = $false") && leaseProofText.includes("mutatedProject = $false"), 'agent-lease-proof-is-non-executing');

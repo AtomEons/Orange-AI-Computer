@@ -7,6 +7,7 @@
 import { ORANGE_NAVIGATOR_SYSTEM } from '../contracts/navigator-system.mjs';
 import { ORANGE_REPORT_DRAFT_JSON_SCHEMA, ORANGE_REPORT_NO_EVIDENCE_GBNF, ORANGE_REPORT_NO_EVIDENCE_JSON_SCHEMA } from '../contracts/orange-report.mjs';
 import { resolveComputeEndpointsSync } from '../../03-BACKEND/compute-fabric.mjs';
+import { probeAEPhaseModel, requestAEPhaseModel } from '../../03-BACKEND/ae-phase-model-client.mjs';
 import { compileModelResponse } from './response-compiler.mjs';
 import { ensureSpecialistReady, scheduleSpecialistPrewarm, specialistLeaseSnapshot } from './specialist-lease.mjs';
 
@@ -36,6 +37,10 @@ export function resolveNavigatorModel({ configuredModel, fabricModel, transport 
 
 function fabricEndpoints() {
   return resolveComputeEndpointsSync();
+}
+
+function crossNodeTransport() {
+  return String(process.env.ORANGE5_CROSS_NODE_TRANSPORT || 'ae-phase').trim().toLowerCase();
 }
 
 export function normalizeLoopbackUrl(value) {
@@ -303,7 +308,7 @@ export const UPSTREAM = {
     get host() { return fabricEndpoints().heavyHost || fabricEndpoints().inferenceHost || "codexa"; },
     get node() { return fabricEndpoints().heavyNodeId || fabricEndpoints().inferenceNodeId || "codexa"; },
     state: "warm",
-    get model() { return process.env.ORANGE5_CODEXA_HEAVY_MODEL ?? fabricEndpoints().heavyModel ?? "qwen3:30b-a3b"; },
+    get model() { return process.env.ORANGE5_CODEXA_HEAVY_MODEL ?? "qwen3.8:27b-current"; },
     // Fallback path: through command rail (Orangebox mediates)
     fallback: {
       name: "fatty-codexa-via-rail",
@@ -494,6 +499,29 @@ export async function probeUpstream(tier = "light") {
       return { tier, status: "unreachable", live: false, error: err.message, base_url: u.base_url };
     }
   }
+  if (crossNodeTransport() === 'ae-phase') {
+    const phase = await probeAEPhaseModel({ tier, model: u.model, timeoutMs: 3_000 });
+    return {
+      tier,
+      status: phase.live ? 'live' : phase.status,
+      live: phase.live === true,
+      primary: {
+        reachable: phase.live === true,
+        path: 'ae-phase://CODEXA',
+        backend: 'ae-phase',
+        model_available: phase.modelAvailable === true,
+        model_loaded: phase.modelLoaded === true,
+        loaded_models: phase.loadedModels || [],
+      },
+      fallback: null,
+      preferred_route: phase.live ? 'ae-phase' : 'none',
+      selected_base_url: phase.live ? 'ae-phase://CODEXA' : null,
+      capability_mode: phase.modelLoaded ? 'phase_resident' : (phase.modelAvailable ? 'phase_lease_on_demand' : 'unavailable'),
+      model: phase.model || u.model,
+      model_loaded: phase.modelLoaded === true,
+      transport: phase,
+    };
+  }
   if (tier === "navigator" || tier === "code" || tier === "heavy") {
     if (tier === "navigator" && (u.backend === "llama.cpp-vulkan" || u.backend === "openai-compatible")) {
       let primary;
@@ -653,6 +681,43 @@ export async function proxyChatCompletions(body, tier = "light", options = {}) {
   const u = UPSTREAM[tier];
   if (!u) {
     return { status: 400, body: { error: { message: `unknown tier: ${tier}`, type: "invalid_request_error", code: "unknown_tier" } } };
+  }
+
+  if (tier !== 'light' && crossNodeTransport() === 'ae-phase') {
+    const result = await requestAEPhaseModel({
+      tier,
+      model: u.model,
+      body,
+      onChunk: options.onChunk,
+      timeoutMs: u.timeout_ms,
+    });
+    if (result.status !== 200 || !result.body || typeof result.body !== 'object') return result;
+    compileModelResponse(result.body, body.messages ?? []);
+    if (Array.isArray(result.body.choices)) {
+      for (const choice of result.body.choices) {
+        if (!choice?.message || typeof choice.message !== 'object') continue;
+        delete choice.message.reasoning;
+        delete choice.message.reasoning_content;
+        delete choice.message.thinking;
+      }
+    }
+    const lane = tier === 'navigator' ? 'navigator' : tier;
+    result.body.ae_lane = lane;
+    result.body.ae_requested_lane = lane;
+    result.body.ae_requested_tier = tier;
+    result.body.ae_execution_tier = tier;
+    result.body.ae_host = 'codexa';
+    result.body.ae_requested_host = 'codexa';
+    result.body.ae_effective_host = 'codexa';
+    result.body.ae_requested_node = 'CODEXA';
+    result.body.ae_effective_node = 'CODEXA';
+    result.body.ae_upstream = u.name;
+    result.body.ae_selected_endpoint = 'ae-phase://CODEXA';
+    result.body.ae_route_mode = 'phase_model_lease';
+    result.body.ae_requested_model = u.model;
+    result.body.ae_effective_model = result.body.model || u.model;
+    result.body.ae_phase = result.phase;
+    return result;
   }
 
   const specialistPolicy = body.ae_specialist_policy || 'prewarm_fallback';

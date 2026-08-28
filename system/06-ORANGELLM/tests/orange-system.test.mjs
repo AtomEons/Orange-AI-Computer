@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import {
+  compactNavigatorConversationMessages,
   compactNoEvidenceNavigatorMessages,
   injectOrangeSystem,
   ORANGE_NAVIGATOR_COMPACT_SYSTEM,
@@ -63,5 +64,16 @@ describe('Orange gateway doctrine injection', () => {
     expect(rendered).toContain('headless MCP and CLI remain first-class');
     expect(rendered).not.toContain('large recalled history');
     expect(ORANGE_NAVIGATOR_COMPACT_SYSTEM.length).toBeLessThan(700);
+  });
+
+  test('keeps transport and memory authority explicit in compact conversation', () => {
+    const result = compactNavigatorConversationMessages([
+      { role: 'system', content: 'AIR:MEMORY.v1\nParty Line continuity record' },
+      { role: 'user', content: 'How does work reach Codexa?' },
+    ]);
+    const rendered = result.map((message) => String(message.content)).join('\n');
+    expect(rendered).toContain('AE Phase, the only active cross-computer transport');
+    expect(rendered).toContain('Party Line is disk-backed continuity, not a transport or source truth');
+    expect(rendered).toContain('Source truth is the AE Cobra raw ledger, receipts, and artifacts');
   });
 });

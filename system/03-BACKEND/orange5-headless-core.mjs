@@ -7,14 +7,19 @@ import { fileURLToPath } from "node:url";
 import { compileDelegation } from "./navigator-kernel.mjs";
 import { collectResearchEvidence } from "./research-capabilities.mjs";
 import { getCurrentAwareness, shouldScoutIntent } from "./current-awareness.mjs";
-import { discoverComputeFabric } from "./compute-fabric.mjs";
+import { resolveComputeEndpointsSync } from "./compute-fabric.mjs";
 import { executeGovernedTool } from "./hermes-effector.mjs";
 import { readProjectLock } from "./project-lock.mjs";
 import { writeChainedJsonReceipt } from "../10-RECEIPTS/tools/json-receipt-chain.mjs";
 import { inspectSwarm } from "../08-HERMES/product-integration/scripts/swarm-sentinel.mjs";
+import {
+  sendLocalAEPhaseEnvelope,
+  waitForAEPhaseEnvelope,
+} from "./ae-phase-fabric.mjs";
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 export const BRAIN_URL = (process.env.ORANGE5_ORANGEBRAIN_URL || "http://127.0.0.1:1337").replace(/\/$/, "");
+export const AE_STAFF_URL = (process.env.ORANGE5_AE_STAFF_URL || "http://127.0.0.1:8643").replace(/\/$/, "");
 export const CHAIN_FILE = path.join(ROOT, "10-RECEIPTS", "spine-chain.jsonl");
 
 async function fetchJson(url, options = {}, timeoutMs = 10_000) {
@@ -45,17 +50,28 @@ async function tcp(host, port, timeoutMs = 1200) {
   });
 }
 
-export async function healthSnapshot({ discoverFabric = discoverComputeFabric, fetchBrain = fetchJson } = {}) {
-  const [brain, fabric, legacyCommand, legacyModelAdapter] = await Promise.all([
+export async function healthSnapshot({ resolveFabric = resolveComputeEndpointsSync, fetchBrain = fetchJson, fetchPhase = fetchJson } = {}) {
+  const phaseUrl = (process.env.ORANGE5_AE_PHASE_URL || 'http://127.0.0.1:8907').replace(/\/$/, '');
+  const [brain, phase, legacyCommand, legacyModelAdapter] = await Promise.all([
     fetchBrain(`${BRAIN_URL}/healthz`, {}, 8_000),
-    discoverFabric({ timeoutMs: 900, persist: false }),
+    fetchPhase(`${phaseUrl}/health`, {}, 3_000),
     tcp("127.0.0.1", 8787),
     tcp("127.0.0.1", 8797)
   ]);
+  const endpoints = resolveFabric();
   const primary = brain.body && typeof brain.body === "object" ? brain.body.primary : null;
   const operational = Boolean(brain.ok && primary?.live);
   const project = readProjectLock();
-  const fabricRail = fabric?.selections?.rail;
+  const phaseBody = phase.body && typeof phase.body === 'object' ? phase.body : null;
+  const phaseConnected = Boolean(
+    phase.ok
+    && phaseBody?.ok === true
+    && phaseBody?.status === 'AE_PHASE_FABRIC_ACTIVE'
+    && phaseBody?.authenticated === true
+    && Number(phaseBody?.connectedPeers || 0) > 0
+    && phaseBody?.backpressured !== true
+  );
+  const codexaPeer = phaseBody?.peers?.find((peer) => String(peer?.nodeId || '').toUpperCase() === 'CODEXA') || null;
   return {
     schema: "orange.health.v1",
     product: "Orange",
@@ -76,14 +92,20 @@ export async function healthSnapshot({ discoverFabric = discoverComputeFabric, f
       live: Boolean(primary.live)
     } : null,
     reflex: { ready: true, runtime: "bun-deterministic-router", modelResident: false },
-    fabric,
+    fabric: {
+      transport: endpoints.crossNodeTransport || 'direct-recovery',
+      phaseUrl: endpoints.phaseUrl || phaseUrl,
+      execution: endpoints,
+      phase: phaseBody,
+    },
     codexa: {
-      host: fabricRail?.host || null,
-      railPort: fabricRail?.url ? Number(new URL(fabricRail.url).port || 80) : null,
-      reachable: Boolean(fabricRail),
-      authorized: fabricRail?.authorized === true,
-      executable: Boolean(fabricRail && fabricRail.authorized === true),
-      nodeId: fabricRail?.nodeId || null,
+      host: codexaPeer?.nodeId || endpoints.inferenceHost || null,
+      transport: 'ae-phase',
+      reachable: phaseConnected,
+      authorized: phaseConnected && phaseBody?.authenticated === true,
+      executable: phaseConnected,
+      nodeId: codexaPeer?.nodeId || endpoints.inferenceNodeId || null,
+      stateConverged: codexaPeer?.stateConverged === true,
     },
     activeProject: project?.active ? {
       name: project.project?.name || null,
@@ -99,9 +121,7 @@ export async function healthSnapshot({ discoverFabric = discoverComputeFabric, f
     receipts: { persisted: readReceipts(1).total, path: CHAIN_FILE },
     blockers: [
       ...(!operational ? ["OrangeBrain gateway did not prove a live primary model."] : []),
-      ...(!fabricRail ? ["Codexa command rail is unavailable; Orange continues in local-only mode."] : []),
-      ...(fabricRail && fabricRail.authorized !== true ? ["Codexa command rail is reachable but not authorized for execution."] : []),
-      ...(fabric?.operatorDecisionRequired ? [fabric.decisionReason] : []),
+      ...(!phaseConnected ? ["AE Phase has no authenticated Codexa compute peer; Orange continues in local-only mode."] : []),
     ]
   };
 }
@@ -183,6 +203,7 @@ export function readReceipts(limit = 10) {
 export async function executeDelegation(args = {}, deps = {}) {
   const run = deps.executeOrder || executeOrder;
   const hermes = deps.hermes || createHermesDelegationClient(deps.fetchFn || globalThis.fetch);
+  const staff = deps.staff || (deps.executeOrder ? null : createAeStaffClient(deps.fetchFn || globalThis.fetch));
   const sourceOrder = args.order ?? args;
   const boundedOrder = args.maxAgents == null ? sourceOrder : { ...sourceOrder, maxAgents: args.maxAgents };
   const plan = compileDelegation(boundedOrder, args.flowState || {});
@@ -193,7 +214,11 @@ export async function executeDelegation(args = {}, deps = {}) {
   const targetProject = sourceOrder.targetProject || "OrangeFive";
   const riskLevel = sourceOrder.riskLevel || "medium";
   let parentEvidence = compactOrderEvidence(sourceOrder);
-  let parentPacket = { ...compactParentOrder(sourceOrder), workObject: plan.workObject };
+  let parentPacket = {
+    ...compactParentOrder(sourceOrder),
+    workObject: plan.workObject,
+    handoffCapsule: plan.handoffCapsule,
+  };
   const governance = {
     childOrdersMediated: true,
     synthesisMediated: false,
@@ -207,11 +232,19 @@ export async function executeDelegation(args = {}, deps = {}) {
     hermesAuthorizedActions: 0,
     hermesGateResults: [],
     hermesLeaseRevoked: false,
+    aeStaff: {
+      required: true,
+      mode: staff ? "ae-phase-staff-reactor" : "injected-test-compatibility",
+      transport: staff ? "ae-phase" : "injected",
+      recoveryUrl: staff ? AE_STAFF_URL : null,
+      rolesObservedPerEvent: staff ? 50 : null,
+    },
     swarmGate: plan.swarmGate || null,
     swarmSentinel: null,
     researchEvidence: null,
     currentAwareness: null,
     wave3Kernel: plan.workObject?.wave3Kernel || null,
+    handoffCapsule: plan.handoffCapsule || null,
   };
 
   const reports = [];
@@ -244,6 +277,8 @@ export async function executeDelegation(args = {}, deps = {}) {
       parentEvidence = mergeEvidence(parentEvidence, [executionEvidence]);
       parentPacket = {
         ...compactParentOrder({ ...sourceOrder, evidence: parentEvidence }),
+        workObject: plan.workObject,
+        handoffCapsule: plan.handoffCapsule,
         governedExecution: {
           action: sourceOrder.action,
           resultHash: result.result_hash || null,
@@ -366,6 +401,7 @@ export async function executeDelegation(args = {}, deps = {}) {
         delegationId: plan.delegationId,
         orderId: plan.orderId,
         wave3Kernel: plan.workObject?.wave3Kernel || null,
+        handoffCapsule: plan.handoffCapsule || null,
       },
     });
     governance.hermesLeaseId = lease.id;
@@ -385,6 +421,7 @@ export async function executeDelegation(args = {}, deps = {}) {
 
     const executeAgent = async (agent) => {
       const startedAt = new Date().toISOString();
+      const staffContract = plan.littleNavigator.roleContracts.find((role) => role.id === agent);
       const order = {
         action: "analyze.agent",
         intent: governance.parentExecutionMediated
@@ -394,6 +431,8 @@ export async function executeDelegation(args = {}, deps = {}) {
         payload: {
           parentOrder: parentPacket,
           agent,
+          executionProfile: staffContract?.archetype || "builder",
+          staffContract,
           delegationId: plan.delegationId,
           allowedTools: plan.littleNavigator.allowedTools,
           ...(researchEvidence?.ok ? { researchEvidence: compactResearchEvidence(researchEvidence) } : {}),
@@ -406,12 +445,15 @@ export async function executeDelegation(args = {}, deps = {}) {
         forbiddenActions: plan.hermesLease.forbiddenActions,
         riskLevel,
         wave3Kernel: plan.workObject?.wave3Kernel || null,
+        handoffCapsule: plan.handoffCapsule || null,
         requiresReceipt: true,
       };
       const authorization = await hermes.authorize({ lease, actor, order });
       governance.hermesAuthorizedActions++;
       governance.hermesGateResults.push(summarizeHermesAuthorization(order.orderId, authorization));
-      const completed = await run(order, { learn: true, model: agentModel, maxTokens: 256 });
+      const completed = staff
+        ? await staff.execute({ roleId: agent, order, plan, sourceOrder, parentEvidence })
+        : await run(order, { learn: true, model: agentModel, maxTokens: 256 });
       const endedAt = new Date().toISOString();
       const report = completed?.result?.report || completed?.result || {};
       sentinelReports.push({
@@ -464,6 +506,7 @@ export async function executeDelegation(args = {}, deps = {}) {
         forbiddenActions: plan.hermesLease.forbiddenActions,
         riskLevel,
         wave3Kernel: plan.workObject?.wave3Kernel || null,
+        handoffCapsule: plan.handoffCapsule || null,
         requiresReceipt: true,
         parentDelegationId: plan.delegationId,
       };
@@ -494,6 +537,92 @@ export async function executeDelegation(args = {}, deps = {}) {
     reports,
     synthesis,
     error: failure ? (failure?.message || String(failure)) : undefined,
+  };
+}
+
+export function createAeStaffClient(options = {}) {
+  const configured = typeof options === "object" && options !== null ? options : {};
+  const sendEnvelope = configured.sendEnvelope || sendLocalAEPhaseEnvelope;
+  const waitEnvelope = configured.waitEnvelope || waitForAEPhaseEnvelope;
+  const batchWindowMs = Math.max(1, Number(configured.batchWindowMs || process.env.ORANGE5_AE_STAFF_BATCH_MS || 12));
+  const timeoutMs = Math.max(1_000, Number(configured.timeoutMs || process.env.ORANGE5_AE_STAFF_TIMEOUT_MS || 240_000));
+  const pending = new Map();
+
+  const flush = async (batchKey) => {
+    const batch = pending.get(batchKey);
+    pending.delete(batchKey);
+    if (!batch?.items?.length) return;
+    const first = batch.items[0];
+    const envelopeId = `ae-staff-order-${randomUUID()}`;
+    const targetRoles = [...new Set(batch.items.map((item) => item.roleId))];
+    const roleOrders = Object.fromEntries(batch.items.map((item) => [item.roleId, item.order]));
+    const parentEvidence = [...new Set(batch.items.flatMap((item) => item.parentEvidence || []))];
+    const event = {
+      id: `ae-staff-event-${randomUUID()}`,
+      type: "staff.order",
+      topic: first.order.action,
+      summary: first.order.intent,
+      body: first.sourceOrder.intent || first.sourceOrder.action,
+      projectId: first.order.targetProject,
+      correlationId: first.plan.delegationId,
+      order: first.order,
+      roleOrders,
+      authority: "orange-hermes-navigator",
+      custody: { state: "STARTED", owner: first.plan.littleNavigator.id, leaseId: first.plan.hermesLease.leaseId },
+      cancellation: { supported: true, requested: false },
+      handoffCapsule: first.plan.handoffCapsule,
+      commitments: first.plan.workObject?.objective ? [first.plan.workObject.objective] : [],
+      sourceRefs: parentEvidence,
+      targetRoles,
+      requiresModel: true,
+    };
+    try {
+      const sent = await sendEnvelope({ id: envelopeId, kind: "ae_staff_order", correlationId: first.plan.delegationId, body: { event } });
+      const response = await waitEnvelope({ kind: "ae_staff_report", correlationId: envelopeId }, { timeoutMs });
+      const payload = response.body;
+      if (!payload || !Array.isArray(payload.results)) throw new Error("AE Phase returned no AE Staff result set");
+      for (const item of batch.items) {
+        const completed = payload.results.find((entry) => entry?.roleId === item.roleId);
+        if (!completed?.ok || completed?.result?.schema !== "orange.report.v1") {
+          item.reject(new Error(`AE Staff role ${item.roleId} did not return a valid orange.report.v1`));
+          continue;
+        }
+        const report = completed.result;
+        item.resolve({
+          ok: report.status === "completed",
+          result: {
+            status: report.status,
+            report: { output: report, evidence: report.evidence, blockers: report.blockers, confidence: report.confidence, nextAction: report.nextAction },
+            receipt: { receipt_id: report.orderId, hash: report.receiptSha256 || null, path: report.receiptPath },
+          },
+          aeStaff: {
+            observedCount: payload.observedCount,
+            addressed: payload.addressed,
+            roleId: item.roleId,
+            executionProfile: report.executionProfile,
+            transport: "ae-phase",
+            requestEnvelopeId: envelopeId,
+            requestBodyHash: sent.bodyHash,
+            responseEnvelopeId: response.id,
+            responseBodyHash: response.bodyHash,
+          },
+        });
+      }
+    } catch (error) {
+      for (const item of batch.items) item.reject(error);
+    }
+  };
+
+  return {
+    async execute({ roleId, order, plan, sourceOrder, parentEvidence = [] }) {
+      return await new Promise((resolve, reject) => {
+        const batchKey = plan.delegationId;
+        const batch = pending.get(batchKey) || { items: [], timer: null };
+        batch.items.push({ roleId, order, plan, sourceOrder, parentEvidence, resolve, reject });
+        if (!batch.timer) batch.timer = setTimeout(() => flush(batchKey), batchWindowMs);
+        pending.set(batchKey, batch);
+      });
+    },
   };
 }
 
@@ -556,6 +685,7 @@ export function toHermesOrder(order) {
     riskLevel: order.riskLevel,
     requiresReceipt: true,
     wave3Kernel: order.wave3Kernel || order.payload?.parentOrder?.workObject?.wave3Kernel || null,
+    handoffCapsule: order.handoffCapsule || order.payload?.parentOrder?.handoffCapsule || null,
     payload: order.payload && typeof order.payload === "object" ? order.payload : {},
     ...(Array.isArray(order.evidence) ? { evidence: order.evidence } : {}),
   };
@@ -593,6 +723,7 @@ function writeDelegationPreActionReceipt(order, actor, leaseId) {
     lease_id: leaseId,
     action: order.action,
     wave3_kernel: order.wave3Kernel || order.payload?.parentOrder?.workObject?.wave3Kernel || null,
+    handoff_capsule: order.handoffCapsule || order.payload?.parentOrder?.handoffCapsule || null,
     note: "Pre-action receipt for Hermes LOOM authorization; execution evidence lands on the canonical spine.",
   });
   return receiptPath;

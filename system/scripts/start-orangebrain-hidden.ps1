@@ -6,6 +6,8 @@ $workingDirectory = Split-Path -Parent $entry
 $bun = (Get-Command bun -ErrorAction Stop).Source
 
 $env:ORANGE5_VISUAL_ENABLED = '1'
+$env:ORANGE5_CROSS_NODE_TRANSPORT = 'ae-phase'
+$env:ORANGE5_AE_PHASE_URL = 'http://127.0.0.1:8907'
 $env:ORANGE5_NAVIGATOR_MODEL = 'orange-navigator:ornith-1.5-9b-q4km'
 $env:ORANGE5_NAVIGATOR_TRANSPORT = 'ollama'
 if (-not $env:ORANGE5_NAVIGATOR_KEEP_ALIVE) { $env:ORANGE5_NAVIGATOR_KEEP_ALIVE = '15m' }
@@ -37,7 +39,8 @@ function Test-OrangeBrainHealth {
             -and $health.status -eq 'ok' `
             -and $navigator.live -eq $true `
             -and $navigator.model -eq $env:ORANGE5_NAVIGATOR_MODEL `
-            -and $navigator.preferred_route -eq 'direct_ollama'
+            -and $navigator.preferred_route -eq 'ae-phase' `
+            -and $health.fabric.crossNodeTransport -eq 'ae-phase'
     } catch {
         return $false
     }
@@ -57,9 +60,9 @@ try {
     throw "OrangeBrain launch failed: $($_.Exception.Message)"
 }
 
-$deadline = (Get-Date).AddSeconds(20)
+$deadline = (Get-Date).AddSeconds(45)
 do {
     if (Test-OrangeBrainHealth) { exit 0 }
     Start-Sleep -Milliseconds 400
 } while ((Get-Date) -lt $deadline)
-throw 'OrangeBrain process started but /healthz did not become ready within 20 seconds.'
+throw 'OrangeBrain process started but /healthz did not become ready within 45 seconds.'

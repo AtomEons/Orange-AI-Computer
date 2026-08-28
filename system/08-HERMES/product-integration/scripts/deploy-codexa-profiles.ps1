@@ -13,7 +13,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $PackRoot = Split-Path -Parent $PSScriptRoot
-$Profiles = @('navigator', 'builder', 'researcher', 'reviewer', 'visual', 'misfit')
+$Profiles = @('navigator', 'builder', 'researcher', 'reviewer', 'visual', 'misfit', 'human-operator')
 $HermesHome = Join-Path $DataRoot '.hermes'
 $ReceiptRoot = Join-Path $DataRoot 'receipts'
 $Stamp = (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ')

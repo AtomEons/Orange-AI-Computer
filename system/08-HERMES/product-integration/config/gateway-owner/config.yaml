@@ -35,6 +35,7 @@ gateway:
     - reviewer
     - visual
     - misfit
+    - human-operator
   api_server:
     enabled: true
     host: 127.0.0.1

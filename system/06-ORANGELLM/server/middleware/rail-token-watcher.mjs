@@ -19,19 +19,9 @@
 // getTokenFingerprint, isDisabled, stopRailTokenWatcher } from it.
 
 import { createHash } from "node:crypto";
-import { readFileSync, statSync } from "node:fs";
-import { resolve, dirname } from "node:path";
+import { readFileSync, statSync, watch as watchFs } from "node:fs";
+import { resolve, dirname, basename } from "node:path";
 import { EventEmitter } from "node:events";
-
-// chokidar is the canonical fs-watcher across the Orange5 server. We require
-// it lazily so this module can be imported in test environments that stub
-// the watcher (see tests/middleware/rail-token-watcher.test.mjs).
-let _chokidar = null;
-async function loadChokidar() {
-  if (_chokidar) return _chokidar;
-  _chokidar = await import("chokidar");
-  return _chokidar;
-}
 
 // ---------------------------------------------------------------------------
 // Module state. Kept in closure (not exported) so the token string itself
@@ -42,7 +32,8 @@ let _token = null;            // string | null — raw token, never logged
 let _fingerprint = null;      // string | null — sha256 hex, first 12 chars
 let _fullSha = null;          // string | null — full sha256, for receipts
 let _tokenPath = null;        // string | null — resolved absolute path
-let _watcher = null;          // chokidar.FSWatcher | null
+let _watcher = null;          // native fs.FSWatcher | null
+let _reloadTimer = null;      // debounce timer for atomic replace bursts
 let _disabled = false;        // boolean — kill-switch latched at start
 let _started = false;         // guard against double-start
 
@@ -203,33 +194,21 @@ export async function startRailTokenWatcher(options = {}) {
     mtime: safeMtime(_tokenPath),
   });
 
-  const chokidar = await loadChokidar();
-
-  // We watch the file itself, not the directory, so that atomic replace
-  // (the rotation ceremony writes to .rail-token.new and renames) still
-  // fires a change event. chokidar handles atomic rename via `awaitWriteFinish`
-  // plus its add/change consolidation.
-  _watcher = chokidar.watch(_tokenPath, {
-    persistent: true,
-    ignoreInitial: true,
-    awaitWriteFinish: {
-      stabilityThreshold: 200,
-      pollInterval: 50,
-    },
-    // On Windows the default fs.watch is fine for a single file. Polling
-    // is only enabled if the operator opts in for network-mounted paths.
-    usePolling: process.env.ORANGEBOX_RAIL_WATCH_POLL === "1",
-  });
-
-  const onChangeOrAdd = (path) => {
-    handleTokenFileChange(path).catch((err) => {
-      logReality("error", "rail_token_reload_handler_threw", {
-        error: err.message,
+  // Watch the parent directory so atomic token replacement remains visible on
+  // Windows. Debouncing gives a writer time to finish rename/write bursts.
+  const watchedName = basename(_tokenPath).toLowerCase();
+  _watcher = watchFs(dirname(_tokenPath), { persistent: true }, (_event, filename) => {
+    if (filename && String(filename).toLowerCase() !== watchedName) return;
+    if (_reloadTimer) clearTimeout(_reloadTimer);
+    _reloadTimer = setTimeout(() => {
+      _reloadTimer = null;
+      handleTokenFileChange(_tokenPath).catch((err) => {
+        logReality("error", "rail_token_reload_handler_threw", {
+          error: err.message,
+        });
       });
-    });
-  };
-  _watcher.on("change", onChangeOrAdd);
-  _watcher.on("add", onChangeOrAdd);
+    }, 200);
+  });
   _watcher.on("error", (err) => {
     logReality("error", "rail_token_watcher_error", {
       error: err && err.message ? err.message : String(err),
@@ -246,9 +225,13 @@ export async function startRailTokenWatcher(options = {}) {
  * in-flight requests; the operator is expected to drain before exit.
  */
 export async function stopRailTokenWatcher() {
+  if (_reloadTimer) {
+    clearTimeout(_reloadTimer);
+    _reloadTimer = null;
+  }
   if (_watcher) {
     try {
-      await _watcher.close();
+      _watcher.close();
     } catch (err) {
       logReality("warn", "rail_token_watcher_close_failed", {
         error: err.message,

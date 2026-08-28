@@ -10,6 +10,10 @@
 //   bun 03-BACKEND/spine-cli.mjs --order '{...}' --seed abc     # deterministic replay
 //   bun 03-BACKEND/spine-cli.mjs --order '{...}' --learn        # close the AE-Cobra loop
 //   bun 03-BACKEND/spine-cli.mjs --health                       # phase/pillar snapshot
+//   bun 03-BACKEND/spine-cli.mjs staff list                     # all 50 AE Staff roles
+//   bun 03-BACKEND/spine-cli.mjs staff crew --order-file order.json
+//   bun 03-BACKEND/spine-cli.mjs staff health
+//   bun 03-BACKEND/spine-cli.mjs staff order --order-file order.json
 //
 // Execution always targets the canonical OpenAI-compatible gateway. The
 // environment may override its address, but a missing variable never disables
@@ -56,6 +60,201 @@ export function deterministicAdversarialAttestation(order, execution) {
 
 function argVal(flag) { const i = process.argv.indexOf(flag); return i >= 0 ? process.argv[i + 1] : undefined; }
 function hasFlag(flag) { return process.argv.includes(flag); }
+
+const STAFF_SUBCOMMANDS = new Map([
+  ['list', 'list'], ['roster', 'list'],
+  ['crew', 'crew'], ['compile', 'crew'],
+  ['health', 'health'], ['status', 'health'],
+  ['order', 'order'], ['submit', 'order'],
+]);
+const STAFF_FLAGS = new Map([
+  ['--staff', 'list'], ['--staff-list', 'list'], ['--staff-roster', 'list'],
+  ['--staff-crew', 'crew'], ['--compile-crew', 'crew'],
+  ['--staff-health', 'health'], ['--staff-status', 'health'],
+  ['--staff-order', 'order'], ['--submit-staff-order', 'order'],
+]);
+
+export function resolveStaffCliCommand(args = process.argv.slice(2)) {
+  if (args[0] === 'staff') {
+    const command = STAFF_SUBCOMMANDS.get(String(args[1] || '').toLowerCase());
+    if (!command) throw new Error('staff command must be one of: list, crew, health, order');
+    return command;
+  }
+  const matches = [...STAFF_FLAGS].filter(([flag]) => args.includes(flag));
+  if (matches.length > 1) throw new Error('provide exactly one AE Staff command');
+  return matches[0]?.[1] ?? null;
+}
+
+function assertStaffOrder(order) {
+  if (!order || typeof order !== 'object' || Array.isArray(order)) throw new Error('staff order must be a JSON object');
+  if (typeof order.action !== 'string' || !order.action.trim()) throw new Error('staff order.action must be a non-empty string');
+  return order;
+}
+
+function explicitStaffRoles(...sources) {
+  const roles = [];
+  for (const source of sources.filter(Boolean)) {
+    for (const field of ['staffRoles', 'targetRoles']) {
+      if (field in source && (!Array.isArray(source[field]) || !source[field].every((role) => typeof role === 'string' && role.trim()))) {
+        throw new Error(`${field} must be an array of non-empty role ids`);
+      }
+      roles.push(...(source[field] || []).map((role) => role.trim()));
+    }
+  }
+  return [...new Set(roles)];
+}
+
+export async function listAeStaff({ loadRoster, staffClient, createClient } = {}) {
+  if (loadRoster) {
+    const roster = loadRoster();
+    return {
+      schema: 'orange.ae-staff-list.v1',
+      ok: roster.roles.length === 50,
+      transport: 'local-doctrine',
+      product: roster.organization?.productName || 'AE Staff',
+      roleCount: roster.roles.length,
+      organization: roster.organization,
+      roles: roster.roles,
+    };
+  }
+  let client = staffClient;
+  if (!client) {
+    const factory = createClient || (await import('./orange5-brain-mcp-server.mjs')).createAeStaffMcpClient;
+    client = factory();
+  }
+  const roster = await client.list();
+  return {
+    schema: 'orange.ae-staff-list.v1',
+    ok: roster.roles.length === 50,
+    transport: 'ae-phase',
+    product: 'AE Staff - Powered by Hermes',
+    roleCount: roster.roles.length,
+    organization: null,
+    roles: roster.roles,
+  };
+}
+
+export async function compileAeStaffCrew(order, { compileCrew } = {}) {
+  const normalized = assertStaffOrder(order);
+  const compile = compileCrew || (await import('../08-HERMES/src/staff-router.mjs')).compileStaffCrew;
+  return compile(normalized);
+}
+
+export async function getAeStaffHealth({ timeoutMs, staffClient, createClient } = {}) {
+  const started = Date.now();
+  try {
+    let client = staffClient;
+    if (!client) {
+      const factory = createClient || (await import('./orange5-brain-mcp-server.mjs')).createAeStaffMcpClient;
+      client = factory({
+        readTimeoutMs: Number(timeoutMs || process.env.ORANGE5_AE_STAFF_HEALTH_TIMEOUT_MS || 5_000),
+      });
+    }
+    const service = await client.health();
+    const ok = Boolean(service?.ok === true && service?.roleCount === 50);
+    return {
+      schema: 'orange.ae-staff-health-report.v1',
+      ok,
+      status: service?.status || 'DEGRADED',
+      transport: 'ae-phase',
+      endpoint: 'ae-phase://codexa/ae-staff',
+      httpStatus: null,
+      latencyMs: Date.now() - started,
+      roleCount: service?.roleCount ?? null,
+      readyCount: service?.readyCount ?? null,
+      runningCount: service?.runningCount ?? null,
+      queuedCount: service?.queuedCount ?? null,
+      authenticated: service?.transport?.primary === 'ae-phase',
+      service,
+      error: ok ? null : (service?.error || 'AE Staff health did not prove 50 live roles'),
+    };
+  } catch (error) {
+    const message = error?.message || String(error);
+    const httpStatus = Number(/HTTP (\d{3})/.exec(message)?.[1] || 0);
+    return {
+      schema: 'orange.ae-staff-health-report.v1',
+      ok: false,
+      status: /timeout|unreachable/i.test(message) ? 'UNREACHABLE' : 'DEGRADED',
+      transport: 'ae-phase',
+      endpoint: 'ae-phase://codexa/ae-staff',
+      httpStatus,
+      latencyMs: Date.now() - started,
+      roleCount: null,
+      readyCount: null,
+      runningCount: null,
+      queuedCount: null,
+      authenticated: false,
+      service: null,
+      error: message,
+    };
+  }
+}
+
+export async function submitExplicitStaffOrder(input, { staffClient, createClient } = {}) {
+  if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('staff order must be a JSON object');
+  const envelope = Object.prototype.hasOwnProperty.call(input, 'order') ? input : { order: input };
+  const order = assertStaffOrder(envelope.order);
+  const targetRoles = explicitStaffRoles(envelope, order);
+  if (targetRoles.length === 0) throw new Error('staff order requires explicit staffRoles or targetRoles');
+  if (targetRoles.length > 50) throw new Error('staff order may target at most 50 roles');
+  let client = staffClient;
+  if (!client) {
+    const factory = createClient || (await import('./orange5-brain-mcp-server.mjs')).createAeStaffMcpClient;
+    client = factory();
+  }
+  const args = { order, targetRoles };
+  for (const field of ['correlationId', 'commitments', 'sourceRefs']) {
+    const value = envelope[field] ?? order[field];
+    if (value !== undefined) args[field] = value;
+  }
+  const result = await client.order(args);
+  return {
+    schema: 'orange.ae-staff-order-result.v1',
+    ok: result?.ok === true,
+    path: 'ae_staff_order',
+    targetRoles,
+    result,
+  };
+}
+
+function staffOrderFromCli(command, args = process.argv.slice(2)) {
+  const valueAfter = (flag) => {
+    const index = args.indexOf(flag);
+    return index >= 0 ? args[index + 1] : undefined;
+  };
+  const orderFile = valueAfter('--order-file');
+  let orderRaw;
+  if (orderFile) {
+    try {
+      orderRaw = fs.readFileSync(path.resolve(orderFile), 'utf8').trim();
+    } catch (error) {
+      throw new Error(`cannot read order file ${orderFile}: ${error.message}`);
+    }
+  }
+  if (!orderRaw) orderRaw = valueAfter('--order');
+  if (!orderRaw && args[0] === 'staff' && ['crew', 'order'].includes(command)) {
+    const candidate = args[2];
+    if (candidate && !candidate.startsWith('--')) orderRaw = candidate;
+  }
+  if (!orderRaw) {
+    const flag = [...STAFF_FLAGS].find(([candidateFlag, mapped]) => mapped === command && args.includes(candidateFlag))?.[0];
+    const index = flag ? args.indexOf(flag) : -1;
+    const candidate = index >= 0 ? args[index + 1] : undefined;
+    if (candidate && !candidate.startsWith('--')) orderRaw = candidate;
+  }
+  if (!orderRaw && !process.stdin.isTTY) orderRaw = fs.readFileSync(0, 'utf8').trim();
+  if (!orderRaw) throw new Error(`staff ${command} requires --order-file, --order JSON, positional JSON, or piped JSON`);
+  try { return JSON.parse(orderRaw); }
+  catch (error) { throw new Error(`staff order is not valid JSON: ${error.message}`); }
+}
+
+async function runStaffCliCommand(command) {
+  if (command === 'list') return await listAeStaff();
+  if (command === 'health') return await getAeStaffHealth();
+  const order = staffOrderFromCli(command);
+  if (command === 'crew') return await compileAeStaffCrew(order);
+  return await submitExplicitStaffOrder(order);
+}
 
 const APPROVAL_RISK_LEVELS = new Set(['high', 'destructive', 'irreversible', 'production']);
 
@@ -211,6 +410,36 @@ async function fetchBrain(order, preflight = {}) {
 }
 
 async function main() {
+  let staffCommand;
+  try {
+    staffCommand = resolveStaffCliCommand();
+  } catch (error) {
+    console.log(JSON.stringify({
+      schema: 'orange.ae-staff-cli-error.v1',
+      ok: false,
+      command: process.argv.slice(2, 4).join(' '),
+      error: error?.message || String(error),
+    }, null, 2));
+    process.exitCode = 2;
+    return;
+  }
+  if (staffCommand) {
+    try {
+      const output = await runStaffCliCommand(staffCommand);
+      console.log(JSON.stringify(output, null, 2));
+      if (output?.ok === false) process.exitCode = 1;
+    } catch (error) {
+      console.log(JSON.stringify({
+        schema: 'orange.ae-staff-cli-error.v1',
+        ok: false,
+        command: staffCommand,
+        error: error?.message || String(error),
+      }, null, 2));
+      process.exitCode = 2;
+    }
+    return;
+  }
+
   if (hasFlag('--health')) {
     const brainUrl = resolveOrangeBrainUrl();
     let brain;
