@@ -1,0 +1,56 @@
+{
+  "id": "intake_sample_1afd99",
+  "version": 1,
+  "supersedes": null,
+  "department": "AE0",
+  "title": "Pathwaves routing doctrine note",
+  "summary": "# Pathwaves routing doctrine note Pathwaves is a real routing doctrine in AtomEons. It is not equivalent to LifePath. Life Migration is the onboarding and model-building engine. Knowledge Strata is a compiler loop: intake -> canon -> durable artifact -> integrity pass -> reuse. M",
+  "entities": [],
+  "claims": [
+    {
+      "text": "# Pathwaves routing doctrine note",
+      "confidence": "low",
+      "supports": []
+    },
+    {
+      "text": "Pathwaves is a real routing doctrine in AtomEons. It is not equivalent to",
+      "confidence": "low",
+      "supports": []
+    },
+    {
+      "text": "LifePath. Life Migration is the onboarding and model-building engine.",
+      "confidence": "low",
+      "supports": []
+    },
+    {
+      "text": "Knowledge Strata is a compiler loop: intake -> canon -> durable artifact ->",
+      "confidence": "low",
+      "supports": []
+    },
+    {
+      "text": "integrity pass -> reuse.",
+      "confidence": "low",
+      "supports": []
+    },
+    {
+      "text": "Mom's Law: give full effort every time.",
+      "confidence": "low",
+      "supports": []
+    }
+  ],
+  "cited_doctrine": [],
+  "tags": [
+    "heuristic"
+  ],
+  "open_questions": [],
+  "intake": {
+    "source": "C:\\Users\\a\\AppData\\Local\\Temp\\intake_sample.md",
+    "sha256": "63be8b49356c7750fae6ee2b0948627f6b4204c58d2aa621f88e37b4b440c151"
+  },
+  "artifact": {
+    "markdown_path": "C:\\AtomEons\\Orange5\\04-CONTROL-PLANE\\knowledge-strata\\artifacts\\AE0\\intake_sample_1afd99.md",
+    "sha256": "205b184aeaab28e7bc79ac2e36a80333ff8c81f7d90666f972d2b31f5df7d3e4"
+  },
+  "created_at": "2026-06-25T00:28:41.911Z",
+  "extractor": "heuristic"
+}

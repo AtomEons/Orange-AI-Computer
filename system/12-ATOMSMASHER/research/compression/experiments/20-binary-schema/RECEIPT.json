@@ -1,0 +1,21 @@
+{
+  "experiment": "20-binary-schema",
+  "generated_at": "2026-06-26T11:29:05.939Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "vocab_sizes": {
+    "sumTpl": 900,
+    "payTpl": 802,
+    "action": 66,
+    "status": 2,
+    "ts": 35
+  },
+  "summary_derivability_pct": 60.9,
+  "folded_ratio_count": 1565,
+  "all_ids_match": true,
+  "pre_brotli_bytes": 691360,
+  "brotli_bytes": 119294,
+  "ratio": 17.4,
+  "roundtrip_lossless": false,
+  "beats_plait": false,
+  "pass": false
+}

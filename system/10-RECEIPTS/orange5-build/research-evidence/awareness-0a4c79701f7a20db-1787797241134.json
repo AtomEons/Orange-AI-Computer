@@ -1,0 +1,41 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-0a4c79701f7a20db-1787797241134",
+  "query": "{\"intent\":\"Audit the N150 plus Codexa topology and current model/tool candidates. Find waste, stale assumptions, resource conflicts, missing specialist roles, and practical one-at-a-time lease improvements. Do not invent hardware facts.\",\"evidence\":[\"scouts=4/4;sources=19;sha=e29e6f69893c63a5\",\"candidates=19;status=BENCHMARK_REQUIRED;sha=0572db35033aa8af\"],\"context\":{\"scout_briefs\":[{\"id\":\"runtime-orchestration\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":2,\"compressed_brief\":\"AIR:CURRENT.v1\\nLAW: This is fresh discovery evidence, not installed capability or proof of superiority.\\nLAW: Prefer an existing project component unless a candidate passes compatibility, license, benchmark, and receipt gates.\\nC: [hackernews] Show HN: Orchid – Local-first record and replay for AI agent debugging; freshness=ESTABLISHED; lifecycle=SOURCE_VERIFICATION_REQUIRED; authority=discovery_tip_unverified; quality=0.194; stars=0; license=unknown; source=https://github.com/mario-guerra/orchid-trace; finding=Unverified discovery tip. Discussion points: 4. Verify against the creator's official source before use.; idea=Test Show HN: Orchid – Local-first record and replay for AI agent debugging against  OrangeFive orange5",
+  "searchQuery": "intent audit the n150 plus codexa topology and",
+  "generatedAt": "2026-08-27T02:20:41.153Z",
+  "budgetMs": 60000,
+  "elapsedMs": 2438,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "direct",
+      "sourceId": "30f70dc8fef98dcc",
+      "title": "GitHub - mario-guerra/orchid-trace: Orchid - Orchestration interactive debugger - Record, inspect, &amp; replay AI agents · GitHub",
+      "url": "https://github.com/mario-guerra/orchid-trace",
+      "summary": "GitHub - mario-guerra/orchid-trace: Orchid - Orchestration interactive debugger - Record, inspect, &amp; replay AI agents · GitHub Skip to content Navigation Menu Sign in Appearance settings Platform AI CODE CREATION GitHub Copilot Write better code with AI GitHub Copilot app Direct agents from issue to merge MCP Registry Integrate external tools DEVELOPER WORKFLOWS Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes Code Q",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "sourceQuality": 0.9,
+      "relevance": {
+        "score": 0,
+        "matched": 0,
+        "queryTerms": 5,
+        "terms": [],
+        "distinctiveMatched": 0,
+        "distinctiveTerms": 5,
+        "admitted": false
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "github",
+      "error": "source returned HTTP 403"
+    }
+  ],
+  "sha256": "2255cd228821cfb873c27343489b12e8823ed7c2ae2ee75eca17af05b242afd9"
+}

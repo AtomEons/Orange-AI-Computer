@@ -1,0 +1,97 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "security",
+  "card_id": "security-sast-scan",
+  "capability": "security.sast.scan",
+  "cost_class": "free",
+  "latency_class": "minutes",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["target_ref", "engine"],
+    "properties": {
+      "target_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "engine": {
+        "type": "string",
+        "enum": ["semgrep", "codeql", "bandit", "gosec"]
+      },
+      "ruleset": {
+        "type": "string",
+        "description": "Vetted ruleset name. The runner refuses arbitrary remote rule URIs.",
+        "enum": ["default", "owasp-top-10", "pci-dss", "cwe-top-25", "auto"],
+        "default": "auto"
+      },
+      "max_seconds": {
+        "type": "integer",
+        "minimum": 30,
+        "maximum": 3600,
+        "default": 600
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["findings", "engine", "duration_seconds"],
+    "properties": {
+      "engine": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "duration_seconds": { "type": "number", "minimum": 0 },
+      "rules_loaded": { "type": "integer", "minimum": 0 },
+      "files_scanned": { "type": "integer", "minimum": 0 },
+      "findings": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rule_id", "file", "line", "severity", "message"],
+          "properties": {
+            "rule_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+            "cwe": {
+              "type": "array",
+              "items": { "type": "string", "pattern": "^CWE-[0-9]+$" },
+              "maxItems": 10
+            },
+            "owasp": {
+              "type": "array",
+              "items": { "type": "string", "maxLength": 32 },
+              "maxItems": 10
+            },
+            "severity": { "type": "string", "enum": ["info", "low", "medium", "high", "critical"] },
+            "file": { "type": "string", "maxLength": 4096 },
+            "line": { "type": "integer", "minimum": 1 },
+            "end_line": { "type": "integer", "minimum": 1 },
+            "message": { "type": "string", "maxLength": 2000 },
+            "code_excerpt": { "type": "string", "maxLength": 2000 }
+          }
+        }
+      },
+      "timed_out": { "type": "boolean" }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 3600,
+    "max_invocations": 10,
+    "scopes": [
+      "fs.read:sandbox://workspace/",
+      "fs.write:sandbox://security/sast/",
+      "process.spawn:semgrep",
+      "process.spawn:codeql",
+      "cpu.use",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 2
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:28:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Static application security analysis (Semgrep, CodeQL, Bandit, gosec) against a sandbox-resident source tree. Vetted rulesets only; no network.",
+  "tags": ["security", "sast", "semgrep", "codeql", "bandit", "read-only"],
+  "notes": "CodeQL engine routinely takes minutes on medium-sized projects — set max_seconds generously when chaining. Custom rules require a separate signed-ruleset pipeline; this card refuses arbitrary user-supplied YAML."
+}

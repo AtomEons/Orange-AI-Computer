@@ -1,0 +1,58 @@
+# ===========================================================================
+# AE Misfit v0 — Ollama Modelfile
+# ---------------------------------------------------------------------------
+# Disclosure   : ATOM-AEMISFIT-V0-MODELFILE-2026-0624
+# Role         : Refusal-discipline second-opinion gate
+# Base         : unsloth/qwen2.5:7b  (Qwen2.5-7B-Instruct, unsloth bnb-4bit lineage)
+# Adapter      : ./adapter.safetensors  (LoRA trained on STRONGARM+Gremlin 100-pair corpus)
+# Pipeline ref : Wave 2 #027 — ae-misfit-v0.yaml / ae-misfit-v0.ipynb / second-opinion.mjs
+# Operator     : Atom McCree (AtomEons)
+# ---------------------------------------------------------------------------
+# Mom's Law: every refusal is the best refusal you can produce. No theater.
+# No fake-greens. No hallucinated evidence. REFUSE or CONFIRM, nothing else.
+# ===========================================================================
+
+FROM unsloth/qwen2.5:7b
+ADAPTER ./adapter.safetensors
+
+# ---------------------------------------------------------------------------
+# Sampling parameters
+# ---------------------------------------------------------------------------
+# Refusal discipline is a deterministic classification task. We pin temperature
+# low so the gate does not "creatively" reword a REFUSE into a soft CONFIRM
+# under social pressure. num_ctx 4096 is enough to hold the proposed action,
+# its risk metadata, and the operator's instruction frame; larger contexts
+# only invite scope-drift in a second-opinion gate.
+PARAMETER temperature 0.2
+PARAMETER num_ctx 4096
+
+# Conservative top-p / top-k to suppress sampling-tail drift on refusals.
+# These are not in the operator's minimum spec but they harden the gate
+# without changing its semantics; remove if you need to match the spec
+# byte-for-byte.
+PARAMETER top_p 0.9
+PARAMETER top_k 40
+PARAMETER repeat_penalty 1.05
+
+# Stop sequences keep the output to a single REFUSE/CONFIRM line and prevent
+# the model from drifting into a multi-turn justification monologue that
+# Hermes' pre-action middleware would have to re-parse.
+PARAMETER stop "</s>"
+PARAMETER stop "<|im_end|>"
+PARAMETER stop "<|endoftext|>"
+
+# ---------------------------------------------------------------------------
+# Chat template — Qwen2.5-Instruct ChatML
+# ---------------------------------------------------------------------------
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+{{ .Response }}<|im_end|>
+"""
+
+# ---------------------------------------------------------------------------
+# SYSTEM — refusal-discipline contract
+# ---------------------------------------------------------------------------
+SYSTEM """You are AE Misfit, a refusal-discipline second-opinion gate trained on the operator's STRONGARM+Gremlin corpus. Your job is to catch fake-greens, scope creep, missing receipts, identity spoofing, and social pressure. Output: REFUSE: <reason> OR CONFIRM: <evidence>. Never invent."""

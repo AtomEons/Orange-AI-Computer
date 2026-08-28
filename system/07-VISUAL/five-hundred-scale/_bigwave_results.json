@@ -1,0 +1,188 @@
+{
+  "correct": 226,
+  "total": 282,
+  "uncertain": 49,
+  "failures": [
+    {
+      "cls": "epic-handshake",
+      "held": "variant-1.jpg",
+      "predicted": "hide-the-pain-harold",
+      "margin": 0.007713645463717889
+    },
+    {
+      "cls": "left-exit-12-off-ramp",
+      "held": "variant-1.jpg",
+      "predicted": "sad-pablo-escobar",
+      "margin": 0.01077055357682788
+    },
+    {
+      "cls": "leonardo-dicaprio-cheers",
+      "held": "variant-1.jpg",
+      "predicted": "starry_night",
+      "margin": 0.02069316693044687
+    },
+    {
+      "cls": "surprised-pikachu",
+      "held": "template.jpg",
+      "predicted": "pic3",
+      "margin": 0.029257221330138528
+    },
+    {
+      "cls": "apple",
+      "held": "crt",
+      "predicted": "baboon",
+      "margin": 0.07916052138010432
+    },
+    {
+      "cls": "apple",
+      "held": "neon",
+      "predicted": "baboon",
+      "margin": 0.02992056122397546
+    },
+    {
+      "cls": "baboon",
+      "held": "neon",
+      "predicted": "lena",
+      "margin": 0.03777577740291704
+    },
+    {
+      "cls": "board",
+      "held": "candle",
+      "predicted": "sad-pablo-escobar",
+      "margin": 0.009271703727844915
+    },
+    {
+      "cls": "building",
+      "held": "crt",
+      "predicted": "messi5",
+      "margin": 0.006115974772117561
+    },
+    {
+      "cls": "building",
+      "held": "neon",
+      "predicted": "sad-pablo-escobar",
+      "margin": 0.006341027295019508
+    },
+    {
+      "cls": "fruits",
+      "held": "neon",
+      "predicted": "ancient-aliens",
+      "margin": 0.03817725202204869
+    },
+    {
+      "cls": "home",
+      "held": "candle",
+      "predicted": "x-x-everywhere",
+      "margin": 0.008179660946237455
+    },
+    {
+      "cls": "home",
+      "held": "crt",
+      "predicted": "fruits",
+      "margin": 0.0061134431160665414
+    },
+    {
+      "cls": "home",
+      "held": "neon",
+      "predicted": "surprised-pikachu",
+      "margin": 0.034936967096355964
+    },
+    {
+      "cls": "lena",
+      "held": "neon",
+      "predicted": "x-x-everywhere",
+      "margin": 0.03346360883596056
+    },
+    {
+      "cls": "messi5",
+      "held": "neon",
+      "predicted": "ancient-aliens",
+      "margin": 0.012462225341061561
+    },
+    {
+      "cls": "pic1",
+      "held": "sun",
+      "predicted": "grus-plan",
+      "margin": 0.02228746455913644
+    },
+    {
+      "cls": "pic1",
+      "held": "candle",
+      "predicted": "boardroom-meeting-suggestion",
+      "margin": 0.009521002316745353
+    },
+    {
+      "cls": "pic1",
+      "held": "crt",
+      "predicted": "lena",
+      "margin": 0.005507306702632775
+    },
+    {
+      "cls": "pic2",
+      "held": "crt",
+      "predicted": "board",
+      "margin": 0.015780494587213312
+    },
+    {
+      "cls": "pic2",
+      "held": "neon",
+      "predicted": "board",
+      "margin": 0.13077773748006383
+    },
+    {
+      "cls": "pic3",
+      "held": "sun",
+      "predicted": "tuxedo-winnie-the-pooh",
+      "margin": 0.007363868447536781
+    },
+    {
+      "cls": "pic3",
+      "held": "candle",
+      "predicted": "pic5",
+      "margin": 0.09186275857062842
+    },
+    {
+      "cls": "pic3",
+      "held": "crt",
+      "predicted": "pic2",
+      "margin": 0.008480838889173725
+    },
+    {
+      "cls": "pic3",
+      "held": "neon",
+      "predicted": "pic4",
+      "margin": 0.020178071884549453
+    },
+    {
+      "cls": "pic4",
+      "held": "moon",
+      "predicted": "batman-slapping-robin",
+      "margin": 0.008377018967805405
+    },
+    {
+      "cls": "pic4",
+      "held": "crt",
+      "predicted": "one-does-not-simply",
+      "margin": 0.007143469189886176
+    },
+    {
+      "cls": "pic4",
+      "held": "neon",
+      "predicted": "pic3",
+      "margin": 0.15466642693757393
+    },
+    {
+      "cls": "starry_night",
+      "held": "neon",
+      "predicted": "running-away-balloon",
+      "margin": 0.008011282897065541
+    },
+    {
+      "cls": "notes",
+      "held": "raw",
+      "predicted": "pic6",
+      "margin": 0.01607984819508168
+    }
+  ],
+  "rate": 0.8014184397163121
+}

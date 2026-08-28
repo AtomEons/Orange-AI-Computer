@@ -1,0 +1,40 @@
+{
+  "schema": "orange5.captain-planet.receipt-chain-proof.v1",
+  "status": "CAPTAIN_PLANET_RECEIPT_CHAINS_GREEN",
+  "generated_at": "2026-08-27T09:13:50.401Z",
+  "receipt_root": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet",
+  "checked_directory_count": 5,
+  "checked_row_count": 29,
+  "checked_current_file_count": 13,
+  "directories": [
+    {
+      "directory": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet",
+      "rows": 8,
+      "current_files": 4
+    },
+    {
+      "directory": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ace-step",
+      "rows": 5,
+      "current_files": 2
+    },
+    {
+      "directory": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2",
+      "rows": 5,
+      "current_files": 2
+    },
+    {
+      "directory": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ltxv",
+      "rows": 5,
+      "current_files": 2
+    },
+    {
+      "directory": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts",
+      "rows": 6,
+      "current_files": 3
+    }
+  ],
+  "findings": [],
+  "prior_receipt": "captain-planet-media-evaluation-proof.json",
+  "prior_sha256": "d8b5815cb3871d9bb0b99cdbe168e6593fa8b5be571fd1b3ffab9a679e1718d8",
+  "receipt_sha256": "0ec940d1f67bf40faa3b1b768b122d343cee0155c19ae77e888c44ae4a76f160"
+}

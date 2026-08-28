@@ -1,0 +1,33 @@
+# agent_turn.gbnf — GBNF grammar constraining llama.cpp output to AgentTurn JSON.
+# Loaded via llama.cpp --grammar-file agent_turn.gbnf.
+# Constrains the model's logit space so it CANNOT emit prose/markdown/roleplay.
+
+root ::= "{" ws
+  "\"lane\":" ws lane "," ws
+  "\"event_type\":" ws event_type "," ws
+  "\"summary\":" ws short_string "," ws
+  "\"entities\":" ws string_array "," ws
+  "\"files\":" ws string_array "," ws
+  "\"commands\":" ws string_array "," ws
+  "\"risk\":" ws risk "," ws
+  "\"next_action\":" ws short_string "," ws
+  "\"confidence\":" ws confidence
+  ws "}"
+
+lane ::= "\"reality\"" | "\"thought\"" | "\"merge\""
+
+event_type ::= "\"observation\"" | "\"decision\"" | "\"error\"" | "\"checkpoint\"" | "\"recall\"" | "\"receipt\"" | "\"risk\""
+
+risk ::= "\"low\"" | "\"medium\"" | "\"high\""
+
+# Confidence: a float between 0.0 and 1.0
+confidence ::= "0." digit digit | "1.0" | "0.0"
+
+# Short string: up to 240 chars, no newlines, no double-quote escaping issues
+short_string ::= "\"" short_char{0,240} "\""
+short_char ::= [^"\\\n\r] | "\\" ["\\/bfnrt]
+
+string_array ::= "[" ws (short_string (ws "," ws short_string){0,20})? ws "]"
+
+digit ::= [0-9]
+ws ::= [ \t\n]*

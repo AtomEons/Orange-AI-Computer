@@ -1,0 +1,12 @@
+{
+  "experiment": "104-per-action-formulas",
+  "ratio": 40.618,
+  "encode_ms": 3038.8,
+  "decode_ms": 739.6,
+  "lossless": true,
+  "library_size_bytes": 8687,
+  "edges_mined": 247,
+  "baseline_m19": 47.071,
+  "vs_m19": -6.453,
+  "notes": "Per-action brotli streams in framed container. 65 actions, 247 per-(action,field) constants stripped."
+}

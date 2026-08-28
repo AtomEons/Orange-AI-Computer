@@ -1,0 +1,25 @@
+{
+  "schema": "orange5.ae-black-mamba.corpus-alignment.v0",
+  "train": {
+    "label": "train",
+    "total": 53,
+    "accepted": 53,
+    "rejected": 0,
+    "acceptance_rate": 1,
+    "reject_samples": []
+  },
+  "val": {
+    "label": "val",
+    "total": 6,
+    "accepted": 6,
+    "rejected": 0,
+    "acceptance_rate": 1,
+    "reject_samples": []
+  },
+  "overall": {
+    "total": 59,
+    "accepted": 59,
+    "acceptance_rate": 1
+  },
+  "notes": "Every corpus row should accept (100%). A non-accept means pipeline.mjs and agent_turn.gbnf have drifted; reconcile before training. Inspect reject_samples for the cause."
+}

@@ -1,0 +1,22 @@
+{
+  "experiment": "124-ngram-surprise",
+  "corpus_sha256": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "raw_bytes": 2075585,
+  "rank_br": 8198,
+  "lit_br": 1541,
+  "vocab_br": 45864,
+  "pred_br": 33956,
+  "seed_r": 48,
+  "total_bytes": 89607,
+  "ratio": 23.1632,
+  "m19_ratio": 47.07,
+  "delta_vs_m19": -23.9068,
+  "enc_ms": 2387.9,
+  "dec_ms": 154.4,
+  "hits": 31118,
+  "misses": 0,
+  "unique_tokens": 4556,
+  "unique_contexts": 8501,
+  "lossless": true,
+  "verdict": "AMBER"
+}

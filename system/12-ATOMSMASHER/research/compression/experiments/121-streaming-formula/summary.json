@@ -1,0 +1,24 @@
+{
+  "experiment": "121-streaming-formula",
+  "injection_point": "BEFORE SHAPE_VOCAB (Exp 118 winning approach)",
+  "window": 500,
+  "n_windows": 13,
+  "formula_library": [
+    "status_ok_default",
+    "mesh_ratio_derivation"
+  ],
+  "corpus_sha256": "03da0e5cf04adf965ae580cb8c74ab4db9d8058b6ca246478fef57b6de944df1",
+  "raw_bytes": 2075585,
+  "total_bytes": 106571,
+  "ratio": 19.4761,
+  "vs_m19": -27.5939,
+  "encode_ms_total": 2606.72,
+  "encode_ms_per_receipt": 0.4188,
+  "decode_ms_total": 93.91,
+  "decode_ms_per_receipt": 0.0151,
+  "per_window_lossless": true,
+  "concat_matches_full_sha": true,
+  "lossless": true,
+  "verdict": "GREEN",
+  "generated_at": "2026-06-28T00:17:45.920Z"
+}

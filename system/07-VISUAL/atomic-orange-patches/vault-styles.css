@@ -1,0 +1,96 @@
+/* vault-styles.css — OrangeEye Vault additions
+ * Appends to atomic-orange/src/styles.css. Uses the existing :root palette:
+ *   --orange, --orange-2, --stroke, --stroke-hot, --panel, --panel-2, --text, --bg
+ * No new CSS variables introduced; no overrides of existing selectors.
+ */
+
+/* drop zone */
+.oe-dropzone {
+  border: 1px dashed var(--stroke);
+  border-radius: 14px;
+  background: var(--panel);
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+  user-select: none;
+}
+.oe-dropzone:hover,
+.oe-dropzone:focus-visible {
+  border-color: var(--stroke-hot);
+  outline: none;
+}
+.oe-dropzone.is-over {
+  border-color: var(--orange);
+  background: var(--panel-2);
+  transform: translateY(-1px);
+}
+.oe-dropzone-icon { font-size: 26px; color: var(--orange); line-height: 1; }
+.oe-dropzone-title { color: var(--text); font-weight: 600; margin-top: 6px; }
+.oe-dropzone-sub { color: rgba(246, 242, 235, 0.55); font-size: 12px; margin-top: 4px; }
+
+/* ingest queue */
+.oe-ingest-queue { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
+.oe-ingest-row { display: grid; grid-template-columns: 12px 1fr auto; align-items: center; gap: 8px;
+  padding: 6px 10px; border: 1px solid var(--stroke); border-radius: 8px; background: var(--panel);
+  font-size: 12px; color: var(--text); }
+.oe-ingest-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); }
+.oe-pending .oe-ingest-dot { background: var(--orange-2); animation: oePulse 1.1s infinite ease-in-out; }
+.oe-ok .oe-ingest-dot { background: #5ed18a; }
+.oe-err .oe-ingest-dot { background: #ff5a5a; }
+.oe-ingest-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.oe-ingest-detail { color: rgba(246, 242, 235, 0.55); font-variant-numeric: tabular-nums; }
+
+@keyframes oePulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+/* spinner */
+.oe-spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--stroke);
+  border-top-color: var(--orange); border-radius: 50%; animation: oeSpin 0.8s linear infinite; margin-left: 8px; }
+@keyframes oeSpin { to { transform: rotate(360deg); } }
+
+/* error */
+.oe-error { color: #ffb0b0; background: rgba(255, 90, 90, 0.08); border: 1px solid rgba(255, 90, 90, 0.35);
+  border-radius: 8px; padding: 8px 12px; font-size: 12px; }
+.oe-error.inline { margin-top: 8px; }
+
+/* results grid */
+.oe-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.oe-empty { color: rgba(246, 242, 235, 0.55); padding: 12px; text-align: center; font-size: 13px; }
+.oe-empty.soft { color: rgba(246, 242, 235, 0.4); }
+
+/* result card */
+.oe-card { background: var(--panel); border: 1px solid var(--stroke); border-radius: 12px; overflow: hidden;
+  display: flex; flex-direction: column; transition: border-color 160ms ease; }
+.oe-card:hover { border-color: var(--stroke-hot); }
+
+.oe-card-thumb { position: relative; aspect-ratio: 4 / 5; background: var(--bg); overflow: hidden; }
+.oe-card-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.oe-thumb-fallback { width: 100%; height: 100%; display: grid; place-items: center;
+  color: rgba(246, 242, 235, 0.3); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* grounding overlay — orange-stroked patch box */
+.oe-grounding { position: absolute; border: 1.5px solid var(--orange); box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
+  background: rgba(255, 122, 26, 0.08); pointer-events: none; border-radius: 2px; }
+
+/* card body */
+.oe-card-body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 8px; }
+.oe-card-meta { display: flex; align-items: center; gap: 8px; font-size: 11px;
+  color: rgba(246, 242, 235, 0.6); }
+.oe-card-page { text-transform: uppercase; letter-spacing: 0.08em; }
+.oe-card-score { font-variant-numeric: tabular-nums; color: var(--orange-2); }
+
+/* score meter */
+.oe-score-meter { flex: 1; height: 4px; background: var(--panel-2); border-radius: 999px; overflow: hidden; }
+.oe-score-fill { display: block; height: 100%; background: linear-gradient(90deg, var(--orange), var(--orange-2)); }
+
+.oe-card-source { font-size: 11px; color: rgba(246, 242, 235, 0.45);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.oe-card-summary { font-size: 13px; line-height: 1.45; color: var(--text); margin: 0; }
+.oe-card-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* describe block */
+.oe-describe { border-top: 1px solid var(--stroke); padding-top: 8px; }
+.oe-describe-text { font-size: 12.5px; line-height: 1.45; color: var(--text); white-space: pre-wrap; }
+.oe-describe-meta { display: flex; gap: 8px; margin-top: 6px; font-size: 10.5px;
+  color: rgba(246, 242, 235, 0.5); text-transform: uppercase; letter-spacing: 0.08em; }
+.oe-frontier-tag { color: var(--orange); border: 1px solid var(--stroke-hot); padding: 1px 6px; border-radius: 999px; }

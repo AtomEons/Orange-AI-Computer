@@ -1,0 +1,89 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "releaseops",
+  "card_id": "releaseops-changelog-extract",
+  "capability": "releaseops.changelog.extract",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["repo_ref", "from_ref", "to_ref"],
+    "properties": {
+      "repo_ref": {
+        "type": "string",
+        "description": "Sandbox reference to a checked-out git repository.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "from_ref": {
+        "type": "string",
+        "description": "Exclusive start ref (tag, branch, or SHA).",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "to_ref": {
+        "type": "string",
+        "description": "Inclusive end ref. Defaults to HEAD if omitted.",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "style": {
+        "type": "string",
+        "description": "Output convention. 'conventional' groups by Conventional Commits type (feat/fix/...); 'keepachangelog' produces the headings from keepachangelog.com; 'raw' is one commit per bullet.",
+        "enum": ["conventional", "keepachangelog", "raw"],
+        "default": "conventional"
+      },
+      "group_by_scope": {
+        "type": "boolean",
+        "default": false
+      },
+      "include_authors": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["markdown", "commit_count", "from_ref", "to_ref"],
+    "properties": {
+      "markdown": { "type": "string", "maxLength": 200000 },
+      "from_ref": { "type": "string", "minLength": 1, "maxLength": 256 },
+      "to_ref": { "type": "string", "minLength": 1, "maxLength": 256 },
+      "commit_count": { "type": "integer", "minimum": 0 },
+      "breaking_change_count": { "type": "integer", "minimum": 0 },
+      "sections": {
+        "type": "object",
+        "description": "Counts per Conventional-Commits type / Keep-A-Changelog heading.",
+        "additionalProperties": { "type": "integer", "minimum": 0 }
+      },
+      "authors": {
+        "type": "array",
+        "items": { "type": "string", "maxLength": 256 },
+        "maxItems": 500,
+        "uniqueItems": true
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 30,
+    "scopes": [
+      "fs.read:sandbox://repos/",
+      "process.spawn:git",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:30:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Build a Conventional-Commits / Keep-A-Changelog markdown changelog between two git refs from a sandboxed checkout.",
+  "tags": ["releaseops", "changelog", "conventional-commits", "git", "read-only"],
+  "notes": "Pure-read against a local checkout — no network, no mutation. Typically chained before releaseops-tag-release to populate release notes."
+}

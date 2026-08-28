@@ -1,0 +1,8 @@
+{
+  "experiment": "70-msgpack-brotli",
+  "ratio": 16.4249,
+  "encode_ms": 5305.74,
+  "decode_ms": 82.55,
+  "lossless": true,
+  "notes": "msgpack-only ratio: 1.12, raw-jsonl-brotli ratio: 17.27, raw_size=2075585, msgpack_size=1849057, brotli_size=126368, raw_brotli_size=120166, raw_brotli_ms=6199.26, size_match=true, raw_sha=5be5f1b4c6d7, reemit_sha=5be5f1b4c6d7, records=6224"
+}

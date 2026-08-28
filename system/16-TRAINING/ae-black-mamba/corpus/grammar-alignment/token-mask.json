@@ -1,0 +1,6 @@
+{
+  "schema": "orange5.ae-black-mamba.token-mask.v0",
+  "skipped": true,
+  "reason": "no tokenizer vocab supplied",
+  "guidance": "Set AE_BM_TOKENIZER_VOCAB to a Mamba tokenizer.json dump and rerun to materialize the eligible token-id set. Without this, the Python trainer falls back to character-level grammar checking, which is slower but functionally equivalent."
+}

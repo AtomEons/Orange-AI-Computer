@@ -1,0 +1,53 @@
+{
+  "experiment": "30-fine-sort-and-dict",
+  "generated_at": "2026-06-26T12:32:57.909Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "results": [
+    {
+      "name": "brotli q11 raw corpus",
+      "encoded": 120166,
+      "ratio": 17.272647837158598
+    },
+    {
+      "name": "group by action + brotli",
+      "encoded": 111791,
+      "ratio": 18.566655634174488
+    },
+    {
+      "name": "group by (action, key_sig) + brotli",
+      "encoded": 110883,
+      "ratio": 18.718694479766963
+    },
+    {
+      "name": "full lexicographic sort + brotli",
+      "encoded": 120166,
+      "ratio": 17.272647837158598
+    },
+    {
+      "name": "plait by prefix (replicating 18.05x)",
+      "encoded": 112191,
+      "ratio": 18.50045903860381
+    },
+    {
+      "name": "two-stream lossless (no IDs strip + IDs)",
+      "encoded": 115870,
+      "ratio": 17.913049106757573
+    },
+    {
+      "name": "sorted no-IDs + permutation index + IDs",
+      "encoded": 111099,
+      "ratio": 18.682301370849423
+    },
+    {
+      "name": "prefix-dict marginal (asymptotic)",
+      "encoded": 79382,
+      "ratio": 26.146796502985563,
+      "marginal": true
+    }
+  ],
+  "best_lossless": {
+    "name": "group by (action, key_sig) + brotli",
+    "encoded": 110883,
+    "ratio": 18.718694479766963
+  }
+}

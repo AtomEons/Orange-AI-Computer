@@ -1,0 +1,21 @@
+{
+  "experiment": "01-spike-encoding",
+  "version": "v2-lossless-vocab",
+  "generated_at": "2026-06-26T09:17:32.617Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes_in": 2075585,
+  "spike_stream_bytes": 677742,
+  "brotli_q11_bytes": 125309,
+  "ratio": 16.56,
+  "roundtrip_lossless": true,
+  "decoded_sha256_out": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "vocab_sizes": {
+    "id": 6224,
+    "action": 66,
+    "status": 2,
+    "summary": 2598,
+    "payload_json": 1855,
+    "created_at": 35
+  },
+  "pass": true
+}

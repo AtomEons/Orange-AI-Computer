@@ -1,0 +1,37 @@
+[Unit]
+Description=Æ Cobra — Orange5 Memory Daemon (Night-1)
+Documentation=https://github.com/Atom-Eons (private; spec at C:/AtomEons/Orange5/06-ORANGELLM/memory/AE_COBRA_FOUNDATION_SPEC.md)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/opt/atomeons/ae-cobra
+ExecStart=/opt/atomeons/ae-cobra/bin/start.sh
+ExecStop=/opt/atomeons/ae-cobra/bin/stop.sh
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/mnt/ae_flux/logs/ae-cobra.stdout.log
+StandardError=append:/mnt/ae_flux/logs/ae-cobra.stderr.log
+
+# Memory + locking
+LimitMEMLOCK=infinity
+TasksMax=512
+MemoryMax=11G
+MemoryHigh=10G
+
+# Networking — loopback only (Frontier-Isolation Law)
+IPAddressAllow=127.0.0.1/32 ::1/128
+IPAddressDeny=any
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+# Filesystem — read-write only what's needed
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/mnt/ae_flux /opt/atomeons/ae-cobra
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

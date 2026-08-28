@@ -1,0 +1,20 @@
+{
+  "N": 100000,
+  "ingest_seconds": 5.798,
+  "ingest_throughput_sigs_per_sec": 17247.32666436702,
+  "sort_seconds": 0.385,
+  "latency_ms": {
+    "mean": 30.64071543264389,
+    "p50": 26.640399932861328,
+    "p95": 66.78269958496094,
+    "p99": 135.0532989501953,
+    "max": 237.04820251464844
+  },
+  "label_recall": {
+    "orange": 0.97,
+    "apple": 0.932,
+    "combined": 0.951
+  },
+  "disk_bytes": 143956365,
+  "bytes_per_signature": 1439.56365
+}

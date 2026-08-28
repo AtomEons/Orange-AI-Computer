@@ -1,0 +1,73 @@
+{
+  "$schema_note": "Three sample visual events for smoke-testing writer.mjs. Each entry is a complete kwargs object suitable for writeVisualEvent({...fixture}).",
+  "fixtures": [
+    {
+      "name": "pdf_page_describe",
+      "description": "Operator dropped Q4 deck p.3 — local GLM-4.6V described a bar chart at high confidence, no frontier offload.",
+      "image_sha256": "8b7a2f4d9e1c5b3a6f8d2e7c4b9a1f6e3d8c5a2b7f4e9d1c6a3b8f5e2d7c4a9b",
+      "qdrant_doc_id": "doc-q4deck-p3-a1b2c3",
+      "page": 2,
+      "cortex_model": "glm-4.6v",
+      "frontier_used": false,
+      "patch_grounding": [
+        { "idx": 47, "bbox": [120, 200, 80, 30], "confidence": 0.92 },
+        { "idx": 48, "bbox": [205, 200, 80, 30], "confidence": 0.89 },
+        { "idx": 49, "bbox": [290, 200, 80, 30], "confidence": 0.91 }
+      ],
+      "cortex_response": {
+        "summary": "Operator dropped Q4 deck p.3 — bar chart of revenue by region",
+        "entities": ["Q4 deck", "revenue chart", "regional revenue"],
+        "files": ["q4-deck.pdf#page=3"],
+        "commands": [],
+        "risk": "low",
+        "next_action": "wait for follow-up query",
+        "confidence": 0.9
+      }
+    },
+    {
+      "name": "ui_ground_element",
+      "description": "Vault UI screenshot — local cortex grounded the Pathwaves nav button at patch idx 112.",
+      "image_sha256": "1f3e5d7c9b2a4f6e8d0c2b4a6f8e0d2c4b6a8f0e2d4c6b8a0f2e4d6c8b0a2f4e",
+      "qdrant_doc_id": "doc-vault-screen-7d3e1f",
+      "page": 0,
+      "cortex_model": "glm-4.6v",
+      "frontier_used": false,
+      "patch_grounding": [
+        { "idx": 112, "bbox": [32, 480, 144, 44], "confidence": 0.95 }
+      ],
+      "cortex_response": {
+        "summary": "Vault dashboard — Pathwaves nav button located at lower-left rail",
+        "entities": ["Vault", "Pathwaves", "nav rail"],
+        "files": ["vault-screenshot.png"],
+        "commands": [],
+        "risk": "low",
+        "next_action": "wait for operator click intent",
+        "confidence": 0.95
+      }
+    },
+    {
+      "name": "frontier_offload_case",
+      "description": "Dense engineering schematic — local cortex confidence was 0.41, gateway escalated to frontier per /deep flag.",
+      "image_sha256": "a0b1c2d3e4f506172839405162738495a6b7c8d9e0f1a2b3c4d5e6f708192a3b",
+      "qdrant_doc_id": "doc-schematic-x7-9c8b7a",
+      "page": 0,
+      "cortex_model": "glm-4.6v",
+      "frontier_used": true,
+      "frontier_model": "claude-opus-4-7",
+      "patch_grounding": [
+        { "idx": 8, "bbox": [40, 60, 200, 120], "confidence": 0.61 },
+        { "idx": 73, "bbox": [320, 180, 180, 100], "confidence": 0.58 },
+        { "idx": 141, "bbox": [80, 420, 240, 140], "confidence": 0.54 }
+      ],
+      "cortex_response": {
+        "summary": "Mixed-signal PCB schematic — three subsystems: power regulator (top-left), DSP core (middle-right), analog front-end (bottom-left)",
+        "entities": ["PCB schematic", "power regulator", "DSP core", "analog front-end"],
+        "files": ["schematic-x7.pdf#page=1"],
+        "commands": [],
+        "risk": "low",
+        "next_action": "offer detailed annotation per subsystem",
+        "confidence": 0.78
+      }
+    }
+  ]
+}

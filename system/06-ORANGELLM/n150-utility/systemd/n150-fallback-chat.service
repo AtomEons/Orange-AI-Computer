@@ -1,0 +1,122 @@
+# N150 utility — emergency chat fallback (qwen3:0.6b STOCK, Bun) — systemd unit
+# Path on N150: /etc/systemd/system/n150-fallback-chat.service
+# Source of truth: C:/AtomEons/Orange5/06-ORANGELLM/n150-utility/systemd/n150-fallback-chat.service
+#
+# Wave 1 doctrine: STOCK WEIGHTS ONLY. No custom training, no fine-tunes.
+# This unit owns the third of three co-resident jobs on the N150 utility node
+# (Beelink, 4 cores, 16 GB):
+#
+#   1. origin-based lane classifier   qwen3:0.6b (stock)        (n150-classifier)
+#   2. Graph Weaver embedder          nomic-embed-text (stock)  (n150-embedder)
+#   3. emergency chat fallback        qwen3:0.6b (stock)        ← THIS UNIT
+#      Asleep until the Codexa rail has been UNREACHABLE for >60s. Only then
+#      does it activate /chat. While Codexa is healthy, /chat returns 503 with
+#      { degraded: false, gated: true } so callers cannot accidentally downgrade
+#      themselves to qwen3:0.6b when the real rail is up. Auto-deactivates
+#      after 3 consecutive healthy probes (≈15s).
+#
+# Surface (loopback ONLY):
+#   POST /chat                  primary chat (gated by Codexa health)
+#   GET  /healthz               liveness + activation state + last-probe age
+#   POST /admin/swap            { model } -> hot-swap STOCK qwen3 tag
+#
+# Hot-swap law: STOCK qwen3 tags only (e.g. qwen3:0.6b <-> qwen3:0.6b-q4).
+# STOCK_QWEN3_PATTERN in server.mjs rejects fine-tunes. n150-hot-swap@fallback-chat
+# drives the swap; SIGHUP is the in-process fallback.
+#
+# Runtime: Bun 1.x (server uses Bun.serve). The script exits 78 (EX_CONFIG) if
+# launched on plain Node — that's intentional, fail loud not silent.
+
+[Unit]
+Description=AtomEons N150 emergency chat fallback (qwen3:0.6b stock, degraded lane)
+Documentation=https://atomeons.local/docs/orange5/n150-utility
+Documentation=file:///opt/atomeons/orange5/n150-utility/fallback-chat/server.mjs
+After=network-online.target ollama.service
+Wants=network-online.target
+Requires=ollama.service
+
+[Service]
+Type=simple
+User=atomeons
+Group=atomeons
+WorkingDirectory=/opt/atomeons/orange5/n150-utility/fallback-chat
+
+Environment=NODE_ENV=production
+Environment=OLLAMA_BASE_URL=http://127.0.0.1:11434
+Environment=N150_FALLBACK_MODEL=qwen3:0.6b
+Environment=N150_FALLBACK_HOST=127.0.0.1
+Environment=N150_FALLBACK_PORT=7481
+Environment=CODEXA_RAIL_BASE=http://10.0.99.1:8097
+EnvironmentFile=-/etc/atomeons/n150-fallback-chat.env
+
+# Bun is required (server.mjs uses Bun.serve). Exits 78 on plain Node.
+ExecStart=/usr/local/bin/bun /opt/atomeons/orange5/n150-utility/fallback-chat/server.mjs
+
+# Hot-swap: SIGHUP triggers an in-process model re-bind (STOCK qwen3 only).
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Restart on any non-clean exit. The emergency rail must be alive even when
+# nobody is calling it so it can probe Codexa continuously and pre-warm.
+Restart=on-failure
+RestartSec=3s
+StartLimitIntervalSec=60s
+StartLimitBurst=5
+
+# Graceful stop: daemon clears waiters and stops the Codexa probe on SIGTERM.
+# Chat upstream cap is CHAT_TIMEOUT_MS=30s, so 45s drain is safe.
+TimeoutStopSec=45s
+KillMode=mixed
+KillSignal=SIGTERM
+
+# Resource caps (Wave 1 doctrine). Fallback-chat is the heavyweight of the
+# three: it has to hold the qwen3:0.6b inference context + a small request
+# queue (MAX_INFLIGHT=2). 4G allows comfortable inference without forcing
+# Ollama to evict the embedder's nomic-embed-text weights.
+MemoryMax=4G
+MemoryHigh=3584M
+CPUQuota=200%
+TasksMax=64
+LimitNOFILE=2048
+
+# Hardening — least privilege; outbound HTTP to localhost + Codexa LAN only.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+# NOTE: Bun's JIT requires writable+executable mappings. Cannot enable
+# MemoryDenyWriteExecute=yes here (would crash the runtime). The classifier
+# and embedder, which run on node, do enable it.
+
+# Loopback ingress; outbound to Codexa LAN allowed.
+# 10.0.99.1 is the Codexa rail anchor; widen the CIDR only if your Codexa
+# host moves. Loopback is required for the Ollama probe.
+IPAddressDeny=any
+IPAddressAllow=127.0.0.1/32
+IPAddressAllow=::1/128
+IPAddressAllow=10.0.99.0/24
+
+# Writable carve-out for fallback receipts (activation events, swap log).
+ReadWritePaths=/opt/atomeons/orange5/n150-utility/fallback-chat/state
+
+# Logging — journald carries structured JSON lines per activation/deactivation.
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=n150-fallback-chat
+
+[Install]
+WantedBy=multi-user.target

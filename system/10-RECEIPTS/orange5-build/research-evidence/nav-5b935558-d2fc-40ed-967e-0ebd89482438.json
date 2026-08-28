@@ -1,0 +1,136 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "nav-5b935558-d2fc-40ed-967e-0ebd89482438",
+  "query": "Evaluate episodic semantic agent memory architecture using https://raw.githubusercontent.com/AIRI-Institute/AriGraph/main/README.md and https://raw.githubusercontent.com/yandex-research/StructMemEval/main/README.md",
+  "searchQuery": "evaluate episodic semantic agent memory",
+  "generatedAt": "2026-08-26T03:53:11.944Z",
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "direct",
+      "sourceId": "574bbcb5135216c4",
+      "title": "AriGraph: Learning Knowledge Graph World Models with Episodic Memory for LLM Agents",
+      "url": "https://raw.githubusercontent.com/AIRI-Institute/AriGraph/main/README.md",
+      "summary": "# AriGraph: Learning Knowledge Graph World Models with Episodic Memory for LLM Agents AriGraph functions as the external memory architecture for large language models (LLMs), featuring a knowledge graph that is built from the ground up. This memory, configured as a semantic knowledge graph with added episodic vertices and edges, greatly improves the performance of Retrieval-Augmented Generation (RAG) in text-based games. Currently, AriGraph is a key component of the Ariadne agent, crafted to nav",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "episodic",
+          "semantic",
+          "agent",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "direct",
+      "sourceId": "90cafda35ad87086",
+      "title": "Evaluating Memory Structure in LLM Agents",
+      "url": "https://raw.githubusercontent.com/yandex-research/StructMemEval/main/README.md",
+      "summary": "# Evaluating Memory Structure in LLM Agents &nbsp; Supplementary code for the working paper **Evaluating Memory Structure in LLM Agents**. # Raw benchmark data: - Accounting (count-based): [`./benchmark/data/accounting`](./benchmark/data/accounting) - Tree-based: [`./benchmark/data/tree_based`](./benchmark/data/tree_based) - State tracking: [`./benchmark/data/state_machine_location`](./benchmark/data/state_machine_location) - Recsys: [`./benchmark/data/recommendations`](./benchmark/data/recommen",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "github",
+      "sourceId": "1322956860",
+      "title": "PRINCESS970000/mcp-memory-rag-engine",
+      "url": "https://github.com/PRINCESS970000/mcp-memory-rag-engine",
+      "summary": "An enterprise-grade extension for Model Context Protocol (MCP) agents. Features a structured long-term memory system (short-term scratchpad, episodic routing, and semantic consolidation with conflict resolution), evaluated context management strategies, and a multi-architecture RAG pipeline (Naive, Hybrid, Agentic RAG) with Self-RAG verification",
+      "updatedAt": "2026-08-24T00:03:58Z",
+      "license": null,
+      "authorityTier": "registry_discovery",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "episodic",
+          "semantic",
+          "agent",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "github",
+      "sourceId": "1286370797",
+      "title": "karunaav/RAGchatbot",
+      "url": "https://github.com/karunaav/RAGchatbot",
+      "summary": "An agentic document Q&A chatbot — upload a PDF and a LangGraph-orchestrated agent decides when to search it, reflects on its own answers before responding, and remembers past conversation turns. Built with ReAct-style tool calling, hybrid vector + keyword search, episodic/semantic memory, an MCP server, and an evaluation harness, powered by Gemini",
+      "updatedAt": "2026-07-18T07:08:31Z",
+      "license": null,
+      "authorityTier": "registry_discovery",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "episodic",
+          "semantic",
+          "agent",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "github",
+      "sourceId": "1286731409",
+      "title": "hq0709/synapse",
+      "url": "https://github.com/hq0709/synapse",
+      "summary": "Official implementation of SYNAPSE: episodic-semantic memory for LLM agents via spreading activation (Findings of ACL 2026), evaluated on LoCoMo",
+      "updatedAt": "2026-07-02T03:57:38Z",
+      "license": "MIT",
+      "authorityTier": "registry_discovery",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "episodic",
+          "semantic",
+          "agent",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "github",
+      "sourceId": "1132738732",
+      "title": "Rehan018/Agent-Memory-Architecture-Research-Report",
+      "url": "https://github.com/Rehan018/Agent-Memory-Architecture-Research-Report",
+      "summary": "Research project evaluating memory architectures for long-running LLM agents. Compares short-term, episodic, semantic (vector-based), and reflection memory using controlled simulations, analyzing accuracy, cost, latency, and failure modes",
+      "updatedAt": "2026-02-25T05:01:48Z",
+      "license": null,
+      "authorityTier": "registry_discovery",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "episodic",
+          "semantic",
+          "agent",
+          "memory"
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "sha256": "ec8f2b893c0936eb0d6aa3f5980ed31d8219fbe2aa40936043633986eb26af53"
+}

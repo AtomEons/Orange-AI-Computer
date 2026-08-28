@@ -1,0 +1,90 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "design",
+  "card_id": "design-component-screenshot",
+  "capability": "design.component.screenshot",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["url"],
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "URL to render. The lease's egress_allowlist restricts what hosts can actually be reached.",
+        "format": "uri",
+        "minLength": 7,
+        "maxLength": 2048
+      },
+      "selector": {
+        "type": "string",
+        "description": "Optional CSS selector. When set, the screenshot is clipped to the bounding box of the first match (Storybook story root, MDX component, etc.).",
+        "minLength": 1,
+        "maxLength": 512
+      },
+      "viewport": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["width", "height"],
+        "properties": {
+          "width": { "type": "integer", "minimum": 200, "maximum": 3840, "default": 1280 },
+          "height": { "type": "integer", "minimum": 200, "maximum": 4320, "default": 800 },
+          "device_scale_factor": { "type": "number", "minimum": 1, "maximum": 4, "default": 1 }
+        }
+      },
+      "color_scheme": {
+        "type": "string",
+        "enum": ["light", "dark", "no-preference"],
+        "default": "light"
+      },
+      "wait_for": {
+        "type": "string",
+        "description": "Selector to await before snapshotting (e.g. '[data-storyloaded=\"true\"]'). Runner times out at 10s.",
+        "minLength": 1,
+        "maxLength": 512
+      },
+      "format": {
+        "type": "string",
+        "enum": ["png", "webp", "jpg"],
+        "default": "png"
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["image_ref", "width", "height"],
+    "properties": {
+      "image_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "width": { "type": "integer", "minimum": 1 },
+      "height": { "type": "integer", "minimum": 1 },
+      "rendered_url": { "type": "string", "format": "uri" }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 50,
+    "scopes": [
+      "browser.headless",
+      "fs.write:sandbox://design/screenshots/",
+      "net.egress:localhost",
+      "net.egress:127.0.0.1",
+      "net.egress:storybook.local"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 20
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:22:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Headless-Chromium component screenshot, optionally scoped by selector — used for visual diffing of Storybook / MDX components.",
+  "tags": ["design", "screenshot", "headless-chrome", "storybook", "visual-regression"],
+  "notes": "Default lease allowlists only localhost and storybook.local; pointing this card at production / public hosts requires the operator to widen egress_allowlist at lease-issue time."
+}

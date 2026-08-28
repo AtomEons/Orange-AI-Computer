@@ -1,0 +1,60 @@
+{
+  "$schema": "orange5.soul-genome.v1",
+  "version": "1.0.0-public",
+  "schema_id": "atomeons.orange5.soul_genome.v1",
+  "schema_description": "Portable first-run operator continuity profile. Personal identity, memory, credentials, machine state, and project history must be stored outside the release payload.",
+  "sovereign": {
+    "name": "Operator",
+    "alias": "Operator",
+    "email": null,
+    "role": "Owner and human final authority",
+    "authority": "Human Final Stop"
+  },
+  "location": {
+    "city": null,
+    "region": null,
+    "country": null,
+    "timezone": null
+  },
+  "preferences": {
+    "response_register": "direct, evidence-grounded, useful",
+    "tight_responses": true,
+    "fake_green_intolerance": "No completion claim without evidence for the exact runtime path.",
+    "search_before_claim": true,
+    "receipts_required": "Record mutations, evidence, blockers, and rollback pointers."
+  },
+  "current_intent_id": "orange.first-run",
+  "current_intent_summary": "Discover this operator, this project, and this hardware before accepting autonomous work.",
+  "active_project": {
+    "name": "Æ Orange AI Computer",
+    "root": "C:/AtomEons/Orange5",
+    "doctrine_root": "C:/AtomEons/Orange5/01-DOCTRINE",
+    "lanes_immutable": [
+      "governed execution",
+      "receipt-backed truth",
+      "human final authority"
+    ]
+  },
+  "hardware": {
+    "topology": "discover_at_install",
+    "primary_node": null,
+    "compute_nodes": []
+  },
+  "runtime_pointers": {
+    "gateway_url": "http://127.0.0.1:1337",
+    "soul_genome_path": "%USERPROFILE%/OrangeBox-Data/orange5/soul-genome.json",
+    "ledger_root": "%USERPROFILE%/OrangeBox-Data/orange5"
+  },
+  "guardrails": {
+    "count": 5,
+    "invariants": [
+      { "id": 1, "name": "HUMAN_FINAL_AUTHORITY", "rule": "The operator remains final authority." },
+      { "id": 2, "name": "NO_FAKE_GREEN", "rule": "Evidence for the exact path is required before green." },
+      { "id": 3, "name": "SOURCE_TRUTH_PRESERVED", "rule": "Indexes and compressed views never replace source truth." },
+      { "id": 4, "name": "SECRETS_EXTERNAL", "rule": "Credentials and private memory remain outside the product payload." },
+      { "id": 5, "name": "BOUNDED_EXECUTION", "rule": "Models propose; governed tools perform effects." }
+    ]
+  },
+  "updated_at": null,
+  "updated_by": "orange-public-bootstrap"
+}

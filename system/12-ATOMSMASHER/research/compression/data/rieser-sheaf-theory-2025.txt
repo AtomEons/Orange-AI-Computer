@@ -1,0 +1,868 @@
+arXiv:2109.13867v2 [math.AT] 20 Aug 2025     GROTHENDIECK TOPOLOGIES AND SHEAF THEORY FOR DATA AND
+                                                    GRAPHS: AN APPROACH THROUGH C ECH CLOSURE SPACES
+
+                                                                                                             ANTONIO RIESER
+
+                                                       Abstract. We initiate the study of sheaves on C ech closure spaces, providing a new, unified
+                                                       approach to sheaf theory on many of the major classes of spaces of interest to applications:
+                                                       topological spaces, finite simplicial complexes (seen as T0 topological spaces), graphs and digraphs
+                                                       (both seen as closure spaces), and semi-pseudometric spaces, in particular those constructed
+                                                       from a pseudometric spaces decorated with a privileged scale, which are those typically used for
+                                                       topological data analysis. Our construction proceeds by constructing a Grothendieck topology
+                                                       on the category M(cX ) of finite intersections of subsets of (X, cX ) with non-empty interior,
+                                                       which is the natural generalization to closure spaces of the category O(X,  ) of open sets in a
+                                                       topological space. We continue by constructing the sheaf and C ech cohomologies on M(cX ), and
+                                                       standard constructions then give a spectral sequence between the C ech cohomology and the sheaf
+                                                       cohomology on a site (M(cX ), J) which we use to identify several examples of non-topological
+                                                       closure spaces with non-trivial sheaf cohomology.
+
+                                                                                              1. Introduction
+
+                                             Starting from its origins in algebraic topology, sheaf theory has become an indispensable part
+                                          of homological algebra, and it has many important applications in fields as diverse as algebraic
+                                          geometry and partial differential equations. In the past decade, particularly with the rise of topo-
+                                          logical data analysis, there has been increased interest in extending the reach of sheaf theory to
+                                          scientific and engineering applications, and a number of intriguing efforts have been made in that
+                                          direction [28, 14, 10, 8, 4, 24, 26, 25]. The most common construction of this kind in the literature
+                                          involves studying sheaves on a combinatorially defined space which may be given a topology, such
+                                          as a simplicial complex with a T0 topology, either in the version on cell complexes first developed
+                                          in [27] and revived in [9], where the T0 topology need not be used explicitly to develop much of the
+                                          theory, or else on spaces of posets as in [26], where the T0 topology takes on a more central role.
+                                          Related constructions of sheaf theory on simplicial complexes can also be found in Section 8.1 of
+                                          [18].
+
+                                             In this article, we introduce a new approach to the construction of sheaf theory on discrete and
+                                          combinatorial spaces by constructing sheaves on C ech closure spaces, a category which contains
+                                          many of the major classes of spaces of interest to applications: topological spaces, including finite
+                                          simplicial complexes with a T0 topology on the collection of simplices, graphs and digraphs (where
+
+                                              This material is based upon work supported by the US National Science Foundation under Grant No. DMS-
+                                          1928930 while the author was in residence at the Simons Laufer Mathematical Sciences Institute (formerly MSRI)
+                                          in Berkeley, as well as when the author participated in a Mathematical Sciences Research Institute program held in
+                                          the summer of 2022 in partnership with the the Universidad Nacional Auto´noma de M´exico. This work was also
+                                          supported by the SECIHTI Investigadoras y Investigadores por M´exico Project #1076 and by the grant N62909-19-
+                                          1-2134 from the US Office of Naval Research Global and the Southern Office of Aerospace Research and Development
+                                          of the US Air Force Office of Scientific Research.
+
+                                                                                                                                      1
+SHEAF THEORY FOR C ECH CLOSURE SPACES  2
+
+the vertices are seen as a closure space and the closure structure is induced by the edges), and
+metric spaces decorated with a privileged, non-zero scale, which induce a special class of semi-
+pseudometric spaces. The construction given here is a generalization to closure spaces of the
+standard Grothendieck topology on topological spaces, and as such also includes cellular sheaves
+[9, 10] as a special case. Unlike in the applications of cellular sheaves to point clouds, however,
+our construction allows one to define sheaves directly on the set of points, eliminating the need to
+pass to an auxiliary simplicial complex, as well as clarifying the functoriality of such constructions.
+It also provides, to the best of our knowledge, the first construction of sheaf theory for directed
+graphs, since cellular sheaf theory does not apply to this case.
+
+   The algebraic topology of C ech closure spaces appears to have been first studied in [11, 12],
+where it was used to construct new invariants of graphs and digraphs. After a long period of
+inactivity, this idea was taken up again in [22, 23], where the development of homotopy theory on
+C ech closure spaces was continued, and where it was shown that this framework also covers the
+case of metric spaces which are endowed with a preferred scale, the scale indicating the minimal
+radius of a metric ball around a point which must be contained in any neighborhood of that point.
+Further work on the algebraic topology of closure spaces led to a unified view of a number of
+discrete homotopy theories in [6], where it was shown that many of the discrete homotopy theories
+on studied on graphs [3, 2, 16] can be expressed as a homotopy theory on C ech closure spaces
+simply by changing the cylinder functor and the product used to define homotopy. Although not
+mentioned in [6], both digital homotopy [1, 5] and the discrete homotopies studied in [21] may also
+be expressed in terms of homotopies on appropriate closure spaces as well. Finally, it was also shown
+in [6] that stability theorems for persistent versions of a functor (persistent homology, persistent
+cohomology, persistent homotopy, etc) follow directly from the closure space homotopy invariance
+of that functor, demonstrating the importance of the algebraic topology of closure spaces to more
+traditional approaches to applied topology. Finally, the category of pseudotopological spaces, the
+Cartesian closed hull of both the category of topological spaces and C ech closure spaces, was shown
+to admit a Quillen-type model structure in [23], and this model structure was further shown in [13]
+to be Quillen equivalent to the Quillen model structure on topological spaces.
+
+   There are a number of obstacles which must be overcome in order to develop sheaf theory on
+general C ech closure spaces. First, in most interesting closure spaces, there are simply not enough
+open sets for the classical, topological sheaf cohomology to provide much information. We see this
+already with the closure space (V, cG) induced by a connected graph G = (V, E). In this case,
+the open sets of (V, cG) are simply the indiscrete topology on the vertex set, i.e. the topology
+consisting only of {, V }, and, like the topology, the resulting sheaf theory is trivial. In closure
+spaces, however, the interior of a set may be non-open, and there are many more non-open sets
+with non-trivial (and non-open) interiors than there are open sets. Using these, we may form so-
+called interior covers, which provides an apparent solution to the problem of the lack of open sets.
+However, this leads to a second issue, which is that the category N (cX ) of subsets of (X, cX ) with
+non-empty interior is not closed under finite intersections. Naively, one may try to address the issue
+by simply adding the missing sets to N (cX ), and so we might posit that the category in which we
+should work is not N (cX ), but rather the category which contains N (cX ) together with all of the
+finite intersections of its elements, which we denote by M(cX ). However, while the sets in M(cX )
+now form a topology on X, this topology is often too fine to be interesting. That is, if we build
+sheaves using open covers of X in the topology given by M(cX ), then much of the structure we
+wish to capture may be lost. We instead consider a kind of hybrid of these two options. We begin
+with presheaves defined on the category whose objects are the subspaces of (X, cX ) induced by
+     SHEAF THEORY FOR C ECH CLOSURE SPACES  3
+
+inclusions of the sets M(cX ) into (X, cX ), and whose morphisms are inclusions of subspaces. (We
+also call this category M(cX ) in a slight abuse of notation.) We then use interior covers of the
+subspaces in M(cX ) to form a basis for the Grothendieck topology, and the sets in M(cX ) with
+empty interior are used for the matching conditions in the sheafification process.
+
+   After constructing the Grothendieck topology on M(cX ), we construct C ech cohomology on
+closure spaces with coefficients in a presheaf, which is defined with respect to interior covers,
+as it was in [20] for constant sheaves. We then recall the spectral sequence passing from C ech
+
+cohomology to sheaf cohomology on a Grothendieck topology, and we use this spectral sequence to
+
+produce examples of non-topological closure spaces, in particular closure spaces induced by graphs
+
+and metric spaces with a privileged scale, which have non-trivial sheaf cohomology.
+
+                                              2. C ech Closure Spaces
+
+   In this section, we introduce C ech closure spaces, show how topological spaces, graphs, and
+metric spaces with a privileged scale all form examples of closure spaces, and collect several basic
+results about closure spaces which we will use later.
+
+Definition 2.1. Let X be a set, and let c : P(X)  P(X) be a map on the power set of X which
+satisfies
+
+     (1) c() = 
+     (2) A  c(A) for all A  X
+     (3) c(A  B) = c(A)  c(B) for all A, B  X
+
+The map c is called a Cech closure operator (or closure operator ) on X, and the pair (X, c) is called
+a Cech closure space (or closure space). We will typically refer to a closure space (X, cX ) simply
+by its closure structure cX when the set is unambiguous.
+
+   A function f : cX  cY is said to be continuous iff f (cX (A))  cY (f (A)) for every A  X.
+
+Examples.
+
+   (a) Let X = , and let c be defined by c() = . Then (, c) is a closure space, which we
+call the empty closure space.
+
+   (b) Let (X,  ) be a topological space with topology  . For any A  X, denote by A¯ the
+topological closure of A. Then c (A) = A¯ is a C ech closure operator. Note that, in this case,
+c2 (A) = c (A). Closure operators c with the property that c2 = c are called Kuratowski or
+topological closure operators, and it can be shown that, for Kuratowski closure operators, the
+collection
+
+                                             O(X) := {X \ c(A) | A  X}
+
+forms the open sets of a topology on X. (See [7], Theorem 15.A.2(a) for a proof.) Furthermore, a
+map f : (X,  )  (Y,  ) between topological spaces is topologically continuous iff it is continuous
+as a map f : (X, c )  (Y, c ) between the induced closure spaces. ([7], Theorem 16.A.10)
+
+   (c) Let (X, d) be a metric space, and r  0 a non-negative real number. For any A  X, define
+
+(1)  cr(A) := {x  X | d(x, A)  r}.
+
+Then cr is a closure operator on X. For r = 0, (X, c0) is toplogical by the discussion in Example
+(b) above, and if r > 0, we call (X, cr) a mesoscopic space. Functions between closure spaces of the
+form (X, cp) and (Y, cq) admit the following convenient characterization of continuity, as shown in
+[22].
+     SHEAF THEORY FOR C ECH CLOSURE SPACES                                                   4
+
+Proposition 2.2 ([22], Proposition 3.5). Let p, q  0 be non-negative real numbers, and let (X, dX )
+and (Y, dY ) be metric spaces with closure structures cp and cq, respectively, where the cp and cq are
+as in Equation (1). Then a function f : (X, cp)  (Y, cq) is continuous iff for every  > 0 and
+every x  X, there exists a x, > 0 such that
+
+(2)  dX (x, x) < p + x, = dY (f (x), f (x)) < q + .
+
+Remark 2.3. When a function f : (X, dX )  (Y, dY ) between metric spaces satisfies Equation (2)
+in Proposition 2.2 above, we say that f is (p, q)-continuous.
+
+   (d) Let G = (V, E) be a reflextive graph with vertices V and edges E. (Recall that a graph
+G = (V, E) is reflexive iff, for each vertex v there is an edge (v, v)  E.) We define a closure
+operator cG : P(V )  P(V ) in the following way. First, let s : V  P(V ) be the star of a vertex
+v, i.e. the map
+
+                                             s(v) := {v  V | (v, v)  E}.
+
+For an arbitrary A  V , we now define the operator cG by
+
+                                                     cG(A) = s(v).
+
+                                                                                             vA
+
+Then cG is a closure operator, and (V, cG) is a closure space, which we call the closure space
+induced by the graph G. Addtionally, a map f : (V, cG)  (V , cG ) is continuous iff f is a graph
+homomorphism. (This follows directly from Proposition 2.2 by taking p = q = 1 and viewing a
+graph as a metric space with the shortest path metric, noting that c1 = cG.)
+
+   Given a non-reflexive graph G = (V, E), we construct the closure space (V, cG) by first adding
+the diagonal elements (v, v)  V × V to E, and then defining cG with respect to the graph with all
+edges (v, v) added.
+
+Definition 2.4. Let (X, c) be a closure space. For any A  X, we define the interior of A by
+
+     i(A) := X - c(X - A),
+
+and we say that U  X is a neighborhood of A iff A  i(U ). We will call i : P(X)  P(X) the
+interior operator of (X, c).
+
+The next three propositions enumerate the essential properties of interior operators.
+
+Proposition 2.5 ([7], 14 A.11). Let (X, c) be a closure space. The interior operator i : P(X) 
+P(X) satisfies the following
+
+    (1) i(X) = X
+    (2) i(A)  A for all A  X
+    (3) i(A  B) = i(A)  i(B) for all A, B  X
+
+   The following two corollaries follow directly from Item (3)
+
+Corollary 2.6. Let (X, c) be a Cech closure space, and suppose that B  A  X. Then i(B) 
+i(A).
+
+Corollary 2.7. Let (X, c) be a Cech closure space. For any two neighborhoods U and V of a point
+x  X, the intersection U  V is also a neighborhood of x.
+
+Proof. By hypothesis, x  i(U )i(V ), and by Item (3) of Proposition 2.5, i(U )i(V ) = i(U V ). 
+
+The following definition describes the subsapce closure structure on a subset of a closure space.
+SHEAF THEORY FOR C ECH CLOSURE SPACES                                              5
+
+Definition 2.8. Given a closure space (X, cX ) and a subset U  X, we define the subspace closure
+operator by cU (A) := cX (A)  U for all A  U . The closure space (U, cU ) is a subspace of (X, c),
+which we denote (U, cU )  (X, cX ).
+
+   We will also need the following result on neighborhoods in subspaces, which we quote from [7].
+
+Proposition 2.9 ([7], Theorem 17.A.9(a,b)). Let (X, cX ) be a Cech closure space , and let (U, cU ) 
+(X, cX ) be a subspace of (X, cX ).
+(1) For any V  U , iU (V ) = iX (V  (X - U ))  U , where iU and iX are the interior operators for
+
+     (U, cU ) and (X, cX ), respectively.
+(2) For any x  U , a set V  U is a neighborhood of x in (U, cU ) iff there exists a neighborhood
+
+     W of x in (X, cX ) such that V = W  U .
+
+   We now discuss the different kinds of covers on closure spaces which we will use to construct our
+Grothendieck topology.
+
+Definition 2.10. Let (X, c) be a closure space.
+(1) We say that a collection U of subsets of X is a cover of (X, c) iff
+
+X=                                                   U,
+
+                                                U U
+
+(2) We say that a collection U of subsets of X is an interior cover of (X, c) iff
+
+X=                                                   i(U).
+
+                                                U U
+
+   An illustrative example of an interior cover on a non-topological closure space is given by the
+following cover of a closure space induced by a graph.
+
+Example 2.11. Let G = (V, E) be a (possibly directed) reflexive graph, and let (V, cG) be the closure
+space induced by the graph. Let
+
+                                             S(v) := {v  V | (v, v)  E}.
+
+Then SG := {S(v)}vV is an interior cover on (V, cG). Note that, when G is undirected, S(v) is
+the star of the vertex v, and when G is directed, S(v) is the star of the vertex v in the graph
+G = (V, E-1), where E-1 = {(v, v) | (v, v)  E}. Also, this interior cover is maximal among
+interior covers of (V, cG) with respect to the preorder: U  V iff V refines U. That is, for any
+interior cover U of (V, cG), SG refines U .
+
+   In Proposition 2.13 below, we show that the union of the interior covers of a collection of subspaces
+(U, cU ),   IU , is an interior cover of (X, cX ) when the set U := {U |   IU } is an interior
+cover of (X, cX ). This will be necessary for the construction of our Grothendieck topology. We
+begin with the following lemma.
+
+Lemma 2.12. Let (X, cX ) be a Cech closure space, and let A  X. Suppose that a collection
+U of subsets of A is an interior cover of (A, cA), where cA is the subspace closure structure on
+A  (X, cX ), i.e. cA(B) = A  cX (B) for any B  A. Then
+
+iX (A) =                                             iX (U),
+
+                                                U A
+
+where iX is the interior operator on (X, cX ).
+                   SHEAF THEORY FOR C ECH CLOSURE SPACES            6
+
+Proof. Let U  A, then by [7], Theorem 17.A.9(a), iA(U ) = A  iX (U  (X - A)). Writing
+W := X - A, it follows that
+
+                                      iX (A)  iA(U ) =iX (A)  iX (U  W )  A
+                                                          =iX (A  (U  W ))
+
+(3)
+                                                          =iX (A  U )
+                                                          =iX (U ).
+
+Since U is an interior cover of A, however, we have that
+
+                                            iX (A) = iX (A)  A
+
+                                        = iX (A)            iA(U )
+
+                                                       U U
+
+                                        = iX (A)  iA(U )
+
+                                            U U
+
+                                        = iX (U ),
+
+                                            U U
+
+as desired, where the final equality follows from Equation 3.       
+
+Proposition 2.13. Let (X, cX ) be a closure space, and let U := {U |   IU } be an interior cover
+of (X, cX ), where IU is an index set. For each set U  U , let U := {U |   I}, be an interior
+cover of the subspace (U, cU )  (X, cX ), where for each   IU , I is the index set for the cover
+U. Then the collection of sets
+
+                                        V :=           U
+
+                                                   IU
+
+is an interior cover of (X, cX ).
+
+Proof. We compute
+
+                                        iX (V ) =         iX (U)
+
+                                   V V             IU I
+
+                                        =              iX (U)
+
+                                                   IU
+
+                                        = X,
+
+where the second equality follows from Lemma 2.12. Therefore V is an interior cover of (X, cX ). 
+
+   We end this section by recalling the construction and basic facts about inductively generated
+closure structures, i.e. closure structures on a set Y which are generated by a set of maps {fa :
+(X, cX )  Y }. We will need these later in our discussion of systems of ´etale spaces. We begin with
+the following definition.
+
+Definition 2.14 ([7], Definition 33.A.1). A closure operation cY on a set Y is said to be inductively
+generated by a family of mappings {fa : (Xa, ca)  Y | a  A} iff cY is the finest closure structure
+on Y such that all of the mappings fa : (Xa, ca)  (Y, cY ) are continuous.
+
+   The following theorem gives an explicit form for inductively generated closure structures.
+                 SHEAF THEORY FOR C ECH CLOSURE SPACES  7
+
+Theorem 2.15 ([7], Theorem 33.A.4). Every non-empty family of mappings {fa(Xa, ca)  Y |
+a  A} inductively generates exactly one closure structure cY on Y . If a closure structure cY for a
+set Y is inductively generated by a family of mappings {fa(Xa, ca)  Y | a  A}, then
+
+                 cY (V ) = V       fa(cX (fa-1(V )))
+
+                               aA
+
+for each V  Y .
+
+   The final theorem of this section characterizes the neighborhoods of a point in an inductively
+generated closure structure.
+
+Theorem 2.16 ([7], Theorem 33.A.11). Let (Y, cY ) be a closure space inductively generated by a
+
+family of mappings {fa : (Xa, ca)  Y | a  A}. A subset V  Y is a neighborhood of a point
+y  Y iff y  V and fa-1(V ) is a neighborhood of fa-1(x) for each a  A.
+
+                                                    3. Sheaf Theory
+
+3.1. Grothendieck Topologies. In this section, we review the definition of a Grothendieck topol-
+ogy, following the presentations in [17] and [19]. We then construct a Grothendieck topology on
+the category M(X, c) defined below, using sieves generated by a basis of interior covers.
+
+   Let C be a category, and for any U  Ob(C), let CU denote the slice category over U .
+
+Definition 3.1. Let U  Ob(C). A sieve S over U is a subset of Ob(CU ) such that, if V  U  S,
+then the composition W  V  U  S for any W  V  HomC(W, V ).
+
+Definition 3.2. A Grothendieck topology J = {S(U )}UOb(C) on a category C is a collection of
+sieves S(U ) for each object U  Ob(C), such that
+
+     (1) The maximal sieve on U is in S(U ), i.e. Ob(CU )  S(U )
+     (2) If S1  S2  Ob(CU ) and S1  S(U ), then S2  S(U )
+     (3) Let V  U  HomC(V, U ). If S  S(U ), then S ×U V  S(V ), where we define
+
+                        S ×U V := {W  V | the composition W  V  U  S(U )}
+
+     (4) Let S and S be sieves over U . Assume that S  S(U ) and that S ×V U  S(U ) for any
+          (V  U )  S. Then S  S(U ).
+
+A sieve S over U is called a covering sieve if S  S(U ). A site is a pair (C, J) consisting of a
+category C and a Grothendieck topology J on C.
+
+   We now proceed with the construction of a basis of our Grothendieck topology on N (X, c). We
+begin by recalling the definition of the basis of a Grothendieck topology a category C with pullbacks.
+
+Definition 3.3. Let C be a category with pullbacks. A basis for a Grothendieck topology on C is
+a funtion K which assigns to every U  C a collection of families of objects in CU which satisfies
+
+     (1) For any isomorphism U   U , the family consisting of the single morphism {U   U } is a
+          member of K(U ).
+
+     (2) If {f : U  U |   A}  K(U ), then for any morphism g : V  U , the family
+          {U ×U V |   A}  K(V ).
+
+     (3) If {f : U  U |   A}  K(U ) and, for every   A, there is a family {g : V 
+          U |   B}  K(U), then the family {f  g : V  U |   A,   B}  K(U ).
+SHEAF THEORY FOR C ECH CLOSURE SPACES                                                        8
+
+Remark 3.4. Given a basis K on a category with pullbacks C, we define a Grothendieck topology
+T on C by
+
+                                          S  T (U )  R  K(U ), R  S.
+
+We refer the reader to [17, 19] for further details, including the proof that this forms a Grothendieck
+topology on C.
+
+3.2. The Grothendieck topology on M(cX ). We now shift our attention to the specific case of
+Grothendieck topologies built from C ech closure spaces.
+
+Definition 3.5. Let (X, c) be a Cech closure space. We define N (X, c) to be the category whose
+objects are all subspaces (U, cU )  (X, c), where U has non-empty interior in (X, c) and whose
+morphisms are the inclusion maps between subspaces, i.e.
+
+Ob(N (X, c)) := {(U, cU )  (X, c) | iX (U ) = },
+
+HomN (X,c)(V, U ) :=  {VU : (V, cV )  (U, cU )},                        V  U,
+                      ,                                                 V  U,
+
+where iX is the interior operator of (X, c), and the UV are inclusion maps.
+   We define M(cX ) to be the category whose objects are all subspaces (V, cV )  (X, c) such
+
+that V is the intersection of a finite number of subsets of (X, c) with non-empty interior, and whose
+
+morphisms are the inclusion maps between subspaces. Note that M(cX ) includes the empty closure
+space (, c) iff there are two sets in N (X, c) whose intersection is empty.
+
+   We now begin to construct a basis for the Grothendieck topology on M(cX ). We begin with
+a definition of interior covers of elements of M(cX ) in terms of morphisms in M(cX ), in order to
+align our terminology with that of a Grothendieck topology.
+
+Definition 3.6. Let (X, c) be a C ech closure space, and let U be a collection of morphisms
+
+                                                 UU : (U, c)  (U, cU )
+in M(cX ). We say that U is an interior cover of (U, cU )  M(cX ) iff
+
+U=                          iU UU (U) ,
+
+                      UU U
+
+where iU is the interior operator of the subspace (U, cU ).
+
+   The following lemma shows that the collection of interior covers of subspaces in M(cX ) are closed
+under certain operations.
+
+Lemma 3.7. Let (X, c) be a Cech closure space with interior operator i, and let ((U, cU )  M(cX ).
+We write {U  U }A in the following to indicate that each U in the set is a subset of U .
+
+    (1) Let {U  U }A  M(cX ) be an interior cover of (U, cU ), and let (V, cV )  M(cX ),
+          V  U . Then {V  U}A is an interior cover of (V, cV ).
+
+    (2) Let {U  U }A  M(cX ) be an interior cover of (U, cU ), and, for each   A, let {V 
+          U}B  M(cX ) be an interior cover of the subspace (U, c). Then {V}A,B is
+          an interior cover of (U, cU ).
+
+Proof. (1) Follows from the definition of interior covers, Definition 2.10(2), and Proposition 2.9(2).
+               SHEAF THEORY FOR C ECH CLOSURE SPACES                              9
+
+(2) From Lemma 2.12, for each   A we have
+
+               iU (U) =                           iU (V),
+
+                                           B
+
+and therefore
+
+               U = iU (U) =                            iU (V),
+
+               A                           A B
+
+as desired.                                                                       
+
+We now observe that the category M(cX ) admits pullbacks.
+
+Lemma 3.8. The category M(cX ) admits pullbacks. Furthermore, the pullback cV ×cU cW in the
+diagram
+
+               cV ×cU cW                           cV
+
+                                           
+
+                                       cW          cU
+
+in M(cX ) is given by cV ×cU cW = (V  W, cV W ).
+
+Proof. We note that the forgetful functor F : M(cX )  Set is fully faithful, where F sends each
+
+subspace (U, cU )  M(cX ) to its underlying set U and is the identity on morphisms. Furthermore,
+
+in Set, the pullback V ×U W = V  W . Since V, W  M(cX ) implies that V  W  M(cX ), the
+
+result follows, using the subspace structure cV W on V  W .                       
+
+   Combining the above lemmas, we are now ready to construct the basis for our Grothendieck
+topology on M(cX ).
+
+Theorem 3.9. For each U  M(cX ), define
+
+               K(U ) := {U  M(cX )(U,cU ) | U is an interior cover of (U, cU )},
+
+where M(cX )U is the slice category of M(cX ) over U . Then K(X, c) := {K(U ) | (U, cU )  M(cX )}
+is the basis of a Grothendieck topology on M(cX ).
+
+Proof. First, we have that any inclusion UV : (V, cV )  (U, cU ) which is a homeomorphism
+(V, cV ) -= (U, cU ) is itself an interior cover of (U, cU ), so Item 1 of Definition 3.3 is satisfied.
+
+   To see Item 2 of Definition 3.3, first note that, by Lemma 3.8, V ×U U = V U. The conclusion
+
+now follows from Lemma 3.7, Item (1).
+
+Finally, Item 3 follows from Lemma 3.7, Item (2).                                 
+
+   Given any C ech closure space (X, c), Theorem 3.9 and Remark 3.4 provide a canonical site on
+the category M(cX ). We refer the reader to [19], Sections III.4-5, or [17], Sections 17.3-4 for a full
+description of the construction.
+
+Definition 3.10. We denote the Grothendieck topology on M(cX ) generated by the basis of
+interior covers K(X, c) by J, and we refer to the resulting site by (M(cX ), J).
+                                SHEAF THEORY FOR C ECH CLOSURE SPACES                                                  10
+
+3.3. Sheaves on a Site and Operations on Sheaves. In this section, we recall the definition of
+a sheaf on a site which we will use, show an equivalent formulation in terms of sections of interior
+covers, and briefly state which of the standard sheaf functors also exist unchanged for sheaves on
+M(cX ). Aside from Proposition 3.12, the material in this section is largely standard, and may be
+found, for example, in [17, 19]. We include it here as preparation for the proofs of the results in
+the next section.
+
+   We will use the following definition for sheaves on the sites which we have constructed above.
+While this is not the most general definition for sheaves on sites [30], when the category A has pull-
+backs and the Grothendieck topos (C, J) is generated by a basis K(C), this definition is equivalent
+to the standard one, by Proposition 1 [bis] in Section III.4 of [19]. Since we will be working entirely
+in this setting, we simply take this as the definition for a sheaf on a site generated by a basis K(C),
+avoiding the need for the more technical definition of sheaves on a general site.
+
+Definition 3.11. Let C be a category with pullbacks, and let (C, J) be a site generated by the
+basis K(C). A presheaf on C with values in A is a functor F : C  Aop. A presheaf is a sheaf iff
+
+                          F (C) (i)iI                          (j i )i,j I  F (Ci ×C Cj )
+
+                                                  F (Ci)
+
+                                                               (ij )i,jI
+
+is an equalizer diagram, where the i : F (C)  F (Ci) and ij : F (Ci)  F (Cj) are the respective
+restriction maps.
+
+   The following proposition gives an equivalent formulation of this definition as a generalization
+of the more classical definition of sheaves on topological spaces.
+
+Proposition 3.12. Let (X, cX ) be a closure space. A presheaf F : M(cX )  Cop on the site
+
+(M(cX ), J) is a sheaf iff, for every interior cover U = {Ui  X | i  I} of (X, cX ), and every
+
+collection  of  sections  {sUi    F (Ui)  |  i    I}  such  that  the       restriction  maps  Ui     =  Uj     agree  on
+
+                                                                                                 Uij       Uij
+
+every Uij = Ui  Uj, then there is a unique global section sX  F (X) such that UXi (sX ) = sUi for
+
+every Ui  U .
+
+Proof. Immediate from definition 3.11 and the construction of the site (M(cX ), J) from the basis
+
+K(X, c) in Theorem 3.9                                                                                                 
+
+om Remark 3.13. The Grothendieck operations f , f, , and H are defined for sheaves on closure
+
+spaces as for sheaves on topological spaces, replacing continuous topological maps with continuous
+
+maps between closure spaces. Although paracompactness for closure spaces is not as convenient
+
+a notion as it is in the topological category, we may nonetheless define f! to be the direct image
+with compact support, where a subspace (V, cV )  (X, cX ) is compact iff every ultrafilter F in V
+contains the neighborhood filter of some point in V . We defer the question of the construction of
+f!.
+
+                              4. Sheaf Cohomology and C ech Cohomology
+
+   For the remainder of the article, we assume that all sheaves take values in an abelian category
+A with enough injectives.
+
+4.1. Sheaf Cohomology. The cohomology of a closure space (X, c) with coefficients in a sheaf A
+with values in an abelian category with enough injectives is now defined in the usual way, as the
+right derived functor of the global section functor X , i.e.
+         SHEAF THEORY FOR C ECH CLOSURE SPACES                                                 11
+
+Definition 4.1. Let Sh(cX , A) denote the category of sheaves on (X, cX ) with values in an abelian
+category A with enough injectives, and let A : M(X, c)op  A be a sheaf on (X, c). Denote the
+global section functor on (X, c) by X : Sh(X, c)  A. We define the q-th cohomology group of
+(X, c) with coefficients in A to be the functor
+
+                                                Hq(X; A ) := RqX (A ),
+
+where RqX is the q-th right derived functor of the global section functor X .
+
+   As in the topological case, it follows from general results of homological algebra [15, 29] that the
+cohomology groups H(X; A ) may be computed from (L ), where L  is an acyclic resolution of
+A.
+
+4.2. C ech Cohomology. We now recall the definition of C ech cohomology with coefficients in a
+
+presheaf from [29], given a basis for a Grothendieck topology. We then recall the construction of the
+spectral sequence relating C ech and sheaf cohomology, and we use this to give a simple example of
+
+non-topological closure spaces for which the sheaf cohomology of the constant sheaf Z is non-trivial.
+
+Definition 4.2. Let (X, c) be a C ech closure space, F a presheaf on (X, c), and U an interior cover
+of (X, c). We define
+
+                                                                            
+
+         H0(U , F ) := ker  F (U)                          F (U ×X U )
+
+         U U                        U ,U U
+
+For each q > 0, we define the q-th C ech cohomology group of the cover U of (X, c) with coefficients
+
+in F by
+
+         Hq(U ; F ) := RqH0(U , F ),
+
+the q-th right derived functor of H0(U, ·) applied to F .
+
+   We now recall that the C ech cohomology groups of an interior cover U may be identified with
+the cohomology of the following complex.
+
+Definition 4.3. Let (X, c) be a C ech closure space, U = {U}A be an interior cover on (X, c),
+and suppose that F is a full presheaf on (X, c). Let
+
+                                              U0,...,q := U0  · · ·  Uq .
+For each integer q  0, we define
+
+         Cq(U , F ) :=                                     F (U0···q ).
+
+                        (0,...,q )Aq+1
+
+We additionally define the codifferential dq : Cq(U , F )  Cq+1(U , F ) by
+
+                              q+1
+
+         (dq s)i0,...,iq+1 =       (-1)kF (Ui0,...,^ik,...,iq+1 ).
+
+                              k=0
+
+Since d2 = 0, C(U , F ) is a cochain complex. Its homology is given by the following theorem.
+
+Theorem 4.4 ([29], Theorem 2.2.3). For every abelian presheaf F on a Cech closure space (X, c),
+and for every interior cover U of (X, c), the group Hq(U, F ) is canonically isomorphic to the q-th
+cohomology group of the complex C(U , F ).
+SHEAF THEORY FOR C ECH CLOSURE SPACES  12
+
+   The interior covers of (X, c) form a directed set, where we write U < V iff V, U are interior
+covers of (X, c) and V refines U. Furthermore, if U < V, there exists a well-defined homomorphism
+H(U ; F )  H(V; F ), and we may therefore make the following definition.
+
+Definition 4.5. H q(X; F ) := l-im Hq(U ; F ), where the limit is taken over the the directed set of
+interior covers U of X. H (X; F ) is called the Cech cohomology of (X, c) with coeffecients in the
+presheaf F .
+
+   We now recall several results which we will use to compute the sheaf cohomology of our examples
+below.
+
+Theorem 4.6 ([29], Theorem 3.4.4). Let (X, cX ) be a closure spaces, and let F be a sheaf on (X, cX )
+with values in an abelian category. We let H(F ) denote the presheaf defined by Hq(F )(U ) :=
+Hq(U, F ).
+
+    (1) Let U = {Ui  X}iI be an interior covering of a closure space (X, cX ). Then there is a
+          spectral sequence
+                                       E2pq = Hp(U ; Hq(F )) = Hp+q(X; F )
+          which converges to the sheaf cohomology Hp+q(X, F ) and which is functorial in F .
+
+    (2) There is a spectral sequence
+
+                                                  E2pq = H p(X; Hq(F ))
+          which converges to the sheaf cohomology Hp+q(X, F ).
+
+   Examining the spectral sequences given above, we have the following corollaries.
+
+Corollary 4.7 ([29], Corollary 3.4.6). For all abelian sheaves F on a closure space (X, c), the
+homomorphism
+
+                                                 H p(X, F )  Hp(X, F )
+
+is a bijection for p = 0, 1 and an injection for p = 2.
+
+Corollary 4.8 ([29], Corollary 3.4.7). Let U = {Ui  X}iI be an interior covering of the closure
+space (X, cX ), and let F be an abelian sheaf such that Hq(Ui0 ×X · · · ×X Uiq ; F ) = 0 for all q > 0
+and all (i0, . . . , iq)  Iq+1. Then
+
+                                                  Hp(U ; F ) = Hp(X, F )
+
+for all p.
+
+   Finally, the following examples use the above corollaries to produce non-topological closure spaces
+with non-trivial sheaf cohomology.
+
+Example 4.9. Consider the closure space (X, cG) generated by the cyclic graph G = (V, E), where
+X = V = {0, . . . , n} and E consists of all pairs of the form (k, k + 1) or (k, k - 1), where all entries
+are taken mod(n + 1). We see that U = {(k - 1, k, k + 1) | k = 0, . . . , n}, forms an interior coverof
+(X, cG), and it is the maximal interior cover with respect to the partial order given by refinement. It
+follows that H p(X, F ) = Hp(U , F ). When F is the constant sheaf F = Z, the latter is the simplicial
+cohomology of the nerve of the cover U , and therefore the sheaf cohomology Hp(X, Z) = Hp(S1, Z),
+for p = 0, 1 by Corollary 4.7.
+
+Example 4.10. Let Sn be an n-dimensional sphere, and suppose Ur = {B1(x1, r), . . . Bk(xk, r)} is
+a good cover of Sn by (topologically) open balls of radius r centered at points {x1, . . . , xn}, and
+REFERENCES  13
+
+suppose further that the collection of open balls Ur-p = {B1(x1, r - p), . . . , Bk(xk, r - p)} is also a
+cover of Sn. Take F to be the constant sheaf, F (U ) = Z. Then
+
+                                           H((Sn, cp); Z) = H((Sn,  ); Z),
+
+where (Sn,  ) is the topological sphere. This follows from Corollary 4.8 because the interior of each
+ball in Ur is an open ball in Ur-p, and therefore Ur is an interior cover of (Sn, cp). However, since U
+is a good cover, the cohomology of the nerve of U is isomorphic to the cohomology of the topological
+sphere.
+
+                                                  Acknowledgements
+
+   We would like to thank Carina Curto, Nikola Milicevic, and Nora Youngs for helpful discussions,
+and we're grateful for the opportunity to present preliminary versions of this work at the Northeast-
+ern University and the University of Minnesota Topology Seminars, the Special Session "Bridging
+Applied and Quantitative Topology" at the 2024 AMS Joint Mathematics Meeting, as well as at
+the 2023 ICERM semester program "Math + Neuroscience: Strengthening the Interplay Between
+Theory and Mathematics".
+
+                                                      References
+
+[1] R. Ayala et al. "Homotopy in digital spaces". In: vol. 125. 1. 9th International Conference
+      on Discrete Geometry for Computer Imagery (DGCI 2000) (Uppsala). 2003, pp. 3­24. doi:
+      10.1016/S0166- 218X(02)00221- 4. url: https://doi.org/10.1016/S0166- 218X(02)
+      00221-4.
+
+[2] Eric Babson et al. "Homotopy theory of graphs". In: J. Algebraic Combin. 24.1 (2006), pp. 31­
+      44. issn: 0925-9899. doi: 10.1007/s10801- 006- 9100- 0. url: http://dx.doi.org/10.
+      1007/s10801-006-9100-0.
+
+[3] H´el`ene Barcelo, Valerio Capraro, and Jacob A. White. "Discrete homology theory for metric
+      spaces". In: Bull. Lond. Math. Soc. 46.5 (2014), pp. 889­905. issn: 0024-6093. doi: 10.1112/
+      blms/bdu043. url: http://dx.doi.org/10.1112/blms/bdu043.
+
+[4] Yuliy Baryshnikov and Robert Ghrist. "Target enumeration via Euler characteristic integrals".
+      In: SIAM J. Appl. Math. 70.3 (2009), pp. 825­844. issn: 0036-1399. doi: 10.1137/070687293.
+      url: https://doi.org/10.1137/070687293.
+
+[5] Laurence Boxer. "Properties of digital homotopy". In: J. Math. Imaging Vision 22.1 (2005),
+      pp. 19­26. issn: 0924-9907. doi: 10.1007/s10851-005-4780-y. url: https://doi.org/10.
+      1007/s10851-005-4780-y.
+
+[6] Peter Bubenik and Nikola Mili´cevi´c. "Homotopy, homology, and persistent homology using
+      closure spaces". In: Journal of Applied and Computational Topology 8.3 (Sept. 2024), pp. 579­
+      641. issn: 2367-1734. doi: 10.1007/s41468- 024- 00183- 8. url: https://doi.org/10.
+      1007/s41468-024-00183-8.
+
+[7] Eduard C ech. Topological spaces. Revised edition by Zdenek Frol´ic and Miroslav Katetov. Sci-
+      entific editor, Vlastimil Pta´k. Editor of the English translation, Charles O. Junge. Publishing
+      House of the Czechoslovak Academy of Sciences, Prague; Interscience Publishers John Wiley
+      & Sons, London-New York-Sydney, 1966, 893 pp. (errata insert).
+
+[8] Justin Curry, Robert Ghrist, and Michael Robinson. "Euler calculus with applications to sig-
+      nals and sensing". In: Advances in applied and computational topology. Vol. 70. Proc. Sympos.
+      Appl. Math. Amer. Math. Soc., Providence, RI, 2012, pp. 75­145. doi: 10.1090/psapm/070/
+      589. url: https://doi.org/10.1090/psapm/070/589.
+REFERENCES  14
+
+ [9] Justin Michael Curry. Sheaves, cosheaves and applications. Thesis (Ph.D.)­University of Penn-
+       sylvania. ProQuest LLC, Ann Arbor, MI, 2014, p. 317. isbn: 978-1303-96615-6. url: http:
+       //gateway.proquest.com/openurl?url_ver=Z39.88-2004&rft_val_fmt=info:ofi/fmt:
+       kev:mtx:dissertation&res_dat=xri:pqm&rft_dat=xri:pqdiss:3623819.
+
+[10] Justin Michael Curry. "Topological data analysis and cosheaves". In: Jpn. J. Ind. Appl. Math.
+       32.2 (2015), pp. 333­371. issn: 0916-7005. doi: 10.1007/s13160-015-0173-9. url: https:
+       //doi.org/10.1007/s13160-015-0173-9.
+
+[11] Davide Carlo Demaria. "On some applications of homotopy to directed graphs". In: Proceed-
+       ings of the Geometry Conference (Milan and Gargnano, 1987). Vol. 57. 1987, 183­202 (1989).
+       doi: 10.1007/BF02925050. url: http://dx.doi.org/10.1007/BF02925050.
+
+[12] Davide Carlo Demaria and Rosanna Garbaccio Bogin. "Homotopy and homology in pretopo-
+       logical spaces". In: Proceedings of the 11th winter school on abstract analysis (Zelezn´a Ruda,
+       1983). Suppl. 3. 1984, pp. 119­126.
+
+[13] Sterling Ebel and Chris Kapulkin. Synthetic approach to the Quillen model structure on topo-
+       logical spaces. 2023. arXiv: 2310.14235 [math.AT]. url: https://arxiv.org/abs/2310.
+       14235.
+
+[14] Robert Ghrist and Sanjeevi Krishnan. "A topological max-flow-min-cut theorem". In: 2013
+       IEEE Global Conference on Signal and Information Processing. 2013, pp. 815­818. doi: 10.
+       1109/GlobalSIP.2013.6737016.
+
+[15] Roger Godement. Topologie alg´ebrique et th´eorie des faisceaux. Actualit´es Scientifiques et In-
+       dustrielles [Current Scientific and Industrial Topics], No. 1252. Publ. Math. Univ. Strasbourg.
+       No. 13. Hermann, Paris, 1958, pp. viii+283.
+
+[16] Alexander Grigor'yan et al. "Homotopy theory for digraphs". In: Pure Appl. Math. Q. 10.4
+       (2014), pp. 619­674. issn: 1558-8599. doi: 10.4310/PAMQ.2014.v10.n4.a2. url: http:
+       //dx.doi.org/10.4310/PAMQ.2014.v10.n4.a2.
+
+[17] Masaki Kashiwara and Pierre Schapira. Categories and sheaves. Vol. 332. Grundlehren der
+       Mathematischen Wissenschaften [Fundamental Principles of Mathematical Sciences]. Springer-
+       Verlag, Berlin, 2006, pp. x+497. isbn: 978-3-540-27949-5. doi: 10.1007/3- 540- 27950- 4.
+       url: https://doi.org/10.1007/3-540-27950-4.
+
+[18] Masaki Kashiwara and Pierre Schapira. Sheaves on manifolds. Vol. 292. Grundlehren der
+       Mathematischen Wissenschaften [Fundamental Principles of Mathematical Sciences]. With a
+       chapter in French by Christian Houzel, Corrected reprint of the 1990 original. Springer-Verlag,
+       Berlin, 1994, pp. x+512. isbn: 3-540-51861-4.
+
+[19] Saunders MacLane and Ieke Moerdijk. Sheaves in geometry and logic. Universitext. A first
+       introduction to topos theory, Corrected reprint of the 1992 edition. Springer-Verlag, New
+       York, 1994, pp. xii+629. isbn: 0-387-97710-4.
+
+[20] Luis Palacios. "Homology and Cohomology for Closure Spaces". Bachelor's Thesis. Guanaju-
+       ato, GTO, Mexico: Universidad de Guanajuato, July 2019. url: https://atd.cimat.mx/
+       sites/ATD/files/Tesis_Palacios-Vela.pdf.
+
+[21] Conrad Plaut and Jay Wilkins. "Discrete homotopies and the fundamental group". In: Adv.
+       Math. 232 (2013), pp. 271­294. issn: 0001-8708. doi: 10.1016/j.aim.2012.09.008. url:
+       http://dx.doi.org/10.1016/j.aim.2012.09.008.
+
+[22] Antonio Rieser. "C ech closure spaces: A unified framework for discrete and continuous ho-
+       motopy". In: Topology and its Applications 296 (2021), p. 107613. issn: 0166-8641. doi:
+       10 . 1016 / j . topol . 2021 . 107613. url: https : / / www . sciencedirect . com / science /
+       article/pii/S0166864121000249.
+REFERENCES  15
+
+[23] Antonio Rieser. Cofibration and Model Category Structures for Discrete and Continuous Ho-
+       motopy. 2022. arXiv: 2209.13510 [math.AT].
+
+[24] Michael Robinson. "Asynchronous logic circuits and sheaf obstructions". In: Proceedings of the
+       Workshop on Geometric and Topological Methods in Computer Science (GETCO). Vol. 283.
+       Electron. Notes Theor. Comput. Sci. Elsevier Sci. B. V., Amsterdam, 2012, pp. 159­177. doi:
+       10.1016/j.entcs.2012.05.010. url: https://doi.org/10.1016/j.entcs.2012.05.010.
+
+[25] Michael Robinson. "Hunting for foxes with sheaves". In: Notices Amer. Math. Soc. 66.5 (2019),
+       pp. 661­676. issn: 0002-9920.
+
+[26] Michael Robinson. "Sheaf and duality methods for analyzing multi-model systems". In: Recent
+       applications of harmonic analysis to function spaces, differential equations, and data science.
+       Appl. Numer. Harmon. Anal. Birkha¨user/Springer, Cham, 2017, pp. 653­703.
+
+[27] Allen Dudley Shepard. A Cellular Description of the Derived Category of a Stratified Space.
+       Thesis (Ph.D.)­Brown University. ProQuest LLC, Ann Arbor, MI, 1985, p. 161. url: http:
+       //gateway.proquest.com/openurl?url_ver=Z39.88-2004&rft_val_fmt=info:ofi/fmt:
+       kev:mtx:dissertation&res_dat=xri:pqdiss&rft_dat=xri:pqdiss:8519904.
+
+[28] Robert Short et al. "Sheaf Theoretic Models for Routing in Delay Tolerant Networks". In:
+       2022 IEEE Aerospace Conference (AERO). 2022, pp. 1­19. doi: 10.1109/AERO53065.2022.
+       9843504.
+
+[29] Gu¨nter Tamme. Introduction to ´etale cohomology. Universitext. Translated from the German
+       by Manfred Kolster. Springer-Verlag, Berlin, 1994, pp. x+186. isbn: 3-540-57116-7. doi: 10.
+       1007/978-3-642-78421-7. url: https://doi.org/10.1007/978-3-642-78421-7.
+
+[30] Th´eorie des topos et cohomologie ´etale des sch´emas. Tome 1: Th´eorie des topos. Vol. Vol. 269.
+       Lecture Notes in Mathematics. S´eminaire de G´eom´etrie Alg´ebrique du Bois-Marie 1963­1964
+       (SGA 4), Dirig´e par M. Artin, A. Grothendieck, et J. L. Verdier. Avec la collaboration de N.
+       Bourbaki, P. Deligne et B. Saint-Donat. Springer-Verlag, Berlin-New York, 1972, pp. xix+525.
+

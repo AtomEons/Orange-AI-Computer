@@ -1,0 +1,15 @@
+{
+  "experiment": "123-arithmetic-coding",
+  "corpus_sha256": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "raw_bytes": 2075585,
+  "coded_bytes": 13301,
+  "side_bytes": 46556,
+  "total_bytes": 59857,
+  "ratio": 34.6757,
+  "m19_ratio": 47.07,
+  "delta_vs_m19": -12.3943,
+  "enc_ms": 55,
+  "dec_ms": 2076.5,
+  "lossless": true,
+  "verdict": "AMBER"
+}

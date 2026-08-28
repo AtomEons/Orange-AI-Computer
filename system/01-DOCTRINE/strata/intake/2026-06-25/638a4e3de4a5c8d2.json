@@ -1,0 +1,14 @@
+{
+  "schema": "orange5.strata.intake.v1",
+  "intake_id": "638a4e3de4a5c8d2",
+  "source": "smoke-test",
+  "content_type": "text/markdown",
+  "received_at": "2026-06-25T01:01:44.057Z",
+  "raw_sha256": "43657d0095976ee860efb74a5920ffd814e647e625b696ddd28097cb6d8e3eca",
+  "bytes": 226,
+  "payload": "# Smoke roundtrip note\n\nKnowledge Strata performs the compiler loop: intake then canon then artifact then integrity then reuse.\nReality Flux is the receipted store of operator events.\nSmoke runs always preserve their evidence.",
+  "meta": {
+    "run_id": "56ad31faac42",
+    "case_id": 1
+  }
+}

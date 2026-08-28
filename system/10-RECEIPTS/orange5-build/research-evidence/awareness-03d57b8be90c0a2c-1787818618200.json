@@ -1,0 +1,18 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-03d57b8be90c0a2c-1787818618200",
+  "query": "{\"action\":\"analyze.agent\",\"payload\":{\"parentOrder\":{\"action\":\"analyze.system\",\"intent\":\"Audit OrangeFive remaining gaps across runtime, memory, compression, Hermès, Atomic Orange, model routing, packaging, and GitHub readiness. Produce an evidence-first report only; no mutation.\",\"targetProject\":\"orange5\",\"scope\":[\"C:\\\\AtomEons\\\\Orange5\"],\"objective\":null,\"constraints\":[],\"evidence\":[],\"riskLevel\":\"low\",\"allowedActions\":[\"filesystem.read\",\"filesystem.list\",\"process.run\",\"report\"],\"forbiddenActions\":[\"filesystem.write\",\"delete\",\"restart\",\"publish\"]},\"agent\":\"security-auditor\",\"delegationId\":\"nav-64928e40-6771-4c17-af34-9b3328b27999\",\"allowedTools\":[\"read\",\"secret-scan\",\"danger-scan\",\"receipts\"]},\"intent\":\"security-auditor independently evaluates: Audit OrangeFive remaining gaps across runtime, memory, compression, Hermès, Atomic Orange, model routing, packaging, and GitHub readiness. Produce an evidence-first report only; no mutation.\",\"targetProject\":\"orange5\",\"orderId\":\"codex-swarm-audit-20260827:security-auditor\",\"allowedActions\":[\"analyze.agent\"],\"forbiddenActions\":[\"filesystem.write\",\"delete\",\"restart\",\"publish\"],\"riskLevel\":\"low\",\"requiresReceipt\":true} /no_think OrangeFive orange5",
+  "searchQuery": "action analyze.agent payload parentorder analyze.system intent audit remaining",
+  "generatedAt": "2026-08-27T08:16:58.206Z",
+  "budgetMs": 60000,
+  "elapsedMs": 11354,
+  "status": "NO_EVIDENCE",
+  "sources": [],
+  "errors": [
+    {
+      "provider": "github",
+      "error": "source returned HTTP 504"
+    }
+  ],
+  "sha256": "ce7a62081a5a3048bf7946183b51549e5cb2edee59995a7bbef5b0d749ef281e"
+}

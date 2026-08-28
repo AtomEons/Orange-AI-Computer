@@ -1,0 +1,122 @@
+  computing noise floor: orange.jpg
+  computing noise floor: baboon.jpg
+  computing noise floor: apple.jpg
+  computing noise floor: basketball1.png
+  computing noise floor: basketball2.png
+  computing noise floor: orange_t1.5.png
+  computing noise floor: apple_t1.5.png
+  computing noise floor: hue-shifted-orange-red.jpg
+  computing noise floor: hue-shifted-apple-orange.jpg
+  computing noise floor: 01-train-orange.png
+  computing noise floor: 02-test-apple.png
+  computing noise floor: 02-test-fruits.png
+  computing noise floor: 02-test-lena.png
+
+computed noise floors for 13 source images
+
+══ wild-diff / orange-vs-baboon-fruit-vs-primate ══
+  A: orange.jpg   B: baboon.jpg
+  retinal_12     : gap=0.3379 noise=0.4192 ratio=0.81x  COLLAPSED
+  lgn            : gap=0.4805 noise=0.2317 ratio=2.07x  WEAK
+  it_80          : gap=0.3810 noise=0.2395 ratio=1.59x  WEAK
+  axis_bundle    : gap=0.0296 noise=0.0507 ratio=0.59x  COLLAPSED
+
+══ wild-diff / apple-vs-baboon-fruit-vs-primate ══
+  A: apple.jpg   B: baboon.jpg
+  retinal_12     : gap=0.2150 noise=0.3079 ratio=0.70x  COLLAPSED
+  lgn            : gap=0.4827 noise=0.2317 ratio=2.08x  WEAK
+  it_80          : gap=0.2178 noise=0.2632 ratio=0.83x  COLLAPSED
+  axis_bundle    : gap=0.2076 noise=0.1454 ratio=1.43x  WEAK
+
+══ wild-diff / orange-vs-basketball-similar-color-diff-texture ══
+  A: orange.jpg   B: basketball1.png
+  retinal_12     : gap=0.0479 noise=0.4192 ratio=0.11x  COLLAPSED
+  lgn            : gap=1.1670 noise=1.1251 ratio=1.04x  WEAK
+  it_80          : gap=0.5334 noise=0.4729 ratio=1.13x  WEAK
+  axis_bundle    : gap=0.3795 noise=0.2270 ratio=1.67x  WEAK
+
+══ cat-diff / orange-vs-apple-different-fruit ══
+  A: orange.jpg   B: apple.jpg
+  retinal_12     : gap=0.1464 noise=0.4192 ratio=0.35x  COLLAPSED
+  lgn            : gap=0.2340 noise=0.1845 ratio=1.27x  WEAK
+  it_80          : gap=0.2686 noise=0.2632 ratio=1.02x  WEAK
+  axis_bundle    : gap=0.1781 noise=0.1454 ratio=1.22x  WEAK
+
+══ cat-diff / basketball1-vs-basketball2-same-cat-diff-instance ══
+  A: basketball1.png   B: basketball2.png
+  retinal_12     : gap=0.0296 noise=0.3046 ratio=0.10x  COLLAPSED
+  lgn            : gap=0.0084 noise=1.1251 ratio=0.01x  COLLAPSED
+  it_80          : gap=0.0035 noise=0.4729 ratio=0.01x  COLLAPSED
+  axis_bundle    : gap=0.0001 noise=0.2270 ratio=0.00x  COLLAPSED
+
+══ same-diff-src / orange-still-vs-video-frame ══
+  A: orange.jpg   B: orange_t1.5.png
+  retinal_12     : gap=0.1121 noise=0.4192 ratio=0.27x  COLLAPSED
+  lgn            : gap=0.1155 noise=0.1838 ratio=0.63x  COLLAPSED
+  it_80          : gap=0.1624 noise=0.2477 ratio=0.66x  COLLAPSED
+  axis_bundle    : gap=1.4099 noise=1.4107 ratio=1.00x  COLLAPSED
+
+══ same-diff-src / apple-still-vs-video-frame ══
+  A: apple.jpg   B: apple_t1.5.png
+  retinal_12     : gap=0.1712 noise=0.3079 ratio=0.56x  COLLAPSED
+  lgn            : gap=0.3503 noise=0.3602 ratio=0.97x  COLLAPSED
+  it_80          : gap=0.1070 noise=0.2982 ratio=0.36x  COLLAPSED
+  axis_bundle    : gap=1.4142 noise=1.4142 ratio=1.00x  COLLAPSED
+
+══ hue-shift / orange-hue-shifted-red ══
+  A: orange.jpg   B: hue-shifted-orange-red.jpg
+  retinal_12     : gap=0.0250 noise=0.4192 ratio=0.06x  COLLAPSED
+  lgn            : gap=0.2190 noise=0.1838 ratio=1.19x  WEAK
+  it_80          : gap=0.1583 noise=0.2395 ratio=0.66x  COLLAPSED
+  axis_bundle    : gap=0.1084 noise=0.1095 ratio=0.99x  COLLAPSED
+
+══ hue-shift / apple-hue-shifted-orange ══
+  A: apple.jpg   B: hue-shifted-apple-orange.jpg
+  retinal_12     : gap=0.0188 noise=0.3237 ratio=0.06x  COLLAPSED
+  lgn            : gap=0.0367 noise=0.1845 ratio=0.20x  COLLAPSED
+  it_80          : gap=0.1782 noise=0.3308 ratio=0.54x  COLLAPSED
+  axis_bundle    : gap=1.4142 noise=1.4142 ratio=1.00x  WEAK
+
+══ cat-diff / train-orange-vs-test-apple ══
+  A: 01-train-orange.png   B: 02-test-apple.png
+  retinal_12     : gap=0.0739 noise=0.2233 ratio=0.33x  COLLAPSED
+  lgn            : gap=0.1974 noise=0.2023 ratio=0.98x  COLLAPSED
+  it_80          : gap=0.2009 noise=0.2938 ratio=0.68x  COLLAPSED
+  axis_bundle    : gap=0.1444 noise=0.1452 ratio=0.99x  COLLAPSED
+
+══ same-diff-src / train-orange-vs-test-fruits-composite ══
+  A: 01-train-orange.png   B: 02-test-fruits.png
+  retinal_12     : gap=0.1607 noise=0.2799 ratio=0.57x  COLLAPSED
+  lgn            : gap=0.1444 noise=0.2023 ratio=0.71x  COLLAPSED
+  it_80          : gap=0.2424 noise=0.2938 ratio=0.83x  COLLAPSED
+  axis_bundle    : gap=0.0801 noise=0.1556 ratio=0.51x  COLLAPSED
+
+══ wild-diff / train-orange-vs-lena-face ══
+  A: 01-train-orange.png   B: 02-test-lena.png
+  retinal_12     : gap=0.0400 noise=0.2317 ratio=0.17x  COLLAPSED
+  lgn            : gap=0.1710 noise=0.2023 ratio=0.85x  COLLAPSED
+  it_80          : gap=0.3180 noise=0.2938 ratio=1.08x  WEAK
+  axis_bundle    : gap=0.1406 noise=0.1585 ratio=0.89x  COLLAPSED
+
+══ EXPANDED PHASE A ROLL-UP ══
+  retinal_12              : 0P/0W/12C  min-r=0.06x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  lgn                     : 0P/5W/7C  min-r=0.01x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  it_80                   : 0P/4W/8C  min-r=0.01x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  axis_bundle             : 0P/4W/8C  min-r=0.00x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  axis:radial_photon      : 0P/11W/1C  min-r=0.20x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  WATCH
+  axis:photon_histogram   : 0P/3W/9C  min-r=0.02x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  axis:photon_correlation : 0P/6W/6C  min-r=0.00x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  WATCH
+  axis:subsurface         : 0P/9W/3C  min-r=0.03x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  WATCH
+  axis:spatial_color      : 7P/3W/2C  min-r=0.25x  cat[wild-diff:4/4 cat-diff:2/3 same-diff-src:1/3 hue-shift:0/2]  WATCH
+  axis:color_ratio        : 2P/4W/6C  min-r=0.00x  cat[wild-diff:2/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  WATCH
+  axis:texture_vocab      : 0P/1W/11C  min-r=0.01x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  axis:hu_moments         : 0P/0W/12C  min-r=0.00x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  axis:persistent_homology: 12P/0W/0C  min-r=Infinityx  cat[wild-diff:4/4 cat-diff:3/3 same-diff-src:3/3 hue-shift:2/2]  OK
+  axis:dichromatic        : 0P/8W/4C  min-r=0.01x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  WATCH
+  axis:fourier_mellin     : 0P/5W/7C  min-r=0.20x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  axis:texture            : 0P/3W/9C  min-r=0.03x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  axis:edge               : 0P/1W/11C  min-r=0.08x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  axis:specular           : 0P/4W/8C  min-r=0.10x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+  axis:spatial_frequency  : 0P/0W/12C  min-r=0.01x  cat[wild-diff:0/4 cat-diff:0/3 same-diff-src:0/3 hue-shift:0/2]  LEAK
+
+wrote C:\AtomEons\Orange5\07-VISUAL\ten-k-x-100\results\phase_a_expanded.json  duration=324s

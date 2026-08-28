@@ -1,0 +1,15 @@
+{
+  "experiment": "38-method5-schema-fold",
+  "generated_at": "2026-06-28T00:21:18.620Z",
+  "formula_check": {
+    "ok": 1565,
+    "fail": 0
+  },
+  "unique_shapes_folded": 3132,
+  "shapes_brotli": 51778,
+  "idx_brotli": 7276,
+  "seed": 48,
+  "total": 59102,
+  "ratio": 35.12,
+  "roundtrip_lossless": true
+}

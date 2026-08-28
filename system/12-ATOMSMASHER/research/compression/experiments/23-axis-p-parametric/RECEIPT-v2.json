@@ -1,0 +1,124 @@
+{
+  "experiment": "23-axis-p-parametric",
+  "version": "v2-lossless-constant-stripping",
+  "generated_at": "2026-06-26T12:09:33.973Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "constant_fields_count": 357,
+  "low_card_fields_count": 133,
+  "total_action_key_pairs": 515,
+  "top_constants": [
+    {
+      "key": "air.compress|dropped",
+      "value": "0",
+      "count": 3126,
+      "bytesPer": 12,
+      "totalBytes": 37512
+    },
+    {
+      "key": "cache.miss|key_hash",
+      "value": "\"baedae52dc7a84e0988cec73633b00a4b93d584d95ada3cd9190b8c6b1cc2b8f\"",
+      "count": 53,
+      "bytesPer": 78,
+      "totalBytes": 4134
+    },
+    {
+      "key": "organism.run|stages",
+      "value": "{\"seed\":{\"source_id\":\"src_0262157728bb0539\",\"chunks\":1,\"orders\":3},\"air\":{\"ratio\":0.95,\"atoms\":9,\"citations\":1},\"clc_real\":{\"entities\":8,\"voids\":3,\"ratio\":5.5,\"total_threads\":13},\"mesh\":{\"raw_bytes\":603,\"compressed_bytes\":417,\"ratio\":1.45},\"mesh_full_sweep\":{\"packets\":1551,\"raw_bytes\":792483,\"compressed_bytes\":429214,\"ratio\":1.85},\"crystal\":{\"entities\":44,\"facts\":0,\"decisions\":2,\"boundaries\":7,\"rejections\":0,\"tone_markers\":2,\"ratio\":0.6,\"total_threads\":13},\"workset\":{\"kept\":2,\"input\":13,\"dropped\":11,\"ratio\":0.153846,\"ratio_bytes\":0.310541,\"kept_bytes\":763,\"input_bytes\":2457},\"least_action\":{\"chosen_tier\":\"heavy\",\"decision_id\":\"304d24efcea2499e\",\"reason\":\"least_action\"},\"expansion_warrant\":{\"warrant_id\":\"0871614f563062755b25bb99308cab11aba7568d58cf56652688923fa3b0fece\",\"scope_from\":\"organism.compression.read\",\"scope_to\":\"organism.compression.read_write\",\"expires_at\":\"2026-06-27T09:12:18.560Z\",\"max_uses\":5,\"consume_ok\":true,\"used_count\":1,\"remaining\":4},\"max_compression_report\":{\"air_ratio\":0.95,\"clc_poc_ratio\":5.5,\"mesh_seed_ratio\":1.45,\"crystal_ratio\":0.6,\"mesh_full_sweep_ratio\":1.85,\"mesh_full_sweep_raw_bytes\":792483,\"mesh_full_sweep_compressed_bytes\":429214,\"db_zlib_ratio\":5.91,\"db_brotli_ratio\":10.99,\"db_raw_bytes\":1781760,\"db_zlib_bytes\":301627,\"db_brotli_bytes\":162102,\"pipeline_compound_ratio\":0.78,\"action_dict_ratio\":5.89,\"action_dict_savings_bytes\":34460,\"air_receipt_sweep_avg_ratio\":0.9,\"air_receipt_sweep_raw_bytes\":94144,\"crystal_receipt_sweep_ratio\":8.99,\"crystal_receipt_sweep_raw_bytes\":1214416,\"crystal_receipt_sweep_threads\":6211,\"crystal_receipt_sweep_entities\":1461,\"payload_dedup_factor\":3.37,\"payload_dedup_ratio\":2.02,\"payload_distinct\":1845,\"schema_optimal_ratio\":1.75,\"schema_optimal_savings_bytes\":572900,\"compound_layer1_air_ratio\":2.28,\"compound_layer2_crystal_ratio\":17,\"compound_layer3_mesh_ratio\":7.54,\"compound_layer4_brotli_ratio\":1,\"compound_total_ratio\":291.61,\"compound_raw_bytes\":1221830,\"compound_final_bytes\":4190,\"regen_ratio\":54.48,\"regen_total_bytes\":24315,\"regen_raw_receipt_bytes\":1324670,\"regen_distinct_nonces\":601,\"recursive_pipeline_ratio\":1,\"recursive_conclusion\":\"at_entropy_floor_no_further_compression\",\"dict_baseline_ratio\":10.91,\"dict_primed_ratio\":11.27,\"dict_gain_pct\":0.031},\"wellbeing\":{\"acceptance_passes\":true,\"anti_metric_signals\":0,\"pro_metric_signals\":3,\"monitor_blocked\":false},\"patterns\":{\"constant\":\"detected\",\"linear\":\"y = -73.51 + 34.94 * t\",\"delta\":\"y = -73.51 + 34.94 * t\",\"run_length\":15,\"recurrence\":\"detected\",\"regime_shift\":true,\"trend_plus_cycle\":2120.8785714285714},\"embedding_probes\":{\"fts5_hits\":0,\"binary_hits\":0,\"duplicate_groups\":0},\"canon_pre\":{\"candidates\":7},\"run_all\":{\"attempted\":620,\"ok\":620,\"errors\":0,\"registry_count\":620,\"errors_sample\":[]},\"pathwave\":{\"step_count\":50,\"winner\":\"use_cartridge\",\"hits\":47},\"awareness_snapshot\":{\"total_state\":2306,\"heat\":{\"COOL\":187,\"HOT_ALWAYS\":62,\"WARM\":3}},\"causal_trace_length\":20,\"entropy\":{\"total_receipts\":1548,\"error_receipts\":1,\"distinct_actions\":52,\"entropy_proxy\":0.0336,\"law\":\"Diverse actions on small receipts = high entropy. Few actions on many receipts = canon.\"},\"thermo_tick\":{\"raw_tokens\":62000,\"active_tokens\":3100,\"tokens_avoided\":58900,\"green_score\":0.95,\"mwh_proxy\":47.120000000000005,\"law\":\"Useful retained bit per joule.\"},\"phase_transition\":{\"phase\":\"crystallizing\",\"hot_ratio\":0.246,\"distribution\":{\"COOL\":187,\"HOT_ALWAYS\":62,\"WARM\":3},\"total_atoms\":252}}",
+      "count": 1,
+      "bytesPer": 3433,
+      "totalBytes": 3433
+    },
+    {
+      "key": "feature.execute|trace",
+      "value": "[{\"receipt_id\":\"rcpt_19b309f27eea1dc8\",\"action\":\"equation.fit\",\"status\":\"ok\",\"summary\":\"fitted numbers_src_d6a73016dd4e3245 as linear\",\"at\":\"2026-06-26T09:12:17Z\"},{\"receipt_id\":\"rcpt_e17cea98ecd335a0\",\"action\":\"source.ingest\",\"status\":\"ok\",\"summary\":\"fully ingested SourceSpanVerifier\",\"at\":\"2026-06-26T09:12:17Z\"},{\"receipt_id\":\"rcpt_f2e0624d6ddf1b0d\",\"action\":\"feature.execute\",\"status\":\"ok\",\"summary\":\"SourceSpanVerifier executed\",\"at\":\"2026-06-26T09:12:17Z\"},{\"receipt_id\":\"rcpt_7323a09060da83be\",\"action\":\"cache.hit\",\"status\":\"ok\",\"summary\":\"exact cache hit\",\"at\":\"2026-06-26T09:12:17Z\"},{\"receipt_id\":\"rcpt_3aafa289f47bd607\",\"action\":\"prefix.canonicalize\",\"status\":\"ok\",\"summary\":\"stable prefix canonicalized\",\"at\":\"2026-06-26T09:12:17Z\"},{\"receipt_id\":\"rcpt_48fd12493a555fa3\",\"action\":\"feature.execute\",\"status\":\"ok\",\"summary\":\"FactLockVerifier executed\",\"at\":\"2026-06-26T09:12:17Z\"},{\"receipt_id\":\"rcpt_07a6c34b322b68b0\",\"action\":\"prooflab.probes\",\"status\":\"ok\",\"summary\":\"probes completed\",\"at\":\"2026-06-26T09:12:17Z\"},{\"receipt_id\":\"rcpt_4a4d79ff4e8212f6\",\"action\":\"feature.execute\",\"status\":\"ok\",\"summary\":\"AdversarialSelfAudit executed\",\"at\":\"2026-06-26T09:12:17Z\"},{\"receipt_id\":\"rcpt_3900f4a0955bda40\",\"action\":\"memory.lifecycle\",\"status\":\"ok\",\"summary\":\"execute on feature:memoryisolationscore\",\"at\":\"2026-06-26T09:12:17Z\"},{\"receipt_id\":\"rcpt_129942dd79b75997\",\"action\":\"feature.execute\",\"status\":\"ok\",\"summary\":\"MemoryIsolationScore executed\",\"at\":\"2026-06-26T09:12:17Z\"}]",
+      "count": 2,
+      "bytesPer": 1499,
+      "totalBytes": 2998
+    },
+    {
+      "key": "feature.execute|reconstruction_hash",
+      "value": "\"2ec4fbe757614f8ea89665ce1c917aaa87883fff91222299cc40e8f99b3c09f9\"",
+      "count": 33,
+      "bytesPer": 89,
+      "totalBytes": 2937
+    },
+    {
+      "key": "source.search|query",
+      "value": "\"continue AtomSmasher with orders hot\"",
+      "count": 53,
+      "bytesPer": 47,
+      "totalBytes": 2491
+    },
+    {
+      "key": "workset.build|query",
+      "value": "\"continue AtomSmasher with orders hot\"",
+      "count": 53,
+      "bytesPer": 47,
+      "totalBytes": 2491
+    },
+    {
+      "key": "awareness.snapshot|law",
+      "value": "\"Awareness = a structured snapshot of what is currently HOT, WARM, COOL, COLD.\"",
+      "count": 21,
+      "bytesPer": 86,
+      "totalBytes": 1806
+    },
+    {
+      "key": "feature.execute|supports",
+      "value": "{\"symbolic_cartridge\":true,\"kv_cache_pointer\":false,\"prefix_cache\":true}",
+      "count": 21,
+      "bytesPer": 84,
+      "totalBytes": 1764
+    },
+    {
+      "key": "feature.execute|hot_law",
+      "value": "\"orders outrank compression\"",
+      "count": 43,
+      "bytesPer": 39,
+      "totalBytes": 1677
+    },
+    {
+      "key": "order.add|heat",
+      "value": "\"HOT_ALWAYS\"",
+      "count": 81,
+      "bytesPer": 20,
+      "totalBytes": 1620
+    },
+    {
+      "key": "feature.execute|second",
+      "value": "{\"schema\":\"orange5.air.v1\",\"atoms\":[{\"type\":\"other\",\"prefix\":\"A\",\"content\":\"Law: orders: Keep mission HOT_ALWAYS.\",\"air\":\"A: Law: orders: Keep mission HOT_ALWAYS.\",\"air_id\":\"air_82be59ddbc1cd11f\"},{\"type\":\"other\",\"prefix\":\"A\",\"content\":\"Note: The system must compress prose into atomic claims.\",\"air\":\"A: Note: The system must compress prose into atomic claims.\",\"air_id\":\"air_ed41cfc900da32d1\"},{\"type\":\"fact\",\"prefix\":\"F\",\"content\":\"Fact: Numbers 1 2 3.\",\"air\":\"F: Fact: Numbers 1 2 3.\",\"air_id\":\"air_e54036603a247203\"},{\"type\":\"fact\",\"prefix\":\"F\",\"content\":\"Fact: Citation [1].\",\"air\":\"F: Fact: Citation [1].\",\"air_id\":\"air_133e26538e75b0e5\"},{\"type\":\"fact\",\"prefix\":\"F\",\"content\":\"Fact: Date 2026-06-25.\",\"air\":\"F: Fact: Date 2026-06-25.\",\"air_id\":\"air_0e1b94cd89c88d3f\"},{\"type\":\"decision\",\"prefix\":\"D\",\"content\":\"Decision: We decided to use AIR.\",\"air\":\"D: Decision: We decided to use AIR.\",\"air_id\":\"air_b64fa108165d702b\"},{\"type\":\"other\",\"prefix\":\"A\",\"content\":\"Law: Never let volume overpower authority.\",\"air\":\"A: Law: Never let volume overpower authority.\",\"air_id\":\"air_0fdd4e1fa813a668\"}],\"atom_count\":7,\"dropped_sentences\":0,\"input_bytes\":234,\"output_bytes\":255,\"compression_ratio\":0.918,\"citations\":[\"[1]\"],\"dates\":[\"2026-06-25\"],\"numbers\":[\"1\",\"2\",\"3\",\"1\",\"2026\",\"-06\",\"-25\"],\"code_spans\":0,\"content_hash\":\"d7973b3ef3091491ac9d0ca740e786e99f48844649dab36dcb48222a7b20f357\",\"air_hash\":\"c11fdd5248e3860613c82f3e9bca1dcb4df582ecc10211c9a06245b0e9e5ac2f\"}",
+      "count": 1,
+      "bytesPer": 1477,
+      "totalBytes": 1477
+    },
+    {
+      "key": "feature.execute|first",
+      "value": "{\"schema\":\"orange5.air.v1\",\"atoms\":[{\"type\":\"law\",\"prefix\":\"L\",\"content\":\"orders: Keep mission HOT_ALWAYS.\",\"air\":\"L: orders: Keep mission HOT_ALWAYS.\",\"air_id\":\"air_65e03f88b4ec48af\"},{\"type\":\"other\",\"prefix\":\"A\",\"content\":\"The system must compress prose into atomic claims.\",\"air\":\"A: The system must compress prose into atomic claims.\",\"air_id\":\"air_1f828748dbe254c2\"},{\"type\":\"fact\",\"prefix\":\"F\",\"content\":\"Numbers 1 2 3.\",\"air\":\"F: Numbers 1 2 3.\",\"air_id\":\"air_f93984bec2c91d5a\"},{\"type\":\"fact\",\"prefix\":\"F\",\"content\":\"Citation [1].\",\"air\":\"F: Citation [1].\",\"air_id\":\"air_bf68f19a4347ced7\"},{\"type\":\"fact\",\"prefix\":\"F\",\"content\":\"Date 2026-06-25.\",\"air\":\"F: Date 2026-06-25.\",\"air_id\":\"air_ac66eeb45ef4f850\"},{\"type\":\"decision\",\"prefix\":\"D\",\"content\":\"We decided to use AIR.\",\"air\":\"D: We decided to use AIR.\",\"air_id\":\"air_db74b8210b3212f0\"},{\"type\":\"law\",\"prefix\":\"L\",\"content\":\"Never let volume overpower authority.\",\"air\":\"L: Never let volume overpower authority.\",\"air_id\":\"air_f7b764ee5b7db50f\"}],\"atom_count\":7,\"dropped_sentences\":0,\"input_bytes\":190,\"output_bytes\":211,\"compression_ratio\":0.9,\"citations\":[\"[1]\"],\"dates\":[\"2026-06-25\"],\"numbers\":[\"1\",\"2\",\"3\",\"1\",\"2026\",\"-06\",\"-25\"],\"code_spans\":0,\"content_hash\":\"13f904f6698985768f0d56982f11d285307b7037fe98c82d180ca6bd05e71758\",\"air_hash\":\"191897d7d6d256b4781e628577521659f5b9d5bdb798dd574af1c17d2b2ad930\"}",
+      "count": 1,
+      "bytesPer": 1382,
+      "totalBytes": 1382
+    },
+    {
+      "key": "feature.execute|parameters_json",
+      "value": "\"{\\\"a\\\":1,\\\"b\\\":1}\"",
+      "count": 33,
+      "bytesPer": 38,
+      "totalBytes": 1254
+    },
+    {
+      "key": "memory.lifecycle|law",
+      "value": "\"Memory needs provenance, heat, authority, version.\"",
+      "count": 21,
+      "bytesPer": 59,
+      "totalBytes": 1239
+    }
+  ],
+  "total_constant_raw_bytes": 110781,
+  "stripped_pre_brotli": 1950491,
+  "stripped_brotli": 116579,
+  "recipe_brotli": 4954,
+  "total_lossless_bytes": 121533,
+  "ratio": 17.08,
+  "roundtrip_lossless": false,
+  "beats_plait": false
+}

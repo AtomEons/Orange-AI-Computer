@@ -1,0 +1,54 @@
+{
+  "kind": "parallel-test-orchestrator",
+  "version": "v1",
+  "timestamp_iso": "2026-06-29T02:49:17.274Z",
+  "cwd": "C:\\AtomEons\\Orange5\\12-ATOMSMASHER\\full-scope\\tests",
+  "suite_count": 5,
+  "total_cases": 29,
+  "total_pass": 29,
+  "total_fail": 0,
+  "nonzero_exits": 0,
+  "wall_ms_parallel": 409154,
+  "suites": [
+    {
+      "name": "full-scope.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 185028,
+      "pass": 7,
+      "fail": 0,
+      "total": 7
+    },
+    {
+      "name": "determinism.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 33111,
+      "pass": 5,
+      "fail": 0,
+      "total": 5
+    },
+    {
+      "name": "codec-export.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 210903,
+      "pass": 5,
+      "fail": 0,
+      "total": 5
+    },
+    {
+      "name": "replay-integration.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 397153,
+      "pass": 4,
+      "fail": 0,
+      "total": 4
+    },
+    {
+      "name": "storage-api.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 32737,
+      "pass": 8,
+      "fail": 0,
+      "total": 8
+    }
+  ]
+}

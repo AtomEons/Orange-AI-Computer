@@ -1,0 +1,194 @@
+{
+  "experiment": "60-explore-in-full",
+  "m19_shapes_baseline": 30057,
+  "results": [
+    {
+      "name": "A: top-50 field-name token table",
+      "size": 29792,
+      "delta": -265,
+      "note": "dict=215B"
+    },
+    {
+      "name": "B: hex-pattern templatization",
+      "size": 30055,
+      "delta": -2,
+      "note": "hexes=323, vocab=32, dictBr=578B"
+    },
+    {
+      "name": "C: drop 3 FD-derivable fields in feature.execute",
+      "size": 30057,
+      "delta": 0,
+      "note": ""
+    },
+    {
+      "name": "D: near-dup clustering @ Jaccard 0.9",
+      "size": 0,
+      "delta": -30057,
+      "note": "1567 shapes → 955 clusters (informational only)"
+    },
+    {
+      "name": "E: BWT+MTF+arith (bzip2 proxy)",
+      "size": 38787,
+      "delta": 8730,
+      "note": "already tested — falsified +7305 vs brotli"
+    },
+    {
+      "name": "F: brotli-twice already used",
+      "size": 30057,
+      "delta": 0,
+      "note": "already applied in Method 19"
+    },
+    {
+      "name": "G: pure order-1 byte arith coder (info floor)",
+      "size": 321722,
+      "delta": 291665,
+      "note": "theoretical, no model overhead"
+    },
+    {
+      "name": "H: order-2 byte arith floor",
+      "size": 210474,
+      "delta": 180417,
+      "note": "theoretical, no model overhead"
+    },
+    {
+      "name": "I: order-3 byte arith floor",
+      "size": 172619,
+      "delta": 142562,
+      "note": "theoretical (model would add ~5759.884KB)"
+    },
+    {
+      "name": "J: PPMd-style mixed order escape (floor)",
+      "size": 171463,
+      "delta": 141406,
+      "note": "theoretical, escape policy threshold=4"
+    },
+    {
+      "name": "K: brotli-recursive (already in Method 19)",
+      "size": 30057,
+      "delta": 0,
+      "note": "br×2 already applied"
+    },
+    {
+      "name": "L: brotli lgwin=10 +br2",
+      "size": 79004,
+      "delta": 48947,
+      "note": "single br=118225"
+    },
+    {
+      "name": "L: brotli lgwin=16 +br2",
+      "size": 40529,
+      "delta": 10472,
+      "note": "single br=40525"
+    },
+    {
+      "name": "L: brotli lgwin=20 +br2",
+      "size": 30057,
+      "delta": 0,
+      "note": "single br=30198"
+    },
+    {
+      "name": "L: brotli lgwin=22 +br2",
+      "size": 30057,
+      "delta": 0,
+      "note": "single br=30198"
+    },
+    {
+      "name": "L: brotli lgwin=24 +br2",
+      "size": 30057,
+      "delta": 0,
+      "note": "single br=30198"
+    }
+  ],
+  "sorted": [
+    {
+      "name": "A: top-50 field-name token table",
+      "size": 29792,
+      "delta": -265,
+      "note": "dict=215B"
+    },
+    {
+      "name": "B: hex-pattern templatization",
+      "size": 30055,
+      "delta": -2,
+      "note": "hexes=323, vocab=32, dictBr=578B"
+    },
+    {
+      "name": "C: drop 3 FD-derivable fields in feature.execute",
+      "size": 30057,
+      "delta": 0,
+      "note": ""
+    },
+    {
+      "name": "F: brotli-twice already used",
+      "size": 30057,
+      "delta": 0,
+      "note": "already applied in Method 19"
+    },
+    {
+      "name": "K: brotli-recursive (already in Method 19)",
+      "size": 30057,
+      "delta": 0,
+      "note": "br×2 already applied"
+    },
+    {
+      "name": "L: brotli lgwin=20 +br2",
+      "size": 30057,
+      "delta": 0,
+      "note": "single br=30198"
+    },
+    {
+      "name": "L: brotli lgwin=22 +br2",
+      "size": 30057,
+      "delta": 0,
+      "note": "single br=30198"
+    },
+    {
+      "name": "L: brotli lgwin=24 +br2",
+      "size": 30057,
+      "delta": 0,
+      "note": "single br=30198"
+    },
+    {
+      "name": "E: BWT+MTF+arith (bzip2 proxy)",
+      "size": 38787,
+      "delta": 8730,
+      "note": "already tested — falsified +7305 vs brotli"
+    },
+    {
+      "name": "L: brotli lgwin=16 +br2",
+      "size": 40529,
+      "delta": 10472,
+      "note": "single br=40525"
+    },
+    {
+      "name": "L: brotli lgwin=10 +br2",
+      "size": 79004,
+      "delta": 48947,
+      "note": "single br=118225"
+    },
+    {
+      "name": "J: PPMd-style mixed order escape (floor)",
+      "size": 171463,
+      "delta": 141406,
+      "note": "theoretical, escape policy threshold=4"
+    },
+    {
+      "name": "I: order-3 byte arith floor",
+      "size": 172619,
+      "delta": 142562,
+      "note": "theoretical (model would add ~5759.884KB)"
+    },
+    {
+      "name": "H: order-2 byte arith floor",
+      "size": 210474,
+      "delta": 180417,
+      "note": "theoretical, no model overhead"
+    },
+    {
+      "name": "G: pure order-1 byte arith coder (info floor)",
+      "size": 321722,
+      "delta": 291665,
+      "note": "theoretical, no model overhead"
+    }
+  ]
+}

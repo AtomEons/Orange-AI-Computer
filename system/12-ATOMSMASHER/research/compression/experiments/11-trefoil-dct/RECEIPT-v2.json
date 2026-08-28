@@ -1,0 +1,18 @@
+{
+  "experiment": "11-trefoil-dct",
+  "version": "v2-real-integer-fft",
+  "generated_at": "2026-06-26T10:05:15.129Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "vocab_size": 66,
+  "sequence_length": 6224,
+  "block_size": 1024,
+  "num_blocks": 7,
+  "scale_factor": 16384,
+  "raw_action_stream_bytes": 85273,
+  "fourier_stream_bytes": 46483,
+  "fourier_brotli_bytes": 35799,
+  "ratio": 2.38,
+  "roundtrip_lossless": true,
+  "pass": true,
+  "beats_huffman_baseline": false
+}

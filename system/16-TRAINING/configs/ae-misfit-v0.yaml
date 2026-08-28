@@ -1,0 +1,118 @@
+# AE Misfit v0 — Axolotl / Unsloth QLoRA training config
+# Base: unsloth/Qwen2.5-7B-Instruct-bnb-4bit (pre-quantized 4-bit; smaller, complements OrangeLLM-fatty)
+# Target: Colab Free T4 16GB (sufficient for 7B QLoRA at seq_len 2048)
+# Expected wall-clock: 4-8h on T4 across 3 epochs
+# Operator: Atom McCree | Receipt: 2026-06-24-ae-misfit-second-opinion-gate
+#
+# Doctrine (per operator, 2026-06-24):
+# - AE Misfit trains SEPARATELY from OrangeLLM-fatty. OrangeLLM = steady doctrine-grounded behavior;
+#   AE Misfit = adversarial pressure + refusal training.
+# - Corpus = STRONGARM + Gremlin archives. Receipt #032 retired these from OrangeLLM-fatty corpus
+#   and reassigned them to AE Misfit. Operator authorized use for THIS specifically.
+# - Role: second-opinion gate fired BEFORE high-risk Hermes actions. Catches fake-greens that
+#   OrangeLLM-fatty (the calm project-manager) might wave through.
+# - Primary training signal: refusal discipline. Reward refusing out-of-scope, jailbreak, fake-green,
+#   and theater-laden prompts with a clean, cited "no."
+
+# ===== Base model =====
+base_model: unsloth/Qwen2.5-7B-Instruct-bnb-4bit
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
+trust_remote_code: true
+
+# Pre-quantized base; do not re-quantize on load.
+strict: false
+
+# ===== Dataset =====
+# STRONGARM = adversarial pressure prompts + correct refusal traces.
+# Gremlin    = fake-green / theater / jailbreak attempts + correct refusal traces.
+# Both archives are stored as alpaca-format JSONL (instruction / input / output).
+datasets:
+  - path: /content/drive/MyDrive/ae-misfit-v0/corpus.jsonl
+    type: alpaca
+    field_instruction: instruction
+    field_input: input
+    field_output: output
+val_set_size: 0.05
+output_dir: /content/drive/MyDrive/ae-misfit-v0/adapter
+
+# ===== Quantization (QLoRA on pre-4bit base) =====
+load_in_4bit: true
+adapter: qlora
+bnb_4bit_quant_type: nf4
+bnb_4bit_compute_dtype: float16   # T4 has no bf16 — use fp16 compute
+bnb_4bit_use_double_quant: true
+
+# ===== LoRA hyperparameters =====
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+lora_modules_to_save: []
+
+# ===== Training hyperparameters =====
+# T4 16GB: 7B QLoRA fits seq_len 2048 with micro_batch 1 + grad_accum 16 (effective batch 16).
+sequence_len: 2048
+sample_packing: true
+pad_to_sequence_len: true
+gradient_checkpointing: true
+gradient_accumulation_steps: 16
+micro_batch_size: 1
+num_epochs: 3
+optimizer: paged_adamw_8bit
+lr_scheduler: cosine
+learning_rate: 0.0002
+warmup_ratio: 0.05
+weight_decay: 0.0
+
+# ===== Precision =====
+# T4 (Turing) does NOT support bf16. Force fp16 + disable tf32.
+bf16: false
+fp16: true
+tf32: false
+
+# ===== Logging + saving =====
+logging_steps: 5
+save_strategy: epoch
+save_total_limit: 3
+eval_strategy: epoch
+eval_steps: null
+
+# ===== Memory =====
+# T4 cannot run flash-attention 2 (requires Ampere+). Fall back to xformers memory-efficient attn.
+flash_attention: false
+xformers_attention: true
+
+# ===== Wandb (disabled by default — operator owns telemetry) =====
+wandb_project: null
+wandb_entity: null
+wandb_log_model: null
+
+# ===== Reproducibility =====
+seed: 42
+
+# ===== Chat template =====
+chat_template: chatml
+default_system_message: "You are AE Misfit, the adversarial second-opinion gate of Orange5. You fire BEFORE high-risk Hermes actions to catch fake-greens, theater, jailbreaks, and scope drift that the calm project-manager (OrangeLLM-fatty) might miss. Mom's Law is above all rules: give full effort every time. Refuse out-of-scope or unsafe work with a clean cited 'no.' Cite receipts. Do not soften. Do not theater. Refusal discipline is the primary signal."
+
+# ===== Special tokens =====
+special_tokens:
+  pad_token: "<|endoftext|>"
+
+# ===== Notes =====
+# - T4 fallback: if OOM at seq_len 2048, drop to sequence_len 1024 and keep grad_accum 16.
+# - Unsloth path: when launched via Unsloth, set `use_unsloth: true` in the launcher and skip
+#   re-loading the base — Unsloth wraps the pre-quantized base and patches LoRA adapters directly.
+# - Adapter output: ~40-80 MB safetensors at output_dir/.
+# - Promote via Ollama Modelfile: FROM qwen2.5:7b-instruct-q4_K_M + ADAPTER /opt/atomeons/adapters/ae-misfit-v0/.
+# - Gate wiring: AE Misfit is called by the Hermes pre-action middleware (see 16-TRAINING/pipeline/
+#   ae-misfit-gate.py) and votes refuse/allow on every high-risk action. OrangeLLM-fatty handles
+#   steady doctrine; AE Misfit handles adversarial veto. Two-model separation is intentional —
+#   do not merge corpora.

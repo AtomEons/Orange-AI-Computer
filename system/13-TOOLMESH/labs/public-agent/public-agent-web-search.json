@@ -1,0 +1,88 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "public-agent",
+  "card_id": "public-agent-web-search",
+  "capability": "public-agent.web.search",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["query"],
+    "properties": {
+      "query": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "max_results": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50,
+        "default": 10
+      },
+      "freshness": {
+        "type": "string",
+        "description": "Recency filter. 'day'/'week'/'month' map to the configured backend's recency parameter where supported.",
+        "enum": ["any", "day", "week", "month", "year"],
+        "default": "any"
+      },
+      "site": {
+        "type": "string",
+        "description": "Optional site restriction (e.g. 'arxiv.org'). Maps to the backend's site: operator.",
+        "pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$",
+        "minLength": 4,
+        "maxLength": 253
+      },
+      "safe_search": {
+        "type": "string",
+        "enum": ["strict", "moderate", "off"],
+        "default": "moderate"
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["query", "results", "backend"],
+    "properties": {
+      "query": { "type": "string" },
+      "backend": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "title"],
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "title": { "type": "string", "maxLength": 512 },
+            "snippet": { "type": "string", "maxLength": 2000 },
+            "published_at": { "type": "string", "format": "date-time" },
+            "site": { "type": "string", "maxLength": 253 }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 40,
+    "scopes": [
+      "net.egress:api.brave.com",
+      "net.egress:api.tavily.com",
+      "net.egress:api.exa.ai",
+      "secrets.read:search.api-key"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 20,
+    "egress_allowlist": ["api.brave.com", "api.tavily.com", "api.exa.ai"]
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:24:00Z",
+  "vendor": "frontier-offload",
+  "version": "0.1.0",
+  "summary": "Public web search via an operator-supplied backend (Brave/Tavily/Exa). Returns ranked results only; fetching the bodies requires the sibling web-fetch card.",
+  "tags": ["public-agent", "search", "web", "byo-key"],
+  "notes": "The planner is expected to pair this with public-agent-web-fetch when it needs to read result bodies; separating discovery from fetch lets the operator scope each lease independently."
+}

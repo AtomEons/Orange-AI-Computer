@@ -1,0 +1,15 @@
+{
+  "experiment": "75-lzma2-xz",
+  "N": 6224,
+  "det_bytes": 2075585,
+  "xz_bytes": 123632,
+  "brotli_bytes": 121167,
+  "total": 123632,
+  "ratio": 16.788,
+  "brotli_ratio": 17.13,
+  "delta_vs_m19": -30.283,
+  "encode_ms": 1441.5,
+  "decode_ms": 51.9,
+  "lossless": true,
+  "note": "raw-corpus comparison: xz vs brotli on undecomposed JSONL; M19 47.07x uses a structured pipeline so this is an apples-to-oranges baseline check"
+}

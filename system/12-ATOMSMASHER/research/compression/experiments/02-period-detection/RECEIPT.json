@@ -1,0 +1,17 @@
+{
+  "experiment": "02-period-detection",
+  "generated_at": "2026-06-26T09:19:02.144Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "action_stream_bytes": 85273,
+  "baseline_brotli_bytes": 4323,
+  "baseline_brotli_ratio": 19.73,
+  "rle_pairs": 4203,
+  "avg_run_length": 1.48,
+  "rle_stream_bytes": 9559,
+  "rle_brotli_bytes": 3106,
+  "rle_brotli_ratio": 27.45,
+  "best_autocorr_period": 29,
+  "best_autocorr_rate": 0.334,
+  "roundtrip_lossless": true,
+  "pass": true
+}

@@ -1,0 +1,10 @@
+{
+  "experiment": "62-cluster-delta",
+  "shapes": 1567,
+  "clusters": 963,
+  "protoBlob": 29062,
+  "deltaBlob": 11754,
+  "total": 40816,
+  "m19_baseline_shapes": 30057,
+  "shape_roundtrip_lossless": false
+}

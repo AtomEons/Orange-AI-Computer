@@ -1,0 +1,81 @@
+{
+  "experiment": "113-library-size-sweep",
+  "ratio": 28.232,
+  "best_N": 10,
+  "best_chosen": 10,
+  "edges_used": 10,
+  "net_bytes_saved": 29162,
+  "lossless": true,
+  "baseline_m19_ratio": 47.071,
+  "vs_m19_delta": -18.839,
+  "total_edges_mined": 1195,
+  "sweep": [
+    {
+      "N": 10,
+      "chosen": 10,
+      "total": 73519,
+      "ratio": 28.232,
+      "lossless": true,
+      "parts": {
+        "minBlob": 65465,
+        "recipeBlob": 678,
+        "seedR": 48,
+        "orderBlob": 7328
+      }
+    },
+    {
+      "N": 50,
+      "chosen": 50,
+      "total": 73977,
+      "ratio": 28.057,
+      "lossless": true,
+      "parts": {
+        "minBlob": 64644,
+        "recipeBlob": 1957,
+        "seedR": 48,
+        "orderBlob": 7328
+      }
+    },
+    {
+      "N": 200,
+      "chosen": 95,
+      "total": 86722,
+      "ratio": 23.934,
+      "lossless": true,
+      "parts": {
+        "minBlob": 57978,
+        "recipeBlob": 21368,
+        "seedR": 48,
+        "orderBlob": 7328
+      }
+    },
+    {
+      "N": 500,
+      "chosen": 95,
+      "total": 86722,
+      "ratio": 23.934,
+      "lossless": true,
+      "parts": {
+        "minBlob": 57978,
+        "recipeBlob": 21368,
+        "seedR": 48,
+        "orderBlob": 7328
+      }
+    },
+    {
+      "N": 1195,
+      "chosen": 95,
+      "total": 86722,
+      "ratio": 23.934,
+      "lossless": true,
+      "parts": {
+        "minBlob": 57978,
+        "recipeBlob": 21368,
+        "seedR": 48,
+        "orderBlob": 7328
+      }
+    }
+  ],
+  "encode_ms": 76936.5,
+  "notes": "Knee at N=10. Mined 1195 deterministic edges total. Side-channel: payload-key-order stream (brotli'd) preserves byte-exact JSON."
+}

@@ -1,0 +1,105 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "image",
+  "card_id": "image-ocr",
+  "capability": "image.ocr",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["image_ref"],
+    "properties": {
+      "image_ref": {
+        "type": "string",
+        "description": "Sandbox reference to the image. Inline data URLs accepted for small payloads. PDF inputs are rejected — chain through a rasterizer card first.",
+        "minLength": 8,
+        "maxLength": 4096
+      },
+      "languages": {
+        "type": "array",
+        "description": "ISO 639-2/T language codes to load (e.g. ['eng'], ['eng','spa']). Each must correspond to an installed Tesseract traineddata file; runner errors on missing packs.",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z]{3}$",
+          "minLength": 3,
+          "maxLength": 3
+        },
+        "minItems": 1,
+        "maxItems": 8,
+        "uniqueItems": true,
+        "default": ["eng"]
+      },
+      "psm": {
+        "type": "integer",
+        "description": "Tesseract Page Segmentation Mode. 3 = fully automatic (default), 6 = single uniform block, 7 = single line, 11 = sparse text. Other PSMs available; see Tesseract docs.",
+        "minimum": 0,
+        "maximum": 13,
+        "default": 3
+      },
+      "include_word_boxes": {
+        "type": "boolean",
+        "description": "When true, returns per-word bounding boxes alongside the concatenated text. Adds a small amount of latency.",
+        "default": false
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["text", "engine"],
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "Concatenated recognized text, with line breaks preserved as emitted by Tesseract. Empty string is a valid 'no text detected' result."
+      },
+      "mean_confidence": {
+        "type": "number",
+        "description": "Tesseract's mean per-word confidence over recognized words, on its native 0-100 scale. Absent when no words were recognized.",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "words": {
+        "type": "array",
+        "description": "Per-word detail. Present only when include_word_boxes=true. Coordinates are absolute pixels in the source image.",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text", "x", "y", "w", "h", "confidence"],
+          "properties": {
+            "text": { "type": "string", "minLength": 1 },
+            "x": { "type": "integer", "minimum": 0 },
+            "y": { "type": "integer", "minimum": 0 },
+            "w": { "type": "integer", "minimum": 1 },
+            "h": { "type": "integer", "minimum": 1 },
+            "confidence": { "type": "number", "minimum": 0, "maximum": 100 }
+          }
+        }
+      },
+      "engine": {
+        "type": "string",
+        "description": "OCR engine identity and version for receipt citation, e.g. 'tesseract-5.3.4'.",
+        "pattern": "^tesseract-",
+        "minLength": 11,
+        "maxLength": 64
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 100,
+    "scopes": [
+      "fs.read:sandbox://images/",
+      "proc.spawn:tesseract",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 60
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Optical character recognition via locally installed Tesseract; multi-language with optional per-word bounding boxes.",
+  "tags": ["vision", "ocr", "text", "tesseract"]
+}

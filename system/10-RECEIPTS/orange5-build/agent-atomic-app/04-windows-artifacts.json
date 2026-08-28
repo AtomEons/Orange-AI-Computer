@@ -1,0 +1,22 @@
+﻿[
+    {
+        "path":  "C:\\AtomEons\\Orange5\\02-ATOMIC-ORANGE-V1\\src-tauri\\target\\release\\Atomic-Chat.exe",
+        "bytes":  47648256,
+        "last_write_utc":  "2026-08-27T09:32:38.3799762Z",
+        "sha256":  "a45f4cfbd7c22cd736d44779e484eeb74f282e9e9eec9b6644597a38541a967c",
+        "signature_status":  "NotSigned",
+        "signer":  null,
+        "product_version":  "1.0.0",
+        "file_version":  "1.0.0"
+    },
+    {
+        "path":  "C:\\AtomEons\\Orange5\\02-ATOMIC-ORANGE-V1\\src-tauri\\target\\release\\bundle\\nsis\\Atomic Orange_1.0.0_x64-setup.exe",
+        "bytes":  74841833,
+        "last_write_utc":  "2026-08-27T09:32:38.1852138Z",
+        "sha256":  "c802be17008b7610e3504dfff68a5cbbe5a57585d8515c48d29aaebd51d56ccf",
+        "signature_status":  "NotSigned",
+        "signer":  null,
+        "product_version":  "1.0.0",
+        "file_version":  "1.0.0"
+    }
+]

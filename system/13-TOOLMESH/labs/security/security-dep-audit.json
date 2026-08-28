@@ -1,0 +1,96 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "security",
+  "card_id": "security-dep-audit",
+  "capability": "security.dependency.audit",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["target_ref", "ecosystem"],
+    "properties": {
+      "target_ref": {
+        "type": "string",
+        "description": "Sandbox reference to a project root or a specific lockfile.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "ecosystem": {
+        "type": "string",
+        "enum": ["npm", "pnpm", "yarn", "pip", "poetry", "cargo", "go", "maven", "gradle"]
+      },
+      "severity_floor": {
+        "type": "string",
+        "description": "Findings below this CVSS severity are omitted from results.",
+        "enum": ["low", "medium", "high", "critical"],
+        "default": "medium"
+      },
+      "include_dev": {
+        "type": "boolean",
+        "description": "When true, devDependencies are scanned in addition to runtime deps.",
+        "default": false
+      },
+      "advisory_database": {
+        "type": "string",
+        "description": "Which offline advisory mirror to consult. Runner refuses network fetches; mirrors are refreshed on a separate schedule.",
+        "enum": ["osv-offline", "github-advisory-cache"],
+        "default": "osv-offline"
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["vulnerabilities", "package_count", "ecosystem"],
+    "properties": {
+      "ecosystem": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "package_count": { "type": "integer", "minimum": 0 },
+      "advisory_database": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "advisory_database_age_hours": { "type": "number", "minimum": 0 },
+      "vulnerabilities": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["package", "installed_version", "severity", "advisory_id"],
+          "properties": {
+            "package": { "type": "string", "minLength": 1, "maxLength": 256 },
+            "installed_version": { "type": "string", "minLength": 1, "maxLength": 64 },
+            "vulnerable_range": { "type": "string", "maxLength": 256 },
+            "fixed_in": { "type": "string", "maxLength": 64 },
+            "advisory_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+            "cve": { "type": "string", "pattern": "^CVE-[0-9]{4}-[0-9]+$" },
+            "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+            "cvss": { "type": "number", "minimum": 0, "maximum": 10 },
+            "title": { "type": "string", "maxLength": 500 },
+            "dependency_path": {
+              "type": "array",
+              "items": { "type": "string", "maxLength": 256 },
+              "maxItems": 50
+            }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 30,
+    "scopes": [
+      "fs.read:sandbox://workspace/",
+      "process.spawn:osv-scanner",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 10
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:28:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Offline dependency vulnerability scan via OSV-Scanner against an offline advisory mirror. No network.",
+  "tags": ["security", "supply-chain", "cve", "osv", "dependencies", "read-only"],
+  "notes": "Advisory database age is surfaced so the planner can demote findings when the mirror is stale. A separate (out-of-band) refresh job rotates the cache."
+}

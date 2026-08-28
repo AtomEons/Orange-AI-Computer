@@ -1,0 +1,120 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-3e65e3c53ca0ed59-1787793884680",
+  "query": "{\"intent\":\"Act as the OrangeFive systems architect. Produce an evidence-first packet for a technical manual: operating theory, two-computer topology, order/report flow, model routing, Brain MCP, Hermes, receipts, and why each boundary exists. Distinguish proven runtime from intent. Do not claim execution.\",\"evidence\":[\"integrated sha=1b8e957a24cd status=GREEN groups=6/6\",\"mcp sha=f2a58490be05 dual-transport checks=9\"]} /no_think OrangeFive orange5",
+  "searchQuery": "intent act the systems architect. produce evidence-first packet",
+  "generatedAt": "2026-08-27T01:24:44.682Z",
+  "budgetMs": 60000,
+  "elapsedMs": 1106,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.24284v1",
+      "title": "Cognitive Energy Management: Concept,Framework, and Demonstration in Smart Port Energy Systems",
+      "url": "http://arxiv.org/abs/2608.24284v1",
+      "summary": "Modern energy management systems, even within advanced energy internet (EI) infrastructures, remain fundamentally reactive, optimization-bound, and incapable of reasoning about context, intent, or uncertainty. While the EI paradigm has established a powerful cyber-physical architecture for interconnecting distributed energy resources via software-defined packetized networks, the question of how such systems should think, adapt, and govern energy decisions intelligently remains an open challenge.",
+      "updatedAt": "2026-08-25T09:09:09Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.63,
+        "matched": 4,
+        "queryTerms": 6,
+        "terms": [
+          "intent",
+          "system",
+          "architect",
+          "packet"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.21778v1",
+      "title": "Vision Guided Target Conditioned Control for Autonomous Excavation",
+      "url": "http://arxiv.org/abs/2608.21778v1",
+      "summary": "Autonomous excavation requires an intelligent control system that can convert spatial work intent into coordinated bucket motion under contact-rich soil interaction. This paper presents a target-conditioned intelligent control framework for autonomous excavation in a physics-based deformable-soil simulation workflow. An image-aligned target mask serves as a visual spatial command for the desired digging region, while a mask-conditioned Action Chunking Transformer maps multi-view RGB observations",
+      "updatedAt": "2026-08-22T05:01:33Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "intent",
+          "system"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.21049v1",
+      "title": "$Z^2$-ACT: End-to-End Verifiable Agentic Intent Control for Open 6G RAN",
+      "url": "http://arxiv.org/abs/2608.21049v1",
+      "summary": "With the progression in open and disaggregated 6G radio access networks, it is expected that the system will be able to host multi-vendors. In order to host multi-vendors, it is essential that AI-assisted control loops remain safe, verifiable, and auditable under concurrent operator intents and untrusted model inputs. The existing studies address the agentic coordination, formal intent constraints, zero-trust prompt verification and cryptographic accountability in isolation, which leaves pre-rea",
+      "updatedAt": "2026-08-21T12:44:03Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "intent",
+          "system"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1295009306",
+      "title": "YucongDuan/DIKWP-Active-Consciousness-NegEntropy-OS-2026-V1",
+      "url": "https://github.com/YucongDuan/DIKWP-Active-Consciousness-NegEntropy-OS-2026-V1",
+      "summary": "A standalone, offline-first research prototype for upgrading passive AI systems into bounded proactive artificial-consciousness-style systems based on DIKWP collapse accumulation, negentropy life judgment, human-realism priors, open-ended memory fabric, intent morphogenesis and co-evolution research.",
+      "updatedAt": "2026-08-04T14:36:45Z",
+      "license": "Apache-2.0",
+      "stars": 5,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1956,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "intent",
+          "system"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "be3e693b7b51062fbcee1ae542e3c065c09aee9b826814c8237c2f0309e16627"
+}

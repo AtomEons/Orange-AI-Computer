@@ -1,0 +1,78 @@
+{
+  "schema": "orange5.captain-planet.artifact-quality-proof.v2",
+  "status": "CAPTAIN_PLANET_MUSIC_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+  "generated_at": "2026-08-27T09:55:18.428Z",
+  "organ": "ace_step_music",
+  "runtime_execution_proven": true,
+  "artifact_technical_quality_proven": true,
+  "perceptual_quality_proven": false,
+  "studio_quality_proven": false,
+  "quality_scope": "DETERMINISTIC_TECHNICAL_ARTIFACT_QUALITY_ONLY",
+  "unresolved_quality_gates": [
+    "musical_coherence",
+    "prompt_adherence",
+    "mix_quality",
+    "human_listening_review",
+    "studio_readiness"
+  ],
+  "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ace-step\\orangefive-ace-step-proof.wav",
+  "artifact_sha256": "399f4cd4a48f0b1e60ae1fb4191929501079e81d697968e96ac7a0853525f31d",
+  "source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ace-step\\ace-step-artifact-proof.codexa.json",
+  "checks": {
+    "source_receipt_contract": true,
+    "source_runtime_status": true,
+    "source_hash_matches": true,
+    "source_size_matches": true,
+    "sample_rate_matches": true,
+    "duration_is_substantive": true,
+    "signal_is_non_silent": true,
+    "peak_is_not_clipped": true,
+    "clipped_sample_fraction_is_bounded": true,
+    "dc_offset_is_bounded": true,
+    "active_signal_is_substantive": true
+  },
+  "check_groups": {
+    "runtime": {
+      "source_receipt_contract": true,
+      "source_runtime_status": true,
+      "source_hash_matches": true,
+      "source_size_matches": true,
+      "sample_rate_matches": true
+    },
+    "technical_quality": {
+      "duration_is_substantive": true,
+      "signal_is_non_silent": true,
+      "peak_is_not_clipped": true,
+      "clipped_sample_fraction_is_bounded": true,
+      "dc_offset_is_bounded": true,
+      "active_signal_is_substantive": true
+    }
+  },
+  "audio": {
+    "audio_format": 1,
+    "channels": 2,
+    "sample_rate": 48000,
+    "byte_rate": 192000,
+    "block_align": 4,
+    "bits_per_sample": 16,
+    "bytes": 2304044,
+    "frames": 576000,
+    "duration_seconds": 12,
+    "rms": 0.112085,
+    "peak": 0.891235,
+    "rms_dbfs": -19.009,
+    "peak_dbfs": -1,
+    "dc_offset": 0.000722,
+    "active_sample_fraction": 0.511657,
+    "clipped_sample_fraction": 0,
+    "non_silent": true
+  },
+  "source_created_at": "2026-08-26T23:41:15.715530+00:00",
+  "source_model_id": "ACE-Step/Ace-Step1.5",
+  "source_model_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+  "source_device": "Intel(R) Arc(TM) 140T GPU (48GB)",
+  "source_generation_seconds": 15.22,
+  "prior_receipt": "2026-08-27T09-58-00Z-board8-tts-technical-proof.json",
+  "prior_sha256": "c55c2ac5f4b7a0804ea7cc33903734ca69dcb70568bd4ab869e7e967ef44bc34",
+  "receipt_sha256": "86d09145ddd5b67f0e2a40209661e2a422d02cafd6529811d49684d4000e67f4"
+}

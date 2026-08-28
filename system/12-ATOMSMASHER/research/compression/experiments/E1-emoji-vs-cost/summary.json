@@ -1,0 +1,46 @@
+{
+  "experiment": "E1-emoji-vs-cost",
+  "ts": "2026-06-29T01:57:10.979Z",
+  "bun": "1.3.14",
+  "tokenizer": "gpt-tokenizer cl100k_base",
+  "tokenizer_version": "3.4.0",
+  "encoding": {
+    "base_emoji": "🟢",
+    "base_emoji_codepoint": "U+1F7E2",
+    "vs_low": "U+FE00..U+FE0F (bytes 0..15)",
+    "vs_high": "U+E0100..U+E01EF (bytes 16..255)"
+  },
+  "results": {
+    "p200": {
+      "size": 200,
+      "raw_utf8_bytes": 200,
+      "raw_brotli_bytes": 204,
+      "raw_token_count": 150,
+      "raw_sha256": "8d82848d4f48f1c14de4921cdb8a3082da726cb9479af0a36367e246724a4c3c",
+      "vs_utf8_bytes": 804,
+      "vs_brotli_bytes": 297,
+      "vs_token_count": 800,
+      "decoded_sha256": "8d82848d4f48f1c14de4921cdb8a3082da726cb9479af0a36367e246724a4c3c",
+      "roundtrip": "MATCH",
+      "ratio_utf8": 4.02,
+      "ratio_brotli": 1.4559,
+      "ratio_tokens": 5.3333
+    },
+    "p2000": {
+      "size": 2000,
+      "raw_utf8_bytes": 2000,
+      "raw_brotli_bytes": 1669,
+      "raw_token_count": 1504,
+      "raw_sha256": "6e8ab1a6099a63f0f8c24fcfe11c25c479eb6a4e3b542f0280eedc7ac83b49ed",
+      "vs_utf8_bytes": 8004,
+      "vs_brotli_bytes": 2053,
+      "vs_token_count": 7930,
+      "decoded_sha256": "6e8ab1a6099a63f0f8c24fcfe11c25c479eb6a4e3b542f0280eedc7ac83b49ed",
+      "roundtrip": "MATCH",
+      "ratio_utf8": 4.002,
+      "ratio_brotli": 1.2301,
+      "ratio_tokens": 5.2726
+    }
+  },
+  "verdict": "No layer wins. VS encoding inflates UTF-8, brotli, and tokens at both sizes."
+}

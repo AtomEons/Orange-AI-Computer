@@ -1,0 +1,21 @@
+{
+  "experiment": "101-m19-zstd-swap",
+  "raw_bytes": 2075585,
+  "total_bytes": 48894,
+  "ratio": 42.451,
+  "delta_vs_m19": -4.619,
+  "enc_ms": 4155,
+  "dec_ms": 571,
+  "lossless": true,
+  "components": {
+    "mesh_template": 136,
+    "mesh_data": 8044,
+    "shapes_zstd_x2": 32504,
+    "aIdx": 121,
+    "aV": 532,
+    "otherIdx": 6496,
+    "pos": 1007,
+    "seed": 54
+  },
+  "verdict": "RED"
+}

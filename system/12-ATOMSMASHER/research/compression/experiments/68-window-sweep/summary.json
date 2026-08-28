@@ -1,0 +1,59 @@
+{
+  "experiment": "68-window-sweep",
+  "ratio": 17.272,
+  "encode_ms": 4279.7,
+  "decode_ms": 6.3,
+  "lossless": true,
+  "best_window": "all",
+  "all_results": [
+    {
+      "W": 50,
+      "total": 340969,
+      "ratio": 6.087,
+      "encode_ms": 5126.5,
+      "decode_ms": 18.7,
+      "lossless": true
+    },
+    {
+      "W": 200,
+      "total": 229173,
+      "ratio": 9.057,
+      "encode_ms": 4773.7,
+      "decode_ms": 9.6,
+      "lossless": true
+    },
+    {
+      "W": 500,
+      "total": 179974,
+      "ratio": 11.533,
+      "encode_ms": 4560.7,
+      "decode_ms": 9,
+      "lossless": true
+    },
+    {
+      "W": 1000,
+      "total": 156490,
+      "ratio": 13.263,
+      "encode_ms": 4254.1,
+      "decode_ms": 12.8,
+      "lossless": true
+    },
+    {
+      "W": 2000,
+      "total": 140359,
+      "ratio": 14.788,
+      "encode_ms": 4283.2,
+      "decode_ms": 12.8,
+      "lossless": true
+    },
+    {
+      "W": 6224,
+      "total": 120170,
+      "ratio": 17.272,
+      "encode_ms": 4279.7,
+      "decode_ms": 6.3,
+      "lossless": true
+    }
+  ],
+  "notes": "swept window sizes; best=all"
+}

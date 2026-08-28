@@ -1,0 +1,35 @@
+{
+  "experiment": "127-m20-spec",
+  "type": "specification-document",
+  "deliverable": "M20_CODEC_SPEC.md",
+  "sections_required": [
+    "pipeline stages",
+    "formula library schema",
+    "recipe overhead budget per stage",
+    "sha256 roundtrip contract",
+    "hot-path/cold-path split",
+    "projected ratio with confidence intervals"
+  ],
+  "sections_present": [
+    "1. Pipeline stages",
+    "2. Formula library schema",
+    "3. Recipe overhead budget per stage",
+    "4. sha256 roundtrip contract",
+    "5. Hot-path / cold-path split",
+    "6. Projected ratio with confidence intervals",
+    "7. Experimental empirical-validation plan",
+    "8. References to prior experiments",
+    "9. What this spec is and is not",
+    "10. Open questions / next research turns"
+  ],
+  "sections_count": "10/6 required (9/9 critical sections per task spec)",
+  "empirical_experiments_cited": [9, 16, 21, 22, 23, 24, 26, 59, 99, 123, 124, 125, 126],
+  "projected_ratio_central": 59.8,
+  "projected_ratio_ci95_low": 44.2,
+  "projected_ratio_ci95_high": 64.5,
+  "projected_ratio_p_underperform_m19": 0.25,
+  "m19_baseline": 47.07,
+  "ratio": null,
+  "lossless": null,
+  "verdict": "GREEN"
+}

@@ -1,0 +1,107 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "coding",
+  "card_id": "run-tests",
+  "capability": "coding.test",
+  "cost_class": "free",
+  "latency_class": "minutes",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["runner"],
+    "properties": {
+      "runner": {
+        "type": "string",
+        "description": "Declared test runner. The mesh maps this to a vetted command template; arbitrary shell strings are rejected at lease issuance.",
+        "enum": ["pytest", "jest", "vitest", "go-test", "cargo-test", "mocha", "rspec", "phpunit"]
+      },
+      "path": {
+        "type": "string",
+        "description": "Sandbox-scoped target — a directory, file, or single test id understood by the runner. Defaults to the workspace root.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "filter": {
+        "type": "string",
+        "description": "Runner-native filter expression (pytest -k, jest --testNamePattern, etc.). Validated against the runner's grammar before exec.",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "coverage": {
+        "type": "boolean",
+        "description": "When true, runner is invoked with its standard coverage plugin and 'coverage' is populated in the output.",
+        "default": false
+      },
+      "max_seconds": {
+        "type": "integer",
+        "description": "Hard wall-clock budget. Runner SIGTERMs the test process at this boundary and reports timed_out=true.",
+        "minimum": 5,
+        "maximum": 1800,
+        "default": 300
+      },
+      "env": {
+        "type": "object",
+        "description": "Whitelisted environment overrides (e.g. NODE_ENV, PYTHONHASHSEED). Keys not in the runner's allowlist are dropped with a warning.",
+        "additionalProperties": { "type": "string", "maxLength": 1024 }
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["passed", "failed", "exit_code", "duration_seconds"],
+    "properties": {
+      "passed": { "type": "integer", "minimum": 0 },
+      "failed": { "type": "integer", "minimum": 0 },
+      "skipped": { "type": "integer", "minimum": 0 },
+      "exit_code": { "type": "integer" },
+      "duration_seconds": { "type": "number", "minimum": 0 },
+      "timed_out": { "type": "boolean" },
+      "failures": {
+        "type": "array",
+        "description": "Per-failure detail. Truncated to 50 entries; remainder counted in 'failed'.",
+        "maxItems": 50,
+        "items": {
+          "type": "object",
+          "required": ["test_id", "message"],
+          "properties": {
+            "test_id": { "type": "string" },
+            "file": { "type": "string" },
+            "line": { "type": "integer", "minimum": 1 },
+            "message": { "type": "string" }
+          }
+        }
+      },
+      "coverage": {
+        "type": "object",
+        "description": "Populated only when coverage=true. Percentages are 0-100, line counts are absolute.",
+        "properties": {
+          "line_percent": { "type": "number", "minimum": 0, "maximum": 100 },
+          "branch_percent": { "type": "number", "minimum": 0, "maximum": 100 },
+          "lines_covered": { "type": "integer", "minimum": 0 },
+          "lines_total": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 1800,
+    "max_invocations": 20,
+    "scopes": [
+      "fs.read:sandbox://workspace/",
+      "fs.write:sandbox://workspace/.cache/",
+      "process.spawn:test-runner",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 4
+  },
+  "risk_class": "sandboxed",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Runs a project's declared test suite in an offline-network sandbox with a hard time budget; reports pass/fail and optional coverage.",
+  "tags": ["coding", "test", "pytest", "jest", "vitest", "coverage"],
+  "notes": "Network egress is disabled by default. Tests requiring outbound calls must request an explicit network scope on the lease and will trip the human-approval gate."
+}

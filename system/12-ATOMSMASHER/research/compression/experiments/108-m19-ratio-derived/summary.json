@@ -1,0 +1,13 @@
+{
+  "experiment": "108-m19-ratio-derived",
+  "total_bytes": 44203,
+  "ratio": 46.956,
+  "delta_vs_m19": -0.115,
+  "enc_ms": 4657,
+  "dec_ms": 364,
+  "lossless": true,
+  "det_sha": "03da0e5cf04adf96",
+  "rec_sha": "03da0e5cf04adf96",
+  "stripped_count": 1,
+  "notes": "Stripped 'ratio' from 1 non-mesh payloads where bankerRound(raw/comp,2) === ratio."
+}

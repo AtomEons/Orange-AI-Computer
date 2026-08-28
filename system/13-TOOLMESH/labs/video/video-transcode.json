@@ -1,0 +1,111 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "video",
+  "card_id": "video-transcode",
+  "capability": "video.transcode",
+  "cost_class": "free",
+  "latency_class": "minutes",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["source_ref", "container"],
+    "properties": {
+      "source_ref": {
+        "type": "string",
+        "description": "Sandbox reference to the source video. Runner enforces sandbox-scope before passing to ffmpeg.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "container": {
+        "type": "string",
+        "description": "Target container format. Closed enum reflects vetted ffmpeg muxers.",
+        "enum": ["mp4", "webm", "mov", "mkv"]
+      },
+      "video_codec": {
+        "type": "string",
+        "description": "Target video codec. Runner maps to a vetted ffmpeg encoder command template; arbitrary -c:v strings are rejected.",
+        "enum": ["h264", "h265", "vp9", "av1", "copy"],
+        "default": "h264"
+      },
+      "audio_codec": {
+        "type": "string",
+        "description": "Target audio codec. 'copy' preserves the source audio stream.",
+        "enum": ["aac", "opus", "mp3", "copy"],
+        "default": "aac"
+      },
+      "max_height": {
+        "type": "integer",
+        "description": "If set, video is downscaled (never upscaled) to this height with aspect ratio preserved.",
+        "minimum": 144,
+        "maximum": 4320
+      },
+      "target_bitrate_kbps": {
+        "type": "integer",
+        "description": "Target video bitrate in kilobits/sec. Mutually informative with crf; runner picks the rate-control mode appropriate for the codec.",
+        "minimum": 64,
+        "maximum": 100000
+      },
+      "crf": {
+        "type": "integer",
+        "description": "Constant Rate Factor for x264/x265/libsvtav1. Lower = higher quality. Ignored when target_bitrate_kbps is set.",
+        "minimum": 0,
+        "maximum": 51
+      },
+      "two_pass": {
+        "type": "boolean",
+        "description": "When true and using bitrate-target mode, the runner performs a two-pass encode.",
+        "default": false
+      },
+      "max_seconds": {
+        "type": "integer",
+        "description": "Hard wall-clock budget. ffmpeg is SIGTERMed at this boundary and timed_out=true is reported.",
+        "minimum": 5,
+        "maximum": 3600,
+        "default": 600
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["output_ref", "duration_seconds", "width", "height", "size_bytes"],
+    "properties": {
+      "output_ref": {
+        "type": "string",
+        "description": "Sandbox reference to the transcoded artifact. Lifetime governed by lab policy.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "duration_seconds": { "type": "number", "minimum": 0 },
+      "width": { "type": "integer", "minimum": 1, "maximum": 7680 },
+      "height": { "type": "integer", "minimum": 1, "maximum": 4320 },
+      "size_bytes": { "type": "integer", "minimum": 0 },
+      "video_codec": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "audio_codec": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "bitrate_kbps": { "type": "number", "minimum": 0 },
+      "timed_out": { "type": "boolean" }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 3600,
+    "max_invocations": 12,
+    "scopes": [
+      "fs.read:sandbox://video/in/",
+      "fs.write:sandbox://video/out/",
+      "process.spawn:ffmpeg",
+      "cpu.use",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 2
+  },
+  "risk_class": "sandboxed",
+  "last_verified_at": "2026-06-25T00:18:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Vetted ffmpeg transcode pipeline — sandbox-in, sandbox-out, no network, hard time budget.",
+  "tags": ["video", "ffmpeg", "transcode", "encode", "sandboxed"],
+  "notes": "Runner ships a curated ffmpeg static build; user-supplied filter graphs are NOT accepted on this card — use video-edit-graph for that. h265/av1 fall back to slower presets without GPU acceleration; expect minutes-class latency on >2-minute sources."
+}

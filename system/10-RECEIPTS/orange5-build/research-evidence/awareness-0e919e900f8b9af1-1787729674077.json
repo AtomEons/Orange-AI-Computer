@@ -1,0 +1,77 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-0e919e900f8b9af1-1787729674077",
+  "query": "<|im_start|>system\nYou are Æ Cobra, the memory daemon of Orange5. Emit ONLY a single AgentTurn JSON object matching the GBNF grammar.\nThe event below is on the THOUGHT lane (origin-classified by the caller — DO NOT change the lane).\nBe concise. Cite real files, real commands. No fluff. Mom's Law applies.\n<|im_end|>\n<|im_start|>user\n{\"summary\":\"Model routing option reviewed against current utility constraints\",\"reasoning\":\"considering swapping Smart Skinny to qwen3:1.7b for utility\"}\n<|im_end|>\n<|im_start|>assistant OrangeFive orange5",
+  "searchQuery": "im_start system you are cobra",
+  "generatedAt": "2026-08-26T07:34:34.079Z",
+  "budgetMs": 60000,
+  "elapsedMs": 865,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1165103870",
+      "title": "jenspapenhagen/spring-ai-chatml",
+      "url": "https://github.com/jenspapenhagen/spring-ai-chatml",
+      "summary": "A ChatML-style prompt formatter for Spring AI 2.0, designed to work with Ollama and LFM models. It converts chat messages (system, user, assistant, tool) into the ChatML format using <|im_start|> and <|im_end|> special tokens. Supports tool calling via JSON schema injection in the system prompt.",
+      "updatedAt": "2026-08-15T19:05:34Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "im start",
+          "system"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1270890755",
+      "title": "Jaby24-dtk/ims-starter",
+      "url": "https://github.com/Jaby24-dtk/ims-starter",
+      "summary": "IBG Inventory Management System starter template — Next.js + Supabase",
+      "updatedAt": "2026-06-16T06:26:05Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "im start",
+          "system"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1236232825",
+      "title": "Ash-kun99/System-Monitor",
+      "url": "https://github.com/Ash-kun99/System-Monitor",
+      "summary": "This is my second docker project.....i know its small but im starting to get the hang off it.",
+      "updatedAt": "2026-05-12T04:17:54Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "im start",
+          "system"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "a87e82c74f2143bd7a1ae3a1491a251617e506b102452794835d245a336bca08"
+}

@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orange5.compression-debt.v0",
+  "title": "Orange5 Compression Debt v0",
+  "description": "AtomSmasher Compression Debt Ledger entry. Each entry is a recorded admission that the system chose a verbose form when a compressed form was either possible or later discovered. Recording a debt is the honest move (Mom's Law: name the gap, don't hide it). Paying a debt is the recovery move — when re-execution or a later pass actually produces the compressed form, the debt closes and the realized savings are stamped on the row.\n\nEntries are written to two substrates: (1) the Reality lane of Æ Cobra Flux as an append-only audit record (origin='atomsmasher', kind='compression-debt' or 'compression-debt-payment'); (2) a SQLite index for fast queries. Flux is canonical; SQLite is a projection that can be rebuilt by replay.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "debt_id",
+    "verbose_hash",
+    "verbose_chars",
+    "status",
+    "recorded_at",
+    "context"
+  ],
+  "properties": {
+    "schema": {
+      "description": "Schema discriminator. Must be exact.",
+      "const": "orange5.compression-debt.v0"
+    },
+    "debt_id": {
+      "description": "SHA-256 hex digest uniquely identifying this debt. Computed over canonical-JSON of (verbose_hash, recorded_at, context.surface, context.actor). Identical verbose+context+timestamp pairs produce identical debt_ids; this lets the gateway dedupe accidental double-records.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "verbose_hash": {
+      "description": "SHA-256 hex digest of the verbose output the system chose. The hash is the receipt — the prose itself need not be stored on the row, only its fingerprint, so the ledger does not bloat with the very verbosity it is auditing.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "verbose_chars": {
+      "description": "Character count of the verbose output. Honest measure of how much was written when less would have done.",
+      "type": "integer",
+      "minimum": 1
+    },
+    "compressed_hash": {
+      "description": "SHA-256 hex digest of the compressed form, set when the debt is paid. Absent for open debts.",
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "compressed_chars": {
+      "description": "Character count of the compressed form, set when the debt is paid. Absent for open debts.",
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "savings_chars": {
+      "description": "verbose_chars - compressed_chars, computed at pay time. Negative savings are allowed but flagged in summary as 'regression' — the 'compressed' form was actually longer, which is itself a finding worth keeping.",
+      "type": ["integer", "null"]
+    },
+    "status": {
+      "description": "Lifecycle. 'open' = debt recorded, not yet repaid. 'paid' = compressed form was produced and stamped. 'forgiven' = operator-marked write-off (e.g. the verbose form was actually load-bearing on inspection); rare, requires evidence.",
+      "type": "string",
+      "enum": ["open", "paid", "forgiven"]
+    },
+    "recorded_at": {
+      "description": "ISO 8601 timestamp when the debt was opened.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "paid_at": {
+      "description": "ISO 8601 timestamp when the debt was paid or forgiven. Absent for open debts.",
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "context": {
+      "description": "Provenance: where the verbose choice was made.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface", "actor"],
+      "properties": {
+        "surface": {
+          "description": "Coarse origin tag (e.g. 'air-codec', 'cartridge:legal', 'pathwave:plan', 'manual'). Free-form but should be stable per surface.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "actor": {
+          "description": "Who produced the verbose output (e.g. 'system:atomsmasher', 'operator:atom', 'model:opus-4-7').",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "ref": {
+          "description": "Optional pointer to the source artifact (frame_id, receipt id, file path, etc).",
+          "type": "string",
+          "maxLength": 500
+        },
+        "reason": {
+          "description": "Optional short note on why the verbose form was chosen at the time (e.g. 'no codec for this surface yet', 'operator override', 'first-pass draft').",
+          "type": "string",
+          "maxLength": 500
+        }
+      }
+    },
+    "payment_evidence": {
+      "description": "Path/URI/hash pointing to the artifact that closed the debt — the receipt that the compressed form was actually produced. Required when status='paid' or 'forgiven'.",
+      "type": ["string", "null"],
+      "maxLength": 1000
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "open" } } },
+      "then": {
+        "properties": {
+          "compressed_hash": { "type": "null" },
+          "compressed_chars": { "type": "null" },
+          "savings_chars": { "type": "null" },
+          "paid_at": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "paid" } } },
+      "then": {
+        "required": ["compressed_hash", "compressed_chars", "savings_chars", "paid_at", "payment_evidence"]
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "forgiven" } } },
+      "then": {
+        "required": ["paid_at", "payment_evidence"]
+      }
+    }
+  ]
+}

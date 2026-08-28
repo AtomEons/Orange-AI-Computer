@@ -1,0 +1,365 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-70d99970421c1b4e-1787737989155",
+  "query": "current local-first agent harness durable execution memory compression MCP observability evaluation runtimes for OrangeFive OrangeFive orange5",
+  "searchQuery": "local-first agent harness durable execution memory compression mcp",
+  "generatedAt": "2026-08-26T09:53:09.160Z",
+  "budgetMs": 60000,
+  "elapsedMs": 932,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1161163182",
+      "title": "tinyhumansai/openhuman",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "summary": "Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.",
+      "updatedAt": "2026-08-26T09:51:29Z",
+      "license": "GPL-3.0",
+      "stars": 37980,
+      "forks": 3743,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8566,
+      "relevance": {
+        "score": 0.445,
+        "matched": 3,
+        "queryTerms": 6,
+        "terms": [
+          "local first",
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1322509558",
+      "title": "AMAP-ML/LongHorizon-Harness",
+      "url": "https://github.com/AMAP-ML/LongHorizon-Harness",
+      "summary": "The long-horizon computer-use harness. Run AI agents across desktop apps and the CLI for extended periods while preserving task state and making reliable progress on complex workflows. Features fresh-context execution, durable verified state, independent auditing, recoverable progress, and native Claude Code / Codex / OpenClaw integration.",
+      "updatedAt": "2026-08-26T08:53:30Z",
+      "license": "MIT",
+      "stars": 1326,
+      "forks": 136,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8275,
+      "relevance": {
+        "score": 0.445,
+        "matched": 3,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "durable",
+          "execution"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1161645371",
+      "title": "sheawinkler/ContextLattice",
+      "url": "https://github.com/sheawinkler/ContextLattice",
+      "summary": "The local-first intelligence layer that gives AI agents durable continuity, explainable retrieval, portable context, and verified learning across harnesses.",
+      "updatedAt": "2026-08-14T07:31:52Z",
+      "license": "Apache-2.0",
+      "stars": 152,
+      "forks": 14,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8087,
+      "relevance": {
+        "score": 0.445,
+        "matched": 3,
+        "queryTerms": 6,
+        "terms": [
+          "local first",
+          "agent",
+          "durable"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1223170290",
+      "title": "nexu-io/open-design",
+      "url": "https://github.com/nexu-io/open-design",
+      "summary": "🎨 Best DeepSeek Harness Design Plugin. The open-source Claude Design alternative. 🖥️ Local-first desktop app. 🖼️ Your coding agent becomes the design engine: prototypes, landing pages, dashboards, slides, images & video — real files, HTML/PDF/PPTX/MP4 export. 🤖 Claude Code / Codex / Cursor / DeepSeek Harness / OpenCode & 20+ CLIs via BYOK.",
+      "updatedAt": "2026-08-26T09:49:34Z",
+      "license": "Apache-2.0",
+      "stars": 91614,
+      "forks": 10543,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8642,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "local first",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "649170660",
+      "title": "Mintplex-Labs/anything-llm",
+      "url": "https://github.com/Mintplex-Labs/anything-llm",
+      "summary": "Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience",
+      "updatedAt": "2026-08-26T09:41:23Z",
+      "license": "MIT",
+      "stars": 65216,
+      "forks": 7190,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8613,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "local first",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1255217938",
+      "title": "huangruiteng/loopx",
+      "url": "https://github.com/huangruiteng/loopx",
+      "summary": "Long-horizon agent control plane for durable, governed work across Codex, Claude Code, and other harnesses.",
+      "updatedAt": "2026-08-26T09:49:04Z",
+      "license": "Apache-2.0",
+      "stars": 5183,
+      "forks": 457,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8393,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "durable"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1251460378",
+      "title": "apache/maka",
+      "url": "https://github.com/apache/maka",
+      "summary": "Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.",
+      "updatedAt": "2026-08-26T09:51:29Z",
+      "license": "Apache-2.0",
+      "stars": 3521,
+      "forks": 346,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8359,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "local first",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1338338357",
+      "title": "joe960913/Jixu",
+      "url": "https://github.com/joe960913/Jixu",
+      "summary": "A durable single-Agent Harness for TypeScript with recoverable Threads, explicit side-effect boundaries, and a native terminal UI.",
+      "updatedAt": "2026-08-25T13:34:35Z",
+      "license": "MIT",
+      "stars": 116,
+      "forks": 7,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8064,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "durable"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1160163216",
+      "title": "akemmanuel/OpenGUI",
+      "url": "https://github.com/akemmanuel/OpenGUI",
+      "summary": "Open-source desktop and web coding agent with a first-party host and harness, durable sessions, model connections, streaming chat, and workspace tools.",
+      "updatedAt": "2026-08-22T08:05:43Z",
+      "license": "MIT",
+      "stars": 106,
+      "forks": 9,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8056,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "durable"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1333340876",
+      "title": "clavia-labs/tardigrade",
+      "url": "https://github.com/clavia-labs/tardigrade",
+      "summary": "The TypeScript framework for building durable, modular agents",
+      "updatedAt": "2026-08-26T09:06:26Z",
+      "license": "MIT",
+      "stars": 30,
+      "forks": 3,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7948,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "durable"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1293344406",
+      "title": "OpenAgentHQ/openagent-eval",
+      "url": "https://github.com/OpenAgentHQ/openagent-eval",
+      "summary": "Local-first evaluation framework for RAG systems and AI Agents. 18+ metrics, CLI + SDK, framework-agnostic. The pytest of AI evaluation.",
+      "updatedAt": "2026-08-26T09:51:16Z",
+      "license": "Apache-2.0",
+      "stars": 16,
+      "forks": 24,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7896,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "local first",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1225075047",
+      "title": "n0mad-ai/bastra-recall",
+      "url": "https://github.com/n0mad-ai/bastra-recall",
+      "summary": "Local-first persistent memory for Claude Code, Cursor, ChatGPT & every MCP client — one Markdown vault, shared across every AI tool.",
+      "updatedAt": "2026-08-26T09:49:34Z",
+      "license": "MIT",
+      "stars": 8,
+      "forks": 7,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1991,
+      "relevance": {
+        "score": 0.37,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "local first",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "2d5d1643ba36ce8f55bbb13bb665027179dd3308df86303347abf8c2016e9e5e"
+}

@@ -1,0 +1,89 @@
+{
+  "experiment": "67-recipe-audit",
+  "ratio": "N/A",
+  "encode_ms": 0,
+  "decode_ms": 0,
+  "lossless": null,
+  "notes": "analysis-only; see violations.csv",
+  "experiments_audited": 45,
+  "law6_violators": 1,
+  "law6_clean_winners": 11,
+  "opaque_receipts": 15,
+  "sub_problem_rollups": 12,
+  "missing_receipts": [
+    "10-celtic-weave-compound",
+    "14-combinatorial-sweep",
+    "22-the-100-matrix",
+    "33-input-only-regen",
+    "34-batch-of-20",
+    "36-dedupe-verified",
+    "43-shape-reordering",
+    "45-celtic-sequencing",
+    "46-wildcards",
+    "47-method10-stack-wildcards",
+    "48-combo-synth",
+    "49-all-permutations",
+    "50-streaming-dict",
+    "52-big-audit",
+    "60-explore-in-full",
+    "61-method20-token-table",
+    "63-okazaki-per-class",
+    "64-ligase-trained-dict",
+    "65-lamport-counter",
+    "66-full-okazaki-combo"
+  ],
+  "opaque_list": [
+    "28-strip-then-stream",
+    "29-codec-sweep",
+    "30-fine-sort-and-dict",
+    "35-batch-of-100",
+    "38-method5-schema-fold",
+    "41-break-brotli",
+    "42-method8-sorted-shapes",
+    "44-method9-action-length-sort",
+    "54-method14-derive-summary",
+    "55-method15-strip-more",
+    "56-method16-strip-status-only",
+    "57-method17-air-decomp",
+    "58-method18-nested-payload",
+    "59-method19-strip-empty-id",
+    "62-cluster-delta"
+  ],
+  "top_winners": [
+    {
+      "experiment": "16-conditional-markov",
+      "ratio": 137.392,
+      "total_bytes": 15107,
+      "recipe_bytes": 0,
+      "recipe_pct_of_total": 0
+    },
+    {
+      "experiment": "39-method6-hybrid",
+      "ratio": 38.72,
+      "total_bytes": 53601,
+      "recipe_bytes": 171,
+      "recipe_pct_of_total": 0.32
+    },
+    {
+      "experiment": "40-method7-air-decomp",
+      "ratio": 37.66,
+      "total_bytes": 55110,
+      "recipe_bytes": 502,
+      "recipe_pct_of_total": 0.91
+    },
+    {
+      "experiment": "53-method13-derivations",
+      "ratio": 29.213,
+      "total_bytes": 71049,
+      "recipe_bytes": 119,
+      "recipe_pct_of_total": 0.17
+    },
+    {
+      "experiment": "32-targeted-per-action-regen",
+      "ratio": 27.319,
+      "total_bytes": 75975,
+      "recipe_bytes": 0,
+      "recipe_pct_of_total": 0
+    }
+  ]
+}

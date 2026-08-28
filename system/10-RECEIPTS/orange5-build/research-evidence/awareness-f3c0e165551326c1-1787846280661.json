@@ -1,0 +1,13 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-f3c0e165551326c1-1787846280661",
+  "query": "What is the current Orange release? OrangeFive orange5",
+  "searchQuery": "the orange release",
+  "generatedAt": "2026-08-27T15:58:00.676Z",
+  "budgetMs": 60000,
+  "elapsedMs": 821,
+  "status": "NO_EVIDENCE",
+  "sources": [],
+  "errors": [],
+  "sha256": "00fe146378724abfae14189b84e616bdc2d1a3aa5d00365aa23f10a09d122670"
+}

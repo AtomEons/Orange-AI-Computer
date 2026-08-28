@@ -1,0 +1,120 @@
+{
+  "schema": "orange.model-lease.v2",
+  "command": "catalog",
+  "created_at": "2026-08-27T05:02:00.214Z",
+  "host": "WIN-IB7K3UTA9DS",
+  "payload": {
+    "schema": "orange.creative-model-catalog.v1",
+    "policy": {
+      "execution": "single_specialist_lease",
+      "max_active_heavy_leases": 1,
+      "live_model_memory_ceiling_bytes": 53687091200,
+      "unload_before_load": true,
+      "deny_unmeasured_memory": true,
+      "deny_candidate_activation": true,
+      "shared_gpu_memory_is_physical_ram": true,
+      "working_set_watchdog": true,
+      "promotion_requires_artifact_bakeoff": true,
+      "installed_claim_requires_live_inventory": true,
+      "restore_one_prior_ollama_model_after_external_lease": true,
+      "lease_mutex": "Global\\OrangeFiveCaptainPlanetCreativeLease",
+      "creative_process_markers": [
+        "ComfyUI\\main.py",
+        "codexa-comfy-flux-artifact-proof.py",
+        "codexa-ltx-video-artifact-proof.py",
+        "codexa-ace-step-artifact-proof.py",
+        "codexa-qwen-tts-artifact-proof.py",
+        "ltx_video",
+        "acestep",
+        "qwen_tts",
+        "Hunyuan3D",
+        "SeedVR2",
+        "PaddleOCR"
+      ]
+    },
+    "routes": [
+      {
+        "role": "image_draft_flux2_klein",
+        "capability": "image_generation",
+        "model": "black-forest-labs/FLUX.2-klein-4b-fp8",
+        "state": "installed_runtime_proven_quality_unassessed",
+        "lease_eligible": true,
+        "estimated_live_bytes": 25769803776,
+        "quality_tier": "draft_and_reference"
+      },
+      {
+        "role": "image_quality_flux2_dev",
+        "capability": "image_generation_editing",
+        "model": "black-forest-labs/FLUX.2-dev",
+        "state": "candidate_not_observed",
+        "lease_eligible": false,
+        "estimated_live_bytes": 0,
+        "quality_tier": "quality_finalize_and_multi_reference_edit"
+      },
+      {
+        "role": "video_modern_ltx25",
+        "capability": "synchronized_audio_video_generation",
+        "model": "Lightricks/LTX-2.5-22B-distilled",
+        "state": "candidate_not_observed",
+        "lease_eligible": false,
+        "estimated_live_bytes": 0,
+        "quality_tier": "modern_open_candidate"
+      },
+      {
+        "role": "video_fallback_ltxv098",
+        "capability": "image_to_video",
+        "model": "Lightricks/LTX-Video ltxv-2b-0.9.8-distilled",
+        "state": "installed_runtime_proven_quality_unassessed",
+        "lease_eligible": true,
+        "estimated_live_bytes": 51539607552,
+        "quality_tier": "runtime_proven_fallback"
+      },
+      {
+        "role": "speech_qwen3_tts",
+        "capability": "speech_generation",
+        "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+        "state": "installed_runtime_proven_quality_unassessed",
+        "lease_eligible": true,
+        "estimated_live_bytes": 17179869184,
+        "quality_tier": "runtime_proven"
+      },
+      {
+        "role": "music_ace_step15",
+        "capability": "music_generation_and_editing",
+        "model": "ACE-Step/Ace-Step1.5 turbo",
+        "state": "installed_runtime_proven_quality_unassessed",
+        "lease_eligible": true,
+        "estimated_live_bytes": 21474836480,
+        "quality_tier": "runtime_proven"
+      },
+      {
+        "role": "three_d_hunyuan21",
+        "capability": "image_to_3d_pbr_asset",
+        "model": "tencent/Hunyuan3D-2.1",
+        "state": "candidate_not_observed",
+        "lease_eligible": false,
+        "estimated_live_bytes": 34359738368,
+        "quality_tier": "candidate"
+      },
+      {
+        "role": "document_refine_paddleocr_vl16",
+        "capability": "document_parse_layout_refinement",
+        "model": "PaddlePaddle/PaddleOCR-VL-1.6",
+        "state": "candidate_not_observed",
+        "lease_eligible": false,
+        "estimated_live_bytes": 8589934592,
+        "quality_tier": "candidate"
+      },
+      {
+        "role": "image_video_refine_seedvr2",
+        "capability": "image_video_restoration",
+        "model": "ByteDance-Seed/SeedVR2-7B",
+        "state": "candidate_not_observed",
+        "lease_eligible": false,
+        "estimated_live_bytes": 34359738368,
+        "quality_tier": "candidate"
+      }
+    ]
+  },
+  "sha256": "3a8ce1f1a5f20c31a4656d64df39cd2dcb139d7461e69e220073b365911d93be"
+}

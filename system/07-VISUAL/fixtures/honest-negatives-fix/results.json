@@ -1,0 +1,3802 @@
+[
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 0.8,
+      "beta": 7
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.6006379280591998,
+        "uncertainty": 0.7941568657589322,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9981780594573825,
+        "uncertainty": 0.0024474735506916367,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.5498490512719557,
+        "uncertainty": 0.78426924306904,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.6579333292683521,
+        "uncertainty": 0.6802092434057825,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1,
+      "beta": 7
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.6627900546434544,
+        "uncertainty": 0.6689804565372538,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9985657651374688,
+        "uncertainty": 0.0024393002781009088,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.5607476990239846,
+        "uncertainty": 0.5643585419671331,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5091909521016809,
+        "uncertainty": 0.9763372340922939,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1,
+      "beta": 10
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8527980448603965,
+        "uncertainty": 0.2936146041397032,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999221794152975,
+        "uncertainty": 0.00014860613692357916,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8329788279707446,
+        "uncertainty": 0.2634522295126195,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5995115366399495,
+        "uncertainty": 0.8008468597354078,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1,
+      "beta": 15
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.95211654104709,
+        "uncertainty": 0.09575198030420362,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992398092064,
+        "uncertainty": 0.0000015117724102564623,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.6043023994250237,
+        "uncertainty": 0.7913916760532145,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5221357842551108,
+        "uncertainty": 0.9557281412015586,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 0.8,
+      "beta": 7
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.6011860123604682,
+        "uncertainty": 0.7930501313633072,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9981776999092542,
+        "uncertainty": 0.0024474786672137316,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.549639289213737,
+        "uncertainty": 0.784438145530473,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.657324897460485,
+        "uncertainty": 0.6814145741494227,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1,
+      "beta": 7
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.663285858603598,
+        "uncertainty": 0.6679784785065861,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9985656374797078,
+        "uncertainty": 0.002439301952869344,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.5604785181889477,
+        "uncertainty": 0.5651249513685979,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5084727090275817,
+        "uncertainty": 0.9777643549194963,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1,
+      "beta": 10
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8534238682444117,
+        "uncertainty": 0.29236155637125716,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999221769991171,
+        "uncertainty": 0.00014860613992739857,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8329574604789616,
+        "uncertainty": 0.2633214292166701,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5979631751561809,
+        "uncertainty": 0.8039432138799014,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1,
+      "beta": 15
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9525509610441021,
+        "uncertainty": 0.09488312217992134,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992398059487,
+        "uncertainty": 0.0000015117724104785069,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.6065681341167182,
+        "uncertainty": 0.7868601700550497,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5157565157384766,
+        "uncertainty": 0.9684866783553626,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 0.8,
+      "beta": 7
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.6021046315063618,
+        "uncertainty": 0.7911971402542726,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9981782326536597,
+        "uncertainty": 0.0024474660410759297,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.5495812790756989,
+        "uncertainty": 0.7838968185273216,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.6562196019686791,
+        "uncertainty": 0.6836067330898172,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 7
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.6641361558060008,
+        "uncertainty": 0.6662621789300791,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.998565800315915,
+        "uncertainty": 0.0024392980548362253,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.5601869444637553,
+        "uncertainty": 0.5666422523045425,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5071638934003332,
+        "uncertainty": 0.9803680365248328,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 10
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8544238004694852,
+        "uncertainty": 0.2903596250487589,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999221811640444,
+        "uncertainty": 0.00014860613179124016,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.833156714258071,
+        "uncertainty": 0.2624891565716837,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5953122041016136,
+        "uncertainty": 0.8092445128379581,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 15
+    },
+    "correct": 4,
+    "anyWrong": 0,
+    "confidentWrong": 0,
+    "score": 4,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9532141180945666,
+        "uncertainty": 0.09355678161470893,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992398144354,
+        "uncertainty": 0.0000015117724102564623,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.6109592270260379,
+        "uncertainty": 0.7780779085203008,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5040604447784003,
+        "uncertainty": 0.9918788209628063,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 0.8,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8090382107746322,
+        "uncertainty": 0.38121051039191467,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999095838448806,
+        "uncertainty": 0.00014862903984047549,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "human_skin",
+        "mass": 0.6487743479524184,
+        "uncertainty": 0.6951667329882814,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.7427891840527894,
+        "uncertainty": 0.5143159075714924,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 0.8,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9342673362178812,
+        "uncertainty": 0.13145107187567018,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992006990376,
+        "uncertainty": 0.0000015117735677749877,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "human_skin",
+        "mass": 0.7327379028610996,
+        "uncertainty": 0.5345227460665811,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.6632082995800265,
+        "uncertainty": 0.6735830883146909,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1,
+      "beta": 5
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5259118527916626,
+        "uncertainty": 0.9323369868343294,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9877570414035647,
+        "uncertainty": 0.016985171728137738,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.4544374770388703,
+        "uncertainty": 0.9073590697972469,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5521711003713232,
+        "uncertainty": 0.8620480384265918,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 5
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5128824886024823,
+        "uncertainty": 0.9573573158467122,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9897868584591925,
+        "uncertainty": 0.016770401812859714,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.4608081048291397,
+        "uncertainty": 0.7450787900605491,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.502773735481534,
+        "uncertainty": 0.9480106498689909,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 7
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.7231081729520579,
+        "uncertainty": 0.5474224201106122,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9987063447747402,
+        "uncertainty": 0.0024363995642092684,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.5098734600216406,
+        "uncertainty": 0.8460299390892512,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.6293400665739234,
+        "uncertainty": 0.731125404535898,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8898270699688258,
+        "uncertainty": 0.21948802183538507,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999249599605095,
+        "uncertainty": 0.00014860116409776136,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8543602557662048,
+        "uncertainty": 0.17934438211746073,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.5506444835947073,
+        "uncertainty": 0.8985440406642881,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9662759589210735,
+        "uncertainty": 0.06743258491128468,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992437342301,
+        "uncertainty": 0.000001511772294571223,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.813519716858891,
+        "uncertainty": 0.3729505493682893,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.6133639572465496,
+        "uncertainty": 0.7732717156731759,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9840770327934739,
+        "uncertainty": 0.031845797996358116,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925589775,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.7875941716448176,
+        "uncertainty": 0.42481165423065415,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.8488179832098675,
+        "uncertainty": 0.3023640316008115,
+        "verdict": "close"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.5,
+      "beta": 5
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.597141548213048,
+        "uncertainty": 0.7834384879339218,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9910517658374743,
+        "uncertainty": 0.016641470175003614,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.43649914368487885,
+        "uncertainty": 0.9739387558127267,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.6074853532233763,
+        "uncertainty": 0.691612672620807,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.5,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9312179285218123,
+        "uncertainty": 0.1366252329104386,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256197039418,
+        "uncertainty": 0.0001486000188472003,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8399919512926659,
+        "uncertainty": 0.27372117541471863,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.72195145267234,
+        "uncertainty": 0.5557852684643056,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.5,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.980976666710276,
+        "uncertainty": 0.0380305739762814,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992441020165,
+        "uncertainty": 0.0000015117722838020597,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.917994342222815,
+        "uncertainty": 0.16399238637750246,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.7689328618357342,
+        "uncertainty": 0.4621338011709105,
+        "verdict": "close"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 0.8,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8098455587412371,
+        "uncertainty": 0.3795941076607985,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999095726167139,
+        "uncertainty": 0.00014862905487700306,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "human_skin",
+        "mass": 0.6483037961190266,
+        "uncertainty": 0.6960740760392213,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.7418316978217696,
+        "uncertainty": 0.5162304253735099,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 0.8,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9348751762754539,
+        "uncertainty": 0.13023536702848781,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992006632942,
+        "uncertainty": 0.0000015117735685521438,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "human_skin",
+        "mass": 0.7316488862601689,
+        "uncertainty": 0.5367007692918282,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.6573679063338123,
+        "uncertainty": 0.6852638726123351,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1,
+      "beta": 5
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5257643839481987,
+        "uncertainty": 0.9326216420522344,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9877552289727727,
+        "uncertainty": 0.016985277423218648,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.45423095249214973,
+        "uncertainty": 0.9075635708473693,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5519424922412637,
+        "uncertainty": 0.8624457318271188,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 5
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5130295611707848,
+        "uncertainty": 0.9570439951280485,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9897859792507869,
+        "uncertainty": 0.016770448354871736,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.46060554971014567,
+        "uncertainty": 0.7452334420834252,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.5028978292569142,
+        "uncertainty": 0.9476697620981906,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 7
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.7235396330014874,
+        "uncertainty": 0.5465497936653176,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.99870629753898,
+        "uncertainty": 0.002436400141339612,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.5096352988766406,
+        "uncertainty": 0.8465913759660043,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.6299534776774138,
+        "uncertainty": 0.7298656342987092,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8902921844738176,
+        "uncertainty": 0.21855670206963862,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999924959391448,
+        "uncertainty": 0.00014860116476178575,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8542814678585701,
+        "uncertainty": 0.17954810726842407,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.5524273218583474,
+        "uncertainty": 0.8949770686317841,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9665739645652414,
+        "uncertainty": 0.0668365609929259,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992437339065,
+        "uncertainty": 0.000001511772294571223,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8151002375021258,
+        "uncertainty": 0.36978945419153597,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.619088185347717,
+        "uncertainty": 0.7618232529714508,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9842841196957898,
+        "uncertainty": 0.03143162411656142,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925589772,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.7926311571649033,
+        "uncertainty": 0.4147376831586089,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.8537708548872152,
+        "uncertainty": 0.292458288232174,
+        "verdict": "close"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.5,
+      "beta": 5
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5973013399454975,
+        "uncertainty": 0.78309701939431,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9910514530011929,
+        "uncertainty": 0.016641485213251594,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.4363495498614262,
+        "uncertainty": 0.9742993239528913,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.6075417328992281,
+        "uncertainty": 0.6913876066319873,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.5,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9314991015750365,
+        "uncertainty": 0.1360621946718239,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256196182476,
+        "uncertainty": 0.00014860001894234642,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.839946482190663,
+        "uncertainty": 0.2738060346557104,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.7234405899363858,
+        "uncertainty": 0.552805455931869,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.5,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9811365385347146,
+        "uncertainty": 0.0377108235124306,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992441019983,
+        "uncertainty": 0.0000015117722838020597,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.918748801608632,
+        "uncertainty": 0.1624834297712875,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.7727546402380483,
+        "uncertainty": 0.4544902399622033,
+        "verdict": "close"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 0.8,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8111241438193835,
+        "uncertainty": 0.3770344311750171,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999095947330722,
+        "uncertainty": 0.00014862901191492472,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "human_skin",
+        "mass": 0.6467952515765776,
+        "uncertainty": 0.6990046319217436,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.7401507141069437,
+        "uncertainty": 0.5195916068286695,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 0.8,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9358019267373043,
+        "uncertainty": 0.12838183004721404,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992007597533,
+        "uncertainty": 0.000001511773565665564,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "human_skin",
+        "mass": 0.7291043614999252,
+        "uncertainty": 0.5417897981973931,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.6466726508295545,
+        "uncertainty": 0.7066543801633931,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 5
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5254806289747939,
+        "uncertainty": 0.9331784202601037,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.987757308692855,
+        "uncertainty": 0.016985005415726118,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.454122926333367,
+        "uncertainty": 0.9072870530368204,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "human_skin",
+        "mass": 0.5514760819348515,
+        "uncertainty": 0.8633017429765257,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9778345359526028,
+        "uncertainty": 0.04433079411433272,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925542582,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.5066652701115426,
+        "uncertainty": 0.9866694580286364,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.8007764839137096,
+        "uncertainty": 0.3984470302524792,
+        "verdict": "close"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.2,
+      "beta": 5
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5133300830294387,
+        "uncertainty": 0.9564138443395572,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9897868450291922,
+        "uncertainty": 0.016770333716416008,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.46045931036859405,
+        "uncertainty": 0.7448755173446489,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.503237942338223,
+        "uncertainty": 0.9468394355665222,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.2,
+      "beta": 7
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.7242950981748091,
+        "uncertainty": 0.5450239585709034,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9987063451299651,
+        "uncertainty": 0.002436398979777765,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.5092867536558413,
+        "uncertainty": 0.8476989757195205,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.631084865155437,
+        "uncertainty": 0.7275471556595413,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.2,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8910415175413198,
+        "uncertainty": 0.217056420101016,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999249601063249,
+        "uncertainty": 0.00014860116334070028,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8542430996708403,
+        "uncertainty": 0.17999512407457752,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.5554240412855912,
+        "uncertainty": 0.8889813924809197,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.2,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9670293117451849,
+        "uncertainty": 0.06592584817159175,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992437345333,
+        "uncertainty": 0.000001511772294571223,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8178872828478151,
+        "uncertainty": 0.3642152555099386,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.629525735303075,
+        "uncertainty": 0.7409481413065737,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.2,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9846078453905175,
+        "uncertainty": 0.0307841726130077,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925589778,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8019969418452026,
+        "uncertainty": 0.3960061137419103,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.862562735271328,
+        "uncertainty": 0.27487452744049534,
+        "verdict": "close"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.5,
+      "beta": 5
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5976366613781326,
+        "uncertainty": 0.7823919281877807,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.991051687557473,
+        "uncertainty": 0.016641452847282467,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.4362068852242768,
+        "uncertainty": 0.974853276465494,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.6077888918113686,
+        "uncertainty": 0.6906966082066144,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.5,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9319570752303008,
+        "uncertainty": 0.13514521653244715,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256196664128,
+        "uncertainty": 0.0001486000188396508,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8399171684175547,
+        "uncertainty": 0.27398692712950834,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.7259038484593161,
+        "uncertainty": 0.5478763082263075,
+        "verdict": "split"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.5,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 0,
+    "score": 2,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9813810638957567,
+        "uncertainty": 0.03722176280371903,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992441020086,
+        "uncertainty": 0.0000015117722838020597,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9200010827222398,
+        "uncertainty": 0.15997879792841718,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.7796667256297328,
+        "uncertainty": 0.44066606131215946,
+        "verdict": "close"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 0.8,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9798754882167838,
+        "uncertainty": 0.040249023565536834,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.7410167366949018,
+        "uncertainty": 0.5179665266101554,
+        "verdict": "split"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9417370918587081,
+        "uncertainty": 0.11652581628255776,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.985666948920957,
+        "uncertainty": 0.028666102157179796,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8916901223414997,
+        "uncertainty": 0.21661975531696265,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9617252724653975,
+        "uncertainty": 0.07654945506917865,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9902483098683683,
+        "uncertainty": 0.01950338026234688,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9540318063142097,
+        "uncertainty": 0.0919363873715473,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9752801262692541,
+        "uncertainty": 0.0494397474614674,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.5,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.991311591517584,
+        "uncertainty": 0.017376677794107565,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591592,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9235058125429351,
+        "uncertainty": 0.15298837235800966,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9148061177330684,
+        "uncertainty": 0.17038776249664345,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.5,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9949088937842041,
+        "uncertainty": 0.010182212430665971,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9841473111843771,
+        "uncertainty": 0.03170537763121839,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9874002199170868,
+        "uncertainty": 0.025199560165801826,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 0.8,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9804465740341053,
+        "uncertainty": 0.03910685193089247,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.7545696259417847,
+        "uncertainty": 0.49086074811638947,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9453064592128391,
+        "uncertainty": 0.109387081574296,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9860605745639046,
+        "uncertainty": 0.027878850871285166,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8977024591554434,
+        "uncertainty": 0.20459508168907525,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.963829170593634,
+        "uncertainty": 0.07234165881270649,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9905056577290186,
+        "uncertainty": 0.018988684541047074,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9563653103450491,
+        "uncertainty": 0.08726937930986756,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9764915478780857,
+        "uncertainty": 0.04701690424380345,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.5,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9914188497627833,
+        "uncertainty": 0.017162161265868114,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591592,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9253725455443429,
+        "uncertainty": 0.14925490634511107,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9173409825683295,
+        "uncertainty": 0.16531803282040924,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.5,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9950342075275248,
+        "uncertainty": 0.009931584944025573,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9848096358183391,
+        "uncertainty": 0.030380728363295084,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.987922591825113,
+        "uncertainty": 0.02415481634974992,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 0.8,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9814036530707512,
+        "uncertainty": 0.03719269385759916,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.7802450689241995,
+        "uncertainty": 0.4395098621515571,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9512985187996007,
+        "uncertainty": 0.0974029624007724,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9867213928068472,
+        "uncertainty": 0.02655721438539782,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9086728024115673,
+        "uncertainty": 0.18265439517682636,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9674079837727275,
+        "uncertainty": 0.06518403245451831,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.2,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9909385458241943,
+        "uncertainty": 0.018122908350694633,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9605650193443233,
+        "uncertainty": 0.07886996131132062,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9785790433084023,
+        "uncertainty": 0.04284191338317023,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.5,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9915867199263575,
+        "uncertainty": 0.01682642088098052,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591592,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9286878954368045,
+        "uncertainty": 0.14262420654219932,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9218557417179005,
+        "uncertainty": 0.1562885145119095,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 1,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.5,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9952456683858545,
+        "uncertainty": 0.009508663227365322,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.985995213063238,
+        "uncertainty": 0.028009573873497895,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.988837696733987,
+        "uncertainty": 0.02232460653200219,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 0.8,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.7400481872411898,
+        "uncertainty": 0.5199035503091325,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591441,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999998750903037,
+        "uncertainty": 2.468969449997971e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.999999943011062,
+        "uncertainty": 1.1200649241427385e-7,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 0.8,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9975439509514792,
+        "uncertainty": 0.0049120980959673766,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999951709,
+        "uncertainty": 9.633849273882333e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.999999999995185,
+        "uncertainty": 9.604761430637154e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5381622748750291,
+        "uncertainty": 0.9234369720109322,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256350389879,
+        "uncertainty": 0.00014860002206917855,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.838084498580113,
+        "uncertainty": 0.31744066361310697,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9866361538886683,
+        "uncertainty": 0.026016016979558465,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.724525041573432,
+        "uncertainty": 0.5509423945295737,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999244102763,
+        "uncertainty": 0.0000015117722840241044,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9989324887177791,
+        "uncertainty": 0.0021093577377809813,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999933459473024,
+        "uncertainty": 0.000012696802862310896,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9138973060844112,
+        "uncertainty": 0.1722052703656458,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.99999999255916,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999027014077,
+        "uncertainty": 1.916747450758649e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999553921551,
+        "uncertainty": 8.72443054467098e-8,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9996709927099579,
+        "uncertainty": 0.0006580145790849867,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999964129,
+        "uncertainty": 7.149614233981083e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999964234,
+        "uncertainty": 7.128075907303355e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.691453113880325,
+        "uncertainty": 0.6166718606023978,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256839851662,
+        "uncertainty": 0.00014859992290283675,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8381077464425849,
+        "uncertainty": 0.3203426320465085,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9892316766667555,
+        "uncertainty": 0.020820261075415125,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8684864089302962,
+        "uncertainty": 0.263015642450135,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992441124238,
+        "uncertainty": 0.0000015117722835800151,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9991982539558883,
+        "uncertainty": 0.0015778087639926053,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.999994607846912,
+        "uncertainty": 0.00001017301392958192,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9727060258050386,
+        "uncertainty": 0.05458781369996257,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591608,
+        "uncertainty": 1.4881678445100022e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999238023859,
+        "uncertainty": 1.4947279525223678e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999649373879,
+        "uncertainty": 6.815383979397183e-8,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.2,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9999503665929814,
+        "uncertainty": 0.00009926681307503848,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999972656,
+        "uncertainty": 5.444311668156843e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999972736,
+        "uncertainty": 5.428102411997315e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.5,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8507631274371386,
+        "uncertainty": 0.2977788062784623,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256984067016,
+        "uncertainty": 0.00014859989429993892,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8381053283554996,
+        "uncertainty": 0.322515980758747,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9921700698224521,
+        "uncertainty": 0.014938350459415606,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.5,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9589810770974121,
+        "uncertainty": 0.08202294661702703,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992441138092,
+        "uncertainty": 0.0000015117722835800151,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.999463358152234,
+        "uncertainty": 0.0010475836954224604,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999959984103042,
+        "uncertainty": 0.000007391896866382197,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.5,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9946552753002468,
+        "uncertainty": 0.010689308034727674,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591607,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999450925683,
+        "uncertainty": 1.0689243479244936e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999746496314,
+        "uncertainty": 4.8729352331022824e-8,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 1,
+      "skin_color_wt": 1.5,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9999968050923299,
+        "uncertainty": 0.000006389814398710669,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999980418,
+        "uncertainty": 3.891553745916099e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999980473,
+        "uncertainty": 3.880007426459997e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 0.8,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5039876006036821,
+        "uncertainty": 0.9920214539986746,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992440438928,
+        "uncertainty": 0.000001511772286133528,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9985815998344679,
+        "uncertainty": 0.002811162886770746,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999918422873546,
+        "uncertainty": 0.000015704108952352414,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 0.8,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.7443708268420792,
+        "uncertainty": 0.5112582702370592,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591442,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999998755924727,
+        "uncertainty": 2.458926068316103e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999432217103,
+        "uncertainty": 1.1158519497289632e-7,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 0.8,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9976053879794128,
+        "uncertainty": 0.004789224040102957,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999951984,
+        "uncertainty": 9.578560167256e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999952124,
+        "uncertainty": 9.549694368615746e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5402974790182014,
+        "uncertainty": 0.9191643117753552,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256350126507,
+        "uncertainty": 0.00014860002210148604,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8380850922610693,
+        "uncertainty": 0.3174483264755643,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9866771208953368,
+        "uncertainty": 0.025934020144913195,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.7272919231790778,
+        "uncertainty": 0.5454085644928119,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999244102757,
+        "uncertainty": 0.0000015117722840241044,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.998937558013192,
+        "uncertainty": 0.002099218873988229,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999933644350534,
+        "uncertainty": 0.000012659827501204646,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9152750788422286,
+        "uncertainty": 0.16944972451689877,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.99999999255916,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999030985951,
+        "uncertainty": 1.908803711758722e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999555594378,
+        "uncertainty": 8.69097390721052e-8,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9996766099598132,
+        "uncertainty": 0.0006467800793753531,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.999999999996434,
+        "uncertainty": 7.107425759045327e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999964445,
+        "uncertainty": 7.085887432367599e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.6931338524286293,
+        "uncertainty": 0.6133078559020666,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256839793602,
+        "uncertainty": 0.00014859992290916502,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8381079396301816,
+        "uncertainty": 0.32034691748156074,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9892644338993763,
+        "uncertainty": 0.020754696801091543,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8698232590789183,
+        "uncertainty": 0.2603418982133239,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992441124228,
+        "uncertainty": 0.0000015117722835800151,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9992020848565822,
+        "uncertainty": 0.0015701467591086038,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999946228739676,
+        "uncertainty": 0.000010142959921521921,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9730689066889424,
+        "uncertainty": 0.053862051852768045,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591608,
+        "uncertainty": 1.4881678445100022e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999241187277,
+        "uncertainty": 1.4884011134697062e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999650709621,
+        "uncertainty": 6.7886692600716e-8,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.2,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9999509924725718,
+        "uncertainty": 0.00009801505389406273,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999972822,
+        "uncertainty": 5.411227022023013e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.99999999999729,
+        "uncertainty": 5.395017765863486e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.5,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8516167374032302,
+        "uncertainty": 0.2960697352640257,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.99992569840616,
+        "uncertainty": 0.00014859989430049403,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8381053322418822,
+        "uncertainty": 0.3225176242387342,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9921936635661547,
+        "uncertainty": 0.014891127479041533,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.5,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9593398139845745,
+        "uncertainty": 0.08130545736978867,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999244113809,
+        "uncertainty": 0.0000015117722835800151,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9994659338499494,
+        "uncertainty": 0.0010424321651331114,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999960096018518,
+        "uncertainty": 0.0000073695138380625025,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.5,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9947084546520106,
+        "uncertainty": 0.010582949328730717,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591607,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.999999945325706,
+        "uncertainty": 1.0642616021794282e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.999999974748206,
+        "uncertainty": 4.85322040333358e-8,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.5,
+      "skin_color_wt": 1.5,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9999968349392717,
+        "uncertainty": 0.000006330120515096738,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999980541,
+        "uncertainty": 3.867128839374345e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999980596,
+        "uncertainty": 3.855804564523169e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 0.8,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5107979832546243,
+        "uncertainty": 0.9784005872882571,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992440440086,
+        "uncertainty": 0.000001511772286133528,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9985932311075604,
+        "uncertainty": 0.002787899664424498,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999918885753672,
+        "uncertainty": 0.000015611533250248222,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 0.8,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.7518466785393233,
+        "uncertainty": 0.4963065652952141,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591441,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999998765939457,
+        "uncertainty": 2.438896603562668e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999436557715,
+        "uncertainty": 1.1071707228804684e-7,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 0.8,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9977213025635154,
+        "uncertainty": 0.0045573948719019874,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999952547,
+        "uncertainty": 9.465761507954085e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999952688,
+        "uncertainty": 9.43733979852368e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.5437534061256414,
+        "uncertainty": 0.912248846283561,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256350794146,
+        "uncertainty": 0.0001486000219534933,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8380861537755406,
+        "uncertainty": 0.3174666348466819,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9867475613117482,
+        "uncertainty": 0.02579302863865285,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.7319175373498822,
+        "uncertainty": 0.536157224093134,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992441027746,
+        "uncertainty": 0.0000015117722840241044,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9989461901254049,
+        "uncertainty": 0.0020819541668357644,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999934016356341,
+        "uncertainty": 0.000012585426569899916,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9176600815779937,
+        "uncertainty": 0.16467971843931506,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.99999999255916,
+        "uncertainty": 1.4881678556122324e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999038760715,
+        "uncertainty": 1.8932541712146644e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999558975606,
+        "uncertainty": 8.623349379011103e-8,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1,
+      "beta": 30
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9996877280873778,
+        "uncertainty": 0.000624543824247703,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.999999999999686,
+        "uncertainty": 6.282752096353761e-13,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999964758,
+        "uncertainty": 7.02327085377874e-12,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999999964863,
+        "uncertainty": 7.002176616310862e-12,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.2,
+      "beta": 10
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.6958301599567026,
+        "uncertainty": 0.6079112411171407,
+        "verdict": "split"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999256839948842,
+        "uncertainty": 0.00014859992287497015,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.8381083171383321,
+        "uncertainty": 0.32035671816967415,
+        "verdict": "close"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.98932018800709,
+        "uncertainty": 0.020643102211017172,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.2,
+      "beta": 15
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.8720494771677965,
+        "uncertainty": 0.2558893890509857,
+        "verdict": "close"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999992441124255,
+        "uncertainty": 0.0000015117722835800151,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9992085217125345,
+        "uncertainty": 0.0015572726972993278,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.9999946526475626,
+        "uncertainty": 0.000010083412896211286,
+        "verdict": "decisive"
+      }
+    }
+  },
+  {
+    "config": {
+      "texture_shrink": 0.5,
+      "specular_shrink": 0.15,
+      "skin_color_wt": 1.2,
+      "beta": 20
+    },
+    "correct": 3,
+    "anyWrong": 1,
+    "confidentWrong": 1,
+    "score": 0,
+    "detail": {
+      "orange.jpg": {
+        "winner": "orange",
+        "mass": 0.9737054095786806,
+        "uncertainty": 0.05258904591641389,
+        "verdict": "decisive"
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "mass": 0.9999999925591608,
+        "uncertainty": 1.4881678445100022e-8,
+        "verdict": "decisive"
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "mass": 0.9999999247265084,
+        "uncertainty": 1.476245490295014e-7,
+        "verdict": "decisive"
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "mass": 0.999999965335728,
+        "uncertainty": 6.735715885053395e-8,
+        "verdict": "decisive"
+      }
+    }
+  }
+]

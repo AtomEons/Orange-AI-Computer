@@ -1,0 +1,47 @@
+{
+  "experiment": "09-determinism-upgrade",
+  "generated_at": "2026-06-26T10:10:51.128Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes_in": 2075585,
+  "field_entropy": {
+    "id": {
+      "entropy_bits_per_byte": 4.296,
+      "total_bytes": 130704
+    },
+    "action": {
+      "entropy_bits_per_byte": 3.75,
+      "total_bytes": 79049
+    },
+    "status": {
+      "entropy_bits_per_byte": 1.004,
+      "total_bytes": 12451
+    },
+    "summary": {
+      "entropy_bits_per_byte": 4.796,
+      "total_bytes": 276671
+    },
+    "payload_json": {
+      "entropy_bits_per_byte": 5.093,
+      "total_bytes": 838397
+    },
+    "created_at": {
+      "entropy_bits_per_byte": 3.228,
+      "total_bytes": 124480
+    }
+  },
+  "total_field_bytes": 1461752,
+  "distinct_hex_nonces": 6815,
+  "irreducible_nonce_bytes": 54804,
+  "regen_floor_components": {
+    "seed_text": 517,
+    "code_sha": 32,
+    "irreducible_nonces": 54804,
+    "structural_bookkeeping": 37344,
+    "total_floor": 92697
+  },
+  "theoretical_ceiling_ratio": 22.39,
+  "actual_today_lossless_ratio": 16.56,
+  "roundtrip_lossless": true,
+  "beats_plait_baseline": false,
+  "pass": false
+}

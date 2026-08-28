@@ -1,0 +1,90 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "observability",
+  "card_id": "observability-trace-fetch",
+  "capability": "observability.trace.fetch",
+  "cost_class": "byo-key",
+  "latency_class": "sub-second",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["backend", "trace_id"],
+    "properties": {
+      "backend": {
+        "type": "string",
+        "enum": ["jaeger", "tempo", "datadog-apm", "honeycomb", "otlp-collector"]
+      },
+      "trace_id": {
+        "type": "string",
+        "description": "Hex-encoded W3C trace id (16 or 32 hex chars).",
+        "pattern": "^[0-9a-fA-F]+$",
+        "minLength": 16,
+        "maxLength": 32
+      },
+      "max_spans": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5000,
+        "default": 1000
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["trace_id", "root_span_id", "spans", "duration_ms"],
+    "properties": {
+      "trace_id": { "type": "string", "minLength": 16, "maxLength": 32 },
+      "root_span_id": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "duration_ms": { "type": "number", "minimum": 0 },
+      "service_count": { "type": "integer", "minimum": 0 },
+      "error_count": { "type": "integer", "minimum": 0 },
+      "spans": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["span_id", "operation", "service", "start", "duration_ms"],
+          "properties": {
+            "span_id": { "type": "string", "minLength": 1, "maxLength": 32 },
+            "parent_span_id": { "type": "string", "minLength": 1, "maxLength": 32 },
+            "operation": { "type": "string", "maxLength": 256 },
+            "service": { "type": "string", "maxLength": 128 },
+            "start": { "type": "string", "format": "date-time" },
+            "duration_ms": { "type": "number", "minimum": 0 },
+            "status": { "type": "string", "enum": ["ok", "error", "unset"] },
+            "attributes": {
+              "type": "object",
+              "additionalProperties": {
+                "oneOf": [
+                  { "type": "string", "maxLength": 1024 },
+                  { "type": "number" },
+                  { "type": "boolean" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 200,
+    "scopes": [
+      "net.egress:tempo.example.internal",
+      "net.egress:api.datadoghq.com",
+      "secrets.read:observability.tracing"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 60,
+    "egress_allowlist": ["tempo.example.internal", "api.datadoghq.com"]
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:26:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Fetch a distributed trace by id from Jaeger/Tempo/Datadog APM/Honeycomb. Returns spans with parent links and attributes for incident triage.",
+  "tags": ["observability", "trace", "apm", "jaeger", "tempo", "datadog", "read-only"],
+  "notes": "Commonly chained downstream of logs-query: extract trace_id from an error log, then fetch the trace to locate the failing span."
+}

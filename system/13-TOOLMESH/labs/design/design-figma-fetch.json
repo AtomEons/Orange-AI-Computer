@@ -1,0 +1,83 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "design",
+  "card_id": "design-figma-fetch",
+  "capability": "design.figma.fetch",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["file_key"],
+    "properties": {
+      "file_key": {
+        "type": "string",
+        "description": "Figma file key (the segment after /file/ or /design/ in a Figma URL).",
+        "pattern": "^[A-Za-z0-9]+$",
+        "minLength": 8,
+        "maxLength": 64
+      },
+      "node_ids": {
+        "type": "array",
+        "description": "Optional list of node ids to scope the fetch. Format 'id:id' as Figma returns. Empty array fetches the full file tree.",
+        "items": { "type": "string", "pattern": "^[0-9]+:[0-9]+$", "minLength": 3, "maxLength": 64 },
+        "maxItems": 200,
+        "uniqueItems": true
+      },
+      "include_styles": {
+        "type": "boolean",
+        "description": "When true, the runner also calls the /styles endpoint and merges the result.",
+        "default": true
+      },
+      "include_components": {
+        "type": "boolean",
+        "default": true
+      },
+      "version_id": {
+        "type": "string",
+        "description": "Pinned Figma version id; omit to fetch HEAD.",
+        "minLength": 1,
+        "maxLength": 64
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["dump_ref", "file_key", "fetched_at"],
+    "properties": {
+      "dump_ref": {
+        "type": "string",
+        "description": "Sandbox reference to the raw Figma API response (JSON), suitable as input to design-tokens-extract.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "file_key": { "type": "string", "minLength": 8, "maxLength": 64 },
+      "version_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "fetched_at": { "type": "string", "format": "date-time" },
+      "node_count": { "type": "integer", "minimum": 0 },
+      "style_count": { "type": "integer", "minimum": 0 },
+      "component_count": { "type": "integer", "minimum": 0 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 20,
+    "scopes": [
+      "net.egress:api.figma.com",
+      "fs.write:sandbox://design/figma/",
+      "secrets.read:figma.token"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 10,
+    "egress_allowlist": ["api.figma.com"]
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:22:00Z",
+  "vendor": "figma",
+  "version": "0.1.0",
+  "summary": "Read-only fetch of a Figma file (or pinned version) into sandbox storage for downstream tokenization / inspection.",
+  "tags": ["design", "figma", "fetch", "read-only", "byo-key"],
+  "notes": "Operator personal access token is read from Hermes secret 'figma.token'. The card never writes back to Figma; mutation requires a separate (not yet present) design-figma-mutate card with external-side-effect risk class."
+}

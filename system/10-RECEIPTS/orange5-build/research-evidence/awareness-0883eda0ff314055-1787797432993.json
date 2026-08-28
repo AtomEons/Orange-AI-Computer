@@ -1,0 +1,359 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-0883eda0ff314055-1787797432993",
+  "query": "{\"intent\":\"Audit OrangeFive for agent theater, stale research, source drift, false green, silent service failure, and project-scope loss. Return deterministic probes that keep operator, models, and machines in one reality.\",\"evidence\":[\"scouts=4/4;sources=19;sha=e29e6f69893c63a5\",\"candidates=19;status=BENCHMARK_REQUIRED;sha=0572db35033aa8af\"],\"context\":{\"scouts\":[{\"id\":\"runtime-orchestration\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":2},{\"id\":\"memory-compression-learning\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":5},{\"id\":\"models-and-creative\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":10},{\"id\":\"security-and-operator-reality\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":2}],\"candidates\":[{\"title\":\"The Sleeping Agent: What Gist-Based Context Compression Loses and Why\",\"url\":\"http://arxiv.org/abs/2608.11775v1\",\"summary\":\"Gist-based context compression---summarising older conversation history into compact representations---is a common approach in long-horizon \",\"sourceQuality\":0.855,\"freshness\":\"ESTABLISHED\",\"lifecycle\":\"BENCHMARK_REQUIRED\"},{\"title\":\"Ontology-Grounded Project Memory for Coding Agents\",\"url\":\"http://arxiv.org/abs/2608.13662v1\",\"summary\":\"Codin OrangeFive orange5",
+  "searchQuery": "intent audit for agent theater stale research drift",
+  "generatedAt": "2026-08-27T02:23:53.003Z",
+  "budgetMs": 60000,
+  "elapsedMs": 659,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1264815722",
+      "title": "ByteYellow/AgentProvenance",
+      "url": "https://github.com/ByteYellow/AgentProvenance",
+      "summary": "Security-oriented three-axis observability for sandboxed AI agents: model intent, app context, and runtime telemetry into verifiable evidence graphs for risk, forensics, and audit.",
+      "updatedAt": "2026-08-20T02:52:55Z",
+      "license": "Apache-2.0",
+      "stars": 48,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7988,
+      "relevance": {
+        "score": 0.3762,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "audit",
+          "agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1258613313",
+      "title": "Delego-Dev/delego",
+      "url": "https://github.com/Delego-Dev/delego",
+      "summary": "Intent-bound action authorization for AI agents — deterministic, per-action approval a prompt injection can't re-point, with a signed, tamper-evident audit trail.",
+      "updatedAt": "2026-07-21T16:22:10Z",
+      "license": "Apache-2.0",
+      "stars": 25,
+      "forks": 1,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7933,
+      "relevance": {
+        "score": 0.3762,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "audit",
+          "agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1185799141",
+      "title": "FITPAC/FITPAC",
+      "url": "https://github.com/FITPAC/FITPAC",
+      "summary": "FITPAC is an open standard for translating human intent into auditable, implementation-agnostic specs for agentic coding. Defines a shared ontology, control grammar, conflict precedence, ambiguity consultation, and round-trip verification (spec → code → derived spec → diff) to evidence alignment.",
+      "updatedAt": "2026-06-01T08:35:08Z",
+      "license": "NOASSERTION",
+      "stars": 16,
+      "forks": 1,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7896,
+      "relevance": {
+        "score": 0.3762,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "audit",
+          "agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1322136356",
+      "title": "crescerelabs/sentience-governor",
+      "url": "https://github.com/crescerelabs/sentience-governor",
+      "summary": "Local-first runtime governance for AI agents. Declare intent, catch out-of-scope actions, and audit them in a verifiable trail.",
+      "updatedAt": "2026-08-26T15:05:53Z",
+      "license": "Apache-2.0",
+      "stars": 7,
+      "forks": 0,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7831,
+      "relevance": {
+        "score": 0.3762,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "audit",
+          "agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1136590548",
+      "title": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "summary": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "updatedAt": "2026-08-27T02:11:18Z",
+      "license": "MIT",
+      "stars": 243543,
+      "forks": 36832,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.865,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "agent",
+          "research"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.26036v1",
+      "title": "Trace Integrity for LLM Data Agents: A Vision for Auditable Structured Reasoning in Real-World Systems",
+      "url": "http://arxiv.org/abs/2608.26036v1",
+      "summary": "Answer accuracy is an insufficient reliability signal for LLM data agents. In structured-data tasks, a benchmark-correct answer can be produced by an invalid trace. This paper introduces Trace Integrity, a deployment reliability criterion for evaluating whether the computation recorded behind an answer is explicit, executable, schema-valid, operator-faithful, replayable, answer-consistent, and auditable. We identify the Structure Gap as the deployment failure mode that makes Trace Integrity nece",
+      "updatedAt": "2026-08-26T17:15:24Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "audit",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.21101v1",
+      "title": "ClawSentry: A Progressive Multi-Tier Security Monitor for Safeguarding Autonomous LLM Agents",
+      "url": "http://arxiv.org/abs/2608.21101v1",
+      "summary": "As large language model (LLM) agents move from conversation to executing code, reading local files, and orchestrating external tools, a single agent hijacked by a malicious third-party skill can cause data exfiltration, privilege escalation, or cascading compromise. We argue that agentic risk is progressive: it can enter at four loci of the agent control loop--skill admission, invocation-time intent, execution-time effect, and post-action consequence--while a denied dangerous objective can reapp",
+      "updatedAt": "2026-08-21T13:47:51Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.15877v1",
+      "title": "Dear Algo: A Precision-First Agentic Intent Layer for Unified Search and Recommendation",
+      "url": "http://arxiv.org/abs/2608.15877v1",
+      "summary": "Search and recommendation serve a shared discovery objective but encode intent differently. We study this boundary through Dear Algo on Threads, a deployed product where open-ended requests such as \\emph{more NBA news} or \\emph{less politics} steer subsequent feed recommendations rather than return a one-shot result list. Its agentic intent layer compiles explicit, inferred, negative, and compound intent into a grounded executable plan, then invokes conventional retrieval and optional semantic o",
+      "updatedAt": "2026-08-16T17:59:12Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.09408v3",
+      "title": "DREAM Technical Report",
+      "url": "http://arxiv.org/abs/2608.09408v3",
+      "summary": "Industrial recommender systems commonly use cascaded retrieval, ranking, and re-ranking pipelines. Although efficient, these pipelines fragment information and objectives across modules, rely on rigid rules, and have limited awareness of real-time intent, leaving session-level shifts among browsing, comparison, and purchase insufficiently addressed. We present DREAM (Developing Recommender Engine with Agentic Methods), an autonomous optimization control architecture that adds a perception-aware,",
+      "updatedAt": "2026-08-13T13:55:36Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.08184v1",
+      "title": "Large Multimodal Agents for Intelligent Transportation Systems: Architectures, Evidence, and Deployment Challenges",
+      "url": "http://arxiv.org/abs/2608.08184v1",
+      "summary": "Large multimodal agents (LMAs) are increasingly proposed for intelligent transportation systems (ITS), but existing studies often conflate multimodality, agency, empirical performance, and deployment readiness. This review provides an auditable evidence map of 42 primary study families released between January 2023 and 3 August 2026 within a corpus of 91 mapped sources. It distinguishes model-level, system-level, and hybrid multimodality and classifies each family by system architecture and acti",
+      "updatedAt": "2026-08-08T15:22:40Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "audit",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "989447941",
+      "title": "lukeb-aidev/cohesix",
+      "url": "https://github.com/lukeb-aidev/cohesix",
+      "summary": "Cohesix is an open-source research OS for trustworthy AI infrastructure. Built on the formally verified seL4 microkernel, its Queen/Worker hives turn AI intent into capability-scoped, bounded, auditable action across edge GPU fleets - “infrastructure for AGI.”",
+      "updatedAt": "2026-08-27T01:28:04Z",
+      "license": "NOASSERTION",
+      "stars": 14,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2035,
+      "relevance": {
+        "score": 0.4679,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "audit",
+          "research"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1317217069",
+      "title": "amd2g2zz/research-tree",
+      "url": "https://github.com/amd2g2zz/research-tree",
+      "summary": "Intent-constrained deep research: recursive evidence DAG, PageRank, auditable cited reports",
+      "updatedAt": "2026-08-21T18:24:57Z",
+      "license": null,
+      "stars": 5,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1956,
+      "relevance": {
+        "score": 0.4679,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "audit",
+          "research"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "direct",
+      "url": "http://arxiv.org/abs/2608.11775v1",
+      "error": "UnexpectedRedirect fetching \"http://arxiv.org/abs/2608.11775v1\". For more information, pass `verbose: true` in the second argument to fetch()"
+    },
+    {
+      "provider": "direct",
+      "url": "http://arxiv.org/abs/2608.13662v1",
+      "error": "UnexpectedRedirect fetching \"http://arxiv.org/abs/2608.13662v1\". For more information, pass `verbose: true` in the second argument to fetch()"
+    }
+  ],
+  "sha256": "1773ad36c0dbe0b58258171800fe4efc868f63b0c1a34ca4760cda4f6faa4a87"
+}

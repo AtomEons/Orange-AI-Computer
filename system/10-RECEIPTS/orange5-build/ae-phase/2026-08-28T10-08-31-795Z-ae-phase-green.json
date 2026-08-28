@@ -1,0 +1,45 @@
+{
+  "schema": "orange.receipt.ae-phase-light-proof.v1",
+  "status": "AE_PHASE_FABRIC_GREEN",
+  "ok": true,
+  "at": "2026-08-28T10:08:31.795Z",
+  "checks": {
+    "local_active": true,
+    "codexa_active": true,
+    "direct_udp_path": true,
+    "authenticated_encryption": true,
+    "replay_protection": true,
+    "n150_sees_codexa_exact_state": true,
+    "codexa_sees_n150_exact_state": true,
+    "mutual_observation": true,
+    "no_auth_or_send_faults": true
+  },
+  "n150": {
+    "nodeId": "WIN-IB7K3UTA9DS",
+    "epoch": "117172566383507671",
+    "localStateRoot": "4a8ec6bd3162418ab3649bdfe0e7a9c790cdbd14cb8e12e3d7b901156a0b696d",
+    "peerStateRoot": "9ee184a901845cb8f71e41aa272c9e79c6923cc39aab9f849935b342e8d50b86",
+    "endpoint": {
+      "address": "10.0.99.1",
+      "port": 8905,
+      "key": "10.0.99.1:8905"
+    }
+  },
+  "codexa": {
+    "nodeId": "CODEXA",
+    "epoch": "117172574714154082",
+    "localStateRoot": "9ee184a901845cb8f71e41aa272c9e79c6923cc39aab9f849935b342e8d50b86",
+    "peerStateRoot": "4a8ec6bd3162418ab3649bdfe0e7a9c790cdbd14cb8e12e3d7b901156a0b696d"
+  },
+  "protocol": {
+    "authenticatedRoundTrip": true,
+    "replayRejected": true
+  },
+  "transportLaw": {
+    "interMachine": "authenticated Bun UDP datagrams",
+    "tcpAcrossDirectCable": false,
+    "dnsOnFabric": false,
+    "diskIsTruth": true
+  },
+  "sha256": "e2a328f3b25763c23fa4bb6fef269881cc26642fe30dbe189b52488e1d81cc95"
+}

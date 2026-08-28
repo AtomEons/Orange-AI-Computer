@@ -1,0 +1,10 @@
+modal dim: 286 (10397 vectors)
+loaded 318 classes at wide_dim=286
+
+══ WIDE-IT FISHER @ MULTIPLE K ══
+  K= 47 (wide=286D)  Fisher rate=56.2%
+  K=100 (wide=286D)  Fisher rate=69.7%
+  K=200 (wide=286D)  Fisher rate=77.0%
+  K=300 (wide=286D)  Fisher rate=78.3%
+  K=318 (wide=286D)  Fisher rate=75.7%
+total: 226s

@@ -1,0 +1,107 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "audio",
+  "card_id": "audio-transcribe",
+  "capability": "audio.transcribe",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["source_ref"],
+    "properties": {
+      "source_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "description": "Sandbox reference to an audio (or video — runner extracts track 0) file.",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "language": {
+        "type": "string",
+        "description": "BCP-47 language hint (e.g. 'en', 'es-MX'). Omit for auto-detect.",
+        "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$",
+        "minLength": 2,
+        "maxLength": 8
+      },
+      "diarize": {
+        "type": "boolean",
+        "description": "When true, runner annotates segments with speaker labels (speaker_0, speaker_1, ...). Backend support varies.",
+        "default": false
+      },
+      "word_timestamps": {
+        "type": "boolean",
+        "description": "When true, per-word start/end timestamps are returned in addition to segment timestamps.",
+        "default": false
+      },
+      "prompt_bias": {
+        "type": "string",
+        "description": "Optional vocabulary/style bias prompt passed to the backend (proper nouns, jargon).",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["text", "segments", "language", "model"],
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "Full transcript concatenated from segments."
+      },
+      "language": { "type": "string", "minLength": 2, "maxLength": 8 },
+      "model": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "segments": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end", "text"],
+          "properties": {
+            "start": { "type": "number", "minimum": 0 },
+            "end": { "type": "number", "minimum": 0 },
+            "text": { "type": "string" },
+            "speaker": { "type": "string", "minLength": 1, "maxLength": 32 },
+            "words": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["word", "start", "end"],
+                "properties": {
+                  "word": { "type": "string" },
+                  "start": { "type": "number", "minimum": 0 },
+                  "end": { "type": "number", "minimum": 0 },
+                  "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 900,
+    "max_invocations": 20,
+    "scopes": [
+      "fs.read:sandbox://audio/",
+      "fs.write:sandbox://audio/transcripts/",
+      "net.egress:api.openai.com",
+      "net.egress:api.deepgram.com",
+      "secrets.read:frontier.transcribe"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 12,
+    "egress_allowlist": ["api.openai.com", "api.deepgram.com"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:20:00Z",
+  "vendor": "frontier-offload",
+  "version": "0.1.0",
+  "summary": "Sandbox-resident audio is transcribed by an operator-supplied STT backend; returns segments, optional word timestamps, optional diarization.",
+  "tags": ["audio", "transcribe", "stt", "whisper", "diarization", "byo-key"],
+  "notes": "Audio leaves the sandbox for the selected frontier STT provider, so each invocation requires human approval. Diarization quality is backend-dependent; the runner does not synthesize speaker labels when the backend cannot. Operator credential is read from Hermes secret 'frontier.transcribe'."
+}

@@ -1,0 +1,36 @@
+{
+  "correct": 15,
+  "total": 20,
+  "failures": [
+    {
+      "fixture": "basketball1",
+      "held": "candle",
+      "predicted": "basketball2",
+      "margin": 0.013672205664157389
+    },
+    {
+      "fixture": "basketball2",
+      "held": "moon",
+      "predicted": "basketball1",
+      "margin": 0.003006997047546811
+    },
+    {
+      "fixture": "board",
+      "held": "crt",
+      "predicted": "butterfly",
+      "margin": 0.007564428027080794
+    },
+    {
+      "fixture": "building",
+      "held": "neon",
+      "predicted": "butterfly",
+      "margin": 0.02394731630312652
+    },
+    {
+      "fixture": "pic5",
+      "held": "crt",
+      "predicted": "pic3",
+      "margin": 0.04415015754709195
+    }
+  ]
+}

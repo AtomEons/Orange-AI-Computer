@@ -1,0 +1,26 @@
+{
+  "schema": "knowledge-strata/emit/v1",
+  "topic": "pathwaves",
+  "version": 1,
+  "prior_version": null,
+  "canon_id": "intake_sample_1afd99",
+  "department": "AE0",
+  "title": "Pathwaves routing doctrine note",
+  "summary": "# Pathwaves routing doctrine note Pathwaves is a real routing doctrine in AtomEons. It is not equivalent to LifePath. Life Migration is the onboarding and model-building engine. Knowledge Strata is a compiler loop: intake -> canon -> durable artifact -> integrity pass -> reuse. M",
+  "intake_sha256": "63be8b49356c7750fae6ee2b0948627f6b4204c58d2aa621f88e37b4b440c151",
+  "canon_sha256": "0cc6360bdbafb4eb63e5301b901dd494ac239c8722c9e0db1e8380ab01848706",
+  "canon_raw_sha256": "dd5370b0b96b845d6723e1eb5e64477651a5a5ed223697a6b342e2282ab01ae0",
+  "markdown_sha256": "3db88a07557cda42a83e82ba847af79d57e0d83ed81047ed4943e257e2eb5410",
+  "chain_sha256": "dd56a5528cda511599522371069fc1e58546ca8bf3c40833d339a307fd00ebf7",
+  "force_break": null,
+  "emitted_at": "2026-06-25T00:34:34.122Z",
+  "emitter": "emit.mjs/v1",
+  "extractor": "heuristic",
+  "tags": [
+    "heuristic"
+  ],
+  "lineage": {
+    "supersedes": null,
+    "canon_version": 1
+  }
+}

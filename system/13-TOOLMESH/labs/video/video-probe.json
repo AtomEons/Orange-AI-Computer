@@ -1,0 +1,75 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "video",
+  "card_id": "video-probe",
+  "capability": "video.probe",
+  "cost_class": "free",
+  "latency_class": "sub-second",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["source_ref"],
+    "properties": {
+      "source_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["format", "duration_seconds", "size_bytes", "streams"],
+    "properties": {
+      "format": {
+        "type": "string",
+        "description": "Container/format name as reported by ffprobe (e.g. 'mov,mp4,m4a,3gp,3g2,mj2').",
+        "minLength": 1,
+        "maxLength": 64
+      },
+      "duration_seconds": { "type": "number", "minimum": 0 },
+      "size_bytes": { "type": "integer", "minimum": 0 },
+      "bitrate_kbps": { "type": "number", "minimum": 0 },
+      "streams": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["index", "type", "codec"],
+          "properties": {
+            "index": { "type": "integer", "minimum": 0 },
+            "type": { "type": "string", "enum": ["video", "audio", "subtitle", "data"] },
+            "codec": { "type": "string", "minLength": 1, "maxLength": 32 },
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 },
+            "fps": { "type": "number", "minimum": 0 },
+            "channels": { "type": "integer", "minimum": 1 },
+            "sample_rate": { "type": "integer", "minimum": 1 },
+            "language": { "type": "string", "minLength": 1, "maxLength": 16 }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 120,
+    "max_invocations": 200,
+    "scopes": [
+      "fs.read:sandbox://video/",
+      "process.spawn:ffprobe",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 120
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:18:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Read container, duration, bitrate, and per-stream metadata from a sandboxed video. No mutation, no network.",
+  "tags": ["video", "probe", "metadata", "ffprobe", "read-only"],
+  "notes": "Pure ffprobe; safe to call unattended at high rate. Planner typically calls this before video-transcode to choose an appropriate codec / bitrate."
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "design",
+  "card_id": "design-contrast-check",
+  "capability": "design.contrast.check",
+  "cost_class": "free",
+  "latency_class": "sub-second",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["pairs"],
+    "properties": {
+      "pairs": {
+        "type": "array",
+        "description": "Foreground/background color pairs to evaluate. Each color is a CSS color string (hex, rgb(), hsl(), or a named color).",
+        "minItems": 1,
+        "maxItems": 500,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["foreground", "background"],
+          "properties": {
+            "label": { "type": "string", "minLength": 1, "maxLength": 128 },
+            "foreground": { "type": "string", "minLength": 3, "maxLength": 64 },
+            "background": { "type": "string", "minLength": 3, "maxLength": 64 },
+            "font_size_px": { "type": "number", "minimum": 1 },
+            "font_weight": { "type": "integer", "minimum": 100, "maximum": 900 }
+          }
+        }
+      },
+      "standard": {
+        "type": "string",
+        "description": "Accessibility standard to evaluate against. WCAG 2.1 uses contrast ratio; WCAG 3.0 / APCA uses perceptual lightness contrast.",
+        "enum": ["wcag-2.1-aa", "wcag-2.1-aaa", "apca"],
+        "default": "wcag-2.1-aa"
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["results", "passed_count", "failed_count"],
+    "properties": {
+      "passed_count": { "type": "integer", "minimum": 0 },
+      "failed_count": { "type": "integer", "minimum": 0 },
+      "results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["foreground", "background", "ratio", "passes"],
+          "properties": {
+            "label": { "type": "string" },
+            "foreground": { "type": "string" },
+            "background": { "type": "string" },
+            "ratio": {
+              "type": "number",
+              "description": "WCAG 2.1 contrast ratio (1.0-21.0) OR APCA Lc value (-108 to 106) depending on the requested standard."
+            },
+            "passes": { "type": "boolean" },
+            "size_tier": {
+              "type": "string",
+              "description": "'normal' or 'large' under WCAG sizing rules; null for APCA which uses fontsize+weight lookup.",
+              "enum": ["normal", "large"]
+            },
+            "notes": { "type": "string", "maxLength": 200 }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 120,
+    "max_invocations": 200,
+    "scopes": ["net.egress:none"],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 120
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:22:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Pure-compute WCAG 2.1 / APCA color-contrast checker; no fetch, no mutation, safe to fan out at high rate.",
+  "tags": ["design", "a11y", "accessibility", "contrast", "wcag", "apca"],
+  "notes": "Useful as a guardrail card the planner can call after design-tokens-extract to verify that a token palette is internally accessible before promoting it."
+}

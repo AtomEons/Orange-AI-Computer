@@ -1,0 +1,90 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "automation",
+  "card_id": "gh-action-trigger",
+  "capability": "automation.gh-action",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["repo", "workflow"],
+    "properties": {
+      "repo": {
+        "type": "string",
+        "description": "GitHub repository in 'owner/name' form. Must appear in the operator's gh-action allowlist (configured at lease issuance); otherwise the request is rejected.",
+        "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$",
+        "minLength": 3,
+        "maxLength": 128
+      },
+      "workflow": {
+        "type": "string",
+        "description": "Workflow file name (e.g. 'release.yml') or numeric workflow id.",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "ref": {
+        "type": "string",
+        "description": "Branch or tag ref the workflow should run against. Defaults to the repository's default branch.",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "inputs": {
+        "type": "object",
+        "description": "workflow_dispatch input map. Each value is coerced to string per GitHub's API requirements; types are not deep-validated.",
+        "additionalProperties": { "type": "string", "maxLength": 65535 },
+        "maxProperties": 50
+      },
+      "wait_for_completion": {
+        "type": "boolean",
+        "description": "When true, the runner polls until the dispatched run reaches a terminal status (success/failure/cancelled/timed_out) or wait_timeout_seconds elapses.",
+        "default": false
+      },
+      "wait_timeout_seconds": {
+        "type": "integer",
+        "description": "Maximum polling window when wait_for_completion=true.",
+        "minimum": 30,
+        "maximum": 3600,
+        "default": 600
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["dispatched"],
+    "properties": {
+      "dispatched": {
+        "type": "boolean",
+        "description": "True when the GitHub API accepted the workflow_dispatch call. Note: GitHub's API does not return the run id on dispatch; the runner resolves it by polling the workflow's recent runs."
+      },
+      "run_id": { "type": "integer", "minimum": 1 },
+      "run_url": { "type": "string" },
+      "status": {
+        "type": "string",
+        "description": "Latest observed status. 'queued'/'in_progress' when wait_for_completion=false; otherwise a terminal status.",
+        "enum": ["queued", "in_progress", "success", "failure", "cancelled", "timed_out", "unknown"]
+      },
+      "conclusion": { "type": "string", "enum": ["success", "failure", "cancelled", "timed_out", "neutral", "skipped", "action_required", "stale"] },
+      "duration_seconds": { "type": "number", "minimum": 0 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 3600,
+    "max_invocations": 10,
+    "scopes": [
+      "net.egress:api.github.com",
+      "secrets.read:github.pat"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 6,
+    "egress_allowlist": ["api.github.com"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "github",
+  "version": "0.1.0",
+  "summary": "Dispatch a GitHub Actions workflow via workflow_dispatch with optional poll-to-completion. Repo allowlist enforced at lease time.",
+  "tags": ["automation", "github", "actions", "ci", "byo-key"],
+  "notes": "Triggering destructive workflows (release, deploy, infra apply) should be paired with a diff-review or release-gate capability — this card does not inspect what the workflow will do."
+}

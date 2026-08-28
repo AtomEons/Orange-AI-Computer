@@ -1,0 +1,98 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "public-agent",
+  "card_id": "public-agent-web-fetch",
+  "capability": "public-agent.web.fetch",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["url"],
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "Public HTTP(S) URL. The runner rejects every other scheme and any host that resolves to a loopback, private, link-local, non-global, or cloud-metadata address.",
+        "format": "uri",
+        "pattern": "^https?://",
+        "minLength": 7,
+        "maxLength": 2048
+      },
+      "method": {
+        "type": "string",
+        "description": "HTTP method. This card is read-only by intent; only safe verbs are permitted.",
+        "enum": ["GET", "HEAD"],
+        "default": "GET"
+      },
+      "headers": {
+        "type": "object",
+        "description": "Whitelisted request headers. Forbidden header names (Cookie, Authorization without a registered scheme) are rejected at lease issuance.",
+        "additionalProperties": { "type": "string", "maxLength": 2048 }
+      },
+      "max_bytes": {
+        "type": "integer",
+        "description": "Hard ceiling on response body bytes; the runner aborts and reports truncated=true when exceeded.",
+        "minimum": 1024,
+        "maximum": 10485760,
+        "default": 1048576
+      },
+      "respect_robots_txt": {
+        "type": "boolean",
+        "default": true
+      },
+      "render_javascript": {
+        "type": "boolean",
+        "description": "When true, the runner uses a headless browser instead of a raw HTTP client. Latency moves to upper end of seconds bucket.",
+        "default": false
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["status", "final_url", "content_type", "size_bytes"],
+    "properties": {
+      "status": { "type": "integer", "minimum": 100, "maximum": 599 },
+      "final_url": { "type": "string", "format": "uri" },
+      "content_type": { "type": "string", "maxLength": 256 },
+      "size_bytes": { "type": "integer", "minimum": 0 },
+      "body_ref": {
+        "type": "string",
+        "description": "Sandbox reference to the response body. Omitted for HEAD.",
+        "pattern": "^sandbox://"
+      },
+      "text_excerpt": {
+        "type": "string",
+        "description": "First N characters of decoded text response for fast planner-side previewing.",
+        "maxLength": 8192
+      },
+      "headers": {
+        "type": "object",
+        "additionalProperties": { "type": "string" }
+      },
+      "truncated": { "type": "boolean" },
+      "redirect_chain": {
+        "type": "array",
+        "items": { "type": "string", "format": "uri" },
+        "maxItems": 10
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 100,
+    "scopes": [
+      "net.egress:public-internet",
+      "fs.write:sandbox://web/"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:24:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Read-only public HTTP(S) fetch with fail-closed SSRF checks, redirect revalidation, robots.txt respect, and body caps.",
+  "tags": ["public-agent", "web", "fetch", "http", "read-only", "ssrf-guarded"],
+  "notes": "The runner permits only http and https and rejects credentials in URLs. Before every connection it resolves the hostname, rejects any non-global answer, and connects only to the validated address. Blocked destinations include localhost and loopback (127.0.0.0/8, ::1/128), private and shared space (10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16, fc00::/7), link-local space (169.254.0.0/16, fe80::/10), unspecified addresses, and cloud metadata endpoints including 169.254.169.254 and 169.254.170.2. Every DNS answer is revalidated immediately before connect to fail closed on rebinding; every redirect target is re-resolved and revalidated before following, with at most 10 hops. JavaScript rendering applies the same policy to navigation, redirects, and subresource requests."
+}

@@ -1,0 +1,50 @@
+{
+  "results": [
+    {
+      "letter_height_px": 128,
+      "retinal_edge": 0.0000969256449022045,
+      "fine_edge": 0.0746610334982058,
+      "mid_edge": 0.19236623468621383,
+      "coarse_edge": 0.3367269046270497
+    },
+    {
+      "letter_height_px": 64,
+      "retinal_edge": 0.0000964694558139682,
+      "fine_edge": 0.06919002631316164,
+      "mid_edge": 0.19767869268156377,
+      "coarse_edge": 0.41219300301312223
+    },
+    {
+      "letter_height_px": 32,
+      "retinal_edge": 0.00009138014401111408,
+      "fine_edge": 0.060892014065869755,
+      "mid_edge": 0.19189753447475602,
+      "coarse_edge": 0.4099367761855319
+    },
+    {
+      "letter_height_px": 16,
+      "retinal_edge": 0.00007005479619884406,
+      "fine_edge": 0.04579451720497564,
+      "mid_edge": 0.1486553333482732,
+      "coarse_edge": 0.3190090769676317
+    },
+    {
+      "letter_height_px": 8,
+      "retinal_edge": 0.000052379743481600904,
+      "fine_edge": 0.03549022925194123,
+      "mid_edge": 0.10896918813159573,
+      "coarse_edge": 0.21243340831642854
+    },
+    {
+      "letter_height_px": 4,
+      "retinal_edge": 0.000027224932656166878,
+      "fine_edge": 0.02347893403743484,
+      "mid_edge": 0.05166618170005677,
+      "coarse_edge": 0.0963025753153488
+    }
+  ],
+  "smallestResolvable": 8,
+  "verdict": "20:20",
+  "floor": 0.000027224932656166878,
+  "monotonic": true
+}

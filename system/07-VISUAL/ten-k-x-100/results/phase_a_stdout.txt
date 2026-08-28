@@ -1,0 +1,48 @@
+
+══ PROBE: different-fruit-similar-shape-color ══
+  A: orange.jpg
+  B: apple.jpg
+  retinal_12     : gap=0.1464 noise=0.3879 ratio=0.38x  COLLAPSED
+  lgn            : gap=0.2340 noise=0.2538 ratio=0.92x  COLLAPSED
+  it_80          : gap=0.2686 noise=0.2915 ratio=0.92x  COLLAPSED
+  axis_bundle    : gap=0.1781 noise=0.0846 ratio=2.11x  WEAK
+
+══ PROBE: same-orange-different-source-frame ══
+  A: orange.jpg
+  B: orange_t1.5.png
+  retinal_12     : gap=0.1121 noise=0.3879 ratio=0.29x  COLLAPSED
+  lgn            : gap=0.1155 noise=0.2538 ratio=0.46x  COLLAPSED
+  it_80          : gap=0.1624 noise=0.2915 ratio=0.56x  COLLAPSED
+  axis_bundle    : gap=1.4099 noise=0.0846 ratio=16.67x  PRESERVED
+
+══ PROBE: same-material-hue-shifted ══
+  A: orange.jpg
+  B: hue-shifted-orange-red.jpg
+  retinal_12     : gap=0.0250 noise=0.3879 ratio=0.06x  COLLAPSED
+  lgn            : gap=0.2190 noise=0.2538 ratio=0.86x  COLLAPSED
+  it_80          : gap=0.1583 noise=0.2915 ratio=0.54x  COLLAPSED
+  axis_bundle    : gap=0.1084 noise=0.0846 ratio=1.28x  WEAK
+
+══ PROBE: orange-vs-basketball-similar-color-different-texture ══
+  A: orange.jpg
+  B: basketball1.png
+  retinal_12     : gap=0.0479 noise=0.3879 ratio=0.12x  COLLAPSED
+  lgn            : gap=1.1670 noise=0.2538 ratio=4.60x  PRESERVED
+  it_80          : gap=0.5334 noise=0.2915 ratio=1.83x  WEAK
+  axis_bundle    : gap=0.3795 noise=0.0846 ratio=4.49x  PRESERVED
+
+══ PROBE: apple-vs-baboon-very-different ══
+  A: apple.jpg
+  B: baboon.jpg
+  retinal_12     : gap=0.2150 noise=0.1991 ratio=1.08x  WEAK
+  lgn            : gap=0.4827 noise=0.2134 ratio=2.26x  WEAK
+  it_80          : gap=0.2178 noise=0.3158 ratio=0.69x  COLLAPSED
+  axis_bundle    : gap=0.2076 noise=0.2445 ratio=0.85x  COLLAPSED
+
+══ PHASE A ROLL-UP ══
+  retinal_12     : 0P / 1W / 4C   min-ratio=0.06x   LEAK CANDIDATE
+  lgn            : 1P / 1W / 3C   min-ratio=0.46x   LEAK CANDIDATE
+  it_80          : 0P / 1W / 4C   min-ratio=0.54x   LEAK CANDIDATE
+  axis_bundle    : 2P / 2W / 1C   min-ratio=0.85x   LEAK CANDIDATE
+
+wrote C:\AtomEons\Orange5\07-VISUAL\ten-k-x-100\results\phase_a_capture_conservation.json  duration=66s

@@ -1,0 +1,100 @@
+# N150 utility hot-swap — systemd template unit (oneshot)
+# Path on N150: /etc/systemd/system/n150-hot-swap@.service
+# Source of truth: C:/AtomEons/Orange5/06-ORANGELLM/n150-utility/systemd/n150-hot-swap@.service
+#
+# Wave 1 doctrine: STOCK MODELS ONLY. This unit performs the no-restart swap of
+# the stock model bound to one of the three N150 utility daemons:
+#   classifier      (qwen3 family)
+#   embedder        (nomic-embed-text family)
+#   fallback-chat   (qwen3 family)
+#
+# Instance name = daemon id. Examples:
+#   sudo systemctl start n150-hot-swap@classifier.service
+#   sudo systemctl start n150-hot-swap@embedder.service
+#   sudo systemctl start n150-hot-swap@fallback-chat.service
+#
+# The new tag is read from an instance-specific environment file:
+#   /etc/atomeons/n150-hot-swap-<instance>.env
+# which must contain a single line:
+#   N150_HOT_SWAP_TO=<stock_tag>
+# Optional overrides: N150_HOT_SWAP_SMOKE_ROUNDS, N150_HOT_SWAP_DRAIN_MS,
+#                     N150_HOT_SWAP_DRY_RUN=1, N150_HOT_SWAP_ROLLBACK=1.
+#
+# The daemons (classifier/embedder/fallback-chat) are NOT restarted; this unit
+# only orchestrates pull → shadow → smoke → flip → drain via their swap HTTP
+# endpoints. Per-model rollback is automatic on post-flip smoke failure and
+# can also be invoked manually with N150_HOT_SWAP_ROLLBACK=1.
+
+[Unit]
+Description=AtomEons N150 stock-model hot-swap (%i)
+Documentation=https://atomeons.local/docs/orange5/n150-utility
+After=network-online.target ollama.service n150-%i.service
+Wants=network-online.target
+# We don't Require= the target daemon; if it's down the hot-swap fails fast and
+# emits a receipt explaining the gap. That's the right behavior.
+
+[Service]
+Type=oneshot
+User=atomeons
+Group=atomeons
+WorkingDirectory=/opt/atomeons/orange5/n150-utility
+
+Environment=NODE_ENV=production
+Environment=N150_OLLAMA_BASE=http://127.0.0.1:11434
+Environment=N150_CLASSIFIER_BASE=http://127.0.0.1:7480
+Environment=N150_EMBEDDER_BASE=http://127.0.0.1:8798
+Environment=N150_FALLBACK_CHAT_BASE=http://127.0.0.1:8799
+Environment=N150_HOT_SWAP_LOG_LEVEL=info
+
+# Per-instance env file is REQUIRED — that's where the operator pins the new tag.
+# Make it required (no leading dash) so a missing file fails the unit loudly.
+EnvironmentFile=/etc/atomeons/n150-hot-swap-%i.env
+
+# The shell -c form lets us conditionally append --rollback / --dry-run flags
+# based on env booleans, while keeping the happy path as a single straight
+# invocation. The orchestrator itself is a single node entrypoint.
+ExecStart=/bin/sh -c '\
+  set -eu; \
+  ARGS="--target=%i --to=$${N150_HOT_SWAP_TO}"; \
+  if [ "$${N150_HOT_SWAP_SMOKE_ROUNDS:-}" != "" ]; then ARGS="$$ARGS --smoke-rounds=$${N150_HOT_SWAP_SMOKE_ROUNDS}"; fi; \
+  if [ "$${N150_HOT_SWAP_DRAIN_MS:-}" != "" ]; then ARGS="$$ARGS --drain-ms=$${N150_HOT_SWAP_DRAIN_MS}"; fi; \
+  if [ "$${N150_HOT_SWAP_DRY_RUN:-}" = "1" ]; then ARGS="$$ARGS --dry-run"; fi; \
+  if [ "$${N150_HOT_SWAP_ROLLBACK:-}" = "1" ]; then ARGS="--target=%i --rollback"; fi; \
+  exec /usr/bin/node /opt/atomeons/orange5/n150-utility/hot-swap.mjs $$ARGS'
+
+# Hot-swap can take a while when the tag has to download (~minutes for a fresh
+# nomic-embed-text). Cap at 15 minutes; the orchestrator itself caps the pull
+# at N150_OLLAMA_PULL_TIMEOUT_MS (default 10m) so we always fail before this.
+TimeoutStartSec=900s
+
+# No restart — this is a oneshot. Operator re-runs by issuing `systemctl start`.
+RemainAfterExit=no
+
+# Hardening (least privilege; outbound HTTP to localhost only).
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+# The orchestrator writes receipts to state/hot-swap.jsonl under WorkingDirectory.
+# ProtectSystem=strict makes most of the FS read-only; allow the state dir.
+ReadWritePaths=/opt/atomeons/orange5/n150-utility/state
+
+# Logging — journald carries the structured JSONL.
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=n150-hot-swap-%i
+
+[Install]
+WantedBy=multi-user.target

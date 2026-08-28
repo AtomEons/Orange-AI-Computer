@@ -1,0 +1,391 @@
+{
+    "schema":  "orange5.hermes-bounded-live-delegation-proof.v1",
+    "createdAt":  "2026-08-27T09:18:02.4712764Z",
+    "status":  "FAIL",
+    "orderId":  "hermes-live-51b7a2df9fd0",
+    "mcpTaskId":  "task_BwmgbTVJ4fTSw8XBHzh_YzDRKXqMKx-D",
+    "elapsedMs":  157020,
+    "endpoint":  "http://127.0.0.1:17431/mcp",
+    "agentModel":  "orange-navigator",
+    "synthesisModel":  "orange-navigator",
+    "mutatedProject":  false,
+    "evidenceInputs":  {
+                           "deploymentReceipt":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\receipts\\hermes-profile-deployment-20260827T090125Z.json",
+                           "deploymentSha256":  "f226cffeceb1ec22600cf6736dc0310d01cc85d4eabce4338449d9756d41848b",
+                           "preflightReceipt":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\receipts\\hermes-product-preflight-20260827T090418Z.json",
+                           "preflightSha256":  "bdcd598d0799f3b8445598c608be7ed238c30d9b3dea6d06434b597eb7e088ab",
+                           "requiredPreflight":  "17/18",
+                           "requiredPreflightFailures":  [
+                                                             "navigator-agent-inference"
+                                                         ],
+                           "hermesListenerPid":  4656,
+                           "residentModel":  null,
+                           "modelIdleBeforeTask":  true
+                       },
+    "checks":  [
+                   {
+                       "name":  "mcp-task-created",
+                       "status":  "PASS",
+                       "evidence":  "taskId=task_BwmgbTVJ4fTSw8XBHzh_YzDRKXqMKx-D;status=working"
+                   },
+                   {
+                       "name":  "mcp-roundtrip",
+                       "status":  "PASS",
+                       "evidence":  "taskId=task_BwmgbTVJ4fTSw8XBHzh_YzDRKXqMKx-D;taskStatus=completed;elapsedMs=157008"
+                   },
+                   {
+                       "name":  "delegation-complete",
+                       "status":  "FAIL",
+                       "evidence":  "status=DELEGATION_ATTENTION;error="
+                   },
+                   {
+                       "name":  "single-child-report",
+                       "status":  "FAIL",
+                       "evidence":  "reports=1;ok=False;status=halted"
+                   },
+                   {
+                       "name":  "synthesis-complete",
+                       "status":  "FAIL",
+                       "evidence":  "present=False;ok=False;status="
+                   },
+                   {
+                       "name":  "orders-mediated",
+                       "status":  "FAIL",
+                       "evidence":  "child=True;synthesis=False"
+                   },
+                   {
+                       "name":  "models-pinned",
+                       "status":  "PASS",
+                       "evidence":  "agent=orange-navigator;synthesis=orange-navigator"
+                   },
+                   {
+                       "name":  "hermes-authorizations",
+                       "status":  "FAIL",
+                       "evidence":  "authorized=1;results=1"
+                   },
+                   {
+                       "name":  "all-hermes-gates",
+                       "status":  "FAIL",
+                       "evidence":  "authorizations=1;gates=8;failed=0"
+                   },
+                   {
+                       "name":  "lease-revoked",
+                       "status":  "PASS",
+                       "evidence":  "lease=lease_1787822179134_e743c080;revoked=True"
+                   }
+               ],
+    "blockers":  [
+                     "delegation-complete",
+                     "single-child-report",
+                     "synthesis-complete",
+                     "orders-mediated",
+                     "hermes-authorizations",
+                     "all-hermes-gates"
+                 ],
+    "delegation":  {
+                       "schema":  "orange.navigator-delegation.v1",
+                       "delegationId":  "nav-60177ac6-ca28-4a66-9590-21af9c11e8cc",
+                       "orderId":  "hermes-live-51b7a2df9fd0",
+                       "topNavigator":  {
+                                            "runtime":  "bun-navigator-kernel",
+                                            "modelResident":  false
+                                        },
+                       "route":  {
+                                     "lane":  "reflex",
+                                     "model":  "bun-deterministic-router",
+                                     "decisionId":  "2c0d3c6566ac883522408838f74773e0592d4b9180b06f466139a17461e9d0e8"
+                                 },
+                       "littleNavigator":  {
+                                               "id":  "ae11_security-navigator",
+                                               "department":  "AE11_SECURITY",
+                                               "agents":  [
+                                                              "security-auditor"
+                                                          ],
+                                               "allowedTools":  [
+                                                                    "read",
+                                                                    "secret-scan",
+                                                                    "danger-scan",
+                                                                    "receipts"
+                                                                ]
+                                           },
+                       "hermesLease":  {
+                                           "leaseId":  "hermes-5ed3bc63-9e06-4309-b013-bf48a79acfc9",
+                                           "allowedActions":  [
+                                                                  "audit.security"
+                                                              ],
+                                           "forbiddenActions":  [
+                                                                    "destructive_write",
+                                                                    "production_deploy",
+                                                                    "scope_expansion",
+                                                                    "egress_unbounded"
+                                                                ],
+                                           "allowedAgents":  [
+                                                                 "security-auditor"
+                                                             ],
+                                           "allowedTools":  [
+                                                                "read",
+                                                                "secret-scan",
+                                                                "danger-scan",
+                                                                "receipts"
+                                                            ],
+                                           "maxConcurrentAgents":  1,
+                                           "executionMode":  "serial-receipt-safe",
+                                           "requiresReceipt":  true,
+                                           "issuedAt":  "2026-08-27T09:16:19.137Z",
+                                           "expiresAt":  "2026-08-27T09:46:19.137Z"
+                                       },
+                       "planHash":  "99192c4e914fb8075bf3af5d99d6c3a4d054243ec84ee8d2d72f2efec96e5fb3",
+                       "status":  "DELEGATION_ATTENTION",
+                       "governance":  {
+                                          "childOrdersMediated":  true,
+                                          "synthesisMediated":  false,
+                                          "receiptRequired":  true,
+                                          "executionMode":  "serial-receipt-safe",
+                                          "agentModel":  "orange-navigator",
+                                          "synthesisModel":  "orange-navigator",
+                                          "hermesLeaseId":  "lease_1787822179134_e743c080",
+                                          "hermesAuthorizedActions":  1,
+                                          "hermesGateResults":  [
+                                                                    {
+                                                                        "orderId":  "hermes-live-51b7a2df9fd0:security-auditor",
+                                                                        "pass":  true,
+                                                                        "misfit":  "pass",
+                                                                        "gates":  [
+                                                                                      {
+                                                                                          "id":  "order_schema",
+                                                                                          "pass":  true
+                                                                                      },
+                                                                                      {
+                                                                                          "id":  "report_schema",
+                                                                                          "pass":  true
+                                                                                      },
+                                                                                      {
+                                                                                          "id":  "receipt_spine",
+                                                                                          "pass":  true
+                                                                                      },
+                                                                                      {
+                                                                                          "id":  "human_approval",
+                                                                                          "pass":  true
+                                                                                      },
+                                                                                      {
+                                                                                          "id":  "codexa_lease",
+                                                                                          "pass":  true
+                                                                                      },
+                                                                                      {
+                                                                                          "id":  "openai_gateway",
+                                                                                          "pass":  true
+                                                                                      },
+                                                                                      {
+                                                                                          "id":  "mcp_default",
+                                                                                          "pass":  true
+                                                                                      },
+                                                                                      {
+                                                                                          "id":  "false_green_guard",
+                                                                                          "pass":  true
+                                                                                      }
+                                                                                  ]
+                                                                    }
+                                                                ],
+                                          "hermesLeaseRevoked":  true,
+                                          "researchEvidence":  null,
+                                          "currentAwareness":  null
+                                      },
+                       "reports":  [
+                                       {
+                                           "schema":  "orange.headless.order-result.v1",
+                                           "ok":  false,
+                                           "exitCode":  1,
+                                           "order":  {
+                                                         "action":  "analyze.agent",
+                                                         "payload":  {
+                                                                         "parentOrder":  {
+                                                                                             "action":  "audit.security",
+                                                                                             "intent":  "Produce one evidence-based orange.report.v1 for this bounded read-only Q8 delegation. Copy both supplied top-level receipt evidence refs into report.evidence; report.evidence must not be empty. Judge only the bounded Hermes-authorized path.",
+                                                                                             "targetProject":  "OrangeFive/08-HERMES",
+                                                                                             "scope":  null,
+                                                                                             "objective":  "Prove the bounded child and synthesis route only; preserve the separate strict-preflight limitation.",
+                                                                                             "constraints":  [
+                                                                                                                 "Deployment artifact hermes-profile-deployment-20260827T090125Z.json has SHA256 f226cffeceb1ec22600cf6736dc0310d01cc85d4eabce4338449d9756d41848b and records six post-deploy profile ",
+                                                                                                                 "Six deployed profile hash prefixes are builder=9304c5003c57,misfit=fd823cc61419,navigator=ecce0c12936a,researcher=8f9f689ea331,reviewer=fd823cc61419,visual=42a6d294216d.",
+                                                                                                                 "Hermes-only restart evidence is status=RESTARTED_HERMES_ONLY, listenerPid=4656; live listenerPid=4656.",
+                                                                                                                 "Strict preflight artifact hermes-product-preflight-20260827T090418Z.json has SHA256 bdcd598d0799f3b8445598c608be7ed238c30d9b3dea6d06434b597eb7e088ab and required checks 17/18; fail",
+                                                                                                                 "Pre-task model state is not-resident-before-task, size=0, expires=none; the task pins canonical Q8 and may lease it on demand.",
+                                                                                                                 "Judge only whether this bounded Q8 delegation route executes under Hermes authorization; do not claim the full Hermes deployment green."
+                                                                                                             ],
+                                                                                             "evidence":  [
+                                                                                                              "receipt:hermes-profile-deployment-20260827T090125Z:sha256=f226cffeceb1ec22",
+                                                                                                              "receipt:hermes-product-preflight-20260827T090418Z:required=17/18"
+                                                                                                          ],
+                                                                                             "riskLevel":  "read_only",
+                                                                                             "allowedActions":  [
+                                                                                                                    "audit.security"
+                                                                                                                ],
+                                                                                             "forbiddenActions":  [
+                                                                                                                      "destructive_write",
+                                                                                                                      "production_deploy",
+                                                                                                                      "scope_expansion",
+                                                                                                                      "egress_unbounded"
+                                                                                                                  ]
+                                                                                         },
+                                                                         "agent":  "security-auditor",
+                                                                         "delegationId":  "nav-60177ac6-ca28-4a66-9590-21af9c11e8cc",
+                                                                         "allowedTools":  [
+                                                                                              "read",
+                                                                                              "secret-scan",
+                                                                                              "danger-scan",
+                                                                                              "receipts"
+                                                                                          ]
+                                                                     },
+                                                         "intent":  "security-auditor independently evaluates: Produce one evidence-based orange.report.v1 for this bounded read-only Q8 delegation. Copy both supplied top-level receipt evidence refs into report.evidence; report.evidence must not be empty. Judge only the bounded Hermes-authorized path.",
+                                                         "targetProject":  "OrangeFive/08-HERMES",
+                                                         "evidence":  [
+                                                                          "receipt:hermes-profile-deployment-20260827T090125Z:sha256=f226cffeceb1ec22",
+                                                                          "receipt:hermes-product-preflight-20260827T090418Z:required=17/18"
+                                                                      ],
+                                                         "orderId":  "hermes-live-51b7a2df9fd0:security-auditor",
+                                                         "allowedActions":  [
+                                                                                "analyze.agent"
+                                                                            ],
+                                                         "forbiddenActions":  [
+                                                                                  "destructive_write",
+                                                                                  "production_deploy",
+                                                                                  "scope_expansion",
+                                                                                  "egress_unbounded"
+                                                                              ],
+                                                         "riskLevel":  "read_only",
+                                                         "requiresReceipt":  true
+                                                     },
+                                           "result":  {
+                                                          "status":  "halted",
+                                                          "lane":  "reflex",
+                                                          "report":  {
+                                                                         "schema":  "orange.report.v1",
+                                                                         "action":  "analyze.agent",
+                                                                         "status":  "halted",
+                                                                         "summary":  "adversarial gate halted: refuter blocked the claim",
+                                                                         "lane":  "reflex",
+                                                                         "adversarial_required":  true,
+                                                                         "adversarial_ready":  false,
+                                                                         "adversarial":  {
+                                                                                             "completed":  true,
+                                                                                             "preExecution":  true,
+                                                                                             "refuted":  true,
+                                                                                             "status":  "blocked",
+                                                                                             "reason":  "refuter blocked the claim",
+                                                                                             "strongestAttack":  null,
+                                                                                             "blockers":  [
+                                                                                                              "e=evidence is empty; no receipt, no runtime path, no attributable artifact is supplied",
+                                                                                                              "claim asserts a completed cognitive report for analyze.agent, but no evidence exists to support,"
+                                                                                                          ],
+                                                                                             "model":  "orange-navigator:ornith-1.5-9b-q8",
+                                                                                             "lane":  "navigator",
+                                                                                             "host":  "10.0.0.4",
+                                                                                             "endpoint":  "http://127.0.0.1:1337/v1/chat/completions",
+                                                                                             "report":  {
+                                                                                                            "schema":  "orange.report.v1",
+                                                                                                            "orderId":  "hermes-live-51b7a2df9fd0:security-auditor:refuter",
+                                                                                                            "status":  "blocked",
+                                                                                                            "confidence":  0.99,
+                                                                                                            "actionsTaken":  [
+
+                                                                                                                             ],
+                                                                                                            "evidence":  [
+                                                                                                                             "REFUTED=true"
+                                                                                                                         ],
+                                                                                                            "findings":  [
+                                                                                                                             "The claim cannot be verified: the evidence array is empty and no receipt, runtime path, or attributable artifact is provided. There is no proof that OrangeBrain produced a cognitive report for analyze.agent, and no counterexample is neededâ",
+                                                                                                                             "The falsifier checks fail on the core requirement: \u0027Does the supplied evidence directly support the exact claim?\u0027 and \u0027Is the receipt fresh, attributable, and scoped to the claim?\u0027 Both are unmet because nothing is supplied.",
+                                                                                                                             "The prior-memory note about a capability_route_failure (count=3) is not evidence for this claim and does not establish the report was produced."
+                                                                                                                         ],
+                                                                                                            "blockers":  [
+                                                                                                                             "e=evidence is empty; no receipt, no runtime path, no attributable artifact is supplied",
+                                                                                                                             "claim asserts a completed cognitive report for analyze.agent, but no evidence exists to support,"
+                                                                                                                         ],
+                                                                                                            "nextAction":  "Request the actual evidence: the cognitive report artifact, its receipt (with timestamp, source,",
+                                                                                                            "receiptPath":  null
+                                                                                                        }
+                                                                                         },
+                                                                         "mediation":  {
+                                                                                           "memory":  {
+                                                                                                          "consulted":  true,
+                                                                                                          "ok":  true,
+                                                                                                          "source":  "ae-cobra-flux",
+                                                                                                          "mode":  "pre-action",
+                                                                                                          "matches":  5,
+                                                                                                          "project":  "OrangeFive/08-HERMES",
+                                                                                                          "project_found":  false,
+                                                                                                          "project_records":  0
+                                                                                                      },
+                                                                                           "compression":  {
+                                                                                                               "consulted":  true,
+                                                                                                               "ok":  true,
+                                                                                                               "schema":  "orange5.atomsmasher.sieve.v1",
+                                                                                                               "form":  "deflate",
+                                                                                                               "lossless":  true,
+                                                                                                               "raw_bytes":  2612,
+                                                                                                               "compressed_bytes":  1104,
+                                                                                                               "savings_bytes":  1508,
+                                                                                                               "ratio":  2.365942,
+                                                                                                               "regression":  false,
+                                                                                                               "fluff_verdict":  "pass",
+                                                                                                               "workset_id":  "d3b4cbeff8ea085b471f0be2c201a98ac46c4f42d67e8ac0a8c6a541f2f8dee1",
+                                                                                                               "workset_kept":  1,
+                                                                                                               "least_action_tier":  null,
+                                                                                                               "raw_sha256":  "161e22bdf4b79e7d7ab8395c48d88fddda94b1341db0a91801baa9b4f2be547f"
+                                                                                                           }
+                                                                                       }
+                                                                     },
+                                                          "receipt":  {
+                                                                          "receipt_id":  "rcpt_56b1ab5fdc35f99f",
+                                                                          "hash":  "a22e91597fdf346b10ed53ea3ba2e299d53e2222bc442616e50a3a4f486580cf",
+                                                                          "seq":  923
+                                                                      },
+                                                          "mistakes_surfaced":  5,
+                                                          "mediation":  {
+                                                                            "memory":  {
+                                                                                           "consulted":  true,
+                                                                                           "ok":  true,
+                                                                                           "source":  "ae-cobra-flux",
+                                                                                           "mode":  "pre-action",
+                                                                                           "matches":  5,
+                                                                                           "project":  "OrangeFive/08-HERMES",
+                                                                                           "project_found":  false,
+                                                                                           "project_records":  0
+                                                                                       },
+                                                                            "compression":  {
+                                                                                                "consulted":  true,
+                                                                                                "ok":  true,
+                                                                                                "schema":  "orange5.atomsmasher.sieve.v1",
+                                                                                                "form":  "deflate",
+                                                                                                "lossless":  true,
+                                                                                                "raw_bytes":  2612,
+                                                                                                "compressed_bytes":  1104,
+                                                                                                "savings_bytes":  1508,
+                                                                                                "ratio":  2.365942,
+                                                                                                "regression":  false,
+                                                                                                "fluff_verdict":  "pass",
+                                                                                                "workset_id":  "d3b4cbeff8ea085b471f0be2c201a98ac46c4f42d67e8ac0a8c6a541f2f8dee1",
+                                                                                                "workset_kept":  1,
+                                                                                                "least_action_tier":  null,
+                                                                                                "raw_sha256":  "161e22bdf4b79e7d7ab8395c48d88fddda94b1341db0a91801baa9b4f2be547f"
+                                                                                            }
+                                                                        },
+                                                          "lesson":  "AE Cobra: 5 prior issue(s) recorded for \"analyze.agent\" â review before proceeding",
+                                                          "learning":  {
+                                                                           "requested":  true,
+                                                                           "ingested":  true,
+                                                                           "transport":  "ae-cobra-http+canonical-flux",
+                                                                           "memoryId":  "b73d66e72ddb",
+                                                                           "error":  null
+                                                                       },
+                                                          "topology":  "adversarial_pair",
+                                                          "adversarial_required":  true,
+                                                          "epistemic_enforcement":  "topology_default",
+                                                          "prior_verdict":  "CLEAN_SHAPE"
+                                                      }
+                                       }
+                                   ],
+                       "synthesis":  null
+                   },
+    "receiptPath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\receipts\\hermes-bounded-live-delegation-20260827T091802Z.json"
+}

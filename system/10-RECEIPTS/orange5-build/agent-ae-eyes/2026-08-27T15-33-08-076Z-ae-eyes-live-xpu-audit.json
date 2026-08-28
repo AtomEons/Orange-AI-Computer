@@ -1,0 +1,240 @@
+{
+  "schema": "orange.receipt.ae_eyes_live_xpu_audit.v1",
+  "status": "VERIFIED",
+  "generatedAt": "2026-08-27T15:33:08.0764373Z",
+  "agent": "agent-ae-eyes",
+  "scope": {
+    "sourceRoot": "C:\\AtomEons\\Orange5\\07-VISUAL",
+    "receiptRoot": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\agent-ae-eyes",
+    "uiTouched": false,
+    "unrelatedServicesRestarted": false,
+    "sourceOrConfigChangedByThisAudit": false
+  },
+  "source": {
+    "repositoryRoot": "C:\\AtomEons\\Orange5",
+    "branch": "main",
+    "commit": "2f8ac2feea2c3fdf32bf8d5b5aaebe20920ab452",
+    "preExistingScopedChangesPreserved": [
+      "M 07-VISUAL/adapters/aeyes-spine-adapter.mjs",
+      "M 07-VISUAL/adapters/test-aeyes-spine-adapter.mjs",
+      "M 07-VISUAL/colpali-service/start-n150-proxy.ps1",
+      "M 07-VISUAL/fixtures/emitter-vs-reflector/results.json",
+      "M 07-VISUAL/fixtures/human-grade-8axis/results.json",
+      "M 07-VISUAL/structural/identity/hopfield-retrieval.mjs",
+      "M 07-VISUAL/structural/identity/human-grade-8axis-sweep.mjs",
+      "M 07-VISUAL/structural/identity/prove-human-grade.mjs",
+      "M 07-VISUAL/structural/identity/recognize-human-grade.mjs",
+      "?? 07-VISUAL/fixtures/human-grade-shipping-store.json",
+      "?? 07-VISUAL/structural/identity/hopfield-retrieval.test.mjs"
+    ]
+  },
+  "commands": [
+    "bun C:/AtomEons/Orange5/03-BACKEND/spine-cli.mjs --health",
+    "curl.exe --noproxy \"*\" -sS -D - http://127.0.0.1:7440/health",
+    "ssh.exe -i C:/Users/a/.ssh/orange_codexa_automation_ed25519 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new Atom@CODEXA hostname",
+    "ssh.exe -i C:/Users/a/.ssh/orange_codexa_automation_ed25519 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new Atom@CODEXA curl.exe --silent --show-error --fail http://127.0.0.1:7440/health",
+    "ssh.exe -i C:/Users/a/.ssh/orange_codexa_automation_ed25519 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new Atom@CODEXA schtasks.exe /Query /TN Orange5-AE-Eyes-ColPali /V /FO LIST",
+    "bun -",
+    "bun test 07-VISUAL/colpali-service/tests/resident-image-worker.test.mjs 07-VISUAL/colpali-service/tests/server-resident-integration.test.mjs"
+  ],
+  "topology": {
+    "controlHost": "N150",
+    "inferenceHostObserved": "CODEXA",
+    "localEndpoint": "http://127.0.0.1:7440",
+    "remoteEndpointObservedOverSsh": "http://127.0.0.1:7440",
+    "transport": "ssh-loopback-tunnel",
+    "startupTask": {
+      "name": "Orange5-AE-Eyes-ColPali",
+      "status": "Running",
+      "scheduledTaskState": "Enabled",
+      "scheduleType": "At system start up",
+      "runAsUser": "Atom",
+      "lastRunTime": "2026-08-25T22:18:11-05:00",
+      "lastResult": 267009,
+      "taskCommand": "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \"C:\\AtomEons\\Orange5\\07-VISUAL\\colpali-service\\start-codexa.ps1\""
+    }
+  },
+  "orangeFiveHealth": {
+    "ok": true,
+    "phase": "OrangeBrain live",
+    "gateway": "http://127.0.0.1:1337",
+    "gatewayLive": true,
+    "gatewayWarm": true,
+    "receiptsPersistedAtProbe": 949
+  },
+  "serviceBefore": {
+    "httpStatus": 200,
+    "ok": true,
+    "service": "colpali-ingest",
+    "backend": "transformers:xpu",
+    "worker": {
+      "state": "ready",
+      "detail": "ColQwen2ForRetrieval",
+      "pid": 7484,
+      "startedAt": "2026-08-26T02:18:14.234Z",
+      "completed": 1,
+      "failures": 0,
+      "pending": 0
+    },
+    "backendDetail": {
+      "kind": "transformers",
+      "reason": "missing C:\\Users\\Atom\\OrangeBox-Data\\models\\colqwen2-openvino\\openvino_model.xml (run python/openvino_convert.py to build it)"
+    }
+  },
+  "synchronousResidentProof": {
+    "generatedAt": "2026-08-27T15:27:44.642Z",
+    "fixture": {
+      "path": "C:\\AtomEons\\Orange5\\07-VISUAL\\fixtures\\notes.png",
+      "bytes": 14650,
+      "sha256": "b40d7e1f92df046f4853b006a0dd745bd3e55e48e57faa28c686a519fd062633"
+    },
+    "requests": [
+      {
+        "httpStatus": 200,
+        "clientMs": 1558.059,
+        "serverMs": 1296,
+        "backend": "transformers:xpu",
+        "pageCount": 1,
+        "patchCount": 196,
+        "patchDim": 128,
+        "quantizedPatchSha256": "cbaed04cf3eb183ede26251b1f68df95f956cb3db8495561082048562faab8be"
+      },
+      {
+        "httpStatus": 200,
+        "clientMs": 716.859,
+        "serverMs": 287,
+        "backend": "transformers:xpu",
+        "pageCount": 1,
+        "patchCount": 196,
+        "patchDim": 128,
+        "quantizedPatchSha256": "cbaed04cf3eb183ede26251b1f68df95f956cb3db8495561082048562faab8be"
+      }
+    ],
+    "pidSequence": [7484, 7484, 7484],
+    "completedSequence": [1, 2, 3],
+    "failuresSequence": [0, 0, 0],
+    "exactQuantizedParity": true
+  },
+  "gatewayIngestQueryProof": {
+    "ingest": {
+      "httpStatus": 200,
+      "clientMs": 1006.581,
+      "docId": "6ba7f97e-0113-4e5d-93e9-ea695e866314",
+      "pagesIngested": 1,
+      "patchesIndexed": 196,
+      "imageSha256": "b40d7e1f92df046f4853b006a0dd745bd3e55e48e57faa28c686a519fd062633",
+      "visualEventWritten": true,
+      "lane": "whiteboard",
+      "sourceHint": "agent-ae-eyes-live-2026-08-27T15:27:32.569Z"
+    },
+    "query": {
+      "httpStatus": 200,
+      "clientMs": 11065.706,
+      "query": "handwritten notes orangefive resident worker proof",
+      "lane": "whiteboard",
+      "resultCount": 1,
+      "matchedIngestedDoc": true,
+      "matchedDocId": "6ba7f97e-0113-4e5d-93e9-ea695e866314",
+      "matchedPage": 1,
+      "matchedScore": 80316,
+      "standIn": "nomic-768-to-128-blockpool",
+      "qualityBoundary": "retrieval path is functional; current text query embedding is an approximate stand-in and does not prove production retrieval quality"
+    }
+  },
+  "queueResidentProof": {
+    "generatedAt": "2026-08-27T15:31:56.789Z",
+    "jobId": 3,
+    "enqueueHttpStatus": 202,
+    "sourcePath": "C:\\Users\\Atom\\OrangeBox-Data\\orange5\\ae-eyes-benchmark-apple.jpg",
+    "sourceExistsOnCodexa": true,
+    "sourceBytes": 51705,
+    "status": "done",
+    "attempts": 1,
+    "elapsedMs": 1980.465,
+    "backend": "transformers:xpu",
+    "worker": "resident-image",
+    "pageCount": 1,
+    "patchCount": 335,
+    "patchDim": 128,
+    "imageSha256": "e86879de3d9a807dedc742a8f464f39e6b74bbb531a1fba3583155d94997d1cd",
+    "quantizedPatchSha256": "e107e51becefc8cce17c022ee727cc1f494fa75557154de8bba8b0634b4a9dda",
+    "pidBefore": 7484,
+    "pidAfter": 7484,
+    "completedBefore": 4,
+    "completedAfter": 5,
+    "workerFailuresBefore": 0,
+    "workerFailuresAfter": 0
+  },
+  "controlledFailedProbe": {
+    "jobId": 2,
+    "status": "error",
+    "attemptedPath": "C:\\AtomEons\\Orange5\\07-VISUAL\\fixtures\\notes.png",
+    "cause": "fixture exists on N150 but not in Codexa partial checkout",
+    "error": "ENOENT: no such file or directory",
+    "classification": "invalid queue input path; not a resident worker failure",
+    "workerCompletedDelta": 0,
+    "workerFailureDelta": 0,
+    "terminalQueueRowRetained": true
+  },
+  "serviceAfter": {
+    "ok": true,
+    "backend": "transformers:xpu",
+    "worker": {
+      "state": "ready",
+      "detail": "ColQwen2ForRetrieval",
+      "pid": 7484,
+      "completed": 5,
+      "failures": 0,
+      "pending": 0
+    },
+    "queue": {
+      "queued": 0,
+      "running": 0,
+      "done": 2,
+      "error": 1,
+      "cancelled": 0,
+      "total": 3,
+      "inFlightId": null
+    }
+  },
+  "focusedTests": {
+    "command": "bun test 07-VISUAL/colpali-service/tests/resident-image-worker.test.mjs 07-VISUAL/colpali-service/tests/server-resident-integration.test.mjs",
+    "green": 5,
+    "red": 0,
+    "expectCalls": 16,
+    "durationSeconds": 3.48
+  },
+  "openVinoDecision": {
+    "artifactPresent": false,
+    "buildNow": false,
+    "operationalGap": false,
+    "promotionStatus": "quarantined research",
+    "reasons": [
+      "the live resident Torch XPU path passed synchronous, gateway, and queued inference with one stable process and zero worker failures",
+      "stock Optimum-Intel main_export does not have a supported ColQwen2 custom architecture export configuration",
+      "no custom exporter has supplied exact output parity and a measured latency win over the resident XPU path",
+      "creating a merely loadable artifact would not satisfy the promotion gate"
+    ],
+    "requiredBeforeBuildOrPromotion": [
+      "model-specific exporter or proven direct conversion",
+      "exact quantized output parity against the current transformers:XPU reference",
+      "cold and warm latency benchmark that beats the resident XPU path",
+      "failure and fallback proof before changing production selection"
+    ]
+  },
+  "conclusion": {
+    "transformersXpuResidentWorkerFullyFunctional": true,
+    "missingOpenVinoArtifactShouldBeBuiltNow": false,
+    "concreteServiceOrConfigDefectsFound": 0,
+    "sourceFixesApplied": 0,
+    "blockers": [],
+    "honestBoundaries": [
+      "the query endpoint currently uses nomic-768-to-128-blockpool rather than a native ColQwen2 text-query embedding",
+      "queue row 2 remains as an honest terminal error from the rejected N150-only path probe",
+      "the OpenVINO absence message suggests running the converter, but current doctrine and proof do not authorize promotion without parity and latency gates"
+    ]
+  },
+  "previousEvidenceHash": null,
+  "evidenceHashAlgorithm": "sha256(JSON.stringify(receiptWithoutEvidenceHash))",
+  "evidenceHash": "84b98ed0f3550b6afa794698e70c471138a8506c280d1ac22ff6c8f499750093"
+}

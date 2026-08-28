@@ -1,0 +1,12 @@
+{
+  "experiment": "83-derivable-fields",
+  "ratio": 17.072,
+  "encode_ms": 11288,
+  "decode_ms": 312.8,
+  "lossless": true,
+  "notes": "Found 66 action classes with constant status field. Dict bytes=1616. Stripped status from 6224/6224 receipts. Wire bytes=121575. Original sha256=5be5f1b4c6d742e3 recon sha256=5be5f1b4c6d742e3.",
+  "baseline_m19_ratio": 47.071,
+  "vs_m19_delta": -29.999,
+  "raw_bytes": 2075585,
+  "wire_bytes": 121575
+}

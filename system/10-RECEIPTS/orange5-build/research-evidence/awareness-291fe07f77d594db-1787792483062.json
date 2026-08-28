@@ -1,0 +1,72 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-291fe07f77d594db-1787792483062",
+  "query": "Name the current Orange product release and give one non-mutating next action. Do not claim execution or evidence that was not supplied. /no_think OrangeFive orange5",
+  "searchQuery": "name the orange product release and give one",
+  "generatedAt": "2026-08-27T01:01:23.079Z",
+  "budgetMs": 60000,
+  "elapsedMs": 2396,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "963122524",
+      "title": "ADORSYS-GIS/made-in-cameroon-market",
+      "url": "https://github.com/ADORSYS-GIS/made-in-cameroon-market",
+      "summary": "# made-in-cameroon-marketplace A platform just for locally made products, where artisans, farmers, and small businesses can sell their goods without competing with big foreign brands. Payment integration with local mobile money (MTN, Orange) would make it easier for people to buy. ---",
+      "updatedAt": "2025-08-11T08:46:25Z",
+      "license": null,
+      "stars": 6,
+      "forks": 11,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7819,
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "orange",
+          "product"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "488454338",
+      "title": "SontranBK/pi_card_reader",
+      "url": "https://github.com/SontranBK/pi_card_reader",
+      "summary": "A feature-customized IoT device, built on Pi-familly devices (Orange Pi, Raspberry Pi, Banana Pi), with NFC readers supported. It aimes to use for organization check-in-out, e-identification, ... This product has been commercialized, not under research process.",
+      "updatedAt": "2026-07-12T23:55:42Z",
+      "license": null,
+      "stars": 6,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1969,
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "orange",
+          "product"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "5ef463706f222114db36265fbb190c2a84eaf9a9688d23aeb8c8e46e360c9313"
+}

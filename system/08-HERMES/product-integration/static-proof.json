@@ -1,0 +1,24 @@
+{
+  "schema": "orange5.hermes-static-proof.v1",
+  "createdAt": "2026-08-27T04:11:26Z",
+  "status": "STATIC_PASS_RUNTIME_UNPROVEN",
+  "checks": {
+    "staticAssertions": { "passed": 98, "failed": 0 },
+    "integrationTests": { "passed": 6, "failed": 0, "expectations": 49 },
+    "powershellSyntax": { "passedFiles": 5, "failedFiles": 0 },
+    "installerDryRun": "PASS",
+    "materializerDryRun": "PASS",
+    "gatewayOwnerDryRun": "PASS"
+  },
+  "notRun": [
+    "Hermes install",
+    "profile materialization",
+    "gateway start",
+    "Kanban database creation",
+    "Orange MCP live preflight",
+    "OpenAI-compatible API live preflight",
+    "model endpoint live preflight"
+  ],
+  "runtimeGreen": false,
+  "nextAction": "Install on Codexa with -Apply, start exactly one default gateway, then run preflight with -WriteReceipt."
+}

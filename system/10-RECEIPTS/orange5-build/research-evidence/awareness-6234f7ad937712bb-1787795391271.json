@@ -1,0 +1,101 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-6234f7ad937712bb-1787795391271",
+  "query": "{\"intent\":\"Optimize the current ComfyUI FLUX.2 Klein 4B FP8 workflow on Windows Intel Arc 140T XPU. Identify only realistic supported optimizations: startup residency, model reuse, PyTorch XPU and torch.compile compatibility, batching, memory ceiling, quantization, workflow partial execution, and benchmark design. Reject CUDA-only advice. Return prioritized changes with expected benefit and proof commands.\",\"evidence\":[\"FLUX2_KLEIN_4B=36.006s@1280x768\",\"FLUX2_STUDIO_QUALITY=false\"]} /no_think OrangeFive orange5",
+  "searchQuery": "intent optimize the comfyui flux.2 klein fp8 workflow",
+  "generatedAt": "2026-08-27T01:49:51.297Z",
+  "budgetMs": 60000,
+  "elapsedMs": 1608,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1283318791",
+      "title": "braojosfalconjesus-afk/edd-subscription-cancel-confirmer",
+      "url": "https://github.com/braojosfalconjesus-afk/edd-subscription-cancel-confirmer",
+      "summary": "Optimize EDD Subscription Cancellation Flow with Exit-Intent Modal 2026",
+      "updatedAt": "2026-08-26T21:41:12Z",
+      "license": null,
+      "stars": 115,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8063,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "intent",
+          "optimize"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1267665119",
+      "title": "artokun/comfyui-mcp-panel",
+      "url": "https://github.com/artokun/comfyui-mcp-panel",
+      "summary": "The local-first sidebar AI agent for ComfyUI — runs on your own Claude OR ChatGPT subscription (no API keys, no extra LLM costs). Drives your live graph: edits, workflows & installs in natural language. The panel UI for comfyui-mcp, the agent-native control plane for ComfyUI.",
+      "updatedAt": "2026-08-27T01:47:49Z",
+      "license": "MIT",
+      "stars": 99,
+      "forks": 21,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.805,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "comfyui",
+          "workflow"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1196975088",
+      "title": "alo-exp/silver-bullet",
+      "url": "https://github.com/alo-exp/silver-bullet",
+      "summary": "Agentic Process Orchestrator (APO) — maximize AI-driven Dev Process Reliability at 10x lower cost. Enforce the Method Back to the AI Madness! Engineering best practices, dynamically tailored workflows, V&V loops, quality gates, spec-to-release traceability, cost optimization, intent-aligned results, knowledge management. Claude Code, Codex, Cursor.",
+      "updatedAt": "2026-08-25T03:26:23Z",
+      "license": "NOASSERTION",
+      "stars": 7,
+      "forks": 2,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7831,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "intent",
+          "workflow"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "f44a169748a02e75b28b0e9ac36511f02580dcfb3c658a3a4fcb8bb32e8ca0ae"
+}

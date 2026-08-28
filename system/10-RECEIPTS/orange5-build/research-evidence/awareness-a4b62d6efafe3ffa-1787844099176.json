@@ -1,0 +1,13 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-a4b62d6efafe3ffa-1787844099176",
+  "query": "{\"action\":\"synthesize.delegation\",\"payload\":{\"parentOrder\":{\"action\":\"filesystem.read\",\"intent\":\"Read the OrangeFive master plan title using governed evidence.\",\"targetProject\":\"orange5\",\"scope\":\"00-CHARTER/ORANGE5_MASTER_PLAN.md\",\"objective\":null,\"constraints\":[],\"evidence\":[\"governed:filesystem.read:aea8be01d987603e\"],\"riskLevel\":\"read_only\",\"allowedActions\":[\"filesystem.read\"],\"forbiddenActions\":[\"destructive_write\",\"production_deploy\",\"scope_expansion\",\"egress_unbounded\"],\"governedExecution\":{\"action\":\"filesystem.read\",\"resultHash\":\"aea8be01d987603e723b9b84d841980cb6a85bc1b6285cf4fae5aa92c8596923\",\"receiptSha256\":\"31c25915ddc2e09d6f19d3b242e24f663feb924d7e80e3e485507d92d4579fc3\",\"excerpt\":\"# AE Orange5 — Master Plan > **Runtime authority:** This file preserves the locked design history. Current > host roles, model residency, en\"}},\"delegationId\":\"nav-32b2370b-66d1-4fd8-aa97-d2df69ed95ef\",\"department\":\"AE0_FACTORY\",\"childEvidence\":[{\"agent\":\"domain-worker\",\"status\":\"completed\",\"summary\":\"OrangeBrain produced a cognitive report for analyze.agent\",\"evidence\":[\"governed:filesystem.read:aea8be01d987603e\"],\"blockers\":[],\"nextAction\":\"call POST /v1/memory/recall with the project recal OrangeFive orange5",
+  "searchQuery": "action synthesize.delegation payload parentorder filesystem.read intent read the",
+  "generatedAt": "2026-08-27T15:21:39.181Z",
+  "budgetMs": 60000,
+  "elapsedMs": 745,
+  "status": "NO_EVIDENCE",
+  "sources": [],
+  "errors": [],
+  "sha256": "3560b9c8ece7a04a98d0db7134a4710e44b7a320aa68ed9f838c2a0fc82f1f92"
+}

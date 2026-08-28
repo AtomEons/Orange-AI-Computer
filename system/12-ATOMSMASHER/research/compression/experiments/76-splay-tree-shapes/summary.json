@@ -1,0 +1,15 @@
+{
+  "experiment": "76-splay-tree-shapes",
+  "N": 6224,
+  "unique_shapes": 3132,
+  "det_bytes": 2075585,
+  "position_brotli_bytes": 7714,
+  "new_shape_brotli_bytes": 52576,
+  "total": 60290,
+  "ratio": 34.427,
+  "delta_vs_m19": -12.644,
+  "encode_ms": 2728.8,
+  "decode_ms": 68.3,
+  "lossless": true,
+  "note": "MTF-list implementation of \"splay to root\" — simple linear version of the spec"
+}

@@ -1,0 +1,283 @@
+{
+  "experiment": "15-per-strand-4weave",
+  "generated_at": "2026-06-26T10:27:21.347Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes_in": 2075585,
+  "num_strands": 38,
+  "per_strand": [
+    {
+      "strand": "air",
+      "receipts": 3131,
+      "raw_bytes": 823768,
+      "compressed_bytes": 36817,
+      "ratio": 22.374663878099792
+    },
+    {
+      "strand": "feature",
+      "receipts": 621,
+      "raw_bytes": 486511,
+      "compressed_bytes": 27474,
+      "ratio": 17.70805124845308
+    },
+    {
+      "strand": "mesh",
+      "receipts": 1567,
+      "raw_bytes": 348260,
+      "compressed_bytes": 29221,
+      "ratio": 11.918141062934192
+    },
+    {
+      "strand": "route",
+      "receipts": 53,
+      "raw_bytes": 81438,
+      "compressed_bytes": 2745,
+      "ratio": 29.667759562841532
+    },
+    {
+      "strand": "workset",
+      "receipts": 54,
+      "raw_bytes": 54646,
+      "compressed_bytes": 1486,
+      "ratio": 36.773889636608345
+    },
+    {
+      "strand": "source",
+      "receipts": 113,
+      "raw_bytes": 54206,
+      "compressed_bytes": 3208,
+      "ratio": 16.89713216957606
+    },
+    {
+      "strand": "equation",
+      "receipts": 93,
+      "raw_bytes": 34410,
+      "compressed_bytes": 3089,
+      "ratio": 11.13952735513111
+    },
+    {
+      "strand": "cache",
+      "receipts": 138,
+      "raw_bytes": 28414,
+      "compressed_bytes": 2367,
+      "ratio": 12.004224757076468
+    },
+    {
+      "strand": "order",
+      "receipts": 81,
+      "raw_bytes": 23231,
+      "compressed_bytes": 1225,
+      "ratio": 18.964081632653063
+    },
+    {
+      "strand": "awareness",
+      "receipts": 24,
+      "raw_bytes": 21971,
+      "compressed_bytes": 2002,
+      "ratio": 10.974525474525475
+    },
+    {
+      "strand": "canon",
+      "receipts": 20,
+      "raw_bytes": 20502,
+      "compressed_bytes": 1161,
+      "ratio": 17.65891472868217
+    },
+    {
+      "strand": "prefix",
+      "receipts": 85,
+      "raw_bytes": 15810,
+      "compressed_bytes": 955,
+      "ratio": 16.554973821989527
+    },
+    {
+      "strand": "prooflab",
+      "receipts": 39,
+      "raw_bytes": 11910,
+      "compressed_bytes": 730,
+      "ratio": 16.315068493150687
+    },
+    {
+      "strand": "memory",
+      "receipts": 27,
+      "raw_bytes": 10554,
+      "compressed_bytes": 1159,
+      "ratio": 9.106125970664365
+    },
+    {
+      "strand": "mode",
+      "receipts": 28,
+      "raw_bytes": 10112,
+      "compressed_bytes": 1239,
+      "ratio": 8.161420500403551
+    },
+    {
+      "strand": "debt",
+      "receipts": 22,
+      "raw_bytes": 6711,
+      "compressed_bytes": 1047,
+      "ratio": 6.409742120343839
+    },
+    {
+      "strand": "embedding",
+      "receipts": 23,
+      "raw_bytes": 5890,
+      "compressed_bytes": 751,
+      "ratio": 7.842876165113182
+    },
+    {
+      "strand": "pattern",
+      "receipts": 17,
+      "raw_bytes": 4774,
+      "compressed_bytes": 745,
+      "ratio": 6.4080536912751676
+    },
+    {
+      "strand": "crystal",
+      "receipts": 15,
+      "raw_bytes": 4423,
+      "compressed_bytes": 848,
+      "ratio": 5.215801886792453
+    },
+    {
+      "strand": "organism",
+      "receipts": 1,
+      "raw_bytes": 4336,
+      "compressed_bytes": 1595,
+      "ratio": 2.7184952978056427
+    },
+    {
+      "strand": "clc",
+      "receipts": 14,
+      "raw_bytes": 4159,
+      "compressed_bytes": 698,
+      "ratio": 5.958452722063037
+    },
+    {
+      "strand": "agent",
+      "receipts": 14,
+      "raw_bytes": 3164,
+      "compressed_bytes": 440,
+      "ratio": 7.1909090909090905
+    },
+    {
+      "strand": "pathwave",
+      "receipts": 8,
+      "raw_bytes": 2759,
+      "compressed_bytes": 408,
+      "ratio": 6.762254901960785
+    },
+    {
+      "strand": "thermo",
+      "receipts": 7,
+      "raw_bytes": 2430,
+      "compressed_bytes": 469,
+      "ratio": 5.181236673773987
+    },
+    {
+      "strand": "cartridge",
+      "receipts": 5,
+      "raw_bytes": 1833,
+      "compressed_bytes": 406,
+      "ratio": 4.514778325123153
+    },
+    {
+      "strand": "primitive",
+      "receipts": 7,
+      "raw_bytes": 1711,
+      "compressed_bytes": 486,
+      "ratio": 3.5205761316872426
+    },
+    {
+      "strand": "compression",
+      "receipts": 1,
+      "raw_bytes": 1597,
+      "compressed_bytes": 619,
+      "ratio": 2.579967689822294
+    },
+    {
+      "strand": "pipeline",
+      "receipts": 3,
+      "raw_bytes": 1230,
+      "compressed_bytes": 520,
+      "ratio": 2.3653846153846154
+    },
+    {
+      "strand": "immune",
+      "receipts": 4,
+      "raw_bytes": 728,
+      "compressed_bytes": 195,
+      "ratio": 3.7333333333333334
+    },
+    {
+      "strand": "least_action",
+      "receipts": 1,
+      "raw_bytes": 569,
+      "compressed_bytes": 301,
+      "ratio": 1.8903654485049834
+    },
+    {
+      "strand": "regeneration",
+      "receipts": 1,
+      "raw_bytes": 552,
+      "compressed_bytes": 345,
+      "ratio": 1.6
+    },
+    {
+      "strand": "expansion_warrant",
+      "receipts": 1,
+      "raw_bytes": 544,
+      "compressed_bytes": 298,
+      "ratio": 1.825503355704698
+    },
+    {
+      "strand": "schema",
+      "receipts": 1,
+      "raw_bytes": 468,
+      "compressed_bytes": 294,
+      "ratio": 1.5918367346938775
+    },
+    {
+      "strand": "db",
+      "receipts": 1,
+      "raw_bytes": 446,
+      "compressed_bytes": 293,
+      "ratio": 1.522184300341297
+    },
+    {
+      "strand": "payload",
+      "receipts": 1,
+      "raw_bytes": 406,
+      "compressed_bytes": 259,
+      "ratio": 1.5675675675675675
+    },
+    {
+      "strand": "dictionary",
+      "receipts": 1,
+      "raw_bytes": 403,
+      "compressed_bytes": 251,
+      "ratio": 1.6055776892430278
+    },
+    {
+      "strand": "wellbeing",
+      "receipts": 1,
+      "raw_bytes": 356,
+      "compressed_bytes": 230,
+      "ratio": 1.5478260869565217
+    },
+    {
+      "strand": "action",
+      "receipts": 1,
+      "raw_bytes": 353,
+      "compressed_bytes": 228,
+      "ratio": 1.5482456140350878
+    }
+  ],
+  "sum_per_strand_compressed": 126604,
+  "strand_index_brotli_bytes": 1845,
+  "strand_vocab_header_bytes": 308,
+  "total_lossless_bytes": 128757,
+  "ratio": 16.12,
+  "roundtrip_lossless": true,
+  "beats_plait_baseline": false,
+  "pass": false
+}

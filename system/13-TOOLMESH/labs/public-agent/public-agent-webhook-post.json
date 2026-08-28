@@ -1,0 +1,89 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "public-agent",
+  "card_id": "public-agent-webhook-post",
+  "capability": "public-agent.webhook.post",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["url", "body"],
+    "properties": {
+      "url": {
+        "type": "string",
+        "format": "uri",
+        "description": "Webhook URL. Must match the lease's egress_allowlist; arbitrary public POSTs are not authorized.",
+        "minLength": 7,
+        "maxLength": 2048
+      },
+      "body": {
+        "description": "JSON-serializable payload. Runner serializes with stable key ordering for receipt-friendly diffs.",
+        "oneOf": [
+          { "type": "object" },
+          { "type": "array" }
+        ]
+      },
+      "headers": {
+        "type": "object",
+        "description": "Custom request headers. Auth headers are NOT accepted here — auth is injected by the runner from the lease's named secret.",
+        "additionalProperties": { "type": "string", "maxLength": 1024 }
+      },
+      "auth_secret_name": {
+        "type": "string",
+        "description": "Name of the Hermes secret to inject as the bearer/HMAC credential for this call. Must appear in the lease's secrets.read scope.",
+        "minLength": 1,
+        "maxLength": 64
+      },
+      "idempotency_key": {
+        "type": "string",
+        "description": "Forwarded as Idempotency-Key header. Required for re-tries on at-least-once webhooks.",
+        "minLength": 8,
+        "maxLength": 128
+      },
+      "timeout_seconds": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 30,
+        "default": 10
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["status", "duration_ms"],
+    "properties": {
+      "status": { "type": "integer", "minimum": 100, "maximum": 599 },
+      "duration_ms": { "type": "integer", "minimum": 0 },
+      "response_body_excerpt": { "type": "string", "maxLength": 4096 },
+      "response_headers": {
+        "type": "object",
+        "additionalProperties": { "type": "string" }
+      },
+      "delivered": {
+        "type": "boolean",
+        "description": "True iff status is 2xx. The receiving system's downstream processing is NOT verified by this card."
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 5,
+    "scopes": [
+      "net.egress:hooks.slack.com",
+      "net.egress:discord.com",
+      "secrets.read:webhook.auth"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 10,
+    "egress_allowlist": ["hooks.slack.com", "discord.com"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:24:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Authenticated POST to an allowlisted webhook (Slack, Discord, custom). Idempotency key supported; auth injected from Hermes secret, never from planner input.",
+  "tags": ["public-agent", "webhook", "post", "slack", "discord", "external-side-effect"],
+  "notes": "The lease pins the legal target hosts; expanding to a new webhook host means a new lease, not a new planner-supplied URL. This prevents prompt-injected URL substitution."
+}

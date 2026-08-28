@@ -1,0 +1,112 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "releaseops",
+  "card_id": "releaseops-deploy-canary",
+  "capability": "releaseops.deploy.canary",
+  "cost_class": "byo-key",
+  "latency_class": "minutes",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["service", "image", "environment", "traffic_percent"],
+    "properties": {
+      "service": {
+        "type": "string",
+        "description": "Service identifier as registered with the deploy controller. Closed enum is enforced at lease issuance, not here.",
+        "pattern": "^[a-z][a-z0-9-]*$",
+        "minLength": 2,
+        "maxLength": 64
+      },
+      "image": {
+        "type": "string",
+        "description": "OCI image reference, including digest. Tag-only references are rejected — pin by digest for receipt integrity.",
+        "pattern": "^[a-z0-9.-]+(:[0-9]+)?(/[a-z0-9._-]+)+@sha256:[a-f0-9]{64}$",
+        "minLength": 32,
+        "maxLength": 512
+      },
+      "environment": {
+        "type": "string",
+        "enum": ["staging", "production"]
+      },
+      "traffic_percent": {
+        "type": "integer",
+        "description": "Initial canary traffic share. Hermes lease policy caps this at 25 for production.",
+        "minimum": 1,
+        "maximum": 100
+      },
+      "soak_minutes": {
+        "type": "integer",
+        "description": "How long to hold at this traffic share before the planner is allowed to call promote/rollback.",
+        "minimum": 1,
+        "maximum": 120,
+        "default": 10
+      },
+      "guard_metrics": {
+        "type": "array",
+        "description": "PromQL/DD queries the controller auto-evaluates during soak. If any guard trips, the canary is auto-rolled-back.",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "query", "threshold", "comparator"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1, "maxLength": 128 },
+            "query": { "type": "string", "minLength": 1, "maxLength": 2048 },
+            "threshold": { "type": "number" },
+            "comparator": { "type": "string", "enum": ["lt", "le", "gt", "ge"] }
+          }
+        },
+        "maxItems": 10
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["deployment_id", "service", "environment", "state", "started_at"],
+    "properties": {
+      "deployment_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+      "service": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "environment": { "type": "string", "enum": ["staging", "production"] },
+      "image_digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+      "state": {
+        "type": "string",
+        "enum": ["pending", "soaking", "promoted", "rolled-back", "failed"]
+      },
+      "started_at": { "type": "string", "format": "date-time" },
+      "current_traffic_percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+      "guard_results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "passed"],
+          "properties": {
+            "name": { "type": "string" },
+            "passed": { "type": "boolean" },
+            "observed": { "type": "number" }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 7200,
+    "max_invocations": 1,
+    "scopes": [
+      "net.egress:argocd.example.internal",
+      "net.egress:api.flagger.app",
+      "secrets.read:deploy.controller",
+      "deploy.canary:service"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 1,
+    "egress_allowlist": ["argocd.example.internal", "api.flagger.app"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:30:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Begin a canary deploy of a digest-pinned image at a bounded traffic share, with guard metrics that auto-rollback.",
+  "tags": ["releaseops", "deploy", "canary", "argo", "flagger", "external-side-effect"],
+  "notes": "Card returns once the canary is SOAKING — promotion is a separate call (sibling card, not yet present). Image must be pinned by sha256 digest; this prevents tag-mutation attacks and makes the receipt reproducible."
+}

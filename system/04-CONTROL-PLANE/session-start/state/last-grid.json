@@ -1,0 +1,346 @@
+{
+  "schema": "orange5.session-start-grid.v1",
+  "cached_at": 1782344735731,
+  "grid": {
+    "schema": "orange5.session-start-grid.v1",
+    "session_id": "39c6424b-ae41-4158-808d-3ea0989873da",
+    "generated_at": "2026-06-24T23:45:35.702Z",
+    "elapsed_ms": 23338,
+    "cache_hit": false,
+    "health": {
+      "band": "RED",
+      "reds": [
+        "guardrails:9_violations(stop)"
+      ],
+      "yellows": [
+        "hot_currents:cobra_unreachable_and_shadow_empty"
+      ]
+    },
+    "steps": {
+      "soul_genome": {
+        "step": "soul_genome",
+        "ok": true,
+        "source": "file:C:\\AtomEons\\Orange5\\13-MODELS\\orange-llm\\soul_genome.json",
+        "schema_id": "atomeons.orange5.soul_genome.v1",
+        "schema_version": "1.0.1",
+        "genome_sha256": "608a0ec93f6f0f40e14b6660e1c39b09da13c79d07cadafd33ed530ead6fd384",
+        "bytes": 35137,
+        "sovereign": {
+          "name": "Atom McCree",
+          "alias": "Ætom ÆoNs",
+          "email": "a.mccree@gmail.com"
+        },
+        "inject_payload": {
+          "role": "system",
+          "schema_id": "atomeons.orange5.soul_genome.v1",
+          "schema_version": "1.0.1",
+          "genome_sha256": "608a0ec93f6f0f40e14b6660e1c39b09da13c79d07cadafd33ed530ead6fd384",
+          "bytes": 35137,
+          "sovereign_name": "Atom McCree",
+          "sovereign_alias": "Ætom ÆoNs",
+          "genome_ref": {
+            "path": "C:\\AtomEons\\Orange5\\13-MODELS\\orange-llm\\soul_genome.json",
+            "sha256": "608a0ec93f6f0f40e14b6660e1c39b09da13c79d07cadafd33ed530ead6fd384"
+          }
+        },
+        "elapsed_ms": 14
+      },
+      "continuity": {
+        "step": "continuity",
+        "ok": true,
+        "source": "local_file:C:\\AtomEons\\Orange5\\01-DOCTRINE\\27-guardrails\\state\\continuity\\2026-06-24.json",
+        "transport": "module",
+        "stale": false,
+        "date": "2026-06-24",
+        "sha256": "e6262abca9abe741736b07ddb59028d0e69471fab4c5fcf830be74f7203b168a",
+        "summary": {
+          "progress_count": 0,
+          "open_blockers_count": 0,
+          "tomorrow_first_action": "Ride current: t (pressure 0.50)",
+          "hot_currents_count": 0
+        },
+        "open_blockers": [],
+        "attempts": [
+          {
+            "transport": "gateway",
+            "skipped": true
+          },
+          {
+            "transport": "module",
+            "ok": true
+          }
+        ],
+        "elapsed_ms": 23328
+      },
+      "guardrails": {
+        "step": "guardrails",
+        "ok": false,
+        "transport": "module",
+        "run_id": "gr_1782344712763_53c39f05",
+        "elapsed_ms_check": 22938,
+        "stop": true,
+        "violations_count": 9,
+        "by_severity": {
+          "CRITICAL": 5,
+          "HIGH": 2,
+          "MEDIUM": 2
+        },
+        "violations": [
+          {
+            "guardrail_id": "G02",
+            "severity": "CRITICAL",
+            "name": "FOUNDER_SALARY_PER_INSTALL_CENTS is env-bound, not hardcoded",
+            "detail": {
+              "reason": "FOUNDER_SALARY_PER_INSTALL_CENTS hardcoded to a literal",
+              "files": [
+                "C:\\AtomEons\\Orange5\\04-CONTROL-PLANE\\nine-gate-stack\\gates\\06-drift.mjs"
+              ]
+            }
+          },
+          {
+            "guardrail_id": "G03",
+            "severity": "CRITICAL",
+            "name": "Gate 0 LatticeIntegrityGate (LBCE) is first in every gate chain",
+            "detail": {
+              "reason": "gate chain found whose first entry is not Gate 0 (LBCE)",
+              "offenders": [
+                {
+                  "file": "C:\\AtomEons\\Orange5\\04-CONTROL-PLANE\\aecode\\tests\\mission-runner.test.mjs",
+                  "first": "{ gate_id: \"g1\""
+                },
+                {
+                  "file": "C:\\AtomEons\\Orange5\\04-CONTROL-PLANE\\workflows\\wave2-02-nine-gate-stack.workflow.mjs",
+                  "first": "{ id: 'gate-0-lbce'"
+                },
+                {
+                  "file": "C:\\AtomEons\\Orange5\\06-ORANGELLM\\memory\\ae-cobra\\activation\\runner.mjs",
+                  "first": ""
+                }
+              ],
+              "chains_seen": 3
+            }
+          },
+          {
+            "guardrail_id": "G05",
+            "severity": "CRITICAL",
+            "name": "ATOMEONS_IDENTITY_SECRET is env-only, never hardcoded",
+            "detail": {
+              "reason": "ATOMEONS_IDENTITY_SECRET assigned to a literal string in source",
+              "files": [
+                "C:\\AtomEons\\Orange5\\04-CONTROL-PLANE\\nine-gate-stack\\gates\\06-drift.mjs"
+              ]
+            }
+          },
+          {
+            "guardrail_id": "G08",
+            "severity": "CRITICAL",
+            "name": "The 4 operator lanes (Chat / Cockpit / Vault / Settings) are immutable",
+            "detail": {
+              "reason": "4-lane invariant breached",
+              "issues": [
+                {
+                  "kind": "extra_lane_file",
+                  "lanes": [
+                    "AESee",
+                    "settings.css",
+                    "Settings.parts"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "guardrail_id": "G09",
+            "severity": "CRITICAL",
+            "name": "Mom's Law sits above all other rules",
+            "detail": {
+              "reason": "CLAUDE.md does not reference Mom's Law",
+              "claude_md": "C:\\AtomEons\\CLAUDE.md"
+            }
+          },
+          {
+            "guardrail_id": "G10",
+            "severity": "HIGH",
+            "name": "Receipts are hash-chained (every receipt references prior_sha256)",
+            "detail": {
+              "reason": "receipt(s) without prior_sha256 chain",
+              "offenders": [
+                "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-06-25-guardrails-soul-genome-continuity.md",
+                "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-06-24-ae-flow-scheduler-persist-gate.md",
+                "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-06-24-weekly-receipt-summarizer.md",
+                "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-06-24-endurance-gates.md",
+                "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-06-25-atomsmasher-eleven-modules-live.md"
+              ],
+              "receipts_examined": 10
+            }
+          },
+          {
+            "guardrail_id": "G12",
+            "severity": "HIGH",
+            "name": "Reality Flux lane discipline — reality writes are receipt-origin only",
+            "detail": {
+              "reason": "reality-lane Flux write with non-reality origin",
+              "offenders": [
+                {
+                  "file": "C:\\AtomEons\\Orange5\\01-DOCTRINE\\27-guardrails\\checks\\g12-reality-lane-discipline.mjs",
+                  "reason": "reality-lane write without explicit origin"
+                },
+                {
+                  "file": "C:\\AtomEons\\Orange5\\04-CONTROL-PLANE\\continuity\\generator.mjs",
+                  "bad_origins": [
+                    "continuity"
+                  ]
+                },
+                {
+                  "file": "C:\\AtomEons\\Orange5\\04-CONTROL-PLANE\\continuity\\generator.test.mjs",
+                  "bad_origins": [
+                    "hermes",
+                    "test"
+                  ]
+                },
+                {
+                  "file": "C:\\AtomEons\\Orange5\\06-ORANGELLM\\memory\\ae-cobra\\activation\\gates\\13-prior-sha-chain.mjs",
+                  "reason": "reality-lane write without explicit origin"
+                },
+                {
+                  "file": "C:\\AtomEons\\Orange5\\06-ORANGELLM\\memory\\ae-cobra\\clr\\tests\\bridge.test.mjs",
+                  "reason": "reality-lane write without explicit origin"
+                }
+              ]
+            }
+          },
+          {
+            "guardrail_id": "G15",
+            "severity": "MEDIUM",
+            "name": "Continuity Packet for previous day exists by 06:00 local",
+            "detail": {
+              "reason": "yesterday's continuity packet missing past 06:00 local",
+              "local_hour": 17,
+              "latest_date": "2026-06-24"
+            }
+          },
+          {
+            "guardrail_id": "G22",
+            "severity": "MEDIUM",
+            "name": "Reality Flux daemon reachable (cobra or shadow cache)",
+            "detail": {
+              "reason": "cobra unreachable and no shadow cache",
+              "detail": "This operation was aborted"
+            }
+          }
+        ],
+        "attempts": [
+          {
+            "transport": "gateway",
+            "skipped": true
+          },
+          {
+            "transport": "module",
+            "ok": true
+          }
+        ],
+        "elapsed_ms": 23326
+      },
+      "hot_currents": {
+        "step": "hot_currents",
+        "ok": false,
+        "reason": "cobra_unreachable_and_shadow_empty",
+        "detail": "This operation was aborted",
+        "elapsed_ms": 23275
+      },
+      "not_green_ledger": {
+        "step": "not_green_ledger",
+        "ok": true,
+        "source": "file:C:\\AtomEons\\Orange5\\00-CHARTER\\ORANGE5_NOT_GREEN_LEDGER.md",
+        "total_open": 11,
+        "sections": [
+          {
+            "section": "DEFERRED BY OPERATOR",
+            "count": 1,
+            "rows": [
+              {
+                "#": "D2",
+                "Item": "Codexa command rail token wiring",
+                "Reason": "Heavy probe shows 401; rail is up, token not in env",
+                "Resolution path": "Set `ORANGEBOX_RAIL_TOKEN` env var; PR-10 adapters and OrangeLLM heavy fallback now use it"
+              }
+            ]
+          },
+          {
+            "section": "PENDING-LIVE-SYSTEM (not deferred; just needs the moment)",
+            "count": 3,
+            "rows": [
+              {
+                "#": "L1",
+                "Item": "Codexa heavy lane real responses",
+                "What's missing": "Same token; gateway code now forwards it when present",
+                "Resolution path": "Same as D2"
+              },
+              {
+                "#": "L2",
+                "Item": "VLM Eye GLM-4.6V served real",
+                "What's missing": "Codexa Ollama for GLM-4.6V running",
+                "Resolution path": "Operator pulls + warms; heavy probe confirms"
+              },
+              {
+                "#": "L4",
+                "Item": "npm install ran in 02-APP only",
+                "What's missing": "06-ORANGELLM uses vanilla node http (intentional — zero deps)",
+                "Resolution path": "No action"
+              }
+            ]
+          },
+          {
+            "section": "SCAFFOLD-NOW / FULL-LATER (PRs that ship contract; impl deepens later)",
+            "count": 7,
+            "rows": [
+              {
+                "#": "S1",
+                "Item": "OrangeEye Visual stack live",
+                "Current state": "Facade returns scaffold response when `ORANGE5_VISUAL_ENABLED=1` unset",
+                "Full-build trigger": "Heavy lane live + MCP bridge active"
+              },
+              {
+                "#": "S2",
+                "Item": "AtomSmasher 11 of 12 modules",
+                "Current state": "STUB only; anti-fluff-gate is live",
+                "Full-build trigger": "Per-module PR as operator unlocks each"
+              },
+              {
+                "#": "S3",
+                "Item": "ToolMesh 11 labs",
+                "Current state": "Registry only; no tool-cards yet",
+                "Full-build trigger": "Per-lab PR as operator unlocks each domain"
+              },
+              {
+                "#": "S4",
+                "Item": "Flow SQLite persistence",
+                "Current state": "JSON snapshot at state/flow.json",
+                "Full-build trigger": "better-sqlite3 install + migration"
+              },
+              {
+                "#": "S5",
+                "Item": "Mirage Data Plane 11 mounts",
+                "Current state": "Designed; not yet implemented",
+                "Full-build trigger": "Per-mount PR when operator opens it"
+              },
+              {
+                "#": "S6",
+                "Item": "LoRA training pipeline runs",
+                "Current state": "Spec only",
+                "Full-build trigger": "Operator picks GPU vendor; corpus assembled; first pass"
+              }
+            ]
+          }
+        ],
+        "elapsed_ms": 23
+      }
+    },
+    "receipt": {
+      "path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-06-24-session-start-39c6424b.json",
+      "md_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-06-24-session-start-39c6424b.md",
+      "sha256": "8746295b45eea413c989a594ee8c74f09e732c62d2c7fc820b0b74500fb49a4f",
+      "receipt_id": "2026-06-24-session-start-39c6424b"
+    }
+  }
+}

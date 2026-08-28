@@ -1,0 +1,34 @@
+{
+  "labels": [
+    {
+      "label": "orange",
+      "descriptor": {
+        "mean_R": 0.7228533951680638,
+        "mean_G": 0.5807132912004744,
+        "mean_B": 0.17651451297907675,
+        "mean_RG": 0.14214010396758928,
+        "mean_BY": -0.4752688302051924,
+        "texture_var": 0.02464881991219921,
+        "log_size": -3.0879318247134893,
+        "log_aspect": -0.10245634169912184
+      },
+      "source": "baby-watches-orange.mp4 (15 frames)",
+      "learned_at": "2026-07-06T00:00:00Z"
+    },
+    {
+      "label": "apple",
+      "descriptor": {
+        "mean_R": 0.6936578956242295,
+        "mean_G": 0.49380117465248763,
+        "mean_B": 0.2381840131647507,
+        "mean_RG": 0.19985672097174215,
+        "mean_BY": -0.35554552197360784,
+        "texture_var": 0.012558337320440116,
+        "log_size": -0.8638205021077853,
+        "log_aspect": -0.07539165843582318
+      },
+      "source": "baby-watches-apple.mp4 (15 frames)",
+      "learned_at": "2026-07-06T00:00:00Z"
+    }
+  ]
+}

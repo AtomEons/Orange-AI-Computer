@@ -1,0 +1,22 @@
+{
+  "experiment": "31-deterministic-ids",
+  "generated_at": "2026-06-26T12:36:57.921Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "det_corpus_sha256": "03da0e5cf04adf965ae580cb8c74ab4db9d8058b6ca246478fef57b6de944df1",
+  "seed": "orange5-receipt-stream-v1",
+  "det_corpus_bytes": 2075585,
+  "measurements": {
+    "det_raw_brotli_size": 121167,
+    "det_raw_ratio": 17.13,
+    "det_two_stream_size": 115870,
+    "det_two_stream_ratio": 17.91,
+    "det_regen_size": 66122,
+    "det_regen_ratio_vs_det": 31.39,
+    "det_regen_ratio_vs_orig": 31.39,
+    "det_strip_regen_size": 69209,
+    "det_strip_regen_ratio_vs_det": 29.99,
+    "det_strip_regen_ratio_vs_orig": 29.99
+  },
+  "roundtrip_lossless_to_det_corpus": true,
+  "notes": "Simulates uniqueRuntimeId modification by replacing random UUIDs with sha256(seed||index). The det-ID corpus is what the canonical corpus WOULD have been if uniqueRuntimeId had been deterministic. Compressing the det-corpus measures the regeneration ceiling. The \"ratio vs orig\" comparison shows what the headline number would be if we measured against the ORIGINAL corpus length (this is informational, since the det-corpus would simply have replaced the original)."
+}

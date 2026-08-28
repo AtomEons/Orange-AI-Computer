@@ -1,0 +1,101 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-9d0786e171249fe9-1787822179874",
+  "query": "{\"action\":\"analyze.agent\",\"payload\":{\"parentOrder\":{\"action\":\"audit.security\",\"intent\":\"Produce one evidence-based orange.report.v1 for this bounded read-only Q8 delegation. Copy both supplied top-level receipt evidence refs into report.evidence; report.evidence must not be empty. Judge only the bounded Hermes-authorized path.\",\"targetProject\":\"OrangeFive/08-HERMES\",\"scope\":null,\"objective\":\"Prove the bounded child and synthesis route only; preserve the separate strict-preflight limitation.\",\"constraints\":[\"Deployment artifact hermes-profile-deployment-20260827T090125Z.json has SHA256 f226cffeceb1ec22600cf6736dc0310d01cc85d4eabce4338449d9756d41848b and records six post-deploy profile \",\"Six deployed profile hash prefixes are builder=9304c5003c57,misfit=fd823cc61419,navigator=ecce0c12936a,researcher=8f9f689ea331,reviewer=fd823cc61419,visual=42a6d294216d.\",\"Hermes-only restart evidence is status=RESTARTED_HERMES_ONLY, listenerPid=4656; live listenerPid=4656.\",\"Strict preflight artifact hermes-product-preflight-20260827T090418Z.json has SHA256 bdcd598d0799f3b8445598c608be7ed238c30d9b3dea6d06434b597eb7e088ab and required checks 17/18; fail\",\"Pre-task model state is not-resident-before- OrangeFive orange5",
+  "searchQuery": "action analyze.agent payload parentorder audit.security intent produce one",
+  "generatedAt": "2026-08-27T09:16:19.877Z",
+  "budgetMs": 60000,
+  "elapsedMs": 601,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "157765438",
+      "title": "UWaterloo-ASL/Agent_Action_Data_Analysis",
+      "url": "https://github.com/UWaterloo-ASL/Agent_Action_Data_Analysis",
+      "summary": "This repository keeps code to analyze agents' action collected in ROM.",
+      "updatedAt": "2020-02-29T03:25:42Z",
+      "license": "MIT",
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.765,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1190035757",
+      "title": "felixglush/explain-analyze-agent",
+      "url": "https://github.com/felixglush/explain-analyze-agent",
+      "summary": "GitHub Action that runs EXPLAIN ANALYZE on SQL in PR diffs and posts inline review comments via Claude",
+      "updatedAt": "2026-03-24T15:24:47Z",
+      "license": null,
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1294478166",
+      "title": "ewardGPT/agent-telemetry",
+      "url": "https://github.com/ewardGPT/agent-telemetry",
+      "summary": "Production observability for AI agents — trace, query, and analyze agent actions",
+      "updatedAt": "2026-07-10T16:29:58Z",
+      "license": null,
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "49467678ccdc5d6356158473715282b332777de4fdfa2b1c2373e2d8c16d1af6"
+}

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Æ Orange AI Computer Features Guide</title><style>
+  :root { color-scheme: light; --orange:#ff5a1f; --ink:#171717; --muted:#666; --line:#dedede; --paper:#fff; }
+  * { box-sizing: border-box; }
+  @page { size: Letter; margin: 0.7in 0.66in 0.72in; }
+  html { background:#ececec; }
+  body { max-width: 8.5in; margin: 0 auto; padding: 0.72in 0.66in; background:var(--paper); color:var(--ink); font-family: Inter, "Segoe UI", Arial, sans-serif; font-size:10.5pt; line-height:1.48; }
+  body::before { content:"ATOM EONS  /  Æ ORANGE AI COMPUTER"; display:block; color:var(--orange); font-size:8pt; font-weight:800; letter-spacing:.14em; border-bottom:2px solid var(--orange); padding-bottom:8px; margin-bottom:28px; }
+  h1,h2,h3,h4 { break-after:avoid; line-height:1.15; color:#111; }
+  h1 { font-size:28pt; margin:0 0 20px; }
+  h2 { font-size:18pt; margin:30px 0 11px; padding-top:7px; border-top:1px solid var(--line); }
+  h3 { font-size:13.5pt; margin:23px 0 8px; }
+  h4 { font-size:11pt; margin:18px 0 6px; }
+  p, li { orphans:3; widows:3; }
+  a { color:#b7390d; text-decoration:none; }
+  strong { color:#111; }
+  blockquote { margin:18px 0; padding:10px 15px; border-left:4px solid var(--orange); background:#fff5f0; }
+  code { font-family:"Cascadia Mono",Consolas,monospace; background:#f4f4f4; padding:1px 4px; border-radius:3px; font-size:9pt; }
+  pre { break-inside:avoid; white-space:pre-wrap; background:#161616; color:#f7f7f7; padding:13px 15px; border-left:4px solid var(--orange); border-radius:4px; overflow-wrap:anywhere; }
+  pre code { color:inherit; background:none; padding:0; }
+  table { width:100%; border-collapse:collapse; margin:15px 0 21px; break-inside:auto; font-size:9pt; }
+  thead { display:table-header-group; }
+  tr { break-inside:avoid; }
+  th,td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; }
+  th { text-align:left; background:#fff1eb; }
+  ul,ol { padding-left:22px; }
+  img { max-width:100%; height:auto; }
+  hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
+  .manual-meta { color:var(--muted); font-size:8.5pt; margin:-10px 0 30px; }
+  .book-cover { min-height:8.2in; display:flex; flex-direction:column; justify-content:center; page-break-after:always; }
+  .book-cover .mark { color:var(--orange); font-size:11pt; font-weight:800; letter-spacing:.18em; }
+  .book-cover h1 { font-size:42pt; max-width:6.5in; margin:16px 0; }
+  .book-cover p { color:var(--muted); font-size:15pt; max-width:5.7in; }
+  .manual-section { page-break-before:always; }
+  @media print { html,body { background:#fff; } body { padding:0; max-width:none; } }
+</style></head>
+<body class="single-manual">
+<div class="manual-meta">Canonical source: 00-CHARTER/GUIDES/FEATURES_GUIDE.md</div>
+<h1>Æ Orange AI Computer Features Guide</h1>
+<p>This guide explains the Æ Orange AI Computer capability map. It does not promote any
+feature. Status must be refreshed from live probes and receipts.</p>
+<p>The accepted 2026-08-28 integrated snapshot is green at
+<code>10-RECEIPTS/orange5-build/2026-08-28T03-42-45-242Z-integrated-operational-proof.json</code>.
+Blue Bench accepted 10/10 exact-path lanes in
+<code>10-RECEIPTS/orange5-build/2026-08-28T03-40-44-768Z-blue-bench.json</code>.
+The later Hermes Brain MCP delegation also completed with all ten checks true
+in <code>10-RECEIPTS/orange5-build/2026-08-28T04-13-22-203Z-brain-mcp-delegation-live-proof.json</code>.</p>
+<h2>Status Vocabulary</h2>
+<ul>
+<li><code>PROVEN_SNAPSHOT</code>: a referenced historical or recent receipt proved the
+exact path at that time. Re-probe before relying on it now.</li>
+<li><code>CONFIGURED_UNPROVEN</code>: source and configuration exist; live proof is pending.</li>
+<li><code>DEGRADED_OPERATIONAL</code>: callable with a named limitation.</li>
+<li><code>BLOCKED</code>: required runtime, authority, or evidence is missing.</li>
+<li><code>FUTURE_CANDIDATE</code>: research or planned lane; not active.</li>
+</ul>
+<h2>1. Core Control Features</h2>
+<table>
+<thead>
+<tr><th>Feature</th><th>What it does</th><th>Evidence posture</th></tr>
+</thead>
+<tbody>
+<tr><td>Bun Navigator Kernel</td><td>Zero-model-RAM reflex for schemas, policy, health, routing, and repeated work</td><td>Current runtime implementation; verify live health</td></tr>
+<tr><td>Canonical Spine</td><td>Runs scoped orders through gates, memory, compression, models, effectors, and receipts</td><td>Current source and focused proofs exist; verify current run</td></tr>
+<tr><td>orange.order.v1</td><td>Stable operational input contract</td><td>Implemented and validated by CLI/MCP</td></tr>
+<tr><td>orange.report.v1</td><td>Stable operational output contract</td><td>Deterministically compiled; model has no receipt authority</td></tr>
+<tr><td>LOOM</td><td>Authority, scope, risk, evidence, approval, and false-green gates</td><td>Current Hermes/Spine code; exact action still needs a receipt</td></tr>
+<tr><td>Project Lock</td><td>Keeps orders attached to the declared target and scope</td><td>Current control feature; verify on the active project</td></tr>
+<tr><td>Project Continuum</td><td>Preserves transcripts, sources, lineage, and duplicate-work preflight</td><td>Current memory path; quality is task-dependent</td></tr>
+<tr><td>Hash-chained receipts</td><td>Records actual actions and evidence with lineage</td><td>Core operational truth layer</td></tr>
+</tbody>
+</table>
+<h2>2. OrangeBrain And Client Features</h2>
+<table>
+<thead>
+<tr><th>Feature</th><th>What it does</th><th>Evidence posture</th></tr>
+</thead>
+<tbody>
+<tr><td>OpenAI-compatible gateway</td><td>Lets Atomic Orange and compatible clients use governed model routes</td><td>Endpoint configured at loopback; probe <code>/healthz</code></td></tr>
+<tr><td>Three-speed routing</td><td>Chooses Bun reflex, Navigator, or specialist</td><td>Current source; route receipt proves actual choice</td></tr>
+<tr><td>Model output repair</td><td>Converts compact model output to public report schema and rejects false authority</td><td>Implemented in gateway/control path</td></tr>
+<tr><td>Brain MCP stdio</td><td>Desktop and IDE integration</td><td>Current dual-transport proof green with 10 tools</td></tr>
+<tr><td>Brain MCP HTTP</td><td>Loopback app and model-to-model integration</td><td>Current authenticated loopback proof green with 12 tools and protocol/header/body guards</td></tr>
+<tr><td>Durable MCP Tasks</td><td>Long tool calls for current protocol clients</td><td>Implemented in task store; live client support varies</td></tr>
+<tr><td>Atomic Orange</td><td>Optional native operator interface</td><td>Interface lane; not required for headless operation</td></tr>
+</tbody>
+</table>
+<h2>3. Memory And Learning Features</h2>
+<table>
+<thead>
+<tr><th>Feature</th><th>What it does</th><th>Evidence posture</th></tr>
+</thead>
+<tbody>
+<tr><td>AE Memory / Cobra</td><td>Durable facts, decisions, failures, and retrieval</td><td>Current held-out quality: 23/23, hybrid MRR <code>0.9058</code>, p95 <code>445 ms</code></td></tr>
+<tr><td>Lexical retrieval</td><td>Exact keyword and identifier recall</td><td>Implemented</td></tr>
+<tr><td>Dense retrieval</td><td>Semantic recall through local embedding lane</td><td>Configured; active model must be proved</td></tr>
+<tr><td>Hybrid retrieval</td><td>Combines lexical and dense scores</td><td>Prior benchmark evidence exists; rerun for current data</td></tr>
+<tr><td>Failure Memory</td><td>Surfaces prior matching failures before action</td><td>Current source and focused proof path</td></tr>
+<tr><td>Contradiction debt</td><td>Records incompatible claims instead of merging them</td><td>Current memory implementation</td></tr>
+<tr><td>Receipt-to-Reflex</td><td>Promotes repeated proven work into deterministic behavior</td><td>Governed learning path; each rule needs falsification and rollback</td></tr>
+<tr><td>Superdirectory</td><td>Stores project docs and transcripts on disk for bounded hydration</td><td>Implemented maintenance commands</td></tr>
+</tbody>
+</table>
+<h2>4. Compression Features</h2>
+<p>Canonical engine: <code>12-ATOMSMASHER/full-scope</code>.</p>
+<table>
+<thead>
+<tr><th>Feature</th><th>What it does</th></tr>
+</thead>
+<tbody>
+<tr><td>Commitment Atoms</td><td>Preserves irreducible laws, decisions, constraints, and tasks</td></tr>
+<tr><td>AIR Codec</td><td>Turns verbose text into typed structural frames</td></tr>
+<tr><td>Equation Memory</td><td>Stores numeric rules plus residuals where justified</td></tr>
+<tr><td>Cartridges</td><td>Reuses stable domain context without rebuilding it</td></tr>
+<tr><td>Sparse Worksets</td><td>Loads the smallest task-relevant workbench</td></tr>
+<tr><td>Least-Action Router</td><td>Chooses the smallest sufficient route</td></tr>
+<tr><td>Expansion Warrants</td><td>Requires explicit justification for broad context or compute</td></tr>
+<tr><td>Compression Debt</td><td>Records downstream cost caused by bad compression</td></tr>
+<tr><td>Saved-Work Certificates</td><td>Proves equivalent work can be reused</td></tr>
+<tr><td>Canon Pressure</td><td>Surfaces recurring concepts for operator promotion</td></tr>
+<tr><td>Pathwaves</td><td>Compresses successful workflow shapes for replay</td></tr>
+<tr><td>Anti-Fluff</td><td>Keeps filler out of hot operational memory</td></tr>
+<tr><td>Full-Scope Registry</td><td>Exposes 620 registered features across engine families</td></tr>
+</tbody>
+</table>
+<p>AtomSmasher has receipt-backed benchmarks, but ratio claims are corpus-specific.
+The cold ledger and source pointers remain authoritative.</p>
+<p>Context Crystal currently has 5/5 held-out quality parity with a minimum
+<code>1422.901x</code> operational context ratio across a 7,056,795-byte corpus. This
+workload-specific held-out result is never substituted for a live-turn ratio.</p>
+<h2>5. Hermes And Agent Features</h2>
+<h3>Current Orange Hermes surface</h3>
+<ul>
+<li>bounded leases;</li>
+<li>LOOM gates;</li>
+<li>approval and override auditing;</li>
+<li>filesystem, process, browser, and visual adapters;</li>
+<li>Misfit second opinion;</li>
+<li>execution receipts.</li>
+</ul>
+<h3>Official Hermes Agent product integration</h3>
+<p>Configured profiles:</p>
+<ul>
+<li>Navigator;</li>
+<li>Builder;</li>
+<li>Researcher;</li>
+<li>Reviewer;</li>
+<li>Visual;</li>
+<li>Misfit.</li>
+</ul>
+<p>Configured product shape:</p>
+<ul>
+<li>one gateway owner;</li>
+<li>one Kanban dispatcher;</li>
+<li>one conductor and at most two specialists;</li>
+<li>filtered Orange Brain MCP tools;</li>
+<li>authenticated loopback OpenAI-compatible API;</li>
+<li>isolated profile state;</li>
+<li>no telemetry and no LAN bind.</li>
+</ul>
+<p>The current integration manifest and static proof do not by themselves prove
+the product gateway, Kanban, and API are live. A fresh product preflight is
+required.</p>
+<p>Fresh path status: Hermes Brain MCP delegation completed parent mediation,
+child execution, synthesis, receipts, and lease revocation in <code>11,409.53 ms</code>.
+That proves the harmless read contract; each mutating or long-running workflow
+keeps its own completion proof.</p>
+<h2>6. Visual And Creative Features</h2>
+<h3>AE Eyes</h3>
+<ul>
+<li>screenshot, image, and document analysis;</li>
+<li>persistent visual retrieval worker;</li>
+<li>browser DOM and accessibility inspection;</li>
+<li>structured visual results returned through Orange reports and receipts.</li>
+</ul>
+<p>AE Eyes must prove actual visual input and structured output. A backend facade
+test alone is insufficient.</p>
+<h3>Captain Planet installed runtime routes</h3>
+<p>These have technically valid, independently decoded runtime artifacts, but
+studio quality is explicitly unassessed:</p>
+<table>
+<thead>
+<tr><th>Role</th><th>Current model</th><th>Proven boundary</th></tr>
+</thead>
+<tbody>
+<tr><td>Image draft</td><td>FLUX.2 Klein 4B FP8</td><td>local weights and decoded image artifact</td></tr>
+<tr><td>Video fallback</td><td>LTX-Video 2B 0.9.8 distilled</td><td>local weights and decoded motion artifact</td></tr>
+<tr><td>Speech</td><td>Qwen3-TTS 1.7B CustomVoice</td><td>local model and non-silent WAV</td></tr>
+<tr><td>Music</td><td>ACE-Step 1.5 turbo</td><td>local weights and non-silent WAV</td></tr>
+</tbody>
+</table>
+<h3>Creative candidates</h3>
+<p>These remain <code>FUTURE_CANDIDATE</code> until installed, measured, and baked off:</p>
+<ul>
+<li>FLUX.2 Dev final/edit tier;</li>
+<li>LTX-2.5 modern audio/video tier;</li>
+<li>Hunyuan3D 2.1;</li>
+<li>PaddleOCR-VL 1.6;</li>
+<li>SeedVR2 restoration.</li>
+</ul>
+<h2>7. Current Awareness Features</h2>
+<ul>
+<li>source intake and timestamping;</li>
+<li>primary-source preference;</li>
+<li>content hashes and immutable references;</li>
+<li>local suitability and risk classification;</li>
+<li>quarantine before adoption;</li>
+<li>incumbent-versus-candidate bakeoff;</li>
+<li>receipt-backed promotion.</li>
+</ul>
+<p>Research packets inform decisions. They do not automatically install tools or
+rewrite canon.</p>
+<h2>8. Deployment Features</h2>
+<ul>
+<li>two-computer preferred topology;</li>
+<li>single-computer supported architecture;</li>
+<li>immutable Orange deploy payload;</li>
+<li>pre-authored Hermes profiles and configuration templates;</li>
+<li>fixed manifest with recommended defaults and optional deselection;</li>
+<li>adoption of compatible installed Bun, Ollama, models, and tools;</li>
+<li>automatic download of missing selected components after explicit approval;</li>
+<li>all mutable runtime state under <code>%USERPROFILE%\OrangeBox-Data</code>;</li>
+<li>hidden service expectation;</li>
+<li>authenticated Codexa rail;</li>
+<li>topology discovery requirement for public installs;</li>
+<li>resumable, checksum-verified model downloads as the installation contract;</li>
+<li>rollback-safe source and model updates;</li>
+<li>optional hosted frontier lease.</li>
+</ul>
+<p>Generic public clean-install, updater, and arbitrary-hardware proof must be
+checked in ReadyForGit. This guide does not claim those gates are closed.</p>
+<h2>9. Optional Hosted Features</h2>
+<p>OpenAI 5.6, Codex, Claude, or another strongest hosted agent may be used for:</p>
+<ul>
+<li>guided installation;</li>
+<li>architecture and code review;</li>
+<li>frontier reasoning lease;</li>
+<li>difficult debugging;</li>
+<li>independent evidence review.</li>
+</ul>
+<p>They are optional. Orange policy, memory, receipts, and deterministic execution
+remain local and cannot depend on a subscription.</p>
+<h2>Related Guides</h2>
+<ul>
+<li><a href="QUICK_START.md">Quick Start</a></li>
+<li><a href="OPERATOR_MANUAL.md">Operator Manual</a></li>
+<li><a href="TECHNICAL_ARCHITECTURE.md">Technical Architecture</a></li>
+<li><a href="LLM_OPERATOR_GUIDE.md">LLM Operator Guide</a></li>
+<li><a href="MODEL_INSTALLATION_GUIDE.md">Model Installation Guide</a></li>
+</ul>
+
+</body></html>

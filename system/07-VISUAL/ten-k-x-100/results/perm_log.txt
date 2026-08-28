@@ -1,0 +1,21 @@
+loaded 409 classes
+
+══ FISHER PER-DIM WEIGHTS ══
+  K= 47  Fisher per-dim rate=46.8%
+    top-10 discriminative dims: d71=8.34, d72=4.87, d3=4.51, d75=4.41, d0=3.43, d70=3.43, d21=3.05, d11=3.05, d16=3.02, d20=2.98
+  K=100  Fisher per-dim rate=50.2%
+    top-10 discriminative dims: d71=9.03, d3=4.18, d0=3.99, d9=3.99, d72=3.79, d75=3.50, d20=3.44, d19=3.42, d21=3.27, d16=3.26
+  K=200  Fisher per-dim rate=59.9%
+    top-10 discriminative dims: d26=11.37, d22=8.93, d23=5.14, d24=4.05, d71=3.87, d19=2.71, d9=2.54, d0=2.52, d20=2.39, d21=2.31
+  K=300  Fisher per-dim rate=64.1%
+    top-10 discriminative dims: d26=9.70, d22=7.62, d23=4.16, d71=3.60, d24=3.20, d19=3.19, d0=3.10, d20=2.81, d9=2.72, d21=2.62
+  K=409  Fisher per-dim rate=60.7%
+    top-10 discriminative dims: d26=8.49, d22=6.62, d71=4.84, d23=3.49, d0=3.09, d19=3.07, d20=2.99, d21=2.97, d16=2.93, d9=2.86
+Fisher search: 110s
+
+══ FAST BLOCK-WEIGHT SEARCH (precomputed block-L1) ══
+  precomputing block-L1 for K=100…
+  precomputing block-L1 for K=47…
+  precompute: 2s
+  seed 1: NEW 46.0% weights=[3.00,3.00,3.00,5.00,1.50,1.00,0.70,5.00]  69s
+  seed 2: NEW 49.1% weights=[1.00,5.00,0.50,0.00,0.00,0.00,0.10,5.00]  139s

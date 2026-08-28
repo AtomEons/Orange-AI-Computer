@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orange.fixer.case.v1",
+  "title": "Orange Fixer Case v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "defectId",
+    "runId",
+    "source",
+    "severity",
+    "state",
+    "attempts",
+    "evidence",
+    "receiptPath"
+  ],
+  "properties": {
+    "schema": { "const": "orange.fixer.case.v1" },
+    "defectId": { "type": "string", "minLength": 3 },
+    "runId": { "type": "string", "minLength": 3 },
+    "source": { "type": "string", "minLength": 1 },
+    "severity": { "enum": ["low", "medium", "high", "critical"] },
+    "state": {
+      "enum": [
+        "detected",
+        "reproduced",
+        "isolated",
+        "repair_planned",
+        "leased",
+        "patched",
+        "exact_path_verified",
+        "regression_encoded",
+        "closed"
+      ]
+    },
+    "attempts": { "type": "integer", "minimum": 0 },
+    "reproducer": { "type": ["object", "null"] },
+    "suspectedBoundary": { "type": ["string", "null"] },
+    "repairOrder": { "type": ["object", "null"] },
+    "hermesLease": { "type": ["object", "null"] },
+    "evidence": { "type": "array", "items": { "type": "object" } },
+    "rollback": { "type": ["object", "null"] },
+    "regression": { "type": ["object", "null"] },
+    "receiptPath": { "type": ["string", "null"] },
+    "caseHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "additionalProperties": true
+}

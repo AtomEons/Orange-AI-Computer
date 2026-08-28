@@ -1,0 +1,102 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "image",
+  "card_id": "image-edit",
+  "capability": "image.edit",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["image_ref", "prompt"],
+    "properties": {
+      "image_ref": {
+        "type": "string",
+        "description": "Sandbox reference to the source image to be edited. Accepts 'sandbox://<path>' only; raw filesystem paths and external URLs are rejected.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "mask_ref": {
+        "type": "string",
+        "description": "Optional sandbox reference to an alpha mask. Transparent pixels mark the region to replace; opaque pixels are preserved. Must match source dimensions; runner rejects mismatches.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "prompt": {
+        "type": "string",
+        "description": "Natural-language description of the edit to perform within the (masked) region.",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "size": {
+        "type": "string",
+        "description": "Output dimensions. Defaults to the source image dimensions when omitted; explicit override re-rasters the output.",
+        "enum": ["512x512", "1024x1024", "1024x1792", "1792x1024", "source"],
+        "default": "source"
+      },
+      "n": {
+        "type": "integer",
+        "description": "Number of edit variants to return. Each counts as one billed invocation upstream.",
+        "minimum": 1,
+        "maximum": 4,
+        "default": 1
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["images", "model"],
+    "properties": {
+      "images": {
+        "type": "array",
+        "description": "One sandbox reference per edit variant. Originals are preserved; outputs are new sandbox files.",
+        "minItems": 1,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["image_ref", "width", "height"],
+          "properties": {
+            "image_ref": {
+              "type": "string",
+              "pattern": "^sandbox://",
+              "minLength": 11,
+              "maxLength": 4096
+            },
+            "width": { "type": "integer", "minimum": 1, "maximum": 8192 },
+            "height": { "type": "integer", "minimum": 1, "maximum": 8192 }
+          }
+        }
+      },
+      "model": {
+        "type": "string",
+        "description": "Concrete DALL-E variant that performed the edit, for receipt citation.",
+        "minLength": 1,
+        "maxLength": 64
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 10,
+    "scopes": [
+      "net.egress:api.openai.com",
+      "fs.read:sandbox://images/",
+      "fs.write:sandbox://images/",
+      "secrets.read:frontier.image"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 6,
+    "egress_allowlist": ["api.openai.com"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "openai",
+  "version": "0.1.0",
+  "summary": "Mask-aware image edit via DALL-E through the frontier-offload proxy; originals untouched, outputs land in the sandbox.",
+  "tags": ["vision", "edit", "inpaint", "dalle", "frontier", "byo-key"],
+  "notes": "Source images and prompts leave the sandbox for the external model, so each invocation requires human approval. DALL-E edit requires PNG inputs with a transparent-pixel mask; the runner converts JPEGs on entry and rejects masks whose dimensions disagree with the source."
+}

@@ -1,0 +1,100 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "automation",
+  "card_id": "cron-task",
+  "capability": "automation.cron",
+  "cost_class": "free",
+  "latency_class": "sub-second",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["action"],
+    "properties": {
+      "action": {
+        "type": "string",
+        "description": "Lifecycle verb against host cron entries. 'install' writes a vetted entry; 'remove' deletes by name; 'list' enumerates entries owned by the mesh; 'validate' parses an expression without persisting.",
+        "enum": ["install", "remove", "list", "validate"]
+      },
+      "entry": {
+        "type": "object",
+        "description": "Required for install/remove/validate.",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z][a-z0-9-]{2,63}$" },
+          "expression": {
+            "type": "string",
+            "description": "Standard 5-field cron expression in the host's timezone. Runner rejects @reboot, *<60s equivalents, and shell metacharacters in the parsed form.",
+            "minLength": 9,
+            "maxLength": 256
+          },
+          "command_template": {
+            "type": "string",
+            "description": "Vetted command template id. The mesh maintains an allowlist of templates (e.g. 'mesh-invoke', 'log-rotate', 'backup-snapshot'); arbitrary shell strings are not accepted.",
+            "enum": ["mesh-invoke", "log-rotate", "backup-snapshot", "fs-prune"]
+          },
+          "command_args": {
+            "type": "object",
+            "description": "Arguments substituted into the chosen template. Schema is template-specific and validated at install time.",
+            "additionalProperties": true
+          },
+          "comment": { "type": "string", "maxLength": 512 }
+        }
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["action", "status"],
+    "properties": {
+      "action": { "type": "string" },
+      "status": { "type": "string", "enum": ["installed", "removed", "listed", "valid", "invalid", "failed"] },
+      "next_runs": {
+        "type": "array",
+        "description": "Computed forward firings (UTC) — useful for sanity-checking an expression before install. Up to 5.",
+        "items": { "type": "string" },
+        "maxItems": 5
+      },
+      "entries": {
+        "type": "array",
+        "description": "Populated for action='list'. Only mesh-owned entries are visible; user crontab is not enumerated.",
+        "items": {
+          "type": "object",
+          "required": ["name", "expression", "command_template"],
+          "properties": {
+            "name": { "type": "string" },
+            "expression": { "type": "string" },
+            "command_template": { "type": "string" },
+            "last_run_at": { "type": "string" },
+            "last_exit_code": { "type": "integer" }
+          }
+        }
+      },
+      "errors": {
+        "type": "array",
+        "description": "Parse or validation errors. Empty on success.",
+        "items": { "type": "string" }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 20,
+    "scopes": [
+      "host.cron.read",
+      "host.cron.write",
+      "process.spawn:cron-template",
+      "net.egress:none"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 6
+  },
+  "risk_class": "mutating",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Manage host-level cron entries through vetted command templates. Distinct from scheduled-task (which runs inside the mesh scheduler); use cron-task only when a host-side trigger is required (e.g. survives mesh restart).",
+  "tags": ["automation", "cron", "host", "scheduler"],
+  "notes": "Prefer 'scheduled-task' for mesh-internal recurring work; reach for cron-task only when a host-anchored trigger is genuinely required. Arbitrary shell is intentionally not exposed — that path is a privilege-escalation hazard."
+}

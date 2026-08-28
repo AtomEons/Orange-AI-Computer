@@ -1,0 +1,359 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-5fb4ca1f7c6c9ff5-1787820462217",
+  "query": "current primary-source AI agent memory retrieval context compression evidence provenance https://arxiv.org/abs/2608.13662 https://arxiv.org/abs/2608.11775 OrangeFive orange5",
+  "searchQuery": "primary-source agent memory retrieval context compression evidence provenance",
+  "generatedAt": "2026-08-27T08:47:42.231Z",
+  "budgetMs": 60000,
+  "elapsedMs": 800,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "direct",
+      "sourceId": "032beca969d13125",
+      "title": "[2608.11775] The Sleeping Agent: What Gist-Based Context Compression Loses and Why",
+      "url": "https://arxiv.org/abs/2608.11775",
+      "summary": "[2608.11775] The Sleeping Agent: What Gist-Based Context Compression Loses and Why Skip to main content Search Submit Donate Log in Search arXiv Press Enter to search &middot; Advanced search --> Computer Science > Artificial Intelligence arXiv:2608.11775 (cs) [Submitted on 12 Aug 2026] Title: The Sleeping Agent: What Gist-Based Context Compression Loses and Why Authors: Nicholas E. Kyrkewood View a PDF of the paper titled The Sleeping Agent: What Gist-Based Context Compression Loses and Why, by",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "sourceQuality": 0.9,
+      "relevance": {
+        "score": 0.3259,
+        "matched": 3,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "context",
+          "compression"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "direct",
+      "sourceId": "b3ab73e24fcfc7a0",
+      "title": "[2608.13662] Ontology-Grounded Project Memory for Coding Agents",
+      "url": "https://arxiv.org/abs/2608.13662",
+      "summary": "[2608.13662] Ontology-Grounded Project Memory for Coding Agents Skip to main content Search Submit Donate Log in Search arXiv Press Enter to search &middot; Advanced search --> Computer Science > Artificial Intelligence arXiv:2608.13662 (cs) [Submitted on 13 Aug 2026] Title: Ontology-Grounded Project Memory for Coding Agents Authors: James Adam View a PDF of the paper titled Ontology-Grounded Project Memory for Coding Agents, by James Adam View PDF HTML (experimental) Abstract: Coding agents hav",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "sourceQuality": 0.9,
+      "relevance": {
+        "score": 0.1911,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "221654678",
+      "title": "deepset-ai/haystack",
+      "url": "https://github.com/deepset-ai/haystack",
+      "summary": "Open-source AI orchestration framework for building context-engineered, production-ready LLM applications. Design modular pipelines and agent workflows with explicit control over retrieval, routing, memory, and generation. Built for scalable agents, RAG, multimodal applications, semantic search, and conversational systems.",
+      "updatedAt": "2026-08-27T08:43:52Z",
+      "license": "Apache-2.0",
+      "stars": 26330,
+      "forks": 3043,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8534,
+      "relevance": {
+        "score": 0.4607,
+        "matched": 4,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory",
+          "retrieval",
+          "context"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1329484633",
+      "title": "melandlabs/opencontext",
+      "url": "https://github.com/melandlabs/opencontext",
+      "summary": "A temporal context graph, a memory API, retrieval primitives, and a multiple-platform integration mesh — designed to be embedded into any host process.",
+      "updatedAt": "2026-08-27T08:23:11Z",
+      "license": "Apache-2.0",
+      "stars": 65,
+      "forks": 5,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8014,
+      "relevance": {
+        "score": 0.4045,
+        "matched": 3,
+        "queryTerms": 8,
+        "terms": [
+          "memory",
+          "retrieval",
+          "context"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2605.30604v1",
+      "title": "An Organization-Scoped LLM Agent Runtime Architecture for Regulated Cybersecurity Operations",
+      "url": "http://arxiv.org/abs/2605.30604v1",
+      "summary": "Regulated cybersecurity workflows lack a runtime substrate that enforces organization-level scope across retrieval, tool calls, memory, findings, reports, and audit while remaining model-agnostic and locally deployable. Recent large language model (LLM) agent systems report strong results on isolated cybersecurity tasks, yet they do not by themselves define an auditable platform architecture for regulated security operations centre (SOC) and compliance workflows, where a single analyst may trigg",
+      "updatedAt": "2026-05-28T21:51:38Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.3259,
+        "matched": 3,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory",
+          "retrieval"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "991431142",
+      "title": "memvid/memvid",
+      "url": "https://github.com/memvid/memvid",
+      "summary": "Memory layer for AI Agents. Replace complex RAG pipelines with a serverless, single-file memory layer. Give your agents instant retrieval and long-term memory.",
+      "updatedAt": "2026-08-27T03:47:59Z",
+      "license": "Apache-2.0",
+      "stars": 16452,
+      "forks": 1413,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8493,
+      "relevance": {
+        "score": 0.3259,
+        "matched": 3,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory",
+          "retrieval"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1014729376",
+      "title": "MemTensor/MemOS",
+      "url": "https://github.com/MemTensor/MemOS",
+      "summary": "Self-evolving memory OS for LLM & AI Agents: ultra-persistent memory, hybrid-retrieval, and cross-task skill reuse, with 35.24% token savings and DeepSeek Harness support.",
+      "updatedAt": "2026-08-27T07:54:38Z",
+      "license": "Apache-2.0",
+      "stars": 11026,
+      "forks": 1009,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8458,
+      "relevance": {
+        "score": 0.3259,
+        "matched": 3,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory",
+          "retrieval"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1306651494",
+      "title": "MaxFreedomPollard/Compartment",
+      "url": "https://github.com/MaxFreedomPollard/Compartment",
+      "summary": "Encrypted, fully offline agentic memory. One click install, GUI w/ memory map, all OS and agents. Superior memory creation, storage and retrieval.",
+      "updatedAt": "2026-08-27T07:49:51Z",
+      "license": "Apache-2.0",
+      "stars": 584,
+      "forks": 3,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8203,
+      "relevance": {
+        "score": 0.3259,
+        "matched": 3,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory",
+          "retrieval"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1222639711",
+      "title": "caura-ai/caura",
+      "url": "https://github.com/caura-ai/caura",
+      "summary": "Caura (formerly MemClaw) — governed shared memory for AI agent fleets. Multi-agent, multi-tenant, MCP-native. Trust tiers, keystone policies, audit trails, knowledge graph, self-improving retrieval. Apache 2.0.",
+      "updatedAt": "2026-08-27T08:30:31Z",
+      "license": "Apache-2.0",
+      "stars": 463,
+      "forks": 57,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8183,
+      "relevance": {
+        "score": 0.3259,
+        "matched": 3,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory",
+          "retrieval"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1023456048",
+      "title": "Kodezi/Chronos",
+      "url": "https://github.com/Kodezi/Chronos",
+      "summary": "Kodezi Chronos is a debugging-first language model that achieves state-of-the-art results on SWE-bench Lite (80.33%) and 67% real-world fix accuracy, over six times better than GPT-4. Built with Adaptive Graph-Guided Retrieval and Persistent Debug Memory. Model available Q1 2026 via Kodezi OS.",
+      "updatedAt": "2026-08-26T23:49:04Z",
+      "license": "NOASSERTION",
+      "stars": 4923,
+      "forks": 211,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8388,
+      "relevance": {
+        "score": 0.2696,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "memory",
+          "retrieval"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "201403923",
+      "title": "activeloopai/deeplake",
+      "url": "https://github.com/activeloopai/deeplake",
+      "summary": "Deeplake is AI Data Runtime for Agents. It provides serverless postgres with a multimodal datalake, enabling scalable retrieval and training.",
+      "updatedAt": "2026-08-25T06:28:45Z",
+      "license": "Apache-2.0",
+      "stars": 9228,
+      "forks": 723,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8443,
+      "relevance": {
+        "score": 0.1911,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "retrieval"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1217603969",
+      "title": "aliaihub/awesome-hermes-usecases",
+      "url": "https://github.com/aliaihub/awesome-hermes-usecases",
+      "summary": "Curated real-world use cases for Hermes Agent — the self-improving AI agent from Nous Research. Backed by primary sources.",
+      "updatedAt": "2026-08-27T01:51:13Z",
+      "license": "MIT",
+      "stars": 203,
+      "forks": 18,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8112,
+      "relevance": {
+        "score": 0.1911,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "primary source",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "20ced56fd5934689d057bf2c1d7cb3f7e8f239a037e0d9ad926d52e0bcb2fa9a"
+}

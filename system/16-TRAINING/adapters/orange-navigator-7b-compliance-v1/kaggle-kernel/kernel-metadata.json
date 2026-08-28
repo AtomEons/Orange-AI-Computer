@@ -1,0 +1,14 @@
+{
+  "id": "atommccree/orange-navigator-7b-compliance-v1-train",
+  "title": "Orange Navigator 7B Compliance V1 Train",
+  "code_file": "train.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["atommccree/orange-navigator-7b-compliance-v1"],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

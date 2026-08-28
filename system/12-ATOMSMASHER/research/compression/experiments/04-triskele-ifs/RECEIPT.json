@@ -1,0 +1,36 @@
+{
+  "experiment": "04-triskele-ifs",
+  "generated_at": "2026-06-26T09:37:36.151Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "raw_action_stream_bytes": 85273,
+  "ifs_stream_bytes": 11358,
+  "ifs_brotli_bytes": 5058,
+  "ratio": 16.86,
+  "roundtrip_lossless": true,
+  "best_N": 3,
+  "best_cosine_sim": 1,
+  "best_jaccard_sim": 0.496,
+  "all_N_analysis": [
+    {
+      "N": 2,
+      "cosine_sim": 1,
+      "jaccard_sim": 0.47
+    },
+    {
+      "N": 3,
+      "cosine_sim": 1,
+      "jaccard_sim": 0.496
+    },
+    {
+      "N": 4,
+      "cosine_sim": 0.999,
+      "jaccard_sim": 0.575
+    },
+    {
+      "N": 6,
+      "cosine_sim": 0.998,
+      "jaccard_sim": 0.586
+    }
+  ],
+  "pass": true
+}

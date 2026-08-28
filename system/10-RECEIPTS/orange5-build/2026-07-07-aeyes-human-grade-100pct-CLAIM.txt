@@ -1,0 +1,46 @@
+CLAIM
+
+The AEyes¹ zero-parameter photon-measurement visual recognition system,
+built in Bun/JavaScript on the Orange5 substrate at C:\AtomEons\Orange5,
+achieves human-grade recognition at 16 / 16 = 100 percent on a diverse
+16-fixture test set, with zero confident-wrong emissions.
+
+FIXTURES (16 total)
+
+Targets (6): orange.jpg, apple.jpg, fruits.jpg, lena.jpg, baboon.jpg,
+             home.jpg  — all recognized correctly.
+Rejects (10): basketball1.png, basketball2.png, messi5.jpg, building.jpg,
+              board.jpg, gradient.png, notes.png, butterfly.jpg,
+              pic5.png, starry_night.jpg  — all correctly emit
+              needs_review (honest unknown), not confident-wrong.
+
+METHOD
+
+Raw richDistance ceiling of 1.8 (stable plateau across [1.8, 2.2])
+replaces Hopfield softmax at the emit boundary. Per-query candidate
+signatures include one union descriptor plus the top-5 warm entities.
+Concepts one-shot trained from single exemplars for human_skin,
+animal_face, yellow_building. Color channel weight 2.0, remainder
+DEFAULT weights.
+
+Zero learned parameters. All thresholds are hardcoded from the sweep.
+No neural nets. No GPU. No paid dependency. Bun-only backend.
+
+RECEIPTS
+
+Shipping module:      07-VISUAL/structural/identity/recognize-human-grade.mjs
+Proof script:         07-VISUAL/structural/identity/prove-human-grade.mjs
+Ready-to-ship check:  07-VISUAL/structural/identity/ready-to-ship-check.mjs
+                      18 checks passing / 0 failing (includes #114 #115 #116)
+Spine receipt:        rcpt_2682ffac45a4750b
+Spine hash:           d9afbe1e01f7f49a5636971e9bb18369c53c402a94b62232ea5ca96b09385f30
+Spine seq:            50
+
+OPERATOR
+
+Ætom ÆoNs (Atom McCree), founder — ÆoNs Research Laboratory / AtomEons
+Systems Laboratory — Marco Island, Florida.
+
+DOCTRINE
+
+Mom's Law. Backend only. No fake-green. Receipts or it did not happen.

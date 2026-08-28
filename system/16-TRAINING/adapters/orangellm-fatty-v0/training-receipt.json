@@ -1,0 +1,16 @@
+{
+  "model": "orangellm-fatty-v0",
+  "base": "Qwen/Qwen3-30B-A3B-Instruct",
+  "adapter_path": "/content/orangellm-fatty-v0/adapter/adapter_model.safetensors",
+  "adapter_sha256": "852d3386d995a19b06485dcfb5afd161caa6c4301cfb1d7b94e295ea132c7fd7",
+  "completed_at": "2026-06-24T18:02:56.907718Z",
+  "files": [
+    "README.md",
+    "adapter_config.json",
+    "adapter_model.safetensors",
+    "chat_template.jinja",
+    "tokenizer.json",
+    "tokenizer_config.json"
+  ],
+  "main_size_mb": 536.99
+}

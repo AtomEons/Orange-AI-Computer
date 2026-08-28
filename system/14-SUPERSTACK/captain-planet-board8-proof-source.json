@@ -1,0 +1,14 @@
+{
+  "schema": "orange5.captain-planet.board8-proof-source.v1",
+  "manifest": "14-SUPERSTACK/captain-planet-stack.json",
+  "live_inventory": "14-SUPERSTACK/receipts/2026-08-27T10-01-00Z-board8-live-inventory-final.json",
+  "route_dry_run": "14-SUPERSTACK/receipts/2026-08-27T09-59-50-575Z-creative-route-dry-run.json",
+  "topology": "14-SUPERSTACK/receipts/2026-08-27T10-00-30Z-board8-topology-proof.json",
+  "media_review_state": "14-SUPERSTACK/receipts/2026-08-27T10-02-00Z-board8-media-provenance-review-state.json",
+  "technical_proofs": {
+    "image_draft_flux2_klein": "14-SUPERSTACK/receipts/2026-08-27T09-56-00Z-board8-image-technical-proof.json",
+    "video_fallback_ltxv098": "14-SUPERSTACK/receipts/2026-08-27T09-57-00Z-board8-video-technical-proof.json",
+    "speech_qwen3_tts": "14-SUPERSTACK/receipts/2026-08-27T09-58-00Z-board8-tts-technical-proof.json",
+    "music_ace_step15": "14-SUPERSTACK/receipts/2026-08-27T09-59-00Z-board8-music-technical-proof.json"
+  }
+}

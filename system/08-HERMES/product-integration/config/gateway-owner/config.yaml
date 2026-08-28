@@ -1,0 +1,106 @@
+model:
+  default: __HERMES_AGENT_MODEL__
+  provider: custom:orange5
+  base_url: __ORANGE_MODEL_URL__
+  context_length: 65536
+  ollama_num_ctx: 65536
+
+providers:
+  orange5:
+    name: OrangeFive governed model gateway
+    api: __ORANGE_MODEL_URL__
+    transport: chat_completions
+    default_model: __HERMES_AGENT_MODEL__
+    discover_models: false
+    extra_body:
+      think: false
+      reasoning_effort: none
+
+terminal:
+  backend: local
+  cwd: '__WORKSPACE_ROOT__'
+  home_mode: profile
+
+delegation:
+  max_concurrent_children: 6
+  max_spawn_depth: 2
+  orchestrator_enabled: true
+
+gateway:
+  multiplex_profiles: true
+  multiplex_profile_allowlist:
+    - navigator
+    - builder
+    - researcher
+    - reviewer
+    - visual
+    - misfit
+  api_server:
+    enabled: true
+    host: 127.0.0.1
+    port: 8642
+    key: '${API_SERVER_KEY}'
+    model_name: orange5-governor
+    max_concurrent_runs: 8
+
+kanban:
+  dispatch_in_gateway: true
+  dispatch_interval_seconds: 15
+  auto_decompose: false
+  auto_decompose_per_tick: 1
+  orchestrator_profile: navigator
+  default_assignee: navigator
+  review_dispatch: true
+  failure_limit: 2
+  auto_subscribe_on_create: true
+  max_in_progress: 8
+  max_in_progress_per_profile: 2
+
+platform_toolsets:
+  cli:
+    - memory
+    - session_search
+    - todo
+    - kanban
+    - mcp-orange5
+  api_server:
+    - memory
+    - session_search
+    - todo
+    - kanban
+    - mcp-orange5
+
+mcp_servers:
+  orange5:
+    url: '__ORANGE_MCP_URL__'
+    connect_timeout: 10
+    timeout: 120
+    idle_timeout_seconds: 900
+    max_lifetime_seconds: 86400
+    supports_parallel_tool_calls: false
+    enabled: true
+    tools:
+      include:
+        - orange5_health
+        - orange5_route
+        - orange5_order
+        - orange5_receipts
+        - orange5_delegate
+      prompts: false
+      resources: false
+
+agent:
+  disabled_toolsets: [bfl]
+  reasoning_effort: none
+
+auxiliary:
+  free_only: true
+  title_generation:
+    enabled: false
+
+security:
+  redact_secrets: true
+
+checkpoints:
+  enabled: true
+  max_snapshots: 20

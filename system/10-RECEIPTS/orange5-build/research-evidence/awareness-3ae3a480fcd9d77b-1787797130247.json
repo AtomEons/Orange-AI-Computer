@@ -1,0 +1,151 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-3ae3a480fcd9d77b-1787797130247",
+  "query": "current primary source AI agent memory retrieval context compression continual learning failure memory research open source implementations OrangeFive orange5",
+  "searchQuery": "primary agent memory retrieval context compression continual learning",
+  "generatedAt": "2026-08-27T02:18:50.256Z",
+  "budgetMs": 45000,
+  "elapsedMs": 1160,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.11775v1",
+      "title": "The Sleeping Agent: What Gist-Based Context Compression Loses and Why",
+      "url": "http://arxiv.org/abs/2608.11775v1",
+      "summary": "Gist-based context compression---summarising older conversation history into compact representations---is a common approach in long-horizon language model agents, yet its effect on different types of memory retrieval is poorly understood. We use Salience-Weighted Consolidation (SWC), a biologically-inspired compression framework motivated by sleep-based memory consolidation, as a diagnostic probe to study when gist compression helps and when it hurts. SWC scores conversation history by salience,",
+      "updatedAt": "2026-08-12T08:19:15Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.5955,
+        "matched": 5,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory",
+          "retrieval",
+          "context",
+          "compression"
+        ],
+        "distinctiveMatched": 4,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.13662v1",
+      "title": "Ontology-Grounded Project Memory for Coding Agents",
+      "url": "http://arxiv.org/abs/2608.13662v1",
+      "summary": "Coding agents have become the primary means of generating new code in many software projects, and the resulting velocity of changes makes keeping track of the reasons behind those changes challenging. This paper introduces MOOSEDev, a system designed to give coding agents structured, ontology-grounded project memory. The system captures architectural decisions, lessons, constraints, and rationales in a knowledge graph exposed to agents via a Model Context Protocol (MCP) interface. Records carry ",
+      "updatedAt": "2026-08-13T18:03:00Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.4607,
+        "matched": 4,
+        "queryTerms": 8,
+        "terms": [
+          "primary",
+          "agent",
+          "memory",
+          "context"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.08253v2",
+      "title": "SuperLocalMemory 4.0: The Governed Memory Operating System for AI Agents",
+      "url": "http://arxiv.org/abs/2608.08253v2",
+      "summary": "We present SuperLocalMemory 4.0, a governed, local-first memory operating system for AI agents, unifying multi-channel retrieval under reciprocal-rank fusion, bi-temporal recall, multi-scope isolation, role-based access, verified erasure, and a hash-chained audit trail. A reliability spine governs the primary write path: generation-fenced admission, verifiable memory transactions with per-projection apply, verify, compensate and erase owners, and hash-checkable completion manifests. Eleven fault",
+      "updatedAt": "2026-08-25T05:47:19Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.4607,
+        "matched": 4,
+        "queryTerms": 8,
+        "terms": [
+          "primary",
+          "agent",
+          "memory",
+          "retrieval"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.25553v1",
+      "title": "When Stale Constraints Go Unchecked: Budgeted Verification Failures in Inherited Agent Memory",
+      "url": "http://arxiv.org/abs/2608.25553v1",
+      "summary": "An agent that inherits a consolidated memory may inherit a constraint that was true when written and has since been withdrawn by a newer authoritative record. Under a scarce verification budget, does the agent recover the withdrawal, and if not, is the error avoidable without spending more? We model supersession explicitly -- historical provenance is immutable; what changes is which record is current -- and assign by design the memory's form, the world's state (source current or superseded), and",
+      "updatedAt": "2026-08-26T09:04:21Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.1911,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.02713v1",
+      "title": "Quo Vadis, World Modeling?",
+      "url": "http://arxiv.org/abs/2608.02713v1",
+      "summary": "Continually improving agents require dynamic interaction feedback beyond static supervision, yet direct real-environment interaction is costly, slow, unsafe, and hard to parallelize. World modeling offers a natural intermediate proxy that allows agents to query lower-cost, more controllable feedback before committing to real actions. Classical world models instantiate this proxy primarily through future physical-state prediction, a formulation useful yet narrow for agents that require actionable",
+      "updatedAt": "2026-08-03T17:59:58Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.1911,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "continual"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "github",
+      "error": "source returned HTTP 403"
+    }
+  ],
+  "sha256": "eabe25cf6834f4ed91baa9f2f162045c390b082d26d0d688c5c344a731f81062"
+}

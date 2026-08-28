@@ -1,0 +1,10 @@
+{
+  "experiment": "65-lamport-counter",
+  "ratio": 16.71,
+  "encode_ms": 6694.3,
+  "decode_ms": 20.8,
+  "lossless": false,
+  "bytes_stripped_delta": 206859,
+  "logical_lossless": true,
+  "notes": "LOSSY: wall-clock fields replaced with monotonic counter; logical roundtrip OK=true"
+}

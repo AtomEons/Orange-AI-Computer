@@ -1,0 +1,58 @@
+{
+  "experiment": "122-cold-start",
+  "injection_point": "BEFORE SHAPE_VOCAB (Exp 118 winning approach, cold per call)",
+  "formula_library": [
+    "status_ok_default",
+    "mesh_ratio_derivation"
+  ],
+  "K_runs": 5,
+  "raw_bytes": 2075585,
+  "total_bytes": 44021,
+  "ratio": 47.1499,
+  "vs_m19": 0.0799,
+  "encode_ms_mean": 1236.76,
+  "encode_ms_median": 1282.48,
+  "encode_ms_per_receipt": 0.1987,
+  "decode_ms_mean": 92.68,
+  "decode_ms_median": 79.57,
+  "decode_ms_per_receipt": 0.0149,
+  "streaming_baseline_ms_per_receipt": 0.7181,
+  "streaming_baseline_ratio": 19.4761,
+  "header_overhead_total_ms": -3232.69548,
+  "header_overhead_per_receipt_ms": -0.5194,
+  "lossless_all_runs": true,
+  "runs": [
+    {
+      "k": 0,
+      "encode_ms": 1282.48,
+      "decode_ms": 123.64,
+      "lossless": true
+    },
+    {
+      "k": 1,
+      "encode_ms": 1170.29,
+      "decode_ms": 55.05,
+      "lossless": true
+    },
+    {
+      "k": 2,
+      "encode_ms": 1081.86,
+      "decode_ms": 65.84,
+      "lossless": true
+    },
+    {
+      "k": 3,
+      "encode_ms": 1325.03,
+      "decode_ms": 139.31,
+      "lossless": true
+    },
+    {
+      "k": 4,
+      "encode_ms": 1324.13,
+      "decode_ms": 79.57,
+      "lossless": true
+    }
+  ],
+  "verdict": "GREEN",
+  "generated_at": "2026-06-28T00:15:58.600Z"
+}

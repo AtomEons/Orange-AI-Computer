@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atomeons.local/schemas/atomic-orange.build-run.v1.schema.json",
+  "title": "Atomic Orange Build Run",
+  "type": "object",
+  "required": ["schema", "runId", "threadId", "goal", "projectRoot", "workspaceRoots", "mode", "stage", "status", "order", "route", "modelLane", "leases", "tasks", "tools", "approvals", "evidence", "receipts", "blockers", "nextAction", "createdAt", "updatedAt"],
+  "properties": {
+    "schema": { "const": "atomic-orange.build-run.v1" },
+    "runId": { "type": "string", "minLength": 1 },
+    "threadId": { "type": ["string", "null"] },
+    "goal": { "type": "string" },
+    "projectRoot": { "type": "string" },
+    "workspaceRoots": { "type": "array", "items": { "type": "string" } },
+    "mode": { "enum": ["plan", "execute", "repair", "verify", "release"] },
+    "stage": { "enum": ["intake", "route", "plan", "approve", "lease", "execute", "observe", "verify", "settle"] },
+    "status": { "enum": ["draft", "planned", "awaiting_approval", "working", "blocked", "failed", "completed", "cancelled"] },
+    "order": { "type": ["object", "null"] },
+    "route": { "type": ["object", "null"] },
+    "modelLane": { "type": ["object", "null"] },
+    "leases": { "type": "array" },
+    "tasks": { "type": "array" },
+    "tools": { "type": "array" },
+    "approvals": { "type": "array" },
+    "evidence": { "type": "array" },
+    "receipts": { "type": "array" },
+    "blockers": { "type": "array" },
+    "nextAction": { "type": ["string", "null"] },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

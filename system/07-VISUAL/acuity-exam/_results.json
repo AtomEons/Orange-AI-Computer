@@ -1,0 +1,173 @@
+{
+  "results": [
+    {
+      "test": "spatial_acuity",
+      "responses": [
+        {
+          "cycles": 2,
+          "edgeMean": 0.010263291482874038
+        },
+        {
+          "cycles": 4,
+          "edgeMean": 0.02724159995650366
+        },
+        {
+          "cycles": 8,
+          "edgeMean": 0.06664154556903167
+        },
+        {
+          "cycles": 16,
+          "edgeMean": 0.11420824335334685
+        },
+        {
+          "cycles": 32,
+          "edgeMean": 0.13863967016317114
+        },
+        {
+          "cycles": 64,
+          "edgeMean": 0.15663853188174362
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "test": "contrast_sensitivity",
+      "responses": [
+        {
+          "contrast": 0.5,
+          "edgeMean": 0.06782620269024256
+        },
+        {
+          "contrast": 0.2,
+          "edgeMean": 0.06430087889304123
+        },
+        {
+          "contrast": 0.1,
+          "edgeMean": 0.0635960538685375
+        },
+        {
+          "contrast": 0.05,
+          "edgeMean": 0.06346276385806869
+        },
+        {
+          "contrast": 0.02,
+          "edgeMean": 0.06346248915364235
+        },
+        {
+          "contrast": 0.01,
+          "edgeMean": 0.06347621041433309
+        },
+        {
+          "contrast": 0,
+          "edgeMean": 0.003230946621983588
+        }
+      ],
+      "ratioVsGray": 19.64631974494301,
+      "verdict": "PASS"
+    },
+    {
+      "test": "chromatic_acuity",
+      "responses": [
+        {
+          "name": "red",
+          "rgb": [
+            0.85,
+            0.15,
+            0.15
+          ],
+          "meanRG": 74.46348903744365,
+          "meanBY": -9.785694488214965
+        },
+        {
+          "name": "green",
+          "rgb": [
+            0.15,
+            0.85,
+            0.15
+          ],
+          "meanRG": 14.631099819474684,
+          "meanBY": 17.239874279878222
+        },
+        {
+          "name": "blue",
+          "rgb": [
+            0.15,
+            0.15,
+            0.85
+          ],
+          "meanRG": 0.8025637688415372,
+          "meanBY": 8.988757135778968
+        },
+        {
+          "name": "yellow",
+          "rgb": [
+            0.85,
+            0.85,
+            0.15
+          ],
+          "meanRG": 2.588772500053608,
+          "meanBY": 4.64053097088663
+        },
+        {
+          "name": "cyan",
+          "rgb": [
+            0.15,
+            0.85,
+            0.85
+          ],
+          "meanRG": -17.741498320963657,
+          "meanBY": 2.5216572039530973
+        },
+        {
+          "name": "magenta",
+          "rgb": [
+            0.85,
+            0.15,
+            0.85
+          ],
+          "meanRG": 7.56161686115604,
+          "meanBY": 10.383988795236178
+        },
+        {
+          "name": "orange",
+          "rgb": [
+            0.85,
+            0.55,
+            0.15
+          ],
+          "meanRG": -13.620770856953072,
+          "meanBY": 16.52172034656587
+        },
+        {
+          "name": "gray",
+          "rgb": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "meanRG": 0.301685627324332,
+          "meanBY": -0.04963703555642951
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "test": "motion_detection",
+      "moveTransient": 0.0010388136170149664,
+      "stillTransient": 0,
+      "moveMotion": 7.70703125,
+      "stillMotion": 7.6689453125,
+      "verdict": "PASS"
+    },
+    {
+      "test": "depth_perception",
+      "meanCenter": 0.959765625,
+      "meanEdge": 0.894979768027379,
+      "verdict": "PASS"
+    }
+  ],
+  "ref": {
+    "outDir": "C:\\AtomEons\\Orange5\\07-VISUAL\\acuity-exam\\reference_scene_orange",
+    "layers": 15
+  }
+}

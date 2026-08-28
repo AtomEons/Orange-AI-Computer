@@ -1,0 +1,21 @@
+{
+  "experiment": "53-method13-derivations",
+  "total": 71049,
+  "ratio": 29.213,
+  "lossless": false,
+  "components": {
+    "meshTpl": 119,
+    "meshData": 11248,
+    "shapes": 26291,
+    "aIdx": 111,
+    "aV": 455,
+    "otherIdx": 5382,
+    "pos": 989,
+    "sumLookup": 25410,
+    "constRecipe": 318,
+    "constsPerAction": 678,
+    "seed": 48
+  },
+  "derivable_sum_groups": 952,
+  "num_constants": 30
+}

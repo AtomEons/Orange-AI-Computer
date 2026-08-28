@@ -1,0 +1,311 @@
+{
+  "schema": "orange.model-superset.v1",
+  "registry_version": 2,
+  "name": "Captain Planet Creative Media Registry",
+  "product": "OrangeFive",
+  "updated_at": "2026-08-27T10:03:31.044Z",
+  "policy": {
+    "execution": "single_specialist_lease",
+    "max_active_heavy_leases": 1,
+    "live_model_memory_ceiling_bytes": 53687091200,
+    "unload_before_load": true,
+    "deny_unmeasured_memory": true,
+    "deny_candidate_activation": true,
+    "shared_gpu_memory_is_physical_ram": true,
+    "working_set_watchdog": true,
+    "promotion_requires_artifact_bakeoff": true,
+    "installed_claim_requires_live_inventory": true,
+    "technical_quality_requires_live_inventory_and_independent_decode": true,
+    "perceptual_quality_requires_separate_human_or_benchmark_review": true,
+    "technical_proof_max_age_hours": 24,
+    "restore_one_prior_ollama_model_after_external_lease": true,
+    "lease_mutex": "Global\\OrangeFiveCaptainPlanetCreativeLease",
+    "creative_process_markers": [
+      "ComfyUI\\main.py",
+      "codexa-comfy-flux-artifact-proof.py",
+      "codexa-ltx-video-artifact-proof.py",
+      "codexa-ace-step-artifact-proof.py",
+      "codexa-qwen-tts-artifact-proof.py",
+      "ltx_video",
+      "acestep",
+      "qwen_tts",
+      "Hunyuan3D",
+      "SeedVR2",
+      "PaddleOCR"
+    ]
+  },
+  "hosts": {
+    "control": "N150",
+    "worker": "CODEXA",
+    "worker_address": "10.0.0.4",
+    "worker_user": "Atom",
+    "worker_root": "C:/AtomEons/ai-box/creative",
+    "worker_receipt_root": "C:/AtomEons/ai-box/receipts/captain-planet/leases"
+  },
+  "ollama": {
+    "control_base_url": "http://10.0.99.1:11434",
+    "worker_base_url": "http://127.0.0.1:11434",
+    "managed_models": [],
+    "keep_models": [],
+    "cleanup_scope": "managed_models_only",
+    "unowned_models_are_always_preserved": true
+  },
+  "roles": [
+    {
+      "role": "image_draft_flux2_klein",
+      "capability": "image_generation",
+      "quality_tier": "draft_and_reference",
+      "model": "black-forest-labs/FLUX.2-klein-4b-fp8",
+      "family": "FLUX.2",
+      "runtime": "comfyui_worker",
+      "estimated_live_bytes": 25769803776,
+      "memory_evidence": "conservative_bound_on_48gb_xpu_artifact_run_peak_not_instrumented",
+      "memory_measurement": {
+        "state": "unmeasured",
+        "peak_process_tree_working_set_bytes": null,
+        "receipt": null
+      },
+      "availability": {
+        "state": "installed_runtime_proven_quality_unassessed",
+        "lease_eligible": false,
+        "observed_at": "2026-08-27T06:55:54.0516456Z",
+        "observed_host": "CODEXA",
+        "truth_note": "Weights and artifact identity were freshly observed; bounded technical image quality passed. Activation is held until peak lease memory is measured. Visual and studio quality remain unassessed."
+      },
+      "required_artifacts": [
+        { "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/diffusion_models/flux-2-klein-4b-fp8.safetensors", "bytes": 4070624520 },
+        { "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/text_encoders/qwen_3_4b.safetensors", "bytes": 8044982048 },
+        { "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/vae/flux2-vae.safetensors", "bytes": 336213556 }
+      ],
+      "proof": {
+        "state": "runtime_artifact_technical_quality_proven_visual_quality_unassessed",
+        "receipt": "10-RECEIPTS/orange5-build/captain-planet/flux2/flux2-artifact-quality-proof.json",
+        "expected_status": "CAPTAIN_PLANET_IMAGE_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED"
+      },
+      "activation": {
+        "source_script": "scripts/codexa-comfy-flux-artifact-proof.py",
+        "remote_python": "C:/AtomEons/ai-box/creative/ComfyUI/.venv/Scripts/python.exe",
+        "remote_script": "C:/AtomEons/ai-box/creative/runners/codexa-comfy-flux-artifact-proof.py",
+        "arguments": ["--project-root", "C:/AtomEons/ai-box/creative/ComfyUI", "--output-dir", "C:/AtomEons/ai-box/receipts/captain-planet/artifacts/flux2"],
+        "receipt_contract": "orange.captain_planet.image_artifact.v1"
+      },
+      "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8"
+    },
+    {
+      "role": "image_quality_flux2_dev",
+      "capability": "image_generation_editing",
+      "quality_tier": "quality_finalize_and_multi_reference_edit",
+      "model": "black-forest-labs/FLUX.2-dev",
+      "variant": "bounded_fp8_or_better_variant_not_selected",
+      "family": "FLUX.2",
+      "runtime": "comfyui_worker",
+      "estimated_live_bytes": 0,
+      "memory_evidence": "unmeasured_on_codexa",
+      "availability": {
+        "state": "candidate_not_observed",
+        "lease_eligible": false,
+        "observed_at": "2026-08-27T03:15:00Z",
+        "observed_host": "CODEXA",
+        "truth_note": "No FLUX.2 Dev weights were observed. Candidate only; no download is claimed."
+      },
+      "required_artifacts": [],
+      "proof": { "state": "candidate_no_artifact_proof", "receipt": null, "expected_status": null },
+      "activation": { "source_script": null, "remote_python": null, "remote_script": null, "arguments": [], "receipt_contract": "orange.captain_planet.image_artifact.v1" },
+      "source": "https://huggingface.co/black-forest-labs/FLUX.2-dev"
+    },
+    {
+      "role": "video_modern_ltx25",
+      "capability": "synchronized_audio_video_generation",
+      "quality_tier": "modern_open_candidate",
+      "model": "Lightricks/LTX-2.5-22B-distilled",
+      "variant": "bounded_variant_not_selected",
+      "family": "LTX-2",
+      "runtime": "python_worker",
+      "estimated_live_bytes": 0,
+      "memory_evidence": "official_bf16_bundle_not_yet_proven_below_50gib_on_codexa",
+      "availability": {
+        "state": "candidate_not_observed",
+        "lease_eligible": false,
+        "observed_at": "2026-08-27T03:15:00Z",
+        "observed_host": "CODEXA",
+        "truth_note": "No LTX-2.x source, environment, or weights were observed. Candidate only; no download is claimed."
+      },
+      "required_artifacts": [],
+      "proof": { "state": "candidate_no_artifact_proof", "receipt": null, "expected_status": null },
+      "activation": { "source_script": null, "remote_python": null, "remote_script": null, "arguments": [], "receipt_contract": "orange.captain_planet.video_artifact.v2" },
+      "source": "https://github.com/Lightricks/LTX-2",
+      "license_review_required": true
+    },
+    {
+      "role": "video_fallback_ltxv098",
+      "capability": "image_to_video",
+      "quality_tier": "runtime_proven_fallback",
+      "model": "Lightricks/LTX-Video ltxv-2b-0.9.8-distilled",
+      "family": "LTX-Video",
+      "runtime": "python_worker",
+      "estimated_live_bytes": 51539607552,
+      "memory_evidence": "conservative_48gib_lease_bound_peak_not_instrumented",
+      "memory_measurement": {
+        "state": "unmeasured",
+        "peak_process_tree_working_set_bytes": null,
+        "receipt": null
+      },
+      "availability": {
+        "state": "installed_runtime_proven_quality_unassessed",
+        "lease_eligible": false,
+        "observed_at": "2026-08-27T06:55:54.0516456Z",
+        "observed_host": "CODEXA",
+        "truth_note": "LTXV 0.9.8 weights and artifact identity were freshly observed; bounded motion and technical video quality passed. Activation is held until peak lease memory is measured. This is not LTX-2.x; visual and studio quality remain unassessed."
+      },
+      "required_artifacts": [
+        { "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/ltxv-2b-0.9.8-distilled.safetensors", "bytes": 6340744492 },
+        { "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/ltxv-spatial-upscaler-0.9.8.safetensors", "bytes": 505024432 },
+        { "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/PixArt-XL-2-1024-MS/text_encoder/model-00001-of-00002.safetensors", "bytes": 9989150328 },
+        { "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/PixArt-XL-2-1024-MS/text_encoder/model-00002-of-00002.safetensors", "bytes": 9060119392 },
+        { "path": "C:/AtomEons/ai-box/receipts/captain-planet/artifacts/flux2/orangefive-flux2-klein-proof.png", "minimum_bytes": 100000 }
+      ],
+      "proof": {
+        "state": "runtime_artifact_technical_quality_proven_visual_quality_unassessed",
+        "receipt": "10-RECEIPTS/orange5-build/captain-planet/ltxv/ltx-video-artifact-quality-proof.json",
+        "expected_status": "CAPTAIN_PLANET_VIDEO_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED"
+      },
+      "activation": {
+        "source_script": "scripts/codexa-ltx-video-artifact-proof.py",
+        "remote_python": "C:/AtomEons/ai-box/creative/LTX-Video/.venv/Scripts/python.exe",
+        "remote_script": "C:/AtomEons/ai-box/creative/runners/codexa-ltx-video-artifact-proof.py",
+        "arguments": ["--project-root", "C:/AtomEons/ai-box/creative/LTX-Video", "--model-root", "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8", "--conditioning-image", "C:/AtomEons/ai-box/receipts/captain-planet/artifacts/flux2/orangefive-flux2-klein-proof.png", "--output-dir", "C:/AtomEons/ai-box/receipts/captain-planet/artifacts/ltxv"],
+        "receipt_contract": "orange.captain_planet.video_artifact.v1"
+      },
+      "source": "https://github.com/Lightricks/LTX-Video"
+    },
+    {
+      "role": "speech_qwen3_tts",
+      "capability": "speech_generation",
+      "quality_tier": "runtime_proven",
+      "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "family": "Qwen3-TTS",
+      "runtime": "python_worker",
+      "estimated_live_bytes": 17179869184,
+      "memory_evidence": "conservative_bound_on_48gb_xpu_artifact_run_peak_not_instrumented",
+      "memory_measurement": {
+        "state": "unmeasured",
+        "peak_process_tree_working_set_bytes": null,
+        "receipt": null
+      },
+      "availability": {
+        "state": "installed_runtime_proven_quality_unassessed",
+        "lease_eligible": false,
+        "observed_at": "2026-08-27T06:55:54.0516456Z",
+        "observed_host": "CODEXA",
+        "truth_note": "A 4.52 GB local model directory and artifact identity were freshly observed; bounded technical audio quality passed. Activation is held until peak lease memory is measured. Intelligibility, listening, and studio quality remain unassessed."
+      },
+      "required_artifacts": [
+        { "path": "C:/AtomEons/ai-box/models/Qwen3-TTS-12Hz-1.7B-CustomVoice", "minimum_bytes": 4500000000, "kind": "directory" }
+      ],
+      "proof": {
+        "state": "runtime_artifact_technical_quality_proven_listening_quality_unassessed",
+        "receipt": "10-RECEIPTS/orange5-build/captain-planet/qwen3-tts/qwen3-tts-artifact-quality-proof.json",
+        "expected_status": "CAPTAIN_PLANET_TTS_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED"
+      },
+      "activation": {
+        "source_script": "scripts/codexa-qwen-tts-artifact-proof.py",
+        "remote_python": "C:/AtomEons/ai-box/creative/Qwen3-TTS/.venv/Scripts/python.exe",
+        "remote_script": "C:/AtomEons/ai-box/creative/runners/codexa-qwen-tts-artifact-proof.py",
+        "arguments": ["--model-dir", "C:/AtomEons/ai-box/models/Qwen3-TTS-12Hz-1.7B-CustomVoice", "--output-dir", "C:/AtomEons/ai-box/receipts/captain-planet/artifacts/qwen3-tts"],
+        "receipt_contract": "orange.captain_planet.tts_artifact.v1"
+      },
+      "source": "https://github.com/QwenLM/Qwen3-TTS"
+    },
+    {
+      "role": "music_ace_step15",
+      "capability": "music_generation_and_editing",
+      "quality_tier": "runtime_proven",
+      "model": "ACE-Step/Ace-Step1.5 turbo",
+      "family": "ACE-Step",
+      "runtime": "python_worker",
+      "estimated_live_bytes": 21474836480,
+      "memory_evidence": "official_recommended_20gb_bound_and_codexa_artifact_run_peak_not_instrumented",
+      "memory_measurement": {
+        "state": "unmeasured",
+        "peak_process_tree_working_set_bytes": null,
+        "receipt": null
+      },
+      "availability": {
+        "state": "installed_runtime_proven_quality_unassessed",
+        "lease_eligible": false,
+        "observed_at": "2026-08-27T06:55:54.0516456Z",
+        "observed_host": "CODEXA",
+        "truth_note": "Turbo, embedding, and VAE weights plus artifact identity were freshly observed; bounded technical audio quality passed. Activation is held until peak lease memory is measured. Musical, listening, and studio quality remain unassessed."
+      },
+      "required_artifacts": [
+        { "path": "C:/AtomEons/ai-box/creative/ACE-Step-1.5/checkpoints/acestep-v15-turbo/model.safetensors", "bytes": 4787825604 },
+        { "path": "C:/AtomEons/ai-box/creative/ACE-Step-1.5/checkpoints/Qwen3-Embedding-0.6B/model.safetensors", "bytes": 1191586416 },
+        { "path": "C:/AtomEons/ai-box/creative/ACE-Step-1.5/checkpoints/vae/diffusion_pytorch_model.safetensors", "bytes": 337431388 }
+      ],
+      "proof": {
+        "state": "runtime_artifact_technical_quality_proven_listening_quality_unassessed",
+        "receipt": "10-RECEIPTS/orange5-build/captain-planet/ace-step/ace-step-artifact-quality-proof.json",
+        "expected_status": "CAPTAIN_PLANET_MUSIC_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED"
+      },
+      "activation": {
+        "source_script": "scripts/codexa-ace-step-artifact-proof.py",
+        "remote_python": "C:/AtomEons/ai-box/creative/ACE-Step-1.5/.venv/Scripts/python.exe",
+        "remote_script": "C:/AtomEons/ai-box/creative/runners/codexa-ace-step-artifact-proof.py",
+        "arguments": ["--project-root", "C:/AtomEons/ai-box/creative/ACE-Step-1.5", "--output-dir", "C:/AtomEons/ai-box/receipts/captain-planet/artifacts/ace-step"],
+        "receipt_contract": "orange.captain_planet.music_artifact.v1"
+      },
+      "source": "https://github.com/ace-step/ACE-Step-1.5"
+    },
+    {
+      "role": "three_d_hunyuan21",
+      "capability": "image_to_3d_pbr_asset",
+      "quality_tier": "candidate",
+      "model": "tencent/Hunyuan3D-2.1",
+      "family": "Hunyuan3D",
+      "runtime": "python_worker",
+      "estimated_live_bytes": 34359738368,
+      "memory_evidence": "vendor_reports_29gb_combined_not_measured_on_codexa",
+      "availability": { "state": "candidate_not_observed", "lease_eligible": false, "observed_at": "2026-08-27T03:15:00Z", "observed_host": "CODEXA", "truth_note": "No source, environment, or weights were observed. Candidate only; no download is claimed." },
+      "installation_probe_paths": [
+        "C:/AtomEons/ai-box/creative/Hunyuan3D-2.1",
+        "C:/AtomEons/ai-box/creative/Hunyuan3D",
+        "C:/AtomEons/ai-box/models/Hunyuan3D-2.1",
+        "C:/AtomEons/ai-box/models/tencent/Hunyuan3D-2.1"
+      ],
+      "required_artifacts": [],
+      "proof": { "state": "candidate_no_artifact_proof", "receipt": null, "expected_status": null },
+      "activation": { "source_script": null, "remote_python": null, "remote_script": null, "arguments": [], "receipt_contract": "orange.captain_planet.three_d_artifact.v1" },
+      "source": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1"
+    },
+    {
+      "role": "document_refine_paddleocr_vl16",
+      "capability": "document_parse_layout_refinement",
+      "quality_tier": "candidate",
+      "model": "PaddlePaddle/PaddleOCR-VL-1.6",
+      "family": "PaddleOCR-VL",
+      "runtime": "python_worker",
+      "estimated_live_bytes": 8589934592,
+      "memory_evidence": "0.9b_parameter_estimate_not_measured_on_codexa",
+      "availability": { "state": "candidate_not_observed", "lease_eligible": false, "observed_at": "2026-08-27T03:15:00Z", "observed_host": "CODEXA", "truth_note": "No PaddleOCR-VL source, environment, or weights were observed. Candidate only; no download is claimed." },
+      "required_artifacts": [],
+      "proof": { "state": "candidate_no_artifact_proof", "receipt": null, "expected_status": null },
+      "activation": { "source_script": null, "remote_python": null, "remote_script": null, "arguments": [], "receipt_contract": "orange.captain_planet.document_refinement_artifact.v1" },
+      "source": "https://github.com/PaddlePaddle/PaddleOCR"
+    },
+    {
+      "role": "image_video_refine_seedvr2",
+      "capability": "image_video_restoration",
+      "quality_tier": "candidate",
+      "model": "ByteDance-Seed/SeedVR2-7B",
+      "family": "SeedVR2",
+      "runtime": "python_worker",
+      "estimated_live_bytes": 34359738368,
+      "memory_evidence": "conservative_candidate_estimate_not_measured_on_codexa",
+      "availability": { "state": "candidate_not_observed", "lease_eligible": false, "observed_at": "2026-08-27T03:15:00Z", "observed_host": "CODEXA", "truth_note": "No SeedVR2 source, environment, or weights were observed. Candidate only; no download is claimed." },
+      "required_artifacts": [],
+      "proof": { "state": "candidate_no_artifact_proof", "receipt": null, "expected_status": null },
+      "activation": { "source_script": null, "remote_python": null, "remote_script": null, "arguments": [], "receipt_contract": "orange.captain_planet.refinement_artifact.v1" },
+      "source": "https://github.com/IceClear/SeedVR2"
+    }
+  ]
+}

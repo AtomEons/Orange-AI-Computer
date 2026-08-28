@@ -1,0 +1,47 @@
+{
+  "schema": "orange5.captain-planet.artifact-proof.v1",
+  "status": "CAPTAIN_PLANET_IMAGE_RUNTIME_PROVEN_QUALITY_UNASSESSED",
+  "generated_at": "2026-08-27T00:17:50.534Z",
+  "organ": "flux2_klein_image",
+  "runtime_execution_proven": true,
+  "studio_quality_proven": false,
+  "quality_status": "PENDING_VISUAL_REVIEW_AND_IMAGE_QUALITY_BENCHMARK",
+  "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\orangefive-flux2-klein-proof.png",
+  "artifact_sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1",
+  "source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\flux2-image-artifact-proof.json",
+  "source_model_id": "black-forest-labs/FLUX.2-klein-4b-fp8",
+  "source_model_revision": {
+    "black-forest-labs/FLUX.2-klein-4b-fp8": "5b4408e59397a4a37ccb46afe426d8ed86379441",
+    "Comfy-Org/z_image_turbo": "08d04455279082882deaabc8d0d09fc914c071e1",
+    "Comfy-Org/flux2-dev": "ab9055628ea245000e610f2aa2c96f4746093546"
+  },
+  "source_device": "xpu:0 Intel(R) Arc(TM) 140T GPU (48GB)",
+  "source_generation_seconds": 43.247,
+  "checks": {
+    "source_runtime_status": true,
+    "source_hash_matches": true,
+    "dimensions_match": true,
+    "substantive_dimensions": true,
+    "independently_decoded_nonblank": true
+  },
+  "image": {
+    "codec": "png",
+    "width": 1024,
+    "height": 1024,
+    "pixel_format": "rgb24",
+    "mean_rgb": [
+      50.337,
+      39.727,
+      34.856
+    ],
+    "stddev_rgb": [
+      57.953,
+      39.953,
+      34.15
+    ],
+    "nonblank": true
+  },
+  "prior_receipt": "flux2-image-artifact-proof.json",
+  "prior_sha256": "adb26a2b2747596c1e25609b222fb8cd4201a62760a60cfb2e8a3005d3ffaac1",
+  "receipt_sha256": "a6ab0d4a8c4823a2cd454a7c386be0a9b509139e659b904d609ceb95d326685b"
+}

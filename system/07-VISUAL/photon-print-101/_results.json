@@ -1,0 +1,120 @@
+{
+  "multi_fixation": [
+    {
+      "photo": "lena",
+      "input_entropy_256": 7.661882158211452,
+      "input_entropy_1024": 9.634520567245177,
+      "single_entropy_256": 7.661882158211452,
+      "single_entropy_1024": 9.634520567245177,
+      "fused_entropy_256": 7.670286785222583,
+      "fused_entropy_1024": 9.65487696748117,
+      "fused_entropy_4096": 11.595304536338427,
+      "ratio_256": 1.001096940260576,
+      "ratio_1024": 1.0021128607380008
+    },
+    {
+      "photo": "baboon",
+      "input_entropy_256": 7.541775704573723,
+      "input_entropy_1024": 9.526185643203993,
+      "single_entropy_256": 7.541775704573723,
+      "single_entropy_1024": 9.526185643203993,
+      "fused_entropy_256": 7.524165069230724,
+      "fused_entropy_1024": 9.508292056892993,
+      "fused_entropy_4096": 11.444508373908562,
+      "ratio_256": 0.9976649218920262,
+      "ratio_1024": 0.9981216420736283
+    },
+    {
+      "photo": "apple",
+      "input_entropy_256": 7.0655259209239905,
+      "input_entropy_1024": 9.047252428034026,
+      "single_entropy_256": 7.0655259209239905,
+      "single_entropy_1024": 9.047254019140283,
+      "fused_entropy_256": 7.07604519644572,
+      "fused_entropy_1024": 9.059993224574571,
+      "fused_entropy_4096": 10.999082761678162,
+      "ratio_256": 1.0014888170589789,
+      "ratio_1024": 1.0014082503657205
+    },
+    {
+      "photo": "orange",
+      "input_entropy_256": 7.7875808614667665,
+      "input_entropy_1024": 9.75092582125306,
+      "single_entropy_256": 7.7875808614667665,
+      "single_entropy_1024": 9.75092582125306,
+      "fused_entropy_256": 7.823688271758869,
+      "fused_entropy_1024": 9.807193162799152,
+      "fused_entropy_4096": 11.746580043604013,
+      "ratio_256": 1.0046365374478181,
+      "ratio_1024": 1.0057704614492555
+    },
+    {
+      "photo": "board",
+      "input_entropy_256": 7.495272744327395,
+      "input_entropy_1024": 9.461563328887939,
+      "single_entropy_256": 7.495272744327395,
+      "single_entropy_1024": 9.461563328887939,
+      "fused_entropy_256": 7.375027588677069,
+      "fused_entropy_1024": 9.35474837956609,
+      "fused_entropy_4096": 11.279029522107088,
+      "ratio_256": 0.9839572007914814,
+      "ratio_1024": 0.9887106447836455
+    },
+    {
+      "photo": "building",
+      "input_entropy_256": 7.70784690416814,
+      "input_entropy_1024": 9.630388802400299,
+      "single_entropy_256": 7.70784690416814,
+      "single_entropy_1024": 9.630355970292362,
+      "fused_entropy_256": 7.667749254083165,
+      "fused_entropy_1024": 9.64532552510831,
+      "fused_entropy_4096": 11.550281553214468,
+      "ratio_256": 0.9947978144112732,
+      "ratio_1024": 1.0015509989279237
+    }
+  ],
+  "derived": [
+    {
+      "photo": "lena",
+      "input_entropy": 7.661882158211452,
+      "num_fields": 15,
+      "total_derived_entropy": 80.90994279744754,
+      "ratio": 10.560060978063218
+    },
+    {
+      "photo": "baboon",
+      "input_entropy": 7.541775704573723,
+      "num_fields": 15,
+      "total_derived_entropy": 53.97181958918942,
+      "ratio": 7.156380897997022
+    },
+    {
+      "photo": "apple",
+      "input_entropy": 7.0655259209239905,
+      "num_fields": 15,
+      "total_derived_entropy": 48.30705609654889,
+      "ratio": 6.837007837377173
+    },
+    {
+      "photo": "orange",
+      "input_entropy": 7.7875808614667665,
+      "num_fields": 15,
+      "total_derived_entropy": 66.6740185039484,
+      "ratio": 8.561582818851214
+    },
+    {
+      "photo": "board",
+      "input_entropy": 7.495272744327395,
+      "num_fields": 15,
+      "total_derived_entropy": 72.84431060793723,
+      "ratio": 9.718700451970554
+    },
+    {
+      "photo": "building",
+      "input_entropy": 7.70784690416814,
+      "num_fields": 15,
+      "total_derived_entropy": 64.72805993142295,
+      "ratio": 8.397683650984327
+    }
+  ]
+}

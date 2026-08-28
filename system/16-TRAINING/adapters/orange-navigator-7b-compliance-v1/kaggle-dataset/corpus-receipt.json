@@ -1,0 +1,22 @@
+{
+  "schema": "orange.training-corpus.receipt.v1",
+  "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "adapter": "orange-navigator-7b-compliance-v1",
+  "rows": 1000,
+  "splits": {
+    "train": 850,
+    "val": 75,
+    "test": 75
+  },
+  "categories": {
+    "exact_output": 180,
+    "execution_boundary": 80,
+    "false_green_refusal": 120,
+    "order_report": 260,
+    "project_truth": 180,
+    "routing": 180
+  },
+  "sha256": "16c0d9b64fc947be95e5391335df00d0d6708fbace1756f7b522aa761c874259",
+  "deterministic": true,
+  "chainOfThoughtIncluded": false
+}

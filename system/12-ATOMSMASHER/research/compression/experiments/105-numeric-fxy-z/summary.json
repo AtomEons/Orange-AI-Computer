@@ -1,0 +1,12 @@
+{
+  "experiment": "105-numeric-fxy-z",
+  "ratio": 46.503,
+  "encode_ms": 5352.2,
+  "decode_ms": 596.1,
+  "lossless": true,
+  "library_size_bytes": 538,
+  "edges_mined": 0,
+  "baseline_m19": 47.071,
+  "vs_m19": -0.568,
+  "notes": "Mined 0 numeric f(x,y)=z formulas across 0 actions using ops [div, div_br2, mul, add, sub, sub_yx, pct, min, max, savings]."
+}

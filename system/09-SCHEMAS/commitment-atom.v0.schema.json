@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orange5.commitment-atom.v0",
+  "title": "Orange5 Commitment Atom v0",
+  "description": "AtomSmasher Commitment Atom — smallest unit of operator-or-system-promise. Compresses a decision, commitment, invariant, deadline, or threshold into a deterministic, hash-chained, verifiable atom. Atoms are append-only; an atom cannot be edited, only superseded by a new atom whose 'supersedes' includes the old atom's id. Persisted as JSONL in Reality lane via Æ Cobra Flux writer (origin='atomsmasher', kind='commitment') AND in a SQLite index for fast queries.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "atom_id",
+    "kind",
+    "body",
+    "preconditions",
+    "supersedes",
+    "evidence",
+    "signature",
+    "status",
+    "created_at",
+    "sovereign",
+    "actor"
+  ],
+  "properties": {
+    "schema": {
+      "description": "Schema discriminator. Must be exact.",
+      "const": "orange5.commitment-atom.v0"
+    },
+    "atom_id": {
+      "description": "SHA-256 hex digest uniquely identifying this atom. Computed deterministically over canonical-JSON of (kind, body, preconditions, supersedes, evidence, created_at, sovereign, actor, signature.prev_hash).",
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "kind": {
+      "description": "Classification of the promise this atom encodes.",
+      "type": "string",
+      "enum": ["decision", "promise", "invariant", "deadline", "threshold"]
+    },
+    "body": {
+      "description": "Typed payload of the atom. Shape depends on 'kind'; consumers SHOULD validate against the per-kind body sub-schema, but this top-level schema only enforces that body is a non-empty object.",
+      "type": "object",
+      "minProperties": 1
+    },
+    "preconditions": {
+      "description": "Ordered list of atom_ids that MUST be 'active' or 'fulfilled' for this atom to be considered valid. Empty array if none.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "uniqueItems": true
+    },
+    "supersedes": {
+      "description": "Ordered list of atom_ids this atom replaces. The named atoms transition to status='superseded'. Empty array if this is a net-new commitment. The only lawful way to 'edit' an atom is to supersede it.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "uniqueItems": true
+    },
+    "evidence": {
+      "description": "Paths (POSIX-style, relative to Orange5 repo root or absolute file URIs) to receipts, test outputs, JSONL records, or other artifacts proving the atom. Required even for purely declarative atoms — at minimum the Flux JSONL line that recorded this atom.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^(/|[A-Za-z]:[\\\\/]|file://|[^/].*)"
+      }
+    },
+    "signature": {
+      "description": "Hash-chain signature linking this atom to its predecessor. 'prev_hash' is the atom_id of the previous atom in the same lane, or the 64-char zero string for the genesis atom. 'hash' equals atom_id (duplicated here so the signature object stands alone for verification).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prev_hash", "hash"],
+      "properties": {
+        "prev_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "status": {
+      "description": "Lifecycle state of this atom.",
+      "type": "string",
+      "enum": ["active", "fulfilled", "revoked", "superseded"]
+    },
+    "created_at": {
+      "description": "ISO 8601 timestamp with timezone offset. RFC 3339 profile (e.g. 2026-06-24T14:32:17.482Z).",
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "expires_at": {
+      "description": "Optional ISO 8601 expiration. After this instant the atom SHOULD be transitioned to status='revoked' by a sweeper if not already 'fulfilled' or 'superseded'. Null or omitted means no expiration.",
+      "type": ["string", "null"],
+      "format": "date-time",
+      "pattern": "^([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2}))?$"
+    },
+    "sovereign": {
+      "description": "The human sovereign on whose authority this atom is recorded. For Orange5 this is always 'Atom McCree'.",
+      "type": "string",
+      "const": "Atom McCree"
+    },
+    "actor": {
+      "description": "The system, agent, or human writer that produced this atom record. Examples: 'atomsmasher', 'orangellm', 'aeons-lead', 'human:atom'.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9_\\-.:/]+$"
+    },
+    "lane": {
+      "description": "Optional lane tag for the Reality writer (e.g. 'commitment', 'decision-log'). If present, MUST be a kebab-case identifier.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "tags": {
+      "description": "Optional free-form labels for indexing. Each tag is kebab-case, <=64 chars, deduplicated.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 64,
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "uniqueItems": true,
+      "maxItems": 32
+    }
+  }
+}

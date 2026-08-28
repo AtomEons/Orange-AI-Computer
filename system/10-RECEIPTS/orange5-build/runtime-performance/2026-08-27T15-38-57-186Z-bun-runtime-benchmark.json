@@ -1,0 +1,159 @@
+{
+  "schema": "orange5.bun-runtime-benchmark.v2",
+  "bun": {
+    "version": "1.3.14",
+    "revision": "0d9b296af33f2b851fcbf4df3e9ec89751734ba4"
+  },
+  "host": "WIN-IB7K3UTA9DS",
+  "status": "BUN_RUNTIME_BENCHMARK_GREEN",
+  "endpoints": [
+    {
+      "name": "memory",
+      "url": "http://127.0.0.1:7419/healthz",
+      "ok": true,
+      "status": 200,
+      "latency_ms": 319.037
+    },
+    {
+      "name": "hermes",
+      "url": "http://127.0.0.1:7430/healthz",
+      "ok": true,
+      "status": 200,
+      "latency_ms": 133.844
+    },
+    {
+      "name": "orangellm",
+      "url": "http://127.0.0.1:1337/livez",
+      "ok": true,
+      "status": 200,
+      "latency_ms": 52.665
+    },
+    {
+      "name": "brain_mcp",
+      "url": "http://127.0.0.1:7431/health",
+      "ok": true,
+      "status": 200,
+      "latency_ms": 133.907
+    },
+    {
+      "name": "qdrant",
+      "url": "http://127.0.0.1:6333/collections/orange5-memory",
+      "ok": true,
+      "status": 200,
+      "latency_ms": 133.869
+    },
+    {
+      "name": "codexa_ollama",
+      "url": "http://10.0.0.4:11434/api/tags",
+      "ok": true,
+      "status": 200,
+      "latency_ms": 81.897
+    }
+  ],
+  "probe_strategy": {
+    "serial_ms": 153.56,
+    "parallel_ms": 93.597,
+    "speedup": 1.641
+  },
+  "queue": {
+    "ok": true,
+    "init_ms": 20.409,
+    "reopen_ms": 21.424,
+    "items": 400,
+    "operations": 1200,
+    "operation_ms": 321.991,
+    "operations_per_second": 3726.816,
+    "minimum_operations_per_second": 1000,
+    "pragmas": {
+      "journal_mode": "wal",
+      "synchronous": 1,
+      "foreign_keys": 1
+    },
+    "reopened_pragmas": {
+      "journal_mode": "wal",
+      "synchronous": 1,
+      "foreign_keys": 1
+    },
+    "durability_verified_after_reopen": true,
+    "stats": {
+      "total": 400,
+      "by_status": {
+        "completed": 400
+      },
+      "open": 0,
+      "failed": 0,
+      "oldest_open_at": null
+    }
+  },
+  "semantic": {
+    "ok": true,
+    "module_init_ms": 52.676,
+    "runs": 3,
+    "first_query_ms": 640.175,
+    "p50_ms": 353.85,
+    "p95_ms": 640.175,
+    "max_ms": 640.175,
+    "hits_per_run": [
+      3,
+      3,
+      3
+    ],
+    "candidates_per_run": [
+      192,
+      192,
+      192
+    ],
+    "model": "qwen3-embedding:0.6b",
+    "samples": [
+      {
+        "query": "What evidence proves OrangeFive memory and Codexa routing?",
+        "latency_ms": 640.175,
+        "reported_elapsed_ms": 639,
+        "hits": 3,
+        "candidates": 192,
+        "model": "qwen3-embedding:0.6b",
+        "component_latency_ms": {
+          "embedding": 211,
+          "qdrant": 44
+        }
+      },
+      {
+        "query": "Which receipts establish durable OrangeFive memory behavior?",
+        "latency_ms": 229.531,
+        "reported_elapsed_ms": 230,
+        "hits": 3,
+        "candidates": 192,
+        "model": "qwen3-embedding:0.6b",
+        "component_latency_ms": {
+          "embedding": 134,
+          "qdrant": 37
+        }
+      },
+      {
+        "query": "What runtime proof verifies Codexa routing and semantic recall?",
+        "latency_ms": 353.85,
+        "reported_elapsed_ms": 354,
+        "hits": 3,
+        "candidates": 192,
+        "model": "qwen3-embedding:0.6b",
+        "component_latency_ms": {
+          "embedding": 143,
+          "qdrant": 42
+        }
+      }
+    ],
+    "threshold_ms": 1000
+  },
+  "process_memory": {
+    "rss": 178073600,
+    "heapTotal": 31835136,
+    "heapUsed": 26354263,
+    "external": 6587239,
+    "arrayBuffers": 0
+  },
+  "total_ms": 2288.292,
+  "generated_at": "2026-08-27T15:38:57.186Z",
+  "prior_receipt": null,
+  "prior_sha256": "GENESIS",
+  "receipt_sha256": "24ef0b72621f2ab2510f2b50397a36fd33bad6b37a2a7ca10a5eda25f4ea6d6c"
+}

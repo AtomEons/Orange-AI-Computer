@@ -1,0 +1,338 @@
+{
+  "schema": "orange.deploy.model-acquisition-catalog.v1",
+  "product": "OrangeFive",
+  "sourceCatalog": "14-SUPERSTACK/captain-planet-stack.json",
+  "sourceCatalogSha256": "b9012f31e065e38a2f0d703c41592bbd6614dee7cae630b0bd3f6c6cfbfe16ad",
+  "generatedAt": "2026-08-27T15:28:05.8427878Z",
+  "policy": {
+    "modelWeightsInPayload": false,
+    "unresolvedProvenanceBlocksSelection": true,
+    "upstreamDownloadDoesNotClaimRedistributionRights": true,
+    "runtimeProvisioning": "adopt-only-until-a-runtime-installer-is-proven"
+  },
+  "roles": [
+    {
+      "role": "image_draft_flux2_klein",
+      "provenanceStatus": "verified-local-artifact",
+      "license": "Apache-2.0",
+      "redistribution": "upstream-download-only",
+      "runtimeProvisioning": "adopt-only",
+      "provenanceBlockers": [],
+      "evidence": {
+        "receipt": "10-RECEIPTS/orange5-build/captain-planet/flux2/flux2-image-artifact-proof.json",
+        "receiptSha256": "adb26a2b2747596c1e25609b222fb8cd4201a62760a60cfb2e8a3005d3ffaac1",
+        "upstreamModel": "black-forest-labs/FLUX.2-klein-4b-fp8",
+        "upstreamRevision": "5b4408e59397a4a37ccb46afe426d8ed86379441",
+        "upstreamLicenseFile": "LICENSE.md",
+        "upstreamLicenseSha256": "ca02bc51900ab07789d1b70283329e7137f5af98f5161c23a1c81fc38a4af1fe",
+        "observedHost": "CODEXA",
+        "observedAt": "2026-08-27T06:52:40.7346363Z"
+      },
+      "observedArtifacts": [
+        {
+          "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/diffusion_models/flux-2-klein-4b-fp8.safetensors",
+          "bytes": 4070624520,
+          "sha256": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6"
+        },
+        {
+          "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/text_encoders/qwen_3_4b.safetensors",
+          "bytes": 8044982048,
+          "sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a"
+        },
+        {
+          "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/vae/flux2-vae.safetensors",
+          "bytes": 336213556,
+          "sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5"
+        }
+      ],
+      "acquisition": {
+        "provider": "huggingface",
+        "repository": "black-forest-labs/FLUX.2-klein-4b-fp8",
+        "revision": "5b4408e59397a4a37ccb46afe426d8ed86379441",
+        "files": [
+          {
+            "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8/resolve/5b4408e59397a4a37ccb46afe426d8ed86379441/flux-2-klein-4b-fp8.safetensors",
+            "relativePath": "image_draft_flux2_klein/flux-2-klein-4b-fp8.safetensors",
+            "bytes": 4070624520,
+            "sha256": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6"
+          },
+          {
+            "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8/resolve/5b4408e59397a4a37ccb46afe426d8ed86379441/LICENSE.md",
+            "relativePath": "image_draft_flux2_klein/LICENSE.md",
+            "bytes": 9584,
+            "sha256": "ca02bc51900ab07789d1b70283329e7137f5af98f5161c23a1c81fc38a4af1fe"
+          },
+          {
+            "url": "https://huggingface.co/Comfy-Org/flux2-klein-4B/resolve/5f526678002e43af5551dadb73ce2e8c91b43afe/split_files/text_encoders/qwen_3_4b.safetensors",
+            "sourceRepository": "Comfy-Org/flux2-klein-4B",
+            "sourceRevision": "5f526678002e43af5551dadb73ce2e8c91b43afe",
+            "relativePath": "image_draft_flux2_klein/qwen_3_4b.safetensors",
+            "bytes": 8044982048,
+            "sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a"
+          },
+          {
+            "url": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/ab9055628ea245000e610f2aa2c96f4746093546/split_files/vae/flux2-vae.safetensors",
+            "sourceRepository": "Comfy-Org/flux2-dev",
+            "sourceRevision": "ab9055628ea245000e610f2aa2c96f4746093546",
+            "relativePath": "image_draft_flux2_klein/flux2-vae.safetensors",
+            "bytes": 336213556,
+            "sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5"
+          }
+        ]
+      }
+    },
+    {
+      "role": "image_quality_flux2_dev",
+      "provenanceStatus": "blocked",
+      "license": null,
+      "redistribution": null,
+      "runtimeProvisioning": "adopt-only",
+      "provenanceBlockers": ["MODEL_NOT_LOCALLY_OBSERVED"]
+    },
+    {
+      "role": "video_modern_ltx25",
+      "provenanceStatus": "blocked",
+      "license": null,
+      "redistribution": null,
+      "runtimeProvisioning": "adopt-only",
+      "provenanceBlockers": ["MODEL_NOT_LOCALLY_OBSERVED"]
+    },
+    {
+      "role": "video_fallback_ltxv098",
+      "provenanceStatus": "verified-local-artifact",
+      "license": "LTXV Open Weights License 0.X",
+      "redistribution": "upstream-download-only",
+      "runtimeProvisioning": "adopt-only",
+      "provenanceBlockers": [],
+      "evidence": {
+        "receipt": "10-RECEIPTS/orange5-build/captain-planet/ltxv/ltx-video-artifact-proof.json",
+        "receiptSha256": "2ad2a6b81b8b34c481a655593a282d73a00f45e76902049ad32f1980da91e883",
+        "upstreamModel": "Lightricks/LTX-Video",
+        "upstreamRevision": "8984fa25007f376c1a299016d0957a37a2f797bb",
+        "upstreamLicenseFile": "LTX-Video-Open-Weights-License-0.X.txt",
+        "upstreamLicenseSha256": "30eabbcc090dd3bd70cffaa14338142df82f348f7bd91b2f63f0c6099ccf50e0",
+        "observedHost": "CODEXA",
+        "observedAt": "2026-08-27T06:52:40.7346363Z",
+        "note": "The official Lightricks model card assigns 0.9.8 and its upscaler to the LTXV Open Weights License 0.X. Orange downloads upstream and does not redistribute weights."
+      },
+      "observedArtifacts": [
+        {
+          "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/ltxv-2b-0.9.8-distilled.safetensors",
+          "bytes": 6340744492,
+          "sha256": "76aa8c4786af752fa6f951947129d5290c3c6c0b2fadcadea6b5e114ae2cad8f"
+        },
+        {
+          "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/ltxv-spatial-upscaler-0.9.8.safetensors",
+          "bytes": 505024432,
+          "sha256": "5b076031c6f860db9037a54f3bb819f10bfb5532ea26a6d30062292428a0c208"
+        },
+        {
+          "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/PixArt-XL-2-1024-MS/text_encoder/model-00001-of-00002.safetensors",
+          "bytes": 9989150328,
+          "sha256": "eb529f693f4b17773a24e787fcba29486d5e1700dadcc20bb91e4c8b00212d08"
+        },
+        {
+          "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/PixArt-XL-2-1024-MS/text_encoder/model-00002-of-00002.safetensors",
+          "bytes": 9060119392,
+          "sha256": "58f33f4acba7a5502b6b3e4cb7863f8fd503d5012016428099bb460c98e2fe77"
+        }
+      ],
+      "acquisition": {
+        "provider": "huggingface",
+        "repository": "Lightricks/LTX-Video",
+        "revision": "8984fa25007f376c1a299016d0957a37a2f797bb",
+        "files": [
+          {
+            "url": "https://huggingface.co/Lightricks/LTX-Video/resolve/8984fa25007f376c1a299016d0957a37a2f797bb/ltxv-2b-0.9.8-distilled.safetensors",
+            "relativePath": "video_fallback_ltxv098/ltxv-2b-0.9.8-distilled.safetensors",
+            "bytes": 6340744492,
+            "sha256": "76aa8c4786af752fa6f951947129d5290c3c6c0b2fadcadea6b5e114ae2cad8f"
+          },
+          {
+            "url": "https://huggingface.co/Lightricks/LTX-Video/resolve/8984fa25007f376c1a299016d0957a37a2f797bb/ltxv-spatial-upscaler-0.9.8.safetensors",
+            "relativePath": "video_fallback_ltxv098/ltxv-spatial-upscaler-0.9.8.safetensors",
+            "bytes": 505024432,
+            "sha256": "5b076031c6f860db9037a54f3bb819f10bfb5532ea26a6d30062292428a0c208"
+          },
+          {
+            "url": "https://huggingface.co/Lightricks/LTX-Video/resolve/8984fa25007f376c1a299016d0957a37a2f797bb/LTX-Video-Open-Weights-License-0.X.txt",
+            "relativePath": "video_fallback_ltxv098/LTX-Video-Open-Weights-License-0.X.txt",
+            "bytes": 14536,
+            "sha256": "30eabbcc090dd3bd70cffaa14338142df82f348f7bd91b2f63f0c6099ccf50e0"
+          },
+          {
+            "url": "https://huggingface.co/PixArt-alpha/PixArt-XL-2-1024-MS/resolve/b89adadeccd9ead2adcb9fa2825d3fabec48d404/text_encoder/model-00001-of-00002.safetensors",
+            "sourceRepository": "PixArt-alpha/PixArt-XL-2-1024-MS",
+            "sourceRevision": "b89adadeccd9ead2adcb9fa2825d3fabec48d404",
+            "relativePath": "video_fallback_ltxv098/PixArt-XL-2-1024-MS/text_encoder/model-00001-of-00002.safetensors",
+            "bytes": 9989150328,
+            "sha256": "eb529f693f4b17773a24e787fcba29486d5e1700dadcc20bb91e4c8b00212d08"
+          },
+          {
+            "url": "https://huggingface.co/PixArt-alpha/PixArt-XL-2-1024-MS/resolve/b89adadeccd9ead2adcb9fa2825d3fabec48d404/text_encoder/model-00002-of-00002.safetensors",
+            "sourceRepository": "PixArt-alpha/PixArt-XL-2-1024-MS",
+            "sourceRevision": "b89adadeccd9ead2adcb9fa2825d3fabec48d404",
+            "relativePath": "video_fallback_ltxv098/PixArt-XL-2-1024-MS/text_encoder/model-00002-of-00002.safetensors",
+            "bytes": 9060119392,
+            "sha256": "58f33f4acba7a5502b6b3e4cb7863f8fd503d5012016428099bb460c98e2fe77"
+          }
+        ]
+      }
+    },
+    {
+      "role": "speech_qwen3_tts",
+      "provenanceStatus": "verified-local-artifact",
+      "license": "Apache-2.0",
+      "redistribution": "upstream-download-only",
+      "runtimeProvisioning": "adopt-only",
+      "provenanceBlockers": [],
+      "evidence": {
+        "receipt": "10-RECEIPTS/orange5-build/captain-planet/qwen3-tts/qwen3-tts-artifact-proof.codexa.json",
+        "receiptSha256": "062696ba3e9219999ec548e9431a8d58943abffaf077b85636452cbc002193a7",
+        "modelCardPath": "C:/AtomEons/ai-box/models/Qwen3-TTS-12Hz-1.7B-CustomVoice/README.md",
+        "modelCardSha256": "64f65e809b51cc0c35f393fbbfcc2d735c0cb3fdbbc6f3fdc4a5e6ce55e9d088",
+        "modelCardRevisionMetadata": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+        "observedHost": "CODEXA",
+        "observedAt": "2026-08-27T06:52:40.7346363Z"
+      },
+      "acquisition": {
+        "provider": "huggingface",
+        "repository": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+        "revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+        "files": [
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/config.json",
+            "relativePath": "speech_qwen3_tts/config.json",
+            "bytes": 4908,
+            "sha256": "17a07f527a1c25ea30b4e023a184482a23d3e279d697b1dc81b1bde498d29cf9"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/generation_config.json",
+            "relativePath": "speech_qwen3_tts/generation_config.json",
+            "bytes": 245,
+            "sha256": "f1b90b4513f3b34c62851049e2492d7b4c5940daf1276f89c82b8ef04127f3aa"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/merges.txt",
+            "relativePath": "speech_qwen3_tts/merges.txt",
+            "bytes": 1671839,
+            "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/model.safetensors",
+            "relativePath": "speech_qwen3_tts/model.safetensors",
+            "bytes": 3833402552,
+            "sha256": "38b1d5971bdbd982b561cccec982669a53b0537c3cf5e9bd4778ed07bb2f5137"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/preprocessor_config.json",
+            "relativePath": "speech_qwen3_tts/preprocessor_config.json",
+            "bytes": 127,
+            "sha256": "efdde1022ea9d76928bf7a9cd53139138f5ba2e466e837f08f6105ab1af1c119"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/speech_tokenizer/config.json",
+            "relativePath": "speech_qwen3_tts/speech_tokenizer/config.json",
+            "bytes": 2336,
+            "sha256": "ee65bb901c876664ab8707c487157aa1a6ee57c65969b28fb5ec9dc211e68167"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/speech_tokenizer/configuration.json",
+            "relativePath": "speech_qwen3_tts/speech_tokenizer/configuration.json",
+            "bytes": 76,
+            "sha256": "6bc26d64eb5024b4d1dab5a52371958b429256d6c9d59787f1f5294a54e0cebd"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/speech_tokenizer/model.safetensors",
+            "relativePath": "speech_qwen3_tts/speech_tokenizer/model.safetensors",
+            "bytes": 682293092,
+            "sha256": "836b7b357f5ea43e889936a3709af68dfe3751881acefe4ecf0dbd30ba571258"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/speech_tokenizer/preprocessor_config.json",
+            "relativePath": "speech_qwen3_tts/speech_tokenizer/preprocessor_config.json",
+            "bytes": 234,
+            "sha256": "fcb3805e597e786d4067706e602f6688524640f8d3396790e2e09b5942fcbdfb"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/tokenizer_config.json",
+            "relativePath": "speech_qwen3_tts/tokenizer_config.json",
+            "bytes": 7344,
+            "sha256": "dc3c31c3bdaedd5016382bb3cbe07323026775ad51f5a4fb564505992ae4a670"
+          },
+          {
+            "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/resolve/0c0e3051f131929182e2c023b9537f8b1c68adfe/vocab.json",
+            "relativePath": "speech_qwen3_tts/vocab.json",
+            "bytes": 2776833,
+            "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+          }
+        ]
+      }
+    },
+    {
+      "role": "music_ace_step15",
+      "provenanceStatus": "verified-local-artifact",
+      "license": "MIT",
+      "redistribution": "upstream-download-only",
+      "runtimeProvisioning": "adopt-only",
+      "provenanceBlockers": [],
+      "evidence": {
+        "receipt": "10-RECEIPTS/orange5-build/captain-planet/ace-step/ace-step-artifact-proof.codexa.json",
+        "receiptSha256": "eacc9d86f7e71a7a78b3962f7942725176deb379734e7352717c9a12b34fb4f0",
+        "modelCardPath": "C:/AtomEons/ai-box/creative/ACE-Step-1.5/checkpoints/README.md",
+        "modelCardSha256": "69d69b89e313706b93b420b13aa6232259b207a1cd19b0b70358d166e8e451a0",
+        "observedHost": "CODEXA",
+        "observedAt": "2026-08-27T06:52:40.7346363Z"
+      },
+      "acquisition": {
+        "provider": "huggingface",
+        "repository": "ACE-Step/Ace-Step1.5",
+        "revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "files": [
+          {
+            "url": "https://huggingface.co/ACE-Step/Ace-Step1.5/resolve/19671f406d603126926c1b7e2adc169acbcade22/acestep-v15-turbo/model.safetensors",
+            "relativePath": "music_ace_step15/acestep-v15-turbo/model.safetensors",
+            "bytes": 4787825604,
+            "sha256": "3f6e0797fad420a39bd33979eb6e840e30989e34a3794e843d23b60ec6e422d7"
+          },
+          {
+            "url": "https://huggingface.co/ACE-Step/Ace-Step1.5/resolve/19671f406d603126926c1b7e2adc169acbcade22/Qwen3-Embedding-0.6B/model.safetensors",
+            "relativePath": "music_ace_step15/Qwen3-Embedding-0.6B/model.safetensors",
+            "bytes": 1191586416,
+            "sha256": "0437e45c94563b09e13cb7a64478fc406947a93cb34a7e05870fc8dcd48e23fd"
+          },
+          {
+            "url": "https://huggingface.co/ACE-Step/Ace-Step1.5/resolve/19671f406d603126926c1b7e2adc169acbcade22/vae/diffusion_pytorch_model.safetensors",
+            "relativePath": "music_ace_step15/vae/diffusion_pytorch_model.safetensors",
+            "bytes": 337431388,
+            "sha256": "da17edb604c40deaf09e9b24974e590d1ca83a374070e5d0884cfa4bed9a99b0"
+          }
+        ]
+      }
+    },
+    {
+      "role": "three_d_hunyuan21",
+      "provenanceStatus": "blocked",
+      "license": null,
+      "redistribution": null,
+      "runtimeProvisioning": "adopt-only",
+      "provenanceBlockers": ["MODEL_NOT_LOCALLY_OBSERVED"]
+    },
+    {
+      "role": "document_refine_paddleocr_vl16",
+      "provenanceStatus": "blocked",
+      "license": null,
+      "redistribution": null,
+      "runtimeProvisioning": "adopt-only",
+      "provenanceBlockers": ["MODEL_NOT_LOCALLY_OBSERVED"]
+    },
+    {
+      "role": "image_video_refine_seedvr2",
+      "provenanceStatus": "blocked",
+      "license": null,
+      "redistribution": null,
+      "runtimeProvisioning": "adopt-only",
+      "provenanceBlockers": ["MODEL_NOT_LOCALLY_OBSERVED"]
+    }
+  ]
+}

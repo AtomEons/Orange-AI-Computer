@@ -1,0 +1,114 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "image",
+  "card_id": "image-generate",
+  "capability": "image.generate",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["prompt"],
+    "properties": {
+      "prompt": {
+        "type": "string",
+        "description": "Natural-language description of the image to synthesize. Runner forwards to the configured frontier image model; provider-specific prompt limits apply.",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "negative_prompt": {
+        "type": "string",
+        "description": "Optional content the model should avoid. Honored only when the active frontier backend supports negative prompting.",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "size": {
+        "type": "string",
+        "description": "Output dimensions, width x height in pixels. Closed enum aligned with the union of supported frontier sizes; runner rejects unsupported combinations for the active backend.",
+        "enum": ["512x512", "1024x1024", "1024x1792", "1792x1024", "2048x2048"],
+        "default": "1024x1024"
+      },
+      "n": {
+        "type": "integer",
+        "description": "Number of distinct images to generate. Each counts as one billed invocation upstream.",
+        "minimum": 1,
+        "maximum": 4,
+        "default": 1
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Optional deterministic seed. Reproducibility depends on the upstream provider honoring seeds.",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "style": {
+        "type": "string",
+        "description": "Optional stylistic hint forwarded as a backend-native style parameter where supported (e.g. 'natural', 'vivid').",
+        "minLength": 1,
+        "maxLength": 64
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["images", "model"],
+    "properties": {
+      "images": {
+        "type": "array",
+        "description": "One sandbox reference per generated image. Files are written to mesh-owned scratch space and expire per lab policy; downstream cards consume them by image_ref.",
+        "minItems": 1,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["image_ref", "width", "height"],
+          "properties": {
+            "image_ref": {
+              "type": "string",
+              "pattern": "^sandbox://",
+              "minLength": 11,
+              "maxLength": 4096
+            },
+            "width": { "type": "integer", "minimum": 1, "maximum": 8192 },
+            "height": { "type": "integer", "minimum": 1, "maximum": 8192 },
+            "seed": { "type": "integer", "minimum": 0, "maximum": 4294967295 }
+          }
+        }
+      },
+      "model": {
+        "type": "string",
+        "description": "Concrete frontier model id that produced the image(s) for receipt citation.",
+        "minLength": 1,
+        "maxLength": 64
+      },
+      "revised_prompt": {
+        "type": "string",
+        "description": "If the backend rewrote the prompt (DALL-E behavior), the rewritten form is returned for transparency."
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 10,
+    "scopes": [
+      "net.egress:api.openai.com",
+      "net.egress:*.anthropic.com",
+      "fs.write:sandbox://images/",
+      "secrets.read:frontier.image"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 6,
+    "egress_allowlist": [
+      "api.openai.com",
+      "*.anthropic.com"
+    ]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "frontier-offload",
+  "version": "0.1.0",
+  "summary": "Text-to-image synthesis via an operator-supplied frontier backend; outputs land in mesh-scoped sandbox storage.",
+  "tags": ["vision", "generate", "synthesis", "frontier", "byo-key"],
+  "notes": "Operator must supply the frontier credential via Hermes secret 'frontier.image'. Generation is irreversible from a billing standpoint, so the default lease requires per-invocation human approval; lower that ceiling only after a budget envelope is in place."
+}

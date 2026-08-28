@@ -1,0 +1,31 @@
+{
+  "experiment": "26-conditional-on-action",
+  "generated_at": "2026-06-26T12:20:44.794Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "entropies": {
+    "H_action": 2.4010305659954247,
+    "H_status": 0.002256781086428256,
+    "H_createdAt": 4.695612756505848,
+    "H_summaryTpl": 3.5562024301183452,
+    "H_payloadTpl": 3.5967846446847247,
+    "H_status_given_action": 0,
+    "H_createdAt_given_action": 3.1829914227394074,
+    "H_summary_given_action": 1.1551718641229154,
+    "H_payload_given_action": 1.2729392826277888,
+    "H_summary_given_action_prev_summary": 0.7565473929869353
+  },
+  "independent_total_bps": 14.252,
+  "conditional_total_bps": 8.012,
+  "savings_bps": 6.24,
+  "savings_bytes": 4855,
+  "encoded_sizes": {
+    "action": 1968,
+    "status": 8,
+    "created_at": 2595,
+    "summary_tpl": 1679,
+    "payload_tpl": 1710
+  },
+  "total_5fields_bytes": 7960,
+  "raw_5fields_bytes": 1261228,
+  "data_only_5field_ratio": 158.45
+}

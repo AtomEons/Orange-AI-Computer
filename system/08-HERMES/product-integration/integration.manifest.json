@@ -1,0 +1,34 @@
+{
+  "schema": "orange5.hermes-product-integration.v1",
+  "name": "OrangeFive Hermes Product Integration",
+  "governor": "OrangeFive",
+  "receiptAuthority": "OrangeFive",
+  "gatewayOwner": "default",
+  "orchestratorProfile": "navigator",
+  "profiles": [
+    "navigator",
+    "builder",
+    "researcher",
+    "reviewer",
+    "visual",
+    "misfit"
+  ],
+  "board": "default",
+  "dispatcherCount": 1,
+  "api": {
+    "host": "127.0.0.1",
+    "port": 8642,
+    "model": "orange5-governor"
+  },
+  "modelGateway": "http://127.0.0.1:1337/v1",
+  "orangeMcpServer": "C:/AtomEons/Orange5/03-BACKEND/orange5-brain-mcp-server.mjs",
+  "orangeMcpTools": [
+    "orange5_health",
+    "orange5_route",
+    "orange5_order",
+    "orange5_receipts",
+    "orange5_delegate"
+  ],
+  "telemetry": false,
+  "networkBind": "loopback-only"
+}

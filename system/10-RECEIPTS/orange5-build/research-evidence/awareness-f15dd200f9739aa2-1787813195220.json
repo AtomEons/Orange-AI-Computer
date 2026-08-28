@@ -1,0 +1,223 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-f15dd200f9739aa2-1787813195220",
+  "query": "Evaluate the following action. Reply with EXACTLY ONE LINE starting with REFUSE: or CONFIRM:. actor: orangefive-navigator action_verb: analyze.agent lease.allowed: analyze.agent, synthesize.delegation lease.forbidden: destructive_write, production_deploy, scope_expansion, egress_unbounded, edit, publish, delete action.risk_level: medium order.intent: checkmate independently evaluates: Adversarially audit the LLM deploy ZIP, clean-machine install requirements, source provenance, rollback, and Git release blockers. OrangeFive orange5",
+  "searchQuery": "evaluate the following action. reply exactly one line",
+  "generatedAt": "2026-08-27T06:46:35.226Z",
+  "budgetMs": 60000,
+  "elapsedMs": 12794,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "230550585",
+      "title": "axel-op/googlejavaformat-action",
+      "url": "https://github.com/axel-op/googlejavaformat-action",
+      "summary": "GitHub Action that formats Java files following Google Style guidelines",
+      "updatedAt": "2026-08-13T09:29:27Z",
+      "license": "MIT",
+      "stars": 120,
+      "forks": 30,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8067,
+      "relevance": {
+        "score": 0.5,
+        "matched": 3,
+        "queryTerms": 6,
+        "terms": [
+          "follow",
+          "action",
+          "line"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "14163498",
+      "title": "rhiever/TwitterFollowBot",
+      "url": "https://github.com/rhiever/TwitterFollowBot",
+      "summary": "A Python bot that automates several actions on Twitter, such as following users and favoriting tweets.",
+      "updatedAt": "2026-08-26T17:34:02Z",
+      "license": "GPL-3.0",
+      "stars": 1333,
+      "forks": 434,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8275,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "follow",
+          "action"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "80710714",
+      "title": "tunnckoCore/opensource",
+      "url": "https://github.com/tunnckoCore/opensource",
+      "summary": "Delivering delightful digital solutions. Monorepo of monorepos of Open Source packages with combined ~100M/month downloads, semantically versioned following @conventional-commits. Fully powered ES Modules, @Airbnb @ESLint + @Prettier, independent & fixed versioning. Quality with @Actions, CodeQL, & Dependabot.",
+      "updatedAt": "2026-08-25T17:46:28Z",
+      "license": null,
+      "stars": 486,
+      "forks": 19,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8188,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "follow",
+          "action"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "266947125",
+      "title": "needle-mirror/com.unity.purchasing",
+      "url": "https://github.com/needle-mirror/com.unity.purchasing",
+      "summary": "[Mirrored from UPM, not affiliated with Unity Technologies.] 📦 IMPORTANT UPGRADE NOTES:If updating from Unity IAP (com.unity.purchasing + the Asset Store plugin) versions 2.x to version 3.x, complete the following actions in order to resolve compilation errors: 1. Move IAPProductCatalog.json and BillingMode.jsonFROM: Assets/Plugins/UnityPurchasing/Resources/TO: Assets/Resources/. 2. Move AppleTangle.cs and GooglePlayTangle.csFROM: Assets/Plugins/UnityPurchasing/generatedTO: Assets/Scripts/Unity",
+      "updatedAt": "2026-07-25T22:11:28Z",
+      "license": "NOASSERTION",
+      "stars": 39,
+      "forks": 11,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.797,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "follow",
+          "action"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "552327442",
+      "title": "isyuricunha/list-all-followers-and-following",
+      "url": "https://github.com/isyuricunha/list-all-followers-and-following",
+      "summary": "Easy view and filter all follows and following. Auto update by GitHub Action. 🚨 Your browser can run slow. 🚨",
+      "updatedAt": "2026-08-23T01:34:16Z",
+      "license": "NOASSERTION",
+      "stars": 28,
+      "forks": 4,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7942,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "follow",
+          "action"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "340383080",
+      "title": "xrkffgg/list-all-followers-and-following",
+      "url": "https://github.com/xrkffgg/list-all-followers-and-following",
+      "summary": "😳 Easy view and filter all follows and following. Auto update by GitHub Action.",
+      "updatedAt": "2026-08-24T01:06:53Z",
+      "license": null,
+      "stars": 26,
+      "forks": 19,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7936,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "follow",
+          "action"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "906089435",
+      "title": "ashworks1706/SparkyAI",
+      "url": "https://github.com/ashworks1706/SparkyAI",
+      "summary": "Swarm of AI Agents that work together to answer student specific query, perform actions on their behalf and self improve over time following SOTA architectures and strategies for maximum scalability.",
+      "updatedAt": "2026-08-27T04:57:44Z",
+      "license": "MIT",
+      "stars": 7,
+      "forks": 2,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1981,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "follow",
+          "action"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "arxiv",
+      "error": "The operation timed out."
+    }
+  ],
+  "sha256": "3a892fcbcbca8d6e52e76212c794257719991ebe8f2a71fa12af615d4e11075c"
+}

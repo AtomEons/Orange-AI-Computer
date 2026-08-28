@@ -1,0 +1,3404 @@
+[
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.02,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.2872419639922762,
+        "distances": {
+          "orange": 0.2872419639922762,
+          "apple": 1.0418741862762235
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21020577338555058,
+        "distances": {
+          "orange": 1.2732042097088994,
+          "apple": 0.21020577338555058
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7115642171346602,
+        "distances": {
+          "orange": 0.7115642171346602,
+          "apple": 1.1764906549086358
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7985366344782665,
+        "distances": {
+          "orange": 0.7985366344782665,
+          "apple": 1.2824154637306369
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.02,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.2872419639922762,
+        "distances": {
+          "orange": 0.2872419639922762,
+          "apple": 1.0418741862762235
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21020577338555058,
+        "distances": {
+          "orange": 1.2732042097088994,
+          "apple": 0.21020577338555058
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.5250332513060427,
+        "distances": {
+          "orange": 0.5250332513060427,
+          "apple": 0.8304580782131066
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7985366344782665,
+        "distances": {
+          "orange": 0.7985366344782665,
+          "apple": 1.2824154637306369
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.02,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.1753623147362913,
+        "distances": {
+          "orange": 0.1753623147362913,
+          "apple": 0.8857145927108725
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.18352285566432264,
+        "distances": {
+          "orange": 1.0119632876692397,
+          "apple": 0.18352285566432264
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7174674492895051,
+        "distances": {
+          "orange": 0.7174674492895051,
+          "apple": 1.2427931568708301
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2805966339187607,
+        "distances": {
+          "orange": 1.2805966339187607,
+          "apple": 1.378721895150237
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.05,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.22877364626951557,
+        "distances": {
+          "orange": 0.22877364626951557,
+          "apple": 1.0902643519852282
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.15369808739029656,
+        "distances": {
+          "orange": 1.3115275539882834,
+          "apple": 0.15369808739029656
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.5047004936339722,
+        "distances": {
+          "orange": 0.5047004936339722,
+          "apple": 1.1089632751809133
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8595487007546859,
+        "distances": {
+          "orange": 0.8595487007546859,
+          "apple": 1.3604292030693168
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.05,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.22877364626951557,
+        "distances": {
+          "orange": 0.22877364626951557,
+          "apple": 1.0902643519852282
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.15369808739029656,
+        "distances": {
+          "orange": 1.3115275539882834,
+          "apple": 0.15369808739029656
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.5047004936339722,
+        "distances": {
+          "orange": 0.5047004936339722,
+          "apple": 1.1089632751809133
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8595487007546859,
+        "distances": {
+          "orange": 0.8595487007546859,
+          "apple": 1.3604292030693168
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.05,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.17487445094444748,
+        "distances": {
+          "orange": 0.17487445094444748,
+          "apple": 0.8783393464937392
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21484704679953034,
+        "distances": {
+          "orange": 1.10026792932695,
+          "apple": 0.21484704679953034
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7941030418802159,
+        "distances": {
+          "orange": 0.7941030418802159,
+          "apple": 1.3795164101701702
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.329384982070003,
+        "distances": {
+          "orange": 1.329384982070003,
+          "apple": 1.3792361882672215
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.1,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.2327002992268662,
+        "distances": {
+          "orange": 0.2327002992268662,
+          "apple": 1.3763366538994046
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21440598799168895,
+        "distances": {
+          "orange": 1.3576087523859994,
+          "apple": 0.21440598799168895
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8464826586632009,
+        "distances": {
+          "orange": 0.8464826586632009,
+          "apple": 1.6395122080805293
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.367171838562477,
+        "distances": {
+          "orange": 1.367171838562477,
+          "apple": 1.3791274794346045
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.1,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.2327002992268662,
+        "distances": {
+          "orange": 0.2327002992268662,
+          "apple": 1.3763366538994046
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21440598799168895,
+        "distances": {
+          "orange": 1.3576087523859994,
+          "apple": 0.21440598799168895
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8464826586632009,
+        "distances": {
+          "orange": 0.8464826586632009,
+          "apple": 1.6395122080805293
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.367171838562477,
+        "distances": {
+          "orange": 1.367171838562477,
+          "apple": 1.3791274794346045
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.1,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.24086946091677142,
+        "distances": {
+          "orange": 0.24086946091677142,
+          "apple": 1.181020833449674
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21440598799171712,
+        "distances": {
+          "orange": 1.278717967676421,
+          "apple": 0.21440598799171712
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.9820719236047749,
+        "distances": {
+          "orange": 0.9820719236047749,
+          "apple": 1.5915738641515005
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.3791274794345767,
+        "distances": {
+          "orange": 1.4941121840119564,
+          "apple": 1.3791274794345767
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.15,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.40120504241281707,
+        "distances": {
+          "orange": 0.40120504241281707,
+          "apple": 1.065506718124452
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3308408270166945,
+        "distances": {
+          "orange": 1.3088772864792753,
+          "apple": 0.3308408270166945
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2509898570377025,
+        "distances": {
+          "orange": 1.2509898570377025,
+          "apple": 1.4246256491380744
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.3781167407338075,
+        "distances": {
+          "orange": 1.8338427856679287,
+          "apple": 1.3781167407338075
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.15,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.40120504241281707,
+        "distances": {
+          "orange": 0.40120504241281707,
+          "apple": 1.065506718124452
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3308408270166945,
+        "distances": {
+          "orange": 1.3088772864792753,
+          "apple": 0.3308408270166945
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2509898570377025,
+        "distances": {
+          "orange": 1.2509898570377025,
+          "apple": 1.4246256491380744
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.3781167407338075,
+        "distances": {
+          "orange": 1.8338427856679287,
+          "apple": 1.3781167407338075
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "warmRG": 0.15,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.40120504241281707,
+        "distances": {
+          "orange": 0.40120504241281707,
+          "apple": 1.065506718124452
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3308408270166945,
+        "distances": {
+          "orange": 1.3088772864792753,
+          "apple": 0.3308408270166945
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2509898570377025,
+        "distances": {
+          "orange": 1.2509898570377025,
+          "apple": 1.4246256491380744
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.3781167407338075,
+        "distances": {
+          "orange": 1.8338427856679287,
+          "apple": 1.3781167407338075
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.02,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 4,
+      "apple": 13
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3412318121818306,
+        "distances": {
+          "orange": 1.6244876944569464,
+          "apple": 0.3412318121818306
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.6362311760485516,
+        "distances": {
+          "orange": 0.6362311760485516,
+          "apple": 1.519791698029264
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8996427319593767,
+        "distances": {
+          "orange": 0.8996427319593767,
+          "apple": 1.4116896038178848
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.02,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 4,
+      "apple": 13
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3412318121818306,
+        "distances": {
+          "orange": 1.6244876944569464,
+          "apple": 0.3412318121818306
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.6362311760485516,
+        "distances": {
+          "orange": 0.6362311760485516,
+          "apple": 1.519791698029264
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8996427319593767,
+        "distances": {
+          "orange": 0.8996427319593767,
+          "apple": 1.4116896038178848
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.02,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.22858938726389064,
+        "distances": {
+          "orange": 2.013426393587675,
+          "apple": 0.22858938726389064
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8719494679888693,
+        "distances": {
+          "orange": 0.8719494679888693,
+          "apple": 1.6718020989339242
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.535733953852826
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.05,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.22858938726389064,
+        "distances": {
+          "orange": 2.013426393587675,
+          "apple": 0.22858938726389064
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8719494679888693,
+        "distances": {
+          "orange": 0.8719494679888693,
+          "apple": 1.6718020989339242
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.535733953852826
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.05,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.22858938726389064,
+        "distances": {
+          "orange": 2.013426393587675,
+          "apple": 0.22858938726389064
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8719494679888693,
+        "distances": {
+          "orange": 0.8719494679888693,
+          "apple": 1.6718020989339242
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.535733953852826
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.05,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.22858938726389064,
+        "distances": {
+          "orange": 2.013426393587675,
+          "apple": 0.22858938726389064
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8719494679888693,
+        "distances": {
+          "orange": 0.8719494679888693,
+          "apple": 1.6718020989339242
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.535733953852826
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.1,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.22858938726389064,
+        "distances": {
+          "orange": 2.013426393587675,
+          "apple": 0.22858938726389064
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7779536571340254,
+        "distances": {
+          "orange": 0.7779536571340254,
+          "apple": 1.9436138471856472
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.535733953852826
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.1,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.22858938726389064,
+        "distances": {
+          "orange": 2.013426393587675,
+          "apple": 0.22858938726389064
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7779536571340254,
+        "distances": {
+          "orange": 0.7779536571340254,
+          "apple": 1.9436138471856472
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.535733953852826
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.1,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.22858938726389064,
+        "distances": {
+          "orange": 2.013426393587675,
+          "apple": 0.22858938726389064
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7779536571340254,
+        "distances": {
+          "orange": 0.7779536571340254,
+          "apple": 1.9436138471856472
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.535733953852826
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.15,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 7
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.15,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 7
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 2,
+    "warmRG": 0.15,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 7
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.02,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.02,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.02,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.05,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.05,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.05,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.1,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.1,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.1,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.15,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.15,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_1",
+    "minVotes": 3,
+    "warmRG": 0.15,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.02,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.3799435933102874,
+        "distances": {
+          "orange": 0.3799435933102874,
+          "apple": 1.0269785877832203
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21079572904086227,
+        "distances": {
+          "orange": 1.2423776125526538,
+          "apple": 0.21079572904086227
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.6170984537802932,
+        "distances": {
+          "orange": 0.6170984537802932,
+          "apple": 1.1946440181459257
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7122238149703614,
+        "distances": {
+          "orange": 0.7122238149703614,
+          "apple": 1.280951996267418
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.02,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.37913131698125424,
+        "distances": {
+          "orange": 0.37913131698125424,
+          "apple": 1.0269785877832203
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21079572904086227,
+        "distances": {
+          "orange": 1.2424562886697792,
+          "apple": 0.21079572904086227
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.4705270899492111,
+        "distances": {
+          "orange": 0.4705270899492111,
+          "apple": 0.8158976596854027
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7128427552400712,
+        "distances": {
+          "orange": 0.7128427552400712,
+          "apple": 1.280951996267418
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.02,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.24028022372645227,
+        "distances": {
+          "orange": 0.24028022372645227,
+          "apple": 0.8708708813177782
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.26434469437387875,
+        "distances": {
+          "orange": 1.0279688906386533,
+          "apple": 0.26434469437387875
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7100557808440552,
+        "distances": {
+          "orange": 0.7100557808440552,
+          "apple": 0.8660448831806368
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2447243549409046,
+        "distances": {
+          "orange": 1.2447243549409046,
+          "apple": 1.3761748035576717
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.05,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.3370470548021847,
+        "distances": {
+          "orange": 0.3370470548021847,
+          "apple": 1.07413165909241
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.16275915794544854,
+        "distances": {
+          "orange": 1.2888190765994085,
+          "apple": 0.16275915794544854
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.4376453503343544,
+        "distances": {
+          "orange": 0.4376453503343544,
+          "apple": 0.9641420874145213
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7489121663176715,
+        "distances": {
+          "orange": 0.7489121663176715,
+          "apple": 1.3548125984762032
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.05,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.3362946838526,
+        "distances": {
+          "orange": 0.3362946838526,
+          "apple": 1.07413165909241
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.16275915794544854,
+        "distances": {
+          "orange": 1.2889264948822319,
+          "apple": 0.16275915794544854
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.43832368036736136,
+        "distances": {
+          "orange": 0.43832368036736136,
+          "apple": 0.9641420874145213
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7495737208191311,
+        "distances": {
+          "orange": 0.7495737208191311,
+          "apple": 1.3548125984762032
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.05,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.20129729370554997,
+        "distances": {
+          "orange": 0.20129729370554997,
+          "apple": 0.8651131351083524
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3053244090325146,
+        "distances": {
+          "orange": 1.105530531825643,
+          "apple": 0.3053244090325146
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7618691629693692,
+        "distances": {
+          "orange": 0.7618691629693692,
+          "apple": 0.8794129167609596
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2826541531667124,
+        "distances": {
+          "orange": 1.2826541531667124,
+          "apple": 1.3763903126933852
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.1,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.23031583497480265,
+        "distances": {
+          "orange": 0.23031583497480265,
+          "apple": 1.354218652103436
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3480871618231011,
+        "distances": {
+          "orange": 1.3877498870311489,
+          "apple": 0.3480871618231011
+        }
+      },
+      "fruits.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.848025213611313,
+        "distances": {
+          "orange": 0.915451142038511,
+          "apple": 0.848025213611313
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.3704592106646236,
+        "distances": {
+          "orange": 1.3713276500870057,
+          "apple": 1.3704592106646236
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.1,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.23031583497480265,
+        "distances": {
+          "orange": 0.23031583497480265,
+          "apple": 1.354218652103436
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3480871618231011,
+        "distances": {
+          "orange": 1.3877498870311489,
+          "apple": 0.3480871618231011
+        }
+      },
+      "fruits.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.848025213611313,
+        "distances": {
+          "orange": 0.915451142038511,
+          "apple": 0.848025213611313
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.3704592106646236,
+        "distances": {
+          "orange": 1.3713276500870057,
+          "apple": 1.3704592106646236
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.1,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.23468660421651144,
+        "distances": {
+          "orange": 0.23468660421651144,
+          "apple": 1.161513576227392
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3480871618231479,
+        "distances": {
+          "orange": 1.2924342732135035,
+          "apple": 0.3480871618231479
+        }
+      },
+      "fruits.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.8480252136112647,
+        "distances": {
+          "orange": 1.009078894481265,
+          "apple": 0.8480252136112647
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.370459210664576,
+        "distances": {
+          "orange": 1.5052665937729108,
+          "apple": 1.370459210664576
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.15,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.40475801999047833,
+        "distances": {
+          "orange": 0.40475801999047833,
+          "apple": 1.0644316646234926
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.39348715605450846,
+        "distances": {
+          "orange": 1.0754696916846318,
+          "apple": 0.39348715605450846
+        }
+      },
+      "fruits.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.9370810328530499,
+        "distances": {
+          "orange": 1.2068864875408936,
+          "apple": 0.9370810328530499
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.3733590101820958,
+        "distances": {
+          "orange": 1.81964810509216,
+          "apple": 1.3733590101820958
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.15,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.40475801999047833,
+        "distances": {
+          "orange": 0.40475801999047833,
+          "apple": 1.0644316646234926
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.39348715605450846,
+        "distances": {
+          "orange": 1.0754696916846318,
+          "apple": 0.39348715605450846
+        }
+      },
+      "fruits.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.9370810328530499,
+        "distances": {
+          "orange": 1.2068864875408936,
+          "apple": 0.9370810328530499
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.3733590101820958,
+        "distances": {
+          "orange": 1.81964810509216,
+          "apple": 1.3733590101820958
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 1,
+    "warmRG": 0.15,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.40475801999047833,
+        "distances": {
+          "orange": 0.40475801999047833,
+          "apple": 1.0644316646234926
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.39348715605450846,
+        "distances": {
+          "orange": 1.0754696916846318,
+          "apple": 0.39348715605450846
+        }
+      },
+      "fruits.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.9370810328530499,
+        "distances": {
+          "orange": 1.2068864875408936,
+          "apple": 0.9370810328530499
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.3733590101820958,
+        "distances": {
+          "orange": 1.81964810509216,
+          "apple": 1.3733590101820958
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.02,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 4,
+      "apple": 13
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4201572525883054,
+        "distances": {
+          "orange": 1.7678277595274754,
+          "apple": 0.4201572525883054
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.6362311760485516,
+        "distances": {
+          "orange": 0.6362311760485516,
+          "apple": 1.519694874943842
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8996427319593767,
+        "distances": {
+          "orange": 0.8996427319593767,
+          "apple": 1.4137052247262336
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.02,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 4,
+      "apple": 13
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4201572525883054,
+        "distances": {
+          "orange": 1.7678277595274754,
+          "apple": 0.4201572525883054
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.6362311760485516,
+        "distances": {
+          "orange": 0.6362311760485516,
+          "apple": 1.519694874943842
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8996427319593767,
+        "distances": {
+          "orange": 0.8996427319593767,
+          "apple": 1.4137052247262336
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.02,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.26545895648184537,
+        "distances": {
+          "orange": 2.1330892291291508,
+          "apple": 0.26545895648184537
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8719494679888693,
+        "distances": {
+          "orange": 0.8719494679888693,
+          "apple": 1.6717241801037426
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.5377646345574076
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.05,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.26545895648184537,
+        "distances": {
+          "orange": 2.1330892291291508,
+          "apple": 0.26545895648184537
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8719494679888693,
+        "distances": {
+          "orange": 0.8719494679888693,
+          "apple": 1.6717241801037426
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.5377646345574076
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.05,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.26545895648184537,
+        "distances": {
+          "orange": 2.1330892291291508,
+          "apple": 0.26545895648184537
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8719494679888693,
+        "distances": {
+          "orange": 0.8719494679888693,
+          "apple": 1.6717241801037426
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.5377646345574076
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.05,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.26545895648184537,
+        "distances": {
+          "orange": 2.1330892291291508,
+          "apple": 0.26545895648184537
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8719494679888693,
+        "distances": {
+          "orange": 0.8719494679888693,
+          "apple": 1.6717241801037426
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.5377646345574076
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.1,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.26545895648184537,
+        "distances": {
+          "orange": 2.1330892291291508,
+          "apple": 0.26545895648184537
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7779536571340254,
+        "distances": {
+          "orange": 0.7779536571340254,
+          "apple": 1.942022774584301
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.5377646345574076
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.1,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.26545895648184537,
+        "distances": {
+          "orange": 2.1330892291291508,
+          "apple": 0.26545895648184537
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7779536571340254,
+        "distances": {
+          "orange": 0.7779536571340254,
+          "apple": 1.942022774584301
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.5377646345574076
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.1,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 12
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.26545895648184537,
+        "distances": {
+          "orange": 2.1330892291291508,
+          "apple": 0.26545895648184537
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7779536571340254,
+        "distances": {
+          "orange": 0.7779536571340254,
+          "apple": 1.942022774584301
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2320973677712568,
+        "distances": {
+          "orange": 1.2320973677712568,
+          "apple": 1.5377646345574076
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.15,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 7
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.15,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 7
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 2,
+    "warmRG": 0.15,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 7
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.02,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.02,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.02,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.05,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.05,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.05,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.1,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.1,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.1,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.15,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.15,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_2",
+    "minVotes": 3,
+    "warmRG": 0.15,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.02,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.2765141184769493,
+        "distances": {
+          "orange": 0.2765141184769493,
+          "apple": 1.1286879682864035
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.23968100574899837,
+        "distances": {
+          "orange": 1.1767211090135767,
+          "apple": 0.23968100574899837
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.5243507124590989,
+        "distances": {
+          "orange": 0.5243507124590989,
+          "apple": 1.2017009374872931
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.6693282538745071,
+        "distances": {
+          "orange": 0.6693282538745071,
+          "apple": 1.3038706744731574
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.02,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.2739709321263026,
+        "distances": {
+          "orange": 0.2739709321263026,
+          "apple": 1.1286879682864035
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.23968100574899837,
+        "distances": {
+          "orange": 1.1761262054055175,
+          "apple": 0.23968100574899837
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.45442097231012213,
+        "distances": {
+          "orange": 0.45442097231012213,
+          "apple": 0.7671237208152294
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.6708759462076193,
+        "distances": {
+          "orange": 0.6708759462076193,
+          "apple": 1.3038706744731574
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.02,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.19850060546333925,
+        "distances": {
+          "orange": 0.19850060546333925,
+          "apple": 0.8804775767555441
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.30915744511839505,
+        "distances": {
+          "orange": 0.8204989566028595,
+          "apple": 0.30915744511839505
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.736874581570727,
+        "distances": {
+          "orange": 0.736874581570727,
+          "apple": 0.8630437527633371
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.293432491413943,
+        "distances": {
+          "orange": 1.293432491413943,
+          "apple": 1.416900650531196
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.05,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.23268241431234674,
+        "distances": {
+          "orange": 0.23268241431234674,
+          "apple": 1.2016016014132562
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21327612781851815,
+        "distances": {
+          "orange": 1.2279888398736853,
+          "apple": 0.21327612781851815
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.43247208823769484,
+        "distances": {
+          "orange": 0.43247208823769484,
+          "apple": 0.9106088940666816
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.6941544528702813,
+        "distances": {
+          "orange": 0.6941544528702813,
+          "apple": 1.3924632367291079
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.05,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.2301445335375389,
+        "distances": {
+          "orange": 0.2301445335375389,
+          "apple": 1.2016016014132562
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.21327612781851815,
+        "distances": {
+          "orange": 1.227468748957696,
+          "apple": 0.21327612781851815
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.4328510405616801,
+        "distances": {
+          "orange": 0.4328510405616801,
+          "apple": 0.9106088940666816
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.6958063041863499,
+        "distances": {
+          "orange": 0.6958063041863499,
+          "apple": 1.3924632367291079
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.05,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.13717162167413943,
+        "distances": {
+          "orange": 0.13717162167413943,
+          "apple": 0.8749086091074432
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.3453940362589759,
+        "distances": {
+          "orange": 0.905602481000534,
+          "apple": 0.3453940362589759
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.7845468644766966,
+        "distances": {
+          "orange": 0.7845468644766966,
+          "apple": 0.861194370598343
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.3260963316336942,
+        "distances": {
+          "orange": 1.3260963316336942,
+          "apple": 1.4160689065949053
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.1,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.4769783780968267,
+        "distances": {
+          "orange": 0.4769783780968267,
+          "apple": 1.436360170338839
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4714067183791221,
+        "distances": {
+          "orange": 1.3099733524965034,
+          "apple": 0.4714067183791221
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.9054556078797272,
+        "distances": {
+          "orange": 0.9054556078797272,
+          "apple": 0.9210077438437532
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.297227355906033,
+        "distances": {
+          "orange": 1.297227355906033,
+          "apple": 1.4088448370180773
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.1,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 3,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.4769783780968267,
+        "distances": {
+          "orange": 0.4769783780968267,
+          "apple": 1.436360170338839
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4714067183791221,
+        "distances": {
+          "orange": 1.3099733524965034,
+          "apple": 0.4714067183791221
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.9054556078797272,
+        "distances": {
+          "orange": 0.9054556078797272,
+          "apple": 0.9210077438437532
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.297227355906033,
+        "distances": {
+          "orange": 1.297227355906033,
+          "apple": 1.4088448370180773
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.1,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.12932308160993017,
+        "distances": {
+          "orange": 0.12932308160993017,
+          "apple": 1.1915808448473149
+        }
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4647315956004277,
+        "distances": {
+          "orange": 1.0996937230008421,
+          "apple": 0.4647315956004277
+        }
+      },
+      "fruits.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.859876882606098,
+        "distances": {
+          "orange": 1.0618022980874746,
+          "apple": 0.859876882606098
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.4177769415747052,
+        "distances": {
+          "orange": 1.5612598529736543,
+          "apple": 1.4177769415747052
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.15,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.24287519459702786,
+        "distances": {
+          "orange": 0.24287519459702786,
+          "apple": 1.1483259261915395
+        }
+      },
+      "apple.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.9699186952868082,
+        "distances": {
+          "orange": 0.9699186952868082,
+          "apple": 1.0890728396645204
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.255684736070832,
+        "distances": {
+          "orange": 1.255684736070832,
+          "apple": 1.4762203655329198
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.433153349974451,
+        "distances": {
+          "orange": 1.8747680030327951,
+          "apple": 1.433153349974451
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.15,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.24287519459702786,
+        "distances": {
+          "orange": 0.24287519459702786,
+          "apple": 1.1483259261915395
+        }
+      },
+      "apple.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.9699186952868082,
+        "distances": {
+          "orange": 0.9699186952868082,
+          "apple": 1.0890728396645204
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.255684736070832,
+        "distances": {
+          "orange": 1.255684736070832,
+          "apple": 1.4762203655329198
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.433153349974451,
+        "distances": {
+          "orange": 1.8747680030327951,
+          "apple": 1.433153349974451
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 1,
+    "warmRG": 0.15,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 15,
+      "apple": 15
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.24287519459702786,
+        "distances": {
+          "orange": 0.24287519459702786,
+          "apple": 1.1483259261915395
+        }
+      },
+      "apple.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.9699186952868082,
+        "distances": {
+          "orange": 0.9699186952868082,
+          "apple": 1.0890728396645204
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.255684736070832,
+        "distances": {
+          "orange": 1.255684736070832,
+          "apple": 1.4762203655329198
+        }
+      },
+      "lena.jpg": {
+        "winner": "apple",
+        "winnerDist": 1.433153349974451,
+        "distances": {
+          "orange": 1.8747680030327951,
+          "apple": 1.433153349974451
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.02,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 11
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4925628651359605,
+        "distances": {
+          "orange": 1.2901495594900212,
+          "apple": 0.4925628651359605
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.4881111914491827,
+        "distances": {
+          "orange": 0.4881111914491827,
+          "apple": 1.096108069078775
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8124766239201517,
+        "distances": {
+          "orange": 0.8124766239201517,
+          "apple": 1.5222553226399962
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.02,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 3,
+      "apple": 11
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4925628651359605,
+        "distances": {
+          "orange": 1.2901495594900212,
+          "apple": 0.4925628651359605
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.4881111914491827,
+        "distances": {
+          "orange": 0.4881111914491827,
+          "apple": 1.096108069078775
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 0.8124766239201517,
+        "distances": {
+          "orange": 0.8124766239201517,
+          "apple": 1.5222553226399962
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.02,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 2,
+      "apple": 11
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4294764238963774,
+        "distances": {
+          "orange": 1.6517458147254798,
+          "apple": 0.4294764238963774
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.0417248629037101,
+        "distances": {
+          "orange": 1.0417248629037101,
+          "apple": 1.1705674295587687
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2323037233218568,
+        "distances": {
+          "orange": 1.2323037233218568,
+          "apple": 1.5978076243689696
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.05,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 2,
+      "apple": 11
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4294764238963774,
+        "distances": {
+          "orange": 1.6517458147254798,
+          "apple": 0.4294764238963774
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.0417248629037101,
+        "distances": {
+          "orange": 1.0417248629037101,
+          "apple": 1.1705674295587687
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2323037233218568,
+        "distances": {
+          "orange": 1.2323037233218568,
+          "apple": 1.5978076243689696
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.05,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 2,
+      "apple": 11
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4294764238963774,
+        "distances": {
+          "orange": 1.6517458147254798,
+          "apple": 0.4294764238963774
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.0417248629037101,
+        "distances": {
+          "orange": 1.0417248629037101,
+          "apple": 1.1705674295587687
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2323037233218568,
+        "distances": {
+          "orange": 1.2323037233218568,
+          "apple": 1.5978076243689696
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.05,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 2,
+      "apple": 11
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4294764238963774,
+        "distances": {
+          "orange": 1.6517458147254798,
+          "apple": 0.4294764238963774
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.0417248629037101,
+        "distances": {
+          "orange": 1.0417248629037101,
+          "apple": 1.1705674295587687
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2323037233218568,
+        "distances": {
+          "orange": 1.2323037233218568,
+          "apple": 1.5978076243689696
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.1,
+    "warmRB": 0.1,
+    "trained": true,
+    "yields": {
+      "orange": 2,
+      "apple": 11
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4294764238963774,
+        "distances": {
+          "orange": 1.6517458147254798,
+          "apple": 0.4294764238963774
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.0417248629037101,
+        "distances": {
+          "orange": 1.0417248629037101,
+          "apple": 1.1705674295587687
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2323037233218568,
+        "distances": {
+          "orange": 1.2323037233218568,
+          "apple": 1.5978076243689696
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.1,
+    "warmRB": 0.15,
+    "trained": true,
+    "yields": {
+      "orange": 2,
+      "apple": 11
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4294764238963774,
+        "distances": {
+          "orange": 1.6517458147254798,
+          "apple": 0.4294764238963774
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.0417248629037101,
+        "distances": {
+          "orange": 1.0417248629037101,
+          "apple": 1.1705674295587687
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2323037233218568,
+        "distances": {
+          "orange": 1.2323037233218568,
+          "apple": 1.5978076243689696
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.1,
+    "warmRB": 0.25,
+    "trained": true,
+    "yields": {
+      "orange": 2,
+      "apple": 11
+    },
+    "correct": 2,
+    "testDetails": {
+      "orange.jpg": {
+        "winner": null,
+        "winnerDist": null,
+        "distances": {}
+      },
+      "apple.jpg": {
+        "winner": "apple",
+        "winnerDist": 0.4294764238963774,
+        "distances": {
+          "orange": 1.6517458147254798,
+          "apple": 0.4294764238963774
+        }
+      },
+      "fruits.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.0417248629037101,
+        "distances": {
+          "orange": 1.0417248629037101,
+          "apple": 1.1705674295587687
+        }
+      },
+      "lena.jpg": {
+        "winner": "orange",
+        "winnerDist": 1.2323037233218568,
+        "distances": {
+          "orange": 1.2323037233218568,
+          "apple": 1.5978076243689696
+        }
+      }
+    }
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.15,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 5
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.15,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 5
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 2,
+    "warmRG": 0.15,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 5
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.02,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.02,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.02,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.05,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.05,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.05,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.1,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.1,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.1,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.15,
+    "warmRB": 0.1,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.15,
+    "warmRB": 0.15,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  },
+  {
+    "preproc": "gaussian_3",
+    "minVotes": 3,
+    "warmRG": 0.15,
+    "warmRB": 0.25,
+    "trained": false,
+    "yields": {
+      "orange": 0,
+      "apple": 0
+    },
+    "correct": 0,
+    "testDetails": null
+  }
+]

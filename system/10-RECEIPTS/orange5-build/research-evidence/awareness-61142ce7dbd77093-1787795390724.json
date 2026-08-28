@@ -1,0 +1,333 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-61142ce7dbd77093-1787795390724",
+  "query": "{\"intent\":\"Design the smallest serious FLUX.2-only image production workflow that can close the observed quality gap. Keep FLUX.2 as the engine. Address candidate generation, Base or Dev finalization, image editing, multi-reference control, defect rejection, ranking, restoration, receipts, and exact promotion tests. Return concrete next actions, dependencies, memory cost, falsifiers, and rollback.\",\"evidence\":[\"FLUX2_KLEIN_4B=36.006s@1280x768\",\"FLUX2_STUDIO_QUALITY=false\"]} /no_think OrangeFive orange5",
+  "searchQuery": "intent design the smallest serious flux.2-only image production",
+  "generatedAt": "2026-08-27T01:49:50.731Z",
+  "budgetMs": 60000,
+  "elapsedMs": 2063,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "44182157",
+      "title": "mapbox/pixelmatch",
+      "url": "https://github.com/mapbox/pixelmatch",
+      "summary": "The smallest, simplest and fastest JavaScript pixel-level image comparison library",
+      "updatedAt": "2026-08-26T12:34:45Z",
+      "license": "ISC",
+      "stars": 6931,
+      "forks": 323,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8418,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "smallest",
+          "image"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "5115347",
+      "title": "dowjones/intentionjs",
+      "url": "https://github.com/dowjones/intentionjs",
+      "summary": "A library for intentionally dealing with responsive design",
+      "updatedAt": "2026-08-13T07:20:04Z",
+      "license": null,
+      "stars": 1112,
+      "forks": 108,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8259,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "258401697",
+      "title": "NetSPI/ESC",
+      "url": "https://github.com/NetSPI/ESC",
+      "summary": "Evil SQL Client (ESC) is an interactive .NET SQL console client with enhanced SQL Server discovery, access, and data exfiltration features. While ESC can be a handy SQL Client for daily tasks, it was originally designed for targeting SQL Servers during penetration tests and red team engagements. The intent of the project is to provide an .exe, but also sample files for execution through mediums like msbuild and PowerShell.",
+      "updatedAt": "2026-08-21T12:19:26Z",
+      "license": "NOASSERTION",
+      "stars": 305,
+      "forks": 44,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8147,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1109735166",
+      "title": "chainreactors/tinyctfer",
+      "url": "https://github.com/chainreactors/tinyctfer",
+      "summary": "antix's baby intent runtime and meta-tooling design.",
+      "updatedAt": "2026-08-25T14:05:31Z",
+      "license": null,
+      "stars": 174,
+      "forks": 34,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8099,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1154020021",
+      "title": "ghaida/intent",
+      "url": "https://github.com/ghaida/intent",
+      "summary": "Design with Intent: A collection of specialized AI agents and skills for experience design and strategy.",
+      "updatedAt": "2026-08-26T14:19:21Z",
+      "license": "CC0-1.0",
+      "stars": 135,
+      "forks": 11,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8077,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1261469122",
+      "title": "muchengracedriver/awesome-requirements-writer",
+      "url": "https://github.com/muchengracedriver/awesome-requirements-writer",
+      "summary": "Turn engineering intent into requirements that can be designed, reviewed, implemented, verified, and traced. Prefer precise requirements over broad product prose, and flag missing engineering inputs instead of inventing thresholds.",
+      "updatedAt": "2026-08-25T02:54:14Z",
+      "license": "MIT",
+      "stars": 102,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8053,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1340164895",
+      "title": "Tranz007/ux-skills",
+      "url": "https://github.com/Tranz007/ux-skills",
+      "summary": "Agent Skills for working UX designers. Challenge ideas, find blind spots, use the real design system, preserve evidence and decisions, and carry UX intent into engineering.",
+      "updatedAt": "2026-08-27T00:58:29Z",
+      "license": "MIT",
+      "stars": 26,
+      "forks": 2,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7936,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1268128556",
+      "title": "vibeic/vibe-ic",
+      "url": "https://github.com/vibeic/vibe-ic",
+      "summary": "AI-native IC design plugin with MCP-EDA — from natural-language intent to verified silicon.",
+      "updatedAt": "2026-08-26T09:46:48Z",
+      "license": "Apache-2.0",
+      "stars": 19,
+      "forks": 6,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.791,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1346722987",
+      "title": "ConnorRX56/presentation-delivery-skills",
+      "url": "https://github.com/ConnorRX56/presentation-delivery-skills",
+      "summary": "One sentence in. A polished, editable PPTX out. We reverse-engineered frontend patterns behind Claude Design and Fable for visual design and human-intent QA.",
+      "updatedAt": "2026-08-26T05:32:08Z",
+      "license": "MIT",
+      "stars": 7,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1981,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1281398269",
+      "title": "tipoLi5890/akcli",
+      "url": "https://github.com/tipoLi5890/akcli",
+      "summary": "AI-native schematic design agent, purpose-built for KiCad (zero-dependency pure-stdlib Python CLI): author and edit .kicad_sch from JSON op-lists with net-diff safety rails, run ERC/design/intent/BOM checks, simulate on KiCad's bundled ngspice, source real parts and fetch datasheets, and import Altium .SchDoc/.SchLib/.PcbDoc read-only into KiCad",
+      "updatedAt": "2026-08-25T10:30:27Z",
+      "license": "MIT",
+      "stars": 7,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1981,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1224656544",
+      "title": "scottromack/grace-commons",
+      "url": "https://github.com/scottromack/grace-commons",
+      "summary": "Atomic concepts & compositions thereof, expressed as structured natural language. Code is derived; intent is canonical. This is Intent-Driven Design (IDD) — author the intent first and in full, upstream of how any system is built. Named for Grace Hopper, who argued business logic should be readable by the people who understand the business.",
+      "updatedAt": "2026-08-27T01:31:44Z",
+      "license": "Apache-2.0",
+      "stars": 6,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1969,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "design"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "80563bafc6a202f7f5fd1e9087e7ccfd408d9eead7a894a3a0914b7ffc041eb3"
+}

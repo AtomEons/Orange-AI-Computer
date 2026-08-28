@@ -1,0 +1,45 @@
+{
+  "experiment": "03-knot-signature",
+  "generated_at": "2026-06-26T09:20:21.789Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes_in": 2075585,
+  "knot_stream_bytes": 736370,
+  "knot_brotli_bytes": 144930,
+  "ratio": 14.32,
+  "roundtrip_lossless": true,
+  "distinct_sigs": 2075,
+  "signature_entropy_bits": 11.02,
+  "window_analysis": [
+    {
+      "w": 2,
+      "total": 6223,
+      "distinct": 4693,
+      "dedup_factor": 1.33
+    },
+    {
+      "w": 3,
+      "total": 6222,
+      "distinct": 5993,
+      "dedup_factor": 1.04
+    },
+    {
+      "w": 5,
+      "total": 6220,
+      "distinct": 6220,
+      "dedup_factor": 1
+    },
+    {
+      "w": 8,
+      "total": 6217,
+      "distinct": 6217,
+      "dedup_factor": 1
+    },
+    {
+      "w": 13,
+      "total": 6212,
+      "distinct": 6212,
+      "dedup_factor": 1
+    }
+  ],
+  "pass": false
+}

@@ -1,0 +1,131 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-e68c33d979d80963-1787777058800",
+  "query": "{\"role\":\"falsifier\",\"claim\":\"OrangeBrain gateway 502\",\"evidence\":{\"parentOrder\":{\"action\":\"audit.hermes-runtime\",\"intent\":\"audit.hermes-runtime\",\"targetProject\":\"OrangeFive\",\"scope\":null,\"riskLevel\":\"medium\",\"allowedActions\":[\"audit.hermes-runtime\"],\"forbiddenActions\":[]},\"agent\":\"checkmate\",\"delegationId\":\"nav-d04d07d0-a534-4b48-9a68-57be7313325b\",\"allowedTools\":[\"read\",\"secret-scan\",\"danger-scan\",\"receipts\"]},\"checks\":[\"Does the supplied evidence directly support the exact claim?\",\"Does the language claim more than the evidence establishes?\",\"Is there a concrete counterexample or contradiction in the supplied material?\",\"Does the proof exercise the exact live runtime path rather than a mock or fixture?\",\"Is the receipt fresh, attributable, and scoped to the claim?\",\"Does a narrow test result get generalized to a broader system claim?\",\"Could a transport-level success be hiding a semantic failure?\"]} /no_think OrangeFive orange5",
+  "searchQuery": "role falsifier claim orangebrain gateway 502 evidence parentorder",
+  "generatedAt": "2026-08-26T20:44:18.802Z",
+  "budgetMs": 60000,
+  "elapsedMs": 368,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1335794659",
+      "title": "flashesofbrilliance/resume-tailor-skill",
+      "url": "https://github.com/flashesofbrilliance/resume-tailor-skill",
+      "summary": "Honesty-graded, falsifier-gated Claude Code skill/plugin: tailor a resume + cover letter to a specific role from your real evidence. Defensibly-true over impressive.",
+      "updatedAt": "2026-08-17T17:12:13Z",
+      "license": "MIT",
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.4286,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "role",
+          "falsifi",
+          "evidence"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1313346015",
+      "title": "YucongDuan/DIKWP-COVARIA-OS",
+      "url": "https://github.com/YucongDuan/DIKWP-COVARIA-OS",
+      "summary": "Covariant Semantic Roles, Cross-World Transport and Theory Falsification Runtime",
+      "updatedAt": "2026-07-28T10:49:50Z",
+      "license": "GPL-3.0",
+      "stars": 3,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.192,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "role",
+          "falsifi"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1343923130",
+      "title": "astrorehan/agent-council",
+      "url": "https://github.com/astrorehan/agent-council",
+      "summary": "Four-role adversarial council - Believer, Skeptic, Investor, Judge - as a portable Agent Skill. Rulings carry an evidence-tier justification, a ranked list of what must be true, and the cheapest test that would falsify them.",
+      "updatedAt": "2026-08-26T10:03:47Z",
+      "license": "MIT",
+      "stars": 2,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1895,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "role",
+          "evidence"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1152162291",
+      "title": "leenathomas01/phase-aligned-inquiry",
+      "url": "https://github.com/leenathomas01/phase-aligned-inquiry",
+      "summary": "A research protocol for falsifiable multi-agent inquiry that prevents confirmation bias through role separation, sequence enforcement, and pre-committed falsification criteria (PACI).",
+      "updatedAt": "2026-08-07T12:54:58Z",
+      "license": "MIT",
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "role",
+          "falsifi"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "4c1b6fb1f314311fd4608155f1b7d6179cad1e74887dbe7e1942d3a0f60c1f73"
+}

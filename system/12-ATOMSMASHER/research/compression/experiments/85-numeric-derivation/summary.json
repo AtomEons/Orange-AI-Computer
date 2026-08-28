@@ -1,0 +1,15 @@
+{
+  "experiment": "85-numeric-derivation",
+  "ratio": 17.492,
+  "encode_ms": 9607.5,
+  "decode_ms": 261.6,
+  "lossless": true,
+  "notes": "Verified formula ratio=round(raw/comp,2) across mesh.compress class (1565 receipts, 0 mismatches, allMatch=true). Stripped ratio from 1565 payloads. Wire=118658. orig sha=5be5f1b4c6d742e3 recon=5be5f1b4c6d742e3.",
+  "baseline_m19_ratio": 47.071,
+  "vs_m19_delta": -29.579,
+  "raw_bytes": 2075585,
+  "wire_bytes": 118658,
+  "formula_verified": true,
+  "formula_class_count": 1565,
+  "stripped_payloads": 1565
+}

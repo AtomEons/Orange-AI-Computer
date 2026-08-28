@@ -1,0 +1,127 @@
+﻿{
+    "schema":  "orange5.hermes-preflight.v1",
+    "createdAt":  "2026-08-27T09:04:18.5960164Z",
+    "status":  "NOT_READY",
+    "pinnedVersion":  "0.20.5",
+    "pinnedCommit":  "fcbd1076a93841fa88855acce810e342a5b78101",
+    "checks":  [
+                   {
+                       "name":  "installed-release-pin",
+                       "status":  "PASS",
+                       "evidence":  "version=0.20.5;pinCommit=fcbd1076a93841fa88855acce810e342a5b78101;mode=adopted-executable",
+                       "required":  true
+                   },
+                   {
+                       "name":  "source-commit-provenance",
+                       "status":  "ADOPTED_BINARY",
+                       "evidence":  "verified=False;mode=adopted-executable",
+                       "required":  false
+                   },
+                   {
+                       "name":  "hermes-cli",
+                       "status":  "PASS",
+                       "evidence":  "Hermes Agent v0.20.5 (2026.8.19) ┬╖ upstream a8f404b2 ┬╖ local 813a0215 (+1 carried commit)\r\nInstall directory: C:\\Users\\Atom\\AppData\\Local\\hermes\\hermes-agent\r\nInstall method: git\r\nPython: 3.11.15\r\nOpenAI SDK: 2.24.0\r\nUpdate available ΓÇö run \u0027hermes update\u0027",
+                       "required":  true
+                   },
+                   {
+                       "name":  "hermes-binary-integrity",
+                       "status":  "PASS",
+                       "evidence":  "expected=940fd6a31e27889897f9c7139ea4bbf6c42198008eff6936b210fde23594a5d1;actual=940fd6a31e27889897f9c7139ea4bbf6c42198008eff6936b210fde23594a5d1",
+                       "required":  true
+                   },
+                   {
+                       "name":  "isolated-profiles",
+                       "status":  "PASS",
+                       "evidence":  "count=6",
+                       "required":  true
+                   },
+                   {
+                       "name":  "single-dispatcher-config",
+                       "status":  "PASS",
+                       "evidence":  "owner=True;badNamed=",
+                       "required":  true
+                   },
+                   {
+                       "name":  "single-gateway-owner",
+                       "status":  "PASS",
+                       "evidence":  "listenerPid=4656;launchPid=4656;chain=4656;detached=False;exe=True;entrypoint=True;home=True;named=False;command=True;owners=4656:S-1-5-18;hash=True",
+                       "required":  true
+                   },
+                   {
+                       "name":  "api-listener-owner-bind",
+                       "status":  "PASS",
+                       "evidence":  "address=127.0.0.1;pid=4656;chain=4656",
+                       "required":  true
+                   },
+                   {
+                       "name":  "durable-kanban-board",
+                       "status":  "PASS",
+                       "evidence":  "path=C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\kanban.db;integrity=ok",
+                       "required":  true
+                   },
+                   {
+                       "name":  "orange-brain-mcp",
+                       "status":  "PASS",
+                       "evidence":  "url=http://127.0.0.1:17431/mcp;protocol=2026-07-28;transport=streamable-http",
+                       "required":  true
+                   },
+                   {
+                       "name":  "secret-file-acls",
+                       "status":  "PASS",
+                       "evidence":  "files=7",
+                       "required":  true
+                   },
+                   {
+                       "name":  "profile-api-keys-distinct",
+                       "status":  "PASS",
+                       "evidence":  "present=7;unique=7;expected=7",
+                       "required":  true
+                   },
+                   {
+                       "name":  "openai-loopback-api",
+                       "status":  "PASS",
+                       "evidence":  "positive=200;noAuth=401;wrongAuth=401;cors=absent",
+                       "required":  true
+                   },
+                   {
+                       "name":  "hermes-filtered-mcp-surface",
+                       "status":  "PASS",
+                       "evidence":  "enabledNative=memory,session_search,todo;expected=memory,session_search,todo;mcpTools=orange5_delegate,orange5_health,orange5_order,orange5_receipts,orange5_route;expected=orange5_delegate,orange5_health,orange5_order,orange5_receipts,orange5_route;url=True;enabled=True;platform=True",
+                       "required":  true
+                   },
+                   {
+                       "name":  "multiplex-profile-api-routes",
+                       "status":  "PASS",
+                       "evidence":  "profiles=6",
+                       "required":  true
+                   },
+                   {
+                       "name":  "profile-filtered-mcp-surfaces",
+                       "status":  "PASS",
+                       "evidence":  "profiles=6",
+                       "required":  true
+                   },
+                   {
+                       "name":  "cross-profile-auth-rejection",
+                       "status":  "PASS",
+                       "evidence":  "owner-and-peer-keys-rejected",
+                       "required":  true
+                   },
+                   {
+                       "name":  "navigator-agent-inference",
+                       "status":  "FAIL",
+                       "evidence":  "error=The request was aborted: The operation has timed out.;latencyMs=120003",
+                       "required":  true
+                   },
+                   {
+                       "name":  "orange-model-endpoint",
+                       "status":  "PASS",
+                       "evidence":  "url=http://127.0.0.1:11434/v1;models=10",
+                       "required":  true
+                   }
+               ],
+    "blockers":  [
+                     "navigator-agent-inference"
+                 ],
+    "receiptPath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\receipts\\hermes-product-preflight-20260827T090418Z.json"
+}

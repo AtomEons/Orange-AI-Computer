@@ -1,0 +1,41 @@
+{
+  "schema": "orange5.captain-planet.artifact-proof.v1",
+  "status": "CAPTAIN_PLANET_VIDEO_RUNTIME_PROVEN_QUALITY_UNASSESSED",
+  "generated_at": "2026-08-27T00:43:17.627Z",
+  "organ": "ltxv_2b_video",
+  "runtime_execution_proven": true,
+  "studio_quality_proven": false,
+  "quality_status": "PENDING_VISUAL_REVIEW_AND_VIDEO_QUALITY_BENCHMARK",
+  "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ltxv\\orangefive-ltxv-2b-proof.mp4",
+  "artifact_sha256": "7268140cf3420c7ad360303e66b78b8807887db89f863b3604f69f3e9441f347",
+  "source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ltxv\\ltx-video-artifact-proof.json",
+  "source_model_id": "Lightricks/LTX-Video ltxv-2b-0.9.8-distilled",
+  "source_model_revision": "8984fa25007f376c1a299016d0957a37a2f797bb",
+  "source_device": "xpu:0 Intel(R) Arc(TM) 140T GPU (48GB)",
+  "source_generation_seconds": 42.822,
+  "checks": {
+    "source_runtime_status": true,
+    "source_hash_matches": true,
+    "source_motion_claim_matches": true,
+    "independently_decoded_motion": true,
+    "substantive_duration": true,
+    "substantive_dimensions": true,
+    "substantive_frame_count": true
+  },
+  "video": {
+    "codec": "h264",
+    "width": 768,
+    "height": 512,
+    "pixel_format": "yuv420p",
+    "fps": 24,
+    "duration_seconds": 1.375,
+    "frame_count": 33,
+    "decoded_sample_frames": 12,
+    "sampled_consecutive_mean_abs_delta": 3.1179,
+    "sampled_consecutive_max_abs_delta": 3.4689,
+    "motion_proven": true
+  },
+  "prior_receipt": "ltx-video-artifact-proof.json",
+  "prior_sha256": "2ad2a6b81b8b34c481a655593a282d73a00f45e76902049ad32f1980da91e883",
+  "receipt_sha256": "a0c1b8adb07d08dafe89b366afc57f28a60986055dc5a41c1543575249a3d446"
+}

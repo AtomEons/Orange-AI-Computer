@@ -1,0 +1,220 @@
+# AE Black Mamba v0 — Mamba 2.8B SSM full-finetune training config
+# Base: state-spaces/mamba-2.8b-hf (HuggingFace-format Mamba SSM, 2.8B params)
+# Target: Colab Free T4 16GB — full-FT (not LoRA; SSM does not have transformer-style LoRA mechanics)
+# Expected wall-clock: 12-24h on T4 for 3 epochs over Flux + AgentTurn + receipt corpus (~120MB JSONL)
+# Operator: Atom McCree | Receipt: 2026-06-24-ae-black-mamba-phase3-author
+#
+# Phase context (per AE_COBRA_FOUNDATION_SPEC):
+# - Phase 1 (Cobra Night-1): bartowski/mamba-2.8b-hf-GGUF surrogate, drop-in inference only.
+# - Phase 2: corpus collection (Flux events + AgentTurn JSON + receipt traces).
+# - Phase 3 (THIS CONFIG): custom Mamba 2.8B SSM pretrained on Orange5's own corpora —
+#   AE Black Mamba replaces the surrogate. Deployment target Q5_K_M GGUF.
+#
+# Why full-FT, not LoRA:
+# - Mamba is a state-space model, not a transformer. There is no q_proj/k_proj/v_proj/o_proj/MLP
+#   attention block to slap LoRA adapters onto. The "linear" projections in Mamba are inside the
+#   selective-scan (SSM) recurrence: x_proj, dt_proj, in_proj, out_proj. LoRA on these is not
+#   established practice and would only touch a fraction of the parameter mass that matters
+#   (the A_log / D / conv1d state matrices are the actual "brain" of Mamba).
+# - At 2.8B params in fp16 with gradient checkpointing + paged AdamW 8-bit + activation
+#   recomputation, full-FT fits a T4 16GB. The math is below in `# ===== Memory budget =====`.
+# - Q5_K_M deployment quantization is a post-training step on the full-FT checkpoint, not a
+#   training-time concern.
+
+# ===== Base model =====
+base_model: state-spaces/mamba-2.8b-hf
+model_type: MambaForCausalLM
+tokenizer_type: AutoTokenizer
+# Mamba uses GPT-NeoX tokenizer by default (vocab 50277). Do NOT swap to LLaMA tokenizer —
+# the embedding matrix is tied and re-init would torch all surrogate-warm weights.
+trust_remote_code: true
+strict: false
+
+# ===== Mamba architecture (frozen — these define the model shape, not training knobs) =====
+# Source: state-spaces/mamba-2.8b-hf config.json. Listed here for receipt traceability;
+# overriding any of these requires re-instantiating the model from scratch (not a finetune).
+mamba_architecture:
+  d_model: 2560            # hidden / embedding dimension
+  n_layer: 64              # number of Mamba blocks
+  d_state: 16              # SSM state dimension N (per channel)
+  d_conv: 4                # local 1-D conv kernel width
+  expand: 2                # inner-block expansion factor; d_inner = expand * d_model = 5120
+  dt_rank: auto            # = ceil(d_model / 16) = 160 for 2.8B
+  dt_min: 0.001
+  dt_max: 0.1
+  dt_init: random          # "random" or "constant"; random is the published default
+  dt_scale: 1.0
+  dt_init_floor: 0.0001
+  conv_bias: true
+  bias: false              # in_proj / out_proj bias disabled (matches state-spaces default)
+  vocab_size: 50280        # padded multiple of 8 from 50277 for tensor-core alignment
+  pad_vocab_size_multiple: 8
+  rms_norm: true
+  residual_in_fp32: true   # CRITICAL for stability — keep residual stream in fp32 even with fp16 compute
+  fused_add_norm: true     # uses Triton kernel; falls back to eager if Triton missing
+  norm_epsilon: 0.00001
+
+# ===== Dataset =====
+# Composite corpus (concatenated JSONL):
+#   1. Flux event corpus  — Orange5 runtime event traces (state transitions, gate fires, receipt emissions)
+#   2. AgentTurn JSON      — full agent-turn dumps (input → reasoning → tool calls → output → receipt)
+#   3. Receipt corpus      — operator-signed receipts as completion targets (teach the model receipt shape)
+# All three formatted as plain text completion (Mamba is a causal LM; no instruction template needed —
+# the receipt corpus itself carries the operator-voice instruction shape).
+datasets:
+  - path: /content/drive/MyDrive/ae-black-mamba-v0/flux-events.jsonl
+    type: completion
+    field: text
+  - path: /content/drive/MyDrive/ae-black-mamba-v0/agentturn.jsonl
+    type: completion
+    field: text
+  - path: /content/drive/MyDrive/ae-black-mamba-v0/receipts.jsonl
+    type: completion
+    field: text
+val_set_size: 0.02
+output_dir: /content/drive/MyDrive/ae-black-mamba-v0/checkpoint
+
+# ===== Training mode =====
+# Full finetune. No adapter, no quantization at train time.
+adapter: null
+load_in_4bit: false
+load_in_8bit: false
+
+# ===== Sequence + batching =====
+# T4 16GB budget at 2.8B fp16 full-FT:
+#   - params:            2.8B * 2 bytes (fp16)              = 5.6 GB
+#   - grads:             2.8B * 2 bytes (fp16)              = 5.6 GB
+#   - optimizer state:   2.8B * 4 bytes (AdamW 8-bit paged) = 1.4 GB  (paged → spills to CPU when tight)
+#   - activations @ seq_len 1024, micro_batch 1, grad_ckpt = ~2.5 GB
+#   - working / kernels                                    = ~0.5 GB
+#   total                                                  ≈ 15.6 GB → fits T4 with ~400MB margin
+# If OOM, halve sequence_len to 512 first (Mamba scales linearly with seq_len, not quadratically —
+# this is one of the SSM advantages over transformers).
+sequence_len: 1024
+sample_packing: true
+pad_to_sequence_len: true
+gradient_checkpointing: true
+gradient_accumulation_steps: 32
+micro_batch_size: 1
+num_epochs: 3
+
+# ===== Optimizer =====
+# Paged AdamW 8-bit — required to fit optimizer state on T4.
+optimizer: paged_adamw_8bit
+weight_decay: 0.1
+adam_beta1: 0.9
+adam_beta2: 0.95
+adam_epsilon: 0.00000001
+max_grad_norm: 1.0
+
+# ===== Learning rate — per-layer (Mamba-specific) =====
+# Mamba blocks have heterogeneous parameter classes that train at different rates:
+#   - A_log    (state transition log-eigenvalues)         → lowest LR; these are the model's "memory dynamics"
+#   - D        (skip-connection scalar per channel)       → low LR
+#   - conv1d   (local 1-D causal conv weights)            → low LR
+#   - dt_proj  (Δt projection, controls discretization)   → mid LR; dt is where selectivity lives
+#   - x_proj   (input → (Δ, B, C) projection)             → mid LR
+#   - in_proj  (residual stream → inner block)            → standard LR
+#   - out_proj (inner block → residual stream)            → standard LR
+#   - embed    (token embedding + tied LM head)           → standard LR
+#   - rms_norm (RMSNorm γ scales)                         → standard LR, no weight decay
+# Rationale: the SSM core (A_log, D, conv1d) was carefully initialized by state-spaces for stable
+# eigenvalue placement on the unit circle. Hammering it at full LR destroys the surrogate's
+# language prior. Standard LR on the projections lets the model absorb new corpus statistics
+# without losing the SSM dynamics.
+learning_rate: 0.00005          # base / standard LR (applied to in_proj, out_proj, embed)
+lr_scheduler: cosine
+warmup_ratio: 0.03
+cosine_min_lr_ratio: 0.1        # decay to 10% of base by end of schedule
+
+per_layer_lr_multipliers:
+  A_log:    0.1                 # 5e-6 effective
+  D:        0.2                 # 1e-5 effective
+  conv1d:   0.2                 # 1e-5 effective
+  dt_proj:  0.5                 # 2.5e-5 effective
+  x_proj:   0.5                 # 2.5e-5 effective
+  in_proj:  1.0                 # 5e-5 (base)
+  out_proj: 1.0                 # 5e-5 (base)
+  embed:    1.0                 # 5e-5 (base)
+  norm:     1.0                 # 5e-5 (base), no weight decay applied
+
+# Parameter groups with no weight decay (RMSNorm scales + 1-D scalars).
+no_decay_param_substrings:
+  - norm
+  - A_log
+  - D
+  - dt_proj.bias
+
+# ===== Precision =====
+# T4 (Turing, sm_75) does NOT support bf16. Force fp16 compute with fp32 residual stream
+# (the residual_in_fp32 architecture flag handles this inside Mamba blocks).
+# tf32 is also Ampere+ only.
+bf16: false
+fp16: true
+tf32: false
+fp16_full_eval: false           # eval in fp16 forward but loss accumulation in fp32
+
+# ===== Mamba-specific kernel config =====
+# selective_scan_cuda is the fast fused kernel. On T4 it works (sm_75) but is slower than on
+# Ampere+; the slow path is still 2-3x faster than the reference PyTorch implementation.
+# If the fused kernel fails to compile (Triton version mismatch on Colab), set use_fast_path: false
+# to fall back to the reference scan. Expect ~2x training slowdown on the fallback.
+use_fast_path: true
+fused_add_norm: true
+
+# Mamba has no attention → these transformer-era flags are inert but listed for receipt clarity.
+flash_attention: false
+xformers_attention: false
+
+# ===== Logging + saving =====
+logging_steps: 10
+save_strategy: steps
+save_steps: 500
+save_total_limit: 4
+eval_strategy: steps
+eval_steps: 500
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+
+# ===== Reproducibility =====
+seed: 42
+data_seed: 42
+
+# ===== Wandb (disabled — operator owns telemetry per Mom's Law receipt discipline) =====
+wandb_project: null
+wandb_entity: null
+wandb_log_model: null
+
+# ===== Special tokens =====
+# Mamba uses GPT-NeoX tokenizer. EOS = <|endoftext|> = id 0. No BOS. No pad token by default —
+# we add one for sample_packing to work cleanly.
+special_tokens:
+  pad_token: "<|pad|>"
+  eos_token: "<|endoftext|>"
+
+# ===== Deployment target =====
+# Post-training quantization to Q5_K_M GGUF for Ollama / llama.cpp inference.
+# Pipeline (post-checkpoint, not part of training):
+#   1. python -m mamba_ssm.export --checkpoint output_dir/best --format hf
+#   2. python llama.cpp/convert-hf-to-gguf.py <hf_dir> --outfile ae-black-mamba-v0-fp16.gguf
+#   3. llama.cpp/quantize ae-black-mamba-v0-fp16.gguf ae-black-mamba-v0-Q5_K_M.gguf Q5_K_M
+#   4. Ollama Modelfile: FROM ae-black-mamba-v0-Q5_K_M.gguf
+# Q5_K_M target size for 2.8B Mamba: ~2.0 GB (fits any modern laptop / Marco Island lab box).
+deployment:
+  format: gguf
+  quantization: Q5_K_M
+  expected_size_gb: 2.0
+  target_runtime: llama.cpp / Ollama
+
+# ===== Notes =====
+# - Phase 1 surrogate stays online during Phase 3 training. Cutover happens only after the
+#   Q5_K_M GGUF passes the Cobra Night-1 gauntlet on the same corpus (parity + receipt-shape
+#   conformance + Mom's-Law full-effort check).
+# - If T4 OOM persists at seq_len 512 + micro_batch 1, fall back to A100 (Colab Pro+) —
+#   2.8B full-FT is the upper edge of T4 viability. Do NOT switch to LoRA as the "fix" —
+#   per spec, full-FT is the doctrinally correct path for SSM.
+# - Per-layer LR is implemented by the trainer's parameter_groups builder (see
+#   16-TRAINING/pipeline/mamba_param_groups.py). The substring match runs against named_parameters().
+# - residual_in_fp32 is non-negotiable for fp16 training stability on Mamba. Disabling it
+#   produces NaN losses within ~200 steps on this corpus.

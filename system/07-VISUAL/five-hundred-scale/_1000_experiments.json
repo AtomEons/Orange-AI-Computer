@@ -1,0 +1,391 @@
+{
+  "total": 216,
+  "top20": [
+    {
+      "category": "std-restart",
+      "name": "seed_265",
+      "rate": 0.9574468085106383,
+      "weights": [
+        1,
+        1.5,
+        2,
+        0.2,
+        2,
+        1,
+        1.3,
+        0.2
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_420",
+      "rate": 0.9574468085106383,
+      "weights": [
+        0.5,
+        0.3,
+        2,
+        0.3,
+        1,
+        1.5,
+        1.5,
+        1.3
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_482",
+      "rate": 0.9574468085106383,
+      "weights": [
+        0.2,
+        0.2,
+        0.5,
+        0.1,
+        2,
+        0.5,
+        1,
+        0.2
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_544",
+      "rate": 0.9574468085106383,
+      "weights": [
+        0.7,
+        1.3,
+        2,
+        0.5,
+        0.3,
+        1,
+        1,
+        0.7
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_730",
+      "rate": 0.9574468085106383,
+      "weights": [
+        0.7,
+        1.3,
+        2,
+        0.5,
+        1,
+        0.7,
+        1.5,
+        0.5
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_823",
+      "rate": 0.9574468085106383,
+      "weights": [
+        0.7,
+        0.7,
+        1.5,
+        0.2,
+        5,
+        0.7,
+        3,
+        0.5
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_885",
+      "rate": 0.9574468085106383,
+      "weights": [
+        2,
+        5,
+        3,
+        1,
+        0.7,
+        5,
+        1.5,
+        1.3
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_947",
+      "rate": 0.9574468085106383,
+      "weights": [
+        1.3,
+        2,
+        2,
+        0,
+        3,
+        5,
+        3,
+        0.7
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_48",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.5,
+        1.5,
+        3,
+        0,
+        5,
+        5,
+        3,
+        2
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_110",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.7,
+        0.7,
+        1.3,
+        0.1,
+        2,
+        2,
+        1.3,
+        0.3
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_141",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.2,
+        2,
+        1,
+        0.5,
+        1,
+        0.2,
+        0.2,
+        0.5
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_172",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.2,
+        0.7,
+        1.5,
+        0.7,
+        5,
+        0.7,
+        3,
+        0.7
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_389",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.5,
+        1,
+        1.5,
+        0.5,
+        0.1,
+        0,
+        5,
+        1.3
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_451",
+      "rate": 0.9539007092198581,
+      "weights": [
+        2,
+        1.5,
+        2,
+        0,
+        1,
+        5,
+        3,
+        0.5
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_575",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.2,
+        1.3,
+        0.3,
+        0.2,
+        5,
+        0.5,
+        1.5,
+        0.1
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_637",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.7,
+        1,
+        0.5,
+        0.1,
+        3,
+        0.5,
+        1,
+        0.1
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_668",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.7,
+        5,
+        0.5,
+        0.1,
+        0.3,
+        1.3,
+        1.3,
+        0.3
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_761",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.2,
+        1.5,
+        0.1,
+        0.2,
+        3,
+        1.5,
+        2,
+        0
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_792",
+      "rate": 0.9539007092198581,
+      "weights": [
+        1,
+        2,
+        2,
+        0.3,
+        0.1,
+        2,
+        3,
+        0
+      ]
+    },
+    {
+      "category": "std-restart",
+      "name": "seed_916",
+      "rate": 0.9539007092198581,
+      "weights": [
+        0.7,
+        0.5,
+        5,
+        0.1,
+        5,
+        5,
+        5,
+        2
+      ]
+    }
+  ],
+  "by_category": {
+    "baseline": {
+      "category": "baseline",
+      "name": "uniform_L1",
+      "rate": 0.950354609929078,
+      "weights": null
+    },
+    "drop-1": {
+      "category": "drop-1",
+      "name": "drop_lgn",
+      "rate": 0.900709219858156,
+      "weights": null
+    },
+    "drop-2": {
+      "category": "drop-2",
+      "name": "drop_lgn_ilcY",
+      "rate": 0.9042553191489362,
+      "weights": null
+    },
+    "boost-1": {
+      "category": "boost-1",
+      "name": "boost_ilcBY_x10",
+      "rate": 0.8829787234042553,
+      "weights": null
+    },
+    "random-restart": {
+      "category": "random-restart",
+      "name": "seed_79",
+      "rate": 0.9468085106382979,
+      "weights": [
+        0,
+        5,
+        5,
+        0.1,
+        5,
+        0.3,
+        0.2,
+        0.1
+      ]
+    },
+    "alt-metric": {
+      "category": "alt-metric",
+      "name": "bestW_L2",
+      "rate": 0.9468085106382979,
+      "weights": null
+    },
+    "KNN": {
+      "category": "KNN",
+      "name": "K1_bestW",
+      "rate": 0.9468085106382979,
+      "weights": null
+    },
+    "centroid": {
+      "category": "centroid",
+      "name": "class_mean",
+      "rate": 0.8723404255319149,
+      "weights": null
+    },
+    "standardize": {
+      "category": "standardize",
+      "name": "uniform",
+      "rate": 0.9432624113475178,
+      "weights": null
+    },
+    "std-restart": {
+      "category": "std-restart",
+      "name": "seed_265",
+      "rate": 0.9574468085106383,
+      "weights": [
+        1,
+        1.5,
+        2,
+        0.2,
+        2,
+        1,
+        1.3,
+        0.2
+      ]
+    },
+    "ensemble": {
+      "category": "ensemble",
+      "name": "top-20",
+      "rate": 0.8865248226950354,
+      "weights": null
+    }
+  }
+}

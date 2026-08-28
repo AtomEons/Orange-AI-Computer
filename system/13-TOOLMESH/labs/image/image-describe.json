@@ -1,0 +1,79 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "image",
+  "card_id": "image-describe",
+  "capability": "image.describe",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["image_ref"],
+    "properties": {
+      "image_ref": {
+        "type": "string",
+        "description": "Mesh-scoped reference to the source image. Accepts 'sandbox://<path>' for files staged in the mesh scratch space or 'data:image/<png|jpeg|webp>;base64,<...>' for inline payloads. Raw filesystem paths are rejected by the runner.",
+        "minLength": 8,
+        "maxLength": 4096
+      },
+      "prompt": {
+        "type": "string",
+        "description": "Optional instruction shaping the description (e.g. 'list UI elements', 'caption for alt-text'). Defaults to a neutral dense caption when omitted.",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "max_tokens": {
+        "type": "integer",
+        "description": "Soft cap on description length in model tokens. Runner clamps to lab policy if exceeded.",
+        "minimum": 16,
+        "maximum": 2048,
+        "default": 512
+      },
+      "detail": {
+        "type": "string",
+        "description": "Granularity hint. 'low' = one-line caption; 'auto' = dense paragraph; 'high' = multi-section structured description including layout and OCR-visible text hints.",
+        "enum": ["low", "auto", "high"],
+        "default": "auto"
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["description", "model"],
+    "properties": {
+      "description": {
+        "type": "string",
+        "description": "Free-text description produced by GLM-4.6V. No bounding boxes; for grounded localization the planner should chain to image-ground-bbox.",
+        "minLength": 1
+      },
+      "model": {
+        "type": "string",
+        "description": "Concrete model id that produced the description. Stable enough to cite in receipts.",
+        "const": "glm-4.6v"
+      },
+      "tokens_used": {
+        "type": "integer",
+        "description": "Tokens consumed by the underlying VLM call. Free at the mesh boundary; surfaced for capacity-planning telemetry.",
+        "minimum": 0
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 50,
+    "scopes": [
+      "fs.read:sandbox://images/",
+      "model.invoke:glm-4.6v",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Dense natural-language description of a sandbox-scoped image via the self-hosted GLM-4.6V vision-language model.",
+  "tags": ["vision", "caption", "vlm", "glm", "describe"]
+}

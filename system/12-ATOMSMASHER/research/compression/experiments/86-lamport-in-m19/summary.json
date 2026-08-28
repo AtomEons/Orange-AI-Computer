@@ -1,0 +1,14 @@
+{
+  "experiment": "86-lamport-in-m19",
+  "total_bytes": 60322,
+  "ratio_logical": 34.408,
+  "ratio_byte_exact": 32.91,
+  "delta_vs_m19_logical": -12.663,
+  "enc_ms": 20301,
+  "dec_ms": 1431,
+  "lossless_byte_exact_on_lamport": true,
+  "note": "LOSSY w.r.t. wall-clock timestamps; LOSSLESS w.r.t. logical content (Lamport stream).",
+  "orig_bytes": 2075585,
+  "lamport_bytes": 1985170,
+  "bytes_saved_by_lamport": 90415
+}

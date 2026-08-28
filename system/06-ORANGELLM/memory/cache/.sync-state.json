@@ -1,0 +1,36 @@
+{
+  "lanes": {
+    "reality": {
+      "last_attempt_at": "2026-07-29T00:22:35.840Z",
+      "last_attempt_ms": 1785284555840,
+      "last_error": "Error: rail 404 Not Found :: {\n  \"status\": \"FAILED\",\n  \"error\": \"not found\"\n}",
+      "ok": false
+    },
+    "thought": {
+      "last_attempt_at": "2026-07-29T00:22:35.840Z",
+      "last_attempt_ms": 1785284555840,
+      "last_error": "Error: rail 404 Not Found :: {\n  \"status\": \"FAILED\",\n  \"error\": \"not found\"\n}",
+      "ok": false
+    },
+    "receipts": {
+      "last_attempt_at": "2026-07-29T00:22:35.840Z",
+      "last_attempt_ms": 1785284555840,
+      "last_error": "Error: rail 404 Not Found :: {\n  \"status\": \"FAILED\",\n  \"error\": \"not found\"\n}",
+      "ok": false
+    },
+    "conflicts": {
+      "last_attempt_at": "2026-07-29T00:22:35.840Z",
+      "last_attempt_ms": 1785284555840,
+      "last_error": "Error: rail 404 Not Found :: {\n  \"status\": \"FAILED\",\n  \"error\": \"not found\"\n}",
+      "ok": false
+    }
+  },
+  "version": 1,
+  "last_run_at": "2026-07-29T00:22:35.840Z",
+  "last_run_ms": 1785284555840,
+  "window_ms": 86400000,
+  "rail": {
+    "host": "10.0.0.4",
+    "port": 8097
+  }
+}

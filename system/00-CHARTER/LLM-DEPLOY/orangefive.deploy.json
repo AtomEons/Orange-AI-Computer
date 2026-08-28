@@ -1,0 +1,165 @@
+{
+  "schema": "orange.deploy.manifest.v1",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "platformPriority": ["windows-x64"],
+  "agentEntrypoint": {
+    "readFirst": "00-CHARTER/LLM-DEPLOY/INSTALL_ORANGE.md",
+    "command": "bun scripts/llm-deploy/orange-deploy.mjs",
+    "output": "json",
+    "stateIsExternal": true,
+    "mutatingCommand": "apply",
+    "requiredApprovals": ["install-command-invocation"],
+    "normalInstallCommand": "bun scripts/llm-deploy/orange-deploy.mjs install"
+  },
+  "payload": {
+    "immutable": true,
+    "sourceRoot": "C:/AtomEons/Orange5",
+    "dataRootTemplate": "%USERPROFILE%/OrangeBox-Data/orange5",
+    "modelsInsidePayload": false,
+    "secretsInsidePayload": false
+  },
+  "topologies": {
+    "preferred": "control-plus-compute",
+    "supported": ["single-computer", "control-plus-compute"],
+    "controlNode": "Windows control, MCP, memory, receipts, routing",
+    "computeNode": "Codexa-class Windows host for Ollama, Hermes workers, training, and heavy jobs"
+  },
+  "approval": {
+    "requiredBeforeMutation": true,
+    "normalMode": "single-invocation-authorization",
+    "installInvocationAuthorizesExactGeneratedPlan": true,
+    "bindsPlanSha256": true,
+    "explicitModelSetApproval": false,
+    "modelSetBindsProvenanceLicenseAndChecksums": true,
+    "optionalComponentsCanBeDeselected": true,
+    "silentSubstitution": false
+  },
+  "discovery": {
+    "controlRole": "N150 or one-computer Windows control host",
+    "preferredComputeNames": ["CODEXA", "CODEXA.local"],
+    "preferredComputeAddress": "10.0.0.4",
+    "requiresTrustedSshHardwareProbeForTwoHost": true,
+    "recordsNetworkInterfacesWithoutCredentials": true
+  },
+  "runtimes": [
+    {
+      "id": "bun",
+      "required": true,
+      "minimum": "1.2.0",
+      "windowsPackageId": "Oven-sh.Bun",
+      "adoptWhenCompatible": true
+    },
+    {
+      "id": "ollama",
+      "requiredForLocalModels": true,
+      "windowsPackageId": "Ollama.Ollama",
+      "adoptWhenCompatible": true
+    },
+    {
+      "id": "hermes-agent",
+      "requiredOnComputeNode": true,
+      "version": "0.20.5",
+      "tag": "v2026.8.19",
+      "commit": "fcbd1076a93841fa88855acce810e342a5b78101",
+      "overlay": "08-HERMES/product-integration",
+      "preconfigured": true
+    }
+  ],
+  "orangeOrgans": [
+    "Brain MCP and orange.order.v1/orange.report.v1",
+    "FLOW routing",
+    "Hermes profiles and durable Kanban",
+    "AE Cobra memory",
+    "AtomSmasher compression",
+    "ToolMesh",
+    "receipts and rollback",
+    "compute discovery",
+    "model and creative lease registries"
+  ],
+  "hermes": {
+    "gatewayOwners": 1,
+    "dispatchers": 1,
+    "profiles": ["navigator", "builder", "researcher", "reviewer", "visual", "misfit"],
+    "swarmgate": true,
+    "swarmSentinel": true,
+    "adaptive": true,
+    "recommendedComputeProfile": "codexa",
+    "hardwareProfiles": {
+      "compact": { "minimumRamGiB": 8, "immediateWorkers": 2, "durableTasks": 3, "delegationDepth": 1 },
+      "balanced": { "minimumRamGiB": 24, "immediateWorkers": 4, "durableTasks": 6, "delegationDepth": 2 },
+      "codexa": { "minimumRamGiB": 64, "immediateWorkers": 6, "durableTasks": 8, "delegationDepth": 2, "liveRamCeilingGiB": 50 }
+    },
+    "runtimeStateOutsidePayload": true
+  },
+  "models": {
+    "catalog": "14-SUPERSTACK/captain-planet-stack.json",
+    "acquisitionCatalog": "00-CHARTER/LLM-DEPLOY/model-acquisition-catalog.json",
+    "recommendedSelectedByDefault": true,
+    "operatorMayDeselect": true,
+    "downloadOnlyAfterApproval": true,
+    "approvalSource": "install-command-invocation",
+    "adoptionRequiresLiveSha256": true,
+    "selectionRequiresProvenanceReceiptSha256": true,
+    "selectionRequiresExplicitLicensePosture": true,
+    "oneSpecialistLeaseAtATime": true,
+    "defaultLiveRamCeilingGiB": 50,
+    "privateModelsExcluded": true
+  },
+  "downloads": {
+    "minimumFreeReserveGiB": 10,
+    "partialSuffix": ".part",
+    "ownershipSidecar": true,
+    "httpRangeResume": true,
+    "streamingSha256": true,
+    "atomicPromotion": true,
+    "credentialsInUrlsForbidden": true,
+    "remoteMethod": "native PowerShell HttpClient over approved SSH"
+  },
+  "package": {
+    "packer": "scripts/llm-deploy/pack-orangefive-llm-deploy.ps1",
+    "releaseProof": "scripts/llm-deploy/prove-orangefive-llm-deploy.mjs",
+    "proofRequiredByDefault": true,
+    "proofMode": "extracted-payload-safe-temporary-root-no-external-mutation",
+    "archiveVerification": "entry-count-path-size-sha256",
+    "proofAssertions": [
+      "wrong-plan-hash-rejected-before-mutation",
+      "invalid-model-set-rejected-before-mutation",
+      "all-dry-runs-before-mutation",
+      "ready-after-approved-apply",
+      "rolled-back-and-not-ready",
+      "data-preserved",
+      "payload-unchanged"
+    ],
+    "outputs": [
+      "OrangeFive-LLM-deploy.zip",
+      "OrangeFive-LLM-deploy.zip.sha256",
+      "OrangeFive-LLM-deploy.proof.json",
+      "OrangeFive-LLM-deploy.report.json"
+    ]
+  },
+  "configuration": {
+    "hermesOverlay": "08-HERMES/product-integration",
+    "orangeFiveClientInstaller": "03-BACKEND/install-orange5-clients.mjs",
+    "brainMcpServer": "03-BACKEND/orange5-brain-mcp-server.mjs",
+    "rollbackOnlyWhenInstalledHashIsStillCurrent": true
+  },
+  "receipts": {
+    "externalRoot": "%USERPROFILE%/OrangeBox-Data/orange5/deploy/receipts",
+    "stages": ["discovery", "plan", "apply", "readiness", "rollback", "package"],
+    "credentialsForbidden": true
+  },
+  "excluded": [
+    "node_modules",
+    "model weights",
+    "private or abliterated models",
+    "credentials and tokens",
+    "runtime databases and user memory",
+    "logs and volatile receipts",
+    "generated test fixture output",
+    "Orange3 and Orange4",
+    "Atomic Orange UI and frontend build artifacts",
+    "research archives and unpromoted alpha tools",
+    "commerce and website assets"
+  ]
+}

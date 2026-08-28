@@ -1,0 +1,64 @@
+{
+  "experiment": "78-m19-component-split",
+  "corpus_bytes_raw": 2075585,
+  "corpus_receipts": 6224,
+  "corpus_sha256_prefix": "5be5f1b4",
+  "baseline": {
+    "bytes": 44095,
+    "ratio": 47.071,
+    "lossless": true,
+    "parts": {
+      "pos": 989,
+      "seed": 48,
+      "meshTpl": 119,
+      "meshData": 6935,
+      "shapes": 30057,
+      "aIdx": 111,
+      "aV": 455,
+      "shapeIdx": 5381
+    }
+  },
+  "total_saving_bytes": 2031490,
+  "components": [
+    {
+      "component": "MESH_DECOMP",
+      "bytes_without": 51143,
+      "ratio_without": 40.584,
+      "bytes_saved": 7048,
+      "pct_of_total": 0.3,
+      "roundtrip": true
+    },
+    {
+      "component": "SHAPE_VOCAB",
+      "bytes_without": 55518,
+      "ratio_without": 37.386,
+      "bytes_saved": 11423,
+      "pct_of_total": 0.6,
+      "roundtrip": true
+    },
+    {
+      "component": "ACTION_STRIP",
+      "bytes_without": 44259,
+      "ratio_without": 46.896,
+      "bytes_saved": 164,
+      "pct_of_total": 0,
+      "roundtrip": true
+    },
+    {
+      "component": "B8_SORT",
+      "bytes_without": 49081,
+      "ratio_without": 42.289,
+      "bytes_saved": 4986,
+      "pct_of_total": 0.2,
+      "roundtrip": true
+    },
+    {
+      "component": "BROTLI_X2",
+      "bytes_without": 44236,
+      "ratio_without": 46.921,
+      "bytes_saved": 141,
+      "pct_of_total": 0,
+      "roundtrip": true
+    }
+  ]
+}

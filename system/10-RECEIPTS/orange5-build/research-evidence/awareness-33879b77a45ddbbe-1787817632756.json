@@ -1,0 +1,268 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-33879b77a45ddbbe-1787817632756",
+  "query": "current open source model orchestration and long-context memory tools OrangeFive orange5",
+  "searchQuery": "orchestration and long-context memory",
+  "generatedAt": "2026-08-27T08:00:32.761Z",
+  "budgetMs": 30000,
+  "elapsedMs": 1048,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2606.22968v1",
+      "title": "MOCAP: Wafer-Scale-Chip-Oriented Memory-Orchestrated Chunked Pipelining Framework for Prefill-Only LLM Inference",
+      "url": "http://arxiv.org/abs/2606.22968v1",
+      "summary": "Large language models (LLMs) are increasingly used in prefill-only workloads, where end-to-end latency is dominated by the prefill phase. For long-context prefill, communication overhead grows with sequence length and quickly becomes a bottleneck on conventional GPU systems, making wafer-scale chips (WSCs) a promising substrate due to their high communication bandwidth and large aggregate compute and memory capacity. A natural way to accelerate prefill is to partition a long input sequence into ",
+      "updatedAt": "2026-06-22T07:51:15Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 1,
+        "matched": 3,
+        "queryTerms": 3,
+        "terms": [
+          "orchestr",
+          "long context",
+          "memory"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1161163182",
+      "title": "tinyhumansai/openhuman",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "summary": "Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.",
+      "updatedAt": "2026-08-27T07:58:04Z",
+      "license": "GPL-3.0",
+      "stars": 38368,
+      "forks": 3769,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8567,
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "orchestr",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2607.29397v2",
+      "title": "Studying quantization trade-offs for efficient inference deployment in machine translation",
+      "url": "http://arxiv.org/abs/2607.29397v2",
+      "summary": "Deploying large language models in realistic server environments poses challenges, as the system needs to provide high-quality responses with low latency. Quantization is a common approach to reduce the memory footprint and improve inference efficiency, yet its impact on latency and throughput is rarely evaluated under controlled, orchestration-level workloads. In this work we study the quantization trade-offs of two translation model families, EuroLLM \\citep{martins2025eurollm} and Hy-MT2 \\cite",
+      "updatedAt": "2026-08-04T16:14:13Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "orchestr",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1174297376",
+      "title": "Junyi42/LoGeR",
+      "url": "https://github.com/Junyi42/LoGeR",
+      "summary": "Reimplementation of LoGeR: Long-Context Geometric Reconstruction with Hybrid Memory",
+      "updatedAt": "2026-08-16T13:08:33Z",
+      "license": null,
+      "stars": 612,
+      "forks": 47,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8207,
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "long context",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "984927305",
+      "title": "dipampaul17/KVSplit",
+      "url": "https://github.com/dipampaul17/KVSplit",
+      "summary": "Run larger LLMs with longer contexts on Apple Silicon by using differentiated precision for KV cache quantization. KVSplit enables 8-bit keys & 4-bit values, reducing memory by 59% with <1% quality loss. Includes benchmarking, visualization, and one-command setup. Optimized for M1/M2/M3 Macs with Metal support.",
+      "updatedAt": "2026-08-22T07:03:02Z",
+      "license": "NOASSERTION",
+      "stars": 362,
+      "forks": 14,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8162,
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "long context",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1076354478",
+      "title": "xiongsiheng/DHSA",
+      "url": "https://github.com/xiongsiheng/DHSA",
+      "summary": "[ICML 26 Spotlight, NeurIPS 25 @ ER] Long-Context Modeling with Dynamic Hierarchical Sparse Attention for Memory-Constrained LLM Inference",
+      "updatedAt": "2026-08-23T07:54:25Z",
+      "license": null,
+      "stars": 88,
+      "forks": 4,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.804,
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "long context",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1236502968",
+      "title": "Omc12/Differential-KV",
+      "url": "https://github.com/Omc12/Differential-KV",
+      "summary": "Differential-KV (DKV) is a sparse KV-cache inference runtime designed for high-efficiency, memory-bounded long-context Large Language Model (LLM) inference across Apple Silicon (MLX) and CUDA GPUs.",
+      "updatedAt": "2026-08-26T16:11:41Z",
+      "license": "MIT",
+      "stars": 19,
+      "forks": 3,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.206,
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "long context",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1332871263",
+      "title": "liventruth/UL-SMF-Cache-Compression",
+      "url": "https://github.com/liventruth/UL-SMF-Cache-Compression",
+      "summary": "The Unified Latent-State Memory Fabric (UL-SMF) is a hardware-software co-designed memory compression fabric that solves the memory bottleneck in long-context Transformer inference. By combining FSQ with dynamic 16-dimensional latent mapping, UL-SMF compresses Key-Value (KV) cache tensors by up to 384x while maintaining >94% semantic retention.",
+      "updatedAt": "2026-08-23T19:27:47Z",
+      "license": "AGPL-3.0",
+      "stars": 9,
+      "forks": 2,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2,
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "long context",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1284723690",
+      "title": "Haodong-Lei-Ray/TransMem",
+      "url": "https://github.com/Haodong-Lei-Ray/TransMem",
+      "summary": "TransMem transforms sparse historical hidden states into reusable memory, improving long-context reasoning for LLM agents without re-encoding history or fine-tuning the backbone. 🚀",
+      "updatedAt": "2026-08-25T17:31:10Z",
+      "license": null,
+      "stars": 5,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1956,
+      "relevance": {
+        "score": 0.6667,
+        "matched": 2,
+        "queryTerms": 3,
+        "terms": [
+          "long context",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "3403eb542f41fa8e79d8a6d5f7cad8b4fa2a279b1878869d06e827d7daad9be7"
+}

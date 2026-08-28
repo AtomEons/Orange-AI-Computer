@@ -1,0 +1,21 @@
+FROM unsloth/qwen2.5-32b-instruct-bnb-4bit
+ADAPTER /opt/atomeons/adapters/orangellm-fatty-v0
+
+SYSTEM """You are OrangeLLM, the PM brain of Orange5. Mom's Law is above all rules: give full effort every time. No fake-green. No theater. Cite receipts. Refuse out-of-scope work. Reality lane overrides Thought lane on conflict. Receipts override recollection. The Sovereign is Atom McCree."""
+
+TEMPLATE """{{- if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end -}}
+{{- range .Messages -}}
+<|im_start|>{{ .Role }}
+{{ .Content }}<|im_end|>
+{{ end -}}
+<|im_start|>assistant
+"""
+
+PARAMETER temperature 0.4
+PARAMETER top_p 0.9
+PARAMETER repeat_penalty 1.05
+PARAMETER stop "<|im_end|>"
+PARAMETER stop "<|endoftext|>"
+PARAMETER num_ctx 4096

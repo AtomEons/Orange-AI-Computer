@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orange5.atomsmasher.pathwave.v0",
+  "title": "Orange5 AtomSmasher Pathwave v0",
+  "description": "AtomSmasher Pathwave — a compressed execution trajectory. A Pathwave is the canonical form of a sequence of (orange.order.v1 -> action -> orange.report.v1 -> receipt) tuples produced by a real run, reduced to the stable shape needed to replay, diff, or compare runs. The Pathwave preserves order, intent, outcome, and receipt anchor for every step; it discards verbose prose, log streams, and runtime nonces. pathwave_id = sha256(canonical({task, steps[]={order_id, intent_hash, action, status, confidence, evidence_hashes[], receipt_id}})). The id is derived, never stored. Persistence and replay live in sibling modules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "pathwave_id",
+    "task",
+    "steps",
+    "stats",
+    "warnings",
+    "created_at"
+  ],
+  "properties": {
+    "schema": {
+      "description": "Schema discriminator. Must be exact.",
+      "const": "orange5.atomsmasher.pathwave.v0"
+    },
+    "pathwave_id": {
+      "description": "sha256 hex of the canonical id payload. Deterministic: identical trajectories yield identical ids regardless of when they were compressed.",
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "task": {
+      "description": "The task / mission label this trajectory was executed under. Free-form but non-empty; content-bearing (anti-fluff applies).",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "steps": {
+      "description": "Ordered list of compressed steps. Order is the execution order; the compressor never reorders.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/step" }
+    },
+    "stats": {
+      "description": "Honest accounting over the raw input vs the compressed output. Bytes are character counts of canonical JSON forms.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "step_count",
+        "ok_count",
+        "fail_count",
+        "input_bytes",
+        "output_bytes",
+        "compression_ratio_bytes"
+      ],
+      "properties": {
+        "step_count":            { "type": "integer", "minimum": 0 },
+        "ok_count":              { "type": "integer", "minimum": 0 },
+        "fail_count":            { "type": "integer", "minimum": 0 },
+        "input_bytes":           { "type": "integer", "minimum": 0 },
+        "output_bytes":          { "type": "integer", "minimum": 0 },
+        "compression_ratio_bytes": {
+          "description": "output_bytes / input_bytes. Reported as 1 when input_bytes is 0 (degenerate empty trajectory).",
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "warnings": {
+      "description": "Non-fatal honesty surface. Examples: 'missing_receipt: step[3]', 'order_intent_mismatch: step[5]', 'no_evidence: step[1]'. Empty array is fine.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "created_at": {
+      "description": "ISO 8601 timestamp of compression. Not part of pathwave_id.",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "order_id",
+        "intent_hash",
+        "action",
+        "status",
+        "confidence",
+        "evidence_hashes",
+        "receipt_id"
+      ],
+      "properties": {
+        "index": {
+          "description": "0-based position in the trajectory. Must match the step's index in the steps array.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "order_id": {
+          "description": "The order.orderId that initiated this step.",
+          "type": "string",
+          "minLength": 3
+        },
+        "intent_hash": {
+          "description": "sha256 of the order.intent string. Identifies what was asked without storing the full prose.",
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "action": {
+          "description": "The action taken. Free-form short label; the order's first allowedAction is used by default, but the compressor accepts an explicit override on input.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "status": {
+          "description": "The terminal status from orange.report.v1 (e.g. 'ok', 'failed', 'partial'). Free-form to match Report's permissive schema, but normalized lowercase.",
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 64
+        },
+        "confidence": {
+          "description": "Report confidence in [0,1].",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_hashes": {
+          "description": "sha256 of canonical JSON of each evidence object on the report. Preserves count and identity without storing payloads.",
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        },
+        "receipt_id": {
+          "description": "The receipt anchor for this step. Null when the order did not require a receipt; never silently fabricated.",
+          "type": ["string", "null"]
+        },
+        "risk_level": {
+          "description": "Optional carry-over from the order for replay gating.",
+          "type": "string",
+          "enum": ["read_only", "low", "medium", "high", "destructive", "production"]
+        },
+        "next_action": {
+          "description": "Optional carry-over from the report. Truncated to 200 chars.",
+          "type": "string",
+          "maxLength": 200
+        }
+      }
+    }
+  }
+}

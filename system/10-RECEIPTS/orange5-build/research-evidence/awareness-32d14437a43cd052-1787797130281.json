@@ -1,0 +1,293 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-32d14437a43cd052-1787797130281",
+  "query": "current open weight local AI models coding reasoning vision image video audio generation Intel XPU ComfyUI releases benchmarks OrangeFive orange5",
+  "searchQuery": "weight local coding reasoning vision image video audio",
+  "generatedAt": "2026-08-27T02:18:50.284Z",
+  "budgetMs": 45000,
+  "elapsedMs": 1344,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2607.26553v1",
+      "title": "ThinkOmni: A Reasoning-Driven Omni-Modal LLM Framework for Audio Forgery Detection and Localization",
+      "url": "http://arxiv.org/abs/2607.26553v1",
+      "summary": "Existing audio forgery detection and localization (AFDL) methods often overfit dataset-specific low-level artifacts, limiting their generalization to subtle, localized, and unseen manipulations. Recent audio large language model (ALLM)-based approaches cast AFDL as question answering but still model forensic evidence implicitly, without linking manipulation cues to predictions. To bridge this gap, we propose ThinkOmni, a reasoning-driven omni-modal large language model that jointly performs expl",
+      "updatedAt": "2026-07-29T07:26:31Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.3762,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "reason",
+          "audio"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.06243v2",
+      "title": "DASH: Divergence-Adaptive Supervision Horizons for On-Policy Self-Distillation of Reasoning Models",
+      "url": "http://arxiv.org/abs/2608.06243v2",
+      "summary": "Reinforcement learning with verifiable rewards (RLVR) improves the reasoning capabilities of large language models using automatically verifiable outcome signals, but these signals are typically sparse and at the sequence-level. On-policy self-distillation (OPSD) mitigates this sparsity by querying a privileged teacher at student-visited prefixes and providing dense token-level distributional supervision. Although this dense supervision alleviates signal sparsity, we find that standard OPSD stil",
+      "updatedAt": "2026-08-07T03:26:12Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "reason",
+          "vision"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2607.27770v1",
+      "title": "Beyond the Best Teacher: Expanding and Compressing the Reasoning Solution Manifold",
+      "url": "http://arxiv.org/abs/2607.27770v1",
+      "summary": "A single reinforcement-learning run can produce a strong reasoner yet an incomplete teacher: it often amplifies only a subset of the valid solution modes. We argue that reinforcement learning (RL)-trained policies should therefore be viewed as local probes of a multi-basin reasoning solution manifold, rather than as globally reliable supervisors. Based on this view, we propose an expand-then-compress framework that couples teacher construction with multi-teacher policy distillation. In the expan",
+      "updatedAt": "2026-07-30T07:05:37Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "reason"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1166182351",
+      "title": "raullenchai/Rapid-MLX",
+      "url": "https://github.com/raullenchai/Rapid-MLX",
+      "summary": "The fastest local AI engine for Apple Silicon. 4.2x faster than Ollama, 0.08s cached TTFT, 100% tool calling. 17 tool parsers, prompt cache, reasoning separation, cloud routing. Drop-in OpenAI replacement. Works with Claude Code, Cursor, Aider.",
+      "updatedAt": "2026-08-27T01:56:05Z",
+      "license": "NOASSERTION",
+      "stars": 3551,
+      "forks": 401,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.836,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "reason"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "536064548",
+      "title": "toeverything/OctoBase",
+      "url": "https://github.com/toeverything/OctoBase",
+      "summary": "🐙 OctoBase is the open-source database behind AFFiNE, local-first, yet collaborative. A light-weight, scalable, data engine written in Rust.",
+      "updatedAt": "2026-08-26T10:53:11Z",
+      "license": "AGPL-3.0",
+      "stars": 2058,
+      "forks": 139,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8313,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "weight",
+          "local"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1196974400",
+      "title": "AtomicBot-ai/Atomic-Chat",
+      "url": "https://github.com/AtomicBot-ai/Atomic-Chat",
+      "summary": "Local AI app and inference engine for agents. Run open-weight LLMs locally — private, 100% offline on your computer. Join our Discord: https://discord.com/invite/8wGSsvmg4V",
+      "updatedAt": "2026-08-27T02:13:48Z",
+      "license": "NOASSERTION",
+      "stars": 1377,
+      "forks": 158,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8278,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "weight",
+          "local"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1257154160",
+      "title": "weicj/vLLM-2080Ti-Definitive",
+      "url": "https://github.com/weicj/vLLM-2080Ti-Definitive",
+      "summary": "The definitive vLLM runtime for dual RTX 2080 Ti 22GB + NVLink, delivering Qwen 27B local inference with maximum 100+ tok/s single-request decode with support of FP8 weight",
+      "updatedAt": "2026-08-27T01:12:30Z",
+      "license": "Apache-2.0",
+      "stars": 691,
+      "forks": 106,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8218,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "weight",
+          "local"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "111140917",
+      "title": "ducha-aiki/affnet",
+      "url": "https://github.com/ducha-aiki/affnet",
+      "summary": "Code and weights for local feature affine shape estimation paper \"Repeatability Is Not Enough: Learning Discriminative Affine Regions via Discriminability\"",
+      "updatedAt": "2026-08-20T20:58:51Z",
+      "license": "MIT",
+      "stars": 278,
+      "forks": 48,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8139,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "weight",
+          "local"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1148873457",
+      "title": "openmake/openmake_llm",
+      "url": "https://github.com/openmake/openmake_llm",
+      "summary": "Open-source, self-hosted AI workspace for local and open-weight LLMs with vLLM, LiteLLM, autonomous agents, MCP tools, deep research, artifacts, and BYOK.",
+      "updatedAt": "2026-08-26T22:44:17Z",
+      "license": "MIT",
+      "stars": 23,
+      "forks": 3,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7926,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "weight",
+          "local"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1213544307",
+      "title": "buriedsignals/mycroft",
+      "url": "https://github.com/buriedsignals/mycroft",
+      "summary": "Goose Extension Pack for investigative journalists — open-weight, ZDR, local-capable",
+      "updatedAt": "2026-08-26T16:45:03Z",
+      "license": "MIT",
+      "stars": 14,
+      "forks": 2,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7885,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "weight",
+          "local"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "89a02f1de3df9396cd7097ff11f0b4944be2fcec9951675ec8b587ce15dc7b98"
+}

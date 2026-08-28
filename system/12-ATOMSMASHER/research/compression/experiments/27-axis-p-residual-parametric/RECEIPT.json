@@ -1,0 +1,102 @@
+{
+  "experiment": "27-axis-p-residual-parametric",
+  "generated_at": "2026-06-26T12:22:25.614Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "total_series": 1359,
+  "total_numbers": 59439,
+  "numeric_vocab_size": 1839,
+  "total_raw_ascii_bytes": 144835,
+  "total_series_encoded_bytes": 72078,
+  "series_brotli": 42808,
+  "numeric_vocab_brotli": 4076,
+  "axis_p_total": 46884,
+  "baseline_flat_brotli": 21146,
+  "ratio_axis_p_vs_baseline": 0.45,
+  "policy_distribution": {
+    "delta": 933,
+    "rle": 210,
+    "varint": 216
+  },
+  "top_10_series": [
+    {
+      "key": "air.compress|0",
+      "n": 3126,
+      "raw_ascii": 14058,
+      "encoded": 3126,
+      "policy": "delta",
+      "ratio": 4.5
+    },
+    {
+      "key": "mesh.compress|2",
+      "n": 1565,
+      "raw_ascii": 6104,
+      "encoded": 1788,
+      "policy": "delta",
+      "ratio": 3.41
+    },
+    {
+      "key": "mesh.compress|0",
+      "n": 1565,
+      "raw_ascii": 4886,
+      "encoded": 2427,
+      "policy": "delta",
+      "ratio": 2.01
+    },
+    {
+      "key": "mesh.compress|1",
+      "n": 1565,
+      "raw_ascii": 4496,
+      "encoded": 2726,
+      "policy": "delta",
+      "ratio": 1.65
+    },
+    {
+      "key": "air.compress|1",
+      "n": 3126,
+      "raw_ascii": 3132,
+      "encoded": 326,
+      "policy": "rle",
+      "ratio": 9.61
+    },
+    {
+      "key": "air.compress|2",
+      "n": 3126,
+      "raw_ascii": 3126,
+      "encoded": 3,
+      "policy": "rle",
+      "ratio": 1042
+    },
+    {
+      "key": "air.compress|3",
+      "n": 3126,
+      "raw_ascii": 3126,
+      "encoded": 79,
+      "policy": "rle",
+      "ratio": 39.57
+    },
+    {
+      "key": "feature.execute|0",
+      "n": 615,
+      "raw_ascii": 1939,
+      "encoded": 1002,
+      "policy": "delta",
+      "ratio": 1.94
+    },
+    {
+      "key": "feature.execute|1",
+      "n": 602,
+      "raw_ascii": 1908,
+      "encoded": 1091,
+      "policy": "varint",
+      "ratio": 1.75
+    },
+    {
+      "key": "feature.execute|5",
+      "n": 507,
+      "raw_ascii": 1578,
+      "encoded": 821,
+      "policy": "varint",
+      "ratio": 1.92
+    }
+  ]
+}

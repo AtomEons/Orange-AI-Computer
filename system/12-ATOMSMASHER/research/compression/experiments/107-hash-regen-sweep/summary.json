@@ -1,0 +1,12 @@
+{
+  "experiment": "107-hash-regen-sweep",
+  "ratio": 46.499,
+  "encode_ms": 2737.3,
+  "decode_ms": 298.5,
+  "lossless": true,
+  "library_size_bytes": 542,
+  "edges_mined": 0,
+  "baseline_m19": 47.071,
+  "vs_m19": -0.572,
+  "notes": "Tested hex fields (lengths 16/32/40/64/128) against sha256/sha1/sha512 of each other field. Mined 0 hash formulas."
+}

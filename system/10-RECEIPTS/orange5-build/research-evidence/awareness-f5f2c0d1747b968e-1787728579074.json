@@ -1,0 +1,302 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-f5f2c0d1747b968e-1787728579074",
+  "query": "current 2026 local agent harness memory compression model orchestration MCP runtimes for a two-machine sovereign AI system OrangeFive orange5",
+  "searchQuery": "local agent harness memory compression orchestration mcp runtimes",
+  "generatedAt": "2026-08-26T07:16:19.085Z",
+  "budgetMs": 60000,
+  "elapsedMs": 578,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1195371847",
+      "title": "ai-boost/awesome-harness-engineering",
+      "url": "https://github.com/ai-boost/awesome-harness-engineering",
+      "summary": "Awesome list for AI agent harness engineering: tools, patterns, evals, memory, MCP, permissions, observability, and orchestration.",
+      "updatedAt": "2026-08-26T07:04:59Z",
+      "license": "NOASSERTION",
+      "stars": 3804,
+      "forks": 454,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8366,
+      "relevance": {
+        "score": 0.5917,
+        "matched": 3,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "memory",
+          "orchestr"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.09885v1",
+      "title": "SHE: Trajectory-driven Safety Harness Evolution for LLM Agents",
+      "url": "http://arxiv.org/abs/2608.09885v1",
+      "summary": "The safety of large language model (LLM) agents depends not only on model weights but also on the agent harness that manages context, memory, tools, permissions, and runtime control. Existing safety mechanisms often treat the harness as a fixed deployment artifact, limiting their ability to evolve with emerging risks. Moreover, coupled functions across harness components obscure safety responsibility attribution, making localized evolution difficult. We propose Safety Harness Evolution (SHE), a ",
+      "updatedAt": "2026-08-10T17:35:08Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.4833,
+        "matched": 4,
+        "queryTerms": 6,
+        "terms": [
+          "local",
+          "agent",
+          "memory",
+          "runtime"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.24876v1",
+      "title": "Recursive Experiential-Working Memory Evolution for Long-Horizon Agent Harnesses",
+      "url": "http://arxiv.org/abs/2608.24876v1",
+      "summary": "Recursive self-improvement (RSI) remains hard in long-horizon tasks, where growing histories obscure the task state and misalign skill invocation. We introduce Recuris, a recursive Experiential-Working Memory architecture for long-horizon agent harnesses, in which Working Memory tracks task progress and guides skill selection from Experiential Memory, grounding skill use in current needs rather than the full history. This coupling also turns execution into structured evidence that localizes fail",
+      "updatedAt": "2026-08-25T17:56:35Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.4083,
+        "matched": 3,
+        "queryTerms": 6,
+        "terms": [
+          "local",
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1272582985",
+      "title": "wuisabel-gif/MemWhale",
+      "url": "https://github.com/wuisabel-gif/MemWhale",
+      "summary": "Persistent, local memory for developers and their coding agents. Records commands, output, errors, and the fixes that worked into SQLite and serves them over MCP.",
+      "updatedAt": "2026-08-26T07:15:09Z",
+      "license": "MIT",
+      "stars": 55,
+      "forks": 21,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8,
+      "relevance": {
+        "score": 0.4083,
+        "matched": 3,
+        "queryTerms": 6,
+        "terms": [
+          "local",
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1136590548",
+      "title": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "summary": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "updatedAt": "2026-08-26T07:15:22Z",
+      "license": "MIT",
+      "stars": 243283,
+      "forks": 36803,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.865,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "995029641",
+      "title": "ruvnet/ruflo",
+      "url": "https://github.com/ruvnet/ruflo",
+      "summary": "🌊 The original agent meta-harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, RAG integration, and native Claude Code / Codex / Hermes and many more Integrated",
+      "updatedAt": "2026-08-26T06:56:45Z",
+      "license": "MIT",
+      "stars": 69428,
+      "forks": 8300,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8618,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "522158088",
+      "title": "zhayujie/CowAgent",
+      "url": "https://github.com/zhayujie/CowAgent",
+      "summary": "Open-source super AI assistant & Agent Harness. Plans tasks, runs tools and skills, self-evolves with memory and knowledge. Multi-model, multi-channel. Lightweight, extensible, one-line install. (formerly chatgpt-on-wechat)",
+      "updatedAt": "2026-08-26T07:11:36Z",
+      "license": "MIT",
+      "stars": 46680,
+      "forks": 10328,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8584,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1166408297",
+      "title": "rohitg00/agentmemory",
+      "url": "https://github.com/rohitg00/agentmemory",
+      "summary": "#1 Persistent memory for AI coding agents based on real-world benchmarks",
+      "updatedAt": "2026-08-26T07:03:05Z",
+      "license": "Apache-2.0",
+      "stars": 27434,
+      "forks": 2348,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8538,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "809000718",
+      "title": "Goldziher/basemind",
+      "url": "https://github.com/Goldziher/basemind",
+      "summary": "Full AI context and content layer for coding agents over one MCP server — tree-sitter code-map, document RAG, shared memory, multi-agent comms, web crawl, git history + blame. 300+ languages, 10+ agent harnesses, pure Rust.",
+      "updatedAt": "2026-08-26T07:01:39Z",
+      "license": "MIT",
+      "stars": 86,
+      "forks": 18,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8038,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1250498623",
+      "title": "DanielC000/loom",
+      "url": "https://github.com/DanielC000/loom",
+      "summary": "Orchestrate a fleet of real Claude Code agents on your Claude subscription, not per-token API bills - local-first.",
+      "updatedAt": "2026-08-26T07:15:17Z",
+      "license": "MIT",
+      "stars": 6,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1969,
+      "relevance": {
+        "score": 0.4083,
+        "matched": 3,
+        "queryTerms": 6,
+        "terms": [
+          "local",
+          "agent",
+          "orchestr"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "b2a32ebb3088f2fe8d655ea545bea9cb18af491d5832c0b0b0b820c5c3a0afc3"
+}

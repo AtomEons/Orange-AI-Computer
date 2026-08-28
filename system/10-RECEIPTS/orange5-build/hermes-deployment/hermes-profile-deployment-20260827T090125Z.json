@@ -1,0 +1,123 @@
+{
+    "schema":  "orange5.hermes-profile-deployment.v1",
+    "createdAt":  "2026-08-27T09:01:34.4711960Z",
+    "status":  "DEPLOYED_UNPROVEN",
+    "source":  [
+                   {
+                       "profile":  "navigator",
+                       "path":  "C:\\Users\\Atom\\AppData\\Local\\Temp\\orange5-hermes-q8-20260827T090209Z\\config\\profiles\\navigator\\config.yaml",
+                       "sha256":  "f48996134ec149017fbeac9d1b0d4710705525104f432e4b630d3ea498cce12f"
+                   },
+                   {
+                       "profile":  "builder",
+                       "path":  "C:\\Users\\Atom\\AppData\\Local\\Temp\\orange5-hermes-q8-20260827T090209Z\\config\\profiles\\builder\\config.yaml",
+                       "sha256":  "46fc5b26b1edcb26193ff46de24708842073d39fe32f844cf82e5465f1feb49a"
+                   },
+                   {
+                       "profile":  "researcher",
+                       "path":  "C:\\Users\\Atom\\AppData\\Local\\Temp\\orange5-hermes-q8-20260827T090209Z\\config\\profiles\\researcher\\config.yaml",
+                       "sha256":  "4888296ecf65e229057128a1328c8333a13a569d933328de8dbb7889a45d8b38"
+                   },
+                   {
+                       "profile":  "reviewer",
+                       "path":  "C:\\Users\\Atom\\AppData\\Local\\Temp\\orange5-hermes-q8-20260827T090209Z\\config\\profiles\\reviewer\\config.yaml",
+                       "sha256":  "fa2535201dbe82c7807fa6ccaaccbcbbfaa83e0b8f4be80b6fd3b9ea981974df"
+                   },
+                   {
+                       "profile":  "visual",
+                       "path":  "C:\\Users\\Atom\\AppData\\Local\\Temp\\orange5-hermes-q8-20260827T090209Z\\config\\profiles\\visual\\config.yaml",
+                       "sha256":  "8c5f63780b31de3b25c20da3454a40aeaf983c7f51fe5a243aef9328e4e8545f"
+                   },
+                   {
+                       "profile":  "misfit",
+                       "path":  "C:\\Users\\Atom\\AppData\\Local\\Temp\\orange5-hermes-q8-20260827T090209Z\\config\\profiles\\misfit\\config.yaml",
+                       "sha256":  "fa2535201dbe82c7807fa6ccaaccbcbbfaa83e0b8f4be80b6fd3b9ea981974df"
+                   }
+               ],
+    "before":  [
+                   {
+                       "profile":  "navigator",
+                       "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\navigator\\config.yaml",
+                       "sha256":  "8e8d9aaa653dd4359c8d8200b8ca45ac777d8c81372155bc49fe03e61eab50b7",
+                       "backupPath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\backups\\profile-deploy-20260827T090125Z\\navigator.config.yaml"
+                   },
+                   {
+                       "profile":  "builder",
+                       "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\builder\\config.yaml",
+                       "sha256":  "89f2f6d790a975c085329bef397f285529bbfa7e0186b18addf0a821dff3f0be",
+                       "backupPath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\backups\\profile-deploy-20260827T090125Z\\builder.config.yaml"
+                   },
+                   {
+                       "profile":  "researcher",
+                       "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\researcher\\config.yaml",
+                       "sha256":  "dbbd50ffce76c9272feb8303b9a5278db8241d44f22139d82d673ac0cfdc55fa",
+                       "backupPath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\backups\\profile-deploy-20260827T090125Z\\researcher.config.yaml"
+                   },
+                   {
+                       "profile":  "reviewer",
+                       "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\reviewer\\config.yaml",
+                       "sha256":  "c83e9ddd323f3927a81b2061e6598551206821430af5871fa51797897ada8a38",
+                       "backupPath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\backups\\profile-deploy-20260827T090125Z\\reviewer.config.yaml"
+                   },
+                   {
+                       "profile":  "visual",
+                       "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\visual\\config.yaml",
+                       "sha256":  "b3efbf75b2991b019f7120c3cc23146ca3616d61b03f7ead7c1bc75e30a9ac97",
+                       "backupPath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\backups\\profile-deploy-20260827T090125Z\\visual.config.yaml"
+                   },
+                   {
+                       "profile":  "misfit",
+                       "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\misfit\\config.yaml",
+                       "sha256":  "c83e9ddd323f3927a81b2061e6598551206821430af5871fa51797897ada8a38",
+                       "backupPath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\backups\\profile-deploy-20260827T090125Z\\misfit.config.yaml"
+                   }
+               ],
+    "after":  [
+                  {
+                      "profile":  "navigator",
+                      "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\navigator\\config.yaml",
+                      "sha256":  "ecce0c12936ab322b64ef1ea341ba40e60c67e79e8379d3bf2e162de5695d96a"
+                  },
+                  {
+                      "profile":  "builder",
+                      "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\builder\\config.yaml",
+                      "sha256":  "9304c5003c57fc8c4b0a2bf00117c13ca25bee9ec5181c03d8aca44312c1ee81"
+                  },
+                  {
+                      "profile":  "researcher",
+                      "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\researcher\\config.yaml",
+                      "sha256":  "8f9f689ea331147b43a8bfb1a981761e6c232f254d1ce61323bbe402df4644df"
+                  },
+                  {
+                      "profile":  "reviewer",
+                      "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\reviewer\\config.yaml",
+                      "sha256":  "fd823cc61419b2668da176e1fe5afbfa0b18bb34c3c7c22c78b284620494b2fd"
+                  },
+                  {
+                      "profile":  "visual",
+                      "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\visual\\config.yaml",
+                      "sha256":  "42a6d294216de5bfda6b5e6b58558d33fac63a78a6f52ce83bf56d814c5b1940"
+                  },
+                  {
+                      "profile":  "misfit",
+                      "runtimePath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\.hermes\\profiles\\misfit\\config.yaml",
+                      "sha256":  "fd823cc61419b2668da176e1fe5afbfa0b18bb34c3c7c22c78b284620494b2fd"
+                  }
+              ],
+    "backupRoot":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\backups\\profile-deploy-20260827T090125Z",
+    "materialization":  "MATERIALIZED_NOT_RUNNING",
+    "modelUrl":  "http://127.0.0.1:11434/v1",
+    "hermesAgentModel":  "orange-navigator:ornith-1.5-9b-q8",
+    "restart":  {
+                    "requested":  true,
+                    "stoppedPids":  [
+                                        7624
+                                    ],
+                    "launchPid":  4656,
+                    "listenerPid":  4656,
+                    "launchMode":  "scheduled-task",
+                    "status":  "RESTARTED_HERMES_ONLY"
+                },
+    "nextAction":  "Run strict preflight with live inference, then the constrained lease proof.",
+    "receiptPath":  "C:\\AtomEons\\ai-box\\hermes-product\\data\\receipts\\hermes-profile-deployment-20260827T090125Z.json"
+}

@@ -1,0 +1,92 @@
+{
+  "experiment": "E3-adversarial-emoji-fuzz",
+  "bun": "1.3.14",
+  "cases": [
+    {
+      "n": 1,
+      "label": "1KB hidden in 1 visible glyph (summary)",
+      "outcome": "REJECTED-cleanly",
+      "notes": "gate: Receipt schema violation: summary exceeds cap (codepoints=1025, max=512)"
+    },
+    {
+      "n": 2,
+      "label": "10KB hidden in summary",
+      "outcome": "REJECTED-cleanly",
+      "notes": "gate: Receipt schema violation: summary exceeds cap (codepoints=10241, max=512)"
+    },
+    {
+      "n": 3,
+      "label": "100KB hidden in summary",
+      "outcome": "REJECTED-cleanly",
+      "notes": "gate: Receipt schema violation: summary exceeds cap (codepoints=102401, max=512)"
+    },
+    {
+      "n": 4,
+      "label": "1MB hidden in summary",
+      "outcome": "REJECTED-cleanly",
+      "notes": "gate: Receipt schema violation: summary exceeds cap (codepoints=1048577, max=512)"
+    },
+    {
+      "n": 5,
+      "label": "10KB hidden in payload field",
+      "outcome": "REJECTED-cleanly",
+      "notes": "gate: Receipt schema violation: payload_json exceeds cap (utf8_bytes=40337, max=16384)"
+    },
+    {
+      "n": 6,
+      "label": "10B hidden in action field",
+      "outcome": "ACCEPTED-safe",
+      "notes": "stored 3B sum / 2B pay / 3gly visible"
+    },
+    {
+      "n": 7,
+      "label": "VS-encoded LLM injection in summary",
+      "outcome": "ACCEPTED-DANGER",
+      "notes": "stored 189B sum / 2B pay / 33gly visible — hidden VS/tag-encoded injection ASCII"
+    },
+    {
+      "n": 8,
+      "label": "ZWJ family + 10KB VS on last component",
+      "outcome": "REJECTED-cleanly",
+      "notes": "gate: Receipt schema violation: summary exceeds cap (codepoints=10247, max=512)"
+    },
+    {
+      "n": 9,
+      "label": "🏴 + tag chars spelling evil.com",
+      "outcome": "ACCEPTED-DANGER",
+      "notes": "stored 36B sum / 2B pay / 1gly visible — hidden VS/tag-encoded injection ASCII"
+    },
+    {
+      "n": 10,
+      "label": "Normal text + hidden SQL injection (VS-encoded)",
+      "outcome": "ACCEPTED-DANGER",
+      "notes": "stored 132B sum / 2B pay / 28gly visible — hidden VS/tag-encoded injection ASCII"
+    },
+    {
+      "n": 11,
+      "label": "Orphan VS chars (no base glyph), 1KB",
+      "outcome": "REJECTED-cleanly",
+      "notes": "gate: Receipt schema violation: summary exceeds cap (codepoints=1024, max=512)"
+    },
+    {
+      "n": 12,
+      "label": "100x100 pathological VS structure",
+      "outcome": "REJECTED-cleanly",
+      "notes": "gate: Receipt schema violation: summary exceeds cap (codepoints=10100, max=512)"
+    }
+  ],
+  "totals": {
+    "safe_count": 9,
+    "accepted_danger_count": 3,
+    "crash_or_corrupt_count": 0,
+    "n": 12
+  },
+  "danger_indices": "#7, #9, #10",
+  "recommendation": {
+    "action_max_cp": 64,
+    "summary_max_cp": 512,
+    "summary_max_bytes": 4096,
+    "payload_max_bytes": 16384
+  },
+  "ms": 2939
+}

@@ -1,0 +1,30 @@
+{
+  "experiment": "119-inject-mid",
+  "injection_point": "BETWEEN ACTION_STRIP AND B8_SORT",
+  "formula_library": [
+    "status_ok_default",
+    "mesh_ratio_derivation"
+  ],
+  "corpus_sha256": "03da0e5cf04adf965ae580cb8c74ab4db9d8058b6ca246478fef57b6de944df1",
+  "raw_bytes": 2075585,
+  "total_bytes": 44130,
+  "ratio": 47.0334,
+  "vs_m19": -0.0366,
+  "encode_ms": 1707.85,
+  "decode_ms": 104.94,
+  "lossless": true,
+  "components": {
+    "mesh_tpl": 119,
+    "mesh_data": 6935,
+    "shapes_br2": 30066,
+    "a_idx": 111,
+    "a_v": 458,
+    "other_idx": 5381,
+    "formula_flags": 23,
+    "pos_runs": 989,
+    "seed": 48
+  },
+  "unique_shapes_other": 1567,
+  "verdict": "AMBER",
+  "generated_at": "2026-06-27T14:58:09.002Z"
+}

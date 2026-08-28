@@ -1,0 +1,31 @@
+{
+  "schema": "orange.receipt.ae-phase-zing-proof.v1",
+  "status": "AE_PHASE_ZING_GREEN",
+  "ok": true,
+  "at": "2026-08-28T10:33:16.716Z",
+  "deltaToAckMs": 1.987,
+  "stateEquivalentBytes": 67108864,
+  "deltaPayloadBytes": 338,
+  "wireBytes": 500,
+  "semanticGain": 134217.728,
+  "effectiveStateMbps": 270191.702,
+  "path": "10.0.99.2 -> 10.0.99.1:8905/udp",
+  "checks": {
+    "shared_basis_exact": true,
+    "signal_changed_state_root": true,
+    "internal_delta_ack_present": true,
+    "local_peer_observed_exact_root": true,
+    "codexa_received_exact_root": true,
+    "no_new_auth_fault": true,
+    "direct_path_acked_without_retry": true
+  },
+  "stateRoot": "ad095e901dd443860c845e7fa179be9185971825eac580cff1baa436fc3269b2",
+  "signalId": "zing-ae94b37b-fc91-4bc0-affe-cab5947882c2",
+  "basis": {
+    "bytes": 67108864,
+    "sha256": "eeeea29f19e99097aff081c75a85115c7732967d5824201ddba0d2d1f6202723",
+    "localPath": "C:\\Users\\a\\OrangeBox-Data\\orange5\\crystal\\ae-phase-basis-64m.bin",
+    "remotePath": "C:/Users/Atom/OrangeBox-Data/orange5/crystal/ae-phase-basis-64m.bin"
+  },
+  "sha256": "e872066e25018c7a29455104b2b0e65bcf71d3539c509f5410cb15df7a509dab"
+}

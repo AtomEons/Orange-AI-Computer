@@ -1,0 +1,1059 @@
+{
+  "date": "2026-07-11",
+  "doctrine": "GPT v7 (spine seq 125)",
+  "channels": [
+    "W+1 luminance (v1.1 extended)",
+    "W+2 ON",
+    "W+3 OFF"
+  ],
+  "probes": [
+    {
+      "name": "N1_identical_triplet",
+      "category": "null",
+      "expectations": {
+        "expectQuiet": true
+      },
+      "w1": {
+        "signedMean": 0,
+        "meanAbsolute": 0,
+        "globality": 0,
+        "activeFraction": 0,
+        "borderActivity": 0,
+        "connectedRegionCount": 0,
+        "positiveEnergy": 0,
+        "negativeEnergy": 0,
+        "spatialCentroid": {
+          "x": null,
+          "y": null
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": false
+      },
+      "w2": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      },
+      "w3": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      }
+    },
+    {
+      "name": "N2_subJND_noise",
+      "category": "null",
+      "expectations": {
+        "expectQuiet": true
+      },
+      "w1": {
+        "signedMean": 0.000003284048308227457,
+        "meanAbsolute": 0.0020802595743719897,
+        "globality": 0.0015786723671925447,
+        "activeFraction": 0.0007392035590277778,
+        "borderActivity": 0,
+        "connectedRegionCount": 107,
+        "positiveEnergy": 153.61550421296587,
+        "negativeEnergy": 153.13125158562906,
+        "spatialCentroid": {
+          "x": 195.0557469705944,
+          "y": 203.71507505134633
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": false
+      },
+      "w2": {
+        "mean": 0.001041771811586942,
+        "energy": 153.6155042493641,
+        "activeFraction": 0.0004679361979166667,
+        "connectedRegionCount": 67,
+        "borderActivity": 0,
+        "centroid": {
+          "x": 181.91710737692344,
+          "y": 210.38855439717784
+        }
+      },
+      "w3": {
+        "mean": 0.0010384877629373752,
+        "energy": 153.1312515716936,
+        "activeFraction": 0.0002712673611111111,
+        "connectedRegionCount": 40,
+        "borderActivity": 0,
+        "centroid": {
+          "x": 217.58313902725985,
+          "y": 192.27278772489856
+        }
+      }
+    },
+    {
+      "name": "N3_jpeg_block_noise",
+      "category": "null",
+      "expectations": {
+        "expectQuiet": true
+      },
+      "w1": {
+        "signedMean": -0.000026041895935519452,
+        "meanAbsolute": 0.003629945993643527,
+        "globality": 0.007174182749260669,
+        "activeFraction": 0.2613796657986111,
+        "borderActivity": 0.26631853785900783,
+        "connectedRegionCount": 195,
+        "positiveEnergy": 265.70864131580487,
+        "negativeEnergy": 269.54867512284784,
+        "spatialCentroid": {
+          "x": 197.64186858884324,
+          "y": 188.5018334827286
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": false
+      },
+      "w2": {
+        "mean": 0.0018019520495126365,
+        "energy": 265.7086414129353,
+        "activeFraction": 0.12309434678819445,
+        "connectedRegionCount": 163,
+        "borderActivity": 0.10443864229765012,
+        "centroid": {
+          "x": 196.63905615096147,
+          "y": 189.42478255929515
+        }
+      },
+      "w3": {
+        "mean": 0.001827993942933851,
+        "energy": 269.5486748492539,
+        "activeFraction": 0.13828531901041666,
+        "connectedRegionCount": 179,
+        "borderActivity": 0.1618798955613577,
+        "centroid": {
+          "x": 198.5801455471157,
+          "y": 187.63828041414132
+        }
+      }
+    },
+    {
+      "name": "N4_tiny_exposure_1pct",
+      "category": "null",
+      "expectations": {
+        "expectQuiet": true
+      },
+      "w1": {
+        "signedMean": 0.005122012050923353,
+        "meanAbsolute": 0.005122012050923353,
+        "globality": 0.9999999998047642,
+        "activeFraction": 0.5466172960069444,
+        "borderActivity": 0.466710182767624,
+        "connectedRegionCount": 240,
+        "positiveEnergy": 755.2714089809539,
+        "negativeEnergy": 0,
+        "spatialCentroid": {
+          "x": 224.33348546683527,
+          "y": 145.2365535316909
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": false
+      },
+      "w2": {
+        "mean": 0.005122012051121456,
+        "energy": 755.2714090101654,
+        "activeFraction": 0.5466172960069444,
+        "connectedRegionCount": 240,
+        "borderActivity": 0.466710182767624,
+        "centroid": {
+          "x": 224.33348550077582,
+          "y": 145.2365536036485
+        }
+      },
+      "w3": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      }
+    },
+    {
+      "name": "F1_object_appears",
+      "category": "fundamental",
+      "expectations": {
+        "expect": "positive",
+        "expectW2": true,
+        "expectW3": false
+      },
+      "w1": {
+        "signedMean": 0.5160966972989214,
+        "meanAbsolute": 0.5160966972989214,
+        "globality": 0.9999999999980624,
+        "activeFraction": 1,
+        "borderActivity": 1,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 76101.55459690974,
+        "negativeEnergy": 0,
+        "spatialCentroid": {
+          "x": 203.53449027046477,
+          "y": 175.9898620836427
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0.5160966972675346,
+        "energy": 76101.55459228158,
+        "activeFraction": 1,
+        "connectedRegionCount": 1,
+        "borderActivity": 1,
+        "centroid": {
+          "x": 203.53449029906315,
+          "y": 175.9898620867403
+        }
+      },
+      "w3": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      }
+    },
+    {
+      "name": "F2_object_disappears",
+      "category": "fundamental",
+      "expectations": {
+        "expect": "negative",
+        "expectW2": false,
+        "expectW3": true
+      },
+      "w1": {
+        "signedMean": -0.5160966972989214,
+        "meanAbsolute": 0.5160966972989214,
+        "globality": 0.9999999999980624,
+        "activeFraction": 1,
+        "borderActivity": 1,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 0,
+        "negativeEnergy": 76101.55459690974,
+        "spatialCentroid": {
+          "x": 203.53449027046477,
+          "y": 175.9898620836427
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      },
+      "w3": {
+        "mean": 0.5160966972675346,
+        "energy": 76101.55459228158,
+        "activeFraction": 1,
+        "connectedRegionCount": 1,
+        "borderActivity": 1,
+        "centroid": {
+          "x": 203.53449029906315,
+          "y": 175.9898620867403
+        }
+      }
+    },
+    {
+      "name": "F3_brightness_up_30pct",
+      "category": "fundamental",
+      "expectations": {
+        "expect": "positive",
+        "expectW2": true,
+        "expectW3": false
+      },
+      "w1": {
+        "signedMean": 0.13744220721795308,
+        "meanAbsolute": 0.13744220721795308,
+        "globality": 0.9999999999927242,
+        "activeFraction": 1,
+        "borderActivity": 1,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 20266.67810753049,
+        "negativeEnergy": 0,
+        "spatialCentroid": {
+          "x": 195.24734765652414,
+          "y": 174.4304033439766
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0.13744220719214204,
+        "energy": 20266.678103724495,
+        "activeFraction": 1,
+        "connectedRegionCount": 1,
+        "borderActivity": 1,
+        "centroid": {
+          "x": 195.2473476565963,
+          "y": 174.43040329883598
+        }
+      },
+      "w3": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      }
+    },
+    {
+      "name": "F4_brightness_down_30pct",
+      "category": "fundamental",
+      "expectations": {
+        "expect": "negative",
+        "expectW2": false,
+        "expectW3": true
+      },
+      "w1": {
+        "signedMean": -0.1548290090395629,
+        "meanAbsolute": 0.1548290090395629,
+        "globality": 0.9999999999935413,
+        "activeFraction": 1,
+        "borderActivity": 1,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 0,
+        "negativeEnergy": 22830.466356937788,
+        "spatialCentroid": {
+          "x": 203.53449020224247,
+          "y": 175.9898620419523
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      },
+      "w3": {
+        "mean": 0.15482900905797375,
+        "energy": 22830.46635965258,
+        "activeFraction": 1,
+        "connectedRegionCount": 1,
+        "borderActivity": 1,
+        "centroid": {
+          "x": 203.53449018061778,
+          "y": 175.98986202117595
+        }
+      }
+    },
+    {
+      "name": "F6_move_horizontal_8px",
+      "category": "fundamental",
+      "expectations": {
+        "expect": "balanced",
+        "expectW2": true,
+        "expectW3": true
+      },
+      "w1": {
+        "signedMean": -0.008131232268854172,
+        "meanAbsolute": 0.04596072627819966,
+        "globality": 0.17691696644345906,
+        "activeFraction": 0.8952975802951388,
+        "borderActivity": 0.8988250652741514,
+        "connectedRegionCount": 65,
+        "positiveEnergy": 2789.0929343209027,
+        "negativeEnergy": 3988.091919757069,
+        "spatialCentroid": {
+          "x": 157.06685353298784,
+          "y": 191.65059237159915
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": true,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0.01891474700174869,
+        "energy": 2789.092933889855,
+        "activeFraction": 0.4238484700520833,
+        "connectedRegionCount": 2809,
+        "borderActivity": 0.3348563968668407,
+        "centroid": {
+          "x": 217.0800188508238,
+          "y": 197.88267139224678
+        }
+      },
+      "w3": {
+        "mean": 0.02704597925953116,
+        "energy": 3988.091917693427,
+        "activeFraction": 0.4714491102430556,
+        "connectedRegionCount": 2182,
+        "borderActivity": 0.5639686684073107,
+        "centroid": {
+          "x": 115.18567911190365,
+          "y": 187.30143359792316
+        }
+      }
+    },
+    {
+      "name": "F7_move_vertical_8px",
+      "category": "fundamental",
+      "expectations": {
+        "expect": "balanced",
+        "expectW2": true,
+        "expectW3": true
+      },
+      "w1": {
+        "signedMean": -0.005620860447883029,
+        "meanAbsolute": 0.05513253022949662,
+        "globality": 0.10195179550772447,
+        "activeFraction": 0.8991224500868056,
+        "borderActivity": 0.9216710182767625,
+        "connectedRegionCount": 41,
+        "positiveEnergy": 3650.396389658908,
+        "negativeEnergy": 4479.225987861913,
+        "spatialCentroid": {
+          "x": 186.9723795564109,
+          "y": 167.02652582986065
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": true,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0.024755834891098207,
+        "energy": 3650.396389701777,
+        "activeFraction": 0.5102878146701388,
+        "connectedRegionCount": 2234,
+        "borderActivity": 0.30613577023498695,
+        "centroid": {
+          "x": 187.42672391279694,
+          "y": 225.6575961676065
+        }
+      },
+      "w3": {
+        "mean": 0.030376695334460233,
+        "energy": 4479.225987238168,
+        "activeFraction": 0.3888346354166667,
+        "connectedRegionCount": 3445,
+        "borderActivity": 0.6155352480417755,
+        "centroid": {
+          "x": 186.60250812613194,
+          "y": 119.29630256583964
+        }
+      }
+    },
+    {
+      "name": "C1_wholeFrame_exposure_up_30pct",
+      "category": "confound",
+      "expectations": {
+        "probable": "global_exposure"
+      },
+      "w1": {
+        "signedMean": 0.13744220721795308,
+        "meanAbsolute": 0.13744220721795308,
+        "globality": 0.9999999999927242,
+        "activeFraction": 1,
+        "borderActivity": 1,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 20266.67810753049,
+        "negativeEnergy": 0,
+        "spatialCentroid": {
+          "x": 195.24734765652414,
+          "y": 174.4304033439766
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0.13744220719214204,
+        "energy": 20266.678103724495,
+        "activeFraction": 1,
+        "connectedRegionCount": 1,
+        "borderActivity": 1,
+        "centroid": {
+          "x": 195.2473476565963,
+          "y": 174.43040329883598
+        }
+      },
+      "w3": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      }
+    },
+    {
+      "name": "C2_wholeFrame_exposure_down_30pct",
+      "category": "confound",
+      "expectations": {
+        "probable": "global_exposure"
+      },
+      "w1": {
+        "signedMean": -0.1548290090395629,
+        "meanAbsolute": 0.1548290090395629,
+        "globality": 0.9999999999935413,
+        "activeFraction": 1,
+        "borderActivity": 1,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 0,
+        "negativeEnergy": 22830.466356937788,
+        "spatialCentroid": {
+          "x": 203.53449020224247,
+          "y": 175.9898620419523
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      },
+      "w3": {
+        "mean": 0.15482900905797375,
+        "energy": 22830.46635965258,
+        "activeFraction": 1,
+        "connectedRegionCount": 1,
+        "borderActivity": 1,
+        "centroid": {
+          "x": 203.53449018061778,
+          "y": 175.98986202117595
+        }
+      }
+    },
+    {
+      "name": "C3_gamma_shift",
+      "category": "confound",
+      "expectations": {
+        "probable": "global_gamma"
+      },
+      "w1": {
+        "signedMean": -0.10222384944983441,
+        "meanAbsolute": 0.10222384944983441,
+        "globality": 0.9999999999902175,
+        "activeFraction": 0.9999593098958334,
+        "borderActivity": 0.9960835509138382,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 0,
+        "negativeEnergy": 15073.519944474783,
+        "spatialCentroid": {
+          "x": 182.4840665354701,
+          "y": 194.05099831149866
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      },
+      "w3": {
+        "mean": 0.10222384945830577,
+        "energy": 15073.519945723936,
+        "activeFraction": 0.9999593098958334,
+        "connectedRegionCount": 1,
+        "borderActivity": 0.9960835509138382,
+        "centroid": {
+          "x": 182.48406651954602,
+          "y": 194.05099830636337
+        }
+      }
+    },
+    {
+      "name": "C4_white_balance_shift",
+      "category": "confound",
+      "expectations": {
+        "probable": "global_wb"
+      },
+      "w1": {
+        "signedMean": 0.008157383635767939,
+        "meanAbsolute": 0.00817700033185381,
+        "globality": 0.997600991037379,
+        "activeFraction": 0.7450222439236112,
+        "borderActivity": 0.664490861618799,
+        "connectedRegionCount": 600,
+        "positiveEnergy": 1204.3014611648143,
+        "negativeEnergy": 1.4462997690183932,
+        "spatialCentroid": {
+          "x": 195.2486204664584,
+          "y": 178.55167577951482
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0.008167191984537366,
+        "energy": 1204.3014612719417,
+        "activeFraction": 0.7450222439236112,
+        "connectedRegionCount": 600,
+        "borderActivity": 0.664490861618799,
+        "centroid": {
+          "x": 195.24862045271843,
+          "y": 178.5516758079287
+        }
+      },
+      "w3": {
+        "mean": 0.000009808347957585623,
+        "energy": 1.4462997564337456,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      }
+    },
+    {
+      "name": "C5_light_sweep",
+      "category": "confound",
+      "expectations": {
+        "probable": "moving_light_on_static_object"
+      },
+      "w1": {
+        "signedMean": 0.008753750371712684,
+        "meanAbsolute": 0.05036422636536517,
+        "globality": 0.17380889181212,
+        "activeFraction": 0.8270806206597222,
+        "borderActivity": 0.6488250652741514,
+        "connectedRegionCount": 5,
+        "positiveEnergy": 4358.6501888712155,
+        "negativeEnergy": 3067.8571740600055,
+        "spatialCentroid": {
+          "x": 165.81492062338774,
+          "y": 177.4227622701312
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": true,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0.02955898836875205,
+        "energy": 4358.650188902702,
+        "activeFraction": 0.4302842881944444,
+        "connectedRegionCount": 2,
+        "borderActivity": 0.2108355091383812,
+        "centroid": {
+          "x": 222.00229958903975,
+          "y": 181.28768787624819
+        }
+      },
+      "w3": {
+        "mean": 0.02080523799296922,
+        "energy": 3067.8571734912694,
+        "activeFraction": 0.3967963324652778,
+        "connectedRegionCount": 3,
+        "borderActivity": 0.43798955613577023,
+        "centroid": {
+          "x": 86.46052737550448,
+          "y": 171.96426197436276
+        }
+      }
+    },
+    {
+      "name": "C6_hard_shadow_moves",
+      "category": "confound",
+      "expectations": {
+        "probable": "moving_shadow_on_static_object"
+      },
+      "w1": {
+        "signedMean": -0.023781253322112936,
+        "meanAbsolute": 0.12733490195215588,
+        "globality": 0.18676146883013747,
+        "activeFraction": 0.453125,
+        "borderActivity": 0.22715404699738903,
+        "connectedRegionCount": 2,
+        "positiveEnergy": 7634.803406196058,
+        "negativeEnergy": 11141.491896061567,
+        "spatialCentroid": {
+          "x": 158.73841289676923,
+          "y": 176.02243604748173
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": true,
+        "probable_border_dominant_camera_motion": false
+      },
+      "w2": {
+        "mean": 0.05177682437498435,
+        "energy": 7634.803415037692,
+        "activeFraction": 0.2265625,
+        "connectedRegionCount": 1,
+        "borderActivity": 0.11357702349869452,
+        "centroid": {
+          "x": 100.03011558990198,
+          "y": 172.08450467777172
+        }
+      },
+      "w3": {
+        "mean": 0.07555807766811995,
+        "energy": 11141.491900630295,
+        "activeFraction": 0.2265625,
+        "connectedRegionCount": 1,
+        "borderActivity": 0.11357702349869452,
+        "centroid": {
+          "x": 198.9687799138904,
+          "y": 178.72093745153217
+        }
+      }
+    },
+    {
+      "name": "C7_camera_translation",
+      "category": "confound",
+      "expectations": {
+        "probable": "camera_translation_high_border"
+      },
+      "w1": {
+        "signedMean": -0.01223846263787641,
+        "meanAbsolute": 0.05938432716961876,
+        "globality": 0.20608910163642577,
+        "activeFraction": 0.9150729709201388,
+        "borderActivity": 0.9118798955613577,
+        "connectedRegionCount": 45,
+        "positiveEnergy": 3475.970300196242,
+        "negativeEnergy": 5280.605046926946,
+        "spatialCentroid": {
+          "x": 152.78473195545308,
+          "y": 193.47590582337793
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": true,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0.023572932254070086,
+        "energy": 3475.9702984561586,
+        "activeFraction": 0.4171074761284722,
+        "connectedRegionCount": 2362,
+        "borderActivity": 0.358355091383812,
+        "centroid": {
+          "x": 223.0139962266662,
+          "y": 201.52126168218052
+        }
+      },
+      "w3": {
+        "mean": 0.035811394889128365,
+        "energy": 5280.605044771312,
+        "activeFraction": 0.4979654947916667,
+        "connectedRegionCount": 1778,
+        "borderActivity": 0.5535248041775457,
+        "centroid": {
+          "x": 106.62211366435976,
+          "y": 188.18758779168732
+        }
+      }
+    },
+    {
+      "name": "C8_object_translation",
+      "category": "confound",
+      "expectations": {
+        "probable": "object_translation"
+      },
+      "w1": {
+        "signedMean": 0.4797038571293085,
+        "meanAbsolute": 0.4797038571293085,
+        "globality": 0.9999999999979154,
+        "activeFraction": 0.8985460069444444,
+        "borderActivity": 0.4745430809399478,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 70735.21195685932,
+        "negativeEnergy": 0,
+        "spatialCentroid": {
+          "x": 217.00363666834238,
+          "y": 190.1341010463993
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": false
+      },
+      "w2": {
+        "mean": 0.47970385701359597,
+        "energy": 70735.2119397968,
+        "activeFraction": 0.8985460069444444,
+        "connectedRegionCount": 1,
+        "borderActivity": 0.4745430809399478,
+        "centroid": {
+          "x": 217.00363667106805,
+          "y": 190.13410105223278
+        }
+      },
+      "w3": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      }
+    },
+    {
+      "name": "C9_camera_and_object_together",
+      "category": "confound",
+      "expectations": {
+        "probable": "translation"
+      },
+      "w1": {
+        "signedMean": -0.008196288167908442,
+        "meanAbsolute": 0.045722153666827865,
+        "globality": 0.17926295046061477,
+        "activeFraction": 0.8862847222222222,
+        "borderActivity": 0.6481723237597912,
+        "connectedRegionCount": 67,
+        "positiveEnergy": 2766.707011504225,
+        "negativeEnergy": 3975.2988795913357,
+        "spatialCentroid": {
+          "x": 159.90649030094187,
+          "y": 191.63813444805973
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": true,
+        "probable_border_dominant_camera_motion": true
+      },
+      "w2": {
+        "mean": 0.01876293274696296,
+        "energy": 2766.70701113617,
+        "activeFraction": 0.4185926649305556,
+        "connectedRegionCount": 2784,
+        "borderActivity": 0.36161879895561355,
+        "centroid": {
+          "x": 219.7566437475899,
+          "y": 198.11430306848237
+        }
+      },
+      "w3": {
+        "mean": 0.026959220903401707,
+        "energy": 3975.2988775320023,
+        "activeFraction": 0.4676920572916667,
+        "connectedRegionCount": 2130,
+        "borderActivity": 0.28655352480417756,
+        "centroid": {
+          "x": 118.3415275342381,
+          "y": 187.14054023883267
+        }
+      }
+    },
+    {
+      "name": "C10_local_object_appears",
+      "category": "confound",
+      "expectations": {
+        "probable": "local_positive_event"
+      },
+      "w1": {
+        "signedMean": 0.05750783816239886,
+        "meanAbsolute": 0.05750783816239886,
+        "globality": 0.9999999999826111,
+        "activeFraction": 0.1111111111111111,
+        "borderActivity": 0,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 8479.875784074686,
+        "negativeEnergy": 0,
+        "spatialCentroid": {
+          "x": 167.58885009975626,
+          "y": 158.30776563394613
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": false
+      },
+      "w2": {
+        "mean": 0.057507838144475604,
+        "energy": 8479.875781431794,
+        "activeFraction": 0.1111111111111111,
+        "connectedRegionCount": 1,
+        "borderActivity": 0,
+        "centroid": {
+          "x": 167.58885011323972,
+          "y": 158.3077656399402
+        }
+      },
+      "w3": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      }
+    },
+    {
+      "name": "C11_local_object_disappears",
+      "category": "confound",
+      "expectations": {
+        "probable": "local_negative_event"
+      },
+      "w1": {
+        "signedMean": -0.05750783816239886,
+        "meanAbsolute": 0.05750783816239886,
+        "globality": 0.9999999999826111,
+        "activeFraction": 0.1111111111111111,
+        "borderActivity": 0,
+        "connectedRegionCount": 1,
+        "positiveEnergy": 0,
+        "negativeEnergy": 8479.875784074686,
+        "spatialCentroid": {
+          "x": 167.58885009975626,
+          "y": 158.30776563394613
+        },
+        "probable_global_exposure_shift": true,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": false
+      },
+      "w2": {
+        "mean": 0,
+        "energy": 0,
+        "activeFraction": 0,
+        "connectedRegionCount": 0,
+        "borderActivity": 0,
+        "centroid": {
+          "x": null,
+          "y": null
+        }
+      },
+      "w3": {
+        "mean": 0.057507838144475604,
+        "energy": 8479.875781431794,
+        "activeFraction": 0.1111111111111111,
+        "connectedRegionCount": 1,
+        "borderActivity": 0,
+        "centroid": {
+          "x": 167.58885011323972,
+          "y": 158.3077656399402
+        }
+      }
+    },
+    {
+      "name": "C12_codec_noise",
+      "category": "confound",
+      "expectations": {
+        "probable": "codec_noise_below_floor"
+      },
+      "w1": {
+        "signedMean": -0.00007051333636125957,
+        "meanAbsolute": 0.0036053225748560614,
+        "globality": 0.01955812132691528,
+        "activeFraction": 0.2585313585069444,
+        "borderActivity": 0.25522193211488253,
+        "connectedRegionCount": 198,
+        "positiveEnergy": 260.6144155357365,
+        "negativeEnergy": 271.01203006223045,
+        "spatialCentroid": {
+          "x": 190.6857331966157,
+          "y": 187.36003173595137
+        },
+        "probable_global_exposure_shift": false,
+        "probable_local_motion": false,
+        "probable_border_dominant_camera_motion": false
+      },
+      "w2": {
+        "mean": 0.0017674046206904654,
+        "energy": 260.61441574853325,
+        "activeFraction": 0.12364366319444445,
+        "connectedRegionCount": 173,
+        "borderActivity": 0.13054830287206268,
+        "centroid": {
+          "x": 189.97554659961096,
+          "y": 186.49431504324025
+        }
+      },
+      "w3": {
+        "mean": 0.001837917955525434,
+        "energy": 271.0120300499584,
+        "activeFraction": 0.1348876953125,
+        "connectedRegionCount": 172,
+        "borderActivity": 0.12467362924281984,
+        "centroid": {
+          "x": 191.34308663447445,
+          "y": 188.1613450663296
+        }
+      }
+    }
+  ],
+  "w2_acceptance": {
+    "activates_on_appearance": true,
+    "activates_on_brightening": true,
+    "quiet_on_pure_disappearance": true,
+    "quiet_on_pure_darkening": true,
+    "localizes_local_positive": true,
+    "distinguishes_global_via_metadata": true,
+    "quiet_on_true_null_controls_below_JND": true
+  },
+  "w3_acceptance": {
+    "activates_on_disappearance": true,
+    "activates_on_darkening": true,
+    "quiet_on_pure_appearance": true,
+    "quiet_on_pure_brightening": true,
+    "localizes_local_negative": true,
+    "distinguishes_global_via_metadata": true,
+    "quiet_on_true_null_controls_below_JND": true
+  },
+  "confound_separable": true,
+  "verdict": {
+    "w2": "PROMOTED",
+    "w3": "PROMOTED",
+    "confound": "PASS"
+  }
+}

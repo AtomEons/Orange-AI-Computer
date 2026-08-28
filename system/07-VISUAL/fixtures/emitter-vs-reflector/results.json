@@ -1,0 +1,484 @@
+{
+  "orange": {
+    "color": {
+      "mean_R": 0.5888455509649348,
+      "mean_G": 0.5190722373075308,
+      "mean_B": 0.27240538838512407,
+      "mean_RG": 0.06977331365740402,
+      "mean_BY": -0.2815535057511087,
+      "texture_var": 0.02860363586099879,
+      "log_size": 9.999994999180668e-7,
+      "log_aspect": 0
+    },
+    "edge": {
+      "meanEnergy": 0.04231408088572462,
+      "orientationHistogram": [
+        0.10835481772362425,
+        0.1681263802079547,
+        0.19238760491935156,
+        0.08801096980600304,
+        0.06765459896193128,
+        0.11915373458624712,
+        0.16867994259401695,
+        0.08763195120087115
+      ],
+      "orientationEntropy": 2.9154374091294724
+    },
+    "texture": {
+      "textureMeanVariance": 0.008452179817839559,
+      "lbpEntropy": 6.490563377162877,
+      "lbpTopCodes": [
+        255,
+        0,
+        8,
+        127,
+        128,
+        247,
+        136,
+        15,
+        12,
+        143,
+        240,
+        63,
+        135,
+        129,
+        231,
+        119
+      ]
+    },
+    "specular": {
+      "cov": 0.32976349808210076,
+      "brightFraction": 0.004448784722222222,
+      "glossinessScore": 0.08802280873285243
+    },
+    "subsurface": {
+      "edgeSoftness": 0.9508171865169666,
+      "shadowGlowRatio": 0.5558233903873804,
+      "boundaryWarmShift": -0.12015980715446195,
+      "translucencyScore": 0.6224059205682181
+    }
+  },
+  "lcd_flat": {
+    "desc": {
+      "mean_R": 0.5888455510139465,
+      "mean_G": 0.5190722346305847,
+      "mean_B": 0.27240538597106934,
+      "mean_RG": 0.06977331638336182,
+      "mean_BY": -0.2815535068511963,
+      "texture_var": 4.929945340848008e-13,
+      "log_size": 9.999994999180668e-7,
+      "log_aspect": 0
+    },
+    "edge": {
+      "meanEnergy": 0,
+      "orientationHistogram": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "orientationEntropy": 0
+    },
+    "tex": {
+      "textureMeanVariance": 0,
+      "lbpEntropy": 0.08336465798170783,
+      "lbpTopCodes": [
+        255,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "spec": {
+      "cov": 0.000001647413373087692,
+      "brightFraction": 0,
+      "glossinessScore": 0
+    },
+    "spat": {
+      "cell00_luminance": 0,
+      "cell00_redGreen": 0.06292018875214252,
+      "cell00_blueYellow": 0.20382884515134161,
+      "cell00_saturation": 0.21331935746278358,
+      "cell00_confidence": 1,
+      "cell01_luminance": 0,
+      "cell01_redGreen": 0.06292018875214252,
+      "cell01_blueYellow": 0.20382884515134161,
+      "cell01_saturation": 0.21331935746278358,
+      "cell01_confidence": 1,
+      "cell02_luminance": 0,
+      "cell02_redGreen": 0.06292018875214252,
+      "cell02_blueYellow": 0.20382884515134161,
+      "cell02_saturation": 0.21331935746278358,
+      "cell02_confidence": 1,
+      "cell03_luminance": 0,
+      "cell03_redGreen": 0.06292018875214252,
+      "cell03_blueYellow": 0.20382884515134161,
+      "cell03_saturation": 0.21331935746278358,
+      "cell03_confidence": 1,
+      "cell04_luminance": 0,
+      "cell04_redGreen": 0.06292018875214252,
+      "cell04_blueYellow": 0.20382884515134161,
+      "cell04_saturation": 0.21331935746278358,
+      "cell04_confidence": 1,
+      "cell05_luminance": 0,
+      "cell05_redGreen": 0.06292018875214252,
+      "cell05_blueYellow": 0.20382884515134161,
+      "cell05_saturation": 0.21331935746278358,
+      "cell05_confidence": 1,
+      "cell06_luminance": 0,
+      "cell06_redGreen": 0.06292018875214252,
+      "cell06_blueYellow": 0.20382884515134161,
+      "cell06_saturation": 0.21331935746278358,
+      "cell06_confidence": 1,
+      "cell07_luminance": 0,
+      "cell07_redGreen": 0.06292018875214252,
+      "cell07_blueYellow": 0.20382884515134161,
+      "cell07_saturation": 0.21331935746278358,
+      "cell07_confidence": 1,
+      "cell08_luminance": 0,
+      "cell08_redGreen": 0.06292018875214252,
+      "cell08_blueYellow": 0.20382884515134161,
+      "cell08_saturation": 0.21331935746278358,
+      "cell08_confidence": 1,
+      "_cells": [
+        {
+          "cellId": 0,
+          "row": 0,
+          "column": 0,
+          "eccentricity": 1,
+          "luminance": 0,
+          "redGreen": 0.06292018875214252,
+          "blueYellow": 0.20382884515134161,
+          "saturation": 0.21331935746278358,
+          "confidence": 1
+        },
+        {
+          "cellId": 1,
+          "row": 0,
+          "column": 1,
+          "eccentricity": 0.7071067811865475,
+          "luminance": 0,
+          "redGreen": 0.06292018875214252,
+          "blueYellow": 0.20382884515134161,
+          "saturation": 0.21331935746278358,
+          "confidence": 1
+        },
+        {
+          "cellId": 2,
+          "row": 0,
+          "column": 2,
+          "eccentricity": 1,
+          "luminance": 0,
+          "redGreen": 0.06292018875214252,
+          "blueYellow": 0.20382884515134161,
+          "saturation": 0.21331935746278358,
+          "confidence": 1
+        },
+        {
+          "cellId": 3,
+          "row": 1,
+          "column": 0,
+          "eccentricity": 0.7071067811865475,
+          "luminance": 0,
+          "redGreen": 0.06292018875214252,
+          "blueYellow": 0.20382884515134161,
+          "saturation": 0.21331935746278358,
+          "confidence": 1
+        },
+        {
+          "cellId": 4,
+          "row": 1,
+          "column": 1,
+          "eccentricity": 0,
+          "luminance": 0,
+          "redGreen": 0.06292018875214252,
+          "blueYellow": 0.20382884515134161,
+          "saturation": 0.21331935746278358,
+          "confidence": 1
+        },
+        {
+          "cellId": 5,
+          "row": 1,
+          "column": 2,
+          "eccentricity": 0.7071067811865475,
+          "luminance": 0,
+          "redGreen": 0.06292018875214252,
+          "blueYellow": 0.20382884515134161,
+          "saturation": 0.21331935746278358,
+          "confidence": 1
+        },
+        {
+          "cellId": 6,
+          "row": 2,
+          "column": 0,
+          "eccentricity": 1,
+          "luminance": 0,
+          "redGreen": 0.06292018875214252,
+          "blueYellow": 0.20382884515134161,
+          "saturation": 0.21331935746278358,
+          "confidence": 1
+        },
+        {
+          "cellId": 7,
+          "row": 2,
+          "column": 1,
+          "eccentricity": 0.7071067811865475,
+          "luminance": 0,
+          "redGreen": 0.06292018875214252,
+          "blueYellow": 0.20382884515134161,
+          "saturation": 0.21331935746278358,
+          "confidence": 1
+        },
+        {
+          "cellId": 8,
+          "row": 2,
+          "column": 2,
+          "eccentricity": 1,
+          "luminance": 0,
+          "redGreen": 0.06292018875214252,
+          "blueYellow": 0.20382884515134161,
+          "saturation": 0.21331935746278358,
+          "confidence": 1
+        }
+      ]
+    },
+    "sub": {
+      "edgeSoftness": 0,
+      "shadowGlowRatio": 0.5128708481788635,
+      "boundaryWarmShift": 0,
+      "translucencyScore": 0.17950479686260223
+    }
+  },
+  "lcd_noisy": {
+    "desc": {
+      "mean_R": 0.5888359750408401,
+      "mean_G": 0.5190664646797813,
+      "mean_B": 0.2724090132625052,
+      "mean_RG": 0.06976951036105872,
+      "mean_BY": -0.2815422065978055,
+      "texture_var": 0.000003735000199733829,
+      "log_size": 9.999994999180668e-7,
+      "log_aspect": 0
+    },
+    "edge": {
+      "meanEnergy": 0.27995864248904057,
+      "orientationHistogram": [
+        0.12360160769545105,
+        0.1237003417772047,
+        0.12582388366287928,
+        0.12673939199614134,
+        0.12331377958062237,
+        0.12453389987370127,
+        0.1262911387905248,
+        0.12599595662347518
+      ],
+      "orientationEntropy": 2.999924569887319
+    },
+    "tex": {
+      "textureMeanVariance": 0.45681883199975143,
+      "lbpEntropy": 6.833833616215816,
+      "lbpTopCodes": [
+        0,
+        255,
+        239,
+        8,
+        223,
+        247,
+        251,
+        253,
+        1,
+        2,
+        4,
+        254,
+        32,
+        16,
+        191,
+        127
+      ]
+    },
+    "spec": {
+      "cov": 0.0037682720934340266,
+      "brightFraction": 0,
+      "glossinessScore": 0
+    },
+    "spat": {
+      "cell00_luminance": 0.000010109764463916981,
+      "cell00_redGreen": 0.06290722486359597,
+      "cell00_blueYellow": 0.20383161111367645,
+      "cell00_saturation": 0.2133181769780439,
+      "cell00_confidence": 1,
+      "cell01_luminance": 4.819673167233418e-7,
+      "cell01_redGreen": 0.06290084924716488,
+      "cell01_blueYellow": 0.20382486478432812,
+      "cell01_saturation": 0.21330985054695484,
+      "cell01_confidence": 1,
+      "cell02_luminance": 0.00005509513557899748,
+      "cell02_redGreen": 0.06289804239364283,
+      "cell02_blueYellow": 0.20381527332347016,
+      "cell02_saturation": 0.21329985789229522,
+      "cell02_confidence": 1,
+      "cell03_luminance": 0.000012551964559071038,
+      "cell03_redGreen": 0.06290037402104992,
+      "cell03_blueYellow": 0.20385013913900574,
+      "cell03_saturation": 0.21333386106987323,
+      "cell03_confidence": 1,
+      "cell04_luminance": 0.000012664747954804767,
+      "cell04_redGreen": 0.0629273237018474,
+      "cell04_blueYellow": 0.20380434697053287,
+      "cell04_saturation": 0.21329805416918937,
+      "cell04_confidence": 1,
+      "cell05_luminance": -0.000030706369411714896,
+      "cell05_redGreen": 0.0629290951097905,
+      "cell05_blueYellow": 0.2038280805962833,
+      "cell05_saturation": 0.2133212541002467,
+      "cell05_confidence": 1,
+      "cell06_luminance": 0.000020528175381562264,
+      "cell06_redGreen": 0.06288475484673534,
+      "cell06_blueYellow": 0.20380527049510203,
+      "cell06_saturation": 0.2132863818290228,
+      "cell06_confidence": 1,
+      "cell07_luminance": -0.00003331060800815244,
+      "cell07_redGreen": 0.06294917884747518,
+      "cell07_blueYellow": 0.20380200244680094,
+      "cell07_saturation": 0.2133022628077285,
+      "cell07_confidence": 1,
+      "cell08_luminance": -0.00004741886698356179,
+      "cell08_redGreen": 0.06296180481033817,
+      "cell08_blueYellow": 0.2038399554969948,
+      "cell08_saturation": 0.21334225160992357,
+      "cell08_confidence": 1,
+      "_cells": [
+        {
+          "cellId": 0,
+          "row": 0,
+          "column": 0,
+          "eccentricity": 1,
+          "luminance": 0.000010109764463916981,
+          "redGreen": 0.06290722486359597,
+          "blueYellow": 0.20383161111367645,
+          "saturation": 0.2133181769780439,
+          "confidence": 1
+        },
+        {
+          "cellId": 1,
+          "row": 0,
+          "column": 1,
+          "eccentricity": 0.7071067811865475,
+          "luminance": 4.819673167233418e-7,
+          "redGreen": 0.06290084924716488,
+          "blueYellow": 0.20382486478432812,
+          "saturation": 0.21330985054695484,
+          "confidence": 1
+        },
+        {
+          "cellId": 2,
+          "row": 0,
+          "column": 2,
+          "eccentricity": 1,
+          "luminance": 0.00005509513557899748,
+          "redGreen": 0.06289804239364283,
+          "blueYellow": 0.20381527332347016,
+          "saturation": 0.21329985789229522,
+          "confidence": 1
+        },
+        {
+          "cellId": 3,
+          "row": 1,
+          "column": 0,
+          "eccentricity": 0.7071067811865475,
+          "luminance": 0.000012551964559071038,
+          "redGreen": 0.06290037402104992,
+          "blueYellow": 0.20385013913900574,
+          "saturation": 0.21333386106987323,
+          "confidence": 1
+        },
+        {
+          "cellId": 4,
+          "row": 1,
+          "column": 1,
+          "eccentricity": 0,
+          "luminance": 0.000012664747954804767,
+          "redGreen": 0.0629273237018474,
+          "blueYellow": 0.20380434697053287,
+          "saturation": 0.21329805416918937,
+          "confidence": 1
+        },
+        {
+          "cellId": 5,
+          "row": 1,
+          "column": 2,
+          "eccentricity": 0.7071067811865475,
+          "luminance": -0.000030706369411714896,
+          "redGreen": 0.0629290951097905,
+          "blueYellow": 0.2038280805962833,
+          "saturation": 0.2133212541002467,
+          "confidence": 1
+        },
+        {
+          "cellId": 6,
+          "row": 2,
+          "column": 0,
+          "eccentricity": 1,
+          "luminance": 0.000020528175381562264,
+          "redGreen": 0.06288475484673534,
+          "blueYellow": 0.20380527049510203,
+          "saturation": 0.2132863818290228,
+          "confidence": 1
+        },
+        {
+          "cellId": 7,
+          "row": 2,
+          "column": 1,
+          "eccentricity": 0.7071067811865475,
+          "luminance": -0.00003331060800815244,
+          "redGreen": 0.06294917884747518,
+          "blueYellow": 0.20380200244680094,
+          "saturation": 0.2133022628077285,
+          "confidence": 1
+        },
+        {
+          "cellId": 8,
+          "row": 2,
+          "column": 2,
+          "eccentricity": 1,
+          "luminance": -0.00004741886698356179,
+          "redGreen": 0.06296180481033817,
+          "blueYellow": 0.2038399554969948,
+          "saturation": 0.21334225160992357,
+          "confidence": 1
+        }
+      ]
+    },
+    "sub": {
+      "edgeSoftness": 0.6881071787238731,
+      "shadowGlowRatio": 0.9937186544991352,
+      "boundaryWarmShift": -0.000020004145757535063,
+      "translucencyScore": 0.6574497595004403
+    }
+  },
+  "distances": {
+    "color_orange_lcdFlat": 12.567503432850373,
+    "color_orange_lcdNoisy": 10.663048090198924,
+    "subsurface_orange_lcdFlat": 0.8634093484071069,
+    "subsurface_orange_lcdNoisy": 0.40430531269028125,
+    "edge_meanEnergy": 0.04231408088572462,
+    "specular_glossiness": 0.08802280873285243,
+    "texture_variance": 0.008452179817839559
+  }
+}

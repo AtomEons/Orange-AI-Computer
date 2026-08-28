@@ -1,0 +1,119 @@
+# N150 utility — origin-based lane classifier (qwen3:0.6b STOCK) — systemd unit
+# Path on N150: /etc/systemd/system/n150-classifier.service
+# Source of truth: C:/AtomEons/Orange5/06-ORANGELLM/n150-utility/systemd/n150-classifier.service
+#
+# Wave 1 doctrine: STOCK WEIGHTS ONLY. No custom training, no fine-tunes.
+# This unit owns the first of three co-resident jobs on the N150 utility node
+# (Beelink, 4 cores, 16 GB):
+#
+#   1. origin-based lane classifier   qwen3:0.6b (stock)        ← THIS UNIT
+#      Routes events to reality / thought / merge lanes using origin-prefix
+#      rules first; only the BORDERLINE bucket escalates to qwen3:0.6b for a
+#      tiebreaker. Default-to-thought if Ollama is unreachable. See
+#      classifier/daemon.mjs for the full lane-assignment law.
+#   2. Graph Weaver embedder          nomic-embed-text (stock)  (n150-embedder)
+#   3. emergency chat fallback        qwen3:0.6b (stock)        (n150-fallback-chat)
+#
+# Surface (loopback ONLY):
+#   GET  /healthz          liveness + ollama probe + counters
+#   POST /classify         { origin, event_metadata } -> { lane, confidence, ... }
+#   GET  /model            reports bound stock model + hot-swap state
+#
+# Hot-swap law: STOCK MODEL VERSIONS only (e.g. qwen3:0.6b -> qwen3:0.6b-q4).
+# Re-bind without restart by writing a stock tag to state/model.pin and sending
+# SIGHUP (or via the n150-hot-swap@classifier.service oneshot). The daemon
+# never fine-tunes anything; arbitrary tags are rejected.
+#
+# Loopback only. LAN ingress is the gateway's job, not ours.
+
+[Unit]
+Description=AtomEons N150 utility — origin-based lane classifier (qwen3:0.6b stock)
+Documentation=https://atomeons.local/docs/orange5/n150-utility
+Documentation=file:///opt/atomeons/orange5/n150-utility/classifier/daemon.mjs
+After=network-online.target ollama.service
+Wants=network-online.target
+Requires=ollama.service
+
+[Service]
+Type=simple
+User=atomeons
+Group=atomeons
+WorkingDirectory=/opt/atomeons/orange5/n150-utility/classifier
+
+Environment=NODE_ENV=production
+Environment=N150_CLASSIFIER_HOST=127.0.0.1
+Environment=N150_CLASSIFIER_PORT=7480
+Environment=N150_OLLAMA_BASE=http://127.0.0.1:11434
+Environment=N150_OLLAMA_TIMEOUT_MS=2500
+Environment=N150_BODY_CAP_BYTES=65536
+EnvironmentFile=-/etc/atomeons/n150-classifier.env
+
+# Node 20+ required. Bun-capable but the unit pins node for determinism.
+ExecStart=/usr/bin/node /opt/atomeons/orange5/n150-utility/classifier/daemon.mjs
+
+# Hot-swap: write a stock tag to state/model.pin, then send SIGHUP. The daemon
+# re-reads MODEL_NAME from disk without dropping the listening socket.
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Restart policy: classifier is the lane router for the whole grid. If it dies,
+# Mirage StateBrief default-routes to thought — safe, but degraded. Bring it
+# back fast.
+Restart=on-failure
+RestartSec=3s
+StartLimitIntervalSec=60s
+StartLimitBurst=5
+
+# Graceful stop: classifier owns no long-running work; in-flight /classify
+# calls cap at OLLAMA_TIMEOUT_MS (2.5s). 10s drain is plenty.
+TimeoutStopSec=15s
+KillMode=mixed
+KillSignal=SIGTERM
+
+# Resource caps (Wave 1 doctrine). N150 has 16 GB; classifier is the smallest
+# of the three jobs. The Node process itself is tiny; the heavy weights live
+# in Ollama. Hard cap 1G to leave headroom for the embedder (2G) + fallback
+# (4G) + Ollama caches + OS.
+MemoryMax=1G
+MemoryHigh=896M
+CPUQuota=50%
+TasksMax=64
+LimitNOFILE=1024
+
+# Hardening — least privilege; daemon makes outbound HTTP to localhost only.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+# Loopback only — outbound to Ollama at 127.0.0.1:11434 is local, no LAN egress.
+IPAddressDeny=any
+IPAddressAllow=127.0.0.1/32
+IPAddressAllow=::1/128
+
+# Writable carve-out for receipts (decisions.jsonl) + model.pin (hot-swap pin).
+# ProtectSystem=strict makes the rest of the FS read-only.
+ReadWritePaths=/opt/atomeons/orange5/n150-utility/classifier/state
+
+# Logging — journald is enough; daemon emits structured JSON lines per decision.
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=n150-classifier
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,659 @@
+{
+  "experiment": "49-all-permutations-v2",
+  "generated_at": "2026-06-27",
+  "total_permutations": 768,
+  "lossless_count": 576,
+  "lossy_count": 192,
+  "errors": 0,
+  "champion": {
+    "cfg": {
+      "detIds": true,
+      "dedupe": true,
+      "schemaFold": true,
+      "meshDecomp": true,
+      "stripAction": true,
+      "airDecomp": false,
+      "sortStyle": "b8",
+      "brotliPasses": 2
+    },
+    "total": 49016,
+    "ratio": 42.345,
+    "lossless": true
+  },
+  "top_30_lossless": [
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b8",
+        "brotliPasses": 2
+      },
+      "total": 49016,
+      "ratio": 42.345,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "b8",
+        "brotliPasses": 2
+      },
+      "total": 49107,
+      "ratio": 42.267,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b8",
+        "brotliPasses": 1
+      },
+      "total": 49197,
+      "ratio": 42.189,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "b8",
+        "brotliPasses": 1
+      },
+      "total": 49268,
+      "ratio": 42.128,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 1
+      },
+      "total": 49472,
+      "ratio": 41.955,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 2
+      },
+      "total": 49476,
+      "ratio": 41.951,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 2
+      },
+      "total": 49497,
+      "ratio": 41.934,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 1
+      },
+      "total": 49521,
+      "ratio": 41.913,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "lex",
+        "brotliPasses": 2
+      },
+      "total": 49818,
+      "ratio": 41.663,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "by-length",
+        "brotliPasses": 2
+      },
+      "total": 49904,
+      "ratio": 41.592,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "lex",
+        "brotliPasses": 2
+      },
+      "total": 49911,
+      "ratio": 41.586,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "lex",
+        "brotliPasses": 1
+      },
+      "total": 49948,
+      "ratio": 41.555,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "by-length",
+        "brotliPasses": 1
+      },
+      "total": 49986,
+      "ratio": 41.523,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "by-length",
+        "brotliPasses": 2
+      },
+      "total": 49990,
+      "ratio": 41.52,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "rev-len",
+        "brotliPasses": 2
+      },
+      "total": 50041,
+      "ratio": 41.478,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "lex",
+        "brotliPasses": 1
+      },
+      "total": 50043,
+      "ratio": 41.476,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "by-length",
+        "brotliPasses": 1
+      },
+      "total": 50057,
+      "ratio": 41.464,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "rev-len",
+        "brotliPasses": 1
+      },
+      "total": 50133,
+      "ratio": 41.402,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "rev-len",
+        "brotliPasses": 2
+      },
+      "total": 50137,
+      "ratio": 41.398,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "rev-len",
+        "brotliPasses": 1
+      },
+      "total": 50156,
+      "ratio": 41.383,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b8",
+        "brotliPasses": 2
+      },
+      "total": 50446,
+      "ratio": 41.145,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "b8",
+        "brotliPasses": 2
+      },
+      "total": 50537,
+      "ratio": 41.071,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b8",
+        "brotliPasses": 1
+      },
+      "total": 50627,
+      "ratio": 40.998,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "b8",
+        "brotliPasses": 1
+      },
+      "total": 50698,
+      "ratio": 40.94,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 1
+      },
+      "total": 50902,
+      "ratio": 40.776,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 2
+      },
+      "total": 50906,
+      "ratio": 40.773,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 2
+      },
+      "total": 50927,
+      "ratio": 40.756,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": false,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 1
+      },
+      "total": 50951,
+      "ratio": 40.737,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": false,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 1
+      },
+      "total": 51056,
+      "ratio": 40.653,
+      "lossless": true
+    },
+    {
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": false,
+        "stripAction": true,
+        "airDecomp": false,
+        "sortStyle": "b4",
+        "brotliPasses": 1
+      },
+      "total": 51056,
+      "ratio": 40.653,
+      "lossless": true
+    }
+  ],
+  "top_10_lossy": [
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 1
+      },
+      "total": 113792,
+      "ratio": 18.24,
+      "lossless": false
+    },
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 2
+      },
+      "total": 113796,
+      "ratio": 18.24,
+      "lossless": false
+    },
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "b4",
+        "brotliPasses": 1
+      },
+      "total": 113835,
+      "ratio": 18.233,
+      "lossless": false
+    },
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "b4",
+        "brotliPasses": 2
+      },
+      "total": 113839,
+      "ratio": 18.233,
+      "lossless": false
+    },
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "by-length",
+        "brotliPasses": 1
+      },
+      "total": 114469,
+      "ratio": 18.132,
+      "lossless": false
+    },
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "by-length",
+        "brotliPasses": 2
+      },
+      "total": 114473,
+      "ratio": 18.132,
+      "lossless": false
+    },
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "rev-len",
+        "brotliPasses": 1
+      },
+      "total": 114693,
+      "ratio": 18.097,
+      "lossless": false
+    },
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "rev-len",
+        "brotliPasses": 2
+      },
+      "total": 114697,
+      "ratio": 18.096,
+      "lossless": false
+    },
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 1
+      },
+      "total": 115222,
+      "ratio": 18.014,
+      "lossless": false
+    },
+    {
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "stripAction": true,
+        "airDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 2
+      },
+      "total": 115226,
+      "ratio": 18.013,
+      "lossless": false
+    }
+  ],
+  "flag_contribution": {
+    "detIds": {
+      "withFlag": 42.345,
+      "withoutFlag": 18.239,
+      "delta": 24.105999999999998
+    },
+    "dedupe": {
+      "withFlag": 42.345,
+      "withoutFlag": 36.855,
+      "delta": 5.490000000000002
+    },
+    "schemaFold": {
+      "withFlag": 42.345,
+      "withoutFlag": 41.145,
+      "delta": 1.1999999999999957
+    },
+    "meshDecomp": {
+      "withFlag": 42.345,
+      "withoutFlag": 40.653,
+      "delta": 1.6920000000000002
+    },
+    "stripAction": {
+      "withFlag": 42.345,
+      "withoutFlag": 42.267,
+      "delta": 0.07799999999999585
+    },
+    "airDecomp": {
+      "withFlag": 39.983,
+      "withoutFlag": 42.345,
+      "delta": -2.362000000000002
+    }
+  }
+}

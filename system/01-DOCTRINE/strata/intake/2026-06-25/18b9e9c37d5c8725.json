@@ -1,0 +1,11 @@
+{
+  "schema": "orange5.strata.intake.v1",
+  "intake_id": "18b9e9c37d5c8725",
+  "source": "smoke",
+  "content_type": "text/markdown",
+  "received_at": "2026-06-25T00:26:17.171Z",
+  "raw_sha256": "9f2e26d662f5bc0c08d083d03da20ef4dd43acde0bcb22f12322d5b82a5c65fa",
+  "bytes": 15,
+  "payload": "# hello strata\n",
+  "meta": {}
+}

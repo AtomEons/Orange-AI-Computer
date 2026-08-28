@@ -1,0 +1,77 @@
+[Unit]
+Description=Orange5 N150 utility — origin-based lane classifier (qwen3:0.6b stock tiebreak)
+Documentation=file:///opt/orange5/06-ORANGELLM/n150-utility/classifier/daemon.mjs
+After=network-online.target ollama.service
+Wants=network-online.target ollama.service
+
+[Service]
+Type=simple
+# N150 box runs the daemon under a non-root service user.
+# Create with: sudo useradd --system --no-create-home --shell /usr/sbin/nologin orange5
+User=orange5
+Group=orange5
+
+# Codebase install path on N150. Adjust if /opt is not used.
+WorkingDirectory=/opt/orange5/06-ORANGELLM/n150-utility/classifier
+
+# Node 20+ required. Bun is supported but systemd default uses node.
+# Swap to /usr/local/bin/bun if Bun is the chosen runtime on N150.
+ExecStart=/usr/bin/node /opt/orange5/06-ORANGELLM/n150-utility/classifier/daemon.mjs
+
+# Hot-swap: send SIGHUP after writing state/model.pin to re-bind without restart.
+ExecReload=/bin/kill -HUP $MAINPID
+
+Restart=on-failure
+RestartSec=3
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+# Environment. Override in /etc/systemd/system/n150-classifier.service.d/*.conf
+# instead of editing this unit.
+Environment=NODE_ENV=production
+Environment=N150_CLASSIFIER_HOST=127.0.0.1
+Environment=N150_CLASSIFIER_PORT=7480
+Environment=N150_OLLAMA_BASE=http://127.0.0.1:11434
+Environment=N150_OLLAMA_TIMEOUT_MS=2500
+
+# Hardening — N150 is a constrained utility host; lock the daemon down.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+# Loopback only — outbound to Ollama at 127.0.0.1:11434 is local, no LAN egress.
+IPAddressDeny=any
+IPAddressAllow=127.0.0.1/32
+IPAddressAllow=::1/128
+
+# Read-only filesystem with a single writable carve-out for decisions.jsonl
+# and model.pin. ReadWritePaths must exist; mkdir before enable.
+ReadWritePaths=/opt/orange5/06-ORANGELLM/n150-utility/classifier/state
+
+# Resource caps — N150 has 4 cores / 16 GB. Classifier is tiny; cap it.
+MemoryMax=512M
+CPUQuota=50%
+TasksMax=64
+LimitNOFILE=1024
+
+# Logs land in journal: journalctl -u n150-classifier -f
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

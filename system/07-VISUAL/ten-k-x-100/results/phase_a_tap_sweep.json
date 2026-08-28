@@ -1,0 +1,2526 @@
+{
+  "date": "2026-07-11",
+  "doctrine": "GPT v4 (spine seq 112) — 7-axis sweep after two-lane pilot green (seq 113)",
+  "axes": [
+    "spatial_color",
+    "texture",
+    "photon_histogram",
+    "photon_correlation",
+    "color_ratio",
+    "dichromatic",
+    "hu_moments"
+  ],
+  "noise_sigma": 0.005,
+  "probes": 12,
+  "results": [
+    {
+      "probe": "orange-vs-baboon",
+      "category": "wild-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5368286506996368,
+              "noise": 0.0026047033527207887,
+              "ratio": 206.09972730249032
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.35216970331801817,
+              "noise": 0.00003090584931711498,
+              "ratio": 11394.920738288669
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.33228484262215313,
+              "noise": 0.000029542652735990743,
+              "ratio": 11247.630522270012
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.33228484262215313,
+              "noise": 0.000029542652735990743,
+              "ratio": 11247.630522270012
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4353548648448436,
+              "noise": 0.002022195564026554,
+              "ratio": 215.28821078905645
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.748363969651485,
+              "noise": 0.09673055497842188,
+              "ratio": 7.7365830250682
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.014624276595869231,
+              "noise": 0.000025374142958540006,
+              "ratio": 576.3456373586496
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.014624276595869231,
+              "noise": 0.000025374142958540006,
+              "ratio": 576.3456373586496
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5671936633758856,
+              "noise": 0.002800822532001082,
+              "ratio": 202.50967595960003
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.5869787669204247,
+              "noise": 0.022303536313843974,
+              "ratio": 26.31774435500986
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.4432532154678844,
+              "noise": 0.004575614426341656,
+              "ratio": 96.87293861914823
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.4432532154678844,
+              "noise": 0.004575614426341656,
+              "ratio": 96.87293861914823
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5671936633758856,
+              "noise": 0.002800822532001082,
+              "ratio": 202.50967595960003
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 1.0746410924844225,
+              "noise": 0.00017370241711854562,
+              "ratio": 6186.678978399125
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 1.0006125572525815,
+              "noise": 0.00006004537771397943,
+              "ratio": 16664.27284409645
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 1.0006125572525815,
+              "noise": 0.00006004537771397943,
+              "ratio": 16664.27284409645
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5671936633758856,
+              "noise": 0.002800822532001082,
+              "ratio": 202.50967595960003
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.35216970331801817,
+              "noise": 0.00003090584931711498,
+              "ratio": 11394.920738288669
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.2848178719656477,
+              "noise": 0.000016880193762778352,
+              "ratio": 16872.902999116333
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.2848178719656477,
+              "noise": 0.000016880193762778352,
+              "ratio": 16872.902999116333
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5671936633758856,
+              "noise": 0.002800822532001082,
+              "ratio": 202.50967595960003
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.45815354612842907,
+              "noise": 0.0038972501789291034,
+              "ratio": 117.55815641640991
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.44872284092454723,
+              "noise": 0.010795130911413382,
+              "ratio": 41.567151395091045
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.44872284092454723,
+              "noise": 0.010795130911413382,
+              "ratio": 41.567151395091045
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5671936633758856,
+              "noise": 0.002800822532001082,
+              "ratio": 202.50967595960003
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.8043130544847894,
+              "noise": 0.08039297401177715,
+              "ratio": 10.004768008295871
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0004698658605995221,
+              "noise": 0.0000015068841517861716,
+              "ratio": 311.81286235081234
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0004698658605995221,
+              "noise": 0.0000015068841517861716,
+              "ratio": 311.81286235081234
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "apple-vs-baboon",
+      "category": "wild-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5198555529879801,
+              "noise": 0.0027397573693490394,
+              "ratio": 189.7451061921942
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.370040099344617,
+              "noise": 0.00002667770822860539,
+              "ratio": 13870.7604181621
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.34480319845930885,
+              "noise": 0.00002730690374550604,
+              "ratio": 12626.96062771503
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.34480319845930885,
+              "noise": 0.00002730690374550604,
+              "ratio": 12626.96062771503
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.39155755295719075,
+              "noise": 0.0021519345880021174,
+              "ratio": 181.9560664809601
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.6777344742928972,
+              "noise": 0.0789327618396029,
+              "ratio": 8.58622526942745
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.012647233977869357,
+              "noise": 0.000025374142958540006,
+              "ratio": 498.42999617895515
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.012647233977869357,
+              "noise": 0.000025374142958540006,
+              "ratio": 498.42999617895515
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5562069645376779,
+              "noise": 0.002914888768322224,
+              "ratio": 190.81584538741222
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.7946314859180793,
+              "noise": 0.013084603407684456,
+              "ratio": 60.73026909255807
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.4480379691274302,
+              "noise": 0.004575614426341656,
+              "ratio": 97.9186459742086
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.4480379691274302,
+              "noise": 0.004575614426341656,
+              "ratio": 97.9186459742086
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5562069645376779,
+              "noise": 0.002914888768322224,
+              "ratio": 190.81584538741222
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.8692191866999027,
+              "noise": 0.00024822312478407814,
+              "ratio": 3501.7655484597194
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.24704317834702635,
+              "noise": 0.00009028061457934469,
+              "ratio": 2736.3922974838433
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.24704317834702635,
+              "noise": 0.00009028061457934469,
+              "ratio": 2736.3922974838433
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5562069645376779,
+              "noise": 0.002914888768322224,
+              "ratio": 190.81584538741222
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.370040099344617,
+              "noise": 0.00002667770822860539,
+              "ratio": 13870.7604181621
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.2902918016354522,
+              "noise": 0.000014234897662096281,
+              "ratio": 20392.96723631681
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.2902918016354522,
+              "noise": 0.000014234897662096281,
+              "ratio": 20392.96723631681
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5562069645376779,
+              "noise": 0.002914888768322224,
+              "ratio": 190.81584538741222
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.43599451131810085,
+              "noise": 0.002835336119668356,
+              "ratio": 153.77171979493505
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.41529819860917805,
+              "noise": 0.0033321721218979128,
+              "ratio": 124.63287711939553
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.41529819860917805,
+              "noise": 0.0033321721218979128,
+              "ratio": 124.63287711939553
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5562069645376779,
+              "noise": 0.002914888768322224,
+              "ratio": 190.81584538741222
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.7520102159722334,
+              "noise": 0.08039297401177715,
+              "ratio": 9.354178337301812
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0006075061530012958,
+              "noise": 5.4793081817039e-7,
+              "ratio": 1108.7278409158212
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0006075061530012958,
+              "noise": 5.4793081817039e-7,
+              "ratio": 1108.7278409158212
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-vs-basketball",
+      "category": "wild-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.580788423182453,
+              "noise": 0.0026047033527207887,
+              "ratio": 222.97680178273671
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.374668453030412,
+              "noise": 0.0000436128748880296,
+              "ratio": 8590.77632447585
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.3701294360219921,
+              "noise": 0.0000513307441506803,
+              "ratio": 7210.677385379123
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.3701294360219921,
+              "noise": 0.0000513307441506803,
+              "ratio": 7210.677385379123
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.46051261062744064,
+              "noise": 0.0020357404731070647,
+              "ratio": 226.21381099948348
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.7821731248304696,
+              "noise": 0.4730617275827497,
+              "ratio": 1.6534271940095788
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.003938267163533581,
+              "noise": 0.00031201066474829394,
+              "ratio": 12.622219713901993
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.003938267163533581,
+              "noise": 0.00031201066474829394,
+              "ratio": 12.622219713901993
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.492738250798556,
+              "noise": 0.002800822532001082,
+              "ratio": 175.92626636237216
+            },
+            "T1": {
+              "verdict": "COLLAPSED",
+              "gap": 0.6668916766641569,
+              "noise": 0.7019594589466062,
+              "ratio": 0.9500430091289409
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.5392600673779308,
+              "noise": 0.04407511579839257,
+              "ratio": 12.23502326901652
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.5392600673779308,
+              "noise": 0.04407511579839257,
+              "ratio": 12.23502326901652
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.492738250798556,
+              "noise": 0.002800822532001082,
+              "ratio": 175.92626636237216
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 1.0657288095513775,
+              "noise": 0.00017370241711854562,
+              "ratio": 6135.37121261851
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 1.0739449180091787,
+              "noise": 0.00006004537771397943,
+              "ratio": 17885.555206677447
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 1.0739449180091787,
+              "noise": 0.00006004537771397943,
+              "ratio": 17885.555206677447
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.492738250798556,
+              "noise": 0.002800822532001082,
+              "ratio": 175.92626636237216
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.374668453030412,
+              "noise": 0.0000436128748880296,
+              "ratio": 8590.77632447585
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.41245024655675194,
+              "noise": 0.00001739536642809664,
+              "ratio": 23710.351159408216
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.41245024655675194,
+              "noise": 0.00001739536642809664,
+              "ratio": 23710.351159408216
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.492738250798556,
+              "noise": 0.002800822532001082,
+              "ratio": 175.92626636237216
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.5028152004054103,
+              "noise": 0.0038972501789291034,
+              "ratio": 129.01794273406773
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.3990368418058883,
+              "noise": 0.010795130911413382,
+              "ratio": 36.96452086412385
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.3990368418058883,
+              "noise": 0.010795130911413382,
+              "ratio": 36.96452086412385
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.492738250798556,
+              "noise": 0.002800822532001082,
+              "ratio": 175.92626636237216
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.9999999999995399,
+              "noise": 0.07262126201203285,
+              "ratio": 13.770071908607795
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 1,
+              "noise": 0.0000015068841517861716,
+              "ratio": 663621.0214399421
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 1,
+              "noise": 0.0000015068841517861716,
+              "ratio": 663621.0214399421
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-vs-apple",
+      "category": "cat-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3426920865411247,
+              "noise": 0.0027397573693490394,
+              "ratio": 125.08118068226882
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.2016511083838293,
+              "noise": 0.00003090584931711498,
+              "ratio": 6524.690724877099
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.23031842780858638,
+              "noise": 0.000029542652735990743,
+              "ratio": 7796.1322521317725
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.23031842780858638,
+              "noise": 0.000029542652735990743,
+              "ratio": 7796.1322521317725
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3320872084890742,
+              "noise": 0.0021519345880021174,
+              "ratio": 154.3203080337995
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.2133744049879752,
+              "noise": 0.09673055497842188,
+              "ratio": 2.2058635457593887
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0019770883279931566,
+              "noise": 0.000006347669498794133,
+              "ratio": 311.46680342584693
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0019770883279931566,
+              "noise": 0.000006347669498794133,
+              "ratio": 311.46680342584693
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.34582407285026867,
+              "noise": 0.002914888768322224,
+              "ratio": 118.6405727067661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.7380024890408928,
+              "noise": 0.022303536313843974,
+              "ratio": 33.089034790541675
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.36157034459400994,
+              "noise": 0.0036478438072352595,
+              "ratio": 99.11892167007228
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.36157034459400994,
+              "noise": 0.0036478438072352595,
+              "ratio": 99.11892167007228
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.34582407285026867,
+              "noise": 0.002914888768322224,
+              "ratio": 118.6405727067661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.9726039157541218,
+              "noise": 0.00024822312478407814,
+              "ratio": 3918.264732990372
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.8235663681542494,
+              "noise": 0.00009028061457934469,
+              "ratio": 9122.2946586218
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.8235663681542494,
+              "noise": 0.00009028061457934469,
+              "ratio": 9122.2946586218
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.34582407285026867,
+              "noise": 0.002914888768322224,
+              "ratio": 118.6405727067661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.2016511083838293,
+              "noise": 0.00003090584931711498,
+              "ratio": 6524.690724877099
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.08841229007755493,
+              "noise": 0.000016880193762778352,
+              "ratio": 5237.634787848723
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.08841229007755493,
+              "noise": 0.000016880193762778352,
+              "ratio": 5237.634787848723
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.34582407285026867,
+              "noise": 0.002914888768322224,
+              "ratio": 118.6405727067661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.30311627092472804,
+              "noise": 0.0038972501789291034,
+              "ratio": 77.77695990972258
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.18403209832978568,
+              "noise": 0.010795130911413382,
+              "ratio": 17.04769491356643
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.18403209832978568,
+              "noise": 0.010795130911413382,
+              "ratio": 17.04769491356643
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.34582407285026867,
+              "noise": 0.002914888768322224,
+              "ratio": 118.6405727067661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.3586481335306698,
+              "noise": 0.07262126201203285,
+              "ratio": 4.938610588607566
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00036244642060050147,
+              "noise": 0.0000015068841517861716,
+              "ratio": 240.52706385615565
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00036244642060050147,
+              "noise": 0.0000015068841517861716,
+              "ratio": 240.52706385615565
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "basketball1-vs-basketball2",
+      "category": "cat-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.15893846577211423,
+              "noise": 0.0025642014669068993,
+              "ratio": 61.983610813480965
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.004230935996330707,
+              "noise": 0.0000436128748880296,
+              "ratio": 97.0111694584016
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0057971414559702256,
+              "noise": 0.0000513307441506803,
+              "ratio": 112.93702345231624
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0057971414559702256,
+              "noise": 0.0000513307441506803,
+              "ratio": 112.93702345231624
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.15893846577212487,
+              "noise": 0.002039507281257728,
+              "ratio": 77.92983493253838
+            },
+            "T1": {
+              "verdict": "COLLAPSED",
+              "gap": 0.06904469353343166,
+              "noise": 0.4730617275827497,
+              "ratio": 0.1459528207581623
+            },
+            "T2": {
+              "verdict": "COLLAPSED",
+              "gap": 0.00012207948124587682,
+              "noise": 0.00031201066474829394,
+              "ratio": 0.39126701436427214
+            },
+            "T3": {
+              "verdict": "COLLAPSED",
+              "gap": 0.00012207948124587682,
+              "noise": 0.00031201066474829394,
+              "ratio": 0.39126701436427214
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.1589384657721258,
+              "noise": 0.002716671883037765,
+              "ratio": 58.50484438864286
+            },
+            "T1": {
+              "verdict": "COLLAPSED",
+              "gap": 0.009631380855893473,
+              "noise": 0.7020382885550127,
+              "ratio": 0.013719167476915674
+            },
+            "T2": {
+              "verdict": "COLLAPSED",
+              "gap": 0.0032136747406994425,
+              "noise": 0.04407511579839257,
+              "ratio": 0.07291358587460922
+            },
+            "T3": {
+              "verdict": "COLLAPSED",
+              "gap": 0.0032136747406994425,
+              "noise": 0.04407511579839257,
+              "ratio": 0.07291358587460922
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.1589384657721258,
+              "noise": 0.002716671883037765,
+              "ratio": 58.50484438864286
+            },
+            "T1": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0,
+              "noise": 0.00006965533793540053,
+              "ratio": 0
+            },
+            "T2": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0,
+              "noise": 0.00001180546383472074,
+              "ratio": 0
+            },
+            "T3": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0,
+              "noise": 0.00001180546383472074,
+              "ratio": 0
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.1589384657721258,
+              "noise": 0.002716671883037765,
+              "ratio": 58.50484438864286
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.004230935996330707,
+              "noise": 0.0000436128748880296,
+              "ratio": 97.0111694584016
+            },
+            "T2": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0,
+              "noise": 0.000018534981927482062,
+              "ratio": 0
+            },
+            "T3": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0,
+              "noise": 0.000018534981927482062,
+              "ratio": 0
+            }
+          },
+          "diagnosis": "POOLED_FAILS - pooling destroys structure"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.1589384657721258,
+              "noise": 0.002716671883037765,
+              "ratio": 58.50484438864286
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.007990868031287889,
+              "noise": 0.002934355682699855,
+              "ratio": 2.7232104405065223
+            },
+            "T2": {
+              "verdict": "COLLAPSED",
+              "gap": 0.001673910119901366,
+              "noise": 0.003077622849207356,
+              "ratio": 0.5438970926318938
+            },
+            "T3": {
+              "verdict": "COLLAPSED",
+              "gap": 0.001673910119901366,
+              "noise": 0.003077622849207356,
+              "ratio": 0.5438970926318938
+            }
+          },
+          "diagnosis": "POOLED_FAILS - pooling destroys structure"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.1589384657721258,
+              "noise": 0.002716671883037765,
+              "ratio": 58.50484438864286
+            },
+            "T1": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0,
+              "noise": 1e-9,
+              "ratio": 0
+            },
+            "T2": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0,
+              "noise": 1e-9,
+              "ratio": 0
+            },
+            "T3": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0,
+              "noise": 1e-9,
+              "ratio": 0
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        }
+      }
+    },
+    {
+      "probe": "orange-still-vs-video",
+      "category": "same-diff-src",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.35011052004690724,
+              "noise": 0.0026047033527207887,
+              "ratio": 134.4147385080121
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.2321153176242542,
+              "noise": 0.00003090584931711498,
+              "ratio": 7510.400870805833
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.22541093400397014,
+              "noise": 0.000029542652735990743,
+              "ratio": 7630.016709005965
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.22541093400397014,
+              "noise": 0.000029542652735990743,
+              "ratio": 7630.016709005965
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3154644879391371,
+              "noise": 0.001986593676219251,
+              "ratio": 158.79668384906344
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.5021236638695541,
+              "noise": 0.1793057852395965,
+              "ratio": 2.80037625779109
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00033021611896176723,
+              "noise": 0.000010075915786463189,
+              "ratio": 32.77281449745805
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00033021611896176723,
+              "noise": 0.000010075915786463189,
+              "ratio": 32.77281449745805
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3619645888836189,
+              "noise": 0.002800822532001082,
+              "ratio": 129.23510316985661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.3932378673889633,
+              "noise": 0.022303536313843974,
+              "ratio": 17.63118914666808
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.19544045280687922,
+              "noise": 0.0036478438072352595,
+              "ratio": 53.57697948010709
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.19544045280687922,
+              "noise": 0.0036478438072352595,
+              "ratio": 53.57697948010709
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3619645888836189,
+              "noise": 0.002800822532001082,
+              "ratio": 129.23510316985661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.3672968505144592,
+              "noise": 0.0006460541086110338,
+              "ratio": 568.5233568193212
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.31795734129307124,
+              "noise": 0.00006554891284962844,
+              "ratio": 4850.688248979458
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.31795734129307124,
+              "noise": 0.00006554891284962844,
+              "ratio": 4850.688248979458
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3619645888836189,
+              "noise": 0.002800822532001082,
+              "ratio": 129.23510316985661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.2321153176242542,
+              "noise": 0.00003090584931711498,
+              "ratio": 7510.400870805833
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.1091171559138854,
+              "noise": 0.000016880193762778352,
+              "ratio": 6464.212286146504
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.1091171559138854,
+              "noise": 0.000016880193762778352,
+              "ratio": 6464.212286146504
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3619645888836189,
+              "noise": 0.002800822532001082,
+              "ratio": 129.23510316985661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.32855725009875,
+              "noise": 0.004372429172971637,
+              "ratio": 75.14295534613598
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.4684871591336616,
+              "noise": 0.010795130911413382,
+              "ratio": 43.39800628432802
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.4684871591336616,
+              "noise": 0.010795130911413382,
+              "ratio": 43.39800628432802
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3619645888836189,
+              "noise": 0.002800822532001082,
+              "ratio": 129.23510316985661
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.3927076460309355,
+              "noise": 0.07368898177291518,
+              "ratio": 5.329258684034056
+            },
+            "T2": {
+              "verdict": "WEAK",
+              "gap": 0.00035914074993014216,
+              "noise": 0.00025819990697366254,
+              "ratio": 1.3909406635331438
+            },
+            "T3": {
+              "verdict": "WEAK",
+              "gap": 0.00035914074993014216,
+              "noise": 0.00025819990697366254,
+              "ratio": 1.3909406635331438
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "apple-still-vs-video",
+      "category": "same-diff-src",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.299362161603227,
+              "noise": 0.0027397573693490394,
+              "ratio": 109.26593900333401
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.18003083403670392,
+              "noise": 0.00002667770822860539,
+              "ratio": 6748.3620592140815
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.18527622319619244,
+              "noise": 0.00002730690374550604,
+              "ratio": 6784.959031713135
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.18527622319619244,
+              "noise": 0.00002730690374550604,
+              "ratio": 6784.959031713135
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.2536359695857935,
+              "noise": 0.0022675425428800226,
+              "ratio": 111.85499931729993
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.495824841051111,
+              "noise": 0.18352099970649235,
+              "ratio": 2.701733544630263
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0002976416354718621,
+              "noise": 0.000026648522324693608,
+              "ratio": 11.169160970552397
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0002976416354718621,
+              "noise": 0.000026648522324693608,
+              "ratio": 11.169160970552397
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3107726946649625,
+              "noise": 0.002914888768322224,
+              "ratio": 106.61562734136152
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.5063404442950189,
+              "noise": 0.011513011974623942,
+              "ratio": 43.97984171397145
+            },
+            "T2": {
+              "verdict": "COLLAPSED",
+              "gap": 0.1535709136066401,
+              "noise": 0.18727399061786598,
+              "ratio": 0.8200333271052185
+            },
+            "T3": {
+              "verdict": "COLLAPSED",
+              "gap": 0.1535709136066401,
+              "noise": 0.18727399061786598,
+              "ratio": 0.8200333271052185
+            }
+          },
+          "diagnosis": "POOLED_FAILS - pooling destroys structure"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3107726946649625,
+              "noise": 0.002914888768322224,
+              "ratio": 106.61562734136152
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.5680547078601647,
+              "noise": 0.0006693391194957728,
+              "ratio": 848.6799759860028
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.3265592561038589,
+              "noise": 0.00011545577825830087,
+              "ratio": 2828.4357961995756
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.3265592561038589,
+              "noise": 0.00011545577825830087,
+              "ratio": 2828.4357961995756
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3107726946649625,
+              "noise": 0.002914888768322224,
+              "ratio": 106.61562734136152
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.18003083403670392,
+              "noise": 0.00002667770822860539,
+              "ratio": 6748.3620592140815
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.11723555443226662,
+              "noise": 0.000014234897662096281,
+              "ratio": 8235.784844764532
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.11723555443226662,
+              "noise": 0.000014234897662096281,
+              "ratio": 8235.784844764532
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3107726946649625,
+              "noise": 0.002914888768322224,
+              "ratio": 106.61562734136152
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.27993773112560705,
+              "noise": 0.0038549183583326194,
+              "ratio": 72.6183293922441
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.46816485306212363,
+              "noise": 0.010330123398057887,
+              "ratio": 45.32035436770686
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.46816485306212363,
+              "noise": 0.010330123398057887,
+              "ratio": 45.32035436770686
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3107726946649625,
+              "noise": 0.002914888768322224,
+              "ratio": 106.61562734136152
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.19836289427447412,
+              "noise": 0.031166436953338945,
+              "ratio": 6.3646317534293235
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.000650053403828792,
+              "noise": 3.426527095915474e-7,
+              "ratio": 1897.1202784407444
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.000650053403828792,
+              "noise": 3.426527095915474e-7,
+              "ratio": 1897.1202784407444
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-hue-shifted-red",
+      "category": "hue-shift",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.1049576111610773,
+              "noise": 0.0026047033527207887,
+              "ratio": 40.29541830605853
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.09721728879249072,
+              "noise": 0.0001629030522218155,
+              "ratio": 596.7800324582971
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.08430830935047129,
+              "noise": 0.00014124213118135988,
+              "ratio": 596.9062392737223
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.08430830935047129,
+              "noise": 0.00014124213118135988,
+              "ratio": 596.9062392737223
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.03571725656950698,
+              "noise": 0.00205881106325612,
+              "ratio": 17.34848680724409
+            },
+            "T1": {
+              "verdict": "COLLAPSED",
+              "gap": 0.07345997002386748,
+              "noise": 0.11662770001795297,
+              "ratio": 0.6298672614872752
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00021299145775693579,
+              "noise": 0.0000035074546557041464,
+              "ratio": 60.72536316629195
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00021299145775693579,
+              "noise": 0.0000035074546557041464,
+              "ratio": 60.72536316629195
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.11668779727602775,
+              "noise": 0.002800822532001082,
+              "ratio": 41.66197463166605
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.36180371964148467,
+              "noise": 0.023475637238420475,
+              "ratio": 15.411880664493864
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.21814422380947973,
+              "noise": 0.0036478438072352595,
+              "ratio": 59.80086739920304
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.21814422380947973,
+              "noise": 0.0036478438072352595,
+              "ratio": 59.80086739920304
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.11668779727602775,
+              "noise": 0.002800822532001082,
+              "ratio": 41.66197463166605
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.4693509010720799,
+              "noise": 0.0004118316892916455,
+              "ratio": 1139.666794168676
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.44543624786238123,
+              "noise": 0.0003406708723655674,
+              "ratio": 1307.5266598794867
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.44543624786238123,
+              "noise": 0.0003406708723655674,
+              "ratio": 1307.5266598794867
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.11668779727602775,
+              "noise": 0.002800822532001082,
+              "ratio": 41.66197463166605
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.09721728879249072,
+              "noise": 0.0001629030522218155,
+              "ratio": 596.7800324582971
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.14784294187809016,
+              "noise": 0.00012016251033544414,
+              "ratio": 1230.3582994843705
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.14784294187809016,
+              "noise": 0.00012016251033544414,
+              "ratio": 1230.3582994843705
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.11668779727602775,
+              "noise": 0.002800822532001082,
+              "ratio": 41.66197463166605
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.11489331864885663,
+              "noise": 0.0038972501789291034,
+              "ratio": 29.480611552740328
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.5087500214197381,
+              "noise": 0.010795130911413382,
+              "ratio": 47.127730603234404
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.5087500214197381,
+              "noise": 0.010795130911413382,
+              "ratio": 47.127730603234404
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.11668779727602775,
+              "noise": 0.002800822532001082,
+              "ratio": 41.66197463166605
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.16358608046363118,
+              "noise": 0.07401591565568034,
+              "ratio": 2.2101473583685483
+            },
+            "T2": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0.000008468628497024963,
+              "noise": 0.0000015068841517861716,
+              "ratio": 0
+            },
+            "T3": {
+              "verdict": "COLLAPSED_CONSTANT",
+              "gap": 0.000008468628497024963,
+              "noise": 0.0000015068841517861716,
+              "ratio": 0
+            }
+          },
+          "diagnosis": "POOLED_FAILS - pooling destroys structure"
+        }
+      }
+    },
+    {
+      "probe": "apple-hue-shifted-orange",
+      "category": "hue-shift",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.17357291298115526,
+              "noise": 0.0028232269555353872,
+              "ratio": 61.48032578140339
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.17173110925111137,
+              "noise": 0.00004496942416750392,
+              "ratio": 3818.8416336273385
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.1606538854943633,
+              "noise": 0.00004317917091571237,
+              "ratio": 3720.6338632107295
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.1606538854943633,
+              "noise": 0.00004317917091571237,
+              "ratio": 3720.6338632107295
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.02648346248966086,
+              "noise": 0.0021519345880021174,
+              "ratio": 12.30681575421325
+            },
+            "T1": {
+              "verdict": "COLLAPSED",
+              "gap": 0.06895459889062268,
+              "noise": 0.08005941501051957,
+              "ratio": 0.8612928146122758
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00017799854998171684,
+              "noise": 0.000006347669498794133,
+              "ratio": 28.041559192004442
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00017799854998171684,
+              "noise": 0.000006347669498794133,
+              "ratio": 28.041559192004442
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.19651018801378778,
+              "noise": 0.0030868213689718258,
+              "ratio": 63.66101711912225
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.7379794802536417,
+              "noise": 0.007916001995641622,
+              "ratio": 93.22628779779959
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.2670739728059126,
+              "noise": 0.002480920985491162,
+              "ratio": 107.65114018858543
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.2670739728059126,
+              "noise": 0.002480920985491162,
+              "ratio": 107.65114018858543
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.19651018801378778,
+              "noise": 0.0030868213689718258,
+              "ratio": 63.66101711912225
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.35962116067385813,
+              "noise": 0.00030569578823850456,
+              "ratio": 1176.4020785045323
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.3268373021846965,
+              "noise": 0.0001556731784119621,
+              "ratio": 2099.50940501631
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.3268373021846965,
+              "noise": 0.0001556731784119621,
+              "ratio": 2099.50940501631
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.19651018801378778,
+              "noise": 0.0030868213689718258,
+              "ratio": 63.66101711912225
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.17173110925111137,
+              "noise": 0.00004496942416750392,
+              "ratio": 3818.8416336273385
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.23402963397131005,
+              "noise": 0.000026036310193914,
+              "ratio": 8988.586793915774
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.23402963397131005,
+              "noise": 0.000026036310193914,
+              "ratio": 8988.586793915774
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.19651018801378778,
+              "noise": 0.0030868213689718258,
+              "ratio": 63.66101711912225
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.22370822103192908,
+              "noise": 0.003408713774373561,
+              "ratio": 65.62833838198728
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.7939815008765149,
+              "noise": 0.0036082247014587563,
+              "ratio": 220.04768731712272
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.7939815008765149,
+              "noise": 0.0036082247014587563,
+              "ratio": 220.04768731712272
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.19651018801378778,
+              "noise": 0.0030868213689718258,
+              "ratio": 63.66101711912225
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.14929486981740336,
+              "noise": 0.03730327484619485,
+              "ratio": 4.00219204434359
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0003911508256717119,
+              "noise": 6.597317442506224e-7,
+              "ratio": 592.8937467091464
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0003911508256717119,
+              "noise": 6.597317442506224e-7,
+              "ratio": 592.8937467091464
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "train-orange-vs-test-apple",
+      "category": "cat-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4050939232319886,
+              "noise": 0.0027554841451440004,
+              "ratio": 147.01370136565188
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.21668392770053185,
+              "noise": 0.000025791821375945203,
+              "ratio": 8401.265057714094
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.2447668201877513,
+              "noise": 0.000026899095591500225,
+              "ratio": 9099.444230574598
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.2447668201877513,
+              "noise": 0.000026899095591500225,
+              "ratio": 9099.444230574598
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.36325859009412936,
+              "noise": 0.0021762628374323713,
+              "ratio": 166.91852833489276
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.22251129786960255,
+              "noise": 0.059851387001261074,
+              "ratio": 3.717730014592882
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00038588686009657263,
+              "noise": 0.000009283558847653999,
+              "ratio": 41.566695103579605
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00038588686009657263,
+              "noise": 0.000009283558847653999,
+              "ratio": 41.566695103579605
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4183261729639403,
+              "noise": 0.0029260350714824268,
+              "ratio": 142.96690324767786
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.7350807770329146,
+              "noise": 0.023071570128702923,
+              "ratio": 31.86089082504246
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.2940466959623844,
+              "noise": 0.0037336590375449275,
+              "ratio": 78.75563703206686
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.2940466959623844,
+              "noise": 0.0037336590375449275,
+              "ratio": 78.75563703206686
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4183261729639403,
+              "noise": 0.0029260350714824268,
+              "ratio": 142.96690324767786
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.94903146610804,
+              "noise": 0.00023259714065310168,
+              "ratio": 4080.151043315866
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.7298383196313819,
+              "noise": 0.00006570858077212871,
+              "ratio": 11107.199562906308
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.7298383196313819,
+              "noise": 0.00006570858077212871,
+              "ratio": 11107.199562906308
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4183261729639403,
+              "noise": 0.0029260350714824268,
+              "ratio": 142.96690324767786
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.21668392770053185,
+              "noise": 0.000025791821375945203,
+              "ratio": 8401.265057714094
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.11382431332769469,
+              "noise": 0.000013362846796385369,
+              "ratio": 8517.968892562923
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.11382431332769469,
+              "noise": 0.000013362846796385369,
+              "ratio": 8517.968892562923
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4183261729639403,
+              "noise": 0.0029260350714824268,
+              "ratio": 142.96690324767786
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.37855763747236876,
+              "noise": 0.003757076181425609,
+              "ratio": 100.75857373984
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.4133074439739896,
+              "noise": 0.0029748375960633355,
+              "ratio": 138.9344562946656
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.4133074439739896,
+              "noise": 0.0029748375960633355,
+              "ratio": 138.9344562946656
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4183261729639403,
+              "noise": 0.0029260350714824268,
+              "ratio": 142.96690324767786
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.4331773225598396,
+              "noise": 0.08553574635097605,
+              "ratio": 5.064284127274662
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0005282849181149824,
+              "noise": 9.17402302459714e-7,
+              "ratio": 575.8486944043626
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0005282849181149824,
+              "noise": 9.17402302459714e-7,
+              "ratio": 575.8486944043626
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "train-orange-vs-fruits",
+      "category": "same-diff-src",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.6442967425073599,
+              "noise": 0.0034934242519814676,
+              "ratio": 184.43129034268176
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.4707472150373708,
+              "noise": 0.00006377178477376307,
+              "ratio": 7381.747534703548
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.5332308251105802,
+              "noise": 0.00020534096616523496,
+              "ratio": 2596.806838249202
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.5332308251105802,
+              "noise": 0.00020534096616523496,
+              "ratio": 2596.806838249202
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.6344052326591688,
+              "noise": 0.0027213018809055882,
+              "ratio": 233.1256363399319
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.6301999736154719,
+              "noise": 0.0699303858660691,
+              "ratio": 9.011818908341688
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0010759767957643914,
+              "noise": 0.00001909239266897518,
+              "ratio": 56.35630978367818
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0010759767957643914,
+              "noise": 0.00001909239266897518,
+              "ratio": 56.35630978367818
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.6759052678423603,
+              "noise": 0.003725413474592737,
+              "ratio": 181.4309398009171
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.6082662551115974,
+              "noise": 0.023071570128702923,
+              "ratio": 26.364319884534616
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.29323195942016933,
+              "noise": 0.0037336590375449275,
+              "ratio": 78.5374230671541
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.29323195942016933,
+              "noise": 0.0037336590375449275,
+              "ratio": 78.5374230671541
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.6759052678423603,
+              "noise": 0.003725413474592737,
+              "ratio": 181.4309398009171
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.9373053774773266,
+              "noise": 0.00015923848704838323,
+              "ratio": 5886.173593149842
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.8244483663185113,
+              "noise": 0.000055957961309233415,
+              "ratio": 14733.3524493944
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.8244483663185113,
+              "noise": 0.000055957961309233415,
+              "ratio": 14733.3524493944
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.6759052678423603,
+              "noise": 0.003725413474592737,
+              "ratio": 181.4309398009171
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.4707472150373708,
+              "noise": 0.00006377178477376307,
+              "ratio": 7381.747534703548
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.09294257708666258,
+              "noise": 0.000046198535132650974,
+              "ratio": 2011.807881349361
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.09294257708666258,
+              "noise": 0.000046198535132650974,
+              "ratio": 2011.807881349361
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.6759052678423603,
+              "noise": 0.003725413474592737,
+              "ratio": 181.4309398009171
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.5655552278566126,
+              "noise": 0.003757076181425609,
+              "ratio": 150.53067879023274
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.265301247785974,
+              "noise": 0.0023126538010875062,
+              "ratio": 114.71723422728397
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.265301247785974,
+              "noise": 0.0023126538010875062,
+              "ratio": 114.71723422728397
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.6759052678423603,
+              "noise": 0.003725413474592737,
+              "ratio": 181.4309398009171
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.6863835129170699,
+              "noise": 0.08553574635097605,
+              "ratio": 8.024522403775547
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00027361339619096526,
+              "noise": 9.17402302459714e-7,
+              "ratio": 298.2479937725908
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00027361339619096526,
+              "noise": 9.17402302459714e-7,
+              "ratio": 298.2479937725908
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "train-orange-vs-lena",
+      "category": "wild-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5586309802067196,
+              "noise": 0.0026295860110112225,
+              "ratio": 212.44065714811697
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.3365530589403698,
+              "noise": 0.000025791821375945203,
+              "ratio": 13048.828697854457
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.36073239470044083,
+              "noise": 0.000026899095591500225,
+              "ratio": 13410.577075848889
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.36073239470044083,
+              "noise": 0.000026899095591500225,
+              "ratio": 13410.577075848889
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4838399681958078,
+              "noise": 0.0021943275737947034,
+              "ratio": 220.4957791963083
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.7008036348209591,
+              "noise": 0.059851387001261074,
+              "ratio": 11.709062562012024
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0028212010560341463,
+              "noise": 0.0000167340283992571,
+              "ratio": 168.5906697851303
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0028212010560341463,
+              "noise": 0.0000167340283992571,
+              "ratio": 168.5906697851303
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_histogram": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5757606045751353,
+              "noise": 0.0028269185936866683,
+              "ratio": 203.67074094775006
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.8458842329744227,
+              "noise": 0.023071570128702923,
+              "ratio": 36.66348793149858
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.29182298116437755,
+              "noise": 0.004255653386880208,
+              "ratio": 68.57301444333818
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.29182298116437755,
+              "noise": 0.004255653386880208,
+              "ratio": 68.57301444333818
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "photon_correlation": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5757606045751353,
+              "noise": 0.0028269185936866683,
+              "ratio": 203.67074094775006
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 1.02151099451951,
+              "noise": 0.00013656774931447143,
+              "ratio": 7479.884523594952
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.9407983215182536,
+              "noise": 0.000055957961309233415,
+              "ratio": 16812.59108635568
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.9407983215182536,
+              "noise": 0.000055957961309233415,
+              "ratio": 16812.59108635568
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "color_ratio": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5757606045751353,
+              "noise": 0.0028269185936866683,
+              "ratio": 203.67074094775006
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.3365530589403698,
+              "noise": 0.000025791821375945203,
+              "ratio": 13048.828697854457
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.4788930972843976,
+              "noise": 0.000013362846796385369,
+              "ratio": 35837.65529766738
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.4788930972843976,
+              "noise": 0.000013362846796385369,
+              "ratio": 35837.65529766738
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "dichromatic": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5757606045751353,
+              "noise": 0.0028269185936866683,
+              "ratio": 203.67074094775006
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.41525698773079256,
+              "noise": 0.003757076181425609,
+              "ratio": 110.52663498913263
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.9913586704567773,
+              "noise": 0.004169224482084382,
+              "ratio": 237.78011347596058
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.9913586704567773,
+              "noise": 0.004169224482084382,
+              "ratio": 237.78011347596058
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "hu_moments": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5757606045751353,
+              "noise": 0.0028269185936866683,
+              "ratio": 203.67074094775006
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.5841567088003752,
+              "noise": 0.08553574635097605,
+              "ratio": 6.829386937286126
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.000468947305383199,
+              "noise": 9.17402302459714e-7,
+              "ratio": 511.16865973179955
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.000468947305383199,
+              "noise": 9.17402302459714e-7,
+              "ratio": 511.16865973179955
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    }
+  ],
+  "duration_s": 194.0345966
+}

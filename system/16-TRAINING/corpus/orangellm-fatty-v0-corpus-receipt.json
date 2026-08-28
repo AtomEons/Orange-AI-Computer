@@ -1,0 +1,35 @@
+{
+  "schema": "orange5.corpus-receipt.v0",
+  "model": "orangellm-fatty-v0",
+  "corpus_path": "C:/AtomEons/Orange5/16-TRAINING/corpus/orangellm-fatty-v0-corpus-1000.jsonl",
+  "staged_path": "C:/AtomEons/Orange5/16-TRAINING/corpus/corpus.jsonl",
+  "seed_path": "C:/AtomEons/Orange5/16-TRAINING/corpus/orangellm-fatty-v0-seed-200.jsonl",
+  "seed_count": 213,
+  "generated_count": 1001,
+  "deduped_count": 200,
+  "dropped_dup": 13,
+  "dropped_invalid": 187,
+  "dropped_reasons": {
+    "no Orange5 concept": 165,
+    "output<30": 20,
+    "fake-green:green_assumed": 2
+  },
+  "final_count": 1000,
+  "verify_line_count": 1000,
+  "target": 1000,
+  "corpus_sha256": "6646f6a4e177d3d7e5fdfe2ba1f9069d8ebb9d460e4ee6671e3e76cc337b196f",
+  "generated_at": "2026-06-24T12:16:51.345466+00:00",
+  "doctrine_files": [
+    "master-plan",
+    "ae-cobra-spec",
+    "orangeeye-spec",
+    "month-plan",
+    "codex-brief",
+    "colab-pattern",
+    "codexa-preflight",
+    "naming-canon",
+    "not-green-ledger",
+    "receipts-chain"
+  ],
+  "method": "workflow-parallel-claude-agents"
+}

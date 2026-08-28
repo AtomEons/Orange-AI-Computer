@@ -1,0 +1,50 @@
+loaded 353 classes at D=286
+
+══ TRAIN HIGH (raw only) → TEST LOW (all degraded) ══
+
+  K=47:
+    N=1  raw (no reject):  42.3%  per-light: {"sun":67.1,"candle":49.1,"moon":55.3,"crt":40.9,"neon":36.2}
+    N=2  raw (no reject):  43.9%  per-light: {"sun":68,"candle":49.1,"moon":56.2,"crt":44.5,"neon":36.4}
+    N=3  raw (no reject):  45.0%  per-light: {"sun":68,"candle":49.1,"moon":55.3,"crt":47.3,"neon":36.4}
+    N=5  raw (no reject):  46.8%  per-light: {"sun":69.8,"candle":52.3,"moon":59.1,"crt":48.7,"neon":38.1}
+    N=3 reject<0.01: 67.9% (rejected 55.7%)
+    N=3 reject<0.05: 92.8% (rejected 80.7%)
+    N=3 reject<0.1: 98.9% (rejected 88.2%)
+
+  K=100:
+    N=1  raw (no reject):  53.0%  per-light: {"sun":78.2,"candle":62.3,"moon":66.2,"crt":51.1,"neon":47.1}
+    N=2  raw (no reject):  55.9%  per-light: {"sun":78.8,"candle":62.5,"moon":66,"crt":55.3,"neon":49.8}
+    N=3  raw (no reject):  58.8%  per-light: {"sun":79.4,"candle":63.3,"moon":66.4,"crt":59.8,"neon":52.4}
+    N=5  raw (no reject):  60.9%  per-light: {"sun":82.7,"candle":66.2,"moon":70.4,"crt":62.1,"neon":53.6}
+    N=3 reject<0.01: 77.6% (rejected 39.8%)
+    N=3 reject<0.05: 93.9% (rejected 67.3%)
+    N=3 reject<0.1: 97.7% (rejected 77.6%)
+
+  K=200:
+    N=1  raw (no reject):  55.7%  per-light: {"sun":82.9,"candle":52,"moon":71.9,"crt":54,"neon":50.7}
+    N=2  raw (no reject):  59.0%  per-light: {"sun":83.8,"candle":52.3,"moon":73.5,"crt":58.8,"neon":53.6}
+    N=3  raw (no reject):  63.0%  per-light: {"sun":84.1,"candle":53.5,"moon":74,"crt":64.9,"neon":57.4}
+    N=5  raw (no reject):  66.0%  per-light: {"sun":88.1,"candle":56.9,"moon":78.7,"crt":68.4,"neon":59.4}
+    N=3 reject<0.01: 76.4% (rejected 29.8%)
+    N=3 reject<0.05: 92.4% (rejected 60.5%)
+    N=3 reject<0.1: 95.8% (rejected 74.3%)
+
+  K=300:
+    N=1  raw (no reject):  55.8%  per-light: {"sun":82.7,"candle":51.4,"moon":72.2,"crt":55.8,"neon":49.2}
+    N=2  raw (no reject):  58.9%  per-light: {"sun":84.2,"candle":51.9,"moon":73.3,"crt":60.1,"neon":52.2}
+    N=3  raw (no reject):  63.0%  per-light: {"sun":84.8,"candle":53.6,"moon":74.2,"crt":65.8,"neon":56.2}
+    N=5  raw (no reject):  65.9%  per-light: {"sun":88.3,"candle":57.3,"moon":78.9,"crt":68.9,"neon":58.5}
+    N=3 reject<0.01: 74.7% (rejected 26.5%)
+    N=3 reject<0.05: 90.4% (rejected 58.3%)
+    N=3 reject<0.1: 95.0% (rejected 72.6%)
+
+  K=353:
+    N=1  raw (no reject):  51.1%  per-light: {"sun":78.2,"candle":48.2,"moon":68.7,"crt":51.8,"neon":43.3}
+    N=2  raw (no reject):  53.9%  per-light: {"sun":79.4,"candle":48,"moon":70.1,"crt":55.6,"neon":46.2}
+    N=3  raw (no reject):  57.4%  per-light: {"sun":80,"candle":49.1,"moon":71,"crt":60.2,"neon":50}
+    N=5  raw (no reject):  60.2%  per-light: {"sun":83.7,"candle":53,"moon":75.5,"crt":63.2,"neon":51.9}
+    N=3 reject<0.01: 72.2% (rejected 34.1%)
+    N=3 reject<0.05: 89.8% (rejected 64.3%)
+    N=3 reject<0.1: 95.3% (rejected 77.4%)
+
+total: 5773s

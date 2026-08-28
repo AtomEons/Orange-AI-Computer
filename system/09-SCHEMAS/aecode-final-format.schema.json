@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ae.aecode-final-format.v0",
+  "title": "AECode Final Format v0",
+  "type": "object",
+  "required": ["identity", "product_intent", "operator_laws", "scope", "target_matrix", "artifact_contracts", "data_contracts", "behavior_graph", "permissions", "model_roles", "gauntlets", "receipts", "rollback"],
+  "properties": {
+    "identity": { "type": "object" },
+    "product_intent": { "type": "string" },
+    "operator_laws": { "type": "array" },
+    "scope": { "type": "object" },
+    "target_matrix": { "type": "object" },
+    "artifact_contracts": { "type": "array" },
+    "data_contracts": { "type": "array" },
+    "behavior_graph": { "type": "object" },
+    "permissions": { "type": "object" },
+    "model_roles": { "type": "object" },
+    "gauntlets": { "type": "array" },
+    "receipts": { "type": "object" },
+    "rollback": { "type": "object" }
+  }
+}

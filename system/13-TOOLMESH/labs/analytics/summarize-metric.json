@@ -1,0 +1,123 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "analytics",
+  "card_id": "summarize-metric",
+  "capability": "analytics.summarize",
+  "cost_class": "free",
+  "latency_class": "sub-second",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["data", "metric_column"],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind"],
+        "properties": {
+          "kind": { "type": "string", "enum": ["sandbox-file", "inline"] },
+          "ref": { "type": "string", "minLength": 1, "maxLength": 4096 },
+          "rows": {
+            "type": "array",
+            "maxItems": 100000,
+            "items": { "type": "object", "additionalProperties": true }
+          }
+        }
+      },
+      "metric_column": {
+        "type": "string",
+        "description": "Numeric column to summarize.",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "group_by": {
+        "type": "array",
+        "description": "Optional grouping columns. Statistics are computed per group with an overall row appended.",
+        "items": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "maxItems": 4
+      },
+      "statistics": {
+        "type": "array",
+        "description": "Statistics to compute. Defaults to the standard battery. Percentiles must be in (0,1).",
+        "items": {
+          "type": "string",
+          "enum": ["count", "sum", "mean", "median", "min", "max", "std", "var", "p50", "p75", "p90", "p95", "p99", "skew", "kurtosis"]
+        },
+        "minItems": 1,
+        "maxItems": 16,
+        "default": ["count", "sum", "mean", "median", "std", "min", "max", "p95"]
+      },
+      "compare_to": {
+        "type": "object",
+        "description": "Optional reference frame for delta reporting (e.g. prior period). Same schema as 'data'; runner computes absolute and relative deltas per statistic.",
+        "additionalProperties": false,
+        "properties": {
+          "kind": { "type": "string", "enum": ["sandbox-file", "inline"] },
+          "ref": { "type": "string" },
+          "rows": { "type": "array", "maxItems": 100000, "items": { "type": "object", "additionalProperties": true } }
+        }
+      },
+      "narrative": {
+        "type": "boolean",
+        "description": "When true, the runner appends a short plain-English summary ('mean rose 14% vs prior; tail above p95 widened'). Numeric receipts are authoritative; narrative is for human readers.",
+        "default": false
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["summary", "rows_scanned"],
+    "properties": {
+      "summary": {
+        "type": "array",
+        "description": "One entry per group (or a single entry when no group_by). The 'group' object is empty for the overall row.",
+        "items": {
+          "type": "object",
+          "required": ["group", "statistics"],
+          "properties": {
+            "group": { "type": "object", "additionalProperties": true },
+            "statistics": {
+              "type": "object",
+              "additionalProperties": { "type": "number" }
+            },
+            "deltas": {
+              "type": "object",
+              "description": "Present when compare_to was supplied. Each key matches a statistic; value is { 'absolute': number, 'relative': number }.",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "absolute": { "type": "number" },
+                  "relative": { "type": "number" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "narrative": {
+        "type": "string",
+        "description": "Present only when narrative=true. Bounded by the runner; not a substitute for the numeric block."
+      },
+      "rows_scanned": { "type": "integer", "minimum": 0 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 120,
+    "max_invocations": 200,
+    "scopes": [
+      "fs.read:sandbox://data/",
+      "process.spawn:stats-engine",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 60
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Compute a standard battery of descriptive statistics for a numeric column, optionally grouped and compared against a reference period. Receipts-grade numeric output with optional narrative.",
+  "tags": ["analytics", "summarize", "stats", "percentile", "compare", "read-only"],
+  "notes": "Mom's Law: the numbers are the receipt. The narrative is a convenience for human readers and must agree with the numbers — runner verifies sign and magnitude before emitting prose."
+}

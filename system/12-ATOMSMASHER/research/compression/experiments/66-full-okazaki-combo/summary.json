@@ -1,0 +1,8 @@
+{
+  "experiment": "66-full-okazaki-combo",
+  "ratio": 34.079,
+  "encode_ms": 2084.7,
+  "decode_ms": 92.7,
+  "lossless": true,
+  "notes": "65 action buckets, B8-sort within, nested payload, strip-id, dedupe vocab per class"
+}

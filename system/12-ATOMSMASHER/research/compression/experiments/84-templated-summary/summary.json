@@ -1,0 +1,14 @@
+{
+  "experiment": "84-templated-summary",
+  "ratio": 16.983,
+  "encode_ms": 15835.4,
+  "decode_ms": 157.1,
+  "lossless": true,
+  "notes": "43 action classes had constant summary. Stripped summary from 424/6224 receipts. Dict bytes=3211. Wire=122215. orig sha=5be5f1b4c6d742e3 recon=5be5f1b4c6d742e3.",
+  "baseline_m19_ratio": 47.071,
+  "vs_m19_delta": -30.088,
+  "raw_bytes": 2075585,
+  "wire_bytes": 122215,
+  "templatable_action_classes": 43,
+  "stripped_receipts": 424
+}

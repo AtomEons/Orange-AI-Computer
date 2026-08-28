@@ -1,0 +1,28 @@
+{
+  "experiment": "99-entropy-bound",
+  "corpus_size_bytes": 2075585,
+  "receipts": 6224,
+  "H_bits_per_byte": {
+    "order0": 5.174989084205864,
+    "order1": 3.1597293973722476,
+    "order2": 1.7225575305217256,
+    "order3": 0.8869996766512716
+  },
+  "shannon_ceiling_bytes": {
+    "order0": 1342642,
+    "order1": 819786,
+    "order2": 446915,
+    "order3": 230131
+  },
+  "shannon_ceiling_ratio": {
+    "order0": 1.546,
+    "order1": 2.532,
+    "order2": 4.644,
+    "order3": 9.019
+  },
+  "brotli_q11_ratio": 17.13,
+  "m19_ratio": 47.07,
+  "m19_pct_of_order3_ceiling": 521.89,
+  "brotli_pct_of_order3_ceiling": 189.93,
+  "finding": "M19 EXCEEDS order-3 byte-Shannon ceiling (9.02x). Structural pipeline reasons outside the byte stream — seed-regenerated ids + mesh templating + action vocab + position RLE remove information the byte-Markov model has no concept of. The byte-level bound is NOT the true compressibility ceiling for this structured corpus; it is a sanity reference."
+}

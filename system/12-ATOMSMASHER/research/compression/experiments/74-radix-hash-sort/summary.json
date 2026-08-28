@@ -1,0 +1,16 @@
+{
+  "experiment": "74-radix-hash-sort",
+  "N": 6224,
+  "det_bytes": 2075585,
+  "hash_sort_brotli_bytes": 121196,
+  "by_action_brotli_bytes": 107817,
+  "natural_order_brotli_bytes": 121167,
+  "perm_brotli_bytes": 9911,
+  "total": 131107,
+  "ratio": 15.831,
+  "delta_vs_m19": -31.24,
+  "encode_ms": 5054,
+  "decode_ms": 22.4,
+  "lossless": true,
+  "note": "compares hash-sort (chaotic) to by-action sort (clustered) — confirms whether order matters"
+}

@@ -1,0 +1,241 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-9c8189b391637510-1787797239357",
+  "query": "{\"intent\":\"Review current candidates for OrangeFive. Reject novelty theater. Name only candidates that could measurably improve speed, reliability, memory, compression, model routing, or operator experience, and define the benchmark required before adoption.\",\"evidence\":[\"scouts=4/4;sources=19;sha=e29e6f69893c63a5\",\"candidates=19;status=BENCHMARK_REQUIRED;sha=0572db35033aa8af\"],\"context\":{\"scout_briefs\":[{\"id\":\"runtime-orchestration\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":2,\"compressed_brief\":\"AIR:CURRENT.v1\\nLAW: This is fresh discovery evidence, not installed capability or proof of superiority.\\nLAW: Prefer an existing project component unless a candidate passes compatibility, license, benchmark, and receipt gates.\\nC: [hackernews] Show HN: Orchid – Local-first record and replay for AI agent debugging; freshness=ESTABLISHED; lifecycle=SOURCE_VERIFICATION_REQUIRED; authority=discovery_tip_unverified; quality=0.194; stars=0; license=unknown; source=https://github.com/mario-guerra/orchid-trace; finding=Unverified discovery tip. Discussion points: 4. Verify against the creator's official source before use.; idea=Test Show HN: Orchid – Local-first record and replay for AI ag OrangeFive orange5",
+  "searchQuery": "intent review candidates for orangefive. reject novelty theater.",
+  "generatedAt": "2026-08-27T02:20:39.370Z",
+  "budgetMs": 60000,
+  "elapsedMs": 4054,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "direct",
+      "sourceId": "30f70dc8fef98dcc",
+      "title": "GitHub - mario-guerra/orchid-trace: Orchid - Orchestration interactive debugger - Record, inspect, &amp; replay AI agents · GitHub",
+      "url": "https://github.com/mario-guerra/orchid-trace",
+      "summary": "GitHub - mario-guerra/orchid-trace: Orchid - Orchestration interactive debugger - Record, inspect, &amp; replay AI agents · GitHub Skip to content Navigation Menu Sign in Appearance settings Platform AI CODE CREATION GitHub Copilot Write better code with AI GitHub Copilot app Direct agents from issue to merge MCP Registry Integrate external tools DEVELOPER WORKFLOWS Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes Code Q",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "sourceQuality": 0.9,
+      "relevance": {
+        "score": 0.1429,
+        "matched": 1,
+        "queryTerms": 7,
+        "terms": [
+          "review"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 7,
+        "admitted": false
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1121009436",
+      "title": "pavel-molyanov/molyanov-ai-dev",
+      "url": "https://github.com/pavel-molyanov/molyanov-ai-dev",
+      "summary": "Intent-driven AI-First development methodology for Claude Code and Codex — Project Knowledge, user-spec planning, focused execution, and evidence-gated reviews.",
+      "updatedAt": "2026-08-26T13:49:01Z",
+      "license": "MIT",
+      "stars": 281,
+      "forks": 81,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.814,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "review"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1189485531",
+      "title": "KimYx0207/Meta_Kim",
+      "url": "https://github.com/KimYx0207/Meta_Kim",
+      "summary": "Governed execution layer for AI coding assistants: clarify intent, route capabilities, review evidence, verify results, and write back lessons across Claude Code, Codex, OpenClaw, and Cursor.",
+      "updatedAt": "2026-08-26T15:29:09Z",
+      "license": "Apache-2.0",
+      "stars": 265,
+      "forks": 68,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8135,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "review"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1261469122",
+      "title": "muchengracedriver/awesome-requirements-writer",
+      "url": "https://github.com/muchengracedriver/awesome-requirements-writer",
+      "summary": "Turn engineering intent into requirements that can be designed, reviewed, implemented, verified, and traced. Prefer precise requirements over broad product prose, and flag missing engineering inputs instead of inventing thresholds.",
+      "updatedAt": "2026-08-25T02:54:14Z",
+      "license": "MIT",
+      "stars": 102,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8053,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "review"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1153935146",
+      "title": "xmm/codex-bmad-skills",
+      "url": "https://github.com/xmm/codex-bmad-skills",
+      "summary": "BMAD skills and workflows for OpenAI Codex (App, CLI, Web): intent-based execution, YAML project state, and reusable skill packs for planning, architecture, sprint delivery, development, and code review.",
+      "updatedAt": "2026-08-09T19:20:56Z",
+      "license": "NOASSERTION",
+      "stars": 46,
+      "forks": 3,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7984,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "review"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1288630993",
+      "title": "cdwv/ReviewPhin",
+      "url": "https://github.com/cdwv/ReviewPhin",
+      "summary": "Self-hosted, agentic code review for GitLab and GitHub. Let engineers spend review time on design, risk, and intent instead of hunting typos and obvious errors.",
+      "updatedAt": "2026-08-18T07:20:22Z",
+      "license": "MPL-2.0",
+      "stars": 16,
+      "forks": 0,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7896,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "review"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1146206366",
+      "title": "oguzhantopgul/skill-security-reviewer",
+      "url": "https://github.com/oguzhantopgul/skill-security-reviewer",
+      "summary": "An AI skill that teaches language models how to perform intelligent security reviews of agent skills. Unlike static scanners that match patterns, this skill enables contextual threat analysis, intent reasoning, and detection of novel attacks.",
+      "updatedAt": "2026-08-20T05:32:10Z",
+      "license": "NOASSERTION",
+      "stars": 8,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1991,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "review"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1219886333",
+      "title": "dancolta/trustpilot-outreach-automation",
+      "url": "https://github.com/dancolta/trustpilot-outreach-automation",
+      "summary": "Open-source signal-based outbound. Turn Trustpilot 1-2 star reviews into AI-personalized cold-email drafts in Gmail. Self-hosted Node.js. Free alternative to Apollo, Instantly, Smartlead, Lemlist, and paid intent-data vendors. Drafts mode by default - you ship every send.",
+      "updatedAt": "2026-07-30T23:11:41Z",
+      "license": null,
+      "stars": 7,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1981,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "review"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "34dc9dade5ef42b66836cf346d46517d1457bdc11546ab93c7e9fe4ba09923a4"
+}

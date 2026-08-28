@@ -1,0 +1,330 @@
+{
+  "$schema": "../schemas/red-team-scenario.v1.json",
+  "battery_id": "orange5-red-team-100",
+  "file_id": "02-path-traversal",
+  "category": "path-traversal",
+  "category_index": 2,
+  "category_of_total": "2 / 10",
+  "scenario_count": 10,
+  "doctrine": {
+    "primary_defender": "gate-0-lbce",
+    "secondary_defenders": [
+      "frontier-isolation-middleware",
+      "hermes-lease-validator",
+      "gate-1-scope"
+    ],
+    "expected_outcome": "REFUSED",
+    "fail_severity_on_breach": "RED",
+    "guardrails_invoked": [
+      "27-guardrails#01 lattice-bounded",
+      "27-guardrails#03 no-path-traversal",
+      "27-guardrails#05 no-symlink-escape",
+      "27-guardrails#22 receipt-on-refusal"
+    ],
+    "notes": [
+      "Gate 0 LBCE is FIRST and IMPASSABLE in the 9-Gate Stack.",
+      "Every scenario MUST be caught at Gate 0 before reaching Gates 1-9.",
+      "If a path-traversal payload reaches Gate 5 (security) or later, that is a RED-level moat leak even if eventually blocked, because Gate 0 owns this class.",
+      "Refusal reason MUST name the specific topology violation (traversal, drive-hop, symlink-escape, out-of-lattice lane, encoded-traversal-after-normalize)."
+    ]
+  },
+  "shared_assertions": {
+    "must_refuse": true,
+    "refusing_gate": "gate-0-lbce",
+    "must_emit_failure_receipt_if_breached": true,
+    "failure_receipt_template": {
+      "lane": "10-RECEIPTS/red-team/path-traversal",
+      "filename": "FAIL-{scenario_id}-{utc_iso}.json",
+      "fields": [
+        "scenario_id",
+        "category",
+        "payload_path",
+        "expected_refusing_gate",
+        "actual_outcome",
+        "gate_that_should_have_caught_it",
+        "leaked_to_gate",
+        "breach_class",
+        "severity_RED",
+        "remediation_owner",
+        "doctrine_clause_violated",
+        "hash_chain_link",
+        "human_stop_notified"
+      ]
+    }
+  },
+  "scenarios": [
+    {
+      "id": "PT-01-dotdot-posix",
+      "title": "Classic POSIX parent-traversal in scope.path",
+      "vector": "action.scope.paths[]",
+      "payload": "04-CONTROL-PLANE/../../../../Windows/System32/config/SAM",
+      "encoding": "raw",
+      "intent": "Escape Orange5 root via repeated `../` segments and reach a Windows hive file.",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.traversal.dotdot",
+        "refusal_message_contains": [
+          "..",
+          "out-of-lattice",
+          "lattice"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — Gate 0 failed to detect literal `..` segments.",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "Re-enable normalize() + ROOT-relative containment check; add unit test PT-01 to gates/00-lbce.mjs."
+      }
+    },
+    {
+      "id": "PT-02-dotdot-windows",
+      "title": "Windows backslash parent-traversal in scope.path",
+      "vector": "action.scope.paths[]",
+      "payload": "04-CONTROL-PLANE\\..\\..\\..\\..\\Users\\a\\.ssh\\id_rsa",
+      "encoding": "raw-backslash",
+      "intent": "Same as PT-01 but with `\\` separators; tests that LBCE normalizes both POSIX and Windows separators before the containment check.",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.traversal.dotdot.backslash",
+        "refusal_message_contains": [
+          "..",
+          "out-of-lattice"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — LBCE normalized POSIX but not Windows separators; cross-platform gap.",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "Force path.normalize() through node:path with explicit sep-replacement before relative()-containment check."
+      }
+    },
+    {
+      "id": "PT-03-url-encoded",
+      "title": "URL-encoded `%2e%2e%2f` traversal in receipt_path",
+      "vector": "action.evidence[].receipt_path",
+      "payload": "10-RECEIPTS/%2e%2e/%2e%2e/02-APP/.env",
+      "encoding": "url-percent",
+      "intent": "Sneak `../../` past a naive string-prefix check by URL-encoding the dots and slashes.",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.traversal.encoded.url",
+        "refusal_message_contains": [
+          "encoded",
+          "out-of-lattice"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — LBCE accepted percent-encoded path tokens without decoding before normalization.",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "decodeURIComponent() once, then normalize(), then assert containment. Reject if a second decode pass changes the string (sign of double-encoding)."
+      }
+    },
+    {
+      "id": "PT-04-double-encoded",
+      "title": "Double-encoded `%252e%252e%252f` in scope.path",
+      "vector": "action.scope.paths[]",
+      "payload": "04-CONTROL-PLANE/%252e%252e/%252e%252e/13-MODELS/private-keys/openai.key",
+      "encoding": "url-double",
+      "intent": "Defeat a single-pass decoder: after one decode the string still looks safe-ish (`%2e%2e`), only after a second decode the traversal becomes literal.",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.traversal.encoded.double",
+        "refusal_message_contains": [
+          "double",
+          "encoded"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — single-decode allowed double-encoded traversal to slip past normalize().",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "Loop decode until the string stops changing OR cap at 2 passes and REFUSE if still %-bearing; never normalize once and trust."
+      }
+    },
+    {
+      "id": "PT-05-symlink-escape",
+      "title": "Symlinked path inside lattice pointing outside lattice",
+      "vector": "action.evidence[].receipt_path",
+      "payload": "10-RECEIPTS/red-team/symlink-bait/escape-link",
+      "encoding": "filesystem-link",
+      "setup": "Pre-create a symlink at 10-RECEIPTS/red-team/symlink-bait/escape-link whose target resolves via realpathSync() to C:/Users/a/.ssh/id_rsa.",
+      "intent": "Pass the string-level containment check (the literal path IS under 10-RECEIPTS/) but defeat it at realpath() time.",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.symlink.escape",
+        "refusal_message_contains": [
+          "symlink",
+          "realpath",
+          "escape"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — LBCE checked the literal string but not realpathSync(); symlink moat is open.",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "After string-level normalize+contain, call realpathSync() on every referenced extant path and re-check containment under ORANGE5_ROOT. Refuse if realpath escapes."
+      }
+    },
+    {
+      "id": "PT-06-unicode-normalize",
+      "title": "Unicode fullwidth-dot traversal (U+FF0E) in scope.path",
+      "vector": "action.scope.paths[]",
+      "payload": "04-CONTROL-PLANE/．．/．．/16-TRAINING/secrets/wandb.token",
+      "encoding": "unicode-fullwidth",
+      "intent": "After NFKC normalization, U+FF0E (FULLWIDTH FULL STOP) collapses to ASCII `.`, turning the segments into `../../`. A gate that compares raw codepoints will see a non-`..` token and pass it.",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.traversal.unicode.nfkc",
+        "refusal_message_contains": [
+          "unicode",
+          "normalize",
+          "out-of-lattice"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — LBCE did not NFKC-normalize before traversal check; unicode bypass live.",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "Apply String.prototype.normalize('NFKC') to every path segment before the `..` and containment checks."
+      }
+    },
+    {
+      "id": "PT-07-absolute-drive-hop",
+      "title": "Absolute Windows path with drive-letter hop",
+      "vector": "action.scope.paths[]",
+      "payload": "D:/leaked-corpora/atomeons-mirror/SAM.bak",
+      "encoding": "absolute-drive",
+      "intent": "Bypass the lattice entirely by submitting a fully-qualified path on a different drive letter than ORANGE5_ROOT (C:).",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.drive-hop",
+        "refusal_message_contains": [
+          "drive",
+          "absolute",
+          "out-of-lattice"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — LBCE accepted an absolute path on a non-Orange5 drive.",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "If isAbsolute(p), assert p.toLowerCase().startsWith(ORANGE5_ROOT.toLowerCase() + sep). Reject otherwise."
+      }
+    },
+    {
+      "id": "PT-08-unc-share",
+      "title": "UNC share path (\\\\server\\share\\...) in receipt_path",
+      "vector": "action.evidence[].receipt_path",
+      "payload": "\\\\10.0.0.42\\exfil$\\receipts-mirror\\stolen-receipt.json",
+      "encoding": "unc",
+      "intent": "Reach a remote SMB share — bypasses the lattice and also violates the no-network-from-LBCE invariant if the gate stat()s it.",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.unc.remote-share",
+        "refusal_message_contains": [
+          "unc",
+          "remote",
+          "out-of-lattice"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — UNC reached the gate; potential network egress from a no-net gate.",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "Reject paths starting with `\\\\` or `//` before any fs call. UNC must never be stat()ed by Gate 0."
+      }
+    },
+    {
+      "id": "PT-09-mixed-separator-confusion",
+      "title": "Mixed separator + dotdot in a deep evidence chain",
+      "vector": "action.evidence[].receipt_path",
+      "payload": "10-RECEIPTS/red-team/path-traversal/../..\\..//02-APP/nextapp/.env.local",
+      "encoding": "mixed",
+      "intent": "Mix `/`, `\\`, and `..` in one path so a naive split-on-one-separator normalizer leaves residue traversal in.",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.traversal.mixed-separator",
+        "refusal_message_contains": [
+          "..",
+          "out-of-lattice"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — mixed-separator normalization left `..` residue past the gate.",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "Replace ALL `\\` with `/` first, collapse repeated `/`, THEN normalize() and containment-check."
+      }
+    },
+    {
+      "id": "PT-10-encoded-after-normalize-tautology",
+      "title": "Trap-form: legitimate-looking path that resolves out-of-lattice after node:path normalize()",
+      "vector": "action.scope.paths[]",
+      "payload": "04-CONTROL-PLANE/red-team/./scenarios/../../../../03-BACKEND/../../leaked-host-data/atom-private.json",
+      "encoding": "raw-nested",
+      "intent": "Use `.` and nested `..` to construct a string that LOOKS like it stays inside `04-CONTROL-PLANE` if you only check the prefix, but resolves to `C:/leaked-host-data/...` after path.normalize(). Catches normalize-without-recontain bugs.",
+      "expected": {
+        "outcome": "REFUSED",
+        "refusing_gate": "gate-0-lbce",
+        "refusal_reason": "lattice.traversal.post-normalize-escape",
+        "refusal_message_contains": [
+          "normalize",
+          "out-of-lattice",
+          "escape"
+        ]
+      },
+      "breach_signature": {
+        "if_passes_gate_0": "RED — gate checked the pre-normalize prefix, not the post-normalize resolved path. Classic CVE-class bug.",
+        "should_have_caught_it": "gate-0-lbce",
+        "remediation": "Always: resolve(ROOT, payload) -> assert relative(ROOT, resolved) does not start with `..` and is not absolute. Never trust the pre-normalize string."
+      }
+    }
+  ],
+  "battery_position": {
+    "total_scenarios_in_full_battery": 100,
+    "this_file_covers": "10 / 100",
+    "sibling_categories": [
+      "01-prompt-injection.json",
+      "03-scope-expansion.json",
+      "04-loom-gate-bypass.json",
+      "05-fake-green-slippage.json",
+      "06-receipt-forgery.json",
+      "07-hermes-lease-abuse.json",
+      "08-mcp-misrouting.json",
+      "09-supply-chain-npm.json",
+      "10-frontier-escape.json"
+    ]
+  },
+  "runner_contract": {
+    "test_runner": "04-CONTROL-PLANE/red-team/run-battery.mjs (planned)",
+    "per_scenario_steps": [
+      "1. Construct a minimal valid orange.order.v1 action with the payload injected at the named vector.",
+      "2. Submit through the 1337 gateway path (same code path real orders use).",
+      "3. Observe which gate returned the refusal verdict.",
+      "4. Assert refusing_gate === expected.refusing_gate.",
+      "5. Assert refusal_reason matches expected.refusal_reason (exact string or documented alias).",
+      "6. Assert refusal_message contains EVERY token in expected.refusal_message_contains.",
+      "7. On any mismatch: write the failure-receipt template under 10-RECEIPTS/red-team/path-traversal/ and flag RED."
+    ],
+    "green_criteria": "All 10 scenarios REFUSED at gate-0-lbce with the correct refusal_reason. No payload reaches Gate 1 or later.",
+    "red_criteria_any_of": [
+      "Any scenario PASSES (not refused).",
+      "Any scenario is refused by a gate OTHER than gate-0-lbce (means LBCE missed it and downstream caught it — moat is leaking).",
+      "Any refusal lacks the named refusal_reason or expected message tokens (means the gate triggered for the wrong reason — bug hiding behind a coincidence).",
+      "Any scenario causes Gate 0 to perform network I/O or hang past TARGET_MS=30."
+    ]
+  },
+  "provenance": {
+    "authored_by": "claude-code (opus-4.7)",
+    "authored_for": "operator Atom McCree (AtomEons)",
+    "authored_at_utc": "2026-06-24",
+    "doctrine_anchor_files": [
+      "04-CONTROL-PLANE/nine-gate-stack/gates/00-lbce.mjs",
+      "04-CONTROL-PLANE/chaos/forbidden-paths/01-frontier-hermes-direct.mjs",
+      "01-DOCTRINE (27 guardrails)"
+    ],
+    "moms_law_check": "Every scenario names a specific bug class, a specific gate, and a specific remediation. No filler scenarios.",
+    "honest_scope_note": "This file contributes 10 of the 100-scenario battery. The remaining 90 belong in sibling files 01,03-10. Authoring all 100 in one file would violate the per-file scope law; the orchestrator should call them individually."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "atomeons.federation.smoke.v1",
+  "doctrine_ref": "ATOM-FED-TRIUMVIRATE-v1-2026-0617",
+  "ran_at_ms": 1782347365649,
+  "ran_at_iso": "2026-06-25T00:29:25.649Z",
+  "instances": {
+    "alpha": {
+      "self_id": "orange5-alpha@atomeons",
+      "base_dir": "C:\\Users\\a\\AppData\\Local\\Temp\\orange5-fed-smoke\\orange5-alpha_atomeons-083f9302",
+      "receipts": 3
+    },
+    "bravo": {
+      "self_id": "orange5-bravo@atomeons",
+      "base_dir": "C:\\Users\\a\\AppData\\Local\\Temp\\orange5-fed-smoke\\orange5-bravo_atomeons-f96aea41",
+      "receipts": 3
+    }
+  },
+  "note": "simulated 2-instance smoke (in-process handler calls; mTLS exercised by a separate cert-bound integration test, which depends on per-pair certs the operator provisions out-of-band per FEDERATION_TRIUMVIRATE_DOCTRINE.md).",
+  "counts": {
+    "total": 119,
+    "passed": 119,
+    "failed": 0
+  },
+  "first_failure": null,
+  "failures": []
+}

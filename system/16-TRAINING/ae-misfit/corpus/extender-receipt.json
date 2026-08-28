@@ -1,0 +1,67 @@
+{
+  "schema": "orange5.ae-misfit.extender.receipt.v0",
+  "generated_at": "2026-06-24T23:56:35.755Z",
+  "generator": "extender.mjs",
+  "sovereign": "Atom McCree",
+  "doctrine_source": "16-TRAINING/ae-misfit/corpus-strategy.md v0",
+  "boundary": "synthetic seed augmentation only; STRONGARM/Gremlin archives NOT touched",
+  "inputs": {
+    "seed_path": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-misfit\\seed\\seed-100.jsonl",
+    "seed_rows": 100,
+    "seed_sha256": "ce204a47b486e3cff0718fdf91ee69e2ae0da7ed0090ceb945de653fc488aa2f"
+  },
+  "outputs": {
+    "corpus_path": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-misfit\\corpus\\corpus.jsonl",
+    "corpus_rows": 500,
+    "corpus_sha256": "07cb3368f83c0b41b884ee8ce449c2263ba72729815d91df5c302f71930591c2"
+  },
+  "target": 500,
+  "summary": {
+    "seed_path": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-misfit\\seed\\seed-100.jsonl",
+    "seed_rows": 100,
+    "target": 500,
+    "raw_candidates": 1031,
+    "accepted_variants": 400,
+    "final_rows": 500,
+    "drop_log": {
+      "dupe_against_seed": 0,
+      "dupe_against_candidate": 0
+    },
+    "stats": {
+      "byTransform": {
+        "project_swap": 47,
+        "branch_swap": 25,
+        "risk_escalation": 400,
+        "tone_variation": 500,
+        "ship_verb_swap": 18,
+        "signoff_verb_swap": 41
+      },
+      "byCategory": {
+        "fake-green-refusal": 111,
+        "out-of-scope-refusal": 105,
+        "identity-spoofing-refusal": 29,
+        "social-pressure-refusal": 28,
+        "drift-protection": 11,
+        "missing-receipt-refusal": 89,
+        "model-conflation-refusal": 20,
+        "skill-corpus-discipline": 5,
+        "doctrine-protection": 2
+      }
+    },
+    "elapsed_ms": 801
+  },
+  "transforms_applied": [
+    "project_swap",
+    "branch_swap",
+    "risk_escalation",
+    "tone_variation",
+    "ship_verb_swap",
+    "signoff_verb_swap"
+  ],
+  "notes": [
+    "No LLM calls. No network. Deterministic template expansion.",
+    "Output rows preserve parent_id, transform, transform_param for full provenance.",
+    "Refusal outputs are unchanged from seed — refusal logic is project-agnostic.",
+    "Dedupe is case- and whitespace-insensitive; collisions logged, not silenced."
+  ]
+}

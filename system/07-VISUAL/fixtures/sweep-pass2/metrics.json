@@ -1,0 +1,2719 @@
+{
+  "winners_source": [
+    {
+      "preproc": "gaussian_2",
+      "strategy": "density-cluster",
+      "postproc": "merge_overlap",
+      "ranks": {
+        "fruits": 2,
+        "baboon": 16,
+        "messi5": 6,
+        "home": 6,
+        "starry_night": 16,
+        "lena": 8,
+        "apple": 2,
+        "orange": 10,
+        "building": 23,
+        "basketball1": 6
+      },
+      "scores": {
+        "fruits": 1,
+        "baboon": 0.7335,
+        "messi5": 1,
+        "home": 1,
+        "starry_night": 0.75,
+        "lena": 0.7605,
+        "apple": 1,
+        "orange": 0.9727,
+        "building": 0.75,
+        "basketball1": 1
+      },
+      "top5": 2,
+      "top10": 7,
+      "top5_hits": 2,
+      "top10_hits": 7,
+      "mean_score": 0.8967,
+      "min_score": 0.7335,
+      "max_rank": 23,
+      "mean_rank": 9.5
+    },
+    {
+      "preproc": "gaussian_2",
+      "strategy": "density-cluster",
+      "postproc": "identity",
+      "ranks": {
+        "fruits": 1,
+        "baboon": 15,
+        "messi5": 5,
+        "home": 5,
+        "starry_night": 15,
+        "lena": 12,
+        "apple": 1,
+        "orange": 6,
+        "building": 22,
+        "basketball1": 5
+      },
+      "scores": {
+        "fruits": 1,
+        "baboon": 0.7335,
+        "messi5": 1,
+        "home": 1,
+        "starry_night": 0.75,
+        "lena": 0.75,
+        "apple": 1,
+        "orange": 0.989,
+        "building": 0.75,
+        "basketball1": 1
+      },
+      "top5": 5,
+      "top10": 6,
+      "top5_hits": 5,
+      "top10_hits": 6,
+      "mean_score": 0.8972,
+      "min_score": 0.7335,
+      "max_rank": 22,
+      "mean_rank": 8.7
+    },
+    {
+      "preproc": "identity",
+      "strategy": "density-cluster",
+      "postproc": "merge_overlap",
+      "ranks": {
+        "fruits": 17,
+        "baboon": 3,
+        "messi5": 2,
+        "home": 2,
+        "starry_night": 12,
+        "lena": 6,
+        "apple": 9,
+        "orange": 11,
+        "building": 19,
+        "basketball1": 2
+      },
+      "scores": {
+        "fruits": 0.8646,
+        "baboon": 0.8738,
+        "messi5": 1,
+        "home": 1,
+        "starry_night": 0.75,
+        "lena": 0.7605,
+        "apple": 0.749,
+        "orange": 0.9702,
+        "building": 0.75,
+        "basketball1": 1
+      },
+      "top5": 4,
+      "top10": 6,
+      "top5_hits": 4,
+      "top10_hits": 6,
+      "mean_score": 0.8718,
+      "min_score": 0.749,
+      "max_rank": 19,
+      "mean_rank": 8.3
+    },
+    {
+      "preproc": "identity",
+      "strategy": "density-cluster",
+      "postproc": "identity",
+      "ranks": {
+        "fruits": 16,
+        "baboon": 6,
+        "messi5": 1,
+        "home": 1,
+        "starry_night": 11,
+        "lena": 10,
+        "apple": 14,
+        "orange": 8,
+        "building": 18,
+        "basketball1": 1
+      },
+      "scores": {
+        "fruits": 0.8646,
+        "baboon": 0.8582,
+        "messi5": 1,
+        "home": 1,
+        "starry_night": 0.75,
+        "lena": 0.75,
+        "apple": 0.7439,
+        "orange": 0.985,
+        "building": 0.75,
+        "basketball1": 1
+      },
+      "top5": 3,
+      "top10": 6,
+      "top5_hits": 3,
+      "top10_hits": 6,
+      "mean_score": 0.8702,
+      "min_score": 0.7439,
+      "max_rank": 18,
+      "mean_rank": 8.6
+    },
+    {
+      "preproc": "median_3",
+      "strategy": "density-cluster",
+      "postproc": "merge_overlap",
+      "ranks": {
+        "fruits": 4,
+        "baboon": 12,
+        "messi5": 10,
+        "home": 9,
+        "starry_night": 18,
+        "lena": 9,
+        "apple": 10,
+        "orange": 15,
+        "building": 26,
+        "basketball1": 8
+      },
+      "scores": {
+        "fruits": 1,
+        "baboon": 0.75,
+        "messi5": 1,
+        "home": 0.8745,
+        "starry_night": 0.75,
+        "lena": 0.7605,
+        "apple": 0.749,
+        "orange": 0.847,
+        "building": 0.75,
+        "basketball1": 1
+      },
+      "top5": 1,
+      "top10": 6,
+      "top5_hits": 1,
+      "top10_hits": 6,
+      "mean_score": 0.8481,
+      "min_score": 0.749,
+      "max_rank": 26,
+      "mean_rank": 12.1
+    },
+    {
+      "preproc": "median_5",
+      "strategy": "density-cluster",
+      "postproc": "merge_overlap",
+      "ranks": {
+        "fruits": 6,
+        "baboon": 33,
+        "messi5": 12,
+        "home": 7,
+        "starry_night": 20,
+        "lena": 5,
+        "apple": 12,
+        "orange": 3,
+        "building": 28,
+        "basketball1": 10
+      },
+      "scores": {
+        "fruits": 1,
+        "baboon": 0.59,
+        "messi5": 1,
+        "home": 1,
+        "starry_night": 0.75,
+        "lena": 0.7723,
+        "apple": 0.7469,
+        "orange": 0.9945,
+        "building": 0.75,
+        "basketball1": 1
+      },
+      "top5": 2,
+      "top10": 5,
+      "top5_hits": 2,
+      "top10_hits": 5,
+      "mean_score": 0.8604,
+      "min_score": 0.59,
+      "max_rank": 33,
+      "mean_rank": 13.6
+    },
+    {
+      "preproc": "gaussian_1",
+      "strategy": "density-cluster",
+      "postproc": "merge_overlap",
+      "ranks": {
+        "fruits": 19,
+        "baboon": 17,
+        "messi5": 4,
+        "home": 4,
+        "starry_night": 14,
+        "lena": 7,
+        "apple": 11,
+        "orange": 7,
+        "building": 21,
+        "basketball1": 4
+      },
+      "scores": {
+        "fruits": 0.8646,
+        "baboon": 0.7316,
+        "messi5": 1,
+        "home": 1,
+        "starry_night": 0.75,
+        "lena": 0.7605,
+        "apple": 0.7469,
+        "orange": 0.9861,
+        "building": 0.75,
+        "basketball1": 1
+      },
+      "top5": 3,
+      "top10": 5,
+      "top5_hits": 3,
+      "top10_hits": 5,
+      "mean_score": 0.859,
+      "min_score": 0.7316,
+      "max_rank": 21,
+      "mean_rank": 10.8
+    },
+    {
+      "preproc": "median_3",
+      "strategy": "density-cluster",
+      "postproc": "identity",
+      "ranks": {
+        "fruits": 3,
+        "baboon": 11,
+        "messi5": 9,
+        "home": 11,
+        "starry_night": 17,
+        "lena": 13,
+        "apple": 15,
+        "orange": 9,
+        "building": 25,
+        "basketball1": 7
+      },
+      "scores": {
+        "fruits": 1,
+        "baboon": 0.75,
+        "messi5": 1,
+        "home": 0.8667,
+        "starry_night": 0.75,
+        "lena": 0.75,
+        "apple": 0.7439,
+        "orange": 0.9755,
+        "building": 0.75,
+        "basketball1": 1
+      },
+      "top5": 1,
+      "top10": 4,
+      "top5_hits": 1,
+      "top10_hits": 4,
+      "mean_score": 0.8586,
+      "min_score": 0.7439,
+      "max_rank": 25,
+      "mean_rank": 12
+    }
+  ],
+  "images": [
+    "fruits",
+    "baboon",
+    "messi5",
+    "home",
+    "starry_night",
+    "lena",
+    "apple",
+    "orange",
+    "building",
+    "basketball1",
+    "pic1",
+    "pic2",
+    "pic5",
+    "pic6",
+    "butterfly",
+    "board",
+    "basketball2",
+    "gradient",
+    "notes"
+  ],
+  "total_experiments": 152,
+  "wall_ms": 168318,
+  "results": [
+    {
+      "image": "fruits",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 6,
+      "coverage_frac": 0.2958,
+      "largest_frac": 0.1667,
+      "score": 1
+    },
+    {
+      "image": "fruits",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 7,
+      "coverage_frac": 0.3125,
+      "largest_frac": 0.1667,
+      "score": 1
+    },
+    {
+      "image": "fruits",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 6,
+      "coverage_frac": 0.1792,
+      "largest_frac": 0.05,
+      "score": 1
+    },
+    {
+      "image": "fruits",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 8,
+      "coverage_frac": 0.2375,
+      "largest_frac": 0.05,
+      "score": 1
+    },
+    {
+      "image": "fruits",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 6,
+      "coverage_frac": 0.1792,
+      "largest_frac": 0.05,
+      "score": 1
+    },
+    {
+      "image": "fruits",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.1292,
+      "largest_frac": 0.05,
+      "score": 0.8646
+    },
+    {
+      "image": "fruits",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 5,
+      "coverage_frac": 0.1292,
+      "largest_frac": 0.05,
+      "score": 0.8646
+    },
+    {
+      "image": "fruits",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.1292,
+      "largest_frac": 0.05,
+      "score": 0.8646
+    },
+    {
+      "image": "baboon",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 10,
+      "coverage_frac": 0.6523,
+      "largest_frac": 0.1641,
+      "score": 0.8738
+    },
+    {
+      "image": "baboon",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 11,
+      "coverage_frac": 0.6836,
+      "largest_frac": 0.1641,
+      "score": 0.8582
+    },
+    {
+      "image": "baboon",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 13,
+      "coverage_frac": 1.0039,
+      "largest_frac": 0.2813,
+      "score": 0.75
+    },
+    {
+      "image": "baboon",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 15,
+      "coverage_frac": 1.0586,
+      "largest_frac": 0.2813,
+      "score": 0.75
+    },
+    {
+      "image": "baboon",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 12,
+      "coverage_frac": 1.2539,
+      "largest_frac": 0.4688,
+      "score": 0.7335
+    },
+    {
+      "image": "baboon",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 10,
+      "coverage_frac": 1.1211,
+      "largest_frac": 0.4688,
+      "score": 0.7335
+    },
+    {
+      "image": "baboon",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 1.1211,
+      "largest_frac": 0.4688,
+      "score": 0.7316
+    },
+    {
+      "image": "baboon",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 16,
+      "coverage_frac": 1.0234,
+      "largest_frac": 0.2813,
+      "score": 0.59
+    },
+    {
+      "image": "messi5",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.525,
+      "largest_frac": 0.2625,
+      "score": 1
+    },
+    {
+      "image": "messi5",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 9,
+      "coverage_frac": 0.525,
+      "largest_frac": 0.2625,
+      "score": 1
+    },
+    {
+      "image": "messi5",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.6062,
+      "largest_frac": 0.2625,
+      "score": 1
+    },
+    {
+      "image": "messi5",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 9,
+      "coverage_frac": 0.6062,
+      "largest_frac": 0.2625,
+      "score": 1
+    },
+    {
+      "image": "messi5",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 8,
+      "coverage_frac": 0.5625,
+      "largest_frac": 0.2625,
+      "score": 1
+    },
+    {
+      "image": "messi5",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.5,
+      "largest_frac": 0.15,
+      "score": 1
+    },
+    {
+      "image": "messi5",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.525,
+      "largest_frac": 0.2625,
+      "score": 1
+    },
+    {
+      "image": "messi5",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 8,
+      "coverage_frac": 0.5625,
+      "largest_frac": 0.2625,
+      "score": 1
+    },
+    {
+      "image": "home",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 7,
+      "coverage_frac": 0.5365,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "home",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 8,
+      "coverage_frac": 0.5521,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "home",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 7,
+      "coverage_frac": 0.5938,
+      "largest_frac": 0.2188,
+      "score": 1
+    },
+    {
+      "image": "home",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 8,
+      "coverage_frac": 0.6094,
+      "largest_frac": 0.2188,
+      "score": 1
+    },
+    {
+      "image": "home",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 8,
+      "coverage_frac": 0.5938,
+      "largest_frac": 0.1823,
+      "score": 1
+    },
+    {
+      "image": "home",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 7,
+      "coverage_frac": 0.5677,
+      "largest_frac": 0.2188,
+      "score": 1
+    },
+    {
+      "image": "home",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 8,
+      "coverage_frac": 0.651,
+      "largest_frac": 0.2188,
+      "score": 0.8745
+    },
+    {
+      "image": "home",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 9,
+      "coverage_frac": 0.6667,
+      "largest_frac": 0.2188,
+      "score": 0.8667
+    },
+    {
+      "image": "starry_night",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 0.9438,
+      "largest_frac": 0.4401,
+      "score": 0.75
+    },
+    {
+      "image": "starry_night",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 13,
+      "coverage_frac": 1.0465,
+      "largest_frac": 0.3961,
+      "score": 0.75
+    },
+    {
+      "image": "starry_night",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 0.9438,
+      "largest_frac": 0.4401,
+      "score": 0.75
+    },
+    {
+      "image": "starry_night",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 13,
+      "coverage_frac": 1.0465,
+      "largest_frac": 0.3961,
+      "score": 0.75
+    },
+    {
+      "image": "starry_night",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 0.9438,
+      "largest_frac": 0.4401,
+      "score": 0.75
+    },
+    {
+      "image": "starry_night",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 12,
+      "coverage_frac": 0.9144,
+      "largest_frac": 0.3521,
+      "score": 0.75
+    },
+    {
+      "image": "starry_night",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 0.9438,
+      "largest_frac": 0.4401,
+      "score": 0.75
+    },
+    {
+      "image": "starry_night",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 13,
+      "coverage_frac": 1.0905,
+      "largest_frac": 0.4401,
+      "score": 0.75
+    },
+    {
+      "image": "lena",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 4,
+      "coverage_frac": 0.8555,
+      "largest_frac": 0.3125,
+      "score": 0.7723
+    },
+    {
+      "image": "lena",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.8789,
+      "largest_frac": 0.2578,
+      "score": 0.7605
+    },
+    {
+      "image": "lena",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.8789,
+      "largest_frac": 0.2578,
+      "score": 0.7605
+    },
+    {
+      "image": "lena",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.8789,
+      "largest_frac": 0.2578,
+      "score": 0.7605
+    },
+    {
+      "image": "lena",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.8789,
+      "largest_frac": 0.2578,
+      "score": 0.7605
+    },
+    {
+      "image": "lena",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 7,
+      "coverage_frac": 1.0156,
+      "largest_frac": 0.2578,
+      "score": 0.75
+    },
+    {
+      "image": "lena",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 8,
+      "coverage_frac": 1.0391,
+      "largest_frac": 0.2578,
+      "score": 0.75
+    },
+    {
+      "image": "lena",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 7,
+      "coverage_frac": 1.0156,
+      "largest_frac": 0.2578,
+      "score": 0.75
+    },
+    {
+      "image": "apple",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.4453,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "apple",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 9,
+      "coverage_frac": 0.4453,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "apple",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.8828,
+      "largest_frac": 0.4063,
+      "score": 0.749
+    },
+    {
+      "image": "apple",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.8828,
+      "largest_frac": 0.4063,
+      "score": 0.749
+    },
+    {
+      "image": "apple",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.8789,
+      "largest_frac": 0.4063,
+      "score": 0.7469
+    },
+    {
+      "image": "apple",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.8789,
+      "largest_frac": 0.4063,
+      "score": 0.7469
+    },
+    {
+      "image": "apple",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 11,
+      "coverage_frac": 1.0703,
+      "largest_frac": 0.375,
+      "score": 0.7439
+    },
+    {
+      "image": "apple",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 11,
+      "coverage_frac": 1.0703,
+      "largest_frac": 0.375,
+      "score": 0.7439
+    },
+    {
+      "image": "orange",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 6,
+      "coverage_frac": 0.4336,
+      "largest_frac": 0.2813,
+      "score": 0.9945
+    },
+    {
+      "image": "orange",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 6,
+      "coverage_frac": 0.3828,
+      "largest_frac": 0.2813,
+      "score": 0.989
+    },
+    {
+      "image": "orange",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.4102,
+      "largest_frac": 0.2813,
+      "score": 0.9861
+    },
+    {
+      "image": "orange",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 6,
+      "coverage_frac": 0.4063,
+      "largest_frac": 0.2813,
+      "score": 0.985
+    },
+    {
+      "image": "orange",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 5,
+      "coverage_frac": 0.3359,
+      "largest_frac": 0.2813,
+      "score": 0.9755
+    },
+    {
+      "image": "orange",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 4,
+      "coverage_frac": 0.3477,
+      "largest_frac": 0.2813,
+      "score": 0.9727
+    },
+    {
+      "image": "orange",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 4,
+      "coverage_frac": 0.3711,
+      "largest_frac": 0.2813,
+      "score": 0.9702
+    },
+    {
+      "image": "orange",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 3,
+      "coverage_frac": 0.3086,
+      "largest_frac": 0.2813,
+      "score": 0.847
+    },
+    {
+      "image": "building",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 13,
+      "coverage_frac": 1.1469,
+      "largest_frac": 0.3955,
+      "score": 0.75
+    },
+    {
+      "image": "building",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 13,
+      "coverage_frac": 1.1469,
+      "largest_frac": 0.3955,
+      "score": 0.75
+    },
+    {
+      "image": "building",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 1.0056,
+      "largest_frac": 0.3955,
+      "score": 0.75
+    },
+    {
+      "image": "building",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 11,
+      "coverage_frac": 1.0056,
+      "largest_frac": 0.3955,
+      "score": 0.75
+    },
+    {
+      "image": "building",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 0.9887,
+      "largest_frac": 0.3955,
+      "score": 0.75
+    },
+    {
+      "image": "building",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 0.9605,
+      "largest_frac": 0.3955,
+      "score": 0.75
+    },
+    {
+      "image": "building",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 10,
+      "coverage_frac": 1.0508,
+      "largest_frac": 0.3955,
+      "score": 0.75
+    },
+    {
+      "image": "building",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 11,
+      "coverage_frac": 0.9887,
+      "largest_frac": 0.3955,
+      "score": 0.75
+    },
+    {
+      "image": "basketball1",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.3021,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball1",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 5,
+      "coverage_frac": 0.3021,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball1",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.3021,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball1",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 5,
+      "coverage_frac": 0.3021,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball1",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.3021,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball1",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.3021,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball1",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.3021,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball1",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 5,
+      "coverage_frac": 0.3021,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "pic1",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 18,
+      "coverage_frac": 0.5156,
+      "largest_frac": 0.0469,
+      "score": 0.8
+    },
+    {
+      "image": "pic1",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 18,
+      "coverage_frac": 0.5156,
+      "largest_frac": 0.0469,
+      "score": 0.8
+    },
+    {
+      "image": "pic1",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 18,
+      "coverage_frac": 0.5104,
+      "largest_frac": 0.0469,
+      "score": 0.8
+    },
+    {
+      "image": "pic1",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 18,
+      "coverage_frac": 0.5104,
+      "largest_frac": 0.0469,
+      "score": 0.8
+    },
+    {
+      "image": "pic1",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 18,
+      "coverage_frac": 0.5104,
+      "largest_frac": 0.0469,
+      "score": 0.8
+    },
+    {
+      "image": "pic1",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 18,
+      "coverage_frac": 0.5104,
+      "largest_frac": 0.0469,
+      "score": 0.8
+    },
+    {
+      "image": "pic1",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 18,
+      "coverage_frac": 0.5104,
+      "largest_frac": 0.0469,
+      "score": 0.8
+    },
+    {
+      "image": "pic1",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 18,
+      "coverage_frac": 0.5104,
+      "largest_frac": 0.0469,
+      "score": 0.8
+    },
+    {
+      "image": "pic2",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 7,
+      "coverage_frac": 0.776,
+      "largest_frac": 0.2344,
+      "score": 0.812
+    },
+    {
+      "image": "pic2",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.776,
+      "largest_frac": 0.2344,
+      "score": 0.8089
+    },
+    {
+      "image": "pic2",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 7,
+      "coverage_frac": 0.7865,
+      "largest_frac": 0.25,
+      "score": 0.8068
+    },
+    {
+      "image": "pic2",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 10,
+      "coverage_frac": 0.7969,
+      "largest_frac": 0.2344,
+      "score": 0.7997
+    },
+    {
+      "image": "pic2",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.849,
+      "largest_frac": 0.2344,
+      "score": 0.7755
+    },
+    {
+      "image": "pic2",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 10,
+      "coverage_frac": 0.8698,
+      "largest_frac": 0.2344,
+      "score": 0.7651
+    },
+    {
+      "image": "pic2",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.9219,
+      "largest_frac": 0.2604,
+      "score": 0.7496
+    },
+    {
+      "image": "pic2",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 9,
+      "coverage_frac": 0.9219,
+      "largest_frac": 0.2604,
+      "score": 0.7496
+    },
+    {
+      "image": "pic5",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 12,
+      "coverage_frac": 0.8906,
+      "largest_frac": 0.25,
+      "score": 0.7547
+    },
+    {
+      "image": "pic5",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 13,
+      "coverage_frac": 0.901,
+      "largest_frac": 0.2188,
+      "score": 0.75
+    },
+    {
+      "image": "pic5",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 12,
+      "coverage_frac": 0.9063,
+      "largest_frac": 0.25,
+      "score": 0.75
+    },
+    {
+      "image": "pic5",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 13,
+      "coverage_frac": 0.9167,
+      "largest_frac": 0.2188,
+      "score": 0.75
+    },
+    {
+      "image": "pic5",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 1.0052,
+      "largest_frac": 0.3333,
+      "score": 0.75
+    },
+    {
+      "image": "pic5",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 1.0052,
+      "largest_frac": 0.3333,
+      "score": 0.75
+    },
+    {
+      "image": "pic5",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 12,
+      "coverage_frac": 0.9063,
+      "largest_frac": 0.25,
+      "score": 0.75
+    },
+    {
+      "image": "pic5",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 12,
+      "coverage_frac": 1.0052,
+      "largest_frac": 0.2917,
+      "score": 0.75
+    },
+    {
+      "image": "pic6",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.5625,
+      "largest_frac": 0.2031,
+      "score": 1
+    },
+    {
+      "image": "pic6",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 5,
+      "coverage_frac": 0.5625,
+      "largest_frac": 0.2031,
+      "score": 1
+    },
+    {
+      "image": "pic6",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.4688,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "pic6",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 5,
+      "coverage_frac": 0.4688,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "pic6",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.4688,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "pic6",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.4688,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "pic6",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.5156,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "pic6",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 5,
+      "coverage_frac": 0.4688,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "butterfly",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 14,
+      "coverage_frac": 0.7179,
+      "largest_frac": 0.1026,
+      "score": 0.841
+    },
+    {
+      "image": "butterfly",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 14,
+      "coverage_frac": 0.7179,
+      "largest_frac": 0.1026,
+      "score": 0.841
+    },
+    {
+      "image": "butterfly",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 12,
+      "coverage_frac": 0.7436,
+      "largest_frac": 0.2051,
+      "score": 0.8282
+    },
+    {
+      "image": "butterfly",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 12,
+      "coverage_frac": 0.7436,
+      "largest_frac": 0.2051,
+      "score": 0.8282
+    },
+    {
+      "image": "butterfly",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 14,
+      "coverage_frac": 0.7538,
+      "largest_frac": 0.1077,
+      "score": 0.8231
+    },
+    {
+      "image": "butterfly",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 15,
+      "coverage_frac": 0.8102,
+      "largest_frac": 0.1436,
+      "score": 0.7949
+    },
+    {
+      "image": "butterfly",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 15,
+      "coverage_frac": 0.8102,
+      "largest_frac": 0.1436,
+      "score": 0.7949
+    },
+    {
+      "image": "butterfly",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 14,
+      "coverage_frac": 0.8153,
+      "largest_frac": 0.2051,
+      "score": 0.7923
+    },
+    {
+      "image": "board",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 0.625,
+      "largest_frac": 0.1875,
+      "score": 1
+    },
+    {
+      "image": "board",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 11,
+      "coverage_frac": 0.6823,
+      "largest_frac": 0.1875,
+      "score": 0.8589
+    },
+    {
+      "image": "board",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 11,
+      "coverage_frac": 0.6823,
+      "largest_frac": 0.1875,
+      "score": 0.8589
+    },
+    {
+      "image": "board",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 12,
+      "coverage_frac": 0.7083,
+      "largest_frac": 0.1875,
+      "score": 0.8458
+    },
+    {
+      "image": "board",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 12,
+      "coverage_frac": 0.7083,
+      "largest_frac": 0.1875,
+      "score": 0.8458
+    },
+    {
+      "image": "board",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 9,
+      "coverage_frac": 0.7188,
+      "largest_frac": 0.375,
+      "score": 0.8406
+    },
+    {
+      "image": "board",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 14,
+      "coverage_frac": 0.8385,
+      "largest_frac": 0.1667,
+      "score": 0.7807
+    },
+    {
+      "image": "board",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 11,
+      "coverage_frac": 0.8646,
+      "largest_frac": 0.3281,
+      "score": 0.7677
+    },
+    {
+      "image": "basketball2",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 4,
+      "coverage_frac": 0.2917,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball2",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 4,
+      "coverage_frac": 0.2917,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball2",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 4,
+      "coverage_frac": 0.2917,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball2",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 4,
+      "coverage_frac": 0.2917,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball2",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 4,
+      "coverage_frac": 0.2917,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball2",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 5,
+      "coverage_frac": 0.3125,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball2",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 4,
+      "coverage_frac": 0.2917,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "basketball2",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 4,
+      "coverage_frac": 0.2917,
+      "largest_frac": 0.1094,
+      "score": 1
+    },
+    {
+      "image": "gradient",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 3,
+      "coverage_frac": 0.6912,
+      "largest_frac": 0.4608,
+      "score": 0.749
+    },
+    {
+      "image": "gradient",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 3,
+      "coverage_frac": 0.6912,
+      "largest_frac": 0.4608,
+      "score": 0.749
+    },
+    {
+      "image": "gradient",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 3,
+      "coverage_frac": 0.6912,
+      "largest_frac": 0.4608,
+      "score": 0.749
+    },
+    {
+      "image": "gradient",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 3,
+      "coverage_frac": 0.6912,
+      "largest_frac": 0.4608,
+      "score": 0.749
+    },
+    {
+      "image": "gradient",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 3,
+      "coverage_frac": 0.6912,
+      "largest_frac": 0.4608,
+      "score": 0.749
+    },
+    {
+      "image": "gradient",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 3,
+      "coverage_frac": 0.6912,
+      "largest_frac": 0.4608,
+      "score": 0.749
+    },
+    {
+      "image": "gradient",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 3,
+      "coverage_frac": 0.6912,
+      "largest_frac": 0.4608,
+      "score": 0.749
+    },
+    {
+      "image": "gradient",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 3,
+      "coverage_frac": 0.6912,
+      "largest_frac": 0.4608,
+      "score": 0.749
+    },
+    {
+      "image": "notes",
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "entity_count": 1,
+      "coverage_frac": 0.1194,
+      "largest_frac": 0.1194,
+      "score": 0.7197
+    },
+    {
+      "image": "notes",
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "entity_count": 1,
+      "coverage_frac": 0.1194,
+      "largest_frac": 0.1194,
+      "score": 0.7197
+    },
+    {
+      "image": "notes",
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "entity_count": 1,
+      "coverage_frac": 0.1194,
+      "largest_frac": 0.1194,
+      "score": 0.7197
+    },
+    {
+      "image": "notes",
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "entity_count": 0,
+      "coverage_frac": 0,
+      "largest_frac": 0,
+      "score": 0
+    },
+    {
+      "image": "notes",
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "entity_count": 0,
+      "coverage_frac": 0,
+      "largest_frac": 0,
+      "score": 0
+    },
+    {
+      "image": "notes",
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "entity_count": 0,
+      "coverage_frac": 0,
+      "largest_frac": 0,
+      "score": 0
+    },
+    {
+      "image": "notes",
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "entity_count": 0,
+      "coverage_frac": 0,
+      "largest_frac": 0,
+      "score": 0
+    },
+    {
+      "image": "notes",
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "entity_count": 0,
+      "coverage_frac": 0,
+      "largest_frac": 0,
+      "score": 0
+    }
+  ],
+  "per_image_ranked": {
+    "fruits": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 6,
+        "score": 1
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 7,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 6,
+        "score": 1
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 8,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 6,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 5,
+        "score": 0.8645833333333333
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 5,
+        "score": 0.8645833333333333
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 5,
+        "score": 0.8645833333333333
+      }
+    ],
+    "baboon": [
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 10,
+        "score": 0.873828125
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 11,
+        "score": 0.858203125
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 13,
+        "score": 0.75
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 15,
+        "score": 0.75
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 12,
+        "score": 0.7335228150215193
+      },
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 10,
+        "score": 0.7334735588567434
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 11,
+        "score": 0.7316244469123316
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 16,
+        "score": 0.5900000000000001
+      }
+    ],
+    "messi5": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 9,
+        "score": 1
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 9,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 9,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 9,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 8,
+        "score": 1
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 9,
+        "score": 1
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 9,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 8,
+        "score": 1
+      }
+    ],
+    "home": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 7,
+        "score": 1
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 8,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 7,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 8,
+        "score": 1
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 8,
+        "score": 1
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 7,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 8,
+        "score": 0.8744791666666667
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 9,
+        "score": 0.8666666666666667
+      }
+    ],
+    "starry_night": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 13,
+        "score": 0.75
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 13,
+        "score": 0.75
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 12,
+        "score": 0.75
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 13,
+        "score": 0.75
+      }
+    ],
+    "lena": [
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 4,
+        "score": 0.772265625
+      },
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 5,
+        "score": 0.760546875
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 5,
+        "score": 0.760546875
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 5,
+        "score": 0.760546875
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 5,
+        "score": 0.760546875
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 7,
+        "score": 0.75
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 8,
+        "score": 0.75
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 7,
+        "score": 0.75
+      }
+    ],
+    "apple": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 9,
+        "score": 1
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 9,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 9,
+        "score": 0.7489902761945655
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 9,
+        "score": 0.7489902761945655
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 9,
+        "score": 0.7468610364578518
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 9,
+        "score": 0.7468610364578518
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 11,
+        "score": 0.7439498098991196
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 11,
+        "score": 0.7439498098991196
+      }
+    ],
+    "orange": [
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 6,
+        "score": 0.9944847464740825
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 6,
+        "score": 0.9890078961985913
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 5,
+        "score": 0.986142523549017
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 6,
+        "score": 0.9850445238475776
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 5,
+        "score": 0.9755243868240857
+      },
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 4,
+        "score": 0.9727437859826594
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 4,
+        "score": 0.9702437189235619
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 3,
+        "score": 0.8470213633764887
+      }
+    ],
+    "building": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 13,
+        "score": 0.75
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 13,
+        "score": 0.75
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 10,
+        "score": 0.75
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 11,
+        "score": 0.75
+      }
+    ],
+    "basketball1": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 5,
+        "score": 1
+      }
+    ],
+    "pic1": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 18,
+        "score": 0.8
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 18,
+        "score": 0.8
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 18,
+        "score": 0.8
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 18,
+        "score": 0.8
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 18,
+        "score": 0.8
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 18,
+        "score": 0.8
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 18,
+        "score": 0.8
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 18,
+        "score": 0.8
+      }
+    ],
+    "pic2": [
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 7,
+        "score": 0.8119791666666667
+      },
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 9,
+        "score": 0.8088608290401867
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 7,
+        "score": 0.8067708333333332
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 10,
+        "score": 0.7996560236543784
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 9,
+        "score": 0.7755208333333332
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 10,
+        "score": 0.7651041666666667
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 9,
+        "score": 0.7495823643271419
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 9,
+        "score": 0.7495823643271419
+      }
+    ],
+    "pic5": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 12,
+        "score": 0.7546875
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 13,
+        "score": 0.75
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 12,
+        "score": 0.75
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 13,
+        "score": 0.75
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 11,
+        "score": 0.75
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 12,
+        "score": 0.75
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 12,
+        "score": 0.75
+      }
+    ],
+    "pic6": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 5,
+        "score": 1
+      }
+    ],
+    "butterfly": [
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 14,
+        "score": 0.8410420037833033
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 14,
+        "score": 0.8410420037833033
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 12,
+        "score": 0.8282220753469927
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 12,
+        "score": 0.8282220753469927
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 14,
+        "score": 0.8230941039724684
+      },
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 15,
+        "score": 0.7948902614125852
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 15,
+        "score": 0.7948902614125852
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 14,
+        "score": 0.7923262757253231
+      }
+    ],
+    "board": [
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 11,
+        "score": 1
+      },
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 11,
+        "score": 0.8588541666666667
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 11,
+        "score": 0.8588541666666667
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 12,
+        "score": 0.8458333333333332
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 12,
+        "score": 0.8458333333333332
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 9,
+        "score": 0.840625
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 14,
+        "score": 0.7807291666666667
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 11,
+        "score": 0.7677083333333332
+      }
+    ],
+    "basketball2": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 4,
+        "score": 1
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 4,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 4,
+        "score": 1
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 4,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 4,
+        "score": 1
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 5,
+        "score": 1
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 4,
+        "score": 1
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 4,
+        "score": 1
+      }
+    ],
+    "gradient": [
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 3,
+        "score": 0.7490000000000001
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 3,
+        "score": 0.7490000000000001
+      },
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 3,
+        "score": 0.7490000000000001
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 3,
+        "score": 0.7490000000000001
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 3,
+        "score": 0.7490000000000001
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 3,
+        "score": 0.7490000000000001
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 3,
+        "score": 0.7490000000000001
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 3,
+        "score": 0.7490000000000001
+      }
+    ],
+    "notes": [
+      {
+        "config": "identity+density-cluster+merge_overlap",
+        "winner_idx": 2,
+        "entity_count": 1,
+        "score": 0.7197014925373135
+      },
+      {
+        "config": "identity+density-cluster+identity",
+        "winner_idx": 3,
+        "entity_count": 1,
+        "score": 0.7197014925373135
+      },
+      {
+        "config": "gaussian_1+density-cluster+merge_overlap",
+        "winner_idx": 6,
+        "entity_count": 1,
+        "score": 0.7197014925373135
+      },
+      {
+        "config": "gaussian_2+density-cluster+merge_overlap",
+        "winner_idx": 0,
+        "entity_count": 0,
+        "score": 0
+      },
+      {
+        "config": "gaussian_2+density-cluster+identity",
+        "winner_idx": 1,
+        "entity_count": 0,
+        "score": 0
+      },
+      {
+        "config": "median_3+density-cluster+merge_overlap",
+        "winner_idx": 4,
+        "entity_count": 0,
+        "score": 0
+      },
+      {
+        "config": "median_5+density-cluster+merge_overlap",
+        "winner_idx": 5,
+        "entity_count": 0,
+        "score": 0
+      },
+      {
+        "config": "median_3+density-cluster+identity",
+        "winner_idx": 7,
+        "entity_count": 0,
+        "score": 0
+      }
+    ]
+  },
+  "winner_stats": [
+    {
+      "winner_idx": 0,
+      "config": "gaussian_2+density-cluster+merge_overlap",
+      "top1_hits": 12,
+      "top3_hits": 15,
+      "top5_hits": 16,
+      "mean_rank": 2.1052631578947367,
+      "mean_score": 0.8280556303662548
+    },
+    {
+      "winner_idx": 2,
+      "config": "identity+density-cluster+merge_overlap",
+      "top1_hits": 3,
+      "top3_hits": 15,
+      "top5_hits": 17,
+      "mean_rank": 3.210526315789474,
+      "mean_score": 0.8525942100757234
+    },
+    {
+      "winner_idx": 1,
+      "config": "gaussian_2+density-cluster+identity",
+      "top1_hits": 0,
+      "top3_hits": 14,
+      "top5_hits": 17,
+      "mean_rank": 2.9473684210526314,
+      "mean_score": 0.8276279559449339
+    },
+    {
+      "winner_idx": 6,
+      "config": "gaussian_1+density-cluster+merge_overlap",
+      "top1_hits": 2,
+      "top3_hits": 4,
+      "top5_hits": 6,
+      "mean_rank": 5.684210526315789,
+      "mean_score": 0.8549227883383675
+    },
+    {
+      "winner_idx": 3,
+      "config": "identity+density-cluster+identity",
+      "top1_hits": 0,
+      "top3_hits": 3,
+      "top5_hits": 15,
+      "mean_rank": 4.315789473684211,
+      "mean_score": 0.8511821993895079
+    },
+    {
+      "winner_idx": 4,
+      "config": "median_3+density-cluster+merge_overlap",
+      "top1_hits": 0,
+      "top3_hits": 3,
+      "top5_hits": 14,
+      "mean_rank": 5.052631578947368,
+      "mean_score": 0.7999193221532557
+    },
+    {
+      "winner_idx": 5,
+      "config": "median_5+density-cluster+merge_overlap",
+      "top1_hits": 2,
+      "top3_hits": 3,
+      "top5_hits": 6,
+      "mean_rank": 5.421052631578948,
+      "mean_score": 0.8043388254556452
+    },
+    {
+      "winner_idx": 7,
+      "config": "median_3+density-cluster+identity",
+      "top1_hits": 0,
+      "top3_hits": 0,
+      "top5_hits": 4,
+      "mean_rank": 7.2631578947368425,
+      "mean_score": 0.8016133492840706
+    }
+  ]
+}

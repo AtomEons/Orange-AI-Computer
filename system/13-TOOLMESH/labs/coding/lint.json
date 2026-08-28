@@ -1,0 +1,97 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "coding",
+  "card_id": "lint",
+  "capability": "coding.lint",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["linter"],
+    "properties": {
+      "linter": {
+        "type": "string",
+        "description": "Declared linter. Mesh resolves to a vetted command + config-discovery rule; arbitrary tools are rejected.",
+        "enum": ["eslint", "ruff", "pylint", "mypy", "tsc", "golangci-lint", "rubocop", "shellcheck", "stylelint"]
+      },
+      "path": {
+        "type": "string",
+        "description": "Sandbox path to lint. Defaults to the workspace root.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "config_ref": {
+        "type": "string",
+        "description": "Optional sandbox reference to an explicit config file (e.g. .eslintrc.json, pyproject.toml). Omit to use the linter's own discovery.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "fix": {
+        "type": "boolean",
+        "description": "When true and the linter supports it, autofixable issues are written back to the sandbox. Risk class is upgraded; lease requires write scope and human approval.",
+        "default": false
+      },
+      "severity_floor": {
+        "type": "string",
+        "description": "Suppress findings below this severity in the response. 'error' returns only errors; 'info' returns everything.",
+        "enum": ["info", "warning", "error"],
+        "default": "info"
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["findings", "error_count", "warning_count"],
+    "properties": {
+      "findings": {
+        "type": "array",
+        "description": "Per-finding records. Truncated to 1000 entries; counts always reflect the full run.",
+        "maxItems": 1000,
+        "items": {
+          "type": "object",
+          "required": ["path", "line", "severity", "rule", "message"],
+          "properties": {
+            "path": { "type": "string", "pattern": "^sandbox://" },
+            "line": { "type": "integer", "minimum": 1 },
+            "column": { "type": "integer", "minimum": 1 },
+            "severity": { "type": "string", "enum": ["info", "warning", "error"] },
+            "rule": { "type": "string" },
+            "message": { "type": "string" },
+            "fixable": { "type": "boolean" }
+          }
+        }
+      },
+      "error_count": { "type": "integer", "minimum": 0 },
+      "warning_count": { "type": "integer", "minimum": 0 },
+      "info_count": { "type": "integer", "minimum": 0 },
+      "files_changed": {
+        "type": "integer",
+        "description": "Populated only when fix=true. Zero when fix is off.",
+        "minimum": 0
+      },
+      "linter_version": { "type": "string" }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 50,
+    "scopes": [
+      "fs.read:sandbox://workspace/",
+      "process.spawn:linter",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Run a vetted linter or type-checker against the workspace and return structured findings. Read-only unless fix=true.",
+  "tags": ["coding", "lint", "static-analysis", "eslint", "ruff", "mypy"],
+  "notes": "fix=true upgrades the lease to include 'fs.write:sandbox://workspace/' and trips human approval. Diff-only review is preferred — chain to diff-review after a fix run."
+}

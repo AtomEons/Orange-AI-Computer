@@ -1,0 +1,78 @@
+{
+  "kind": "parallel-test-orchestrator",
+  "version": "v1",
+  "timestamp_iso": "2026-07-04T06:05:20.884Z",
+  "cwd": "C:\\AtomEons\\Orange5\\12-ATOMSMASHER\\full-scope\\tests",
+  "suite_count": 8,
+  "total_cases": 56,
+  "total_pass": 56,
+  "total_fail": 0,
+  "nonzero_exits": 0,
+  "wall_ms_parallel": 123933,
+  "suites": [
+    {
+      "name": "full-scope.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 57369,
+      "pass": 7,
+      "fail": 0,
+      "total": 7
+    },
+    {
+      "name": "determinism.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 22135,
+      "pass": 5,
+      "fail": 0,
+      "total": 5
+    },
+    {
+      "name": "codec-export.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 56410,
+      "pass": 5,
+      "fail": 0,
+      "total": 5
+    },
+    {
+      "name": "replay-integration.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 117675,
+      "pass": 4,
+      "fail": 0,
+      "total": 4
+    },
+    {
+      "name": "storage-api.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 28863,
+      "pass": 8,
+      "fail": 0,
+      "total": 8
+    },
+    {
+      "name": "concurrency.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 50871,
+      "pass": 3,
+      "fail": 0,
+      "total": 3
+    },
+    {
+      "name": "feature-distinctness.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 41600,
+      "pass": 3,
+      "fail": 0,
+      "total": 3
+    },
+    {
+      "name": "schema-caps.test.mjs",
+      "exit_code": 0,
+      "elapsed_ms": 36237,
+      "pass": 21,
+      "fail": 0,
+      "total": 21
+    }
+  ]
+}

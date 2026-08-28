@@ -1,0 +1,110 @@
+{
+  "experiment": "95-key-dict-substitution",
+  "corpus_bytes": 2075585,
+  "corpus_sha256": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "patterns_used": 17,
+  "total_pattern_hits": 96548,
+  "bytes_saved_by_substitution": 879623,
+  "substituted_bytes": 1622429,
+  "compressed_bytes": 117905,
+  "ratio_vs_raw": 17.604,
+  "vs_M19": -29.467,
+  "vs_M19_pct": -62.6,
+  "plain_brotli11_bytes": 120166,
+  "plain_brotli11_ratio": 17.273,
+  "vs_plain_brotli": 0.331,
+  "enc_ms": 4580.86,
+  "dec_ms": 30.37,
+  "baseline_brotli_ms": 5186.11,
+  "lossless": true,
+  "restored_sha256": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "verdict": "RED-below-plain-brotli",
+  "notes": "Key/literal dictionary substitution with reserved control-byte tokens, then brotli q11. Tests whether explicit symbolic key replacement helps brotli net bytes vs its native LZ77 over the same repeats.",
+  "patterns": [
+    {
+      "pattern": "\",\"payload_json\":",
+      "count": 6224,
+      "token_hex": "0x01"
+    },
+    {
+      "pattern": "\",\"created_at\":",
+      "count": 6224,
+      "token_hex": "0x02"
+    },
+    {
+      "pattern": "\",\"summary\":\"",
+      "count": 6224,
+      "token_hex": "0x03"
+    },
+    {
+      "pattern": "\",\"status\":",
+      "count": 6224,
+      "token_hex": "0x04"
+    },
+    {
+      "pattern": "\",\"action\":\"",
+      "count": 6224,
+      "token_hex": "0x05"
+    },
+    {
+      "pattern": "\"payload_json\":",
+      "count": 6224,
+      "token_hex": "0x06"
+    },
+    {
+      "pattern": "\"created_at\":",
+      "count": 6224,
+      "token_hex": "0x07"
+    },
+    {
+      "pattern": "\"summary\":",
+      "count": 6224,
+      "token_hex": "0x08"
+    },
+    {
+      "pattern": "\"status\":",
+      "count": 6224,
+      "token_hex": "0x0b"
+    },
+    {
+      "pattern": "\"action\":",
+      "count": 6224,
+      "token_hex": "0x0c"
+    },
+    {
+      "pattern": "\"id\":\"",
+      "count": 6224,
+      "token_hex": "0x0e"
+    },
+    {
+      "pattern": "\"mesh.compress\"",
+      "count": 1565,
+      "token_hex": "0x0f"
+    },
+    {
+      "pattern": "\"rcpt_",
+      "count": 6284,
+      "token_hex": "0x10"
+    },
+    {
+      "pattern": "packet #",
+      "count": 1565,
+      "token_hex": "0x11"
+    },
+    {
+      "pattern": "\"ok\"",
+      "count": 6223,
+      "token_hex": "0x12"
+    },
+    {
+      "pattern": "{\"id\":\"",
+      "count": 6224,
+      "token_hex": "0x13"
+    },
+    {
+      "pattern": "\"}\n{",
+      "count": 6223,
+      "token_hex": "0x14"
+    }
+  ]
+}

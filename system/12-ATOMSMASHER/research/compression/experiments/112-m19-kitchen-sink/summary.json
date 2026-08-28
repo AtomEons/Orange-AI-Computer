@@ -1,0 +1,15 @@
+{
+  "experiment": "112-m19-kitchen-sink",
+  "total_bytes": 44605,
+  "ratio": 46.533,
+  "delta_vs_m19": -0.538,
+  "enc_ms": 3088,
+  "dec_ms": 199,
+  "lossless": true,
+  "det_sha": "03da0e5cf04adf96",
+  "rec_sha": "03da0e5cf04adf96",
+  "ratio_strip_count": 1,
+  "summary_strip_count": 424,
+  "status_exceptions": 1,
+  "notes": "108+109+110 stacked. Ratio strips=1, summary strips=424, status exceptions=1."
+}

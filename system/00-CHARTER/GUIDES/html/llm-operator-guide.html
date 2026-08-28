@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Æ Orange AI Computer LLM Operator Guide</title><style>
+  :root { color-scheme: light; --orange:#ff5a1f; --ink:#171717; --muted:#666; --line:#dedede; --paper:#fff; }
+  * { box-sizing: border-box; }
+  @page { size: Letter; margin: 0.7in 0.66in 0.72in; }
+  html { background:#ececec; }
+  body { max-width: 8.5in; margin: 0 auto; padding: 0.72in 0.66in; background:var(--paper); color:var(--ink); font-family: Inter, "Segoe UI", Arial, sans-serif; font-size:10.5pt; line-height:1.48; }
+  body::before { content:"ATOM EONS  /  Æ ORANGE AI COMPUTER"; display:block; color:var(--orange); font-size:8pt; font-weight:800; letter-spacing:.14em; border-bottom:2px solid var(--orange); padding-bottom:8px; margin-bottom:28px; }
+  h1,h2,h3,h4 { break-after:avoid; line-height:1.15; color:#111; }
+  h1 { font-size:28pt; margin:0 0 20px; }
+  h2 { font-size:18pt; margin:30px 0 11px; padding-top:7px; border-top:1px solid var(--line); }
+  h3 { font-size:13.5pt; margin:23px 0 8px; }
+  h4 { font-size:11pt; margin:18px 0 6px; }
+  p, li { orphans:3; widows:3; }
+  a { color:#b7390d; text-decoration:none; }
+  strong { color:#111; }
+  blockquote { margin:18px 0; padding:10px 15px; border-left:4px solid var(--orange); background:#fff5f0; }
+  code { font-family:"Cascadia Mono",Consolas,monospace; background:#f4f4f4; padding:1px 4px; border-radius:3px; font-size:9pt; }
+  pre { break-inside:avoid; white-space:pre-wrap; background:#161616; color:#f7f7f7; padding:13px 15px; border-left:4px solid var(--orange); border-radius:4px; overflow-wrap:anywhere; }
+  pre code { color:inherit; background:none; padding:0; }
+  table { width:100%; border-collapse:collapse; margin:15px 0 21px; break-inside:auto; font-size:9pt; }
+  thead { display:table-header-group; }
+  tr { break-inside:avoid; }
+  th,td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; }
+  th { text-align:left; background:#fff1eb; }
+  ul,ol { padding-left:22px; }
+  img { max-width:100%; height:auto; }
+  hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
+  .manual-meta { color:var(--muted); font-size:8.5pt; margin:-10px 0 30px; }
+  .book-cover { min-height:8.2in; display:flex; flex-direction:column; justify-content:center; page-break-after:always; }
+  .book-cover .mark { color:var(--orange); font-size:11pt; font-weight:800; letter-spacing:.18em; }
+  .book-cover h1 { font-size:42pt; max-width:6.5in; margin:16px 0; }
+  .book-cover p { color:var(--muted); font-size:15pt; max-width:5.7in; }
+  .manual-section { page-break-before:always; }
+  @media print { html,body { background:#fff; } body { padding:0; max-width:none; } }
+</style></head>
+<body class="single-manual">
+<div class="manual-meta">Canonical source: 00-CHARTER/GUIDES/LLM_OPERATOR_GUIDE.md</div>
+<h1>Æ Orange AI Computer LLM Operator Guide</h1>
+<p>This is the recovery and operating guide for Codex, Claude, Hermes, local
+models, and any new account with zero memory.</p>
+<h2>1. Identity</h2>
+<ul>
+<li>Product: Orange.</li>
+<li>Release: Æ Orange AI Computer.</li>
+<li>Canonical root: <code>C:\AtomEons\Orange5</code>.</li>
+<li>Orange3: archived.</li>
+<li>Orange4: theory phase.</li>
+<li>Atomic Orange: optional interface, not the intelligence.</li>
+<li>N150: deterministic control and development host.</li>
+<li>Codexa: preferred heavy inference, visual, training, Docker, and long-job
+host.</li>
+</ul>
+<p>Never pivot work to an older Orange folder because it looks more complete.</p>
+<h2>Current Truth Pin - 2026-08-28</h2>
+<ul>
+<li>Live primary: <code>orange-navigator:ornith-1.5-9b-q4km</code> on authenticated Codexa
+<code>10.0.0.4</code>; Q8 is retired from current authority and remains historical evidence.</li>
+<li>Brain MCP: 10 stdio tools and 12 authenticated loopback HTTP tools.</li>
+<li>Accepted integrated proof: green at
+<code>10-RECEIPTS/orange5-build/2026-08-28T03-42-45-242Z-integrated-operational-proof.json</code>.</li>
+<li>Blue Bench: 10/10 exact-path lanes accepted at
+<code>10-RECEIPTS/orange5-build/2026-08-28T03-40-44-768Z-blue-bench.json</code>.</li>
+<li>Context Crystal: 5/5 held-out parity with minimum <code>1422.901x</code> across a
+7,056,795-byte corpus.</li>
+<li>AE Memory: 23/23 cases with hybrid MRR <code>0.9058</code>, p50 <code>281 ms</code>, p95 <code>445 ms</code>.</li>
+<li>Media: technical artifact validity only; studio quality is unproved.</li>
+<li>Hermes Brain MCP delegation: parent mediation, one child, synthesis, receipts,
+and lease revocation completed with all ten checks true in <code>11,409.53 ms</code>;
+receipt
+<code>10-RECEIPTS/orange5-build/2026-08-28T04-13-22-203Z-brain-mcp-delegation-live-proof.json</code>.</li>
+</ul>
+<p>Each green receipt remains scoped to the exact workflow it exercised.</p>
+<h2>2. Cold-Start Recovery Protocol</h2>
+<p>Before planning or editing:</p>
+<ol>
+<li>Change to <code>C:\AtomEons\Orange5</code>.</li>
+<li>Read this guide.</li>
+<li>Read <code>..\ORANGE5_RUNTIME_AUTHORITY.md</code>.</li>
+<li>Read <code>..\..\ORANGEFIVE_CURRENT_OPERATIONAL_TRUTH.md</code>; treat its timestamp as
+potentially stale.</li>
+<li>Inspect the newest relevant receipt in <code>10-RECEIPTS\orange5-build</code>.</li>
+<li>Run semantic health.</li>
+<li>Inspect <code>git status --short</code>.</li>
+<li>State goal, scope, allowed mutations, evidence, and rollback.</li>
+<li>Reuse an existing Orange organ before creating a parallel tool.</li>
+<li>Preserve any LOOM halt and report it.</li>
+</ol>
+<pre><code class="language-powershell">cd C:\AtomEons\Orange5
+bun 03-BACKEND/spine-cli.mjs --health
+bun 03-BACKEND/orange.mjs status
+git status --short
+</code></pre>
+<h2>3. Operating Law</h2>
+<ul>
+<li>Receipts and live probes outrank prose.</li>
+<li>A model response is not execution proof.</li>
+<li>Installed weights are inventory, not active routes.</li>
+<li>A configured endpoint is not a working endpoint.</li>
+<li>A test fixture is not production runtime.</li>
+<li>An HTTP 200 is not semantic health.</li>
+<li>Never call candidate, partial, or configured work green.</li>
+<li>Never retry blindly until a gate happens to pass.</li>
+<li>Never erase user work or another agent's dirty tree.</li>
+<li>Keep one writer on overlapping files.</li>
+<li>Use maximum useful reasoning, not maximum ceremony.</li>
+</ul>
+<h2>4. Atomic Idea Method</h2>
+<p>For research, invention, architecture, and difficult debugging:</p>
+<ol>
+<li>Define the real problem.</li>
+<li>Research current primary sources when recency matters.</li>
+<li>Map existing Orange capabilities and external solutions.</li>
+<li>Stop when an existing solution is sufficient.</li>
+<li>If it is insufficient, name the exact missing capability and irreducible
+insight.</li>
+<li>Synthesize across software, systems, product, security, human factors,
+operations, economics, and relevant science.</li>
+<li>Attack the proposal with falsifiers and failure modes.</li>
+<li>Build the smallest real proof that can disprove it.</li>
+<li>Record what changed, what was learned, and the next entry point.</li>
+</ol>
+<p>Novelty is useful only when it beats reuse with evidence.</p>
+<h2>5. Drive Orange Through Orders</h2>
+<p>Use <code>orange.order.v1</code>, not freeform operational claims.</p>
+<pre><code class="language-json">{
+  &quot;schema&quot;: &quot;orange.order.v1&quot;,
+  &quot;orderId&quot;: &quot;unique-id&quot;,
+  &quot;action&quot;: &quot;read.health&quot;,
+  &quot;payload&quot;: {},
+  &quot;scope&quot;: [&quot;C:/AtomEons/Orange5&quot;],
+  &quot;allowedActions&quot;: [&quot;read&quot;],
+  &quot;forbiddenActions&quot;: [&quot;delete&quot;, &quot;deploy&quot;],
+  &quot;targetProject&quot;: &quot;orange5&quot;,
+  &quot;riskLevel&quot;: &quot;low&quot;,
+  &quot;requiresReceipt&quot;: true
+}
+</code></pre>
+<p>Preferred Windows invocation:</p>
+<pre><code class="language-powershell">bun 03-BACKEND/spine-cli.mjs --order-file C:\path\to\order.json
+</code></pre>
+<p>Use <code>--dry-run</code> before mutation, <code>--learn</code> only after successful governed work,
+and <code>--seed</code> for replay.</p>
+<h2>6. Use Brain MCP By Default</h2>
+<p>For compatible clients, connect to Orange Brain MCP rather than giving the
+model an unrestricted shell.</p>
+<p>Use these tools in order:</p>
+<ol>
+<li><code>orange5_health</code>.</li>
+<li><code>orange5_route</code> for planning.</li>
+<li><code>orange5_order</code> for governed work.</li>
+<li><code>orange5_receipts</code> to verify completion.</li>
+</ol>
+<p>Other bounded tools include chat, superstack status, approved model lease,
+delegation, filesystem/process execution, and browser workflows.</p>
+<p>stdio is the desktop/IDE transport. Loopback Streamable HTTP is the app and
+model-to-model transport. Never bind the HTTP gateway to the LAN without a
+separate security review.</p>
+<p>The current dual-transport proof reports 10 stdio tools and 12 HTTP tools. The
+different counts are transport-specific, not evidence of a broken crossing.</p>
+<h2>7. Route Correctly</h2>
+<p>Do not ask the operator to choose a lane when Orange can decide.</p>
+<ul>
+<li>Use Bun reflex for health, schemas, policy, state, and repeatable work.</li>
+<li>Use Navigator for intent, synthesis, and orchestration packets.</li>
+<li>Use code, visual, creative, or heavy judgment specialists only when the work
+earns the lease.</li>
+<li>Use OpenAI 5.6 or another strongest hosted model only as an optional setup,
+review, or frontier lease. It is not required and receives no direct Orange
+internal authority.</li>
+</ul>
+<p>Before naming an active model, cite a fresh route or model receipt.</p>
+<h2>8. Use Hermes Correctly</h2>
+<p>Hermes is bounded execution, not an unrestricted swarm.</p>
+<ul>
+<li>Navigator conducts.</li>
+<li>Builder mutates within scope.</li>
+<li>Researcher gathers current evidence.</li>
+<li>Reviewer challenges proof.</li>
+<li>Visual checks rendered truth.</li>
+<li>Misfit produces dissent without authority.</li>
+</ul>
+<p>Use durable Kanban for cross-role, restart-surviving, artifact-producing work.
+Use short delegation for a read-only answer the current turn awaits. Do not
+start a second dispatcher or nested orchestration tree.</p>
+<p>Hermes <code>done</code> is not Orange completion. Verify the final Orange receipt. The
+fresh Brain MCP proof establishes one complete harmless read delegation; use
+separate receipts for mutation, multi-child, and long-job paths.</p>
+<h2>9. Use Memory And Compression</h2>
+<p>Before broad hydration:</p>
+<ol>
+<li>Query project continuity and relevant memory.</li>
+<li>Load matching commitment atoms and failure memory.</li>
+<li>Build a sparse workset.</li>
+<li>Reuse a cartridge or saved-work certificate when valid.</li>
+<li>Hydrate exact source only when evidence requires it.</li>
+</ol>
+<p>Do not paste the entire project into a prompt. Full transcripts remain on disk.
+Context Crystal preserves source pointers. AtomSmasher reduces repeated work;
+it does not erase truth.</p>
+<p>Keep benchmark scopes distinct: current held-out quality is 5/5 with minimum
+<code>1422.901x</code> operational context ratio across the named corpus. Current memory
+quality is 23/23 with hybrid MRR <code>0.9058</code>.</p>
+<p>When compact state causes repeated hydration or a wrong recall, record
+compression debt.</p>
+<h2>10. Model Installation Behavior</h2>
+<p>The deploy payload is immutable. You must not invent, add, remove, edit, or
+rewrite Orange system files, Hermes profiles, policies, schemas, or role
+definitions during installation.</p>
+<p>Your installation authority is limited to:</p>
+<ol>
+<li>Read the fixed payload manifest.</li>
+<li>Invoke deterministic discovery.</li>
+<li>Present the manifest's recommended default selection.</li>
+<li>Record operator deselections without rewriting the manifest.</li>
+<li>Request explicit approval.</li>
+<li>Invoke the deterministic Bun deploy engine.</li>
+<li>Report its receipts and blockers.</li>
+</ol>
+<p>Do not run a model pull as your first action. The deploy engine, not you,
+adopts compatible existing Bun, Ollama, models, and tools. It automatically
+downloads missing approved components only after approval.</p>
+<ol>
+<li>Discover host hardware and topology.</li>
+<li>Inventory installed runtimes, models, and free disk.</li>
+<li>Load the fixed role manifest.</li>
+<li>Present its recommended selection and per-role opt-out choices.</li>
+<li>Show source, immutable revision, license, download bytes, disk plan, RAM
+estimate, lease ceiling, checksum, resume strategy, proof, and rollback.</li>
+<li>Receive explicit operator approval.</li>
+<li>Invoke the pinned deterministic deploy engine without editing it.</li>
+<li>Verify file hashes, runtime discovery, peak memory, artifact or report
+contract, and receipt.</li>
+<li>Promote only after the role-specific bakeoff.</li>
+</ol>
+<p>Never delete an unowned model. Never imply that a download is active before
+runtime proof.</p>
+<p>All runtime configuration, credentials, model-download state, memory, logs,
+receipts, and host topology belong under <code>%USERPROFILE%\OrangeBox-Data</code>, never
+inside the immutable payload.</p>
+<h2>11. Work With Other Agents</h2>
+<ul>
+<li>Announce ownership of files before edits.</li>
+<li>Parallelize independent reads, research, and tests.</li>
+<li>Keep one writer on overlapping paths.</li>
+<li>Give subagents a bounded target, output contract, and forbidden scope.</li>
+<li>Review agent claims against their actual diffs and evidence.</li>
+<li>Stop duplicate work when another agent already owns the same capability.</li>
+</ul>
+<h2>12. Completion Format</h2>
+<p>Return this structure:</p>
+<pre><code class="language-text">STATUS
+SCOPE
+ACTIONS ACTUALLY TAKEN
+EVIDENCE
+BLOCKERS
+NEXT EXACT ACTION
+RECEIPT PATH
+</code></pre>
+<p>Use <code>needs_action</code> when execution is not proved. Do not use future tense to
+hide unfinished work.</p>
+<h2>13. Fast Recovery Prompt</h2>
+<pre><code class="language-text">Operate Æ Orange AI Computer from C:\AtomEons\Orange5. Read
+00-CHARTER\GUIDES\LLM_OPERATOR_GUIDE.md and
+00-CHARTER\ORANGE5_RUNTIME_AUTHORITY.md first. Probe semantic health and recent
+receipts. Use orange.order.v1 and orange.report.v1. Reuse existing Orange
+organs, preserve other work, keep one writer per file, and do not call anything
+green without fresh evidence. Use Codexa for heavy leases when available; keep
+Bun control functional without it. Stop at approval gates for downloads,
+destructive actions, credentials, deploys, and public release.
+</code></pre>
+<h2>Related Guides</h2>
+<ul>
+<li><a href="QUICK_START.md">Quick Start</a></li>
+<li><a href="OPERATOR_MANUAL.md">Operator Manual</a></li>
+<li><a href="TECHNICAL_ARCHITECTURE.md">Technical Architecture</a></li>
+<li><a href="FEATURES_GUIDE.md">Features Guide</a></li>
+<li><a href="MODEL_INSTALLATION_GUIDE.md">Model Installation Guide</a></li>
+</ul>
+
+</body></html>

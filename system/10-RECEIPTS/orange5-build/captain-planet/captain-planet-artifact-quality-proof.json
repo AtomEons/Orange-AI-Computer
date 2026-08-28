@@ -1,0 +1,82 @@
+{
+  "schema": "orange5.captain-planet.installed-artifact-quality-proof.v1",
+  "status": "CAPTAIN_PLANET_INSTALLED_ARTIFACT_TECHNICAL_QUALITY_PROVEN_PERCEPTUAL_QUALITY_UNASSESSED",
+  "generated_at": "2026-08-27T07:03:53.626Z",
+  "manifest": "C:\\AtomEons\\Orange5\\14-SUPERSTACK\\captain-planet-stack.json",
+  "manifest_sha256": "36de7065c87c96e6bdf944afc9bc6e923329c45b87ae0472239b57d5c26356bb",
+  "live_inventory_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\installed-lane-inventory.json",
+  "live_inventory_receipt_file_sha256": "4cc722af5c46a46d3ba2b3bc0adb4ee120a615b05c0e01584de80bf2d72ccb24",
+  "live_inventory_age_ms": 475843,
+  "live_inventory_fresh": true,
+  "installed_lane_count": 4,
+  "all_installed_lanes_end_to_end_artifact_technical_quality_proven": true,
+  "perceptual_quality_proven": false,
+  "studio_quality_proven": false,
+  "lanes": [
+    {
+      "role": "image_draft_flux2_klein",
+      "type": "image",
+      "status": "CAPTAIN_PLANET_IMAGE_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+      "end_to_end_artifact_technical_quality_proven": true,
+      "perceptual_quality_proven": false,
+      "studio_quality_proven": false,
+      "receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\flux2-artifact-quality-proof.json",
+      "receipt_file_sha256": "620ad59f2c6c3bb483ee8b490ec9290865afe892b8d2adad2ccd22736ab46623",
+      "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\orangefive-flux2-klein-proof.png",
+      "artifact_sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1"
+    },
+    {
+      "role": "video_fallback_ltxv098",
+      "type": "video",
+      "status": "CAPTAIN_PLANET_VIDEO_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+      "end_to_end_artifact_technical_quality_proven": true,
+      "perceptual_quality_proven": false,
+      "studio_quality_proven": false,
+      "receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ltxv\\ltx-video-artifact-quality-proof.json",
+      "receipt_file_sha256": "1f6f83ac3320884bff1465d96f1d1a694eacfac3a937b23cb682f05ff72ebb09",
+      "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ltxv\\orangefive-ltxv-2b-proof.mp4",
+      "artifact_sha256": "7268140cf3420c7ad360303e66b78b8807887db89f863b3604f69f3e9441f347"
+    },
+    {
+      "role": "speech_qwen3_tts",
+      "type": "tts",
+      "status": "CAPTAIN_PLANET_TTS_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+      "end_to_end_artifact_technical_quality_proven": true,
+      "perceptual_quality_proven": false,
+      "studio_quality_proven": false,
+      "receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\qwen3-tts-artifact-quality-proof.json",
+      "receipt_file_sha256": "cc0afa308e567743072c1e0b6b6e028f7caa0869940a0a474a9100b5f35bf545",
+      "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\orangefive-qwen3-tts-proof.wav",
+      "artifact_sha256": "90598b2975622c98fec213664e3c023aa624a8efd7286c91a4517ebc1de63452"
+    },
+    {
+      "role": "music_ace_step15",
+      "type": "music",
+      "status": "CAPTAIN_PLANET_MUSIC_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+      "end_to_end_artifact_technical_quality_proven": true,
+      "perceptual_quality_proven": false,
+      "studio_quality_proven": false,
+      "receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ace-step\\ace-step-artifact-quality-proof.json",
+      "receipt_file_sha256": "005a02758e3ab72c2daa1453dd6215b904d300828a75ee437599d987244a81c7",
+      "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ace-step\\orangefive-ace-step-proof.wav",
+      "artifact_sha256": "399f4cd4a48f0b1e60ae1fb4191929501079e81d697968e96ac7a0853525f31d"
+    }
+  ],
+  "proof_boundary": {
+    "proven": [
+      "Fresh installed-component inventory on Codexa by exact or minimum byte size.",
+      "Fresh SHA-256 identity of each generated proof artifact on Codexa.",
+      "Source receipt to local artifact hash and byte continuity.",
+      "Independent media decode and lane-specific deterministic technical quality checks."
+    ],
+    "not_proven": [
+      "Prompt adherence, aesthetics, intelligibility, musical coherence, or temporal coherence.",
+      "Long-form continuity, broad benchmark superiority, production readiness, or studio quality.",
+      "Fresh content hashes for very large installed model weights.",
+      "Legacy source receipts do not bind the exact generation-runner file hash; future runner receipts do."
+    ]
+  },
+  "prior_receipt": "captain-planet-receipt-chain-proof.json",
+  "prior_sha256": "548622549d974fed86f3ff0fb8f5ea966ba559a19fadb841192c82b4d8e14df7",
+  "receipt_sha256": "19d8bd6cf2a2146999e4a25adfe9b05a6321fa4ee62521216cded2499baf5fe5"
+}

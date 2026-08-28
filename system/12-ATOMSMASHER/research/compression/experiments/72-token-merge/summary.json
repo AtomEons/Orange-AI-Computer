@@ -1,0 +1,12 @@
+{
+  "experiment": "72-token-merge",
+  "N": 6224,
+  "unique_fields": 452,
+  "det_bytes": 2075585,
+  "total": 123596,
+  "ratio": 16.793,
+  "delta_vs_m19": -30.278,
+  "encode_ms": 3225.7,
+  "decode_ms": 49.7,
+  "lossless": true
+}

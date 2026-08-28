@@ -1,0 +1,395 @@
+                            Hyperbolic Celtic Knot Patterns
+
+                                                Douglas Dunham
+                                      Department of Computer Science
+                                       University of Minnesota, Duluth
+                                        Duluth, MN 55812-2496, USA
+                                      E-mail: ddunham@d.umn.edu
+
+                                                                 Abstract
+        Centuries ago, Celtic knot patterns were used to decorate religious texts. Celtic knots are formed by
+        weaving bands in an alternating over-and-under pattern. Originally, these were finite patterns on the
+        Euclidean plane. Recently such patterns have also been drawn on spheres, thus utilizing a second of the
+        three "classical geometries". We complete the process by exhibiting Celtic knot patterns in hyperbolic
+        geometry, the third classical geometry. Our methods lead to a unified framework for discussing knot
+        patterns in each of the classical geometries. Because of the precision and many calculations required to
+        construct hyperbolic patterns, it is natural to generate such patterns by computer. Thus, the patterns we
+        show are created by using computers, mathematics, and aesthetic considerations.
+
+                                                   Introduction
+
+    In about the 6th century Irish monks started using what we now call Celtic knot patterns as ornamentation
+for religious texts. The monks also created spiral patterns, key patterns, zoomorphic patterns, and decorated
+lettering, but we will only consider knot patterns. Figure 1 shows a simple example of a knot pattern. The
+
+                                         Figure 1: A simple Celtic knot pattern
+use of this kind of decoration went out of style in about the 10th century, and the methods for creating
+such patterns were lost as well. Subsequently, people who wanted to make Celtic knot patterns had to copy
+existing patterns. That is, until the early 1950's when George Bain invented a method for creating such
+patterns [1].
+
+                                                                1
+    In the late 1950's, the Dutch artist M. C. Escher became the first person to create hyperbolic art in
+his four Circle Limit patterns. The pattern of interlocking rings near the edge of his last woodcut Snakes
+(Catalog Number 448 of [6]) also exhibits hyperbolic symmetry. The goal of this paper is to take a first step
+toward combining Celtic knot art and hyperbolic geometry. Thus Celtic knot patterns will have been drawn
+on each of the three classical geometries: Euclidean, spherical (or elliptical), and hyperbolic geometry.
+Celtic knot patterns have also been drawn on convex polyhedra, which are very closely related to spherical
+patterns.
+
+    We will begin with a brief review of Celtic knots and hyperbolic geometry, followed by a discussion of
+regular tessellations, which form the basis for our hyperbolic Celtic knot patterns. Finally, we will develop
+a theory of such patterns, showing some samples, and indicate directions of future work.
+
+                                       Celtic Knot Patterns
+
+    Celtic knot patterns were used in the British Isles to decorate stonework and religious texts from the sixth
+through the tenth centuries. The methods used by monks to create such patterns have been lost. However, in
+1951, George Bain published a method to create such patterns which he discovered after years of studying
+those ancient patterns. Later, his son, Iain Bain, published a simplified algorithm for making knot patterns
+in 1986 [2]. It is Iain Bain's method, as explained by Andrew Glassner [3], that we will discuss here.
+
+    The simplest knot patterns can be constructed from a rectangular grid of squares as shown in Figure 2.
+The set of vertices of this grid, thought of as a graph, form the starting point for Iain Bain's construction
+and is called the primary grid by Glassner. The center points of the squares form the vertices of another
+rectangular grid of squares as shown in Figure 3 (with its edges extended to the boundary of the primary
+grid). This is the secondary grid. The tertiary grid, shown in Figure 4, is formed by the union of the primary
+grid and the secondary grid. Thus, the tertiary grid is a grid of squares of half the edge width of the squares
+in the primary and secondary grids.
+
+0 0 1 1     0 0 1 1  1 1 0 0  0 1 1 0  0011 0101             0011        1100        1100        1100
+
+                                                  1010             1100        1100        0101
+
+1 0 0 1     0 0 1 1  1 1 0 0  0 1 0 1  1001 1100             0011        0011        1100        1001
+
+                                                  0011             0011        0011        0011
+
+1 1 0 0     0 0 1 1  0 1 0 1  1 0 0 1  1100 0011             1100        0011        1100        0011
+
+                                                  1010             0011        0011        1100
+
+1 0 0 1     1 1 0 0  1 1 0 0  0 1 0 1  1001 1010             1100        0011        0011        1001
+
+Figure 2: The primary grid for a Celtic knot con- Figure 3: The secondary grid for a Celtic knot con-
+
+struction.                             struction.
+
+    Diagonal lines are drawn in each of the interior small squares of the tertiary grid using the lower-left
+to upper-right diagonal for the upper-left interior square, and then drawing the rest of the diagonals in an
+alternating pattern of lower-left to upper-right and upper-left to lower-right diagonals as in Figure 5. These
+diagonals will form what is called the internal weaving. The internal weaving in this example will be a plait,
+seen in the interior pattern of Figure 1.
+
+                                       2
+Figure 4: The tertiary grid -- the union of the pri- Figure 5: The diagonals in the interior of the tertiary
+mary grid (heavy lines) and the secondary grid (light grid that form the internal weaving.
+lines).
+
+    Diagonals are also placed in the small edge squares of the tertiary grid in the same pattern but only
+going halfway to the outer edge as shown in Figure 6. These diagonals form the external weaving, which
+will connect the ends of the internal weaving. Next, at each of the tertiary grid points where four diagonals
+meet, form two paths by connecting the lower-left to the upper-right diagonal, and connecting the upper-left
+to the lower-right diagonal. Following one of the paths, let it go alternately above and below the paths it
+crosses. This can be done in a consistent way by using one kind of crossing on each row of crossing points
+and then using the other kind of crossing on the next row, as in Figure 7.
+
+Figure 6: The outer diagonals that form the external Figure 7: The over-and-under specification of the
+
+weaving (in addition to the internal weaving).  path.
+
+    Using knot theory terminology, the over-and-under pattern formed by the diagonals is the regular pro-
+jection (onto the plane) of a knot (a circle embedded in 3-space); it is regular because only two strands cross
+at a point. A "multi-knot" formed by more than one circle in 3-space is called a link. There will be only one
+path if the numbers of rows and columns of vertices in the primary grid are relatively prime. Most Celtic
+knot patterns are the regular projections of knots: there is only one path. The path or paths serve as the
+
+                                                3
+centerlines of the bands of the final pattern, which is formed by thickening the paths to form the bands. The
+bands are usually thickened to a width equal to the distance between them (so the standard band thickness
+and the space between them are both equal to half the length of the diagonal of a primary grid square).
+Figure 1 shows the final result for the example we have been studying. Some Celtic patterns use wider
+bands with almost no space between them. Other patterns use thin doubled bands that follow the edges of
+the standard thickness bands.
+
+                                            More General Patterns
+
+    The interior weaving of the pattern described above is very regular -- it amounts to a tiling by alter-
+nate rows of left- and right-handed crossings. These crossings are enclosed in kite-shaped tiles, actually
+square tiles tilted at 45 degrees, as shown in Figure 8 (except that the center tile contains a non-crossing,
+as discussed below). The top and bottom vertices of these kite tiles are both primary grid vertices or both
+secondary grid vertices; the left and right vertices of the kites are vertices of the other grid.
+
+    To obtain more general patterns, one can replace some or all of the "crossing" tiles by either of the
+avoiding tiles shown in Figure 9. We call those tiles vertical or horizontal avoiding tiles because their paths
+avoid either the vertical or horizontal axis of their kite-shaped tile. Each such replacement may increase or
+decrease the number of loops in a link by one, or it may leave the number unchanged. If, after replacing all
+the crossing tiles by avoiding tiles, there is only one loop, it is called a snake by Glassner [4].
+
+Figure 8: The kite-shaped tiles underlying a Celtic Figure 9: The vertical (left) and horizontal (right)
+
+knot pattern.  avoiding tiles.
+
+    One can also create a non-rectangular pattern by arranging the crossing and avoiding tiles in any simply-
+connected way and then joining the ends of the bands around the perimeter. One method for creating such
+patterns by hand involves lightly drawing the primary and secondary grids and then drawing more darkly
+some of the edges of either grid, with the rule that no dark edges may cross. These dark edges are barrier
+edges that the band cannot cross. In Figure 8 there is a horizontal barrier edge (not shown) connecting the
+left and right (secondary grid) vertices of the center kite. Glassner [3] and Christian Mercat [7] describe their
+versions of this method. Barrier edges are called breaklines by Glassner, and longitudinal and transverse
+walls by Mercat depending on whether they are edges of the primary or secondary grid.
+
+    With the goal of generalizing these techniques to the hyperbolic plane, we next discuss hyperbolic
+geometry, repeating patterns, and regular tessellations, which will form the basis for hyperbolic Celtic knot
+patterns.
+
+               4
+              Hyperbolic Geometry, Repeating Patterns, and Regular Tessellations
+
+    Among the classical geometries, the Euclidean plane, the sphere, and the hyperbolic plane, the latter
+is certainly the least familiar. This is probably due to the fact that there is no smooth distance-preserving
+embedding of the hyperbolic plane into ordinary 3-space, as there is for the sphere (and the Euclidean
+plane). However, there are models of hyperbolic geometry in the Euclidean plane, which must therefore
+distort distance.
+
+  P
+
+Figure 10: The regular tessellation {6, 4} in heavy Figure 11: An example of the hyperbolic parallel
+lines with dots at its vertices, its dual tessellation property: a line , a point P not on , and two lines
+{4, 6} in light lines, and common radii of the 6-gons through P not meeting .
+and 4-gons in dashed lines.
+
+    One of these models is the Poincare´ circle model, which has two useful properties: (1) it is conformal
+(i.e. the hyperbolic measure of an angle is equal to its Euclidean measure) -- consequently a transformed
+object has roughly the same shape as the original, and (2) it lies entirely within a bounding circle in the
+Euclidean plane -- allowing an entire hyperbolic pattern to be displayed. In this model, the hyperbolic points
+are the interior points of the bounding circle and the hyperbolic lines are interior circular arcs perpendicular
+to the bounding circle, including diameters. For example, all the arcs are hyperbolic lines in Figure 10.
+
+    By definition, (plane) hyperbolic geometry satisfies all the axioms of (plane) Euclidean geometry except
+the Euclidean parallel axiom, which is replaced by its negation. Figure 11 shows an example of this hyper-
+bolic parallel property: there is a line, , in Figure 10 (the vertical diameter), a point, P , not on it, and more
+than one line through P that does not intersect .
+
+    Because distances must be distorted in any model, equal hyperbolic distances in the Poincare´ model are
+represented by ever smaller Euclidean distances toward the edge of the bounding circle (which is an infinite
+hyperbolic distance from its center). All the curvilinear hexagons (actually regular hyperbolic hexagons) in
+Figure 10 are the same hyperbolic size, even thought they are represented by different Euclidean sizes.
+
+    A repeating pattern in any of the classical geometries is a pattern made up of congruent copies of a
+basic subpattern or motif. The motif for the pattern of Figure 10 is a curvilinear right triangle with a dashed
+hypotenuse and thick and thin lines for legs. Also, we assume that a repeating pattern fills up its respective
+plane. It is useful that hyperbolic patterns repeat in order to show their true hyperbolic nature.
+
+                                                                5
+An important kind of repeating pattern in any of the classical geometries is the regular tessellation by
+
+regular p-sided polygons, or p-gons, meeting q at a vertex; it is denoted by the Schla¨fli symbol {p, q}. We
+
+need (p - 2)(q - 2) > 4 to obtain a hyperbolic tessellation; if (p - 2)(q - 2) = 4 or (p - 2)(q - 2) < 4,
+
+one obtains tessellations of the Euclidean plane and the sphere, respectively. Figure 10 shows the hyperbolic
+
+tessellation {6, 4} in heavy lines with a 6-gon centered in the bounding circle (the center of the bounding
+
+circle is not a special point in the Poincare´ model, it just appears so to our Euclidean eyes). Figure 10 also
+
+shows the hyperbolic tessellation {4, 6} in light lines with one of its vertices centered in the bounding circle.
+
+The dashed lines in Figure 10 do not form a regular tessellation, but when p = q the analogous dashed lines
+
+form the regular tessellation {4, p}.
+
+If we assume for simplicity that p  3 and q  3, there are five solutions to the "spherical" inequality
+
+(p - 2)(q - 2) < 4: {3, 3}, {3, 4}, {3, 5}, {4, 3}, and {5, 3}. These tessellations may be obtained by
+
+"blowing up" the Platonic solids: the regular tetrahedron, the octahedron, the icosahedron, the cube, and
+
+the dodecahedron, respectively, onto their circumscribing spheres. In the Euclidean case, there are three
+solutions to the equality (p - 2)(q - 2) = 4: {3, 6}, {4, 4}, and {6, 3}, the tessellations of the plane by
+
+equilateral triangles, squares, and regular hexagons. There are infinitely many solutions to the hyperbolic
+
+inequality (p - 2)(q - 2) > 4. This is summarized in Table 1 below.
+
+...      ... ... ... ... ... ... ... ... ...
+
+    11   * * * * * * * * * ···                                            - Euclidean tessellations
+    10   * * * * * * * * * ···                                            - spherical tessellations
+         * * * * * * * * * ···                                       * - hyperbolic tessellations
+      9  * * * * * * * * * ···
+      8  * * * * * * * * * ···
+      7
+q6              * * * * * * * * ···
+      5         * * * * * * * * ···
+      4
+      3               * * * * * * * ···
+                                   * * * * * ···
+
+2
+
+1
+
+         1 2 3 4 5 6 7 8 9 10 11 · · ·
+
+                                          p
+Table 1. The relationship between the values of p and q, and the geometry of the tessellation {p, q}.
+
+    For each tessellation {p, q}, its dual tessellation is {q, p}, whose vertices are at the centers of the p-
+gons of {p, q} and whose edges are perpendicular bisectors of the edges of {p, q}. Figure 10 shows the
+tessellation {6, 4} in heavy lines and its dual tessellation {4, 6} in thin lines. Of course the dual of the dual
+of a regular tessellation is just the original tessellation. If p = q, the tessellation is self-dual: {3, 3} is the
+spherical version of the regular tetrahedron, {4, 4} is familiar Euclidean tiling by squares, and {5, 5}, {6, 6},
+{7, 7}, . . . are hyperbolic.
+
+    This completes our discussion of hyperbolic geometry, repeating patterns, and regular tessellations.
+Next, we use these concepts to develop a theory of hyperbolic Celtic knot patterns, which is actually valid
+in all three of the classical geometries.
+
+                                       6
+                              A Theory of Hyperbolic Celtic Knot Patterns
+
+    As we saw above, the method for creating knot patterns that was developed by Iain Bain and others is
+based on the regular tessellation of the Euclidean plane by squares. We extend that method to one based on
+any regular tessellation of one of the classical geometries. The tessellation {p, q} itself serves as the primary
+grid, its dual, {q, p}, defines the secondary grid, and their union is the tertiary grid. In Figure 10, where
+p = 6 and q = 4, the primary grid is shown in heavy lines and the secondary grid in thin (solid) lines. The
+dashed lines in Figure 10 define a tessellation by kite-shaped tiles -- rhombuses with vertex angles of 2/p,
+2/q, 2/p, and 2/q (with vertices alternately at the centers and vertices of p-gons of the tessellation
+{p, q}). If one starts with the Euclidean {4, 4} tessellation, the rhombuses are actually squares tilted at a
+45-degree angle, as shown in Figure 8.
+
+    Celtic knot patterns have two characteristics: (1) no more than two bands cross at a point, and (2) any
+one band goes alternately over and under other bands that it crosses. Such a pattern can be obtained if all the
+rhombuses are filled in only with left crossing tiles or only with right crossing tiles. Looking at a rhombus
+from a primary grid vertex, if the nearest band coming from the right is on top, it is a right crossing tile,
+otherwise it is a left crossing tile; both kinds are shown in Figure 12 (the rhombuses shown are the ones to
+the right of the center of the bounding circle in Figure 10). Figure 13 shows a complete pattern composed
+of right crossing tiles based on the {4, 5} tessellation. Such a Celtic pattern is called a regular weaving or
+plait. The central pattern in Figure 1 is another example -- of the standard Euclidean weaving.
+
+Figure 12: A left crossing tile (left) and a right cross- Figure 13: A regular weaving or plait based on the
+ing tile (right), with dots at the primary grid vertices. {4, 5} tessellation.
+
+    The bands of a regular weaving based on the tessellation {p, q} follow the edges of the uniform tessel-
+lation (p.q.p.q) (also called Archimedean or semiregular tilings by some authors). The edges of (p.q.p.q)
+are formed by connecting the midpoints of adjacent edges of the p-gons of {p, q}. Those midpoints serve
+as the vertices of (p.q.p.q), each of which is surrounded by a p-gon, a q-gon, a p-gon, and a q-gon (which
+explains the notation). Figure 14 shows the uniform tessellation (4, 5, 4, 5) underlying the regular weaving
+knot pattern of Figure 14. Since p-gon edge midpoints are also q-gon edge midpoints in the dual tessellation
+{q, p}, a regular tessellation and its dual produce the same regular weaving -- which is not surprising since
+p and q play symmetrical roles in (p.q.p.q).
+
+                                                                7
+    There are three regular spherical weavings, which are based on the self-dual tessellation {3, 3}, and on
+the two pairs of duals, {3, 4} and {4, 3}, and {3, 5} and {5, 3}. The weaving based on {3, 3} traces the
+edges of the "uniform" tessellation (3.3.3.3), which is actually the regular tessellation {3, 4}, the blown-
+up version of the octahedron. There is a band in each of three mutually perpendicular planes through the
+center of the sphere containing the {3, 3}. These three bands are linked, forming Borromean rings. Glassner
+shows such a weaving based on a cube rather than an octahedron (Figure 10a of [5]). The octahedron is
+the intersection of the tetrahedron {3, 3} and its dual, which together form the stella octangula. In fact, the
+regular weaving based on any self-dual tessellation {p, p} traces the edges of the regular tessellation {p, 4}.
+The weaving based on the pair {3, 4} and {4, 3} traces the edges of uniform tessellation (3.4.3.4), which is
+the spherical version of the cuboctahedron. Last, the weaving based on the pair {3, 5} and {5, 3} traces the
+edges of uniform tessellation (3.5.3.5), which is the spherical version of the icosadodecahedron. Glassner
+shows a version of this weaving in Figure 18 of [5].
+
+    There are only two regular Euclidean weavings, which are based on the self-dual tessellation {4, 4}, and
+on the dual pair {3, 6} and {6, 3}. The weaving based on {4, 4} is just the standard Euclidean weaving seen
+in the center of Figure 1, which is the basis for most Celtic knot patterns. The weaving based on {3, 6} and
+{6, 3}, with its triangular and hexagonal holes, is sometimes seen in the caning for the seats of chairs.
+
+    There are infinitely many regular hyperbolic weavings-- based either on the self-dual tessellations {p, p}
+for p  5, or on the dual pairs {p, q} and {q, p}, where p = q and (p - 2)(q - 2) > 4. Figures 15 and 13
+show the weavings based on the self-dual {5, 5} tessellation and on the pair {4, 5} and {5, 4}, respectively.
+
+Figure 14: The uniform tessellation (4.5.4.5) under- Figure 15: The regular weaving based on the tessel-
+
+lying the regular weaving of Figure 13.  lation {5, 5}.
+
+    More general Celtic knot patterns may be obtained by replacing some of the crossing tiles of a regular
+weaving with avoiding tiles. Figure 16 shows the two kinds of avoiding tiles, which are distinguished by
+the diagonal of the tile rhombus that their paths avoid (as in Figure 12, the rhombuses shown are the ones
+to the right of the center of the bounding circle in Figure 10); Figure 9 shows the avoiding tiles for the
+standard Eulidean weaving (based on {4, 4}). One of the diagonals of each rhombus is an edge from the
+underlying tessellation {p, q}, and the other diagonal is an edge from the dual tessellation {q, p}. Figure 17
+shows a pattern of alternating right crossing tiles and p-gon edge avoiding tiles. Figure 18 shows a pattern
+
+                                         8
+Figure 16: A p-gon edge avoiding tile (left) and a Figure 17: A Celtic knot pattern of right crossing
+q-gon edge avoiding tile (right), with dots at the pri- tiles and p-gon edge avoiding tiles.
+mary grid vertices.
+
+of alternating right crossing tiles and q-gon edge avoiding tiles.
+    One of the rules of Celtic knot patterns is that paths cannot avoid both diagonals of a rhombus (there
+
+would be no way to connect the ends the paths coming into that tile). Thus, if we want to construct Celtic
+knot patterns from rhombus tiles, our collection of basic tiles is complete, consisting of the two kinds of
+crossing tiles and the two kinds of avoiding tiles.
+
+    It is possible to further generalize the methods above to apply to non-rhombic quadrilateral tiles. For any
+quadrilateral, there are only four ways to connect ends of bands coming into it across each of its four sides:
+the two kinds of crossing configurations and the two kinds of avoiding configurations. Glassner has used
+non-rhombic quadrilaterals to construct several of his patterns in [5]. As an example, if we have a pattern of
+triangles upon which we would like to draw a knot pattern, we could first subdivide the triangles into three
+quadrilaterals by connecting the triangle's center to the midpoints of its sides.
+
+    We will apply this method to the construction of what we call Celtic ring patterns -- rings interlocked
+in the over-and-under pattern characteristic of Celtic knots. We start by subdividing the p-gons of the
+tessellation {p, q} into p isosceles triangles with angles 2/p, /q, and /q, as shown in the central p-gon
+in Figure 19 (where p = 6 and q = 4). Then we subdivide each triangle into three quadrilaterals (shown
+for one of the isosceles triangles in Figure 19). Finally, we place a crossing tile in each of the quadrilaterals,
+producing the final ring pattern of Figure 19. Note that the crossing is pushed as far as possible toward one
+vertex of the quadrilateral. Figure 19 shows the pattern of interlocking rings that Escher used near the edge
+of his last woodcut, Snakes (Catalog Number 448 of [6]).
+
+    This finishes our discussion of the theory of hyperbolic Celtic knot patterns and the methods for creating
+them. Of course, the theory and methods also apply to each of the three classical geometries as well. In the
+final section, we indicate directions of future work.
+
+                                                  Future Work
+
+    We have presented a theory of Celtic knot patterns and methods for creating such patterns in each of
+
+                                                                9
+Figure 18: A Celtic knot pattern of right crossing Figure 19: An interlocking "Celtic ring" pattern
+
+tiles and q-gon edge avoiding tiles.  showing part of the underlying {6, 4} and some of
+
+                                      the triangles used in the construction, with one of
+
+                                      them subdivided into three quadrilaterals.
+
+the three classical geometries. Some natural directions of future work include extensions to hyperbolic knot
+patterns not based on regular tessellations, and the creation of hyperbolic versions of other kinds of Celtic
+patterns, such as key patterns, spiral patterns and zoomorphics.
+
+                                                Acknowledgment
+
+    I would like to thank my student, Alark Joshi, for preparing many of the figures in this paper, and the
+reviewer for a number of helpful suggestions.
+
+                                                    References
+
+[1] G. Bain, Celtic Art : The Methods of Construction, Dover Publications, June 1973.
+
+[2] I. Bain, Celtic Knotwork, Sterling Publishing Co., Inc., New York, 1986.
+
+[3] A. Glassner, Celtic Knotwork, Part 1 (Andrew Glassner's Notebook), IEEE Computer Graphics and
+Applications Vol. 19, No. 5, pp. 78­84, September/October 1999.
+
+[4] A. Glassner, Celtic Knotwork, Part 2 (Andrew Glassner's Notebook), IEEE Computer Graphics and
+Applications Vol. 19, No. 6, pp. 82­86, November/December 1999.
+
+[5] A. Glassner, Celtic Knotwork, Part 3 (Andrew Glassner's Notebook), IEEE Computer Graphics and
+Applications Vol. 20, No. 1, pp. 70­75, January/February 2000.
+
+[6] J. L. Locher, editor, M. C. Escher, His Life and Complete Graphic Work, Harry N. Abrams, Inc., New
+York, 1982.
+
+[7] C. Mercat, Cours d'enluminure a` base d'entrelacs, http://www.bok.net/kri/Celte/. English ver-
+sion: S. Abbott, How to draw Celtic knots, http://www.abbott.demon.co.uk/mercatmethod.html
+
+                                      10
+

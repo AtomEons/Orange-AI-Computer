@@ -1,0 +1,22 @@
+pipeline,axes,codec,pre_codec_bytes,final_bytes,ratio,encode_ms,decode_ms,lossless
+"plait → brotli_q11","plait","brotli_q11",2082206,114967,18.0537,7927,43,1
+"two_stream → brotli_q11","two_stream","brotli_q11",1944887,116106,17.8766,11034,99,1
+"id_tail → brotli_q11","id_tail","brotli_q11",1944887,116106,17.8766,9424,106,1
+"schema_fold → brotli_q11","schema_fold","brotli_q11",2077306,119016,17.4395,11247,315,1
+"identity → brotli_q11","identity","brotli_q11",2075585,120166,17.2726,13387,122,1
+"sort_action → brotli_q11","sort_action","brotli_q11",2087910,121067,17.1441,10303,39,1
+"spike → brotli_q11","spike","brotli_q11",677742,125309,16.5637,3128,46,1
+"two_stream → brotli_q6","two_stream","brotli_q6",1944887,128704,16.1268,142,81,1
+"id_tail → brotli_q6","id_tail","brotli_q6",1944887,128704,16.1268,139,41,1
+"plait → brotli_q6","plait","brotli_q6",2082206,132524,15.6620,109,53,1
+"schema_fold → brotli_q6","schema_fold","brotli_q6",2077306,136028,15.2585,175,51,1
+"identity → brotli_q6","identity","brotli_q6",2075585,137635,15.0804,166,54,1
+"sort_action → brotli_q6","sort_action","brotli_q6",2087910,140025,14.8230,147,67,1
+"spike → brotli_q6","spike","brotli_q6",677742,147478,14.0739,152,23,1
+"spike → zlib_9","spike","zlib_9",677742,170805,12.1518,104,35,1
+"plait → zlib_9","plait","zlib_9",2082206,179390,11.5702,78,38,1
+"sort_action → zlib_9","sort_action","zlib_9",2087910,188578,11.0065,111,72,1
+"two_stream → zlib_9","two_stream","zlib_9",1944887,217427,9.5461,275,116,1
+"id_tail → zlib_9","id_tail","zlib_9",1944887,217427,9.5461,102,43,1
+"schema_fold → zlib_9","schema_fold","zlib_9",2077306,241690,8.5878,207,78,1
+"identity → zlib_9","identity","zlib_9",2075585,245601,8.4510,123,55,1

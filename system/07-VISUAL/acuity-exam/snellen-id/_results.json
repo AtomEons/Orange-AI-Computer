@@ -1,0 +1,95 @@
+{
+  "results": [
+    {
+      "letter_h_px": 128,
+      "sameMean": 0.084498950176909,
+      "diffMean": 0.353853741840127,
+      "sep": 4.187670274000925,
+      "nnCorrect": 18,
+      "nnTotal": 20,
+      "nnAcc": 0.9,
+      "verdict": "MARGINAL"
+    },
+    {
+      "letter_h_px": 96,
+      "sameMean": 0.11035722474641411,
+      "diffMean": 0.35732973215687736,
+      "sep": 3.2379369178408797,
+      "nnCorrect": 18,
+      "nnTotal": 20,
+      "nnAcc": 0.9,
+      "verdict": "MARGINAL"
+    },
+    {
+      "letter_h_px": 64,
+      "sameMean": 0.20097905900120727,
+      "diffMean": 0.3863304897689805,
+      "sep": 1.9222425047111988,
+      "nnCorrect": 18,
+      "nnTotal": 20,
+      "nnAcc": 0.9,
+      "verdict": "MARGINAL"
+    },
+    {
+      "letter_h_px": 48,
+      "sameMean": 0.2518986334988042,
+      "diffMean": 0.3428491029256702,
+      "sep": 1.3610597968063125,
+      "nnCorrect": 9,
+      "nnTotal": 20,
+      "nnAcc": 0.45,
+      "verdict": "FAIL"
+    },
+    {
+      "letter_h_px": 32,
+      "sameMean": 0.27820946471258934,
+      "diffMean": 0.37508228319482545,
+      "sep": 1.3482010167494223,
+      "nnCorrect": 10,
+      "nnTotal": 20,
+      "nnAcc": 0.5,
+      "verdict": "FAIL"
+    },
+    {
+      "letter_h_px": 24,
+      "sameMean": 0.24163298048405718,
+      "diffMean": 0.41620649263000464,
+      "sep": 1.7224738601337815,
+      "nnCorrect": 10,
+      "nnTotal": 20,
+      "nnAcc": 0.5,
+      "verdict": "FAIL"
+    },
+    {
+      "letter_h_px": 16,
+      "sameMean": 0.2554609846222545,
+      "diffMean": 0.4705486380667369,
+      "sep": 1.8419589150277822,
+      "nnCorrect": 10,
+      "nnTotal": 20,
+      "nnAcc": 0.5,
+      "verdict": "FAIL"
+    },
+    {
+      "letter_h_px": 12,
+      "sameMean": 0.2580213525637363,
+      "diffMean": 0.3538505150693041,
+      "sep": 1.3714001246540095,
+      "nnCorrect": 11,
+      "nnTotal": 20,
+      "nnAcc": 0.55,
+      "verdict": "FAIL"
+    },
+    {
+      "letter_h_px": 8,
+      "sameMean": 0.14531081002513924,
+      "diffMean": 0.10644425655029405,
+      "sep": 0.7325281342240048,
+      "nnCorrect": 8,
+      "nnTotal": 20,
+      "nnAcc": 0.4,
+      "verdict": "FAIL"
+    }
+  ],
+  "smallestPass": null
+}

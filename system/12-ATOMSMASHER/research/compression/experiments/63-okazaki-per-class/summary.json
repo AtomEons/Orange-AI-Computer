@@ -1,0 +1,8 @@
+{
+  "experiment": "63-okazaki-per-class",
+  "ratio": 15.784,
+  "encode_ms": 5428.9,
+  "decode_ms": 29.9,
+  "lossless": true,
+  "notes": "66 classes, brotli q11 per bucket"
+}

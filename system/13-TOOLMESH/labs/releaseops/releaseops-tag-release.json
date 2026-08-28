@@ -1,0 +1,88 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "releaseops",
+  "card_id": "releaseops-tag-release",
+  "capability": "releaseops.tag.release",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["repo", "tag", "target_sha", "notes"],
+    "properties": {
+      "repo": {
+        "type": "string",
+        "description": "Forge repo in 'owner/name' form. The lease's egress_allowlist pins the forge host.",
+        "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$",
+        "minLength": 3,
+        "maxLength": 128
+      },
+      "tag": {
+        "type": "string",
+        "description": "Tag name. Runner enforces semver (vMAJOR.MINOR.PATCH with optional -prerelease and +build) to keep tags receipt-compatible.",
+        "pattern": "^v(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$",
+        "minLength": 6,
+        "maxLength": 64
+      },
+      "target_sha": {
+        "type": "string",
+        "description": "Full 40-char git SHA the tag points at. Short SHAs and refs are rejected.",
+        "pattern": "^[a-f0-9]{40}$"
+      },
+      "notes": {
+        "type": "string",
+        "description": "Release notes body, markdown. Typically the output of releaseops-changelog-extract.",
+        "minLength": 1,
+        "maxLength": 100000
+      },
+      "prerelease": {
+        "type": "boolean",
+        "default": false
+      },
+      "draft": {
+        "type": "boolean",
+        "description": "When true, the release is created as a draft (not visible to the public).",
+        "default": false
+      },
+      "sign_tag": {
+        "type": "boolean",
+        "description": "When true, the runner produces a signed annotated tag using the lease-scoped signing key.",
+        "default": true
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["tag", "repo", "target_sha", "release_url", "created_at"],
+    "properties": {
+      "tag": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "repo": { "type": "string", "minLength": 3, "maxLength": 128 },
+      "target_sha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+      "release_url": { "type": "string", "format": "uri" },
+      "release_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+      "created_at": { "type": "string", "format": "date-time" },
+      "signed": { "type": "boolean" }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 1,
+    "scopes": [
+      "net.egress:api.github.com",
+      "net.egress:gitlab.com",
+      "secrets.read:forge.release-token",
+      "secrets.read:release.signing-key"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 2,
+    "egress_allowlist": ["api.github.com", "gitlab.com"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:30:00Z",
+  "vendor": "frontier-offload",
+  "version": "0.1.0",
+  "summary": "Create a signed, semver-validated release tag on a forge (GitHub/GitLab), with release notes. Per-call human approval; tag is immutable once published.",
+  "tags": ["releaseops", "tag", "release", "github", "gitlab", "external-side-effect"],
+  "notes": "Tags are intentionally hard to retract — even draft releases consume the tag name. The semver pattern is strict; calendar-version teams need a sibling card with their own validator. Pairs naturally with releaseops-changelog-extract upstream."
+}

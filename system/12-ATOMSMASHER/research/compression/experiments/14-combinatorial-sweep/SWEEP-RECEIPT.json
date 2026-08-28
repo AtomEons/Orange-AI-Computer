@@ -1,0 +1,170 @@
+{
+  "experiment": "14-combinatorial-sweep",
+  "generated_at": "2026-06-26T10:25:29.923Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "raw_corpus_bytes": 2075585,
+  "total_pipelines_tested": 21,
+  "best": {
+    "pipeline": "plait → brotli_q11",
+    "pre_codec_bytes": 2082206,
+    "final_bytes": 114967,
+    "ratio": 18.053745857506936,
+    "lossless": true
+  },
+  "baseline_identity_brotli_q11": {
+    "pipeline": "identity → brotli_q11",
+    "pre_codec_bytes": 2075585,
+    "final_bytes": 120166,
+    "ratio": 17.272647837158598,
+    "lossless": true
+  },
+  "all_results": [
+    {
+      "pipeline": "plait → brotli_q11",
+      "pre_codec_bytes": 2082206,
+      "final_bytes": 114967,
+      "ratio": 18.053745857506936,
+      "lossless": true
+    },
+    {
+      "pipeline": "plait_spike → brotli_q11",
+      "pre_codec_bytes": 793858,
+      "final_bytes": 117517,
+      "ratio": 17.661997838610585,
+      "lossless": true
+    },
+    {
+      "pipeline": "identity → brotli_q11",
+      "pre_codec_bytes": 2075585,
+      "final_bytes": 120166,
+      "ratio": 17.272647837158598,
+      "lossless": true
+    },
+    {
+      "pipeline": "sort_action → brotli_q11",
+      "pre_codec_bytes": 2087910,
+      "final_bytes": 121067,
+      "ratio": 17.144102026150808,
+      "lossless": true
+    },
+    {
+      "pipeline": "sort_plait → brotli_q11",
+      "pre_codec_bytes": 2094530,
+      "final_bytes": 121568,
+      "ratio": 17.073448604896026,
+      "lossless": true
+    },
+    {
+      "pipeline": "spike → brotli_q11",
+      "pre_codec_bytes": 677742,
+      "final_bytes": 125309,
+      "ratio": 16.563734448443448,
+      "lossless": true
+    },
+    {
+      "pipeline": "payload_ca → brotli_q11",
+      "pre_codec_bytes": 1454125,
+      "final_bytes": 128809,
+      "ratio": 16.113664417859,
+      "lossless": true
+    },
+    {
+      "pipeline": "plait → brotli_q6",
+      "pre_codec_bytes": 2082206,
+      "final_bytes": 132524,
+      "ratio": 15.661955570311793,
+      "lossless": true
+    },
+    {
+      "pipeline": "identity → brotli_q6",
+      "pre_codec_bytes": 2075585,
+      "final_bytes": 137635,
+      "ratio": 15.080357467214007,
+      "lossless": true
+    },
+    {
+      "pipeline": "sort_action → brotli_q6",
+      "pre_codec_bytes": 2087910,
+      "final_bytes": 140025,
+      "ratio": 14.822960185681127,
+      "lossless": true
+    },
+    {
+      "pipeline": "sort_plait → brotli_q6",
+      "pre_codec_bytes": 2094530,
+      "final_bytes": 140969,
+      "ratio": 14.723698118025949,
+      "lossless": true
+    },
+    {
+      "pipeline": "plait_spike → brotli_q6",
+      "pre_codec_bytes": 793858,
+      "final_bytes": 143446,
+      "ratio": 14.469451919189103,
+      "lossless": true
+    },
+    {
+      "pipeline": "spike → brotli_q6",
+      "pre_codec_bytes": 677742,
+      "final_bytes": 147478,
+      "ratio": 14.073861864142449,
+      "lossless": true
+    },
+    {
+      "pipeline": "payload_ca → brotli_q6",
+      "pre_codec_bytes": 1454125,
+      "final_bytes": 148018,
+      "ratio": 14.022517531651555,
+      "lossless": true
+    },
+    {
+      "pipeline": "spike → zlib_9",
+      "pre_codec_bytes": 677742,
+      "final_bytes": 170805,
+      "ratio": 12.151781271040075,
+      "lossless": true
+    },
+    {
+      "pipeline": "plait_spike → zlib_9",
+      "pre_codec_bytes": 793858,
+      "final_bytes": 175139,
+      "ratio": 11.851072576639126,
+      "lossless": true
+    },
+    {
+      "pipeline": "plait → zlib_9",
+      "pre_codec_bytes": 2082206,
+      "final_bytes": 179390,
+      "ratio": 11.570238028875634,
+      "lossless": true
+    },
+    {
+      "pipeline": "sort_action → zlib_9",
+      "pre_codec_bytes": 2087910,
+      "final_bytes": 188578,
+      "ratio": 11.006506591436965,
+      "lossless": true
+    },
+    {
+      "pipeline": "sort_plait → zlib_9",
+      "pre_codec_bytes": 2094530,
+      "final_bytes": 189818,
+      "ratio": 10.934605780273737,
+      "lossless": true
+    },
+    {
+      "pipeline": "payload_ca → zlib_9",
+      "pre_codec_bytes": 1454125,
+      "final_bytes": 197321,
+      "ratio": 10.518824656270747,
+      "lossless": true
+    },
+    {
+      "pipeline": "identity → zlib_9",
+      "pre_codec_bytes": 2075585,
+      "final_bytes": 245601,
+      "ratio": 8.451044580437376,
+      "lossless": true
+    }
+  ]
+}

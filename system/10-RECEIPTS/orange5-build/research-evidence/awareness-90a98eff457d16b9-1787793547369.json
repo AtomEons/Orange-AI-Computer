@@ -1,0 +1,44 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-90a98eff457d16b9-1787793547369",
+  "query": "Act as a cross-discipline falsifier spanning distributed systems, security, human factors, model reliability, data provenance, performance, and product operations. Challenge OrangeFive theory and name exact tests or design corrections needed before public release. Preserve useful innovations; reject fake green. /no_think OrangeFive orange5",
+  "searchQuery": "act cross-discipline falsifier spanning distributed systems security human",
+  "generatedAt": "2026-08-27T01:19:07.382Z",
+  "budgetMs": 60000,
+  "elapsedMs": 444,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1341181833",
+      "title": "bufoverflow/wizengamot",
+      "url": "https://github.com/bufoverflow/wizengamot",
+      "summary": "wizengamot is a claude code mesh spanning falsification, discovery, architecture, competition, provenance, messaging, rewards, security, and roadmapping",
+      "updatedAt": "2026-08-21T19:26:30Z",
+      "license": "Apache-2.0",
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.4679,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "falsifi",
+          "spann",
+          "security"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "2803c0ef3362346921a3863c2a83b4bfff509cd77596a387cf5e3284827b6a49"
+}

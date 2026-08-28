@@ -1,0 +1,13 @@
+{
+  "experiment": "96-zstd-long-window",
+  "codec_available": false,
+  "probe": "Command failed: zstd --version",
+  "status": "N/A",
+  "ratio": null,
+  "vs_M19": null,
+  "enc_ms": null,
+  "dec_ms": null,
+  "lossless": null,
+  "verdict": "N/A",
+  "notes": "zstd CLI not installed on this Windows box. No Node zstd binding present in repo node_modules. Skipped per brief."
+}

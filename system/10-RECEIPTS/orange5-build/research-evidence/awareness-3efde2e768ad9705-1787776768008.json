@@ -1,0 +1,101 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-3efde2e768ad9705-1787776768008",
+  "query": "{\"action\":\"analyze.agent\",\"payload\":{\"parentOrder\":{\"action\":\"audit.memory-contradiction-debt\",\"intent\":\"audit.memory-contradiction-debt\",\"targetProject\":\"OrangeFive\",\"scope\":null,\"riskLevel\":\"medium\",\"allowedActions\":[\"audit.memory-contradiction-debt\"],\"forbiddenActions\":[]},\"agent\":\"misfit\",\"delegationId\":\"nav-be200fbf-3fe6-4162-8d94-d514890cadf9\",\"allowedTools\":[\"read\",\"secret-scan\",\"danger-scan\",\"receipts\"]},\"intent\":\"misfit independently evaluates: audit.memory-contradiction-debt\",\"targetProject\":\"OrangeFive\",\"orderId\":\"delegate-510cb3cc-c49f-4ee1-9581-d030afa5d6aa:misfit\",\"allowedActions\":[\"analyze.agent\"],\"forbiddenActions\":[],\"riskLevel\":\"medium\",\"requiresReceipt\":true} /no_think OrangeFive orange5",
+  "searchQuery": "action analyze.agent payload parentorder audit.memory-contradiction-debt intent targetproject scope",
+  "generatedAt": "2026-08-26T20:39:28.010Z",
+  "budgetMs": 60000,
+  "elapsedMs": 389,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "157765438",
+      "title": "UWaterloo-ASL/Agent_Action_Data_Analysis",
+      "url": "https://github.com/UWaterloo-ASL/Agent_Action_Data_Analysis",
+      "summary": "This repository keeps code to analyze agents' action collected in ROM.",
+      "updatedAt": "2020-02-29T03:25:42Z",
+      "license": "MIT",
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.765,
+      "relevance": {
+        "score": 0.25,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 8,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1190035757",
+      "title": "felixglush/explain-analyze-agent",
+      "url": "https://github.com/felixglush/explain-analyze-agent",
+      "summary": "GitHub Action that runs EXPLAIN ANALYZE on SQL in PR diffs and posts inline review comments via Claude",
+      "updatedAt": "2026-03-24T15:24:47Z",
+      "license": null,
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.25,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 8,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1294478166",
+      "title": "ewardGPT/agent-telemetry",
+      "url": "https://github.com/ewardGPT/agent-telemetry",
+      "summary": "Production observability for AI agents — trace, query, and analyze agent actions",
+      "updatedAt": "2026-07-10T16:29:58Z",
+      "license": null,
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.25,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 8,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "b911bd738a7724e91bea999c413c2d1ead1bf464d91d6e062063f69ff6cfb2aa"
+}

@@ -1,0 +1,37 @@
+{
+  "correct": 6,
+  "total": 30,
+  "perFixture": {
+    "apple": {
+      "correct": 2,
+      "total": 5,
+      "held": "raw"
+    },
+    "baboon": {
+      "correct": 1,
+      "total": 5,
+      "held": "sun"
+    },
+    "basketball": {
+      "correct": 1,
+      "total": 5,
+      "held": "candle"
+    },
+    "board": {
+      "correct": 1,
+      "total": 5,
+      "held": "moon"
+    },
+    "building": {
+      "correct": 0,
+      "total": 5,
+      "held": "crt"
+    },
+    "orange": {
+      "correct": 1,
+      "total": 5,
+      "held": "neon"
+    }
+  },
+  "nodeCount": 42
+}

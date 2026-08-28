@@ -1,0 +1,181 @@
+{
+  "schema": "orange5.captain-planet.artifact-quality-proof.v2",
+  "status": "CAPTAIN_PLANET_IMAGE_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+  "generated_at": "2026-08-27T07:03:51.333Z",
+  "organ": "flux2_klein_image",
+  "runtime_execution_proven": true,
+  "artifact_technical_quality_proven": true,
+  "perceptual_quality_proven": false,
+  "studio_quality_proven": false,
+  "quality_scope": "DETERMINISTIC_TECHNICAL_ARTIFACT_QUALITY_ONLY",
+  "unresolved_quality_gates": [
+    "prompt_adherence",
+    "object_geometry",
+    "artifact_detection",
+    "aesthetic_quality",
+    "human_visual_review",
+    "studio_readiness"
+  ],
+  "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\orangefive-flux2-klein-proof.png",
+  "artifact_sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1",
+  "source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\flux2-image-artifact-proof.json",
+  "checks": {
+    "source_receipt_contract": true,
+    "source_runtime_status": true,
+    "source_hash_matches": true,
+    "source_size_matches": true,
+    "dimensions_match": true,
+    "substantive_dimensions": true,
+    "independently_decoded_nonblank": true,
+    "substantive_tonal_range": true,
+    "substantive_luminance_variation": true,
+    "sufficient_tonal_levels": true,
+    "black_clipping_is_bounded": true,
+    "white_clipping_is_bounded": true
+  },
+  "check_groups": {
+    "runtime": {
+      "source_receipt_contract": true,
+      "source_runtime_status": true,
+      "source_hash_matches": true,
+      "source_size_matches": true,
+      "dimensions_match": true
+    },
+    "technical_quality": {
+      "substantive_dimensions": true,
+      "independently_decoded_nonblank": true,
+      "substantive_tonal_range": true,
+      "substantive_luminance_variation": true,
+      "sufficient_tonal_levels": true,
+      "black_clipping_is_bounded": true,
+      "white_clipping_is_bounded": true
+    }
+  },
+  "image": {
+    "codec": "png",
+    "width": 1024,
+    "height": 1024,
+    "pixel_format": "rgb24",
+    "mean_rgb": [
+      50.318,
+      39.718,
+      34.844
+    ],
+    "stddev_rgb": [
+      57.533,
+      39.57,
+      33.738
+    ],
+    "mean_luminance": 41.633,
+    "luminance_stddev": 41.65,
+    "luminance_p05": 0,
+    "luminance_p95": 126,
+    "unique_luminance_levels": 206,
+    "black_pixel_fraction": 0.160156,
+    "white_pixel_fraction": 0,
+    "nonblank": true
+  },
+  "source_created_at": "2026-08-27T00:01:53.687274+00:00",
+  "source_model_id": "black-forest-labs/FLUX.2-klein-4b-fp8",
+  "source_model_revision": {
+    "black-forest-labs/FLUX.2-klein-4b-fp8": "5b4408e59397a4a37ccb46afe426d8ed86379441",
+    "Comfy-Org/z_image_turbo": "08d04455279082882deaabc8d0d09fc914c071e1",
+    "Comfy-Org/flux2-dev": "ab9055628ea245000e610f2aa2c96f4746093546"
+  },
+  "source_device": "xpu:0 Intel(R) Arc(TM) 140T GPU (48GB)",
+  "source_generation_seconds": 43.247,
+  "registry_role": "image_draft_flux2_klein",
+  "registry_model": "black-forest-labs/FLUX.2-klein-4b-fp8",
+  "end_to_end_artifact_technical_quality_proven": true,
+  "end_to_end_checks": {
+    "registry_declares_installed": true,
+    "receipt_contract_matches_registry": true,
+    "source_model_matches_registry": true,
+    "source_revision_is_pinned": true,
+    "source_device_is_installed_xpu": true,
+    "source_generation_time_is_positive": true,
+    "source_runner_exists": true,
+    "live_inventory_is_fresh": true,
+    "live_installed_components_are_valid": true,
+    "live_generated_artifact_hash_matches": true,
+    "independent_runtime_chain_is_valid": true,
+    "deterministic_technical_quality_checks_pass": true,
+    "verifier_status_matches_lane": true
+  },
+  "live_inventory_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\installed-lane-inventory.json",
+  "live_inventory_receipt_file_sha256": "4cc722af5c46a46d3ba2b3bc0adb4ee120a615b05c0e01584de80bf2d72ccb24",
+  "live_inventory_evidence": {
+    "entries": [
+      {
+        "role": "image_draft_flux2_klein",
+        "evidence_kind": "installed_component",
+        "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/diffusion_models/flux-2-klein-4b-fp8.safetensors",
+        "path_kind": "file",
+        "exists": true,
+        "bytes": 4070624520,
+        "exact_bytes": 4070624520,
+        "minimum_bytes": null,
+        "sha256": null,
+        "expected_sha256": null,
+        "size_valid": true,
+        "hash_valid": true,
+        "valid": true
+      },
+      {
+        "role": "image_draft_flux2_klein",
+        "evidence_kind": "installed_component",
+        "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/text_encoders/qwen_3_4b.safetensors",
+        "path_kind": "file",
+        "exists": true,
+        "bytes": 8044982048,
+        "exact_bytes": 8044982048,
+        "minimum_bytes": null,
+        "sha256": null,
+        "expected_sha256": null,
+        "size_valid": true,
+        "hash_valid": true,
+        "valid": true
+      },
+      {
+        "role": "image_draft_flux2_klein",
+        "evidence_kind": "installed_component",
+        "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/vae/flux2-vae.safetensors",
+        "path_kind": "file",
+        "exists": true,
+        "bytes": 336213556,
+        "exact_bytes": 336213556,
+        "minimum_bytes": null,
+        "sha256": null,
+        "expected_sha256": null,
+        "size_valid": true,
+        "hash_valid": true,
+        "valid": true
+      },
+      {
+        "role": "image_draft_flux2_klein",
+        "evidence_kind": "generated_proof_artifact",
+        "path": "C:\\AtomEons\\ai-box\\receipts\\captain-planet\\artifacts\\flux2\\orangefive-flux2-klein-proof.png",
+        "path_kind": "file",
+        "exists": true,
+        "bytes": 1309650,
+        "exact_bytes": 1309650,
+        "minimum_bytes": null,
+        "sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1",
+        "expected_sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1",
+        "size_valid": true,
+        "hash_valid": true,
+        "valid": true
+      }
+    ],
+    "all_valid": true,
+    "generated_artifact_hash_verified": true
+  },
+  "source_runner": "C:\\AtomEons\\Orange5\\scripts\\codexa-comfy-flux-artifact-proof.py",
+  "source_runner_sha256": "3291f475d56ce102d0b8f0be390c3d33eccec13861f447622fd9e9ba2917352f",
+  "source_runner_hash_linked_to_generation_receipt": false,
+  "generation_input_recorded": true,
+  "generation_input_traceability_note": "Generation input is present in the source receipt.",
+  "prior_receipt": "flux2-refined-image-proof.json",
+  "prior_sha256": "0bbd9bddc9a2e1fa5d6e0f7feedc29fca1f82f9e28dd27360d12087f39c1db27",
+  "receipt_sha256": "654d19c5f295803b6aef35bce0ae29214dde2a7e6a2281ab3b2be873d91305c7"
+}

@@ -1,0 +1,145 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-8a39c08fe1a781f6-1787797243209",
+  "query": "{\"intent\":\"Attack OrangeFive for agent theater, stale research, source drift, false green, silent service failure, and project-scope loss. Return deterministic probes that keep operator, models, and machines in one reality.\",\"evidence\":[\"scouts=4/4;sources=19;sha=e29e6f69893c63a5\",\"candidates=19;status=BENCHMARK_REQUIRED;sha=0572db35033aa8af\"],\"context\":{\"scout_briefs\":[{\"id\":\"runtime-orchestration\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":2,\"compressed_brief\":\"AIR:CURRENT.v1\\nLAW: This is fresh discovery evidence, not installed capability or proof of superiority.\\nLAW: Prefer an existing project component unless a candidate passes compatibility, license, benchmark, and receipt gates.\\nC: [hackernews] Show HN: Orchid – Local-first record and replay for AI agent debugging; freshness=ESTABLISHED; lifecycle=SOURCE_VERIFICATION_REQUIRED; authority=discovery_tip_unverified; quality=0.194; stars=0; license=unknown; source=https://github.com/mario-guerra/orchid-trace; finding=Unverified discovery tip. Discussion points: 4. Verify against the creator's official source before use.; idea=Test Show HN: Orchid – Local-first record and replay for AI agent debugging against Hermes child- OrangeFive orange5",
+  "searchQuery": "intent attack for agent theater stale research drift",
+  "generatedAt": "2026-08-27T02:20:43.222Z",
+  "budgetMs": 60000,
+  "elapsedMs": 567,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "direct",
+      "sourceId": "30f70dc8fef98dcc",
+      "title": "GitHub - mario-guerra/orchid-trace: Orchid - Orchestration interactive debugger - Record, inspect, &amp; replay AI agents · GitHub",
+      "url": "https://github.com/mario-guerra/orchid-trace",
+      "summary": "GitHub - mario-guerra/orchid-trace: Orchid - Orchestration interactive debugger - Record, inspect, &amp; replay AI agents · GitHub Skip to content Navigation Menu Sign in Appearance settings Platform AI CODE CREATION GitHub Copilot Write better code with AI GitHub Copilot app Direct agents from issue to merge MCP Registry Integrate external tools DEVELOPER WORKFLOWS Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes Code Q",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "sourceQuality": 0.9,
+      "relevance": {
+        "score": 0.0643,
+        "matched": 1,
+        "queryTerms": 7,
+        "terms": [
+          "agent"
+        ],
+        "distinctiveMatched": 0,
+        "distinctiveTerms": 6,
+        "admitted": false
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.08942v1",
+      "title": "Same Question, Different Answer? Measuring and Mitigating Prompt Privilege for Equitable AI Access",
+      "url": "http://arxiv.org/abs/2608.08942v1",
+      "summary": "Large language models (LLMs) are increasingly integrated into healthcare, education, public services, and everyday decision making. They should provide comparable assistance regardless of a user's literacy, communication style, or prompt-engineering expertise. However, existing research on prompt robustness primarily focuses on adversarial attacks, prompt injection, and prompt optimization, while overlooking whether semantically equivalent requests receive different responses simply because they",
+      "updatedAt": "2026-08-09T22:38:54Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "attack",
+          "research"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.21126v1",
+      "title": "TraceGrant: A Contract-Governed Security Framework for the Task-Effect Lifecycle of Networked LLM Agents",
+      "url": "http://arxiv.org/abs/2608.21126v1",
+      "summary": "Networked large language model (LLM) agents retrieve information from email, cloud storage, calendars, transaction platforms, and Web services to complete multistep tasks that produce persistent external effects. The same content needed for legitimate execution may also contain indirect prompt injections that redirect tool use, alter sensitive arguments, or disrupt task completion. Existing defenses mainly constrain untrusted content or individual tool calls, leaving user intent, runtime evidenc",
+      "updatedAt": "2026-08-21T14:05:42Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.09732v1",
+      "title": "ColluSkill: Adversarial Cross-Skill Composition for Evading Agent Skill Scanners",
+      "url": "http://arxiv.org/abs/2608.09732v1",
+      "summary": "Agent skills are emerging as an important attack surface in LLM-based agent systems. Through an empirical study of existing skill scanners, we find that current defenses mainly inspect individual skills, leaving risks from cross-skill composition insufficiently examined. This creates a practical blind spot: multiple locally plausible skills may pass security checks while collectively forming a harmful workflow during agent execution. To investigate this threat, we propose ColluSkill, a collusive",
+      "updatedAt": "2026-08-10T15:32:44Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "attack",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "npm",
+      "sourceId": "@tanstack/intent",
+      "title": "@tanstack/intent",
+      "url": "https://github.com/TanStack/intent",
+      "summary": "Ship compositional knowledge for AI coding agents alongside your npm packages Current version 0.3.7.",
+      "updatedAt": "2026-08-25T15:23:16.792Z",
+      "version": "0.3.7",
+      "license": "MIT",
+      "score": 100.36176,
+      "authorityTier": "primary_registry_metadata",
+      "sourceQuality": 0.72,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "github",
+      "error": "source returned HTTP 403"
+    }
+  ],
+  "sha256": "6934564720f34cbd4bebc518700f365e5cc0fabd479d3ca4c40189bcec4ba267"
+}

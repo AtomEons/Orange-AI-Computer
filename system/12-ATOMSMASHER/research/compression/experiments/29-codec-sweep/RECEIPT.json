@@ -1,0 +1,108 @@
+{
+  "experiment": "29-codec-sweep",
+  "generated_at": "2026-06-26T12:30:00.553Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "results": [
+    {
+      "name": "gzip L1",
+      "encoded": 400674,
+      "ratio": 5.180233806036828,
+      "lossless": true,
+      "enc_ms": 40.62729999999999,
+      "dec_ms": 10.553299999999979
+    },
+    {
+      "name": "gzip L6 (default)",
+      "encoded": 251832,
+      "ratio": 8.241943041392675,
+      "lossless": true,
+      "enc_ms": 78.27800000000002,
+      "dec_ms": 27.813499999999976
+    },
+    {
+      "name": "gzip L9",
+      "encoded": 245613,
+      "ratio": 8.450631684804957,
+      "lossless": true,
+      "enc_ms": 170.94440000000003,
+      "dec_ms": 27.139099999999985
+    },
+    {
+      "name": "deflateRaw L9",
+      "encoded": 245595,
+      "ratio": 8.451251043384433,
+      "lossless": true,
+      "enc_ms": 167.19639999999993,
+      "dec_ms": 13.588399999999979
+    },
+    {
+      "name": "brotli q4 (text mode)",
+      "encoded": 150419,
+      "ratio": 13.798688995406165,
+      "lossless": true,
+      "enc_ms": 121.0897,
+      "dec_ms": 144.17079999999999
+    },
+    {
+      "name": "brotli q6 (text mode)",
+      "encoded": 137635,
+      "ratio": 15.080357467214007,
+      "lossless": true,
+      "enc_ms": 265.8348000000001,
+      "dec_ms": 14.760999999999967
+    },
+    {
+      "name": "brotli q9 (text mode)",
+      "encoded": 133255,
+      "ratio": 15.576038422573262,
+      "lossless": true,
+      "enc_ms": 491.0582999999999,
+      "dec_ms": 9.546199999999999
+    },
+    {
+      "name": "brotli q11 (text mode)",
+      "encoded": 120166,
+      "ratio": 17.272647837158598,
+      "lossless": true,
+      "enc_ms": 12305.7794,
+      "dec_ms": 9.577900000000227
+    },
+    {
+      "name": "brotli q11 (generic)",
+      "encoded": 120166,
+      "ratio": 17.272647837158598,
+      "lossless": true,
+      "enc_ms": 13125.3159,
+      "dec_ms": 10.198499999998603
+    },
+    {
+      "name": "brotli q11 window=24",
+      "encoded": 120166,
+      "ratio": 17.272647837158598,
+      "lossless": true,
+      "enc_ms": 12282.648299999997,
+      "dec_ms": 31.14839999999822
+    },
+    {
+      "name": "xz -9 -e",
+      "encoded": 120788,
+      "ratio": 17.183702023379805,
+      "lossless": true,
+      "enc_ms": 5891.188199999997,
+      "dec_ms": 277.91879999999946
+    },
+    {
+      "name": "brotli q11 text large win",
+      "encoded": 120166,
+      "ratio": 17.272647837158598,
+      "lossless": true,
+      "enc_ms": 11675.429599999996,
+      "dec_ms": 8.984799999998359
+    }
+  ],
+  "best_lossless": {
+    "name": "brotli q11 (text mode)",
+    "ratio": 17.272647837158598,
+    "size": 120166
+  }
+}

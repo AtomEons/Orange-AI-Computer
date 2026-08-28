@@ -1,0 +1,63 @@
+{
+  "schema": "orange5.captain-planet.media-perceptual-review.v1",
+  "reviewer": {
+    "id": null,
+    "kind": "human",
+    "reviewed_at": null,
+    "playback_context": null
+  },
+  "lanes": {
+    "image_draft_flux2_klein": {
+      "artifact_sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1",
+      "review_completed": false,
+      "reference_input_read": false,
+      "full_artifact_reviewed": false,
+      "criteria": {
+        "prompt_adherence": { "result": "not_reviewed", "note": "" },
+        "object_geometry": { "result": "not_reviewed", "note": "" },
+        "material_coherence": { "result": "not_reviewed", "note": "" },
+        "lighting_coherence": { "result": "not_reviewed", "note": "" },
+        "artifact_and_pseudotext_absence": { "result": "not_reviewed", "note": "" }
+      }
+    },
+    "video_fallback_ltxv098": {
+      "artifact_sha256": "7268140cf3420c7ad360303e66b78b8807887db89f863b3604f69f3e9441f347",
+      "review_completed": false,
+      "reference_input_read": false,
+      "full_artifact_reviewed": false,
+      "criteria": {
+        "prompt_adherence": { "result": "not_reviewed", "note": "" },
+        "temporal_coherence": { "result": "not_reviewed", "note": "" },
+        "geometry_stability": { "result": "not_reviewed", "note": "" },
+        "camera_motion_quality": { "result": "not_reviewed", "note": "" },
+        "artifact_and_pseudotext_absence": { "result": "not_reviewed", "note": "" }
+      }
+    },
+    "speech_qwen3_tts": {
+      "artifact_sha256": "90598b2975622c98fec213664e3c023aa624a8efd7286c91a4517ebc1de63452",
+      "review_completed": false,
+      "reference_input_read": false,
+      "full_artifact_reviewed": false,
+      "criteria": {
+        "exact_text_intelligible": { "result": "not_reviewed", "note": "" },
+        "pronunciation_accuracy": { "result": "not_reviewed", "note": "" },
+        "speaker_fit": { "result": "not_reviewed", "note": "" },
+        "delivery_matches_instruction": { "result": "not_reviewed", "note": "" },
+        "audio_artifact_absence": { "result": "not_reviewed", "note": "" }
+      }
+    },
+    "music_ace_step15": {
+      "artifact_sha256": "399f4cd4a48f0b1e60ae1fb4191929501079e81d697968e96ac7a0853525f31d",
+      "review_completed": false,
+      "reference_input_read": false,
+      "full_artifact_reviewed": false,
+      "criteria": {
+        "prompt_adherence": { "result": "not_reviewed", "note": "" },
+        "musical_coherence": { "result": "not_reviewed", "note": "" },
+        "arrangement_development": { "result": "not_reviewed", "note": "" },
+        "mix_balance": { "result": "not_reviewed", "note": "" },
+        "audio_artifact_absence": { "result": "not_reviewed", "note": "" }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "experiment": "79-m19-shape-mtf",
+  "N": 6224,
+  "other_receipts": 4659,
+  "unique_non_mesh_shapes": 1567,
+  "new_shapes_inserted": 1567,
+  "det_bytes": 2075585,
+  "m19_baseline": {
+    "other_idx_br_bytes": 5381,
+    "total": 44095,
+    "ratio": 47.071,
+    "encode_ms": 21,
+    "decode_ms": 1.5,
+    "roundtrip_ok": true
+  },
+  "mtf_variant": {
+    "code_br_bytes": 5521,
+    "new_sort_idx_br_bytes": 2142,
+    "total": 46377,
+    "ratio": 44.755,
+    "delta_vs_m19": -2.316,
+    "encode_ms": 40.1,
+    "decode_ms": 135.8,
+    "roundtrip_ok": true,
+    "verdict": "RED",
+    "reason": "MTF loses 2.32x — code/new-shape overhead exceeds Zipf win"
+  }
+}

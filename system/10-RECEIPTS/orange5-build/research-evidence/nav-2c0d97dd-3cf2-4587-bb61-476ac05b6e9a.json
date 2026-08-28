@@ -1,0 +1,13 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "nav-2c0d97dd-3cf2-4587-bb61-476ac05b6e9a",
+  "query": "Trace why forbidden destructive and adversarial-not-ready plans can report gates_pass true. Return exact source files and minimal safe repair.",
+  "searchQuery": "trace why forbidden destructive and adversarial-not-ready plans can",
+  "generatedAt": "2026-08-27T03:24:04.669Z",
+  "budgetMs": 60000,
+  "elapsedMs": 1096,
+  "status": "NO_EVIDENCE",
+  "sources": [],
+  "errors": [],
+  "sha256": "597d398eeab8524b9f46def2b549bb1826242aa4c0173909dc9ec1e34721d978"
+}

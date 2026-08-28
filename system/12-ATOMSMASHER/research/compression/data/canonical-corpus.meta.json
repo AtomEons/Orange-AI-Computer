@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-06-26T09:14:22.066Z",
+  "source": "runAsOrganism() at max-mode-v2",
+  "receipts_count": 6224,
+  "corpus_bytes": 2075585,
+  "corpus_sha256": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "organism_elapsed_ms": 126476,
+  "organism_id": "org_1ea553df570e495f",
+  "baseline_4weave_ratio": 291.61,
+  "baseline_regen_ratio": 54.48,
+  "notes": "apples-to-apples test corpus for compression research experiments 01-10"
+}

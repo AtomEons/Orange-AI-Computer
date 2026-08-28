@@ -1,0 +1,80 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "audio",
+  "card_id": "audio-tts",
+  "capability": "audio.tts",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["text"],
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "Text to synthesize. Provider-specific length limits apply; runner refuses inputs above 8000 characters.",
+        "minLength": 1,
+        "maxLength": 8000
+      },
+      "voice": {
+        "type": "string",
+        "description": "Voice id known to the active backend (e.g. 'alloy', 'nova'). Runner validates against the backend's published voice catalog.",
+        "minLength": 1,
+        "maxLength": 64
+      },
+      "format": {
+        "type": "string",
+        "enum": ["mp3", "wav", "ogg", "flac"],
+        "default": "mp3"
+      },
+      "speed": {
+        "type": "number",
+        "description": "Speech rate multiplier; 1.0 is natural.",
+        "minimum": 0.25,
+        "maximum": 4.0,
+        "default": 1.0
+      },
+      "sample_rate": {
+        "type": "integer",
+        "enum": [16000, 22050, 24000, 44100, 48000]
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["audio_ref", "duration_seconds", "model"],
+    "properties": {
+      "audio_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "duration_seconds": { "type": "number", "minimum": 0 },
+      "format": { "type": "string", "minLength": 1, "maxLength": 16 },
+      "model": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "voice": { "type": "string", "minLength": 1, "maxLength": 64 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 20,
+    "scopes": [
+      "fs.write:sandbox://audio/tts/",
+      "net.egress:api.openai.com",
+      "net.egress:api.elevenlabs.io",
+      "secrets.read:frontier.tts"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 12,
+    "egress_allowlist": ["api.openai.com", "api.elevenlabs.io"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:20:00Z",
+  "vendor": "frontier-offload",
+  "version": "0.1.0",
+  "summary": "Text-to-speech via an operator-supplied frontier voice backend; outputs to sandbox audio storage.",
+  "tags": ["audio", "tts", "voice", "synthesis", "byo-key"],
+  "notes": "human_approval_required defaults true because voice synthesis is billed per character and can be abused to clone-adjacent outputs depending on backend; operator can lower the gate once a budget envelope is in place."
+}

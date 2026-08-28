@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atomeons.com/schemas/ae.structural-tokens.v1.json",
+  "title": "AE Structural Tokens v1",
+  "description": "Substrate-invariant structural description of a light-field stream — the AI-native output format that both AE Eyes pipelines compile to (Path 1 = codec translator, Path 2 = retinal transform). Every field is a deterministic extraction; no neural inference is required to produce this record. The AI consumes structural tokens directly instead of learning perception from pixels. See AE_STRUCTURAL_TOKENS_v1.md for the design doctrine and the two-path synthesis.",
+  "type": "object",
+  "required": ["schema", "provenance", "temporal", "photometric"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "ae.structural-tokens.v1" },
+    "id": {
+      "type": "string",
+      "description": "Deterministic id of this structural record (sha256 of source + extraction params, hex, 16+ chars)."
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Which path produced these tokens and from what.",
+      "required": ["path", "source_kind"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "enum": ["codec", "retinal"], "description": "codec = compressed-domain translator; retinal = differential-field transform." },
+        "source_kind": { "type": "string", "description": "codec: 'h264' | 'hevc' | 'av1' | 'vp9' | 'mpeg2' | 'prores' | 'dv'; retinal: 'camera' | 'renderer' | 'event' | 'ir' | 'uv' | 'lidar' | 'synthetic' | 'imagined'." },
+        "source_id": { "type": "string", "description": "Optional: origin identifier (file path sha, sensor id, session id)." },
+        "translator_version": { "type": "string", "description": "Version of the deterministic translator/transform used. Non-neural." },
+        "extracted_at_ms": { "type": "integer", "description": "Unix ms when extracted. Deterministic under a fixed seed if the pipeline is run in seeded mode." }
+      }
+    },
+    "photometric": {
+      "type": "object",
+      "description": "Substrate metadata the AI can reason about or ignore. Kept separate so structural fields carry scene, not display.",
+      "required": ["color_space"],
+      "additionalProperties": false,
+      "properties": {
+        "color_space": { "type": "string", "enum": ["srgb", "rec709", "rec2020", "aces", "linear", "unknown"] },
+        "gamma": { "type": "number", "description": "Encoded gamma exponent. 1.0 = linear, ~2.2 = sRGB display." },
+        "luminance_range_nits": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2, "description": "[min, max] nits." },
+        "hdr_curve": { "enum": ["sdr", "hlg", "pq", "unknown"] },
+        "resolution": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2, "description": "[width, height] in pixels of the source frame(s)." }
+      }
+    },
+    "temporal": {
+      "type": "object",
+      "description": "Timeline metadata for the token stream.",
+      "required": ["duration_ms", "frame_count"],
+      "additionalProperties": false,
+      "properties": {
+        "duration_ms": { "type": "integer", "minimum": 0 },
+        "frame_count": { "type": "integer", "minimum": 1, "description": "Number of source frames processed. 1 for a still image." },
+        "sample_rate_hz": { "type": "number", "description": "Effective temporal sample rate of the token stream (may be higher than source fps for retinal transforms fed by high-rate sensors)." }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "description": "Persistent, identity-preserved objects across time. Path 1 aggregates codec motion-compensated block groups whose motion is coherent. Path 2 aggregates spatiotemporal regions whose gradient + motion signatures track together.",
+      "items": {
+        "type": "object",
+        "required": ["id", "first_seen_ms", "last_seen_ms"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "integer", "minimum": 0, "description": "Stable within this record. Not globally unique — cross-record identity is a separate concern." },
+          "first_seen_ms": { "type": "integer", "minimum": 0 },
+          "last_seen_ms": { "type": "integer", "minimum": 0 },
+          "region": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 4,
+            "maxItems": 4,
+            "description": "Bounding box in pixel coordinates: [x, y, w, h]. Present on still-image entities and any sequence entity that has a persistent spatial support."
+          },
+          "motion_field": {
+            "type": "array",
+            "description": "Sparse motion samples: {ts_ms, vx, vy, confidence, region: [x,y,w,h]}. vx/vy in normalized frame units per second.",
+            "items": {
+              "type": "object",
+              "required": ["ts_ms", "vx", "vy"],
+              "additionalProperties": false,
+              "properties": {
+                "ts_ms": { "type": "integer" },
+                "vx": { "type": "number" },
+                "vy": { "type": "number" },
+                "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+                "region": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 }
+              }
+            }
+          },
+          "texture_codes": {
+            "type": "array",
+            "description": "Indices into the record-level texture vocabulary. Structural texture identity, not pixel values.",
+            "items": { "type": "integer", "minimum": 0 }
+          },
+          "prediction_residual_norm": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Mean magnitude of the codec/transform's residual for this entity across its lifespan. High = novel/hard-to-predict; low = well-modeled."
+          }
+        }
+      }
+    },
+    "occlusion_events": {
+      "type": "array",
+      "description": "Times and regions where the codec's inter-frame prediction failed hard, or where the retinal transform's motion correlation broke — evidence of occlusion, disocclusion, or novel content.",
+      "items": {
+        "type": "object",
+        "required": ["ts_ms", "kind"],
+        "additionalProperties": false,
+        "properties": {
+          "ts_ms": { "type": "integer" },
+          "kind": { "enum": ["occlusion", "disocclusion", "novel", "prediction_break"] },
+          "region": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 },
+          "entity_ids": { "type": "array", "items": { "type": "integer" }, "description": "Optional: entities involved." },
+          "residual_energy": { "type": "number", "description": "Signal strength of the break." }
+        }
+      }
+    },
+    "texture_vocabulary": {
+      "type": "array",
+      "description": "Small learned/derived vocabulary of texture primitives used by entity texture_codes. Each entry describes ONE texture identity structurally (DCT coefficient signature, edge histogram signature, or radiance-field gradient signature) — not a pixel patch. Deterministic per (path, source_kind, translator_version).",
+      "items": {
+        "type": "object",
+        "required": ["code", "signature"],
+        "additionalProperties": false,
+        "properties": {
+          "code": { "type": "integer", "minimum": 0 },
+          "signature": { "type": "string", "description": "Compact signature (e.g. base64-encoded low-dim descriptor). Structural, not raw pixels." },
+          "frequency": { "type": "integer", "minimum": 1, "description": "How many times this code was assigned in this record." }
+        }
+      }
+    },
+    "temporal_markers": {
+      "type": "array",
+      "description": "Scene-level events: cuts (I-frame insertions in codec path; discontinuities in temporal derivative in retinal path), global camera motion, lighting shifts.",
+      "items": {
+        "type": "object",
+        "required": ["ts_ms", "kind"],
+        "additionalProperties": false,
+        "properties": {
+          "ts_ms": { "type": "integer" },
+          "kind": { "enum": ["scene_cut", "camera_motion", "lighting_change", "flicker", "ego_motion"] },
+          "magnitude": { "type": "number", "description": "Signal strength / effect size." },
+          "detail": { "type": "object", "description": "Kind-specific fields. camera_motion may carry {global_vx, global_vy, zoom}. lighting_change may carry {delta_luminance}. Non-normative." }
+        }
+      }
+    },
+    "retinal_fields": {
+      "type": "object",
+      "description": "Present when path='retinal'. Compact summaries of the four differential fields at record-level granularity. Not full tensors — those live in the on-disk artifact the record references.",
+      "additionalProperties": false,
+      "properties": {
+        "gradient_energy_mean": { "type": "number", "description": "Mean magnitude of spatial gradient |∇L| over the stream." },
+        "temporal_derivative_mean": { "type": "number", "description": "Mean magnitude of ∂L/∂t over the stream." },
+        "log_intensity_range": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2, "description": "[min, max] of log(L+ε)." },
+        "motion_correlation_coherence": { "type": "number", "minimum": 0, "maximum": 1, "description": "0 = random flow; 1 = perfectly coherent global motion." },
+        "tensor_ref": { "type": "string", "description": "Optional: path to the on-disk four-field tensor, if persisted. Backend-only; never a public URL." }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "description": "Honest disclosures from the extractor: codec blind spots hit (fast motion at cuts, texture under masking), sensor/transform limits (frame rate insufficient for full temporal derivative, spectral response unknown, etc.). Mom's Law: what this record could NOT see.",
+      "items": { "type": "string" }
+    }
+  }
+}

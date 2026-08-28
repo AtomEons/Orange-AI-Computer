@@ -1,0 +1,503 @@
+{
+  "experiment": "48-combo-synth",
+  "generated_at": "2026-06-27",
+  "total_variations": 20,
+  "results": [
+    {
+      "name": "V01: ALL wins (Method 10 reference)",
+      "total": 49107,
+      "ratio": 42.27,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 31321,
+        "otherIdx": 5382,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V02: ALL + brotli x1 (no twice)",
+      "total": 49268,
+      "ratio": 42.13,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 31482,
+        "otherIdx": 5382,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 1,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V03: ALL minus schemaFold",
+      "total": 50537,
+      "ratio": 41.07,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 12678,
+        "shapes": 31321,
+        "otherIdx": 5382,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V04: ALL minus meshDecomp",
+      "total": 51957,
+      "ratio": 39.95,
+      "lossless": true,
+      "components": {
+        "shapes": 43758,
+        "otherIdx": 8144,
+        "pos": 7,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": false,
+        "sortStyle": "b8",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V05: ALL minus dedupe",
+      "total": 64095,
+      "ratio": 32.38,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 48048,
+        "otherIdx": 3643,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": false,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V06: ALL minus detIds",
+      "error": "JSON Parse error: Unexpected identifier \"rcpt_0006d5f0e113d2d1\"",
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V07: ALL minus sort (insertion order)",
+      "total": 53849,
+      "ratio": 38.54,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 36291,
+        "otherIdx": 5154,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "insertion",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V08: ALL with lex sort",
+      "total": 49911,
+      "ratio": 41.59,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 32110,
+        "otherIdx": 5397,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "lex",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V09: ALL with b4 sort (action→payload→summary)",
+      "total": 49497,
+      "ratio": 41.93,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 31768,
+        "otherIdx": 5325,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b4",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V10: ALL with rev-len sort",
+      "total": 50137,
+      "ratio": 41.4,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 32281,
+        "otherIdx": 5452,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "rev-len",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V11: ALL with by-length sort",
+      "total": 49904,
+      "ratio": 41.59,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 32001,
+        "otherIdx": 5499,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "by-length",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V12: ALL + stripAction",
+      "total": 49016,
+      "ratio": 42.35,
+      "lossless": false,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "aIdx": 111,
+        "aV": 455,
+        "shapes": 30664,
+        "otherIdx": 5382,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 2,
+        "stripAction": true,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V13: ALL + airDecomp",
+      "total": 51990,
+      "ratio": 39.92,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "airTpl": 177,
+        "airData": 6321,
+        "shapes": 30243,
+        "otherIdx": 1995,
+        "pos": 1839,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": true
+      }
+    },
+    {
+      "name": "V14: ALL + airDecomp + stripAction",
+      "total": 51916,
+      "ratio": 39.98,
+      "lossless": false,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "airTpl": 177,
+        "airData": 6321,
+        "aIdx": 110,
+        "aV": 453,
+        "shapes": 29606,
+        "otherIdx": 1995,
+        "pos": 1839,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 2,
+        "stripAction": true,
+        "airDecomp": true
+      }
+    },
+    {
+      "name": "V15: brotli x3 on shapes",
+      "total": 49111,
+      "ratio": 42.26,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 31325,
+        "otherIdx": 5382,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 3,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V16: brotli x4 on shapes",
+      "total": 49115,
+      "ratio": 42.26,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "shapes": 31329,
+        "otherIdx": 5382,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 4,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V17: MINIMAL (no wins, dedupe+brotli only)",
+      "error": "JSON Parse error: Unexpected identifier \"rcpt_0006d5f0e113d2d1\"",
+      "cfg": {
+        "detIds": false,
+        "dedupe": true,
+        "schemaFold": false,
+        "meshDecomp": false,
+        "sortStyle": "insertion",
+        "brotliPasses": 1,
+        "stripAction": false,
+        "airDecomp": false
+      }
+    },
+    {
+      "name": "V18: ALL + b4 + brotli x3 + airDecomp",
+      "total": 52277,
+      "ratio": 39.7,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "airTpl": 177,
+        "airData": 6321,
+        "shapes": 30533,
+        "otherIdx": 1992,
+        "pos": 1839,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b4",
+        "brotliPasses": 3,
+        "stripAction": false,
+        "airDecomp": true
+      }
+    },
+    {
+      "name": "V19: ALL + lex + airDecomp",
+      "total": 52773,
+      "ratio": 39.33,
+      "lossless": true,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "airTpl": 177,
+        "airData": 6321,
+        "shapes": 31023,
+        "otherIdx": 1998,
+        "pos": 1839,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "lex",
+        "brotliPasses": 2,
+        "stripAction": false,
+        "airDecomp": true
+      }
+    },
+    {
+      "name": "V20: ALL with brotli q11 once and stripAction",
+      "total": 49197,
+      "ratio": 42.19,
+      "lossless": false,
+      "components": {
+        "meshTpl": 119,
+        "meshData": 11248,
+        "aIdx": 111,
+        "aV": 455,
+        "shapes": 30845,
+        "otherIdx": 5382,
+        "pos": 989,
+        "id": 48
+      },
+      "cfg": {
+        "detIds": true,
+        "dedupe": true,
+        "schemaFold": true,
+        "meshDecomp": true,
+        "sortStyle": "b8",
+        "brotliPasses": 1,
+        "stripAction": true,
+        "airDecomp": false
+      }
+    }
+  ],
+  "champion": {
+    "name": "V01: ALL wins (Method 10 reference)",
+    "total": 49107,
+    "ratio": 42.27,
+    "lossless": true,
+    "components": {
+      "meshTpl": 119,
+      "meshData": 11248,
+      "shapes": 31321,
+      "otherIdx": 5382,
+      "pos": 989,
+      "id": 48
+    },
+    "cfg": {
+      "detIds": true,
+      "dedupe": true,
+      "schemaFold": true,
+      "meshDecomp": true,
+      "sortStyle": "b8",
+      "brotliPasses": 2,
+      "stripAction": false,
+      "airDecomp": false
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-28700ea18f444b47-1787797130286",
+  "query": "current local AI agent security provenance receipt observability self healing Windows service operator UX anti hallucination tools research OrangeFive orange5",
+  "searchQuery": "local agent security provenance receipt observability self healing",
+  "generatedAt": "2026-08-27T02:18:50.310Z",
+  "budgetMs": 45000,
+  "elapsedMs": 1442,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2607.11751v1",
+      "title": "When Local Monitors Miss Compositional Harm: Diagnosing Distributed Backdoors in Multi-Agent Systems",
+      "url": "http://arxiv.org/abs/2607.11751v1",
+      "summary": "As multi-agent, tool-using LLM systems are deployed, a common safety net is a runtime monitor that checks each message, tool call, or step on its own. We show this net has a fundamental hole. A distributed backdoor splits a harmful payload across agents, so every local check passes while the assembled object is the attack. The monitor can be right on every step and still miss the attack. The problem is not splitting itself: split fragments can still leak suspicious tokens or provenance edges. Th",
+      "updatedAt": "2026-07-13T16:08:46Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.4083,
+        "matched": 4,
+        "queryTerms": 8,
+        "terms": [
+          "local",
+          "agent",
+          "provenance",
+          "self"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2607.08400v1",
+      "title": "TRACE: A Two-Channel Robust Attribution Watermark via Complementary Embeddings for LLM-Agent Trajectories",
+      "url": "http://arxiv.org/abs/2607.08400v1",
+      "summary": "LLM agents reach users through resellers, who may rebrand a developer's agent or substitute a cheaper model. When provenance is disputed, attribution rests on the trajectory log (the record of tool calls, observations, and executed actions, not the model's reasoning), which the reseller stores and processes to meter usage. A watermark must therefore survive an adversary with full read/write access to the very evidence it is detected from; existing agent watermarks do not, as their attribution is",
+      "updatedAt": "2026-07-09T12:25:22Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.2042,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "provenance"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "github",
+      "error": "source returned HTTP 403"
+    }
+  ],
+  "sha256": "591e375e08a8fc7cbe079a6a8cd679ffa0ae8a26e6858595e4661a992323f37b"
+}

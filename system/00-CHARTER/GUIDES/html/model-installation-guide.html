@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Æ Orange AI Computer Model Installation Guide</title><style>
+  :root { color-scheme: light; --orange:#ff5a1f; --ink:#171717; --muted:#666; --line:#dedede; --paper:#fff; }
+  * { box-sizing: border-box; }
+  @page { size: Letter; margin: 0.7in 0.66in 0.72in; }
+  html { background:#ececec; }
+  body { max-width: 8.5in; margin: 0 auto; padding: 0.72in 0.66in; background:var(--paper); color:var(--ink); font-family: Inter, "Segoe UI", Arial, sans-serif; font-size:10.5pt; line-height:1.48; }
+  body::before { content:"ATOM EONS  /  Æ ORANGE AI COMPUTER"; display:block; color:var(--orange); font-size:8pt; font-weight:800; letter-spacing:.14em; border-bottom:2px solid var(--orange); padding-bottom:8px; margin-bottom:28px; }
+  h1,h2,h3,h4 { break-after:avoid; line-height:1.15; color:#111; }
+  h1 { font-size:28pt; margin:0 0 20px; }
+  h2 { font-size:18pt; margin:30px 0 11px; padding-top:7px; border-top:1px solid var(--line); }
+  h3 { font-size:13.5pt; margin:23px 0 8px; }
+  h4 { font-size:11pt; margin:18px 0 6px; }
+  p, li { orphans:3; widows:3; }
+  a { color:#b7390d; text-decoration:none; }
+  strong { color:#111; }
+  blockquote { margin:18px 0; padding:10px 15px; border-left:4px solid var(--orange); background:#fff5f0; }
+  code { font-family:"Cascadia Mono",Consolas,monospace; background:#f4f4f4; padding:1px 4px; border-radius:3px; font-size:9pt; }
+  pre { break-inside:avoid; white-space:pre-wrap; background:#161616; color:#f7f7f7; padding:13px 15px; border-left:4px solid var(--orange); border-radius:4px; overflow-wrap:anywhere; }
+  pre code { color:inherit; background:none; padding:0; }
+  table { width:100%; border-collapse:collapse; margin:15px 0 21px; break-inside:auto; font-size:9pt; }
+  thead { display:table-header-group; }
+  tr { break-inside:avoid; }
+  th,td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; }
+  th { text-align:left; background:#fff1eb; }
+  ul,ol { padding-left:22px; }
+  img { max-width:100%; height:auto; }
+  hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
+  .manual-meta { color:var(--muted); font-size:8.5pt; margin:-10px 0 30px; }
+  .book-cover { min-height:8.2in; display:flex; flex-direction:column; justify-content:center; page-break-after:always; }
+  .book-cover .mark { color:var(--orange); font-size:11pt; font-weight:800; letter-spacing:.18em; }
+  .book-cover h1 { font-size:42pt; max-width:6.5in; margin:16px 0; }
+  .book-cover p { color:var(--muted); font-size:15pt; max-width:5.7in; }
+  .manual-section { page-break-before:always; }
+  @media print { html,body { background:#fff; } body { padding:0; max-width:none; } }
+</style></head>
+<body class="single-manual">
+<div class="manual-meta">Canonical source: 00-CHARTER/GUIDES/MODEL_INSTALLATION_GUIDE.md</div>
+<h1>Æ Orange AI Computer Model Installation Guide</h1>
+<p>Orange installs capabilities by role, not by collecting model names. The
+released deploy payload is immutable. Hermes profiles, system configuration,
+schemas, role definitions, and the component manifest ship pre-authored.</p>
+<p>The installer may be guided entirely through an LLM conversation, but the LLM
+has no authority to invent or edit the system. It only presents the fixed
+manifest, records deselections, requests approval, and invokes the deterministic
+Bun deploy engine.</p>
+<p>OpenAI 5.6 or the strongest hosted coding agent available is the preferred
+optional guide for a difficult setup. It is not required to run Orange.</p>
+<h2>1. Installation Contract</h2>
+<p>The installation conversation should feel automatic:</p>
+<pre><code class="language-text">read fixed manifest
+-&gt; discover hardware
+-&gt; inventory and adopt compatible existing runtimes and models
+-&gt; show the manifest's recommended selection
+-&gt; operator deselects optional roles
+-&gt; operator approves selected roles
+-&gt; automatically download missing approved components
+-&gt; deterministic install and configuration materialization
+-&gt; checksum and runtime verification
+-&gt; capability bakeoff
+-&gt; receipt
+-&gt; rollback information
+</code></pre>
+<p>The LLM explains and invokes. Bun, pinned PowerShell, package managers, and
+runtime-specific tools execute exactly the pre-authored manifest.</p>
+<h2>2. Immutable Payload Boundary</h2>
+<p>The deploy engine must never mutate the shipped payload. It may verify its
+hash, read templates, and copy machine-specific material into the data root.</p>
+<p>All mutable data lives outside the payload:</p>
+<pre><code class="language-text">%USERPROFILE%\OrangeBox-Data\
+  orange5\
+    config\
+    memory\
+    receipts\
+    logs\
+    models\
+    downloads\
+    topology\
+    rollback\
+    secrets\
+</code></pre>
+<p>Exact subdirectories are owned by the deploy manifest. The LLM must not invent
+a competing layout.</p>
+<p>Compatible existing Bun, Ollama, model files, and tool installations are
+adopted when their version, path, hash/revision, and runtime probe meet the
+manifest. Adoption is receipt-backed and does not copy or replace working
+components unnecessarily.</p>
+<h2>3. Approval Is Mandatory</h2>
+<p>No model download begins until the operator approves the exact role plan.</p>
+<p>The fixed manifest view must contain:</p>
+<ul>
+<li>role and capability;</li>
+<li>exact model name, revision, and source;</li>
+<li>license and redistribution posture;</li>
+<li>target host;</li>
+<li>runtime backend;</li>
+<li>compressed download bytes;</li>
+<li>installed disk bytes and required free-space reserve;</li>
+<li>estimated peak live RAM and confidence in that estimate;</li>
+<li>maximum context and practical context target;</li>
+<li>checksum or immutable source revision;</li>
+<li>resumable download method;</li>
+<li>environment changes;</li>
+<li>proof and quality benchmark;</li>
+<li>uninstall and rollback commands.</li>
+</ul>
+<p>The manifest supplies a recommended default selection. The operator can:</p>
+<ul>
+<li>approve all proposed roles;</li>
+<li>approve selected roles;</li>
+<li>replace a role;</li>
+<li>defer a role;</li>
+<li>opt out permanently for this installation.</li>
+</ul>
+<p>An opt-out must leave the rest of Orange functional and record the unavailable
+capability honestly. Deselection changes machine-local deployment state, not
+the immutable manifest.</p>
+<h2>4. Deployment Profiles</h2>
+<h3>Preferred: N150 plus Codexa</h3>
+<p>Install no resident answer model on N150. Keep Bun control responsive. Put
+Navigator, code, visual, creative, training, and long jobs on Codexa.</p>
+<h3>One Windows computer</h3>
+<p>Keep Bun reflex, memory, receipts, and policy local. Use hardware discovery to
+choose models that fit. Do not overcommit RAM to imitate the two-computer stack.
+Optional hosted roles can fill gaps without becoming dependencies.</p>
+<h3>Hosted-assisted</h3>
+<p>Use OpenAI 5.6 or the strongest hosted agent for setup, review, or an earned
+frontier lease. Never give the hosted model direct receipt authority, stored
+credentials, or unrestricted Orange internals.</p>
+<h2>5. Core Role Registry</h2>
+<p>Current runtime authority names these roles. A fresh inventory and route receipt
+must confirm current availability.</p>
+<table>
+<thead>
+<tr><th>Role</th><th>Model or implementation</th><th>Preferred host</th><th>Residency</th></tr>
+</thead>
+<tbody>
+<tr><td>Reflex</td><td>Bun Navigator Kernel</td><td>N150 or single host</td><td>always available, zero model RAM</td></tr>
+<tr><td>Navigator</td><td><code>orange-navigator:ornith-1.5-9b-q4km</code></td><td>Codexa</td><td>lease-loaded</td></tr>
+<tr><td>Code</td><td><code>qwen3-coder:30b</code></td><td>Codexa</td><td>bounded lease</td></tr>
+<tr><td>Visual description</td><td><code>qwen3.8:27b-current</code></td><td>Codexa</td><td>bounded lease</td></tr>
+<tr><td>Visual retrieval</td><td>ColQwen2 Torch XPU worker plus Qdrant</td><td>Codexa</td><td>persistent worker</td></tr>
+<tr><td>Memory embedding</td><td><code>qwen3-embedding:0.6b</code> where configured</td><td>Codexa</td><td>utility role</td></tr>
+</tbody>
+</table>
+<p>The Q4_K_M Ornith row is the live primary on authenticated Codexa <code>10.0.0.4</code>.
+Do not substitute the retired Q8 primary, retired 4B bridge, or another
+historical model merely because it is installed. Historical receipts keep the
+model identity they observed.</p>
+<h2>6. Creative Role Registry</h2>
+<p>Captain Planet enforces one heavy specialist and a 50 GiB live-memory ceiling.</p>
+<h3>Installed and technically valid, studio quality unassessed</h3>
+<ul>
+<li>FLUX.2 Klein 4B FP8: image draft/reference role.</li>
+<li>LTX-Video 2B 0.9.8 distilled: fallback image-to-video role.</li>
+<li>Qwen3-TTS 1.7B CustomVoice: speech role.</li>
+<li>ACE-Step 1.5 turbo: music role.</li>
+</ul>
+<p>The 2026-08-27 integrated proof independently decoded the image/video artifacts,
+verified motion, and measured non-silent speech/music with stable hashes. This
+is technical validity only, not a human or model-reviewed studio-quality
+promotion.</p>
+<h3>Candidate only</h3>
+<ul>
+<li>FLUX.2 Dev: quality image/edit tier.</li>
+<li>LTX-2.5 22B distilled: modern synchronized video/audio tier.</li>
+<li>Hunyuan3D 2.1: image-to-3D role.</li>
+<li>PaddleOCR-VL 1.6: document refinement role.</li>
+<li>SeedVR2 7B: image/video restoration role.</li>
+</ul>
+<p>Candidate means no installation claim. It must not appear in an approved plan
+without a license, size, memory, and bakeoff proposal.</p>
+<h2>7. Deterministic Planning</h2>
+<p>Before installation, run inventory and dry-run commands:</p>
+<pre><code class="language-powershell">cd C:\AtomEons\Orange5
+bun 03-BACKEND/spine-cli.mjs --health
+bun 14-SUPERSTACK/captain-planet-governor.mjs catalog
+bun 14-SUPERSTACK/captain-planet-governor.mjs dry-run --all
+</code></pre>
+<p>For the current creative source/environment bootstrap, use its planning mode
+without <code>-InstallEnvironments</code>. Review the script and pinned commits before any
+apply operation:</p>
+<pre><code class="language-powershell">powershell -NoProfile -ExecutionPolicy Bypass -File C:\AtomEons\Orange5\scripts\codexa-captain-planet-bootstrap.ps1
+</code></pre>
+<p>This verifies or stages source intent; it does not make candidate weights
+active. Installation and artifact proof remain separate.</p>
+<h2>8. Download Requirements</h2>
+<p>Every download path must support:</p>
+<ul>
+<li>temporary partial files rather than overwriting the final artifact;</li>
+<li>resume after network interruption;</li>
+<li>byte count validation;</li>
+<li>SHA-256 or immutable revision validation;</li>
+<li>atomic rename after validation;</li>
+<li>bounded retries with visible errors;</li>
+<li>receipt with source, revision, bytes, hash, and destination;</li>
+<li>cleanup of only owned partial files;</li>
+<li>no automatic deletion of existing unowned models.</li>
+</ul>
+<p>If an upstream does not publish a checksum, record the immutable repository or
+model revision and hash the downloaded artifact locally before activation.</p>
+<h2>9. RAM And Storage Planning</h2>
+<p>Model storage and live memory are different.</p>
+<ul>
+<li>Disk can hold the library.</li>
+<li>RAM holds only the current route and required utility workers.</li>
+<li>Shared GPU memory consumes physical RAM.</li>
+<li>Unknown peak memory is denied for heavy creative promotion.</li>
+<li>Captain Planet's current heavy-lease ceiling is 50 GiB.</li>
+<li>Unload one heavyweight before loading another.</li>
+</ul>
+<p>The plan must reserve room for the OS, Bun control, memory services, Docker,
+receipts, and temporary model conversion files. Do not plan against total RAM
+as though every byte were available to weights.</p>
+<h2>10. Installation Execution</h2>
+<p>After explicit approval:</p>
+<ol>
+<li>Verify the immutable payload and fixed manifest hashes.</li>
+<li>Freeze the approved selection and receipt its hash.</li>
+<li>Adopt compatible existing components.</li>
+<li>Create or verify machine-local target directories under OrangeBox-Data.</li>
+<li>Download missing approved components with resume and partial-file discipline.</li>
+<li>Verify checksum/revision.</li>
+<li>Install the runtime environment from pinned inputs.</li>
+<li>Materialize machine-local configuration from shipped templates.</li>
+<li>Register the model by role without changing unrelated defaults.</li>
+<li>Start it only under the declared lease.</li>
+<li>Measure process-tree peak memory and latency.</li>
+<li>Validate output schema or decode the produced artifact independently.</li>
+<li>Run the capability-specific quality bakeoff.</li>
+<li>Write install and promotion receipts separately.</li>
+<li>Record rollback.</li>
+</ol>
+<p>An install receipt proves installation. A promotion receipt proves the role.
+They are not interchangeable.</p>
+<h2>11. Promotion Gates</h2>
+<p>A model role becomes active only after:</p>
+<ul>
+<li>exact inventory is observed;</li>
+<li>runtime starts on the target host;</li>
+<li>peak memory fits the approved limit;</li>
+<li>the expected report or artifact is independently validated;</li>
+<li>role-specific quality beats or matches the incumbent;</li>
+<li>false-green and offline behavior pass;</li>
+<li>rollback works;</li>
+<li>the operator approves promotion where required.</li>
+</ul>
+<p>For Navigator and text roles, include:</p>
+<ul>
+<li>report-schema validity;</li>
+<li>routing correctness;</li>
+<li>hallucinated-tool rejection;</li>
+<li>Codexa-unavailable handling;</li>
+<li>latency and stability;</li>
+<li>project-scope retention.</li>
+</ul>
+<p>For media roles, include decoded artifacts, content checks, quality review, and
+proven memory usage. A generated file that opens is not studio-quality proof.</p>
+<h2>12. Rollback And Removal</h2>
+<ul>
+<li>Keep the prior working role until the replacement passes.</li>
+<li>Demote by restoring the prior role mapping, not by deleting first.</li>
+<li>Delete only artifacts owned by the approved installation record.</li>
+<li>Preserve unowned Ollama models and user-created adapters.</li>
+<li>Keep install, bakeoff, promotion, demotion, and removal receipts.</li>
+<li>Never place private or abliterated operator-only models in a public release.</li>
+</ul>
+<h2>13. LLM-Guided Install Prompt</h2>
+<pre><code class="language-text">Read C:\AtomEons\Orange5\00-CHARTER\GUIDES\MODEL_INSTALLATION_GUIDE.md and
+LLM_OPERATOR_GUIDE.md. Discover this computer and any reachable Codexa host.
+Inventory runtimes, installed models, free disk, RAM, GPU/shared memory, and
+network paths. Read the immutable fixed manifest; do not invent or edit any
+component, profile, policy, schema, or system file. Present its recommended
+selection with exact sources, revisions, licenses, download and installed
+sizes, peak-RAM estimates, checksums, resume strategy, proofs, and rollback. I
+may deselect optional roles. Do not download, install, remove, restart, or
+promote anything until I explicitly approve the selected roles. After approval,
+invoke the deterministic Bun deploy engine. It must adopt compatible existing
+components and automatically download only missing approved components. Keep
+all runtime state, secrets, memory, logs, receipts, and topology under
+%USERPROFILE%\OrangeBox-Data. Return receipt paths. Keep Orange functional if I
+opt out of any role.
+</code></pre>
+<h2>Related Guides</h2>
+<ul>
+<li><a href="QUICK_START.md">Quick Start</a></li>
+<li><a href="OPERATOR_MANUAL.md">Operator Manual</a></li>
+<li><a href="TECHNICAL_ARCHITECTURE.md">Technical Architecture</a></li>
+<li><a href="LLM_OPERATOR_GUIDE.md">LLM Operator Guide</a></li>
+<li><a href="FEATURES_GUIDE.md">Features Guide</a></li>
+</ul>
+
+</body></html>

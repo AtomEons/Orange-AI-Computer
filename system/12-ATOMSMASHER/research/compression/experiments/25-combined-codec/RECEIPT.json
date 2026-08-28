@@ -1,0 +1,28 @@
+{
+  "experiment": "25-combined-codec",
+  "generated_at": "2026-06-26T12:18:54.762Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "total_bytes": 128882,
+  "ratio": 16.1,
+  "roundtrip_lossless": true,
+  "components": {
+    "actionData": 1968,
+    "actionVocab": 463,
+    "statusData": 2,
+    "statusVocab": 12,
+    "createdAtData": 3602,
+    "createdAtVocab": 94,
+    "summaryTplData": 3655,
+    "summaryTplVocab": 8248,
+    "payloadTplData": 3719,
+    "payloadTplVocab": 16111,
+    "summaryNums": 12924,
+    "payloadNums": 20192,
+    "summaryNumCounts": 1429,
+    "payloadNumCounts": 1782,
+    "idStream": 49796,
+    "constantsRecipe": 4885
+  },
+  "beats_plait": false,
+  "beats_two_stream_full": false
+}

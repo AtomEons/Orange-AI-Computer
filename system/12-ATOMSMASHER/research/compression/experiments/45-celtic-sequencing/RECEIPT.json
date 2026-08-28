@@ -1,0 +1,97 @@
+{
+  "experiment": "45-celtic-sequencing",
+  "baseline": 36287,
+  "b8_size": 31482,
+  "results": [
+    {
+      "name": "C15: B8 + summary→payload tiebreaker",
+      "size": 31488,
+      "dBaseline": -4799,
+      "dB8": 6
+    },
+    {
+      "name": "C14: B8 with reverse-string tiebreaker",
+      "size": 31718,
+      "dBaseline": -4569,
+      "dB8": 236
+    },
+    {
+      "name": "C6: wallpaper p4mm 4-fold mirror",
+      "size": 31786,
+      "dBaseline": -4501,
+      "dB8": 304
+    },
+    {
+      "name": "C5: trefoil-parametric t-ordering",
+      "size": 32094,
+      "dBaseline": -4193,
+      "dB8": 612
+    },
+    {
+      "name": "C9: Möbius column-walk (alternating direction)",
+      "size": 32218,
+      "dBaseline": -4069,
+      "dB8": 736
+    },
+    {
+      "name": "C10: hyperbolic Poincaré greedy NN",
+      "size": 32415,
+      "dBaseline": -3872,
+      "dB8": 933
+    },
+    {
+      "name": "C13: B8 + within-bucket Hilbert(length, lex_rank)",
+      "size": 32459,
+      "dBaseline": -3828,
+      "dB8": 977
+    },
+    {
+      "name": "C7: annular 40-ring length-then-lex",
+      "size": 32462,
+      "dBaseline": -3825,
+      "dB8": 980
+    },
+    {
+      "name": "C1: Hilbert curve on (action, length-bucket)",
+      "size": 32763,
+      "dBaseline": -3524,
+      "dB8": 1281
+    },
+    {
+      "name": "C4: N-fold 65-action interleave",
+      "size": 33016,
+      "dBaseline": -3271,
+      "dB8": 1534
+    },
+    {
+      "name": "C12: Tetlow turning-key d=2 ring-pair interleave",
+      "size": 33519,
+      "dBaseline": -2768,
+      "dB8": 2037
+    },
+    {
+      "name": "C3: triskele 3-fold action-interleave",
+      "size": 33577,
+      "dBaseline": -2710,
+      "dB8": 2095
+    },
+    {
+      "name": "C11: 7-fold knot-sig (sha mod 7) cluster",
+      "size": 34544,
+      "dBaseline": -1743,
+      "dB8": 3062
+    },
+    {
+      "name": "C2: plait gcd(p=47,q=34) strand walk",
+      "size": 36080,
+      "dBaseline": -207,
+      "dB8": 4598
+    },
+    {
+      "name": "C8: Penrose golden-angle ordering",
+      "size": 36202,
+      "dBaseline": -85,
+      "dB8": 4720
+    }
+  ]
+}

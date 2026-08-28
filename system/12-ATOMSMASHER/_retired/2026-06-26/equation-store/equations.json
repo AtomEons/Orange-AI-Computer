@@ -1,0 +1,89 @@
+[
+  {
+    "name": "FOUNDER_SALARY_PER_INSTALL_CENTS",
+    "kind": "numeric",
+    "statement": "Founder salary accrued per AtomEons install, expressed in USD cents. The exact value is sourced at runtime from the ATOMEONS_FOUNDER_SALARY_PER_INSTALL_CENTS environment variable; this equation registers the formal contract that such a value exists, is operator-set, and is enforced by the payout subsystem.",
+    "lhs": "FOUNDER_SALARY_PER_INSTALL_CENTS",
+    "op": "=",
+    "rhs": "${env:ATOMEONS_FOUNDER_SALARY_PER_INSTALL_CENTS}",
+    "value_expr": "${env:ATOMEONS_FOUNDER_SALARY_PER_INSTALL_CENTS}",
+    "params": {
+      "currency": "USD",
+      "scale": "cents",
+      "source": "env",
+      "env_var": "ATOMEONS_FOUNDER_SALARY_PER_INSTALL_CENTS",
+      "rationale": "Operator value, never hardcoded. The drift-audit invariant FOUNDER_SALARY enforces this equation."
+    },
+    "enforces": ["payout", "dividend", "drift-audit"],
+    "preconditions": [],
+    "supersedes": [],
+    "sovereign": "atom-mccree",
+    "actor": "atom-mccree"
+  },
+  {
+    "name": "GATE_0_LBCE",
+    "kind": "structural",
+    "statement": "Gate 0 of every gate chain in the AtomEons runtime MUST be the LatticeIntegrityGate (LBCE). No gate chain may execute without LBCE as its first gate; promotion code that constructs a gate chain whose index 0 is anything else is in violation.",
+    "params": {
+      "gate_index": 0,
+      "gate_class": "LatticeIntegrityGate",
+      "abbreviation": "LBCE",
+      "expansion": "Lattice-Bound Constitutional Entrypoint"
+    },
+    "enforces": ["gate-chain-construction", "release-steward", "drift-audit"],
+    "preconditions": [],
+    "supersedes": [],
+    "sovereign": "atom-mccree",
+    "actor": "atom-mccree"
+  },
+  {
+    "name": "GUARDRAILS_COUNT",
+    "kind": "count",
+    "count": 27,
+    "subject": "constitutional guardrails preserved in the AtomEons runtime",
+    "statement": "The AtomEons constitutional guardrail set contains exactly 27 guardrails. A drift audit that finds fewer than 27, or finds 27 but with any one swapped without an explicit supersedes equation in this store, MUST fail the release.",
+    "params": {
+      "domain": "atomeons-runtime",
+      "source": "AtomEons project constitution + 27-guardrails register"
+    },
+    "enforces": ["drift-audit", "release-steward", "security-reviewer"],
+    "preconditions": [],
+    "supersedes": [],
+    "sovereign": "atom-mccree",
+    "actor": "atom-mccree"
+  },
+  {
+    "name": "MOMS_LAW",
+    "kind": "meta",
+    "statement": "Give full effort every time. Mom's Law sits ABOVE every other rule, standing order, department doctrine, and release law. If any rule conflicts with Mom's Law, Mom's Law wins and the other rule changes. Inherited by every Claude instance, every subagent, every spawned task, every background process; there is no throwaway message and no internal-only output.",
+    "params": {
+      "origin": "Atom McCree's mother",
+      "scope": "meta — overrides all other rules on conflict",
+      "doctrine_path": ".claude/rules/00-moms-law.md",
+      "applies_to": [
+        "every response",
+        "every thought",
+        "every line of code",
+        "every commit message",
+        "every test",
+        "every authority cite",
+        "every subagent",
+        "every spawned task"
+      ]
+    },
+    "enforces": [
+      "all-rules",
+      "release-steward",
+      "drift-audit",
+      "test-engineer",
+      "security-reviewer",
+      "review",
+      "commit",
+      "ship"
+    ],
+    "preconditions": [],
+    "supersedes": [],
+    "sovereign": "atom-mccree",
+    "actor": "atom-mccree"
+  }
+]

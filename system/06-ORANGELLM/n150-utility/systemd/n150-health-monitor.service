@@ -1,0 +1,137 @@
+# N150 utility — health monitor (no inference) — systemd unit
+# Path on N150: /etc/systemd/system/n150-health-monitor.service
+# Source of truth: C:/AtomEons/Orange5/06-ORANGELLM/n150-utility/systemd/n150-health-monitor.service
+#
+# Wave 1 doctrine: STOCK WEIGHTS ONLY. This daemon does NO inference. It only
+# probes the /healthz endpoints of the three co-resident utility daemons on
+# the N150 (Beelink, 4 cores, 16 GB), rolls up latency / error-rate / uptime
+# over a bounded window, and pushes a JSON snapshot to the Cockpit's shadow
+# cache. It carries no model handles and no model dependency.
+#
+#   Targets (all loopback):
+#     1. classifier      127.0.0.1:7480/healthz   qwen3:0.6b lane router
+#     2. embedder        127.0.0.1:8798/healthz   nomic-embed-text Graph Weaver
+#     3. fallback-chat   127.0.0.1:7481/healthz   qwen3:0.6b emergency chat
+#   Plus a passive Ollama check at 127.0.0.1:11434/api/tags so we can
+#   distinguish "daemon down" from "Ollama down beneath it".
+#
+# Surface (loopback ONLY):
+#   GET  /healthz   liveness for the monitor itself (counters, last tick)
+#   GET  /snapshot  most-recent rolled-up snapshot (in-memory)
+#   GET  /targets   static target list + their tick state
+#   POST /tick      force an immediate probe cycle (tests / cron)
+#
+# Hot-swap law: this daemon holds NO model state, so "hot-swap" does not apply.
+# When the daemons it watches swap stock model versions, the next snapshot
+# simply reflects the new tag each target claims. Restart-free for them =
+# restart-free for the monitor too (it never restarts on a swap event).
+#
+# Loopback only. The Cockpit reaches us via its own tunnel; the monitor never
+# binds a public address.
+
+[Unit]
+Description=AtomEons N150 utility — health monitor (probe-only, no inference)
+Documentation=https://atomeons.local/docs/orange5/n150-utility
+Documentation=file:///opt/atomeons/orange5/n150-utility/health-monitor.mjs
+After=network-online.target n150-classifier.service n150-embedder.service n150-fallback-chat.service
+Wants=network-online.target
+# Intentionally NOT Requires= on the daemons it watches. The monitor MUST stay
+# up even when downstream is dead — that's the whole point. Mom's Law: receipts
+# only, no theater. A down daemon shows up in /snapshot as { up: false }.
+
+[Service]
+Type=simple
+User=atomeons
+Group=atomeons
+WorkingDirectory=/opt/atomeons/orange5/n150-utility
+
+Environment=NODE_ENV=production
+Environment=N150_HEALTH_HOST=127.0.0.1
+Environment=N150_HEALTH_PORT=7482
+Environment=N150_HEALTH_TICK_MS=10000
+Environment=N150_HEALTH_PROBE_TIMEOUT_MS=4000
+Environment=N150_HEALTH_WINDOW=60
+Environment=N150_HEALTH_COCKPIT_URL=http://127.0.0.1:8787/orange3/shadow/n150
+Environment=N150_HEALTH_COCKPIT_TIMEOUT_MS=3000
+Environment=N150_OLLAMA_BASE=http://127.0.0.1:11434
+# Target overrides (defaults match the other units in this directory).
+Environment=N150_CLASSIFIER_HOST=127.0.0.1
+Environment=N150_CLASSIFIER_PORT=7480
+Environment=N150_EMBEDDER_HOST=127.0.0.1
+Environment=N150_EMBEDDER_PORT=8798
+Environment=N150_FALLBACK_HOST=127.0.0.1
+Environment=N150_FALLBACK_PORT=7481
+# Operator overrides land here; if unset the daemon still works (skips push).
+EnvironmentFile=-/etc/atomeons/n150-health-monitor.env
+
+ExecStart=/usr/bin/node /opt/atomeons/orange5/n150-utility/health-monitor.mjs
+
+# SIGHUP forces an immediate tick (useful from cron / scripts).
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Restart policy. The monitor is the eyes of the box; bring it back fast on
+# any non-clean exit.
+Restart=on-failure
+RestartSec=3s
+StartLimitIntervalSec=60s
+StartLimitBurst=5
+
+# Graceful stop: probe timeout is 4s; 15s drain is comfortable.
+TimeoutStopSec=20s
+KillMode=mixed
+KillSignal=SIGTERM
+
+# Resource caps (Wave 1 doctrine). The monitor is the lightweight: bounded
+# rolling window (WINDOW_SIZE=60 samples × ~3 targets ≈ ~100 KB resident
+# regardless of uptime). 256M is generous and prevents any leak from eating
+# the box; the other three jobs (classifier 1G, embedder 2G, fallback 4G)
+# get the lion's share.
+MemoryMax=256M
+MemoryHigh=224M
+CPUQuota=25%
+TasksMax=32
+LimitNOFILE=512
+
+# Hardening — least privilege; outbound HTTP to localhost only (and the
+# Cockpit shadow URL, which the operator may point at the LAN via drop-in).
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+# Loopback bind + loopback probes by default. If the Cockpit shadow URL points
+# at a LAN host, widen this with a drop-in (do NOT edit the unit). Example:
+#   /etc/systemd/system/n150-health-monitor.service.d/cockpit-lan.conf
+#     [Service]
+#     IPAddressAllow=10.0.0.0/24
+IPAddressDeny=any
+IPAddressAllow=127.0.0.1/32
+IPAddressAllow=::1/128
+
+# Writable carve-out for health.jsonl + shadow.jsonl receipts. The monitor
+# logs every probe cycle and every shadow push (success or failure).
+ReadWritePaths=/opt/atomeons/orange5/n150-utility/state
+
+# Logging — journald carries structured snapshot lines.
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=n150-health-monitor
+
+[Install]
+WantedBy=multi-user.target

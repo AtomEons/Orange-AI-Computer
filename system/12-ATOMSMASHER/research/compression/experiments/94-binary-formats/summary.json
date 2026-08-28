@@ -1,0 +1,15 @@
+{
+  "experiment": "94-binary-formats",
+  "N": 6224,
+  "uuids_replaced": 0,
+  "rcpt_ids_replaced": 6284,
+  "raw_jsonl_bytes": 2075585,
+  "substituted_bytes": 2012745,
+  "bytes_saved_by_substitution": 62840,
+  "total_bytes": 122524,
+  "ratio": 16.9402,
+  "vs_m19": -30.1298,
+  "enc_ms": 17432,
+  "dec_ms": 1609,
+  "lossless": true
+}

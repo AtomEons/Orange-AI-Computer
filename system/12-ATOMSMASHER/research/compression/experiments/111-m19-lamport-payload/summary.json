@@ -1,0 +1,15 @@
+{
+  "experiment": "111-m19-lamport-payload",
+  "total_bytes": 45679,
+  "ratio_logical": 45.438,
+  "ratio_byte_exact_on_lamport": 45.238,
+  "delta_vs_m19_logical": -1.633,
+  "enc_ms": 3237,
+  "dec_ms": 188,
+  "lossless_byte_exact_on_lamport": true,
+  "lossless_byte_exact_on_original": false,
+  "payload_timestamp_substitutions": 645,
+  "orig_bytes": 2075585,
+  "lamport_bytes": 2066437,
+  "notes": "Substituted payload-internal ISO timestamps with LMP<n>. Top-level created_at preserved. 645 substitutions. LOGICAL-lossless only; byte-exact on lamport corpus, NOT original."
+}

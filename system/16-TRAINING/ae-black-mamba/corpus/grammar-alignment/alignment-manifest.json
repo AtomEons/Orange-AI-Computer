@@ -1,0 +1,50 @@
+{
+  "schema": "orange5.ae-black-mamba.alignment-manifest.v0",
+  "generated_at": "2026-06-25T00:37:22.386Z",
+  "finished_at": "2026-06-25T00:37:23.404Z",
+  "purpose": "AE Black Mamba GBNF grammar alignment artifact — soft constraint during full-FT training; targets strategy §6 ≥90% unconstrained AgentTurn validity post-training.",
+  "inputs": {
+    "grammar_path": "C:\\AtomEons\\Orange5\\06-ORANGELLM\\memory\\ae-cobra\\grammar\\agent_turn.gbnf",
+    "grammar_sha256": "e66c249a9d78ddb1feaa5da6244e805fe67400e345f557ceb5e1ceb671cd9594",
+    "corpus_dir": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-black-mamba\\corpus",
+    "corpus_manifest_path": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-black-mamba\\corpus\\corpus-manifest.json",
+    "corpus_manifest_sha256": "f12088980690a913076ec0ba5bcf449facd72991046c113d7f2d45498280ba84",
+    "corpus_train_sha256": "b7bb1aee8c013e8a0ff6f0ab45e7db8a0c111bdb5101df8819f5c359a28f3748",
+    "corpus_val_sha256": "876ca263836a746c5ccedebe5497e6c782018a46733678107164e9b1b585458c",
+    "tokenizer_vocab_path": null
+  },
+  "outputs": {
+    "grammar_states_path": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-black-mamba\\corpus\\grammar-alignment\\grammar-states.json",
+    "grammar_states_sha256": "b944e058d26f9004ee5b3d7217fc4a81b996e54b3ccae3ab4aa5168a730db268",
+    "token_mask_path": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-black-mamba\\corpus\\grammar-alignment\\token-mask.json",
+    "token_mask_sha256": "76284ca597ae92a1a1a6b0c1b7719cb8b549237e92db392b72989db6875eea6f",
+    "corpus_alignment_path": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-black-mamba\\corpus\\grammar-alignment\\corpus-alignment.json",
+    "corpus_alignment_sha256": "31b385b4f40ed7ca8fa895a334d68002fc87175d13024070f26fa99aa9954275"
+  },
+  "counts": {
+    "grammar_rules": 10,
+    "reachable_first_chars": 1,
+    "reachable_all_chars": 227,
+    "train_rows": 53,
+    "train_accepted": 53,
+    "train_rejected": 0,
+    "val_rows": 6,
+    "val_accepted": 6,
+    "val_rejected": 0,
+    "tokenizer_vocab_total": null,
+    "tokenizer_eligible_tokens": null
+  },
+  "hyperparameters": {
+    "recommended_lambda": 0.1,
+    "lambda_rationale": "Soft penalty weight in L_total = L_ce + λ·L_grammar. 0.1 starts the model leaning toward the grammar manifold without overwhelming the next-token cross-entropy signal from the AgentTurn JSON content. Sweep [0.01, 0.05, 0.1, 0.3] if convergence is slow.",
+    "penalty_form": "For each training position p, let M_p = grammar-legal-token-id set at that state. L_grammar(p) = sum_{t in vocab\\M_p} softmax(logits_p)[t]. Mean over positions, weighted by sequence length."
+  },
+  "alignment_target": {
+    "strategy_anchor": "strategy.md §6",
+    "threshold": 0.9,
+    "metric": "unconstrained-eval AgentTurn schema-validity rate on held-out prompt set",
+    "constrained_baseline": 1,
+    "gap_interpretation": "A small gap means the model internalized the grammar; a large gap means the grammar mask is overriding the model at inference."
+  },
+  "moms_law": "Every state, every token mapping, every rejected corpus row itemized. No padding. No silent grammar relaxation. Receipts only."
+}

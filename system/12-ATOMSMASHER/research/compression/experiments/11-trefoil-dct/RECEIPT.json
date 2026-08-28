@@ -1,0 +1,15 @@
+{
+  "experiment": "11-trefoil-dct",
+  "generated_at": "2026-06-26T09:59:03.683Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "vocab_size": 66,
+  "sequence_length": 6224,
+  "dct_block_size": 256,
+  "num_blocks": 25,
+  "raw_action_stream_bytes": 85273,
+  "dct_stream_bytes": 16723,
+  "dct_brotli_bytes": 8759,
+  "ratio": 9.74,
+  "roundtrip_lossless": true,
+  "pass": false
+}

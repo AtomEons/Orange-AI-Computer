@@ -1,0 +1,161 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-61d35fca35d28fa2-1787725214180",
+  "query": "Build a current local MCP tool for the active project. Return only one short proposed next action. OrangeFive orange5",
+  "searchQuery": "build local mcp for the",
+  "generatedAt": "2026-08-26T06:20:14.227Z",
+  "budgetMs": 60000,
+  "elapsedMs": 1128,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1317418741",
+      "title": "pricevictordjx1886/green-screen-os-simulator",
+      "url": "https://github.com/pricevictordjx1886/green-screen-os-simulator",
+      "summary": "An in-browser 80s-inspired green-screen OS simulator with retro computing tools, trading helpers, calculators, simulations, and game-like activities in one interactive interface. Includes hosted and local builds.",
+      "updatedAt": "2026-08-26T06:18:54Z",
+      "license": "GPL-3.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 1,
+        "matched": 2,
+        "queryTerms": 2,
+        "terms": [
+          "build",
+          "local"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1317396981",
+      "title": "chris-davisdj7986/9100-radar-web-tool",
+      "url": "https://github.com/chris-davisdj7986/9100-radar-web-tool",
+      "summary": "9100 Radar is a compact browser-based web application for viewing and working with radar content, with a hosted build and editable HTML files for local setup and customization.",
+      "updatedAt": "2026-08-26T06:19:00Z",
+      "license": "GPL-3.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 1,
+        "matched": 2,
+        "queryTerms": 2,
+        "terms": [
+          "build",
+          "local"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1317354455",
+      "title": "taylorseanmvij9532/cgz-layout-tool-web",
+      "url": "https://github.com/taylorseanmvij9532/cgz-layout-tool-web",
+      "summary": "CGZ Layout Tool is a browser-based utility for building event layout maps, delivered as a lightweight HTML application for practical planning workflows. Open the latest hosted build or use a local checkout for access.",
+      "updatedAt": "2026-08-26T06:18:50Z",
+      "license": "GPL-3.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 1,
+        "matched": 2,
+        "queryTerms": 2,
+        "terms": [
+          "build",
+          "local"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1346908579",
+      "title": "FP-Validated/pillar-client",
+      "url": "https://github.com/FP-Validated/pillar-client",
+      "summary": "A LayerZero DVN client in Rust: resolves a source-chain PacketSent event, validates it against configured providers, builds the destination ULN verify call data, and signs it with a local mnemonic or cloud KMS key.",
+      "updatedAt": "2026-08-26T06:19:23Z",
+      "license": "MIT",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 1,
+        "matched": 2,
+        "queryTerms": 2,
+        "terms": [
+          "build",
+          "local"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1317344952",
+      "title": "fisherbenkshq4317/bull-run-apex-ai-os",
+      "url": "https://github.com/fisherbenkshq4317/bull-run-apex-ai-os",
+      "summary": "Bull Run Apex OS is a browser-accessible AI tool that recreates an operating-system-style environment on the Web, with a hosted latest build and options for local use and configuration.",
+      "updatedAt": "2026-08-26T06:17:24Z",
+      "license": "GPL-3.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 1,
+        "matched": 2,
+        "queryTerms": 2,
+        "terms": [
+          "build",
+          "local"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2602.15055v1",
+      "title": "Beyond Context Sharing: A Unified Agent Communication Protocol (ACP) for Secure, Federated, and Autonomous Agent-to-Agent (A2A) Orchestration",
+      "url": "http://arxiv.org/abs/2602.15055v1",
+      "summary": "In the artificial intelligence space, as we transition from isolated large language models to autonomous agents capable of complex reasoning and tool use. While foundational architectures and local context management protocols have been established, the challenge of cross-platform, decentralized, and secure interaction remains a significant barrier to the realization of a truly Agentic Web. Building upon the foundations of AI agent architectures and the Model Context Protocol (MCP) for multi-age",
+      "updatedAt": "2026-02-11T17:02:12Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 1,
+        "matched": 2,
+        "queryTerms": 2,
+        "terms": [
+          "build",
+          "local"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "1704.00908v1",
+      "title": "(1, k)-Swap Local Search for Maximum Clique Problem",
+      "url": "http://arxiv.org/abs/1704.00908v1",
+      "summary": "Given simple undirected graph G = (V, E), the Maximum Clique Problem(MCP) is that of finding a maximum-cardinality subset Q of V such that any two vertices in Q are adjacent. We present a modified local search algorithm for this problem. Our algorithm build some maximal solution and can determine in polynomial time if a maximal solution can be improved by replacing a single vertex with k, k > 1, others. We test our algorithms on DIMACS[5], Sloane[15], BHOSLIB[1], Iovanella[8] and our random inst",
+      "updatedAt": "2017-04-04T07:56:27Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 1,
+        "matched": 2,
+        "queryTerms": 2,
+        "terms": [
+          "build",
+          "local"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "d18c48255d5bb9fe06264a7e853b2afe74d217bc3cdc2a09844b534b81222ffa"
+}

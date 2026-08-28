@@ -1,0 +1,90 @@
+[Unit]
+# AE Graph Weaver — tail Æ Cobra flux into the 10-node 6-edge knowledge graph.
+#
+# Path:    06-ORANGELLM/memory/graph-weaver/systemd/graph-weaver.service
+# Doctrine: receipt-gated ontology, idempotent watermarked tailing, loopback-only.
+# Install: copy or symlink to /etc/systemd/system/graph-weaver.service
+#          then `systemctl daemon-reload && systemctl enable --now graph-weaver`.
+Description=AE Graph Weaver — Æ Cobra flux to knowledge graph daemon
+Documentation=file:///opt/atomeons/orange5/06-ORANGELLM/memory/graph-weaver/README.md
+After=network-online.target ollama.service ae-cobra.service
+Wants=network-online.target
+PartOf=orange5.target
+
+[Service]
+Type=simple
+User=atomeons
+Group=atomeons
+WorkingDirectory=/opt/atomeons/orange5/06-ORANGELLM
+
+# Environment — override at /etc/systemd/system/graph-weaver.service.d/override.conf
+Environment=NODE_ENV=production
+Environment=AE_FLUX_ROOT=/mnt/ae_flux
+Environment=OLLAMA_HOST=http://127.0.0.1:11434
+Environment=GRAPH_WEAVER_TICK_MS=30000
+Environment=GRAPH_WEAVER_BATCH=500
+Environment=GRAPH_WEAVER_DB=/opt/atomeons/orange5/06-ORANGELLM/memory/graph.db
+# ORANGE5_OPERATOR_TOKEN is loaded from EnvironmentFile so it never lands in the unit text.
+EnvironmentFile=-/etc/atomeons/orange5.env
+
+ExecStart=/usr/bin/node \
+  /opt/atomeons/orange5/06-ORANGELLM/memory/graph-weaver/daemon.mjs
+
+# Graceful shutdown — daemon catches SIGTERM, drains the in-flight tick, then exits.
+KillSignal=SIGTERM
+TimeoutStopSec=90
+Restart=on-failure
+RestartSec=10s
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+# stdout/stderr go to journald as structured JSON (the daemon already emits JSON lines).
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=graph-weaver
+
+# Resource caps — N150-class host, leave room for Ollama.
+LimitNOFILE=8192
+MemoryMax=1G
+CPUQuota=80%
+
+# --- Hardening ----------------------------------------------------------------
+# Frontier-Isolation law: this daemon must never expose a listening socket and
+# must never reach outside loopback. Bind only the namespaces it actually needs.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectHostname=true
+ProtectClock=true
+ProtectProc=invisible
+ProcSubset=pid
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+RestrictNamespaces=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+# Loopback only — no remote network. Ollama is on 127.0.0.1.
+IPAddressDeny=any
+IPAddressAllow=127.0.0.0/8
+IPAddressAllow=::1/128
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+# Read-write paths.
+ReadWritePaths=/opt/atomeons/orange5/06-ORANGELLM/memory
+ReadWritePaths=/var/log/atomeons
+ReadOnlyPaths=/mnt/ae_flux
+# Allow reading the flux mount but never writing to it from this daemon.
+
+[Install]
+WantedBy=multi-user.target
+Also=orange5.target

@@ -1,0 +1,106 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "coding",
+  "card_id": "refactor",
+  "capability": "coding.refactor",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["operation"],
+    "properties": {
+      "operation": {
+        "type": "string",
+        "description": "Named refactoring primitive. The mesh only supports operations whose semantics are deterministic and reviewable; freeform LLM rewrites are NOT a refactor — route those through a code-edit task instead.",
+        "enum": ["rename-symbol", "extract-function", "inline-symbol", "move-symbol", "organize-imports", "format"]
+      },
+      "path": {
+        "type": "string",
+        "description": "Sandbox file or directory the operation applies to. For rename/move the runner expands the scope to the symbol's full reach.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "symbol": {
+        "type": "string",
+        "description": "Target symbol for rename/inline/move/extract operations. Ignored for format/organize-imports.",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "new_name": {
+        "type": "string",
+        "description": "Replacement identifier for rename-symbol. Must be a valid identifier for the target language; runner validates and rejects collisions.",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "selection": {
+        "type": "object",
+        "description": "Line range for extract-function. Inclusive line numbers in the source file.",
+        "additionalProperties": false,
+        "required": ["start_line", "end_line"],
+        "properties": {
+          "start_line": { "type": "integer", "minimum": 1 },
+          "end_line": { "type": "integer", "minimum": 1 }
+        }
+      },
+      "dry_run": {
+        "type": "boolean",
+        "description": "When true (default), produces the diff without writing. Set false to apply.",
+        "default": true
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["operation", "diff", "files_touched"],
+    "properties": {
+      "operation": { "type": "string" },
+      "diff": {
+        "type": "string",
+        "description": "Unified diff of the proposed (or applied) change. Always present — chain to diff-review before applying."
+      },
+      "files_touched": {
+        "type": "array",
+        "items": { "type": "string", "pattern": "^sandbox://" }
+      },
+      "applied": {
+        "type": "boolean",
+        "description": "True when dry_run=false and the write completed. False on dry runs and on failed applies."
+      },
+      "conflicts": {
+        "type": "array",
+        "description": "Symbol collisions, syntax-error sites, or out-of-scope references that blocked a clean refactor.",
+        "items": {
+          "type": "object",
+          "required": ["path", "line", "reason"],
+          "properties": {
+            "path": { "type": "string" },
+            "line": { "type": "integer", "minimum": 1 },
+            "reason": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 10,
+    "scopes": [
+      "fs.read:sandbox://workspace/",
+      "fs.write:sandbox://workspace/",
+      "process.spawn:lsp",
+      "net.egress:none"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 10
+  },
+  "risk_class": "sandboxed",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "LSP-backed deterministic refactoring (rename, extract, move, organize-imports, format). Diff-first by default; apply step gated by human approval.",
+  "tags": ["coding", "refactor", "lsp", "rename", "extract", "format"],
+  "notes": "This card is intentionally narrow. Anything that requires LLM judgment (e.g. 'clean up this module') is not a refactor and must not be routed here — the resulting diff would not be reviewable as a mechanical change."
+}

@@ -1,0 +1,77 @@
+loaded 409 classes
+
+══ KERNEL FISHER SWEEP ══
+
+  K=47:
+    RBF γ=0.001: 31.7%
+    RBF γ=0.01 : 31.7%
+    RBF γ=0.05 : 31.7%
+    RBF γ=0.1  : 31.7%
+    RBF γ=0.5  : 31.7%
+    RBF γ=1    : 31.7%
+    Poly deg=2: 21.6%
+    Poly deg=3: 21.6%
+    Poly deg=4: 21.6%
+    Poly deg=5: 21.6%
+    Linear (dot):     21.6%
+
+  K=100:
+    RBF γ=0.001: 34.8%
+    RBF γ=0.01 : 34.8%
+    RBF γ=0.05 : 34.8%
+    RBF γ=0.1  : 34.8%
+    RBF γ=0.5  : 34.8%
+    RBF γ=1    : 34.8%
+    Poly deg=2: 16.9%
+    Poly deg=3: 16.9%
+    Poly deg=4: 16.9%
+    Poly deg=5: 16.9%
+    Linear (dot):     16.9%
+
+  K=200:
+    RBF γ=0.001: 40.6%
+    RBF γ=0.01 : 40.6%
+    RBF γ=0.05 : 40.6%
+    RBF γ=0.1  : 40.6%
+    RBF γ=0.5  : 40.6%
+    RBF γ=1    : 40.6%
+    Poly deg=2: 16.9%
+    Poly deg=3: 16.9%
+    Poly deg=4: 16.9%
+    Poly deg=5: 16.9%
+    Linear (dot):     16.9%
+
+  K=300:
+    RBF γ=0.001: 45.3%
+    RBF γ=0.01 : 45.3%
+    RBF γ=0.05 : 45.3%
+    RBF γ=0.1  : 45.3%
+    RBF γ=0.5  : 45.3%
+    RBF γ=1    : 45.3%
+    Poly deg=2: 16.5%
+    Poly deg=3: 16.5%
+    Poly deg=4: 16.5%
+    Poly deg=5: 16.5%
+    Linear (dot):     16.5%
+
+  K=409:
+    RBF γ=0.001: 41.9%
+    RBF γ=0.01 : 41.9%
+    RBF γ=0.05 : 41.9%
+    RBF γ=0.1  : 41.9%
+    RBF γ=0.5  : 41.9%
+    RBF γ=1    : 41.9%
+    Poly deg=2: 13.0%
+    Poly deg=3: 13.0%
+    Poly deg=4: 13.0%
+    Poly deg=5: 13.0%
+    Linear (dot):     13.0%
+
+total: 1107s
+
+══ Winning kernel per K ══
+  K= 47  RBF γ=0.001      31.7%
+  K=100  RBF γ=0.001      34.8%
+  K=200  RBF γ=0.001      40.6%
+  K=300  RBF γ=0.001      45.3%
+  K=409  RBF γ=0.001      41.9%

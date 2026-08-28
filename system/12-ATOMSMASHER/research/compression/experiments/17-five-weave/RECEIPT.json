@@ -1,0 +1,78 @@
+{
+  "experiment": "17-five-weave",
+  "generated_at": "2026-06-26T11:08:03.815Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes_in": 2075585,
+  "fields_encoded": [
+    "id",
+    "action",
+    "status",
+    "summary",
+    "payload_json",
+    "created_at"
+  ],
+  "per_field": [
+    {
+      "field": "id",
+      "V": 6224,
+      "seq_length": 6224,
+      "rc_bytes": 9029,
+      "rc_bits_per_sym": 11.604,
+      "model_bytes": 174016,
+      "total": 183048
+    },
+    {
+      "field": "action",
+      "V": 66,
+      "seq_length": 6224,
+      "rc_bytes": 1968,
+      "rc_bits_per_sym": 2.529,
+      "model_bytes": 2226,
+      "total": 4196
+    },
+    {
+      "field": "status",
+      "V": 2,
+      "seq_length": 6224,
+      "rc_bytes": 2,
+      "rc_bits_per_sym": 0.003,
+      "model_bytes": 24,
+      "total": 27
+    },
+    {
+      "field": "summary",
+      "V": 2598,
+      "seq_length": 6224,
+      "rc_bytes": 7571,
+      "rc_bits_per_sym": 9.731,
+      "model_bytes": 104923,
+      "total": 112497
+    },
+    {
+      "field": "payload_json",
+      "V": 1855,
+      "seq_length": 6224,
+      "rc_bytes": 7200,
+      "rc_bits_per_sym": 9.254,
+      "model_bytes": 428700,
+      "total": 435903
+    },
+    {
+      "field": "created_at",
+      "V": 35,
+      "seq_length": 6224,
+      "rc_bytes": 3602,
+      "rc_bits_per_sym": 4.629,
+      "model_bytes": 3450,
+      "total": 7055
+    }
+  ],
+  "combined_pre_brotli_bytes": 742803,
+  "combined_ratio": 2.79,
+  "five_weave_final_bytes": 152788,
+  "five_weave_ratio": 13.58,
+  "roundtrip_lossless": true,
+  "beats_plait": false,
+  "beats_4weave_baseline": false,
+  "pass": false
+}

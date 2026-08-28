@@ -1,0 +1,17 @@
+{
+  "experiment": "05-wallpaper-group",
+  "generated_at": "2026-06-26T09:37:39.529Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "best_p": 50,
+  "best_q": 124,
+  "fisher_gcd": 2,
+  "vertical_symmetry": 0.329,
+  "horizontal_symmetry": 0.323,
+  "combined_score": 0.326,
+  "raw_action_stream_bytes": 85273,
+  "wallpaper_stream_bytes": 9555,
+  "wallpaper_brotli_bytes": 4439,
+  "ratio": 19.21,
+  "roundtrip_lossless": true,
+  "pass": true
+}

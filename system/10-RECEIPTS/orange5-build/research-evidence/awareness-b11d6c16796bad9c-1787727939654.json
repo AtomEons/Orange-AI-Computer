@@ -1,0 +1,18 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-b11d6c16796bad9c-1787727939654",
+  "query": "{\"schema\":\"orange.order.v1\",\"orderId\":\"hot-health\",\"intent\":\"Report current health. No probes or evidence were provided.\",\"scope\":[\"orange5\"],\"allowedActions\":[\"report\",\"route\"],\"forbiddenActions\":[\"execute\"],\"targetProject\":\"orange5\",\"riskLevel\":\"read_only\",\"requiresReceipt\":false}\n/no_think\n/no_think OrangeFive orange5",
+  "searchQuery": "schema orange.order.v1 orderid hot-health intent",
+  "generatedAt": "2026-08-26T07:05:39.656Z",
+  "budgetMs": 60000,
+  "elapsedMs": 564,
+  "status": "NO_EVIDENCE",
+  "sources": [],
+  "errors": [
+    {
+      "provider": "arxiv",
+      "error": "source returned HTTP 429"
+    }
+  ],
+  "sha256": "e14f19f3c9d1fc9cfa53068e9648c47073584fc698929d57b7a36636033de66e"
+}

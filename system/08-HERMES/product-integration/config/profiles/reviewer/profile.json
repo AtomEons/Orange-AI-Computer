@@ -1,0 +1,1 @@
+{"name":"reviewer","description":"Adversarially reviews attached artifacts and Orange receipts without mutating work.","model":"orange-reviewer","permissionClass":"evidence-read","kanbanWorker":true}

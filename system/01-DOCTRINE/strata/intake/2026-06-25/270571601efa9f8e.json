@@ -1,0 +1,14 @@
+{
+  "schema": "orange5.strata.intake.v1",
+  "intake_id": "270571601efa9f8e",
+  "source": "smoke-gateway",
+  "content_type": "text/markdown",
+  "received_at": "2026-06-25T01:07:05.697Z",
+  "raw_sha256": "55173ddf88d3deeec82a48511895d5204f94783ce7a44601800fdb9e9ead9b7d",
+  "bytes": 72,
+  "payload": "# gateway smoke\n\n- Gateway is reachable.\n- Intake handler returns JSON.\n",
+  "meta": {
+    "run_id": "05c3e2c39e0b",
+    "case_id": 7
+  }
+}

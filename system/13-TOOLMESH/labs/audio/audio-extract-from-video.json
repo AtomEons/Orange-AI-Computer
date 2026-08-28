@@ -1,0 +1,79 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "audio",
+  "card_id": "audio-extract-from-video",
+  "capability": "audio.extract",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["source_ref"],
+    "properties": {
+      "source_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "description": "Sandbox reference to a video (or multi-stream audio) file.",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "stream_index": {
+        "type": "integer",
+        "description": "Which audio stream to extract. Defaults to the first audio stream.",
+        "minimum": 0,
+        "maximum": 64,
+        "default": 0
+      },
+      "format": {
+        "type": "string",
+        "enum": ["wav", "mp3", "flac", "ogg", "m4a"],
+        "default": "wav"
+      },
+      "sample_rate": {
+        "type": "integer",
+        "enum": [8000, 16000, 22050, 24000, 44100, 48000]
+      },
+      "channels": {
+        "type": "integer",
+        "description": "Channel mix target. 1 = mono downmix, 2 = stereo. Omit to preserve source.",
+        "enum": [1, 2]
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["audio_ref", "duration_seconds", "sample_rate", "channels"],
+    "properties": {
+      "audio_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "duration_seconds": { "type": "number", "minimum": 0 },
+      "sample_rate": { "type": "integer", "minimum": 1 },
+      "channels": { "type": "integer", "minimum": 1, "maximum": 8 },
+      "format": { "type": "string", "minLength": 1, "maxLength": 16 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 60,
+    "scopes": [
+      "fs.read:sandbox://video/",
+      "fs.write:sandbox://audio/extracted/",
+      "process.spawn:ffmpeg",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30
+  },
+  "risk_class": "sandboxed",
+  "last_verified_at": "2026-06-25T00:20:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Pull an audio stream out of a video container into a sandboxed audio file, with optional resample/downmix.",
+  "tags": ["audio", "video", "demux", "extract", "ffmpeg"],
+  "notes": "Common upstream of audio-transcribe: extract once to 16 kHz mono WAV, then run STT — cheaper and faster than passing the full video to the transcribe backend."
+}

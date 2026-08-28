@@ -1,0 +1,13 @@
+{
+  "experiment": "98-zpaq",
+  "codec_available": false,
+  "probe": "Command failed: zpaq -version",
+  "status": "N/A",
+  "ratio": null,
+  "vs_M19": null,
+  "enc_ms": null,
+  "dec_ms": null,
+  "lossless": null,
+  "verdict": "N/A",
+  "notes": "zpaq not installed on this Windows box. Skipped per brief."
+}

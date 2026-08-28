@@ -1,0 +1,19 @@
+{
+  "ceiling": 1.8,
+  "baseline_N": 5,
+  "empirical_capacity": 5,
+  "first_collision_at_N": 6,
+  "baseline_break_at_N": 6,
+  "trace": [
+    {
+      "N": 6,
+      "min_inter_dist": 0.2809225335656869,
+      "pair": [
+        "orange",
+        "synth_10deg"
+      ],
+      "margin_under_ceiling": -1.5190774664343132,
+      "baseline_score": "1/3"
+    }
+  ]
+}

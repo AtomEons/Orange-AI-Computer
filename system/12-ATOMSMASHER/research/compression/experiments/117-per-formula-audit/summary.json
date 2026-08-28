@@ -1,0 +1,52 @@
+{
+  "experiment": "117-per-formula-audit",
+  "ratio": 23.546,
+  "audited": 1000,
+  "positive_net": 669,
+  "violators_law6": 331,
+  "edges_used": 66,
+  "net_bytes_saved": 1987434,
+  "total": 88151,
+  "lossless": true,
+  "baseline_m19_ratio": 47.071,
+  "vs_m19_delta": -23.525,
+  "encode_ms": 29115.2,
+  "top_5_by_net": [
+    {
+      "from": "payload.route_id",
+      "to": "payload_json_raw",
+      "net": 144089,
+      "bytes_saved_raw": 146426,
+      "recipe_brotli": 2337
+    },
+    {
+      "from": "summary",
+      "to": "action",
+      "net": 77250,
+      "bytes_saved_raw": 97721,
+      "recipe_brotli": 20471
+    },
+    {
+      "from": "summary",
+      "to": "payload.prefix",
+      "net": 52069,
+      "bytes_saved_raw": 53360,
+      "recipe_brotli": 1291
+    },
+    {
+      "from": "payload.cache_id",
+      "to": "payload.prefix",
+      "net": 52061,
+      "bytes_saved_raw": 53360,
+      "recipe_brotli": 1299
+    },
+    {
+      "from": "payload_json_raw",
+      "to": "payload.prefix",
+      "net": 50709,
+      "bytes_saved_raw": 53360,
+      "recipe_brotli": 2651
+    }
+  ],
+  "notes": "Audited top 1000 edges by support. 331 violated Law 6 (recipe>=savings). Filtered to 66 non-conflicting positive-net formulas."
+}

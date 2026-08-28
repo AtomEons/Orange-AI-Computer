@@ -1,0 +1,39 @@
+name: OrangeFive Verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: orangefive-verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-windows:
+    name: Windows / Bun / clean checkout
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - name: Run full OrangeFive verifier
+        shell: pwsh
+        run: bun run verify
+      - name: Require verifier to leave checkout clean
+        shell: pwsh
+        run: |
+          $changes = git status --porcelain
+          if ($changes) {
+            $changes | Write-Error
+            throw 'OrangeFive verification mutated the checkout.'
+          }

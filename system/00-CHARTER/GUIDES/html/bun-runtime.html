@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Æ Orange AI Computer Bun Runtime</title><style>
+  :root { color-scheme: light; --orange:#ff5a1f; --ink:#171717; --muted:#666; --line:#dedede; --paper:#fff; }
+  * { box-sizing: border-box; }
+  @page { size: Letter; margin: 0.7in 0.66in 0.72in; }
+  html { background:#ececec; }
+  body { max-width: 8.5in; margin: 0 auto; padding: 0.72in 0.66in; background:var(--paper); color:var(--ink); font-family: Inter, "Segoe UI", Arial, sans-serif; font-size:10.5pt; line-height:1.48; }
+  body::before { content:"ATOM EONS  /  Æ ORANGE AI COMPUTER"; display:block; color:var(--orange); font-size:8pt; font-weight:800; letter-spacing:.14em; border-bottom:2px solid var(--orange); padding-bottom:8px; margin-bottom:28px; }
+  h1,h2,h3,h4 { break-after:avoid; line-height:1.15; color:#111; }
+  h1 { font-size:28pt; margin:0 0 20px; }
+  h2 { font-size:18pt; margin:30px 0 11px; padding-top:7px; border-top:1px solid var(--line); }
+  h3 { font-size:13.5pt; margin:23px 0 8px; }
+  h4 { font-size:11pt; margin:18px 0 6px; }
+  p, li { orphans:3; widows:3; }
+  a { color:#b7390d; text-decoration:none; }
+  strong { color:#111; }
+  blockquote { margin:18px 0; padding:10px 15px; border-left:4px solid var(--orange); background:#fff5f0; }
+  code { font-family:"Cascadia Mono",Consolas,monospace; background:#f4f4f4; padding:1px 4px; border-radius:3px; font-size:9pt; }
+  pre { break-inside:avoid; white-space:pre-wrap; background:#161616; color:#f7f7f7; padding:13px 15px; border-left:4px solid var(--orange); border-radius:4px; overflow-wrap:anywhere; }
+  pre code { color:inherit; background:none; padding:0; }
+  table { width:100%; border-collapse:collapse; margin:15px 0 21px; break-inside:auto; font-size:9pt; }
+  thead { display:table-header-group; }
+  tr { break-inside:avoid; }
+  th,td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; }
+  th { text-align:left; background:#fff1eb; }
+  ul,ol { padding-left:22px; }
+  img { max-width:100%; height:auto; }
+  hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
+  .manual-meta { color:var(--muted); font-size:8.5pt; margin:-10px 0 30px; }
+  .book-cover { min-height:8.2in; display:flex; flex-direction:column; justify-content:center; page-break-after:always; }
+  .book-cover .mark { color:var(--orange); font-size:11pt; font-weight:800; letter-spacing:.18em; }
+  .book-cover h1 { font-size:42pt; max-width:6.5in; margin:16px 0; }
+  .book-cover p { color:var(--muted); font-size:15pt; max-width:5.7in; }
+  .manual-section { page-break-before:always; }
+  @media print { html,body { background:#fff; } body { padding:0; max-width:none; } }
+</style></head>
+<body class="single-manual">
+<div class="manual-meta">Canonical source: 00-CHARTER/GUIDES/BUN_RUNTIME.md</div>
+<h1>Æ Orange AI Computer Bun Runtime</h1>
+<h2>Decision</h2>
+<p>Æ Orange AI Computer uses Bun for the hot control plane, service management, gateways,
+benchmarks, and SQLite-backed operational queues. Bun is not a universal rewrite
+mandate: Rust/Tauri owns the native shell, Python owns proven model and visual
+workers, and Docker owns isolated infrastructure where replacement has not been
+proven superior.</p>
+<p>The active runtime is Bun 1.3.14. It matched the latest stable Bun release when
+this contract was measured on 2026-08-27.</p>
+<h2>Runtime Laws</h2>
+<ol>
+<li>Hot Orange services run as hidden, detached <code>Bun.spawn</code> children with ignored
+standard I/O. They must not open PowerShell windows or keep their launcher
+process alive.</li>
+<li>Independent health probes run concurrently. Dependent start order remains:
+memory plus Hermes, then OrangeLLM plus Brain MCP.</li>
+<li>Do not use <code>--smol</code> for resident Orange services. Bun documents it as a
+memory-for-performance trade and the N150 control plane is latency-sensitive.</li>
+<li>HTTP gateways declare deliberate idle timeouts. Brain MCP and Hermes allow
+the Bun maximum of 255 seconds for long governed work. Cobra allows 180
+seconds for memory/event work.
+This server ceiling does not override a caller or worker deadline. The fresh
+Hermes Brain MCP proof completed its harmless read delegation in
+<code>11,409.53 ms</code>; long jobs retain separate task and cancellation contracts.</li>
+<li>The learning queue uses SQLite WAL, <code>synchronous=NORMAL</code>, foreign keys, cached
+<code>db.query()</code> statements, and transactions. This queue is replayable work;
+immutable receipt truth remains separately hash-chained.</li>
+<li>Semantic recall uses Qdrant plus Qwen embeddings for dense retrieval and an
+SSD lexical mirror plus Flux-ledger overlay for exact recall. Payload tokens
+are computed once per resident process and reused for lexical ranking and
+reranking.</li>
+<li>Performance claims require both latency and retrieval-quality proof. A faster
+result that fails the 23-case corpus is rejected.</li>
+<li>Profile with Bun's CPU or heap profilers before changing hot code. Profiler
+overhead is not used as production latency evidence.</li>
+</ol>
+<h2>Current Proof</h2>
+<p>Fresh runtime benchmark:</p>
+<p><code>10-RECEIPTS/orange5-build/2026-08-27T06-20-11-430Z-bun-runtime-benchmark.json</code></p>
+<ul>
+<li>Six of six runtime endpoints answered.</li>
+<li>Parallel health probing was 2.041 times faster than serial probing.</li>
+<li>Learning queue sustained 1,613.766 operations per second across 300 durable
+enqueue, lease, and complete operations.</li>
+<li>Hybrid semantic recall completed in 574 ms.</li>
+</ul>
+<p>Fresh accepted memory quality benchmark:</p>
+<p><code>10-RECEIPTS/orange5-build/2026-08-27T16-42-16-141Z-memory-quality-benchmark.json</code></p>
+<ul>
+<li>23 of 23 cases passed.</li>
+<li>Hybrid MRR was 0.9058.</li>
+<li>Hybrid p50 was 281 ms and p95 was 445 ms.</li>
+<li>Lexical-only passed 20 of 23; dense-only passed 21 of 23; hybrid passed all 23.</li>
+<li>Three contradiction-debt cases were recorded and resolved by the evidence law.</li>
+</ul>
+<p>Fresh Context Crystal quality is scope-bounded: the held-out suite passed 5/5
+with minimum <code>1422.901x</code> across a 7,056,795-byte corpus. The held-out ratio is a
+workload-specific operational context result, not a live-turn claim.</p>
+<p>The learning-queue focused suite improved from 23.82 seconds before the Bun/SQLite
+pass to 3.86 seconds after removing repeated schema, statement-compilation, and
+post-write lookup work.</p>
+<p>CPU profiles before and after the semantic-index change show tokenization falling
+from 561.7 ms to 175.9 ms and the lexical-candidate stage falling from 619.0 ms
+to 319.2 ms. The final profiled benchmark remained green; its profile is:</p>
+<p><code>10-RECEIPTS/orange5-build/profiles/CPU.28574002566.11168.md</code></p>
+<h2>Commands</h2>
+<pre><code class="language-powershell">bun scripts/orange5-runtime-services.mjs status
+bun run bench:bun-runtime
+bun run bench:memory-quality
+bun --cpu-prof-md --cpu-prof-dir 10-RECEIPTS/orange5-build/profiles scripts/bun-runtime-benchmark.mjs
+</code></pre>
+<h2>Primary References</h2>
+<ul>
+<li>Bun releases: https://github.com/oven-sh/bun/releases</li>
+<li>Bun benchmarking and profiling: https://bun.sh/docs/project/benchmarking</li>
+<li>Bun SQLite: https://bun.sh/docs/runtime/sqlite</li>
+<li>Bun HTTP server: https://bun.sh/docs/runtime/http/server</li>
+<li>Bun child processes: https://bun.sh/docs/runtime/child-process</li>
+<li>Bun tests: https://bun.sh/docs/test</li>
+<li>SQLite PRAGMA guidance: https://www.sqlite.org/pragma.html</li>
+</ul>
+<h2>Next Optimization Threshold</h2>
+<p>Do not tune by instinct. Reprofile only when a fresh non-profiled run breaches one
+of these limits:</p>
+<ul>
+<li>Any local health endpoint exceeds 250 ms p95.</li>
+<li>Hybrid memory recall exceeds 1,000 ms p95 or falls below 0.80 MRR.</li>
+<li>Learning queue falls below 1,000 operations per second on the N150.</li>
+<li>A resident Bun organ grows without bound across a 24-hour soak.</li>
+</ul>
+<p>At that point, optimize the measured hot function and rerun both performance and
+behavioral proof before promotion.</p>
+
+</body></html>

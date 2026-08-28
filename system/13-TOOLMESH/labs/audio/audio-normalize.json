@@ -1,0 +1,97 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "audio",
+  "card_id": "audio-normalize",
+  "capability": "audio.normalize",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["source_ref"],
+    "properties": {
+      "source_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "target_lufs": {
+        "type": "number",
+        "description": "Integrated loudness target per EBU R128. Common values: -16 (podcast), -14 (streaming), -23 (broadcast).",
+        "minimum": -40,
+        "maximum": -6,
+        "default": -16
+      },
+      "true_peak_dbfs": {
+        "type": "number",
+        "description": "True-peak ceiling in dBFS. Output is limited to never exceed this.",
+        "minimum": -10,
+        "maximum": 0,
+        "default": -1.5
+      },
+      "loudness_range": {
+        "type": "number",
+        "description": "Target LRA (loudness range, LU). Lower values produce more aggressive compression of dynamics.",
+        "minimum": 1,
+        "maximum": 30,
+        "default": 11
+      },
+      "two_pass": {
+        "type": "boolean",
+        "description": "Two-pass EBU R128 normalize via ffmpeg loudnorm. Recommended for accurate targets.",
+        "default": true
+      },
+      "format": {
+        "type": "string",
+        "enum": ["wav", "mp3", "flac", "ogg"],
+        "default": "wav"
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["output_ref", "measured"],
+    "properties": {
+      "output_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "measured": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["input_integrated_lufs", "output_integrated_lufs", "output_true_peak_dbfs"],
+        "properties": {
+          "input_integrated_lufs": { "type": "number" },
+          "input_true_peak_dbfs": { "type": "number" },
+          "input_lra": { "type": "number" },
+          "output_integrated_lufs": { "type": "number" },
+          "output_true_peak_dbfs": { "type": "number" },
+          "output_lra": { "type": "number" }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 30,
+    "scopes": [
+      "fs.read:sandbox://audio/",
+      "fs.write:sandbox://audio/normalized/",
+      "process.spawn:ffmpeg",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 20
+  },
+  "risk_class": "sandboxed",
+  "last_verified_at": "2026-06-25T00:20:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "EBU R128 loudness normalization (ffmpeg loudnorm) to a target LUFS and true-peak ceiling.",
+  "tags": ["audio", "loudness", "lufs", "r128", "normalize", "ffmpeg"],
+  "notes": "Two-pass mode (default) first measures, then encodes — roughly 2x the wall time but produces accurate integrated LUFS. Single-pass is acceptable for live-stream-style ingest where exactness is not required."
+}

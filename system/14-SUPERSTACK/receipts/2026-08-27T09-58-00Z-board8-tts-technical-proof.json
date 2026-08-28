@@ -1,0 +1,78 @@
+{
+  "schema": "orange5.captain-planet.artifact-quality-proof.v2",
+  "status": "CAPTAIN_PLANET_TTS_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+  "generated_at": "2026-08-27T09:55:10.529Z",
+  "organ": "qwen3_tts",
+  "runtime_execution_proven": true,
+  "artifact_technical_quality_proven": true,
+  "perceptual_quality_proven": false,
+  "studio_quality_proven": false,
+  "quality_scope": "DETERMINISTIC_TECHNICAL_ARTIFACT_QUALITY_ONLY",
+  "unresolved_quality_gates": [
+    "speech_intelligibility",
+    "pronunciation_accuracy",
+    "speaker_fit",
+    "human_listening_review",
+    "studio_readiness"
+  ],
+  "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\orangefive-qwen3-tts-proof.wav",
+  "artifact_sha256": "90598b2975622c98fec213664e3c023aa624a8efd7286c91a4517ebc1de63452",
+  "source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\qwen3-tts-artifact-proof.codexa.json",
+  "checks": {
+    "source_receipt_contract": true,
+    "source_runtime_status": true,
+    "source_hash_matches": true,
+    "source_size_matches": true,
+    "sample_rate_matches": true,
+    "duration_is_substantive": true,
+    "signal_is_non_silent": true,
+    "peak_is_not_clipped": true,
+    "clipped_sample_fraction_is_bounded": true,
+    "dc_offset_is_bounded": true,
+    "active_signal_is_substantive": true
+  },
+  "check_groups": {
+    "runtime": {
+      "source_receipt_contract": true,
+      "source_runtime_status": true,
+      "source_hash_matches": true,
+      "source_size_matches": true,
+      "sample_rate_matches": true
+    },
+    "technical_quality": {
+      "duration_is_substantive": true,
+      "signal_is_non_silent": true,
+      "peak_is_not_clipped": true,
+      "clipped_sample_fraction_is_bounded": true,
+      "dc_offset_is_bounded": true,
+      "active_signal_is_substantive": true
+    }
+  },
+  "audio": {
+    "audio_format": 1,
+    "channels": 1,
+    "sample_rate": 24000,
+    "byte_rate": 48000,
+    "block_align": 2,
+    "bits_per_sample": 16,
+    "bytes": 280364,
+    "frames": 140160,
+    "duration_seconds": 5.84,
+    "rms": 0.074653,
+    "peak": 0.714844,
+    "rms_dbfs": -22.539,
+    "peak_dbfs": -2.916,
+    "dc_offset": -0.000032,
+    "active_sample_fraction": 0.674287,
+    "clipped_sample_fraction": 0,
+    "non_silent": true
+  },
+  "source_created_at": "2026-08-26T23:26:44.277640+00:00",
+  "source_model_id": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "source_model_revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+  "source_device": "Intel(R) Arc(TM) 140T GPU (48GB)",
+  "source_generation_seconds": 26.144,
+  "prior_receipt": "2026-08-27T09-57-00Z-board8-video-technical-proof.json",
+  "prior_sha256": "8155105cb1b388d2fb4a8e19ae8eee1f9f0006008f869549e6f7314fb7232ddc",
+  "receipt_sha256": "ed422d804ff3be87c5c7deba20be77861d5c4fa8654be04fe552f302cde5717c"
+}

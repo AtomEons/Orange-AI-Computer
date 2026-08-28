@@ -1,0 +1,10 @@
+node_modules/
+state/guardrails.sqlite
+state/guardrails.sqlite-journal
+state/guardrails.sqlite-wal
+state/guardrails.sqlite-shm
+state/runs.jsonl
+state/flux-spool.jsonl
+state/soul-genome.json
+state/continuity/
+!state/.gitkeep

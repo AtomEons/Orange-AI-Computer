@@ -1,0 +1,182 @@
+[
+  {
+    "photo": "lena",
+    "kind": "human",
+    "input": {
+      "pixels": 147456,
+      "entropy_bits": 7.644892466859922,
+      "edge_density": 0.06247899012231599,
+      "unique_L_levels": 222,
+      "chroma_range": {
+        "R": 0.7921568602323532,
+        "G": 0.9764705896377563,
+        "B": 0.7568627521395683
+      }
+    },
+    "canonical": {
+      "pixels": 147456,
+      "Y_entropy_bits": 7.644892466859922,
+      "Y_edge_density": 17.60076375033225,
+      "Y_unique_levels": 35,
+      "RG_range": 2.664435863494873,
+      "BY_range": 4.665979564189911,
+      "retinal_edge_mean": null
+    },
+    "fidelity": {
+      "entropy_ratio": 1,
+      "edge_ratio": 281.706918051572,
+      "unique_levels_ratio": 0.15765765765765766
+    },
+    "outDir": "C:\\AtomEons\\Orange5\\07-VISUAL\\photon-print-fidelity\\lena"
+  },
+  {
+    "photo": "baboon",
+    "kind": "primate face",
+    "input": {
+      "pixels": 147456,
+      "entropy_bits": 7.454668545645159,
+      "edge_density": 0.13471898255090442,
+      "unique_L_levels": 221,
+      "chroma_range": {
+        "R": 0.9882352938875556,
+        "G": 0.9372549057006836,
+        "B": 1
+      }
+    },
+    "canonical": {
+      "pixels": 147456,
+      "Y_entropy_bits": 7.454668545645159,
+      "Y_edge_density": 37.57964795575025,
+      "Y_unique_levels": 36,
+      "RG_range": 3.1141744256019592,
+      "BY_range": 3.5731641054153442,
+      "retinal_edge_mean": null
+    },
+    "fidelity": {
+      "entropy_ratio": 1,
+      "edge_ratio": 278.9484246702245,
+      "unique_levels_ratio": 0.16289592760180996
+    },
+    "outDir": "C:\\AtomEons\\Orange5\\07-VISUAL\\photon-print-fidelity\\baboon"
+  },
+  {
+    "photo": "apple",
+    "kind": "natural object",
+    "input": {
+      "pixels": 147456,
+      "entropy_bits": 7.026946209501481,
+      "edge_density": 0.03369525596577778,
+      "unique_L_levels": 237,
+      "chroma_range": {
+        "R": 0.9568627439439297,
+        "G": 0.9529411755502224,
+        "B": 0.929411768913269
+      }
+    },
+    "canonical": {
+      "pixels": 147456,
+      "Y_entropy_bits": 7.026946209501481,
+      "Y_edge_density": 9.24678038201299,
+      "Y_unique_levels": 37,
+      "RG_range": 52.846004486083984,
+      "BY_range": 144.69513320922852,
+      "retinal_edge_mean": null
+    },
+    "fidelity": {
+      "entropy_ratio": 1,
+      "edge_ratio": 274.42380587357405,
+      "unique_levels_ratio": 0.15611814345991562
+    },
+    "outDir": "C:\\AtomEons\\Orange5\\07-VISUAL\\photon-print-fidelity\\apple"
+  },
+  {
+    "photo": "orange",
+    "kind": "natural object",
+    "input": {
+      "pixels": 147456,
+      "entropy_bits": 7.841504502908299,
+      "edge_density": 0.027677621115351988,
+      "unique_L_levels": 181,
+      "chroma_range": {
+        "R": 0.7999999970197678,
+        "G": 0.7686274498701096,
+        "B": 0.5960784554481506
+      }
+    },
+    "canonical": {
+      "pixels": 147456,
+      "Y_entropy_bits": 7.841504502908299,
+      "Y_edge_density": 9.952096919337638,
+      "Y_unique_levels": 28,
+      "RG_range": 3.81744983792305,
+      "BY_range": 16.823200225830078,
+      "retinal_edge_mean": null
+    },
+    "fidelity": {
+      "entropy_ratio": 1,
+      "edge_ratio": 359.57197614131275,
+      "unique_levels_ratio": 0.15469613259668508
+    },
+    "outDir": "C:\\AtomEons\\Orange5\\07-VISUAL\\photon-print-fidelity\\orange"
+  },
+  {
+    "photo": "board",
+    "kind": "structured surface",
+    "input": {
+      "pixels": 110592,
+      "entropy_bits": 7.60985403824749,
+      "edge_density": 0.19324786807244843,
+      "unique_L_levels": 255,
+      "chroma_range": {
+        "R": 1,
+        "G": 1,
+        "B": 1
+      }
+    },
+    "canonical": {
+      "pixels": 110592,
+      "Y_entropy_bits": 7.60985403824749,
+      "Y_edge_density": 49.27820356539429,
+      "Y_unique_levels": 40,
+      "RG_range": 1.2869850993156433,
+      "BY_range": 1.941568911075592,
+      "retinal_edge_mean": null
+    },
+    "fidelity": {
+      "entropy_ratio": 1,
+      "edge_ratio": 254.99998554664492,
+      "unique_levels_ratio": 0.1568627450980392
+    },
+    "outDir": "C:\\AtomEons\\Orange5\\07-VISUAL\\photon-print-fidelity\\board"
+  },
+  {
+    "photo": "building",
+    "kind": "architecture",
+    "input": {
+      "pixels": 101760,
+      "entropy_bits": 7.708544067948176,
+      "edge_density": 0.1283633379409372,
+      "unique_L_levels": 256,
+      "chroma_range": {
+        "R": 1,
+        "G": 1,
+        "B": 1
+      }
+    },
+    "canonical": {
+      "pixels": 101760,
+      "Y_entropy_bits": 7.708544067948176,
+      "Y_edge_density": 32.73264961234428,
+      "Y_unique_levels": 40,
+      "RG_range": 1.697640672326088,
+      "BY_range": 1.73371160030365,
+      "retinal_edge_mean": null
+    },
+    "fidelity": {
+      "entropy_ratio": 1,
+      "edge_ratio": 254.99998782678347,
+      "unique_levels_ratio": 0.15625
+    },
+    "outDir": "C:\\AtomEons\\Orange5\\07-VISUAL\\photon-print-fidelity\\building"
+  }
+]

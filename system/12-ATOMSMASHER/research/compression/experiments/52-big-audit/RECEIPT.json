@@ -1,0 +1,426 @@
+{
+  "experiment": "52-big-audit",
+  "generated_at": "2026-06-27",
+  "audit_summary": {
+    "action_key_pairs": 515,
+    "constant_payload_fields": 357,
+    "low_card_payload_fields": 455,
+    "distinct_64hex_strings": 12,
+    "identified_hash_origins": 0,
+    "deterministic_action_successors": 0,
+    "distinct_payload_field_names": 422,
+    "distinct_created_at_values": 35,
+    "numeric_constant_series": 252,
+    "functional_deps_found": 314,
+    "derivable_summary_groups": 952,
+    "total_groups": 978
+  },
+  "hidden_constants": [
+    {
+      "key": "air.compress|dropped",
+      "val": 0,
+      "count": 3126
+    },
+    {
+      "key": "feature.execute|active",
+      "val": 1,
+      "count": 75
+    },
+    {
+      "key": "source.ingest|chunks",
+      "val": 1,
+      "count": 60
+    },
+    {
+      "key": "feature.execute|chunks",
+      "val": 1,
+      "count": 59
+    },
+    {
+      "key": "feature.execute|confidence",
+      "val": 0.85,
+      "count": 42
+    },
+    {
+      "key": "prooflab.probes|features_registered",
+      "val": 620,
+      "count": 39
+    },
+    {
+      "key": "prooflab.probes|order_retention",
+      "val": 1,
+      "count": 39
+    },
+    {
+      "key": "feature.execute|features_registered",
+      "val": 620,
+      "count": 39
+    },
+    {
+      "key": "feature.execute|order_retention",
+      "val": 1,
+      "count": 39
+    },
+    {
+      "key": "feature.execute|max_error",
+      "val": 0,
+      "count": 33
+    },
+    {
+      "key": "feature.execute|mean_error",
+      "val": 0,
+      "count": 33
+    },
+    {
+      "key": "feature.execute|severity",
+      "val": 0.5,
+      "count": 22
+    },
+    {
+      "key": "debt.record|severity",
+      "val": 0.5,
+      "count": 22
+    },
+    {
+      "key": "feature.execute|context_tokens",
+      "val": 512,
+      "count": 21
+    },
+    {
+      "key": "feature.execute|score",
+      "val": 1.949317738791423,
+      "count": 21
+    },
+    {
+      "key": "feature.execute|priority",
+      "val": 1,
+      "count": 19
+    },
+    {
+      "key": "feature.execute|threshold",
+      "val": 3,
+      "count": 16
+    },
+    {
+      "key": "feature.execute|raw_tokens",
+      "val": 10000,
+      "count": 15
+    },
+    {
+      "key": "feature.execute|active_tokens",
+      "val": 500,
+      "count": 15
+    },
+    {
+      "key": "feature.execute|tokens_avoided",
+      "val": 9500,
+      "count": 15
+    },
+    {
+      "key": "feature.execute|mwh_proxy",
+      "val": 7.6000000000000005,
+      "count": 15
+    },
+    {
+      "key": "agent.lease|token_budget",
+      "val": 10000,
+      "count": 14
+    },
+    {
+      "key": "feature.execute|token_budget",
+      "val": 10000,
+      "count": 14
+    },
+    {
+      "key": "feature.execute|time_budget_s",
+      "val": 600,
+      "count": 14
+    },
+    {
+      "key": "crystal.ingest|new_facts",
+      "val": 0,
+      "count": 13
+    },
+    {
+      "key": "feature.execute|dropped_sentences",
+      "val": 0,
+      "count": 11
+    },
+    {
+      "key": "feature.execute|input_bytes",
+      "val": 190,
+      "count": 11
+    },
+    {
+      "key": "feature.execute|output_bytes",
+      "val": 211,
+      "count": 11
+    },
+    {
+      "key": "feature.execute|compression_ratio",
+      "val": 0.9,
+      "count": 11
+    },
+    {
+      "key": "feature.execute|code_spans",
+      "val": 0,
+      "count": 11
+    }
+  ],
+  "fd_rules": [
+    {
+      "action": "mesh.compress",
+      "derived": "ratio",
+      "from": "raw_bytes/compressed_bytes",
+      "formula": "banker_round(A/B,2)",
+      "n": 1565
+    },
+    {
+      "action": "feature.execute",
+      "derived": "max_error",
+      "from": "mean_error",
+      "formula": "equality",
+      "n": 33
+    },
+    {
+      "action": "feature.execute",
+      "derived": "mean_error",
+      "from": "max_error",
+      "formula": "equality",
+      "n": 33
+    },
+    {
+      "action": "feature.execute",
+      "derived": "raw_tokens",
+      "from": "active_tokens + tokens_avoided",
+      "formula": "A+B",
+      "n": 15
+    },
+    {
+      "action": "feature.execute",
+      "derived": "raw_tokens",
+      "from": "tokens_avoided + active_tokens",
+      "formula": "A+B",
+      "n": 15
+    },
+    {
+      "action": "feature.execute",
+      "derived": "active_tokens",
+      "from": "raw_tokens - tokens_avoided",
+      "formula": "A-B",
+      "n": 15
+    },
+    {
+      "action": "feature.execute",
+      "derived": "tokens_avoided",
+      "from": "raw_tokens - active_tokens",
+      "formula": "A-B",
+      "n": 15
+    },
+    {
+      "action": "feature.execute",
+      "derived": "dropped_sentences",
+      "from": "code_spans",
+      "formula": "equality",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "dropped_sentences",
+      "from": "compression_ratio/input_bytes",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "dropped_sentences",
+      "from": "compression_ratio/output_bytes",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "dropped_sentences",
+      "from": "code_spans/input_bytes",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "dropped_sentences",
+      "from": "code_spans/output_bytes",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "dropped_sentences",
+      "from": "code_spans/compression_ratio",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "compression_ratio",
+      "from": "input_bytes/output_bytes",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "code_spans",
+      "from": "dropped_sentences",
+      "formula": "equality",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "code_spans",
+      "from": "dropped_sentences/input_bytes",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "code_spans",
+      "from": "dropped_sentences/output_bytes",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "code_spans",
+      "from": "dropped_sentences/compression_ratio",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "code_spans",
+      "from": "compression_ratio/input_bytes",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "code_spans",
+      "from": "compression_ratio/output_bytes",
+      "formula": "round(A/B,2)",
+      "n": 11
+    },
+    {
+      "action": "feature.execute",
+      "derived": "slope",
+      "from": "intercept",
+      "formula": "equality",
+      "n": 3
+    },
+    {
+      "action": "feature.execute",
+      "derived": "intercept",
+      "from": "slope",
+      "formula": "equality",
+      "n": 3
+    },
+    {
+      "action": "feature.execute",
+      "derived": "candidate_count",
+      "from": "order_count",
+      "formula": "equality",
+      "n": 1
+    },
+    {
+      "action": "feature.execute",
+      "derived": "candidate_count",
+      "from": "texts_compressed + warm_count",
+      "formula": "A+B",
+      "n": 1
+    },
+    {
+      "action": "feature.execute",
+      "derived": "candidate_count",
+      "from": "texts_compressed + mean_first_half",
+      "formula": "A+B",
+      "n": 1
+    },
+    {
+      "action": "feature.execute",
+      "derived": "candidate_count",
+      "from": "total_sentences_dropped + order_count",
+      "formula": "A+B",
+      "n": 1
+    },
+    {
+      "action": "feature.execute",
+      "derived": "candidate_count",
+      "from": "warm_count + texts_compressed",
+      "formula": "A+B",
+      "n": 1
+    },
+    {
+      "action": "feature.execute",
+      "derived": "candidate_count",
+      "from": "warm_count + folded_groups",
+      "formula": "A+B",
+      "n": 1
+    },
+    {
+      "action": "feature.execute",
+      "derived": "candidate_count",
+      "from": "order_count - total_sentences_dropped",
+      "formula": "A-B",
+      "n": 1
+    },
+    {
+      "action": "feature.execute",
+      "derived": "candidate_count",
+      "from": "order_count + total_sentences_dropped",
+      "formula": "A+B",
+      "n": 1
+    }
+  ],
+  "deterministic_successors": [],
+  "identified_hash_rules": [],
+  "popular_substrings": [
+    {
+      "substr": "air.compress\",\"status\":\"ok\",\"summary\":\"compressed ",
+      "receipts": 3126
+    },
+    {
+      "substr": "0 sentences dropped\",\"payload_json\":\"{\\\"ratio\\\":0.",
+      "receipts": 2207
+    },
+    {
+      "substr": "_count\\\":1,\\\"dropped\\\":0,\\\"citations\\\":0}\",\"create",
+      "receipts": 2193
+    },
+    {
+      "substr": "\\\":0,\\\"citations\\\":0}\",\"created_at\":\"2026-06-26T09",
+      "receipts": 2193
+    },
+    {
+      "substr": "s\":\"ok\",\"summary\":\"compressed 26B → 29B (0.897x) —",
+      "receipts": 805
+    },
+    {
+      "substr": "ompressed 26B → 29B (0.897x) — 1 atoms, 0 sentence",
+      "receipts": 805
+    },
+    {
+      "substr": "(0.897x) — 1 atoms, 0 sentences dropped\",\"payload_",
+      "receipts": 805
+    },
+    {
+      "substr": ",\"payload_json\":\"{\\\"ratio\\\":0.897,\\\"atom_count\\\":1",
+      "receipts": 805
+    },
+    {
+      "substr": "ratio\\\":0.897,\\\"atom_count\\\":1,\\\"dropped\\\":0,\\\"cit",
+      "receipts": 805
+    },
+    {
+      "substr": "s\":\"ok\",\"summary\":\"compressed 27B → 30B (0.9x) — 1",
+      "receipts": 679
+    }
+  ]
+}

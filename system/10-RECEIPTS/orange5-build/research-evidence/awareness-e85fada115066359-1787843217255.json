@@ -1,0 +1,116 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-e85fada115066359-1787843217255",
+  "query": "{\"action\":\"analyze.agent\",\"payload\":{\"parentOrder\":{\"action\":\"filesystem.read\",\"intent\":\"Read the OrangeFive master plan title using governed evidence.\",\"targetProject\":\"orange5\",\"scope\":\"00-CHARTER/ORANGE5_MASTER_PLAN.md\",\"objective\":null,\"constraints\":[],\"evidence\":[\"governed:filesystem.read:aea8be01d987603e:# AE Orange5 — Master Plan > **Runtime authority:** Th\"],\"riskLevel\":\"read_only\",\"allowedActions\":[\"filesystem.read\"],\"forbiddenActions\":[\"destructive_write\",\"production_deploy\",\"scope_expansion\",\"egress_unbounded\"],\"governedExecution\":{\"action\":\"filesystem.read\",\"resultHash\":\"aea8be01d987603e723b9b84d841980cb6a85bc1b6285cf4fae5aa92c8596923\",\"receiptSha256\":\"ee1165618884727b2a793307092622ea8bb13451c7ed53bd6259777c90262979\",\"excerpt\":\"# AE Orange5 — Master Plan > **Runtime authority:** This file preserves the locked design history. Current > host roles, model residency, en\"}},\"agent\":\"domain-worker\",\"delegationId\":\"nav-244449b4-686a-444e-ac3b-b007b35e4a30\",\"allowedTools\":[\"read\",\"receipts\"]},\"intent\":\"domain-worker independently evaluates: Read the OrangeFive master plan title using governed evidence.\",\"targetProject\":\"orange5\",\"evidence\":[\"governed:filesystem.read:aea8be01d98 OrangeFive orange5",
+  "searchQuery": "action analyze.agent payload parentorder filesystem.read intent read the",
+  "generatedAt": "2026-08-27T15:06:57.260Z",
+  "budgetMs": 60000,
+  "elapsedMs": 574,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "157765438",
+      "title": "UWaterloo-ASL/Agent_Action_Data_Analysis",
+      "url": "https://github.com/UWaterloo-ASL/Agent_Action_Data_Analysis",
+      "summary": "This repository keeps code to analyze agents' action collected in ROM.",
+      "updatedAt": "2020-02-29T03:25:42Z",
+      "license": "MIT",
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "Organization",
+      "archived": false,
+      "observedAt": "2026-08-27T15:06:57.260Z",
+      "contentSha256": "e5158ab291bda6ead0f23325b53dba72e04a2d8f02b0a7b2aca5e05147da35b0",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "e5158ab291bda6ead0f23325b53dba72e04a2d8f02b0a7b2aca5e05147da35b0",
+      "immutableRef": "https://github.com/UWaterloo-ASL/Agent_Action_Data_Analysis#orange-evidence-sha256=e5158ab291bda6ead0f23325b53dba72e04a2d8f02b0a7b2aca5e05147da35b0",
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.765,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1190035757",
+      "title": "felixglush/explain-analyze-agent",
+      "url": "https://github.com/felixglush/explain-analyze-agent",
+      "summary": "GitHub Action that runs EXPLAIN ANALYZE on SQL in PR diffs and posts inline review comments via Claude",
+      "updatedAt": "2026-03-24T15:24:47Z",
+      "license": null,
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "observedAt": "2026-08-27T15:06:57.260Z",
+      "contentSha256": "44d6c2dff065a65a78993600929efde8bec9c015ed08d5505493c59c999cc705",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "44d6c2dff065a65a78993600929efde8bec9c015ed08d5505493c59c999cc705",
+      "immutableRef": "https://github.com/felixglush/explain-analyze-agent#orange-evidence-sha256=44d6c2dff065a65a78993600929efde8bec9c015ed08d5505493c59c999cc705",
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1294478166",
+      "title": "ewardGPT/agent-telemetry",
+      "url": "https://github.com/ewardGPT/agent-telemetry",
+      "summary": "Production observability for AI agents — trace, query, and analyze agent actions",
+      "updatedAt": "2026-07-10T16:29:58Z",
+      "license": null,
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "observedAt": "2026-08-27T15:06:57.260Z",
+      "contentSha256": "75da2328df396d7a83fa27da9d266a8ace88c9e52a04bcd3555db6f1234a8e7e",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "75da2328df396d7a83fa27da9d266a8ace88c9e52a04bcd3555db6f1234a8e7e",
+      "immutableRef": "https://github.com/ewardGPT/agent-telemetry#orange-evidence-sha256=75da2328df396d7a83fa27da9d266a8ace88c9e52a04bcd3555db6f1234a8e7e",
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "52d596879f9c181d556025220dbe6640324fe2d7cb2f47026327628bfff4d2c5"
+}

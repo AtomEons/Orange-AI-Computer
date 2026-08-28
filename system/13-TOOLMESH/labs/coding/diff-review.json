@@ -1,0 +1,104 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "coding",
+  "card_id": "diff-review",
+  "capability": "coding.diff-review",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["diff_source"],
+    "properties": {
+      "diff_source": {
+        "type": "string",
+        "description": "How to obtain the diff under review. 'inline' uses the 'diff' field; 'git-range' computes 'base..head'; 'staged' uses the workspace index; 'working-tree' uses unstaged changes.",
+        "enum": ["inline", "git-range", "staged", "working-tree"]
+      },
+      "diff": {
+        "type": "string",
+        "description": "Unified diff payload when diff_source='inline'. Ignored otherwise.",
+        "minLength": 1,
+        "maxLength": 1048576
+      },
+      "base": {
+        "type": "string",
+        "description": "Base ref for diff_source='git-range' (commit sha, tag, or branch). Validated against the local repo.",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "head": {
+        "type": "string",
+        "description": "Head ref for diff_source='git-range'. Defaults to HEAD.",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "lenses": {
+        "type": "array",
+        "description": "Review angles to apply. Each lens is a deterministic checklist + LLM pass scoped to a single concern.",
+        "items": {
+          "type": "string",
+          "enum": ["correctness", "security", "performance", "readability", "test-coverage", "scope-drift"]
+        },
+        "minItems": 1,
+        "maxItems": 6,
+        "default": ["correctness", "security", "scope-drift"]
+      },
+      "max_findings": {
+        "type": "integer",
+        "description": "Soft cap on findings returned. Reviewer ranks by severity and truncates.",
+        "minimum": 1,
+        "maximum": 200,
+        "default": 50
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["findings", "verdict"],
+    "properties": {
+      "findings": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["lens", "severity", "path", "message"],
+          "properties": {
+            "lens": { "type": "string" },
+            "severity": { "type": "string", "enum": ["info", "warning", "blocker"] },
+            "path": { "type": "string" },
+            "line": { "type": "integer", "minimum": 1 },
+            "message": { "type": "string" },
+            "suggested_fix": { "type": "string" }
+          }
+        }
+      },
+      "verdict": {
+        "type": "string",
+        "description": "Aggregate signal for the planner. 'block' = at least one blocker finding; 'caution' = warnings only; 'clean' = no findings above info.",
+        "enum": ["clean", "caution", "block"]
+      },
+      "files_reviewed": { "type": "integer", "minimum": 0 },
+      "lines_added": { "type": "integer", "minimum": 0 },
+      "lines_removed": { "type": "integer", "minimum": 0 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 20,
+    "scopes": [
+      "fs.read:sandbox://workspace/",
+      "process.spawn:git",
+      "model.invoke:reviewer",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 12
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Multi-lens review of a diff (correctness, security, performance, readability, test-coverage, scope-drift). Returns a verdict the planner can gate on before merge or apply.",
+  "tags": ["coding", "review", "diff", "security", "scope-drift", "read-only"]
+}

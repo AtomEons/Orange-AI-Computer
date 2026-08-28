@@ -1,0 +1,14 @@
+{
+  "schema": "orange.model-lease.v2",
+  "command": "cleanup",
+  "created_at": "2026-08-27T03:35:14.231Z",
+  "host": "WIN-IB7K3UTA9DS",
+  "payload": {
+    "dry_run": true,
+    "cleanup_scope": "managed_models_only",
+    "remove": [],
+    "managed_models": [],
+    "unowned_models_preserved": true
+  },
+  "sha256": "81480f2f3f576e7f20afa3046c23ca5b451eab975d7ac864b00cb563a2571077"
+}

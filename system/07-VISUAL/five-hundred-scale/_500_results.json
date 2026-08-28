@@ -1,0 +1,1573 @@
+{
+  "results": {
+    "W": {
+      "variant": "W",
+      "correct": 240,
+      "total": 282,
+      "failures": [
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.004262433266144505
+        },
+        {
+          "cls": "buff-doge-vs-cheems",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "clown-applying-makeup",
+          "margin": 0.001132231165573927
+        },
+        {
+          "cls": "epic-handshake",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "third-world-skeptical-kid",
+          "margin": 0.00841529366432514
+        },
+        {
+          "cls": "expanding-brain",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "pic1",
+          "margin": 0.01605415614181016
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "soldier-protecting-sleeping-child",
+          "margin": 0.01799047205371096
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "pic2",
+          "margin": 0.0008667124631598355
+        },
+        {
+          "cls": "left-exit-12-off-ramp",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "butterfly",
+          "margin": 0.017357153612073795
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.008156443944084657
+        },
+        {
+          "cls": "one-does-not-simply",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "you-guys-are-getting-paid",
+          "margin": 0.008910818758690375
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "left-exit-12-off-ramp",
+          "margin": 0.0014379920318710049
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "megamind-no-bitches",
+          "margin": 0.0020684271971029844
+        },
+        {
+          "cls": "running-away-balloon",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "butterfly",
+          "margin": 0.015178264404830166
+        },
+        {
+          "cls": "running-away-balloon",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "butterfly",
+          "margin": 0.0021837234486099533
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "pic6",
+          "margin": 0.000791718604781444
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "grandma-finds-the-internet",
+          "margin": 0.014855257348114215
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "disaster-girl",
+          "margin": 0.001319448104363019
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "im-the-captain-now",
+          "margin": 0.013778278032792635
+        },
+        {
+          "cls": "woman-yelling-at-cat",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "tuxedo-winnie-the-pooh",
+          "margin": 0.02605667285537816
+        },
+        {
+          "cls": "apple",
+          "held_idx": 3,
+          "held_file": "moon",
+          "predicted": "baboon",
+          "margin": 0.013552819476725375
+        },
+        {
+          "cls": "apple",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "pic3",
+          "margin": 0.19741882657245569
+        },
+        {
+          "cls": "baboon",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "apple",
+          "margin": 0.01969046835890076
+        },
+        {
+          "cls": "baboon",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "apple",
+          "margin": 0.0018916410297844521
+        },
+        {
+          "cls": "board",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "change-my-mind",
+          "margin": 0.0022517666399464176
+        },
+        {
+          "cls": "board",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "bike-fall",
+          "margin": 0.005266394242809724
+        },
+        {
+          "cls": "building",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "squidward-window",
+          "margin": 0.006708248009335449
+        },
+        {
+          "cls": "building",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "friendship-ended",
+          "margin": 0.0024365548496740885
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "board",
+          "margin": 0.02520685023366731
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 3,
+          "held_file": "moon",
+          "predicted": "building",
+          "margin": 0.004005068902900533
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "hide-the-pain-harold",
+          "margin": 0.005965517797900333
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "running-away-balloon",
+          "margin": 0.03928830501942837
+        },
+        {
+          "cls": "fruits",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "orange",
+          "margin": 0.05211458595374374
+        },
+        {
+          "cls": "home",
+          "held_idx": 3,
+          "held_file": "moon",
+          "predicted": "starry_night",
+          "margin": 0.020933571807794316
+        },
+        {
+          "cls": "lena",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "pic2",
+          "margin": 0.011407817152020883
+        },
+        {
+          "cls": "lena",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "baboon",
+          "margin": 0.028873650967315534
+        },
+        {
+          "cls": "messi5",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "trade-offer",
+          "margin": 0.01847872996110489
+        },
+        {
+          "cls": "orange",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "starry_night",
+          "margin": 0.0317563263025491
+        },
+        {
+          "cls": "pic2",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "hide-the-pain-harold",
+          "margin": 0.0016870444103229687
+        },
+        {
+          "cls": "pic2",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "baboon",
+          "margin": 0.09012357875159349
+        },
+        {
+          "cls": "pic3",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "buff-doge-vs-cheems",
+          "margin": 0.02171211317302557
+        },
+        {
+          "cls": "pic5",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "soldier-protecting-sleeping-child",
+          "margin": 0.005275948900522742
+        },
+        {
+          "cls": "pic6",
+          "held_idx": 0,
+          "held_file": "raw",
+          "predicted": "cmon-do-something",
+          "margin": 0.004090877818955008
+        },
+        {
+          "cls": "starry_night",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "home",
+          "margin": 0.006610037290752935
+        }
+      ]
+    },
+    "W+1_fm_head": {
+      "variant": "W+1_fm_head",
+      "correct": 232,
+      "total": 282,
+      "failures": [
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.013123179669452867
+        },
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "you-know-im-something-of-a-scientist-myself",
+          "margin": 0.006432756160917208
+        },
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "uno-draw-25-cards",
+          "margin": 0.036202238620642646
+        },
+        {
+          "cls": "boardroom-meeting-suggestion",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "butterfly",
+          "margin": 0.003699033070992286
+        },
+        {
+          "cls": "buff-doge-vs-cheems",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "no-yes",
+          "margin": 0.0007160726427350994
+        },
+        {
+          "cls": "epic-handshake",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "hide-the-pain-harold",
+          "margin": 0.004826383070412277
+        },
+        {
+          "cls": "expanding-brain",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "pic1",
+          "margin": 0.025048880295042153
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "soldier-protecting-sleeping-child",
+          "margin": 0.023942519465860457
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "butterfly",
+          "margin": 0.04150683375034703
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "domino-effect",
+          "margin": 0.0022026758012163583
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "building",
+          "margin": 0.02222230641356937
+        },
+        {
+          "cls": "left-exit-12-off-ramp",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "board",
+          "margin": 0.01113467514776545
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.020852825766361605
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.008340574698118886
+        },
+        {
+          "cls": "one-does-not-simply",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "you-guys-are-getting-paid",
+          "margin": 0.009426120593062137
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "left-exit-12-off-ramp",
+          "margin": 0.0055568176813913794
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "megamind-no-bitches",
+          "margin": 0.0007369038077893464
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "building",
+          "margin": 0.04860313639902003
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "hide-the-pain-harold",
+          "margin": 0.009505437503335656
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "two-buttons",
+          "margin": 0.0013295537580919614
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "tuxedo-winnie-the-pooh",
+          "margin": 0.00019389141963088719
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "grandma-finds-the-internet",
+          "margin": 0.027128793382733107
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "sad-pablo-escobar",
+          "margin": 0.002720267108223595
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "disappointed-black-guy",
+          "margin": 0.009100287928133
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "woman-yelling-at-cat",
+          "margin": 0.0035019839923897678
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "pic6",
+          "margin": 0.00902238604428085
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "woman-yelling-at-cat",
+          "margin": 0.0044625471666375205
+        },
+        {
+          "cls": "two-buttons",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "the-scroll-of-truth",
+          "margin": 0.05915596892869246
+        },
+        {
+          "cls": "waiting-skeleton",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "boardroom-meeting-suggestion",
+          "margin": 0.0037717608703307093
+        },
+        {
+          "cls": "woman-yelling-at-cat",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "tuxedo-winnie-the-pooh",
+          "margin": 0.027236406992207307
+        },
+        {
+          "cls": "x-x-everywhere",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "bike-fall",
+          "margin": 0.0018722588162720655
+        },
+        {
+          "cls": "apple",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "pic3",
+          "margin": 0.5239103061513264
+        },
+        {
+          "cls": "baboon",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "fruits",
+          "margin": 0.005357147541021234
+        },
+        {
+          "cls": "baboon",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "lena",
+          "margin": 0.00640249552681027
+        },
+        {
+          "cls": "board",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "change-my-mind",
+          "margin": 0.015024629900347364
+        },
+        {
+          "cls": "building",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "sad-pablo-escobar",
+          "margin": 0.0274496144558114
+        },
+        {
+          "cls": "building",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "roll-safe-think-about-it",
+          "margin": 0.0023704487986009326
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "hide-the-pain-harold",
+          "margin": 0.010409266599124223
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 3,
+          "held_file": "moon",
+          "predicted": "friendship-ended",
+          "margin": 0.006525222257689478
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "hide-the-pain-harold",
+          "margin": 0.03844354094489866
+        },
+        {
+          "cls": "fruits",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "orange",
+          "margin": 0.08360788077020587
+        },
+        {
+          "cls": "lena",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "pic2",
+          "margin": 0.01613886210704152
+        },
+        {
+          "cls": "lena",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "apple",
+          "margin": 0.04897161585671306
+        },
+        {
+          "cls": "messi5",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "running-away-balloon",
+          "margin": 0.05280421220762754
+        },
+        {
+          "cls": "orange",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "starry_night",
+          "margin": 0.02287273571303139
+        },
+        {
+          "cls": "pic3",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "buff-doge-vs-cheems",
+          "margin": 0.031427197091110415
+        },
+        {
+          "cls": "pic5",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "board",
+          "margin": 0.004042895315976125
+        },
+        {
+          "cls": "pic5",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "blank-nut-button",
+          "margin": 0.019662659914491343
+        },
+        {
+          "cls": "pic6",
+          "held_idx": 0,
+          "held_file": "raw",
+          "predicted": "cmon-do-something",
+          "margin": 0.04189934762213632
+        },
+        {
+          "cls": "starry_night",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "orange",
+          "margin": 0.08070738428508228
+        }
+      ]
+    },
+    "W+GRAND_1": {
+      "variant": "W+GRAND_1",
+      "correct": 226,
+      "total": 282,
+      "failures": [
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.005727675682985378
+        },
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "grant-gustin-over-grave",
+          "margin": 0.006240047679273886
+        },
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "roll-safe-think-about-it",
+          "margin": 0.0033216278129177823
+        },
+        {
+          "cls": "boardroom-meeting-suggestion",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "hide-the-pain-harold",
+          "margin": 0.004669721520937031
+        },
+        {
+          "cls": "change-my-mind",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "building",
+          "margin": 0.017580770736755014
+        },
+        {
+          "cls": "change-my-mind",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "charlie-conspiracy-always-sunny-in-philidelphia",
+          "margin": 0.004020266488270252
+        },
+        {
+          "cls": "epic-handshake",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "grandma-finds-the-internet",
+          "margin": 0.004205081083490825
+        },
+        {
+          "cls": "futurama-fry",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "say-the-line-bart-simpsons",
+          "margin": 0.07838754957302818
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "boardroom-meeting-suggestion",
+          "margin": 0.0009682185343020677
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "pic2",
+          "margin": 0.00012073920166955077
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "boardroom-meeting-suggestion",
+          "margin": 0.0073456524129209555
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "left-exit-12-off-ramp",
+          "margin": 0.0012934952932024402
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "domino-effect",
+          "margin": 0.0019157764438357816
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "change-my-mind",
+          "margin": 0.003036183322905117
+        },
+        {
+          "cls": "left-exit-12-off-ramp",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "roll-safe-think-about-it",
+          "margin": 0.002358590174612374
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "three-headed-dragon",
+          "margin": 0.026434519145434265
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "building",
+          "margin": 0.010905519074460912
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.0039880524489053215
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "aj-styles-undertaker",
+          "margin": 0.009124047189427387
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "all-my-homies-hate",
+          "margin": 0.00031217541021355544
+        },
+        {
+          "cls": "one-does-not-simply",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "you-guys-are-getting-paid",
+          "margin": 0.00023994918348080319
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "left-exit-12-off-ramp",
+          "margin": 0.004698157149062965
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "trump-bill-signing",
+          "margin": 0.006369746481638572
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "is-this-a-pigeon",
+          "margin": 0
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "building",
+          "margin": 0.0329036787664041
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "uno-draw-25-cards",
+          "margin": 0.00043474981297642046
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "roll-safe-think-about-it",
+          "margin": 0.004515081896679263
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "two-buttons",
+          "margin": 0.00909076342275128
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "roll-safe-think-about-it",
+          "margin": 0.00017638746171044772
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "woman-yelling-at-cat",
+          "margin": 0.000049441950798367884
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "sleeping-shaq",
+          "margin": 0.0005291167902772287
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "woman-yelling-at-cat",
+          "margin": 0.004576517744549591
+        },
+        {
+          "cls": "two-buttons",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "the-scroll-of-truth",
+          "margin": 0.019578999390878593
+        },
+        {
+          "cls": "uno-draw-25-cards",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "hide-the-pain-harold",
+          "margin": 0.002983208169963447
+        },
+        {
+          "cls": "waiting-skeleton",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.007959558799147004
+        },
+        {
+          "cls": "woman-yelling-at-cat",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "tuxedo-winnie-the-pooh",
+          "margin": 0.006778154246733337
+        },
+        {
+          "cls": "x-x-everywhere",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.0009253180642811998
+        },
+        {
+          "cls": "x-x-everywhere",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "epic-handshake",
+          "margin": 0.005075767395505082
+        },
+        {
+          "cls": "apple",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "baboon",
+          "margin": 0.2582628155033735
+        },
+        {
+          "cls": "baboon",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "apple",
+          "margin": 0.025800562227647816
+        },
+        {
+          "cls": "baboon",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "apple",
+          "margin": 0.5583779871145218
+        },
+        {
+          "cls": "building",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "sad-pablo-escobar",
+          "margin": 0.001235183719650479
+        },
+        {
+          "cls": "building",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "is-this-a-pigeon",
+          "margin": 0
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 3,
+          "held_file": "moon",
+          "predicted": "waiting-skeleton",
+          "margin": 0.007500936159445359
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "running-away-balloon",
+          "margin": 0.0008223471625594669
+        },
+        {
+          "cls": "fruits",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "orange",
+          "margin": 0.030693988125561233
+        },
+        {
+          "cls": "home",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "orange",
+          "margin": 0.18289211680560769
+        },
+        {
+          "cls": "lena",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "apple",
+          "margin": 0.28158754246539885
+        },
+        {
+          "cls": "messi5",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "starry_night",
+          "margin": 0.11027374137864854
+        },
+        {
+          "cls": "pic2",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "board",
+          "margin": 0.12441069813356442
+        },
+        {
+          "cls": "pic4",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "baboon",
+          "margin": 0.0806809203268859
+        },
+        {
+          "cls": "pic5",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "board",
+          "margin": 0.0030041634845510146
+        },
+        {
+          "cls": "pic5",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "blank-nut-button",
+          "margin": 0.01638181290860352
+        },
+        {
+          "cls": "pic6",
+          "held_idx": 0,
+          "held_file": "raw",
+          "predicted": "cmon-do-something",
+          "margin": 0.07998350760519557
+        },
+        {
+          "cls": "starry_night",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "orange",
+          "margin": 0.08370902864106178
+        },
+        {
+          "cls": "notes",
+          "held_idx": 0,
+          "held_file": "raw",
+          "predicted": "expanding-brain",
+          "margin": 0.02370593710578639
+        }
+      ]
+    },
+    "W+1+heavy_shape": {
+      "variant": "W+1+heavy_shape",
+      "correct": 210,
+      "total": 282,
+      "failures": [
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.002489572031487697
+        },
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "you-know-im-something-of-a-scientist-myself",
+          "margin": 0.0007757077623899988
+        },
+        {
+          "cls": "bernie-i-am-once-again-asking-for-your-support",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "roll-safe-think-about-it",
+          "margin": 0.003350363618993768
+        },
+        {
+          "cls": "blank-nut-button",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "fruits",
+          "margin": 0.0006146683611198966
+        },
+        {
+          "cls": "boardroom-meeting-suggestion",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "uno-draw-25-cards",
+          "margin": 0.010830022057982447
+        },
+        {
+          "cls": "change-my-mind",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "building",
+          "margin": 0.013943734748584902
+        },
+        {
+          "cls": "change-my-mind",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "megamind-peeking",
+          "margin": 0.0009019499619338234
+        },
+        {
+          "cls": "change-my-mind",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "charlie-conspiracy-always-sunny-in-philidelphia",
+          "margin": 0.0063227097467866145
+        },
+        {
+          "cls": "change-my-mind",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "star-wars-yoda",
+          "margin": 0.00029980360941550543
+        },
+        {
+          "cls": "disaster-girl",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "boardroom-meeting-suggestion",
+          "margin": 0.004181381417886598
+        },
+        {
+          "cls": "epic-handshake",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "inhaling-seagull",
+          "margin": 0.0014322113579510187
+        },
+        {
+          "cls": "expanding-brain",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "theyre-the-same-picture",
+          "margin": 0.005830901939514632
+        },
+        {
+          "cls": "expanding-brain",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "pic2",
+          "margin": 0.009355528960622195
+        },
+        {
+          "cls": "futurama-fry",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "blank-nut-button",
+          "margin": 0.02689071620280714
+        },
+        {
+          "cls": "futurama-fry",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "tuxedo-winnie-the-pooh",
+          "margin": 0.01021455041695063
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "soldier-protecting-sleeping-child",
+          "margin": 0.0013518705909163486
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "butterfly",
+          "margin": 0.0006830386142979705
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "boardroom-meeting-suggestion",
+          "margin": 0.0007929301778766273
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "sad-pablo-escobar",
+          "margin": 0.005195717611471196
+        },
+        {
+          "cls": "hide-the-pain-harold",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "change-my-mind",
+          "margin": 0.00444688675603544
+        },
+        {
+          "cls": "left-exit-12-off-ramp",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "board",
+          "margin": 0.013416755550043291
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "x-x-everywhere",
+          "margin": 0.001358042734016962
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "mocking-spongebob",
+          "margin": 0.04385063770704534
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "bernie-i-am-once-again-asking-for-your-support",
+          "margin": 0.016944399455772086
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.010202350283911699
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "ancient-aliens",
+          "margin": 0.002173025715928034
+        },
+        {
+          "cls": "leonardo-dicaprio-cheers",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "bernie-i-am-once-again-asking-for-your-support",
+          "margin": 0.007063129579698568
+        },
+        {
+          "cls": "mocking-spongebob",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "running-away-balloon",
+          "margin": 0.015351994703738825
+        },
+        {
+          "cls": "mocking-spongebob",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "three-headed-dragon",
+          "margin": 0.0030056238052615925
+        },
+        {
+          "cls": "one-does-not-simply",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "you-guys-are-getting-paid",
+          "margin": 0.0027856844487850196
+        },
+        {
+          "cls": "one-does-not-simply",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "blank-nut-button",
+          "margin": 0.019733850560825772
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "left-exit-12-off-ramp",
+          "margin": 0.002720526511838628
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "all-my-homies-hate",
+          "margin": 0.0018163590470532398
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "is-this-a-pigeon",
+          "margin": 0
+        },
+        {
+          "cls": "roll-safe-think-about-it",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "empire-state-building-climbers",
+          "margin": 0.0064015503864265355
+        },
+        {
+          "cls": "running-away-balloon",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "mocking-spongebob",
+          "margin": 0.0006838346855246868
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "building",
+          "margin": 0.033210065156417556
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "hide-the-pain-harold",
+          "margin": 0.010586076210328699
+        },
+        {
+          "cls": "sad-pablo-escobar",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "grant-gustin-over-grave",
+          "margin": 0.0011605307752926564
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "tuxedo-winnie-the-pooh",
+          "margin": 0.010194134496344986
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "grandma-finds-the-internet",
+          "margin": 0.00640250639708384
+        },
+        {
+          "cls": "surprised-pikachu",
+          "held_idx": 4,
+          "held_file": "variant-4.jpg",
+          "predicted": "sad-pablo-escobar",
+          "margin": 0.00464650720822668
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "monkey-puppet",
+          "margin": 0.0014444219660951774
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "woman-yelling-at-cat",
+          "margin": 0.009921718862386797
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 3,
+          "held_file": "variant-3.jpg",
+          "predicted": "pic6",
+          "margin": 0.00024773357636931337
+        },
+        {
+          "cls": "tuxedo-winnie-the-pooh",
+          "held_idx": 5,
+          "held_file": "variant-5.jpg",
+          "predicted": "woman-yelling-at-cat",
+          "margin": 0.0017547697874391588
+        },
+        {
+          "cls": "two-buttons",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "the-scroll-of-truth",
+          "margin": 0.021581801211695506
+        },
+        {
+          "cls": "uno-draw-25-cards",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "boardroom-meeting-suggestion",
+          "margin": 0.003195198550972833
+        },
+        {
+          "cls": "waiting-skeleton",
+          "held_idx": 1,
+          "held_file": "variant-1.jpg",
+          "predicted": "butterfly",
+          "margin": 0.008869644672552468
+        },
+        {
+          "cls": "woman-yelling-at-cat",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "tuxedo-winnie-the-pooh",
+          "margin": 0.008475647733583003
+        },
+        {
+          "cls": "x-x-everywhere",
+          "held_idx": 0,
+          "held_file": "template.jpg",
+          "predicted": "fruits",
+          "margin": 0.015270427466267833
+        },
+        {
+          "cls": "x-x-everywhere",
+          "held_idx": 2,
+          "held_file": "variant-2.jpg",
+          "predicted": "leonardo-dicaprio-cheers",
+          "margin": 0.0023043478033777376
+        },
+        {
+          "cls": "apple",
+          "held_idx": 3,
+          "held_file": "moon",
+          "predicted": "spider-man-triple",
+          "margin": 0.005637352041933497
+        },
+        {
+          "cls": "apple",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "baboon",
+          "margin": 0.26430804361899085
+        },
+        {
+          "cls": "baboon",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "apple",
+          "margin": 0.020043535379658195
+        },
+        {
+          "cls": "baboon",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "apple",
+          "margin": 0.5274860303773146
+        },
+        {
+          "cls": "building",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "sad-pablo-escobar",
+          "margin": 0.018947123445174796
+        },
+        {
+          "cls": "building",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "change-my-mind",
+          "margin": 0.003554965073224281
+        },
+        {
+          "cls": "building",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "is-this-a-pigeon",
+          "margin": 0
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 3,
+          "held_file": "moon",
+          "predicted": "anakin-padme-4-panel",
+          "margin": 0.01337232725504478
+        },
+        {
+          "cls": "butterfly",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "pic5",
+          "margin": 0.008489342412866918
+        },
+        {
+          "cls": "fruits",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "orange",
+          "margin": 0.017850379907677905
+        },
+        {
+          "cls": "home",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "orange",
+          "margin": 0.14968580191080072
+        },
+        {
+          "cls": "lena",
+          "held_idx": 4,
+          "held_file": "crt",
+          "predicted": "is-this-a-pigeon",
+          "margin": 0
+        },
+        {
+          "cls": "lena",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "apple",
+          "margin": 0.240366292207419
+        },
+        {
+          "cls": "messi5",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "starry_night",
+          "margin": 0.0758391350743679
+        },
+        {
+          "cls": "pic2",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "board",
+          "margin": 0.06673556023520177
+        },
+        {
+          "cls": "pic3",
+          "held_idx": 2,
+          "held_file": "candle",
+          "predicted": "buff-doge-vs-cheems",
+          "margin": 0.018216036419063997
+        },
+        {
+          "cls": "pic4",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "baboon",
+          "margin": 0.08838740949164503
+        },
+        {
+          "cls": "pic5",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "blank-nut-button",
+          "margin": 0.000016235178735612976
+        },
+        {
+          "cls": "pic6",
+          "held_idx": 0,
+          "held_file": "raw",
+          "predicted": "cmon-do-something",
+          "margin": 0.007365893695958192
+        },
+        {
+          "cls": "starry_night",
+          "held_idx": 5,
+          "held_file": "neon",
+          "predicted": "orange",
+          "margin": 0.004559778316915342
+        }
+      ]
+    }
+  },
+  "best": "W"
+}

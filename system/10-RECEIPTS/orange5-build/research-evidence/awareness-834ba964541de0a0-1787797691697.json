@@ -1,0 +1,201 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-834ba964541de0a0-1787797691697",
+  "query": "{\"intent\":\"Perform a cross-discipline deep review of OrangeFive for agent theater, stale research, source drift, false green, silent service failure, and project-scope loss. Return deterministic probes that keep operator, models, and machines in one reality.\",\"evidence\":[\"scouts=4/4;sources=19;sha=e29e6f69893c63a5\",\"candidates=19;status=BENCHMARK_REQUIRED;sha=0572db35033aa8af\"],\"context\":{\"scouts\":[{\"id\":\"runtime-orchestration\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":2},{\"id\":\"memory-compression-learning\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":5},{\"id\":\"models-and-creative\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":10},{\"id\":\"security-and-operator-reality\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":2}],\"candidates\":[{\"title\":\"The Sleeping Agent: What Gist-Based Context Compression Loses and Why\",\"url\":\"http://arxiv.org/abs/2608.11775v1\",\"summary\":\"Gist-based context compression---summarising older conversation history into compact representations---is a common approach in long-horizon \",\"sourceQuality\":0.855,\"freshness\":\"ESTABLISHED\",\"lifecycle\":\"BENCHMARK_REQUIRED\"},{\"title\":\"Ontology-Grounded Project Memory for Coding Agents\",\"url\":\"http://arxiv.or OrangeFive orange5",
+  "searchQuery": "intent perform cross-discipline deep review for agent theater",
+  "generatedAt": "2026-08-27T02:28:11.721Z",
+  "budgetMs": 60000,
+  "elapsedMs": 357,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "42303445",
+      "title": "vfarafonov/idea-intent-sender-plugin",
+      "url": "https://github.com/vfarafonov/idea-intent-sender-plugin",
+      "summary": "Idea/AndroidStudio plugin for common operation that typically performed via adb shell",
+      "updatedAt": "2022-04-12T09:17:14Z",
+      "license": null,
+      "stars": 40,
+      "forks": 4,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7973,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "perform"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1239512772",
+      "title": "SaFo-Lab/Latent_Policy_Guard",
+      "url": "https://github.com/SaFo-Lab/Latent_Policy_Guard",
+      "summary": "Latent Policy Guard (LPG) — a guardrail model that performs semantic latent deliberation over dynamic safety policies. LPG compresses intent and risk reasoning into latent tokens and emits a compact policy-indexed verdict.",
+      "updatedAt": "2026-07-20T07:27:21Z",
+      "license": "MIT",
+      "stars": 5,
+      "forks": 0,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7806,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "perform"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1146206366",
+      "title": "oguzhantopgul/skill-security-reviewer",
+      "url": "https://github.com/oguzhantopgul/skill-security-reviewer",
+      "summary": "An AI skill that teaches language models how to perform intelligent security reviews of agent skills. Unlike static scanners that match patterns, this skill enables contextual threat analysis, intent reasoning, and detection of novel attacks.",
+      "updatedAt": "2026-08-20T05:32:10Z",
+      "license": "NOASSERTION",
+      "stars": 8,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1991,
+      "relevance": {
+        "score": 0.5321,
+        "matched": 4,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "perform",
+          "review",
+          "agent"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "82679752",
+      "title": "poornalingam/PerformanceEngineeringService",
+      "url": "https://github.com/poornalingam/PerformanceEngineeringService",
+      "summary": "This repository is intent to cover performance engineering of system and application. It will cover tools and techniques to measure performance, performance tuning and build performance dashboards.",
+      "updatedAt": "2026-05-13T04:50:40Z",
+      "license": null,
+      "stars": 19,
+      "forks": 4,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.206,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "perform"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "180317055",
+      "title": "sharmaroshan/Online-Shoppers-Purchasing-Intention",
+      "url": "https://github.com/sharmaroshan/Online-Shoppers-Purchasing-Intention",
+      "summary": "In this data set we have perform classification or clustering and predict the intention of the Online Customers Purchasing Intention. The data set was formed so that each session would belong to a different user in a 1-year period to avoid any tendency to a specific campaign, special day, user profile, or period.",
+      "updatedAt": "2026-02-24T21:00:22Z",
+      "license": "Apache-2.0",
+      "stars": 17,
+      "forks": 9,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2051,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "perform"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "989717117",
+      "title": "ncolesummers/deep-research-research",
+      "url": "https://github.com/ncolesummers/deep-research-research",
+      "summary": "Develop a reusable playbook of evidence-backed prompting patterns that reliably drive thorough, source-cited research in four technical areas, plus a synthesis of cross-discipline heuristics.",
+      "updatedAt": "2025-05-24T18:12:47Z",
+      "license": "MIT",
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "cros discipline",
+          "deep"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "direct",
+      "url": "http://arxiv.org/abs/2608.11775v1",
+      "error": "UnexpectedRedirect fetching \"http://arxiv.org/abs/2608.11775v1\". For more information, pass `verbose: true` in the second argument to fetch()"
+    },
+    {
+      "provider": "direct",
+      "url": "http://arxiv.or",
+      "error": "Unable to connect. Is the computer able to access the url?"
+    }
+  ],
+  "sha256": "b9ab7da1cbb5c3bd3ae4bf3fcf6b80a6d1c64aeb21f675fb5b62941c289b4317"
+}

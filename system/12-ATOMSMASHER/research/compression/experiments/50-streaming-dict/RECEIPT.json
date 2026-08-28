@@ -1,0 +1,123 @@
+{
+  "experiment": "50-streaming-dict",
+  "generated_at": "2026-06-27",
+  "method_a_splits": [
+    {
+      "frac": 0.99,
+      "dict_raw": 2056526,
+      "targ_raw": 19059,
+      "dict_br": 119281,
+      "both_br": 120166,
+      "marg": 885,
+      "targ_marg_ratio": 21.54
+    },
+    {
+      "frac": 0.98,
+      "dict_raw": 2035566,
+      "targ_raw": 40019,
+      "dict_br": 118126,
+      "both_br": 120166,
+      "marg": 2040,
+      "targ_marg_ratio": 19.62
+    },
+    {
+      "frac": 0.9,
+      "dict_raw": 1873643,
+      "targ_raw": 201942,
+      "dict_br": 109851,
+      "both_br": 120166,
+      "marg": 10315,
+      "targ_marg_ratio": 19.58
+    },
+    {
+      "frac": 0.95,
+      "dict_raw": 1976684,
+      "targ_raw": 98901,
+      "dict_br": 115083,
+      "both_br": 120166,
+      "marg": 5083,
+      "targ_marg_ratio": 19.46
+    },
+    {
+      "frac": 0.6,
+      "dict_raw": 1250985,
+      "targ_raw": 824600,
+      "dict_br": 77488,
+      "both_br": 120166,
+      "marg": 42678,
+      "targ_marg_ratio": 19.32
+    },
+    {
+      "frac": 0.8,
+      "dict_raw": 1671472,
+      "targ_raw": 404113,
+      "dict_br": 99163,
+      "both_br": 120166,
+      "marg": 21003,
+      "targ_marg_ratio": 19.24
+    },
+    {
+      "frac": 0.7,
+      "dict_raw": 1462241,
+      "targ_raw": 613344,
+      "dict_br": 88274,
+      "both_br": 120166,
+      "marg": 31892,
+      "targ_marg_ratio": 19.23
+    },
+    {
+      "frac": 0.5,
+      "dict_raw": 1030564,
+      "targ_raw": 1045021,
+      "dict_br": 65013,
+      "both_br": 120166,
+      "marg": 55153,
+      "targ_marg_ratio": 18.95
+    },
+    {
+      "frac": 0.4,
+      "dict_raw": 823412,
+      "targ_raw": 1252173,
+      "dict_br": 53882,
+      "both_br": 120166,
+      "marg": 66284,
+      "targ_marg_ratio": 18.89
+    },
+    {
+      "frac": 0.3,
+      "dict_raw": 617938,
+      "targ_raw": 1457647,
+      "dict_br": 41758,
+      "both_br": 120166,
+      "marg": 78408,
+      "targ_marg_ratio": 18.59
+    },
+    {
+      "frac": 0.2,
+      "dict_raw": 405125,
+      "targ_raw": 1670460,
+      "dict_br": 29485,
+      "both_br": 120166,
+      "marg": 90681,
+      "targ_marg_ratio": 18.42
+    },
+    {
+      "frac": 0.1,
+      "dict_raw": 202522,
+      "targ_raw": 1873063,
+      "dict_br": 16488,
+      "both_br": 120166,
+      "marg": 103678,
+      "targ_marg_ratio": 18.07
+    }
+  ],
+  "champion_marginal": {
+    "frac": 0.99,
+    "dict_raw": 2056526,
+    "targ_raw": 19059,
+    "dict_br": 119281,
+    "both_br": 120166,
+    "marg": 885,
+    "targ_marg_ratio": 21.54
+  }
+}

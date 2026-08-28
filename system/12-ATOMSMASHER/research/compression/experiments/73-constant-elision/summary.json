@@ -1,0 +1,38 @@
+{
+  "experiment": "73-constant-elision",
+  "ratio": 17.290778073975343,
+  "encode_ms": 4865.4561,
+  "decode_ms": 18.053200000000288,
+  "lossless": true,
+  "notes": "Probe found 0 strictly-constant top-level fields and 0 strictly-constant payload fields (status was 6223 \"ok\" + 1 \"error\", not strictly constant). Pass A (strict, strip nothing) = raw-jsonl-brotli baseline: 17.2726x. Pass B (extended near-constant: strip status, encode 1-row exception list): 17.2908x. Delta vs raw-brotli: 0.0181x (-0.10% size change). Baseline Method 19: 47.07x — extended pass is -29.78x worse. Exceptions: 1. Header compressed: 81 B. Lossless verified via sha256(reinsert-in-original-key-order).",
+  "detail": {
+    "pass_a_strict": {
+      "stripped": 0,
+      "compressed_total": 120166,
+      "ratio": 17.272647837158598,
+      "encode_ms": 5301.238,
+      "decode_ms": 8.627700000000004,
+      "lossless": true
+    },
+    "pass_b_extended": {
+      "stripped": [
+        "status"
+      ],
+      "exceptions": 1,
+      "header_compressed": 81,
+      "body_compressed": 119955,
+      "compressed_total": 120040,
+      "ratio": 17.290778073975343,
+      "encode_ms": 4865.4561,
+      "decode_ms": 18.053200000000288,
+      "lossless": true
+    },
+    "raw_brotli_baseline_ratio": 17.272647837158598,
+    "method_19_baseline_ratio": 47.07,
+    "delta_vs_raw_brotli_bytes": -126,
+    "delta_vs_raw_brotli_pct": -0.1,
+    "corpus_sha256": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+    "receipts": 6224,
+    "raw_bytes": 2075585
+  }
+}

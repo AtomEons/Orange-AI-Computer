@@ -1,0 +1,91 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "observability",
+  "card_id": "observability-metrics-query",
+  "capability": "observability.metrics.query",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["backend", "query", "start", "end"],
+    "properties": {
+      "backend": {
+        "type": "string",
+        "enum": ["prometheus", "thanos", "mimir", "datadog", "cloudwatch"]
+      },
+      "query": {
+        "type": "string",
+        "description": "Backend-native query (PromQL for prometheus/thanos/mimir, DD metric query for datadog, Metric Math for cloudwatch).",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "start": { "type": "string", "format": "date-time" },
+      "end": { "type": "string", "format": "date-time" },
+      "step_seconds": {
+        "type": "integer",
+        "description": "Resolution of the returned range vector in seconds. Runner clamps to backend-supported step values.",
+        "minimum": 1,
+        "maximum": 86400,
+        "default": 60
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["series", "backend"],
+    "properties": {
+      "backend": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "series": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["labels", "samples"],
+          "properties": {
+            "labels": {
+              "type": "object",
+              "additionalProperties": { "type": "string", "maxLength": 512 }
+            },
+            "samples": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["t", "v"],
+                "properties": {
+                  "t": { "type": "string", "format": "date-time" },
+                  "v": { "type": "number" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "warnings": {
+        "type": "array",
+        "items": { "type": "string", "maxLength": 500 }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 900,
+    "max_invocations": 100,
+    "scopes": [
+      "net.egress:prometheus.example.internal",
+      "net.egress:api.datadoghq.com",
+      "secrets.read:observability.metrics"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 60,
+    "egress_allowlist": ["prometheus.example.internal", "api.datadoghq.com"]
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:26:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Read-only metrics range query against Prometheus-family or vendor backends. Returns label-keyed time series for downstream analysis.",
+  "tags": ["observability", "metrics", "prometheus", "promql", "read-only"],
+  "notes": "Series fan-out can be expensive; the planner should narrow query selectors before widening time ranges. Runner does not summarize / aggregate beyond what the backend returns."
+}

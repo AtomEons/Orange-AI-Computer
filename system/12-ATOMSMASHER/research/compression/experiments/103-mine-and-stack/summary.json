@@ -1,0 +1,12 @@
+{
+  "experiment": "103-mine-and-stack",
+  "ratio": 44.006,
+  "encode_ms": 2902.6,
+  "decode_ms": 527,
+  "lossless": true,
+  "library_size_bytes": 4753,
+  "edges_mined": 247,
+  "baseline_m19": 47.071,
+  "vs_m19": -3.065,
+  "notes": "Mined 247 per-(action,field) deterministic constants across 65 actions. Stripped constants from payload, regenerated at decode. Library is JSON {action: {__order, consts}} brotli-compressed."
+}

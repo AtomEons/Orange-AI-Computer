@@ -1,0 +1,102 @@
+# Dependencies and build output
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+build/
+**/build/
+coverage/
+target/
+**/target/
+
+# Local environments and caches
+.venv/
+.venv-*/
+**/.venv/
+**/.venv-*/
+__pycache__/
+**/__pycache__/
+.pytest_cache/
+.cache/
+**/.cache/
+.hf/
+**/.hf/
+
+# Secrets and machine-local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Model weights and large generated binaries
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+*.blob
+*.tar
+*.tar.gz
+*.zip
+
+# Runtime databases, logs, temporary files, and generated state
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.log
+*.tmp
+*.pid
+*.lock
+.orange5-network-report.txt
+.orange5-sftp-*.txt
+runtime-logs/
+**/runtime-logs/
+**/.artifacts/
+
+# Live receipt exhaust. Durable Markdown proof and explicit fixtures remain tracked.
+10-RECEIPTS/orange5-build/*.json
+10-RECEIPTS/orange5-build/*.jsonl
+10-RECEIPTS/spine-chain.jsonl
+receipts/*.json
+receipts/*.jsonl
+10-RECEIPTS/atomic-orange/app/*.json
+10-RECEIPTS/atomic-orange/pixel/
+10-RECEIPTS/postmortems/
+10-RECEIPTS/**/ledger-repair-backups/
+10-RECEIPTS/codexa-migration/*.json
+10-RECEIPTS/spiral-audit/*.jsonl
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Atomic Orange is maintained as its own private repository.
+02-APP/
+
+# Deterministically generated stress fixtures exceed GitHub's blob limit.
+07-VISUAL/fixtures/cylinder-100k-labels/cylinder-100k.json
+07-VISUAL/fixtures/100k-orange-stress/100k-orange-index.json
+07-VISUAL/fixtures/canonical-corpus/
+07-VISUAL/fixtures/youtube-corpus/
+07-VISUAL/fixtures/meme-corpus/
+07-VISUAL/fixtures/training-corpus/videos/
+07-VISUAL/fixtures/sweep-5000/
+07-VISUAL/ten-k-x-100/cache/
+07-VISUAL/ten-k-x-100/cache-wide/
+07-VISUAL/five-hundred-scale/*cache.json
+07-VISUAL/w-plus-additive/*cache.json
+
+# Training checkpoints are reproducible local artifacts; keep final adapter metadata only.
+16-TRAINING/adapters/**/checkpoint-*/
+*.bun-build

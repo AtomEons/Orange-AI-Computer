@@ -1,0 +1,27 @@
+[package]
+name = "atomic-orange"
+version = "0.1.0"
+edition = "2021"
+description = "Atomic Orange — native living-organism cockpit. Rust + wgpu. NO webview (render law §7b)."
+
+[dependencies]
+# eframe = winit window + wgpu renderer + egui HUD, one crate, no browser engine anywhere.
+eframe = { version = "0.29", default-features = false, features = ["wgpu", "default_fonts"] }
+bytemuck = { version = "1", features = ["derive"] }
+chrono = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+cpal = "0.15"
+png = "0.17"
+# U2 real chat — tiny blocking HTTP client for the ONE legal seam (127.0.0.1:1337)
+ureq = { version = "2", features = ["json"] }
+# real telemetry for the instrument panels — measured, never invented
+sysinfo = "0.30"
+# the death rattle: wgpu reports device-loss via `log` — silent without a logger.
+# Two silent app deaths (2026-07-17) were mute for exactly this reason.
+log = "0.4"
+env_logger = "0.11"
+
+[profile.release]
+opt-level = 3
+lto = "thin"

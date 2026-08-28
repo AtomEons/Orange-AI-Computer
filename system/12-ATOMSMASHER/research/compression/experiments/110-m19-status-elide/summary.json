@@ -1,0 +1,13 @@
+{
+  "experiment": "110-m19-status-elide",
+  "total_bytes": 44270,
+  "ratio": 46.885,
+  "delta_vs_m19": -0.186,
+  "enc_ms": 4402,
+  "dec_ms": 390,
+  "lossless": true,
+  "det_sha": "03da0e5cf04adf96",
+  "rec_sha": "03da0e5cf04adf96",
+  "exception_count": 1,
+  "notes": "Elided status from all 4659 non-mesh receipts; 1 non-ok exceptions stored."
+}

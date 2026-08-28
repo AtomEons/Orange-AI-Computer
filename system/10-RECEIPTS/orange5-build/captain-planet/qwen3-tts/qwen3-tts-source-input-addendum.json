@@ -1,0 +1,36 @@
+{
+  "schema": "orange5.captain-planet.tts-source-input-addendum.v1",
+  "status": "CAPTAIN_PLANET_TTS_SOURCE_INPUT_DOCUMENTED_WITH_HISTORICAL_BINDING_GAP",
+  "generated_at": "2026-08-27T09:13:43.917Z",
+  "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\orangefive-qwen3-tts-proof.wav",
+  "artifact_sha256": "90598b2975622c98fec213664e3c023aa624a8efd7286c91a4517ebc1de63452",
+  "historical_source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\qwen3-tts-artifact-proof.codexa.json",
+  "historical_source_receipt_sha256": "062696ba3e9219999ec548e9431a8d58943abffaf077b85636452cbc002193a7",
+  "generation_input": {
+    "text": "OrangeFive is awake. Evidence leads, receipts prove, and the operator remains in command.",
+    "language": "English",
+    "speaker": "Ryan",
+    "instruction": "Calm technical confidence, concise, no theatrical delivery.",
+    "max_new_tokens": 512
+  },
+  "review_packet_input_complete": true,
+  "historical_generation_input_cryptographically_bound": false,
+  "evidence": {
+    "historical_source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\qwen3-tts-artifact-proof.codexa.json",
+    "historical_source_receipt_sha256": "062696ba3e9219999ec548e9431a8d58943abffaf077b85636452cbc002193a7",
+    "current_runner": "C:\\AtomEons\\Orange5\\scripts\\codexa-qwen-tts-artifact-proof.py",
+    "current_runner_sha256": "175273edb23c25372390bdac4cb6e166e6d0326b1854b6755f60a3ac42662b60",
+    "checks": {
+      "historical_source_receipt_hash_matches": true,
+      "current_runner_hash_matches": true,
+      "recovered_values_are_complete": true
+    }
+  },
+  "limitation": "The current fixed runner constants recover the missing review input, but the legacy generation receipt did not bind that runner hash.",
+  "model_generation_executed": false,
+  "perceptual_quality_proven": false,
+  "studio_quality_proven": false,
+  "prior_receipt": "qwen3-tts-artifact-quality-proof.json",
+  "prior_sha256": "cc0afa308e567743072c1e0b6b6e028f7caa0869940a0a474a9100b5f35bf545",
+  "receipt_sha256": "9c7303c2af69a658200fcacd1d456408d7931852db0eb64de75ea5ce4e6d68d2"
+}

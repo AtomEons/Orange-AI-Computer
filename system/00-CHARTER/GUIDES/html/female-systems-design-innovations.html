@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Æ Orange AI Computer Female Systems Design Innovations</title><style>
+  :root { color-scheme: light; --orange:#ff5a1f; --ink:#171717; --muted:#666; --line:#dedede; --paper:#fff; }
+  * { box-sizing: border-box; }
+  @page { size: Letter; margin: 0.7in 0.66in 0.72in; }
+  html { background:#ececec; }
+  body { max-width: 8.5in; margin: 0 auto; padding: 0.72in 0.66in; background:var(--paper); color:var(--ink); font-family: Inter, "Segoe UI", Arial, sans-serif; font-size:10.5pt; line-height:1.48; }
+  body::before { content:"ATOM EONS  /  Æ ORANGE AI COMPUTER"; display:block; color:var(--orange); font-size:8pt; font-weight:800; letter-spacing:.14em; border-bottom:2px solid var(--orange); padding-bottom:8px; margin-bottom:28px; }
+  h1,h2,h3,h4 { break-after:avoid; line-height:1.15; color:#111; }
+  h1 { font-size:28pt; margin:0 0 20px; }
+  h2 { font-size:18pt; margin:30px 0 11px; padding-top:7px; border-top:1px solid var(--line); }
+  h3 { font-size:13.5pt; margin:23px 0 8px; }
+  h4 { font-size:11pt; margin:18px 0 6px; }
+  p, li { orphans:3; widows:3; }
+  a { color:#b7390d; text-decoration:none; }
+  strong { color:#111; }
+  blockquote { margin:18px 0; padding:10px 15px; border-left:4px solid var(--orange); background:#fff5f0; }
+  code { font-family:"Cascadia Mono",Consolas,monospace; background:#f4f4f4; padding:1px 4px; border-radius:3px; font-size:9pt; }
+  pre { break-inside:avoid; white-space:pre-wrap; background:#161616; color:#f7f7f7; padding:13px 15px; border-left:4px solid var(--orange); border-radius:4px; overflow-wrap:anywhere; }
+  pre code { color:inherit; background:none; padding:0; }
+  table { width:100%; border-collapse:collapse; margin:15px 0 21px; break-inside:auto; font-size:9pt; }
+  thead { display:table-header-group; }
+  tr { break-inside:avoid; }
+  th,td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; }
+  th { text-align:left; background:#fff1eb; }
+  ul,ol { padding-left:22px; }
+  img { max-width:100%; height:auto; }
+  hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
+  .manual-meta { color:var(--muted); font-size:8.5pt; margin:-10px 0 30px; }
+  .book-cover { min-height:8.2in; display:flex; flex-direction:column; justify-content:center; page-break-after:always; }
+  .book-cover .mark { color:var(--orange); font-size:11pt; font-weight:800; letter-spacing:.18em; }
+  .book-cover h1 { font-size:42pt; max-width:6.5in; margin:16px 0; }
+  .book-cover p { color:var(--muted); font-size:15pt; max-width:5.7in; }
+  .manual-section { page-break-before:always; }
+  @media print { html,body { background:#fff; } body { padding:0; max-width:none; } }
+</style></head>
+<body class="single-manual">
+<div class="manual-meta">Canonical source: 00-CHARTER/GUIDES/FEMALE_SYSTEMS_DESIGN_INNOVATIONS.md</div>
+<h1>Æ Orange AI Computer Female Systems Design Innovations</h1>
+<p>This guide studies pre-1990 work led or co-led by women for reusable systems
+principles. It separates documented history from present interpretation. It
+does not treat biography as proof, assign one person sole credit for collective
+work, or claim that Æ Orange AI Computer implements a historical system.</p>
+<p>Each entry has four fields:</p>
+<ul>
+<li><strong>Historical fact:</strong> bounded to an authoritative source.</li>
+<li><strong>Architectural principle:</strong> a present-day interpretation, not a claim made by
+the historical source.</li>
+<li><strong>Implementation already present:</strong> a specific current Orange surface.</li>
+<li><strong>Proposed improvement:</strong> unbuilt work that requires its own proof.</li>
+</ul>
+<h2>Margaret Hamilton: Fault-Tolerant Priority</h2>
+<p><strong>Historical fact.</strong> Hamilton led the MIT Instrumentation Laboratory division
+that developed Apollo flight software. NASA credits her team's work with
+asynchronous software, priority scheduling, end-to-end testing, fault tolerance,
+and priority displays; the Apollo executive could shed lower-priority work under
+overload while preserving critical tasks. Sources: <a href="https://history.nasa.gov/wp-content/uploads/static/history/alsj/a11/a11Hamilton.html">NASA award record</a>
+and <a href="https://history.nasa.gov/wp-content/uploads/static/history/alsj/a11/a11.1201-fm.html">NASA Apollo program-alarm history</a>.</p>
+<p><strong>Architectural principle.</strong> Critical work needs explicit priority, overload
+behavior, graceful degradation, and an operator display that communicates what
+the system kept, deferred, or refused.</p>
+<p><strong>Implementation already present.</strong> Three-speed routing separates deterministic
+Reflex, Navigator, and specialist work. Compute leases bound heavyweight work;
+LOOM gates stop unsafe crossings; semantic health and BuildRun states distinguish
+operational, blocked, cancelled, and failed work.</p>
+<p><strong>Proposed improvement.</strong> Add a receipt-backed overload controller that can
+preempt optional work, preserve critical receipts, and show the operator the
+exact queue item deferred, reason, priority, deadline, and recovery condition.</p>
+<h2>Grace Hopper And Frances Allen: Compiler Leverage</h2>
+<p><strong>Historical fact.</strong> Hopper developed early compiling routines and promoted
+machine-independent programming; Smithsonian preserves her A-series compiler
+records. Allen established foundations for program analysis, optimizing
+transformations, and automatic parallelization. Sources: <a href="https://americanhistory.si.edu/ja/collections/archival-collection/sova-nmah-ac-0324?edan_fq%5B0%5D=set_name%3A%22Grace+Murray+Hopper+Collection+%2F+Series+6%3A+Compiling+Routines%22">Smithsonian Hopper
+collection</a>,
+<a href="https://www.ibm.com/history/frances-allen">IBM history of Frances Allen</a>, and
+<a href="https://www.acm.org/binaries/content/assets/press-releases/2006/2006-turing-award-laureate.pdf">ACM Turing Award record</a>.</p>
+<p><strong>Architectural principle.</strong> Raise the level of expression, compile intent into
+a constrained intermediate form, then optimize only under semantics-preserving
+tests.</p>
+<p><strong>Implementation already present.</strong> <code>orange.order.v1</code> raises work above shell
+syntax. Deterministic Bun code validates and compiles model proposals into
+<code>orange.report.v1</code>. Context Crystal and AtomSmasher reduce the active workbench,
+and least-action routing avoids an expensive model when a deterministic path is
+sufficient.</p>
+<p><strong>Proposed improvement.</strong> Introduce a typed order intermediate representation
+with cost, latency, evidence, and reversibility annotations. Compare optimizer
+passes through differential execution so an optimization cannot change the
+order's scope, proof obligation, or observable result.</p>
+<h2>Barbara Liskov: Abstraction And Substitutability</h2>
+<p><strong>Historical fact.</strong> Liskov led CLU, an early language supporting data
+abstraction, and later described behavioral subtyping: a subtype must behave as
+its supertype contract requires. Sources: <a href="https://www.csail.mit.edu/person/barbara-liskov">MIT CSAIL profile</a>
+and <a href="https://amturing.acm.org/pdf/LiskovTuringTranscript.pdf">ACM interview</a>.</p>
+<p><strong>Architectural principle.</strong> A replaceable component is safe only when it
+preserves the behavior, invariants, failures, and evidence contract expected by
+its callers.</p>
+<p><strong>Implementation already present.</strong> Model roles are leased behind stable route
+contracts. MCP transports, Hermes adapters, the native app, and headless clients
+converge on common order, report, approval, and receipt boundaries. The interface
+or model may change without inheriting receipt authority.</p>
+<p><strong>Proposed improvement.</strong> Build an adapter substitutability suite that runs the
+same success, refusal, timeout, cancellation, and malformed-output cases against
+every transport and executor, then blocks promotion on any behavioral mismatch.</p>
+<h2>Adele Goldberg: Live Object Environment</h2>
+<p><strong>Historical fact.</strong> Goldberg co-developed and disseminated Smalltalk as a
+language, graphical environment, and object-oriented system. Smalltalk supported
+inspectable live objects and changing a running environment. Sources: <a href="https://computerhistory.org/profile/adele-goldberg/">Computer
+History Museum profile</a> and
+<a href="https://spectrum.ieee.org/qa-adele-goldberg-on-the-legacy-of-smalltalk">IEEE interview on Smalltalk and live coding</a>.</p>
+<p><strong>Architectural principle.</strong> Operators understand systems better when state,
+behavior, tools, and feedback are inspectable in one live environment instead of
+being scattered across opaque processes.</p>
+<p><strong>Implementation already present.</strong> Atomic Orange is a native surface over
+conversation, BuildRuns, model routes, artifacts, and receipts. Streaming makes
+work visible before completion, while durable state remains outside the UI.</p>
+<p><strong>Proposed improvement.</strong> Add a live governed-object inspector for runs, leases,
+routes, memory records, and receipts. Every mutation should preview its contract,
+require the existing approval path, and offer deterministic replay or rollback.</p>
+<h2>Radia Perlman: Self-Healing Topology</h2>
+<p><strong>Historical fact.</strong> Perlman designed the spanning-tree algorithm for loop-free
+Ethernet bridging and made major contributions to scalable, resilient routing
+and network self-stabilization. Sources: <a href="https://www.invent.org/inductees/radia-perlman">National Inventors Hall of Fame</a>
+and <a href="https://www.internethalloffame.org/2017/11/30/stabilizing-networks-through-winding-career/">Internet Hall of Fame interview</a>.</p>
+<p><strong>Architectural principle.</strong> Distributed components need bounded convergence,
+loop prevention, redundant paths, and recovery that does not depend on a human
+manually reconstructing global state.</p>
+<p><strong>Implementation already present.</strong> The N150 control host and Codexa compute host
+have semantic health, authenticated crossings, role-specific routes, local
+fallback behavior, and Fixer recovery proofs. One unavailable heavy route need
+not erase deterministic control.</p>
+<p><strong>Proposed improvement.</strong> Add a topology controller with epochs, loop detection,
+route-cost hysteresis, and independent convergence tests. A failover should emit
+one chain showing old route, failure evidence, chosen path, stabilization time,
+and restored incumbent.</p>
+<h2>Lynn Conway: Scalable Design Methodology</h2>
+<p><strong>Historical fact.</strong> Conway developed scalable VLSI design rules, coauthored a
+widely used design text, taught the methodology, and organized networked
+multi-project chip prototyping that lowered access barriers. Sources: <a href="https://computerhistory.org/profile/lynn-conway/">Computer
+History Museum profile</a> and
+<a href="https://www.computerhistory.org/revolution/digital-logic/12/287/1613">Computer History Museum VLSI record</a>.</p>
+<p><strong>Architectural principle.</strong> Complex systems become scalable when designers get
+stable primitives, explicit composition rules, fast feedback, and shared access
+to expensive production infrastructure.</p>
+<p><strong>Implementation already present.</strong> Schemas, capability registries, fixed model
+roles, manual generation, proof commands, and the N150/Codexa split turn many
+specialized organs into repeatable composition surfaces on accessible hardware.</p>
+<p><strong>Proposed improvement.</strong> Publish a capability-layout kit that compiles one
+declarative organ specification into schema, test harness, receipt template,
+operator panel, and Codexa lease contract, then validate many independent organs
+in one batched promotion run.</p>
+<h2>Lillian Gilbreth: Human Factors And Motion Economy</h2>
+<p><strong>Historical fact.</strong> Lillian and Frank Gilbreth developed motion-study methods
+using timing, photography, and film, with goals that included reducing wasted
+motion, fatigue, and worker friction. Lillian extended the work into management
+and domestic environments. Sources: <a href="https://www.si.edu/object/gilbreth-stopwatch%3Anmah_849208">Smithsonian motion-study object record</a>
+and <a href="https://engineering.purdue.edu/IE/Research/Academics/HF">Purdue Human Factors history</a>.</p>
+<p><strong>Architectural principle.</strong> Optimize the whole human task, including attention,
+fatigue, reach, interruption, error recovery, and satisfaction, rather than only
+machine throughput.</p>
+<p><strong>Implementation already present.</strong> Least-action routing reduces unnecessary
+work; bounded approvals appear at risk crossings; Atomic Orange groups runs and
+receipts; runtime services avoid unwanted visible consoles; recovery begins at
+the first causal failure.</p>
+<p><strong>Proposed improvement.</strong> Add privacy-preserving workflow instrumentation that
+measures steps, context switches, approval latency, corrections, cancellations,
+and successful recovery. Use it to remove operator motion while retaining every
+safety and proof gate.</p>
+<h2>Karen Sparck Jones: Retrieval Weighting</h2>
+<p><strong>Historical fact.</strong> Sparck Jones introduced inverse document frequency as a
+term-weighting idea: terms common across many documents carry less retrieval
+value than discriminating terms. Source: <a href="https://www.cl.cam.ac.uk/archive/ksj21/">University of Cambridge archive</a>
+and <a href="https://www.cl.cam.ac.uk/downloads/books/CambridgeComputing_Ahmed.pdf">Cambridge Computer Laboratory history</a>.</p>
+<p><strong>Architectural principle.</strong> Retrieval should reward evidence that distinguishes
+the task, while common vocabulary should not overwhelm exact identifiers,
+project scope, recency, or source authority.</p>
+<p><strong>Implementation already present.</strong> AE Memory combines lexical, dense, and
+hybrid retrieval with project scope and contradiction precedence. The accepted
+held-out suite reports each ablation separately instead of crediting database
+presence as retrieval quality.</p>
+<p><strong>Proposed improvement.</strong> Expose rarity weight, dense score, scope filter,
+freshness, and evidence-authority contribution for every result. Add temporal
+and adversarial-common-term cases to the held-out benchmark before changing the
+ranker.</p>
+<h2>Evelyn Berezin: Real-Time Transactions And Working Tools</h2>
+<p><strong>Historical fact.</strong> Berezin designed a real-time airline reservation system
+serving terminals across 60 cities with linked processors and later founded
+Redactron to build mass-produced computerized word-processing systems. Sources:
+<a href="https://computerhistory.org/blog/remembering-chm-fellow-evelyn-berezin/">Computer History Museum remembrance</a>
+and <a href="https://www.invent.org/inductees/evelyn-berezin">National Inventors Hall of Fame</a>.</p>
+<p><strong>Architectural principle.</strong> Interactive tools need transaction integrity,
+bounded response, fault isolation, recoverable state, and an interface shaped
+around the operator's actual work.</p>
+<p><strong>Implementation already present.</strong> BuildRuns preserve lifecycle state; SQLite
+supports queryable queues; append-only receipts preserve authoritative outcomes;
+streaming and cancellation serve interactive work; Atomic Orange provides the
+working surface without owning truth.</p>
+<p><strong>Proposed improvement.</strong> Add an active-standby transaction test for critical
+queues and BuildRuns with injected process, disk, and network faults. Promotion
+should require measured recovery time, zero acknowledged-write loss, idempotent
+replay, and a receipt visible from the native app.</p>
+<h2>Adoption Rule</h2>
+<p>Historical analogy is a source of tests, not authority. Adopt a proposed
+improvement only when it identifies a current failure, reuses existing Orange
+capabilities where sufficient, survives falsifiers, and produces fresh evidence
+for the exact runtime path. Otherwise keep the incumbent.</p>
+<h2>Related Guides</h2>
+<ul>
+<li><a href="TECHNICAL_ARCHITECTURE.md">Technical Architecture</a></li>
+<li><a href="ATOMIC_ORANGE_NATIVE_APP.md">Atomic Orange Native App</a></li>
+<li><a href="MEMORY_AND_LEARNING.md">Memory and Learning</a></li>
+<li><a href="RECEIPTS_AND_AUDIT.md">Receipts and Audit</a></li>
+<li><a href="ATOMSMASHER_PRODUCTION.md">AtomSmasher Production</a></li>
+</ul>
+
+</body></html>

@@ -1,0 +1,28 @@
+{
+  "experiment": "36-dedupe-verified",
+  "generated_at": "2026-06-26T13:12:51.155Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "det_corpus_sha256": "03da0e5cf04adf965ae580cb8c74ab4db9d8058b6ca246478fef57b6de944df1",
+  "unique_shapes": 3132,
+  "method_1": {
+    "total": 60686,
+    "ratio": 34.2,
+    "lossless": true,
+    "shapes_brotli": 53362,
+    "idx_brotli": 7276,
+    "seed": 48
+  },
+  "method_2": {
+    "total": 61621,
+    "ratio": 33.68,
+    "lossless": true,
+    "markov_data": 8211,
+    "bits_per_sym": 10.5530205655527
+  },
+  "method_3": {
+    "total": 60037,
+    "ratio": 34.57,
+    "lossless": false,
+    "schema_folded": true
+  }
+}

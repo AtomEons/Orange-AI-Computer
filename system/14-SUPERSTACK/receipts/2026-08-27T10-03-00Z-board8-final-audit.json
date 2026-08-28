@@ -1,0 +1,160 @@
+{
+  "schema": "orange5.captain-planet.board8-audit.v1",
+  "status": "CAPTAIN_PLANET_BOARD8_TECHNICAL_GREEN_WITH_EXPLICIT_ACTIVATION_AND_PERCEPTUAL_BLOCKERS",
+  "generated_at": "2026-08-27T10:01:42.513Z",
+  "scope": "CAPTAIN_PLANET_IMAGE_VIDEO_AUDIO_3D_AND_SINGLE_SPECIALIST_LEASE_TRUTH",
+  "model_generation_executed": false,
+  "model_installed": false,
+  "large_weight_hashes_recomputed": false,
+  "installed_media_lane_count": 4,
+  "candidate_lane_count": 5,
+  "technical_by_role": {
+    "image_draft_flux2_klein": {
+      "status": "CAPTAIN_PLANET_IMAGE_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+      "artifact_sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1",
+      "technical_green": true,
+      "perceptual_quality_proven": false,
+      "studio_quality_proven": false
+    },
+    "video_fallback_ltxv098": {
+      "status": "CAPTAIN_PLANET_VIDEO_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+      "artifact_sha256": "7268140cf3420c7ad360303e66b78b8807887db89f863b3604f69f3e9441f347",
+      "technical_green": true,
+      "perceptual_quality_proven": false,
+      "studio_quality_proven": false
+    },
+    "speech_qwen3_tts": {
+      "status": "CAPTAIN_PLANET_TTS_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+      "artifact_sha256": "90598b2975622c98fec213664e3c023aa624a8efd7286c91a4517ebc1de63452",
+      "technical_green": true,
+      "perceptual_quality_proven": false,
+      "studio_quality_proven": false
+    },
+    "music_ace_step15": {
+      "status": "CAPTAIN_PLANET_MUSIC_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+      "artifact_sha256": "399f4cd4a48f0b1e60ae1fb4191929501079e81d697968e96ac7a0853525f31d",
+      "technical_green": true,
+      "perceptual_quality_proven": false,
+      "studio_quality_proven": false
+    }
+  },
+  "checks": {
+    "four_installed_media_lanes_declared": true,
+    "installed_live_inventory_is_green": true,
+    "all_four_artifacts_independently_pass_technical_checks": true,
+    "no_technical_receipt_claims_perceptual_quality": true,
+    "no_technical_receipt_claims_studio_quality": true,
+    "artifact_provenance_chain_is_valid": true,
+    "production_readiness_is_not_claimed": true,
+    "perceptual_review_is_explicitly_pending": true,
+    "dry_run_has_no_integrity_findings": true,
+    "all_installed_activations_are_blocked_on_unmeasured_peak_memory": true,
+    "all_candidates_remain_blocked": true,
+    "no_creative_worker_is_currently_active": true,
+    "production_lease_mutex_is_currently_available": true,
+    "hunyuan3d_is_not_installed_or_artifact_proven": true
+  },
+  "technical_findings": [],
+  "blockers": [
+    {
+      "gate": "lease_activation",
+      "state": "BLOCKED",
+      "roles": [
+        "image_draft_flux2_klein",
+        "video_fallback_ltxv098",
+        "speech_qwen3_tts",
+        "music_ace_step15"
+      ],
+      "reason": "Peak process-tree working-set memory has not been measured and receipted under the 50 GiB lease ceiling."
+    },
+    {
+      "gate": "current_codexa_model_residency",
+      "state": "BLOCKED",
+      "running_ollama_models": [
+        "orange-navigator:hot-v1",
+        "orange-navigator:ornith-1.5-9b-q8"
+      ],
+      "reason": "Multiple parent-owned Navigator models were resident at probe time; Captain Planet did not unload them."
+    },
+    {
+      "gate": "perceptual_review",
+      "state": "BLOCKED",
+      "roles": [
+        "image_draft_flux2_klein",
+        "video_fallback_ltxv098",
+        "speech_qwen3_tts",
+        "music_ace_step15"
+      ],
+      "reason": "Prompt adherence, visual coherence, intelligibility, musical coherence, and listening quality require bounded human review."
+    },
+    {
+      "gate": "three_d_runtime",
+      "state": "BLOCKED",
+      "roles": [
+        "three_d_hunyuan21"
+      ],
+      "reason": "Hunyuan3D source, environment, weights, lease telemetry, and runtime artifact are not installed or proven."
+    },
+    {
+      "gate": "historical_generation_binding",
+      "state": "BLOCKED",
+      "roles": [
+        "speech_qwen3_tts"
+      ],
+      "reason": "The legacy TTS generation receipt did not cryptographically bind the current runner constants."
+    },
+    {
+      "gate": "current_large_weight_content_hashes",
+      "state": "HELD",
+      "reason": "Large model weights were size-checked but intentionally not rehashed during the bounded no-load audit."
+    }
+  ],
+  "evidence": {
+    "source": {
+      "path": "14-SUPERSTACK\\captain-planet-board8-proof-source.json",
+      "sha256": "99977cca63966761970897083217bfe0dec196dea1adb80a4135fba5f7e6caed"
+    },
+    "manifest": {
+      "path": "14-SUPERSTACK/captain-planet-stack.json",
+      "sha256": "27dddfa3eaf795b7238b5659840e8ccb6153696fc706f69f59307810aa5a1c3c"
+    },
+    "live_inventory": {
+      "path": "14-SUPERSTACK/receipts/2026-08-27T10-01-00Z-board8-live-inventory-final.json",
+      "sha256": "ee71e09c9e21610ecef673b21fc5b8efdcf441f02154dc3fc9f7382c7a3979ae"
+    },
+    "route_dry_run": {
+      "path": "14-SUPERSTACK/receipts/2026-08-27T09-59-50-575Z-creative-route-dry-run.json",
+      "sha256": "07819bf4f60ddb7964846008ef978fae1789fe3a6d13491e56088f48d5bf9d2a"
+    },
+    "topology": {
+      "path": "14-SUPERSTACK/receipts/2026-08-27T10-00-30Z-board8-topology-proof.json",
+      "sha256": "27a29f2377d3dc34f67f408c301b9d5f3ebd60c8b045c6fd51b2078cc3240b47"
+    },
+    "media_review_state": {
+      "path": "14-SUPERSTACK/receipts/2026-08-27T10-02-00Z-board8-media-provenance-review-state.json",
+      "sha256": "bc899c1ede68466fd47b74f0bf53155e204aa359f0311edbe4132cbab1c525cc"
+    },
+    "technical_proofs": {
+      "image_draft_flux2_klein": {
+        "path": "14-SUPERSTACK/receipts/2026-08-27T09-56-00Z-board8-image-technical-proof.json",
+        "sha256": "ecf6cff12e793bf0c8d43149664da3276a6c6c8be6c8ade53842bed33267cad1"
+      },
+      "video_fallback_ltxv098": {
+        "path": "14-SUPERSTACK/receipts/2026-08-27T09-57-00Z-board8-video-technical-proof.json",
+        "sha256": "8155105cb1b388d2fb4a8e19ae8eee1f9f0006008f869549e6f7314fb7232ddc"
+      },
+      "speech_qwen3_tts": {
+        "path": "14-SUPERSTACK/receipts/2026-08-27T09-58-00Z-board8-tts-technical-proof.json",
+        "sha256": "c55c2ac5f4b7a0804ea7cc33903734ca69dcb70568bd4ab869e7e967ef44bc34"
+      },
+      "music_ace_step15": {
+        "path": "14-SUPERSTACK/receipts/2026-08-27T09-59-00Z-board8-music-technical-proof.json",
+        "sha256": "e2784c6f5296529f4620f45657f08990e0002308ed66f7f9843aded3809a5de6"
+      }
+    }
+  },
+  "conclusion": "Installed image, video, speech, and music artifacts are technically valid. No perceptual, studio-quality, activation-ready, or 3D-runtime claim is green.",
+  "prior_receipt": "2026-08-27T10-02-00Z-board8-media-provenance-review-state.json",
+  "prior_sha256": "bc899c1ede68466fd47b74f0bf53155e204aa359f0311edbe4132cbab1c525cc",
+  "receipt_sha256": "1ef752d9ecd6b5785d34fe5acd7917982f708a09e58f03bf4bf0c3152707e350"
+}

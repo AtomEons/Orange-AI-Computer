@@ -1,0 +1,20 @@
+{
+  "experiment": "40-method7-air-decomp",
+  "generated_at": "2026-06-26T13:20:51.148Z",
+  "air_count": 3126,
+  "mesh_count": 1565,
+  "other_count": 1533,
+  "components": {
+    "air_template": 341,
+    "air_data": 6005,
+    "mesh_template": 161,
+    "mesh_data": 11248,
+    "other_shapes": 33797,
+    "other_idx": 1725,
+    "position_runs": 1785,
+    "seed": 48
+  },
+  "total": 55110,
+  "ratio": 37.66,
+  "roundtrip_lossless": false
+}

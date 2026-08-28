@@ -1,0 +1,297 @@
+{
+  "baseline": {
+    "correct": 270,
+    "rate": 0.9574468085106383,
+    "failures": [
+      {
+        "i": 13,
+        "cls": "bernie-i-am-once-again-asking-for-your-support",
+        "predicted": "ancient-aliens",
+        "margin": 0.021493903310090268
+      },
+      {
+        "i": 55,
+        "cls": "epic-handshake",
+        "predicted": "left-exit-12-off-ramp",
+        "margin": 0.005284355215392278
+      },
+      {
+        "i": 91,
+        "cls": "left-exit-12-off-ramp",
+        "predicted": "pic4",
+        "margin": 0.10411912071814372
+      },
+      {
+        "i": 114,
+        "cls": "roll-safe-think-about-it",
+        "predicted": "woman-yelling-at-cat",
+        "margin": 0.016904223144270203
+      },
+      {
+        "i": 118,
+        "cls": "roll-safe-think-about-it",
+        "predicted": "blank-nut-button",
+        "margin": 0.07245435526218891
+      },
+      {
+        "i": 132,
+        "cls": "surprised-pikachu",
+        "predicted": "tuxedo-winnie-the-pooh",
+        "margin": 0.0017203496757375314
+      },
+      {
+        "i": 136,
+        "cls": "surprised-pikachu",
+        "predicted": "disaster-girl",
+        "margin": 0.014949220836215749
+      },
+      {
+        "i": 185,
+        "cls": "baboon",
+        "predicted": "pic2",
+        "margin": 0.02217971788657569
+      },
+      {
+        "i": 214,
+        "cls": "home",
+        "predicted": "apple",
+        "margin": 0.0788310555922499
+      },
+      {
+        "i": 221,
+        "cls": "lena",
+        "predicted": "pic3",
+        "margin": 0.1951017102618401
+      },
+      {
+        "i": 243,
+        "cls": "pic2",
+        "predicted": "baboon",
+        "margin": 0.11232881309405152
+      },
+      {
+        "i": 245,
+        "cls": "pic2",
+        "predicted": "baboon",
+        "margin": 0.031129399136343383
+      }
+    ]
+  },
+  "L1": {
+    "correct": 275,
+    "rate": 0.975177304964539,
+    "failures": [
+      {
+        "i": 13,
+        "cls": "bernie-i-am-once-again-asking-for-your-support",
+        "predicted": "ancient-aliens",
+        "margin": 0.780475051375106
+      },
+      {
+        "i": 55,
+        "cls": "epic-handshake",
+        "predicted": "left-exit-12-off-ramp",
+        "margin": 1.563081942498684
+      },
+      {
+        "i": 91,
+        "cls": "left-exit-12-off-ramp",
+        "predicted": "messi5",
+        "margin": 5.082050509750843
+      },
+      {
+        "i": 118,
+        "cls": "roll-safe-think-about-it",
+        "predicted": "left-exit-12-off-ramp",
+        "margin": 4.291324951220304
+      },
+      {
+        "i": 136,
+        "cls": "surprised-pikachu",
+        "predicted": "butterfly",
+        "margin": 0.06502924719825387
+      },
+      {
+        "i": 221,
+        "cls": "lena",
+        "predicted": "pic3",
+        "margin": 2.3446523650200106
+      },
+      {
+        "i": 262,
+        "cls": "pic5",
+        "predicted": "building",
+        "margin": 0.6841565109789371
+      }
+    ],
+    "weights": [
+      5,
+      5,
+      2,
+      3,
+      3,
+      5,
+      2,
+      5
+    ]
+  },
+  "L2": {
+    "correct": 271,
+    "rate": 0.9609929078014184,
+    "failures": [
+      {
+        "i": 13,
+        "cls": "bernie-i-am-once-again-asking-for-your-support",
+        "predicted": "surprised-pikachu",
+        "margin": 0.3290693037170227
+      },
+      {
+        "i": 55,
+        "cls": "epic-handshake",
+        "predicted": "hide-the-pain-harold",
+        "margin": 0.019614078594871742
+      },
+      {
+        "i": 91,
+        "cls": "left-exit-12-off-ramp",
+        "predicted": "sad-pablo-escobar",
+        "margin": 0.1696794629731304
+      },
+      {
+        "i": 97,
+        "cls": "leonardo-dicaprio-cheers",
+        "predicted": "butterfly",
+        "margin": 0.5653421287511753
+      },
+      {
+        "i": 136,
+        "cls": "surprised-pikachu",
+        "predicted": "tuxedo-winnie-the-pooh",
+        "margin": 0.7171746762226325
+      },
+      {
+        "i": 179,
+        "cls": "apple",
+        "predicted": "baboon",
+        "margin": 2.3287963593781864
+      },
+      {
+        "i": 185,
+        "cls": "baboon",
+        "predicted": "apple",
+        "margin": 2.1438465370439506
+      },
+      {
+        "i": 214,
+        "cls": "home",
+        "predicted": "running-away-balloon",
+        "margin": 0.15233559572295885
+      },
+      {
+        "i": 221,
+        "cls": "lena",
+        "predicted": "apple",
+        "margin": 0.5591883934491975
+      },
+      {
+        "i": 245,
+        "cls": "pic2",
+        "predicted": "baboon",
+        "margin": 2.188631344433089
+      },
+      {
+        "i": 255,
+        "cls": "pic4",
+        "predicted": "leonardo-dicaprio-cheers",
+        "margin": 0.3658652329751444
+      }
+    ],
+    "weights": [
+      0.7,
+      0.7,
+      1.5,
+      0.7,
+      5,
+      0.1,
+      3,
+      3
+    ]
+  },
+  "cosine_200": {
+    "correct": 272,
+    "rate": 0.9645390070921985,
+    "failures": [
+      {
+        "i": 13,
+        "cls": "bernie-i-am-once-again-asking-for-your-support",
+        "predicted": "surprised-pikachu",
+        "margin": 0.03400109055212941
+      },
+      {
+        "i": 55,
+        "cls": "epic-handshake",
+        "predicted": "left-exit-12-off-ramp",
+        "margin": 0.0011777916100165209
+      },
+      {
+        "i": 91,
+        "cls": "left-exit-12-off-ramp",
+        "predicted": "pic4",
+        "margin": 0.13953722095860188
+      },
+      {
+        "i": 97,
+        "cls": "leonardo-dicaprio-cheers",
+        "predicted": "home",
+        "margin": 0.00615596874762514
+      },
+      {
+        "i": 114,
+        "cls": "roll-safe-think-about-it",
+        "predicted": "woman-yelling-at-cat",
+        "margin": 0.006205855523381265
+      },
+      {
+        "i": 136,
+        "cls": "surprised-pikachu",
+        "predicted": "tuxedo-winnie-the-pooh",
+        "margin": 0.13295501219412564
+      },
+      {
+        "i": 214,
+        "cls": "home",
+        "predicted": "orange",
+        "margin": 0.014611771610500535
+      },
+      {
+        "i": 221,
+        "cls": "lena",
+        "predicted": "apple",
+        "margin": 0.014319095666468717
+      },
+      {
+        "i": 245,
+        "cls": "pic2",
+        "predicted": "baboon",
+        "margin": 0.008392738076123507
+      },
+      {
+        "i": 255,
+        "cls": "pic4",
+        "predicted": "pic5",
+        "margin": 0.009434187188266274
+      }
+    ],
+    "weights": [
+      0.3,
+      0.7,
+      3,
+      0.5,
+      1.5,
+      0.1,
+      2,
+      1.5
+    ]
+  },
+  "ensemble_configs": 187
+}

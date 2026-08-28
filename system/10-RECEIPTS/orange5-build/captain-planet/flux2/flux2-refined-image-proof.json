@@ -1,0 +1,62 @@
+{
+  "schema": "orange.captain_planet.image_artifact.v1",
+  "status": "IMAGE_ARTIFACT_RUNTIME_PROVEN_QUALITY_UNASSESSED",
+  "created_at": "2026-08-27T01:40:06.793355+00:00",
+  "engine": "ComfyUI",
+  "engine_commit": "a25c7bf2b8c7408d8724f4245dbe09d95992e3a1",
+  "model": "black-forest-labs/FLUX.2-klein-4b-fp8",
+  "model_revisions": {
+    "black-forest-labs/FLUX.2-klein-4b-fp8": "5b4408e59397a4a37ccb46afe426d8ed86379441",
+    "Comfy-Org/z_image_turbo": "08d04455279082882deaabc8d0d09fc914c071e1",
+    "Comfy-Org/flux2-dev": "ab9055628ea245000e610f2aa2c96f4746093546"
+  },
+  "model_hashes": {
+    "diffusion_models/flux-2-klein-4b-fp8.safetensors": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6",
+    "text_encoders/qwen_3_4b.safetensors": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+    "vae/flux2-vae.safetensors": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5"
+  },
+  "device": "xpu:0 Intel(R) Arc(TM) 140T GPU (48GB)",
+  "workflow": "flux2-klein-distilled-4-step-fixed-seed",
+  "seed": 20260828,
+  "prompt": "Two precision black computing devices on a true black studio floor: a compact control computer on the left and a powerful compute node on the right, connected by one straight luminous orange optical data spine. Above the connection floats one small faceted clear crystal. Behind it are only clean blank transparent geometric layers representing memory, models, vision, image, video, speech, and music. Premium automotive concept photography, realistic machined titanium and optical glass, disciplined landscape composition, controlled studio lighting. No paper. No documents. No screens. No interface panels. No letters, words, numbers, symbols, labels, glyphs, markings, or pseudo-text. No logos. No people. No robots. No purple. No decorative orbs. No cyberpunk city.",
+  "startup_seconds": 6.125,
+  "generation_seconds": 36.006,
+  "artifact_proven": true,
+  "studio_quality_proven": false,
+  "quality_status": "PENDING_VISUAL_REVIEW_AND_IMAGE_QUALITY_BENCHMARK",
+  "artifact": "C:\\AtomEons\\ai-box\\receipts\\captain-planet\\artifacts\\manual-cover-refined\\orangefive-flux-refined.png",
+  "artifact_bytes": 631608,
+  "artifact_sha256": "1ba7a2d90cfa7e71d322058b5f8fa5cbb0af8cfb6c25814147616b5264fb0c10",
+  "pixels": {
+    "format": "PNG",
+    "width": 1280,
+    "height": 768,
+    "mean_rgb": [
+      11.441,
+      9.791,
+      9.317
+    ],
+    "stddev_rgb": [
+      26.035,
+      23.154,
+      21.397
+    ],
+    "extrema_rgb": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "entropy": 5.7803,
+    "nonblank": true
+  },
+  "log": "C:\\AtomEons\\ai-box\\receipts\\captain-planet\\artifacts\\manual-cover-refined\\comfyui-flux2-proof.log"
+}

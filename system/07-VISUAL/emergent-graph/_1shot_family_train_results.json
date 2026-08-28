@@ -1,0 +1,36 @@
+{
+  "correct": 3,
+  "total": 6,
+  "families": [
+    {
+      "label": "apple",
+      "nodeCount": 5,
+      "sampleCount": 5
+    },
+    {
+      "label": "baboon",
+      "nodeCount": 2,
+      "sampleCount": 5
+    },
+    {
+      "label": "basketball",
+      "nodeCount": 5,
+      "sampleCount": 5
+    },
+    {
+      "label": "board",
+      "nodeCount": 3,
+      "sampleCount": 5
+    },
+    {
+      "label": "building",
+      "nodeCount": 3,
+      "sampleCount": 5
+    },
+    {
+      "label": "orange",
+      "nodeCount": 5,
+      "sampleCount": 5
+    }
+  ]
+}

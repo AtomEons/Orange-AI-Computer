@@ -1,0 +1,101 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-818cd20a72dd5c0c-1787777057187",
+  "query": "{\"action\":\"analyze.agent\",\"payload\":{\"parentOrder\":{\"action\":\"audit.hermes-runtime\",\"intent\":\"audit.hermes-runtime\",\"targetProject\":\"OrangeFive\",\"scope\":null,\"riskLevel\":\"medium\",\"allowedActions\":[\"audit.hermes-runtime\"],\"forbiddenActions\":[]},\"agent\":\"checkmate\",\"delegationId\":\"nav-d04d07d0-a534-4b48-9a68-57be7313325b\",\"allowedTools\":[\"read\",\"secret-scan\",\"danger-scan\",\"receipts\"]},\"intent\":\"checkmate independently evaluates: audit.hermes-runtime\",\"targetProject\":\"OrangeFive\",\"orderId\":\"delegate-1b2bd840-3331-4e8a-bbfd-e2a2c99f0715:checkmate\",\"allowedActions\":[\"analyze.agent\"],\"forbiddenActions\":[],\"riskLevel\":\"medium\",\"requiresReceipt\":true} /no_think OrangeFive orange5",
+  "searchQuery": "action analyze.agent payload parentorder audit.hermes-runtime intent targetproject scope",
+  "generatedAt": "2026-08-26T20:44:17.189Z",
+  "budgetMs": 60000,
+  "elapsedMs": 351,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "157765438",
+      "title": "UWaterloo-ASL/Agent_Action_Data_Analysis",
+      "url": "https://github.com/UWaterloo-ASL/Agent_Action_Data_Analysis",
+      "summary": "This repository keeps code to analyze agents' action collected in ROM.",
+      "updatedAt": "2020-02-29T03:25:42Z",
+      "license": "MIT",
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.765,
+      "relevance": {
+        "score": 0.25,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 8,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1190035757",
+      "title": "felixglush/explain-analyze-agent",
+      "url": "https://github.com/felixglush/explain-analyze-agent",
+      "summary": "GitHub Action that runs EXPLAIN ANALYZE on SQL in PR diffs and posts inline review comments via Claude",
+      "updatedAt": "2026-03-24T15:24:47Z",
+      "license": null,
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.25,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 8,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1294478166",
+      "title": "ewardGPT/agent-telemetry",
+      "url": "https://github.com/ewardGPT/agent-telemetry",
+      "summary": "Production observability for AI agents — trace, query, and analyze agent actions",
+      "updatedAt": "2026-07-10T16:29:58Z",
+      "license": null,
+      "stars": 0,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.18,
+      "relevance": {
+        "score": 0.25,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "action",
+          "analyze agent"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 8,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "f4093b96c82340328a8ba91a2e0da87fe015f0aa616244ff0978485a96e761f1"
+}

@@ -1,0 +1,1 @@
+{"name":"visual","description":"Evaluates rendered visual evidence through the Orange visual lane and returns reproducible findings.","model":"orange-visual","permissionClass":"visual-read","kanbanWorker":true}

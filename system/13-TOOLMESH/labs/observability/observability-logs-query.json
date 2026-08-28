@@ -1,0 +1,91 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "observability",
+  "card_id": "observability-logs-query",
+  "capability": "observability.logs.query",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["backend", "query", "start", "end"],
+    "properties": {
+      "backend": {
+        "type": "string",
+        "description": "Concrete log backend. Each value pins the runner to a vetted query adapter.",
+        "enum": ["loki", "elasticsearch", "datadog", "cloudwatch", "honeycomb"]
+      },
+      "query": {
+        "type": "string",
+        "description": "Backend-native query string (LogQL for loki, KQL for ES, DD query syntax, etc.). Runner does NOT translate across backends.",
+        "minLength": 1,
+        "maxLength": 4096
+      },
+      "start": { "type": "string", "format": "date-time" },
+      "end": { "type": "string", "format": "date-time" },
+      "limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5000,
+        "default": 500
+      },
+      "direction": {
+        "type": "string",
+        "enum": ["forward", "backward"],
+        "default": "backward"
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["entries", "matched_estimate", "backend"],
+    "properties": {
+      "backend": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "matched_estimate": {
+        "type": "integer",
+        "description": "Best-effort total matches reported by the backend; may be approximate or capped.",
+        "minimum": 0
+      },
+      "truncated": { "type": "boolean" },
+      "entries": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["timestamp", "message"],
+          "properties": {
+            "timestamp": { "type": "string", "format": "date-time" },
+            "message": { "type": "string" },
+            "level": { "type": "string", "maxLength": 16 },
+            "service": { "type": "string", "maxLength": 128 },
+            "labels": {
+              "type": "object",
+              "additionalProperties": { "type": "string", "maxLength": 512 }
+            },
+            "trace_id": { "type": "string", "maxLength": 64 }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 900,
+    "max_invocations": 50,
+    "scopes": [
+      "net.egress:logs-prod.example.internal",
+      "net.egress:api.datadoghq.com",
+      "secrets.read:observability.logs"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30,
+    "egress_allowlist": ["logs-prod.example.internal", "api.datadoghq.com"]
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:26:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Read-only structured-log query against a chosen backend (Loki/ES/Datadog/CloudWatch/Honeycomb). Native query dialect per backend; no cross-translation.",
+  "tags": ["observability", "logs", "loki", "elasticsearch", "datadog", "read-only"],
+  "notes": "Time-window required to bound cost. Operator should narrow egress_allowlist to the actual prod observability endpoint; the default values are illustrative."
+}

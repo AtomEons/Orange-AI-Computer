@@ -1,0 +1,28 @@
+{
+  "experiment": "51-replay-pipeline",
+  "generated_at": "2026-06-27",
+  "synthetic_demo": {
+    "n_inputs": 500,
+    "n_total_receipts": 2500,
+    "synthetic_corpus_bytes": 482534,
+    "synthetic_brotli_baseline": 32978,
+    "synthetic_brotli_ratio": 14.63,
+    "encoded_recipe_bytes": 72,
+    "replay_ratio": 6702,
+    "roundtrip_lossless": true
+  },
+  "canonical_projection": {
+    "corpus_bytes": 2075585,
+    "input_receipts": 893,
+    "derived_receipts": 5331,
+    "input_brotli": 35727,
+    "protocol_brotli": 134,
+    "total_transmitted": 35861,
+    "ratio_unverified": 57.88
+  },
+  "caveats": [
+    "The synthetic demo PROVES the technique works byte-exact when the organism is deterministic",
+    "The canonical projection is THE encoded size IF the AtomSmasher organism becomes deterministic AND the decoder runs it on the inputs to regenerate the derived receipts byte-exact",
+    "To convert the canonical projection from UNVERIFIED to VERIFIED, we need: (1) det-timestamps in the organism (2) audit and remove other non-determinism (3) build a replay function (4) verify replay output matches canonical byte-exact"
+  ]
+}

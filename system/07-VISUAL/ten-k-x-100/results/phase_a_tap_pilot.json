@@ -1,0 +1,782 @@
+{
+  "date": "2026-07-11",
+  "doctrine": "GPT v4 (spine seq 112)",
+  "axes": [
+    "spatial_color",
+    "texture"
+  ],
+  "noise_sigma": 0.005,
+  "noise_iters": 3,
+  "probes": 12,
+  "results": [
+    {
+      "probe": "orange-vs-baboon",
+      "category": "wild-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5368286506996368,
+              "noise": 0.0026047033527207887,
+              "ratio": 206.09972730249032
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.35216970331801817,
+              "noise": 0.00003090584931711498,
+              "ratio": 11394.920738288669
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.33228484262215313,
+              "noise": 0.000029542652735990743,
+              "ratio": 11247.630522270012
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.33228484262215313,
+              "noise": 0.000029542652735990743,
+              "ratio": 11247.630522270012
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4353548648448436,
+              "noise": 0.002022195564026554,
+              "ratio": 215.28821078905645
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.748363969651485,
+              "noise": 0.09673055497842188,
+              "ratio": 7.7365830250682
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.014624276595869231,
+              "noise": 0.000025374142958540006,
+              "ratio": 576.3456373586496
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.014624276595869231,
+              "noise": 0.000025374142958540006,
+              "ratio": 576.3456373586496
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "apple-vs-baboon",
+      "category": "wild-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5198555529879801,
+              "noise": 0.0027397573693490394,
+              "ratio": 189.7451061921942
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.370040099344617,
+              "noise": 0.00002667770822860539,
+              "ratio": 13870.7604181621
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.34480319845930885,
+              "noise": 0.00002730690374550604,
+              "ratio": 12626.96062771503
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.34480319845930885,
+              "noise": 0.00002730690374550604,
+              "ratio": 12626.96062771503
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.39155755295719075,
+              "noise": 0.0021519345880021174,
+              "ratio": 181.9560664809601
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.6777344742928972,
+              "noise": 0.0789327618396029,
+              "ratio": 8.58622526942745
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.012647233977869357,
+              "noise": 0.000025374142958540006,
+              "ratio": 498.42999617895515
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.012647233977869357,
+              "noise": 0.000025374142958540006,
+              "ratio": 498.42999617895515
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-vs-basketball",
+      "category": "wild-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.580788423182453,
+              "noise": 0.0026047033527207887,
+              "ratio": 222.97680178273671
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.374668453030412,
+              "noise": 0.0000436128748880296,
+              "ratio": 8590.77632447585
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.3701294360219921,
+              "noise": 0.0000513307441506803,
+              "ratio": 7210.677385379123
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.3701294360219921,
+              "noise": 0.0000513307441506803,
+              "ratio": 7210.677385379123
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.46051261062744064,
+              "noise": 0.0020357404731070647,
+              "ratio": 226.21381099948348
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.7821731248304696,
+              "noise": 0.4730617275827497,
+              "ratio": 1.6534271940095788
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.003938267163533581,
+              "noise": 0.00031201066474829394,
+              "ratio": 12.622219713901993
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.003938267163533581,
+              "noise": 0.00031201066474829394,
+              "ratio": 12.622219713901993
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-vs-apple",
+      "category": "cat-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3426920865411247,
+              "noise": 0.0027397573693490394,
+              "ratio": 125.08118068226882
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.2016511083838293,
+              "noise": 0.00003090584931711498,
+              "ratio": 6524.690724877099
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.23031842780858638,
+              "noise": 0.000029542652735990743,
+              "ratio": 7796.1322521317725
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.23031842780858638,
+              "noise": 0.000029542652735990743,
+              "ratio": 7796.1322521317725
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3320872084890742,
+              "noise": 0.0021519345880021174,
+              "ratio": 154.3203080337995
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.2133744049879752,
+              "noise": 0.09673055497842188,
+              "ratio": 2.2058635457593887
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0019770883279931566,
+              "noise": 0.000006347669498794133,
+              "ratio": 311.46680342584693
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0019770883279931566,
+              "noise": 0.000006347669498794133,
+              "ratio": 311.46680342584693
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "basketball1-vs-basketball2",
+      "category": "cat-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.15893846577211423,
+              "noise": 0.0025642014669068993,
+              "ratio": 61.983610813480965
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.004230935996330707,
+              "noise": 0.0000436128748880296,
+              "ratio": 97.0111694584016
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0057971414559702256,
+              "noise": 0.0000513307441506803,
+              "ratio": 112.93702345231624
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0057971414559702256,
+              "noise": 0.0000513307441506803,
+              "ratio": 112.93702345231624
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.15893846577212487,
+              "noise": 0.002039507281257728,
+              "ratio": 77.92983493253838
+            },
+            "T1": {
+              "verdict": "COLLAPSED",
+              "gap": 0.06904469353343166,
+              "noise": 0.4730617275827497,
+              "ratio": 0.1459528207581623
+            },
+            "T2": {
+              "verdict": "COLLAPSED",
+              "gap": 0.00012207948124587682,
+              "noise": 0.00031201066474829394,
+              "ratio": 0.39126701436427214
+            },
+            "T3": {
+              "verdict": "COLLAPSED",
+              "gap": 0.00012207948124587682,
+              "noise": 0.00031201066474829394,
+              "ratio": 0.39126701436427214
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        }
+      }
+    },
+    {
+      "probe": "orange-still-vs-video",
+      "category": "same-diff-src",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.35011052004690724,
+              "noise": 0.0026047033527207887,
+              "ratio": 134.4147385080121
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.2321153176242542,
+              "noise": 0.00003090584931711498,
+              "ratio": 7510.400870805833
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.22541093400397014,
+              "noise": 0.000029542652735990743,
+              "ratio": 7630.016709005965
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.22541093400397014,
+              "noise": 0.000029542652735990743,
+              "ratio": 7630.016709005965
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.3154644879391371,
+              "noise": 0.001986593676219251,
+              "ratio": 158.79668384906344
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.5021236638695541,
+              "noise": 0.1793057852395965,
+              "ratio": 2.80037625779109
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00033021611896176723,
+              "noise": 0.000010075915786463189,
+              "ratio": 32.77281449745805
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00033021611896176723,
+              "noise": 0.000010075915786463189,
+              "ratio": 32.77281449745805
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "apple-still-vs-video",
+      "category": "same-diff-src",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.299362161603227,
+              "noise": 0.0027397573693490394,
+              "ratio": 109.26593900333401
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.18003083403670392,
+              "noise": 0.00002667770822860539,
+              "ratio": 6748.3620592140815
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.18527622319619244,
+              "noise": 0.00002730690374550604,
+              "ratio": 6784.959031713135
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.18527622319619244,
+              "noise": 0.00002730690374550604,
+              "ratio": 6784.959031713135
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.2536359695857935,
+              "noise": 0.0022675425428800226,
+              "ratio": 111.85499931729993
+            },
+            "T1": {
+              "verdict": "WEAK",
+              "gap": 0.495824841051111,
+              "noise": 0.18352099970649235,
+              "ratio": 2.701733544630263
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0002976416354718621,
+              "noise": 0.000026648522324693608,
+              "ratio": 11.169160970552397
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0002976416354718621,
+              "noise": 0.000026648522324693608,
+              "ratio": 11.169160970552397
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-hue-shifted-red",
+      "category": "hue-shift",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.1049576111610773,
+              "noise": 0.0026047033527207887,
+              "ratio": 40.29541830605853
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.09721728879249072,
+              "noise": 0.0001629030522218155,
+              "ratio": 596.7800324582971
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.08430830935047129,
+              "noise": 0.00014124213118135988,
+              "ratio": 596.9062392737223
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.08430830935047129,
+              "noise": 0.00014124213118135988,
+              "ratio": 596.9062392737223
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.03571725656950698,
+              "noise": 0.00205881106325612,
+              "ratio": 17.34848680724409
+            },
+            "T1": {
+              "verdict": "COLLAPSED",
+              "gap": 0.07345997002386748,
+              "noise": 0.11662770001795297,
+              "ratio": 0.6298672614872752
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00021299145775693579,
+              "noise": 0.0000035074546557041464,
+              "ratio": 60.72536316629195
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00021299145775693579,
+              "noise": 0.0000035074546557041464,
+              "ratio": 60.72536316629195
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        }
+      }
+    },
+    {
+      "probe": "apple-hue-shifted-orange",
+      "category": "hue-shift",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.17357291298115526,
+              "noise": 0.0028232269555353872,
+              "ratio": 61.48032578140339
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.17173110925111137,
+              "noise": 0.00004496942416750392,
+              "ratio": 3818.8416336273385
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.1606538854943633,
+              "noise": 0.00004317917091571237,
+              "ratio": 3720.6338632107295
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.1606538854943633,
+              "noise": 0.00004317917091571237,
+              "ratio": 3720.6338632107295
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.02648346248966086,
+              "noise": 0.0021519345880021174,
+              "ratio": 12.30681575421325
+            },
+            "T1": {
+              "verdict": "COLLAPSED",
+              "gap": 0.06895459889062268,
+              "noise": 0.08005941501051957,
+              "ratio": 0.8612928146122758
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00017799854998171684,
+              "noise": 0.000006347669498794133,
+              "ratio": 28.041559192004442
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00017799854998171684,
+              "noise": 0.000006347669498794133,
+              "ratio": 28.041559192004442
+            }
+          },
+          "diagnosis": "LOCAL_FAILS - sampling defect"
+        }
+      }
+    },
+    {
+      "probe": "train-orange-vs-test-apple",
+      "category": "cat-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4050939232319886,
+              "noise": 0.0027554841451440004,
+              "ratio": 147.01370136565188
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.21668392770053185,
+              "noise": 0.000025791821375945203,
+              "ratio": 8401.265057714094
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.2447668201877513,
+              "noise": 0.000026899095591500225,
+              "ratio": 9099.444230574598
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.2447668201877513,
+              "noise": 0.000026899095591500225,
+              "ratio": 9099.444230574598
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.36325859009412936,
+              "noise": 0.0021762628374323713,
+              "ratio": 166.91852833489276
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.22251129786960255,
+              "noise": 0.059851387001261074,
+              "ratio": 3.717730014592882
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.00038588686009657263,
+              "noise": 0.000009283558847653999,
+              "ratio": 41.566695103579605
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.00038588686009657263,
+              "noise": 0.000009283558847653999,
+              "ratio": 41.566695103579605
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "train-orange-vs-fruits",
+      "category": "same-diff-src",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.6442967425073599,
+              "noise": 0.0034934242519814676,
+              "ratio": 184.43129034268176
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.4707472150373708,
+              "noise": 0.00006377178477376307,
+              "ratio": 7381.747534703548
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.5332308251105802,
+              "noise": 0.00020534096616523496,
+              "ratio": 2596.806838249202
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.5332308251105802,
+              "noise": 0.00020534096616523496,
+              "ratio": 2596.806838249202
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.6344052326591688,
+              "noise": 0.0027213018809055882,
+              "ratio": 233.1256363399319
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.6301999736154719,
+              "noise": 0.0699303858660691,
+              "ratio": 9.011818908341688
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0010759767957643914,
+              "noise": 0.00001909239266897518,
+              "ratio": 56.35630978367818
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0010759767957643914,
+              "noise": 0.00001909239266897518,
+              "ratio": 56.35630978367818
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "train-orange-vs-lena",
+      "category": "wild-diff",
+      "axes": {
+        "spatial_color": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.5586309802067196,
+              "noise": 0.0026295860110112225,
+              "ratio": 212.44065714811697
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.3365530589403698,
+              "noise": 0.000025791821375945203,
+              "ratio": 13048.828697854457
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.36073239470044083,
+              "noise": 0.000026899095591500225,
+              "ratio": 13410.577075848889
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.36073239470044083,
+              "noise": 0.000026899095591500225,
+              "ratio": 13410.577075848889
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        },
+        "texture": {
+          "levels": {
+            "T0": {
+              "verdict": "PRESERVED",
+              "gap": 0.4838399681958078,
+              "noise": 0.0021943275737947034,
+              "ratio": 220.4957791963083
+            },
+            "T1": {
+              "verdict": "PRESERVED",
+              "gap": 0.7008036348209591,
+              "noise": 0.059851387001261074,
+              "ratio": 11.709062562012024
+            },
+            "T2": {
+              "verdict": "PRESERVED",
+              "gap": 0.0028212010560341463,
+              "noise": 0.0000167340283992571,
+              "ratio": 168.5906697851303
+            },
+            "T3": {
+              "verdict": "PRESERVED",
+              "gap": 0.0028212010560341463,
+              "noise": 0.0000167340283992571,
+              "ratio": 168.5906697851303
+            }
+          },
+          "diagnosis": "ALL PRESERVED"
+        }
+      }
+    }
+  ],
+  "duration_s": 28.7274051
+}

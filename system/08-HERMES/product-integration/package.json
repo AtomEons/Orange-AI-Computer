@@ -1,0 +1,13 @@
+{
+  "name": "@atomeons/orange5-hermes-product-integration",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "check": "bun scripts/static-check.mjs",
+    "test": "bun test tests",
+    "receipts:reconcile": "bun scripts/reconcile-preaction-receipts.mjs",
+    "swarmgate": "bun scripts/swarmgate.mjs",
+    "swarm:sentinel": "bun scripts/swarm-sentinel.mjs"
+  }
+}

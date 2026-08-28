@@ -1,0 +1,17 @@
+{
+  "experiment": "37-template-dedupe",
+  "generated_at": "2026-06-26T13:14:27.521Z",
+  "unique_templates": 1116,
+  "components": {
+    "tpl_dict_brotli": 28115,
+    "tpl_id_brotli": 2930,
+    "ca_id_brotli": 3697,
+    "ca_dict_brotli": 94,
+    "sum_nums_brotli": 15238,
+    "pay_nums_brotli": 23747,
+    "seed_brotli": 48
+  },
+  "total": 73869,
+  "ratio": 28.1,
+  "roundtrip_lossless": true
+}

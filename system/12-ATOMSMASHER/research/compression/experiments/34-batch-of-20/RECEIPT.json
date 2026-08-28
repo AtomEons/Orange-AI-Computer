@@ -1,0 +1,304 @@
+{
+  "experiment": "34-batch-of-20",
+  "generated_at": "2026-06-26T12:57:19.476Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "total_experiments": 27,
+  "results": [
+    {
+      "name": "A1: PPMd-adaptive order-2 byte coder (data-rate only)",
+      "encoded_size": 549269,
+      "ratio": 3.78,
+      "lossless": "?",
+      "notes": "theoretical — adaptive model = no transmitted model; assumes both sides agree on Laplace"
+    },
+    {
+      "name": "A2: PPMd-adaptive order-3 byte coder (data-rate only)",
+      "encoded_size": 484465,
+      "ratio": 4.28,
+      "lossless": "?",
+      "notes": "12310 contexts"
+    },
+    {
+      "name": "A3: sorted lines + MTF + brotli + permutation",
+      "encoded_size": 407229,
+      "ratio": 5.1,
+      "lossless": "?",
+      "notes": "permutation cost included; lossless verify pending"
+    },
+    {
+      "name": "A4: mix-of-order 0+1+2 byte predictor (data-rate)",
+      "encoded_size": 727049,
+      "ratio": 2.85,
+      "lossless": "?",
+      "notes": "1871 order-2 contexts; theoretical"
+    },
+    {
+      "name": "B1: RLE action seq + vocab + rest-brotli",
+      "encoded_size": 122372,
+      "ratio": 16.96,
+      "lossless": "?",
+      "notes": "4203 runs over 6224 actions"
+    },
+    {
+      "name": "B2: payload-dedup + IDs + rest-brotli",
+      "encoded_size": 127257,
+      "ratio": 16.31,
+      "lossless": "?",
+      "notes": "1855 distinct payloads"
+    },
+    {
+      "name": "B3: per-action brotli (separate streams) + seq",
+      "encoded_size": 133298,
+      "ratio": 15.57,
+      "lossless": "?",
+      "notes": "66 action groups"
+    },
+    {
+      "name": "B4: numeric-rank encoding + dict brotli",
+      "encoded_size": 127577,
+      "ratio": 16.27,
+      "lossless": "?",
+      "notes": "1744 distinct numerics"
+    },
+    {
+      "name": "C1: audit (no IDs) + seed recipe (Exp 31 reprise)",
+      "encoded_size": 66122,
+      "ratio": 31.39,
+      "lossless": "?",
+      "notes": "matches Exp 31 against det-corpus, ~31.39x"
+    },
+    {
+      "name": "C2: full-receipt templatize + split-brotli",
+      "encoded_size": 129410,
+      "ratio": 16.04,
+      "lossless": "?",
+      "notes": "tpl=59094B nums=70316B"
+    },
+    {
+      "name": "C3: brotli → brotli (recursive)",
+      "encoded_size": 120171,
+      "ratio": 17.27,
+      "lossless": false,
+      "notes": "brotli output 120166B, recompressed 120171B"
+    },
+    {
+      "name": "C3b: brotli → gzip",
+      "encoded_size": 120224,
+      "ratio": 17.26,
+      "lossless": true,
+      "notes": "brotli then gzip"
+    },
+    {
+      "name": "C4: strip-const + det-ID + brotli",
+      "encoded_size": 69209,
+      "ratio": 29.99,
+      "lossless": "?",
+      "notes": "strip=64276 recipe=4885"
+    },
+    {
+      "name": "D1: WHT (Hadamard) on byte prefix + brotli (lossy)",
+      "encoded_size": 2300444,
+      "ratio": 0.9,
+      "lossless": false,
+      "notes": "n=1048576, 4-byte coefficients; NOT lossless"
+    },
+    {
+      "name": "D2: Hilbert-curve linearization + brotli",
+      "encoded_size": 1248668,
+      "ratio": 1.66,
+      "lossless": "?",
+      "notes": "side=1441, hilbert order=2048; lossless if mapping deterministic"
+    },
+    {
+      "name": "D3: continued-fraction representable mesh.compress ratios",
+      "encoded_size": 1565,
+      "ratio": 1326.25,
+      "lossless": true,
+      "notes": "1565/1565 exact at q≤100; avg err 0.00e+0"
+    },
+    {
+      "name": "D4: modular periodicity in action seq",
+      "encoded_size": 6224,
+      "ratio": 333.48,
+      "lossless": "?",
+      "notes": "top: p29=33.4% p43=33.1% p31=33.0% p2=33.0% p41=33.0%"
+    },
+    {
+      "name": "E1: DAG dependency analysis",
+      "encoded_size": 6224,
+      "ratio": 333.48,
+      "lossless": "?",
+      "notes": "5 receipts contain references; 30 unique receipts referenced"
+    },
+    {
+      "name": "E2: SVD rank-1 + per-receipt scale",
+      "encoded_size": 6224,
+      "ratio": 333.48,
+      "lossless": "?",
+      "notes": "scale variance 0.62 (low = receipts cluster on mean)"
+    },
+    {
+      "name": "E3: 64-byte block dedup + brotli",
+      "encoded_size": 157323,
+      "ratio": 13.19,
+      "lossless": "?",
+      "notes": "22726/32432 unique blocks"
+    },
+    {
+      "name": "E4: block-dedup 16B",
+      "encoded_size": 211963,
+      "ratio": 9.79,
+      "lossless": "?",
+      "notes": "34646/129725 unique"
+    },
+    {
+      "name": "E4: block-dedup 32B",
+      "encoded_size": 192194,
+      "ratio": 10.8,
+      "lossless": "?",
+      "notes": "29451/64863 unique"
+    },
+    {
+      "name": "E4: block-dedup 48B",
+      "encoded_size": 170297,
+      "ratio": 12.19,
+      "lossless": "?",
+      "notes": "25833/43242 unique"
+    },
+    {
+      "name": "E4: block-dedup 64B",
+      "encoded_size": 157323,
+      "ratio": 13.19,
+      "lossless": "?",
+      "notes": "22726/32432 unique"
+    },
+    {
+      "name": "E4: block-dedup 96B",
+      "encoded_size": 146467,
+      "ratio": 14.17,
+      "lossless": "?",
+      "notes": "17396/21621 unique"
+    },
+    {
+      "name": "E4: block-dedup 128B",
+      "encoded_size": 140291,
+      "ratio": 14.79,
+      "lossless": "?",
+      "notes": "14075/16216 unique"
+    },
+    {
+      "name": "E4: block-dedup 256B",
+      "encoded_size": 127482,
+      "ratio": 16.28,
+      "lossless": "?",
+      "notes": "7982/8108 unique"
+    }
+  ],
+  "top_15": [
+    {
+      "name": "D3: continued-fraction representable mesh.compress ratios",
+      "encoded_size": 1565,
+      "ratio": 1326.25,
+      "lossless": true,
+      "notes": "1565/1565 exact at q≤100; avg err 0.00e+0"
+    },
+    {
+      "name": "D4: modular periodicity in action seq",
+      "encoded_size": 6224,
+      "ratio": 333.48,
+      "lossless": "?",
+      "notes": "top: p29=33.4% p43=33.1% p31=33.0% p2=33.0% p41=33.0%"
+    },
+    {
+      "name": "E1: DAG dependency analysis",
+      "encoded_size": 6224,
+      "ratio": 333.48,
+      "lossless": "?",
+      "notes": "5 receipts contain references; 30 unique receipts referenced"
+    },
+    {
+      "name": "E2: SVD rank-1 + per-receipt scale",
+      "encoded_size": 6224,
+      "ratio": 333.48,
+      "lossless": "?",
+      "notes": "scale variance 0.62 (low = receipts cluster on mean)"
+    },
+    {
+      "name": "C1: audit (no IDs) + seed recipe (Exp 31 reprise)",
+      "encoded_size": 66122,
+      "ratio": 31.39,
+      "lossless": "?",
+      "notes": "matches Exp 31 against det-corpus, ~31.39x"
+    },
+    {
+      "name": "C4: strip-const + det-ID + brotli",
+      "encoded_size": 69209,
+      "ratio": 29.99,
+      "lossless": "?",
+      "notes": "strip=64276 recipe=4885"
+    },
+    {
+      "name": "C3: brotli → brotli (recursive)",
+      "encoded_size": 120171,
+      "ratio": 17.27,
+      "lossless": false,
+      "notes": "brotli output 120166B, recompressed 120171B"
+    },
+    {
+      "name": "C3b: brotli → gzip",
+      "encoded_size": 120224,
+      "ratio": 17.26,
+      "lossless": true,
+      "notes": "brotli then gzip"
+    },
+    {
+      "name": "B1: RLE action seq + vocab + rest-brotli",
+      "encoded_size": 122372,
+      "ratio": 16.96,
+      "lossless": "?",
+      "notes": "4203 runs over 6224 actions"
+    },
+    {
+      "name": "B2: payload-dedup + IDs + rest-brotli",
+      "encoded_size": 127257,
+      "ratio": 16.31,
+      "lossless": "?",
+      "notes": "1855 distinct payloads"
+    },
+    {
+      "name": "E4: block-dedup 256B",
+      "encoded_size": 127482,
+      "ratio": 16.28,
+      "lossless": "?",
+      "notes": "7982/8108 unique"
+    },
+    {
+      "name": "B4: numeric-rank encoding + dict brotli",
+      "encoded_size": 127577,
+      "ratio": 16.27,
+      "lossless": "?",
+      "notes": "1744 distinct numerics"
+    },
+    {
+      "name": "C2: full-receipt templatize + split-brotli",
+      "encoded_size": 129410,
+      "ratio": 16.04,
+      "lossless": "?",
+      "notes": "tpl=59094B nums=70316B"
+    },
+    {
+      "name": "B3: per-action brotli (separate streams) + seq",
+      "encoded_size": 133298,
+      "ratio": 15.57,
+      "lossless": "?",
+      "notes": "66 action groups"
+    },
+    {
+      "name": "E4: block-dedup 128B",
+      "encoded_size": 140291,
+      "ratio": 14.79,
+      "lossless": "?",
+      "notes": "14075/16216 unique"
+    }
+  ]
+}

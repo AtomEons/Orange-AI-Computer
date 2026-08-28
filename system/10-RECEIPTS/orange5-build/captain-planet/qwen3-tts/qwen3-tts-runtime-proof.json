@@ -1,0 +1,41 @@
+{
+  "schema": "orange5.captain-planet.artifact-proof.v1",
+  "status": "CAPTAIN_PLANET_TTS_RUNTIME_PROVEN_QUALITY_UNASSESSED",
+  "generated_at": "2026-08-26T23:30:05.358Z",
+  "organ": "qwen3_tts",
+  "runtime_execution_proven": true,
+  "studio_quality_proven": false,
+  "quality_status": "PENDING_INTELLIGIBILITY_AND_LISTENING_BENCHMARK",
+  "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\orangefive-qwen3-tts-proof.wav",
+  "artifact_sha256": "90598b2975622c98fec213664e3c023aa624a8efd7286c91a4517ebc1de63452",
+  "source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\qwen3-tts-artifact-proof.codexa.json",
+  "source_model_id": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "source_model_revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+  "source_device": "Intel(R) Arc(TM) 140T GPU (48GB)",
+  "source_generation_seconds": 26.144,
+  "checks": {
+    "source_runtime_status": true,
+    "source_hash_matches": true,
+    "sample_rate_matches": true,
+    "duration_is_substantive": true,
+    "signal_is_non_silent": true,
+    "peak_is_not_clipped": true
+  },
+  "audio": {
+    "audio_format": 1,
+    "channels": 1,
+    "sample_rate": 24000,
+    "byte_rate": 48000,
+    "block_align": 2,
+    "bits_per_sample": 16,
+    "bytes": 280364,
+    "frames": 140160,
+    "duration_seconds": 5.84,
+    "rms": 0.074653,
+    "peak": 0.714844,
+    "non_silent": true
+  },
+  "prior_receipt": "qwen3-tts-artifact-proof.codexa.json",
+  "prior_sha256": "062696ba3e9219999ec548e9431a8d58943abffaf077b85636452cbc002193a7",
+  "receipt_sha256": "e0b837f8b4873e676d1c33eefb9e5cb1cc6a4072509efd1f7d77dcffea1be5f6"
+}

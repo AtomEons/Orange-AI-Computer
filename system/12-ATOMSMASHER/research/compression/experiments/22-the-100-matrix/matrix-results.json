@@ -1,0 +1,281 @@
+{
+  "generated_at": "2026-06-26T11:39:29.819Z",
+  "corpus_sha256": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes": 2075585,
+  "pipelines_tested": 21,
+  "results": [
+    {
+      "pipeline": "plait → brotli_q11",
+      "axes": [
+        "plait"
+      ],
+      "codec": "brotli_q11",
+      "pre_codec_bytes": 2082206,
+      "final_bytes": 114967,
+      "ratio": 18.053745857506936,
+      "encode_ms": 7927,
+      "decode_ms": 43,
+      "lossless": true
+    },
+    {
+      "pipeline": "two_stream → brotli_q11",
+      "axes": [
+        "two_stream"
+      ],
+      "codec": "brotli_q11",
+      "pre_codec_bytes": 1944887,
+      "final_bytes": 116106,
+      "ratio": 17.876638588875682,
+      "encode_ms": 11034,
+      "decode_ms": 99,
+      "lossless": true
+    },
+    {
+      "pipeline": "id_tail → brotli_q11",
+      "axes": [
+        "id_tail"
+      ],
+      "codec": "brotli_q11",
+      "pre_codec_bytes": 1944887,
+      "final_bytes": 116106,
+      "ratio": 17.876638588875682,
+      "encode_ms": 9424,
+      "decode_ms": 106,
+      "lossless": true
+    },
+    {
+      "pipeline": "schema_fold → brotli_q11",
+      "axes": [
+        "schema_fold"
+      ],
+      "codec": "brotli_q11",
+      "pre_codec_bytes": 2077306,
+      "final_bytes": 119016,
+      "ratio": 17.439545943402567,
+      "encode_ms": 11247,
+      "decode_ms": 315,
+      "lossless": true
+    },
+    {
+      "pipeline": "identity → brotli_q11",
+      "axes": [
+        "identity"
+      ],
+      "codec": "brotli_q11",
+      "pre_codec_bytes": 2075585,
+      "final_bytes": 120166,
+      "ratio": 17.272647837158598,
+      "encode_ms": 13387,
+      "decode_ms": 122,
+      "lossless": true
+    },
+    {
+      "pipeline": "sort_action → brotli_q11",
+      "axes": [
+        "sort_action"
+      ],
+      "codec": "brotli_q11",
+      "pre_codec_bytes": 2087910,
+      "final_bytes": 121067,
+      "ratio": 17.144102026150808,
+      "encode_ms": 10303,
+      "decode_ms": 39,
+      "lossless": true
+    },
+    {
+      "pipeline": "spike → brotli_q11",
+      "axes": [
+        "spike"
+      ],
+      "codec": "brotli_q11",
+      "pre_codec_bytes": 677742,
+      "final_bytes": 125309,
+      "ratio": 16.563734448443448,
+      "encode_ms": 3128,
+      "decode_ms": 46,
+      "lossless": true
+    },
+    {
+      "pipeline": "two_stream → brotli_q6",
+      "axes": [
+        "two_stream"
+      ],
+      "codec": "brotli_q6",
+      "pre_codec_bytes": 1944887,
+      "final_bytes": 128704,
+      "ratio": 16.126810355544507,
+      "encode_ms": 142,
+      "decode_ms": 81,
+      "lossless": true
+    },
+    {
+      "pipeline": "id_tail → brotli_q6",
+      "axes": [
+        "id_tail"
+      ],
+      "codec": "brotli_q6",
+      "pre_codec_bytes": 1944887,
+      "final_bytes": 128704,
+      "ratio": 16.126810355544507,
+      "encode_ms": 139,
+      "decode_ms": 41,
+      "lossless": true
+    },
+    {
+      "pipeline": "plait → brotli_q6",
+      "axes": [
+        "plait"
+      ],
+      "codec": "brotli_q6",
+      "pre_codec_bytes": 2082206,
+      "final_bytes": 132524,
+      "ratio": 15.661955570311793,
+      "encode_ms": 109,
+      "decode_ms": 53,
+      "lossless": true
+    },
+    {
+      "pipeline": "schema_fold → brotli_q6",
+      "axes": [
+        "schema_fold"
+      ],
+      "codec": "brotli_q6",
+      "pre_codec_bytes": 2077306,
+      "final_bytes": 136028,
+      "ratio": 15.258512953215515,
+      "encode_ms": 175,
+      "decode_ms": 51,
+      "lossless": true
+    },
+    {
+      "pipeline": "identity → brotli_q6",
+      "axes": [
+        "identity"
+      ],
+      "codec": "brotli_q6",
+      "pre_codec_bytes": 2075585,
+      "final_bytes": 137635,
+      "ratio": 15.080357467214007,
+      "encode_ms": 166,
+      "decode_ms": 54,
+      "lossless": true
+    },
+    {
+      "pipeline": "sort_action → brotli_q6",
+      "axes": [
+        "sort_action"
+      ],
+      "codec": "brotli_q6",
+      "pre_codec_bytes": 2087910,
+      "final_bytes": 140025,
+      "ratio": 14.822960185681127,
+      "encode_ms": 147,
+      "decode_ms": 67,
+      "lossless": true
+    },
+    {
+      "pipeline": "spike → brotli_q6",
+      "axes": [
+        "spike"
+      ],
+      "codec": "brotli_q6",
+      "pre_codec_bytes": 677742,
+      "final_bytes": 147478,
+      "ratio": 14.073861864142449,
+      "encode_ms": 152,
+      "decode_ms": 23,
+      "lossless": true
+    },
+    {
+      "pipeline": "spike → zlib_9",
+      "axes": [
+        "spike"
+      ],
+      "codec": "zlib_9",
+      "pre_codec_bytes": 677742,
+      "final_bytes": 170805,
+      "ratio": 12.151781271040075,
+      "encode_ms": 104,
+      "decode_ms": 35,
+      "lossless": true
+    },
+    {
+      "pipeline": "plait → zlib_9",
+      "axes": [
+        "plait"
+      ],
+      "codec": "zlib_9",
+      "pre_codec_bytes": 2082206,
+      "final_bytes": 179390,
+      "ratio": 11.570238028875634,
+      "encode_ms": 78,
+      "decode_ms": 38,
+      "lossless": true
+    },
+    {
+      "pipeline": "sort_action → zlib_9",
+      "axes": [
+        "sort_action"
+      ],
+      "codec": "zlib_9",
+      "pre_codec_bytes": 2087910,
+      "final_bytes": 188578,
+      "ratio": 11.006506591436965,
+      "encode_ms": 111,
+      "decode_ms": 72,
+      "lossless": true
+    },
+    {
+      "pipeline": "two_stream → zlib_9",
+      "axes": [
+        "two_stream"
+      ],
+      "codec": "zlib_9",
+      "pre_codec_bytes": 1944887,
+      "final_bytes": 217427,
+      "ratio": 9.546123526516945,
+      "encode_ms": 275,
+      "decode_ms": 116,
+      "lossless": true
+    },
+    {
+      "pipeline": "id_tail → zlib_9",
+      "axes": [
+        "id_tail"
+      ],
+      "codec": "zlib_9",
+      "pre_codec_bytes": 1944887,
+      "final_bytes": 217427,
+      "ratio": 9.546123526516945,
+      "encode_ms": 102,
+      "decode_ms": 43,
+      "lossless": true
+    },
+    {
+      "pipeline": "schema_fold → zlib_9",
+      "axes": [
+        "schema_fold"
+      ],
+      "codec": "zlib_9",
+      "pre_codec_bytes": 2077306,
+      "final_bytes": 241690,
+      "ratio": 8.587798419462949,
+      "encode_ms": 207,
+      "decode_ms": 78,
+      "lossless": true
+    },
+    {
+      "pipeline": "identity → zlib_9",
+      "axes": [
+        "identity"
+      ],
+      "codec": "zlib_9",
+      "pre_codec_bytes": 2075585,
+      "final_bytes": 245601,
+      "ratio": 8.451044580437376,
+      "encode_ms": 123,
+      "decode_ms": 55,
+      "lossless": true
+    }
+  ]
+}

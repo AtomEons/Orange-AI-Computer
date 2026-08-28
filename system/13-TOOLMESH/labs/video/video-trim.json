@@ -1,0 +1,71 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "video",
+  "card_id": "video-trim",
+  "capability": "video.trim",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["source_ref", "start_seconds", "end_seconds"],
+    "properties": {
+      "source_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "start_seconds": {
+        "type": "number",
+        "description": "Inclusive cut-in point.",
+        "minimum": 0
+      },
+      "end_seconds": {
+        "type": "number",
+        "description": "Exclusive cut-out point. Must be greater than start_seconds. Runner clamps to source duration.",
+        "minimum": 0
+      },
+      "reencode": {
+        "type": "boolean",
+        "description": "When false (default), runner uses stream-copy for fast keyframe-aligned trim. When true, the segment is re-encoded so cut points are frame-accurate.",
+        "default": false
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["output_ref", "duration_seconds"],
+    "properties": {
+      "output_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "duration_seconds": { "type": "number", "minimum": 0 },
+      "size_bytes": { "type": "integer", "minimum": 0 },
+      "reencoded": { "type": "boolean" }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 30,
+    "scopes": [
+      "fs.read:sandbox://video/",
+      "fs.write:sandbox://video/trim/",
+      "process.spawn:ffmpeg",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 20
+  },
+  "risk_class": "sandboxed",
+  "last_verified_at": "2026-06-25T00:18:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Cut a sub-clip from a sandboxed video using stream-copy (fast, keyframe-aligned) or re-encode (frame-accurate).",
+  "tags": ["video", "trim", "cut", "ffmpeg"],
+  "notes": "Stream-copy mode snaps the start to the nearest preceding keyframe; when frame-accuracy matters, set reencode=true (latency moves to upper end of seconds bucket on long clips)."
+}

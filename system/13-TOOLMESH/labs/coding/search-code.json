@@ -1,0 +1,102 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "coding",
+  "card_id": "search-code",
+  "capability": "coding.search",
+  "cost_class": "free",
+  "latency_class": "sub-second",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["pattern"],
+    "properties": {
+      "pattern": {
+        "type": "string",
+        "description": "Regular expression in ripgrep syntax. Anchored to the workspace root; runner refuses patterns that compile to catastrophic-backtracking forms (e.g. nested unbounded quantifiers).",
+        "minLength": 1,
+        "maxLength": 2048
+      },
+      "path": {
+        "type": "string",
+        "description": "Sandbox-scoped directory or file under which to search. Accepts 'sandbox://<path>'. Defaults to the workspace root when omitted. Absolute filesystem paths are rejected.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "glob": {
+        "type": "string",
+        "description": "Optional glob filter restricting which files are searched (e.g. '**/*.ts', 'src/**/*.{js,mjs}'). Multiple filters can be joined with commas.",
+        "minLength": 1,
+        "maxLength": 512
+      },
+      "case_sensitive": {
+        "type": "boolean",
+        "description": "When false (default), pattern matches are case-insensitive. Set true for exact-case identifier hunts.",
+        "default": false
+      },
+      "max_results": {
+        "type": "integer",
+        "description": "Soft cap on matches returned to the planner. Runner truncates and sets 'truncated: true' rather than streaming unbounded output.",
+        "minimum": 1,
+        "maximum": 5000,
+        "default": 500
+      },
+      "context_lines": {
+        "type": "integer",
+        "description": "Number of surrounding lines to attach to each match (before and after). Zero returns only the matching line.",
+        "minimum": 0,
+        "maximum": 20,
+        "default": 0
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["matches", "truncated"],
+    "properties": {
+      "matches": {
+        "type": "array",
+        "description": "Ordered match list. Empty array means no hits, not failure.",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "line", "text"],
+          "properties": {
+            "path": { "type": "string", "pattern": "^sandbox://", "minLength": 11, "maxLength": 4096 },
+            "line": { "type": "integer", "minimum": 1 },
+            "column": { "type": "integer", "minimum": 1 },
+            "text": { "type": "string" },
+            "context_before": { "type": "array", "items": { "type": "string" } },
+            "context_after": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      },
+      "truncated": {
+        "type": "boolean",
+        "description": "True when the runner stopped at max_results before exhausting the corpus. Re-run with a narrower glob or higher cap to see the rest."
+      },
+      "files_scanned": {
+        "type": "integer",
+        "description": "Diagnostic count of files examined. Useful for verifying glob narrowing actually reduced scope.",
+        "minimum": 0
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 120,
+    "max_invocations": 200,
+    "scopes": [
+      "fs.read:sandbox://workspace/",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 120
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Workspace-scoped regex code search via ripgrep. Read-only, sub-second on typical repos.",
+  "tags": ["coding", "search", "ripgrep", "regex", "read-only"]
+}

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Æ Orange AI Computer Receipts And Audit</title><style>
+  :root { color-scheme: light; --orange:#ff5a1f; --ink:#171717; --muted:#666; --line:#dedede; --paper:#fff; }
+  * { box-sizing: border-box; }
+  @page { size: Letter; margin: 0.7in 0.66in 0.72in; }
+  html { background:#ececec; }
+  body { max-width: 8.5in; margin: 0 auto; padding: 0.72in 0.66in; background:var(--paper); color:var(--ink); font-family: Inter, "Segoe UI", Arial, sans-serif; font-size:10.5pt; line-height:1.48; }
+  body::before { content:"ATOM EONS  /  Æ ORANGE AI COMPUTER"; display:block; color:var(--orange); font-size:8pt; font-weight:800; letter-spacing:.14em; border-bottom:2px solid var(--orange); padding-bottom:8px; margin-bottom:28px; }
+  h1,h2,h3,h4 { break-after:avoid; line-height:1.15; color:#111; }
+  h1 { font-size:28pt; margin:0 0 20px; }
+  h2 { font-size:18pt; margin:30px 0 11px; padding-top:7px; border-top:1px solid var(--line); }
+  h3 { font-size:13.5pt; margin:23px 0 8px; }
+  h4 { font-size:11pt; margin:18px 0 6px; }
+  p, li { orphans:3; widows:3; }
+  a { color:#b7390d; text-decoration:none; }
+  strong { color:#111; }
+  blockquote { margin:18px 0; padding:10px 15px; border-left:4px solid var(--orange); background:#fff5f0; }
+  code { font-family:"Cascadia Mono",Consolas,monospace; background:#f4f4f4; padding:1px 4px; border-radius:3px; font-size:9pt; }
+  pre { break-inside:avoid; white-space:pre-wrap; background:#161616; color:#f7f7f7; padding:13px 15px; border-left:4px solid var(--orange); border-radius:4px; overflow-wrap:anywhere; }
+  pre code { color:inherit; background:none; padding:0; }
+  table { width:100%; border-collapse:collapse; margin:15px 0 21px; break-inside:auto; font-size:9pt; }
+  thead { display:table-header-group; }
+  tr { break-inside:avoid; }
+  th,td { border:1px solid var(--line); padding:7px 8px; vertical-align:top; }
+  th { text-align:left; background:#fff1eb; }
+  ul,ol { padding-left:22px; }
+  img { max-width:100%; height:auto; }
+  hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
+  .manual-meta { color:var(--muted); font-size:8.5pt; margin:-10px 0 30px; }
+  .book-cover { min-height:8.2in; display:flex; flex-direction:column; justify-content:center; page-break-after:always; }
+  .book-cover .mark { color:var(--orange); font-size:11pt; font-weight:800; letter-spacing:.18em; }
+  .book-cover h1 { font-size:42pt; max-width:6.5in; margin:16px 0; }
+  .book-cover p { color:var(--muted); font-size:15pt; max-width:5.7in; }
+  .manual-section { page-break-before:always; }
+  @media print { html,body { background:#fff; } body { padding:0; max-width:none; } }
+</style></head>
+<body class="single-manual">
+<div class="manual-meta">Canonical source: 00-CHARTER/GUIDES/RECEIPTS_AND_AUDIT.md</div>
+<h1>Æ Orange AI Computer Receipts And Audit</h1>
+<p>A receipt is evidence that a named action reached a named result under a named
+contract. It is not a decorative log line, a model-authored success claim, or a
+promise that unrelated paths are healthy.</p>
+<h2>What A Receipt Must Answer</h2>
+<ul>
+<li>What action was requested?</li>
+<li>Which scope, risk, and approval applied?</li>
+<li>Which executor and runtime path acted?</li>
+<li>Was execution attempted or only planned?</li>
+<li>What evidence proves the result?</li>
+<li>Which hashes, sequence, and predecessor preserve lineage?</li>
+<li>Which blockers or caveats remain?</li>
+<li>What exact claim may an auditor make from it?</li>
+</ul>
+<p>Operational input uses <code>orange.order.v1</code>; operational output uses
+<code>orange.report.v1</code>. Models may propose content, but deterministic code owns
+schema validation, execution attestation, evidence checks, and receipt writing.</p>
+<h2>Evidence Precedence</h2>
+<p>Use the freshest evidence for the exact path:</p>
+<ol>
+<li>semantic live probe;</li>
+<li>current hash-chained receipt;</li>
+<li>current executable test;</li>
+<li>current source or configuration;</li>
+<li>runtime authority and public manuals;</li>
+<li>historical plans and chat claims.</li>
+</ol>
+<p>A newer narrow failure can supersede an older broad green result for that one
+path. A newer narrow success cannot promote paths it did not exercise.</p>
+<h2>Chain And Storage</h2>
+<p>Public proof artifacts live under <code>10-RECEIPTS</code>. Machine-local mutable evidence
+may also live under <code>%USERPROFILE%\OrangeBox-Data\orange5</code>. Receipt chains use
+SHA-256 lineage so mutation, missing predecessors, sequence breaks, and mixed
+chains can be detected.</p>
+<p>Hash integrity proves that recorded bytes remain linked. It does not prove that
+the original observation was correct. Strong audit combines chain validation
+with schema validation, executor identity, runtime evidence, and independent
+reproduction.</p>
+<h2>Audit A Claim</h2>
+<ol>
+<li>Rewrite the claim as one falsifiable sentence.</li>
+<li>Identify the exact runtime crossing and acceptance conditions.</li>
+<li>Locate the newest receipt for that crossing.</li>
+<li>Verify the receipt exists and validates against its schema and chain.</li>
+<li>Inspect raw evidence rather than the summary alone.</li>
+<li>Reproduce with the named command when risk and environment permit.</li>
+<li>Check for a later contradictory receipt or live probe.</li>
+<li>State the boundary: what the evidence proves and what it does not.</li>
+</ol>
+<p>For native or visual work, link pixels to process, run, model or gateway request,
+and receipt identity. A screenshot without that linkage proves only the pixels.</p>
+<h2>Receipt States</h2>
+<table>
+<thead>
+<tr><th>State</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>PROVEN</code></td><td>named runtime path satisfied its acceptance contract</td></tr>
+<tr><td><code>CONFIGURED</code></td><td>implementation or configuration exists; runtime proof is pending</td></tr>
+<tr><td><code>DEGRADED</code></td><td>path is callable with a named limitation</td></tr>
+<tr><td><code>BLOCKED</code></td><td>required dependency, authority, or gate is missing</td></tr>
+<tr><td><code>FUTURE</code></td><td>research or candidate work only</td></tr>
+</tbody>
+</table>
+<p>Process start, HTTP 200, file existence, model installation, unit-test success,
+and agent <code>done</code> are observations. None is universal completion evidence.</p>
+<h2>Public Citation Form</h2>
+<p>Every public metric should name:</p>
+<pre><code class="language-text">claim + workload + denominator + environment + timestamp
++ receipt path + reproduction command + limitations
+</code></pre>
+<p>Avoid naked ratios and adjectives. Confidence comes from a reader being able to
+inspect the same evidence and reach the same bounded conclusion.</p>
+<h2>Verify</h2>
+<pre><code class="language-powershell">cd C:\AtomEons\Orange5
+bun run verify:json
+</code></pre>
+<p>Use focused proof commands from <a href="PROOF_AND_BENCHMARKS.md">Proof and Benchmarks</a>
+for the claimed subsystem. The full verifier is a broad snapshot, not a
+substitute for a fresh exact-path receipt.</p>
+<h2>Related Guides</h2>
+<ul>
+<li><a href="PROOF_AND_BENCHMARKS.md">Proof and Benchmarks</a></li>
+<li><a href="MEMORY_AND_LEARNING.md">Memory and Learning</a></li>
+<li><a href="TROUBLESHOOTING_AND_RECOVERY.md">Troubleshooting and Recovery</a></li>
+<li><a href="SKEPTICS_FIELD_GUIDE.md">Skeptic's Field Guide</a></li>
+</ul>
+
+</body></html>

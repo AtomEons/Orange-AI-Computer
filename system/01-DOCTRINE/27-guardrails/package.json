@@ -1,0 +1,35 @@
+{
+  "name": "@orange5/guardrails",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Orange5 27 Constitutional Guardrails — parallel runtime checker, SQLite-backed status, Soul Genome anchor, Continuity Packet writer, Reality Flux ingress.",
+  "main": "runtime.mjs",
+  "exports": {
+    ".": "./runtime.mjs",
+    "./runtime": "./runtime.mjs",
+    "./server": "./server.mjs",
+    "./soul-genome": "./lib/soul-genome.mjs",
+    "./continuity-packet": "./lib/continuity-packet.mjs"
+  },
+  "scripts": {
+    "check": "node runtime.mjs",
+    "serve": "bun server.mjs",
+    "serve:node": "node server.mjs",
+    "cron": "node cron.mjs",
+    "cron:bun": "bun cron.mjs",
+    "cron:once": "node cron.mjs --once",
+    "continuity:write": "node lib/continuity-packet.mjs write",
+    "soul:show": "node lib/soul-genome.mjs show",
+    "test": "node tests/runtime.test.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0"
+  },
+  "ae0_spec": "01-DOCTRINE/27-guardrails/README.md",
+  "ae0_invariant_count": 27,
+  "ae0_lane": "doctrine"
+}

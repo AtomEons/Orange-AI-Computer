@@ -1,0 +1,46 @@
+{
+  "schema": "orange5.ae-black-mamba.corpus-manifest.v0",
+  "generated_at": "2026-06-25T00:36:39.665Z",
+  "finished_at": "2026-06-25T00:36:40.545Z",
+  "purpose": "AE Black Mamba Phase-3 full-FT pretraining corpus",
+  "inputs": {
+    "flux_root": "C:\\AtomEons\\Orange5\\06-ORANGELLM\\memory\\ae-cobra\\flux",
+    "receipts_dir": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build",
+    "schema_path": "C:\\AtomEons\\Orange5\\06-ORANGELLM\\memory\\ae-cobra\\schemas\\agent-turn.schema.json",
+    "lanes_included": [
+      "reality"
+    ],
+    "min_bytes": 32,
+    "val_percent": 10
+  },
+  "outputs": {
+    "train_path": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-black-mamba\\corpus\\train.jsonl",
+    "val_path": "C:\\AtomEons\\Orange5\\16-TRAINING\\ae-black-mamba\\corpus\\val.jsonl",
+    "train_rows": 53,
+    "val_rows": 6,
+    "train_sha256": "b7bb1aee8c013e8a0ff6f0ab45e7db8a0c111bdb5101df8819f5c359a28f3748",
+    "val_sha256": "876ca263836a746c5ccedebe5497e6c782018a46733678107164e9b1b585458c"
+  },
+  "counts": {
+    "flux_lines_seen": 0,
+    "flux_accepted": 0,
+    "receipts_seen": 59,
+    "receipts_accepted": 59,
+    "duplicates": 0,
+    "too_short": 0
+  },
+  "accepted_total": 59,
+  "rejected_total": 0,
+  "reject_histogram": {},
+  "reject_sample": [],
+  "rules": {
+    "validator": "hand-written; cross-checked against schema enums at startup",
+    "dedupe": "SHA-256 of alphabetically-canonical JSON of normalized AgentTurn",
+    "split": "deterministic by SHA-256 prefix mod 100; <VAL_PERCENT → val",
+    "row_format": "{\"text\": \"<grammar-ordered AgentTurn JSON>\\n\"}",
+    "text_serialization": "Keys in agent_turn.gbnf root-rule order (lane, event_type, summary, entities, files, commands, risk, next_action, confidence). confidence snapped to GBNF lexical form (0.0 | 1.0 | 0.XX). Dedupe SHA-256 is computed on the separate alphabetical canonical form so reruns on unchanged input still produce a bit-identical dedupe key set; only the on-disk text differs between the two serializations.",
+    "training_mode": "FULL fine-tune (not LoRA — SSM has no transformer-style LoRA)",
+    "base_model": "Phase-1 surrogate: bartowski/mamba-2.8b-hf-GGUF; Phase-3 custom: AE Black Mamba 2.8B SSM, pretrained from this corpus"
+  },
+  "moms_law": "Every rejection itemized. No fake-green rows. No silent coercion."
+}

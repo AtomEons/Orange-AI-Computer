@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orange.order.v1",
+  "title": "Orange Order v1",
+  "type": "object",
+  "required": ["schema", "orderId", "action", "intent", "scope", "allowedActions", "forbiddenActions", "targetProject", "riskLevel", "requiresReceipt"],
+  "properties": {
+    "schema": { "const": "orange.order.v1" },
+    "orderId": { "type": "string", "minLength": 3 },
+    "action": { "type": "string", "minLength": 1 },
+    "intent": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "minLength": 1 },
+    "allowedActions": { "type": "array", "items": { "type": "string" } },
+    "forbiddenActions": { "type": "array", "items": { "type": "string" } },
+    "targetProject": { "type": "string" },
+    "riskLevel": { "enum": ["read_only", "low", "medium", "high", "destructive", "production"] },
+    "requiresReceipt": { "type": "boolean" },
+    "operatorApproved": { "type": "boolean" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

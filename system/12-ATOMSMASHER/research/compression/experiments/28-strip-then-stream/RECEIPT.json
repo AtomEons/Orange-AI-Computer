@@ -1,0 +1,13 @@
+{
+  "experiment": "28-strip-then-stream",
+  "generated_at": "2026-06-26T12:24:09.508Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "audit_brotli": 63710,
+  "id_brotli": 49796,
+  "recipe_brotli": 4885,
+  "total": 118391,
+  "ratio": 17.53,
+  "roundtrip_lossless": true,
+  "beats_plait": false,
+  "beats_two_stream": false
+}

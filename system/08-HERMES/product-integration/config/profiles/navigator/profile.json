@@ -1,0 +1,1 @@
+{"name":"navigator","description":"OrangeFive conductor: scopes orders, routes named profiles, and closes evidence-backed work.","model":"orange-navigator","permissionClass":"governed-orchestration","kanbanWorker":true}

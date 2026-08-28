@@ -1,0 +1,46 @@
+{
+  "experiment": "08-sheaf-cohomology",
+  "generated_at": "2026-06-26T10:10:44.305Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes_in": 2075585,
+  "num_receipts": 6224,
+  "num_components": 1855,
+  "h0_dimension": 1855,
+  "h0_collapse_ratio": 3.36,
+  "largest_5_components": [
+    {
+      "component_id": 2,
+      "size": 805
+    },
+    {
+      "component_id": 17,
+      "size": 679
+    },
+    {
+      "component_id": 8,
+      "size": 227
+    },
+    {
+      "component_id": 52,
+      "size": 142
+    },
+    {
+      "component_id": 11,
+      "size": 119
+    }
+  ],
+  "field_vocab_sizes": {
+    "id": 6224,
+    "action": 66,
+    "status": 2,
+    "summary": 2598,
+    "created_at": 35
+  },
+  "sheaf_stream_bytes": 679584,
+  "sheaf_brotli_bytes": 127496,
+  "ratio": 16.28,
+  "roundtrip_lossless": true,
+  "beats_plait_baseline": false,
+  "pass": false,
+  "reference": "Rieser 2025 arXiv:2109.13867v2 — Grothendieck topologies and sheaf theory for Čech closure spaces"
+}

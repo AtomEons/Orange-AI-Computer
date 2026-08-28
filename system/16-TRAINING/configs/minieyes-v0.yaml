@@ -1,0 +1,209 @@
+# MiniEyes v0 — Unsloth / Axolotl QLoRA training config (vision-language)
+# Base: unsloth/Qwen2.5-VL-7B-Instruct-bnb-4bit (pre-quantized 4-bit VLM)
+# Target: Colab A100 40GB (primary) or V100 16GB (fallback, see §V100 notes)
+# Expected wall-clock: 3-6h on A100 / 8-14h on V100 across 3 epochs
+# Operator: Atom McCree | Disclosure ID: ATOM-MINIEYES-CFG-2026-0624
+#
+# Doctrine (per operator, 2026-06-24):
+# - MiniEyes is the ADDENDUM visual model — built ONLY if the primary visual
+#   stack (GLM-4.6V + Playwright + Chrome DevTools + UX tools) demonstrably
+#   fails under real Orange5 / AECode load. Optional, deferred.
+# - This config is the bake-off default per `minieyes/base-selector.md` §1
+#   (candidate A: Qwen2.5-VL-7B-Instruct, Apache-2.0, 7B tier).
+# - Corpus = three lanes per `minieyes/corpus-strategy.md` §2:
+#     1) Orange5 cockpit screenshots (1500-2000)
+#     2) AECode diagrams with region sidecars (800-1200)
+#     3) Receipt PDF pages rendered at 300 DPI (1500-2000)
+#   No web-scraped imagery. No synthetic renders. No third-party UI.
+# - Primary training signal: faithful visual grounding (panel taxonomy,
+#   region polygons, receipt JSON shape) — NOT general VQA. MiniEyes is a
+#   narrow eye on Orange5's own visual language.
+# - Mom's Law applies: every cite verified, every claim receipted. Refuse
+#   to train on a corpus that has not passed `filter_corpus.py` (PII / face /
+#   secrets filters per corpus-strategy.md §3).
+# - Per `feedback_colab_torch_pins.md`: NEVER pin torch in Colab. Use
+#   Colab's default torch; install Unsloth/Axolotl on top; add hard guards
+#   on the adapter directory before any save.
+
+# ===== Base model =====
+base_model: unsloth/Qwen2.5-VL-7B-Instruct-bnb-4bit
+model_type: AutoModelForVision2Seq
+processor_type: AutoProcessor
+tokenizer_type: AutoTokenizer
+trust_remote_code: true
+
+# Pre-quantized base; do not re-quantize on load.
+strict: false
+
+# ===== Dataset =====
+# Multimodal chat format. Each row is an image-grounded conversation:
+# { messages: [
+#     { role: "user", content: [ {type:"image", image:"<path>"},
+#                                {type:"text",  text:"<prompt>"} ] },
+#     { role: "assistant", content: [ {type:"text", text:"<target>"} ]} ] }
+# Built by `minieyes/assemble.mjs` from the three lanes in corpus-strategy.md.
+datasets:
+  - path: /content/drive/MyDrive/minieyes-v0/corpus.jsonl
+    type: chat_template
+    chat_template: qwen2_vl
+    field_messages: messages
+    message_field_role: role
+    message_field_content: content
+val_set_size: 0.05
+output_dir: /content/drive/MyDrive/minieyes-v0/adapter
+
+# Image handling — Qwen2.5-VL uses dynamic-resolution patches (28x28 base,
+# spatial merge x2 → effective 56x56 tokens). Cap pixel budget to keep
+# A100 VRAM safe under sample-packing.
+image_size: 768            # max long edge passed to processor (px)
+image_min_pixels: 200704   # 448 * 448 — floor (in pixels), Qwen2.5-VL convention
+image_max_pixels: 1003520  # 1120 * 896 — ceiling; raise only with VRAM headroom
+
+# ===== Quantization (QLoRA on pre-4bit base) =====
+load_in_4bit: true
+adapter: qlora
+bnb_4bit_quant_type: nf4
+bnb_4bit_compute_dtype: bfloat16   # A100 supports bf16 — preferred for stability
+bnb_4bit_use_double_quant: true
+
+# ===== LoRA hyperparameters =====
+# Two scopes: language-model attention/MLP, and vision tower projections.
+# Operator-specified: r=16, alpha=32 (language) + vision_lora_alpha=32.
+# Keep ranks symmetric across scopes so the adapter file stays small and
+# the promotion ceremony (FROM qwen2.5-vl:7b + ADAPTER) stays clean.
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+
+# Language-model target modules (Qwen2.5 backbone — same as text-only Qwen2.5).
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# Vision-tower LoRA: train the ViT attention projections and the
+# vision-to-language merger. Names match the Qwen2.5-VL HF reference
+# implementation; if the model card changes them at build time, update here
+# BEFORE training (verify with `print(model)` in the notebook smoke cell).
+vision_lora_enabled: true
+vision_lora_r: 16
+vision_lora_alpha: 32
+vision_lora_dropout: 0.05
+vision_lora_target_modules:
+  - visual.blocks.*.attn.qkv
+  - visual.blocks.*.attn.proj
+  - visual.blocks.*.mlp.fc1
+  - visual.blocks.*.mlp.fc2
+  - visual.merger.mlp.0
+  - visual.merger.mlp.2
+
+# Do not train the vision patch embed or the LM head (kept frozen).
+lora_modules_to_save: []
+
+# ===== Training hyperparameters =====
+# A100 40GB: 7B-VL QLoRA fits seq_len 4096 + image_max_pixels 1003520 with
+# micro_batch 1 + grad_accum 16 (effective batch 16). Vision-tower LoRA
+# adds ~150 MB activation memory; do not raise micro_batch without measuring.
+sequence_len: 4096
+sample_packing: false          # vision rows have heterogeneous patch counts; packing hurts grounding fidelity
+pad_to_sequence_len: true
+gradient_checkpointing: true
+gradient_accumulation_steps: 16
+micro_batch_size: 1
+num_epochs: 3
+optimizer: paged_adamw_8bit
+lr_scheduler: cosine
+learning_rate: 0.0002
+warmup_ratio: 0.05
+weight_decay: 0.0
+
+# ===== Precision =====
+# A100 (Ampere) supports bf16 — preferred for VLM training stability.
+# V100 fallback: set bf16:false, fp16:true, tf32:false (see §V100 notes).
+bf16: true
+fp16: false
+tf32: true
+
+# ===== Logging + saving =====
+logging_steps: 5
+save_strategy: epoch
+save_total_limit: 3
+eval_strategy: epoch
+eval_steps: null
+
+# ===== Memory + attention =====
+# A100 supports FlashAttention-2 — preferred for the LM half.
+# Qwen2.5-VL's vision tower uses its own attention path; do not force
+# flash_attention onto the visual blocks (it is patched by the model code).
+flash_attention: true
+xformers_attention: false
+
+# ===== Wandb (disabled by default — operator owns telemetry) =====
+wandb_project: null
+wandb_entity: null
+wandb_log_model: null
+
+# ===== Reproducibility =====
+seed: 42
+
+# ===== Chat template + system message =====
+chat_template: qwen2_vl
+default_system_message: "You are MiniEyes, the narrow visual eye of Orange5. You read three things and only three things: Orange5 cockpit screenshots, AECode diagrams, and Orange5 receipt PDF pages. For cockpit screenshots, emit the visible panel taxonomy. For AECode diagrams, ground references to a specific region polygon and emit the region_id. For receipt PDF pages, emit the canonical receipt JSON shape directly — do not paraphrase. Mom's Law is above all rules: give full effort every time. If the image is none of the three lanes, refuse with a clean cited 'out-of-scope.' Do not hallucinate. Do not theater."
+
+# ===== Special tokens =====
+special_tokens:
+  pad_token: "<|endoftext|>"
+
+# ===== Notes =====
+#
+# §V100 fallback (Colab Pro V100 16GB)
+# - Override: bf16:false, fp16:true, tf32:false, flash_attention:false,
+#   xformers_attention:true.
+# - V100 (Volta) has no bf16 and no FA2. fp16 + xformers memory-efficient
+#   attention is the supported path.
+# - VRAM: drop image_max_pixels to 802816 (=1024*784) and sequence_len to 2048
+#   if OOM. Keep micro_batch 1 + grad_accum 16.
+#
+# §Unsloth launcher
+# - When launched via Unsloth, the launcher wraps the pre-quantized base and
+#   patches LoRA adapters directly. Pass `use_unsloth: true` in the launcher
+#   spec and skip the base re-load. Unsloth's VL path supports Qwen2.5-VL as
+#   of the operator's last verification (record HF + Unsloth versions in
+#   RECEIPTS.md before training).
+#
+# §Adapter output
+# - Expected size: ~80-180 MB safetensors at output_dir/ (LM LoRA ~40-80 MB +
+#   vision LoRA ~40-100 MB depending on which ViT blocks are matched).
+# - Hard guard (per feedback_colab_torch_pins.md): refuse to overwrite an
+#   existing non-empty output_dir without an explicit operator confirmation
+#   token in the launcher cell. The notebook (`minieyes-v0.ipynb`, to be
+#   authored alongside this YAML) must implement this check before save.
+#
+# §Promotion ceremony
+# - Ollama Modelfile:
+#     FROM qwen2.5-vl:7b-instruct-q4_K_M
+#     ADAPTER /opt/atomeons/adapters/minieyes-v0/
+#     SYSTEM <copy of default_system_message above>
+# - Promotion is GATED on: (a) eval-set image grounding accuracy ≥ operator
+#   threshold (recorded in RECEIPTS.md, not assumed here), (b) a hand-graded
+#   smoke set of 50 held-out images from each of the three lanes passing the
+#   `mirrors` + `orange-judge` review, (c) confirmation that the primary
+#   visual stack (GLM-4.6V) still cannot meet the operational bar.
+# - If any of (a)/(b)/(c) fails, MiniEyes does NOT promote. The adapter is
+#   archived with a failure receipt and the primary stack remains canonical.
+#
+# §Corpus precondition
+# - Do not launch training until `filter_corpus.py` has run on every
+#   image in /content/drive/MyDrive/minieyes-v0/source/ and the rejection
+#   receipts have been reviewed. PII / face / secrets filters are
+#   non-negotiable (corpus-strategy.md §3).
+#
+# §Two-model separation
+# - MiniEyes is a narrow eye, not a generalist VLM. Do not merge its corpus
+#   with OrangeLLM-fatty or AE Misfit. Vision corpus and language corpus are
+#   separated by lane and by adapter. Promotion routes through the cockpit
+#   model-route badge, not through a shared adapter slot.

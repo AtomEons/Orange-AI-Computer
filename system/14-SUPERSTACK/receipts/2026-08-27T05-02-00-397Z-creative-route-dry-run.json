@@ -1,0 +1,620 @@
+{
+  "schema": "orange.model-lease.v2",
+  "command": "dry-run",
+  "created_at": "2026-08-27T05:01:59.787Z",
+  "host": "WIN-IB7K3UTA9DS",
+  "payload": {
+    "schema": "orange.creative-route-dry-run.v1",
+    "status": "CREATIVE_ROUTE_DRY_RUN_GREEN_WITH_CANDIDATES_BLOCKED",
+    "execution_performed": false,
+    "route_count": 9,
+    "ready_count": 4,
+    "candidate_blocked_count": 5,
+    "findings": [],
+    "routes": [
+      {
+        "schema": "orange.creative-route-dry-run.v1",
+        "status": "DRY_RUN_READY_QUALITY_UNASSESSED",
+        "role": "image_draft_flux2_klein",
+        "capability": "image_generation",
+        "model": "black-forest-labs/FLUX.2-klein-4b-fp8",
+        "declared_availability": {
+          "state": "installed_runtime_proven_quality_unassessed",
+          "lease_eligible": true,
+          "observed_at": "2026-08-27T03:15:00Z",
+          "observed_host": "CODEXA",
+          "truth_note": "Weights and runtime artifact were observed. Studio quality was not proven."
+        },
+        "installed_claim": true,
+        "candidate_claim": false,
+        "decision": {
+          "allowed": true,
+          "reason": "single_specialist_lease",
+          "requested_bytes": 25769803776,
+          "ceiling_bytes": 53687091200,
+          "max_active_heavy_leases": 1,
+          "unload": []
+        },
+        "memory_evidence": "conservative_bound_on_48gb_xpu_artifact_run_peak_not_instrumented",
+        "required_artifacts": [
+          {
+            "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/diffusion_models/flux-2-klein-4b-fp8.safetensors",
+            "bytes": 4070624520
+          },
+          {
+            "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/text_encoders/qwen_3_4b.safetensors",
+            "bytes": 8044982048
+          },
+          {
+            "path": "C:/AtomEons/ai-box/creative/ComfyUI/models/vae/flux2-vae.safetensors",
+            "bytes": 336213556
+          }
+        ],
+        "proof": {
+          "declared_state": "runtime_artifact_proven_quality_unassessed",
+          "receipt_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\flux2-image-runtime-proof.json",
+          "receipt_exists": true,
+          "receipt_status": "CAPTAIN_PLANET_IMAGE_RUNTIME_PROVEN_QUALITY_UNASSESSED",
+          "runtime_execution_proven": true,
+          "studio_quality_proven": false,
+          "read_error": null
+        },
+        "source_script": {
+          "path": "C:\\AtomEons\\Orange5\\scripts\\codexa-comfy-flux-artifact-proof.py",
+          "exists": true
+        },
+        "command": [
+          "powershell",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1",
+          "-Role",
+          "image_draft_flux2_klein"
+        ],
+        "command_text": "powershell -ExecutionPolicy Bypass -File C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1 -Role image_draft_flux2_klein",
+        "receipt_contract": "orange.captain_planet.image_artifact.v1",
+        "checks": {
+          "availability_state_is_explicit": true,
+          "candidate_is_not_lease_eligible": true,
+          "installed_has_observed_artifacts": true,
+          "installed_has_runtime_artifact_proof": true,
+          "installed_has_source_runner": true,
+          "lease_memory_is_known_and_within_ceiling": true,
+          "command_is_renderable": true,
+          "route_declares_receipt_contract": true
+        },
+        "findings": []
+      },
+      {
+        "schema": "orange.creative-route-dry-run.v1",
+        "status": "CANDIDATE_BLOCKED_NOT_INSTALLED",
+        "role": "image_quality_flux2_dev",
+        "capability": "image_generation_editing",
+        "model": "black-forest-labs/FLUX.2-dev",
+        "declared_availability": {
+          "state": "candidate_not_observed",
+          "lease_eligible": false,
+          "observed_at": "2026-08-27T03:15:00Z",
+          "observed_host": "CODEXA",
+          "truth_note": "No FLUX.2 Dev weights were observed. Candidate only; no download is claimed."
+        },
+        "installed_claim": false,
+        "candidate_claim": true,
+        "decision": {
+          "allowed": false,
+          "reason": "candidate_or_unavailable",
+          "requested_bytes": 0,
+          "ceiling_bytes": 53687091200,
+          "max_active_heavy_leases": 1,
+          "unload": []
+        },
+        "memory_evidence": "unmeasured_on_codexa",
+        "required_artifacts": [],
+        "proof": {
+          "declared_state": "candidate_no_artifact_proof",
+          "receipt_path": null,
+          "receipt_exists": false,
+          "receipt_status": null,
+          "runtime_execution_proven": false,
+          "studio_quality_proven": false,
+          "read_error": null
+        },
+        "source_script": {
+          "path": null,
+          "exists": false
+        },
+        "command": [
+          "powershell",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1",
+          "-Role",
+          "image_quality_flux2_dev"
+        ],
+        "command_text": "powershell -ExecutionPolicy Bypass -File C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1 -Role image_quality_flux2_dev",
+        "receipt_contract": "orange.captain_planet.image_artifact.v1",
+        "checks": {
+          "availability_state_is_explicit": true,
+          "candidate_is_not_lease_eligible": true,
+          "installed_has_observed_artifacts": true,
+          "installed_has_runtime_artifact_proof": true,
+          "installed_has_source_runner": true,
+          "lease_memory_is_known_and_within_ceiling": true,
+          "command_is_renderable": true,
+          "route_declares_receipt_contract": true
+        },
+        "findings": []
+      },
+      {
+        "schema": "orange.creative-route-dry-run.v1",
+        "status": "CANDIDATE_BLOCKED_NOT_INSTALLED",
+        "role": "video_modern_ltx25",
+        "capability": "synchronized_audio_video_generation",
+        "model": "Lightricks/LTX-2.5-22B-distilled",
+        "declared_availability": {
+          "state": "candidate_not_observed",
+          "lease_eligible": false,
+          "observed_at": "2026-08-27T03:15:00Z",
+          "observed_host": "CODEXA",
+          "truth_note": "No LTX-2.x source, environment, or weights were observed. Candidate only; no download is claimed."
+        },
+        "installed_claim": false,
+        "candidate_claim": true,
+        "decision": {
+          "allowed": false,
+          "reason": "candidate_or_unavailable",
+          "requested_bytes": 0,
+          "ceiling_bytes": 53687091200,
+          "max_active_heavy_leases": 1,
+          "unload": []
+        },
+        "memory_evidence": "official_bf16_bundle_not_yet_proven_below_50gib_on_codexa",
+        "required_artifacts": [],
+        "proof": {
+          "declared_state": "candidate_no_artifact_proof",
+          "receipt_path": null,
+          "receipt_exists": false,
+          "receipt_status": null,
+          "runtime_execution_proven": false,
+          "studio_quality_proven": false,
+          "read_error": null
+        },
+        "source_script": {
+          "path": null,
+          "exists": false
+        },
+        "command": [
+          "powershell",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1",
+          "-Role",
+          "video_modern_ltx25"
+        ],
+        "command_text": "powershell -ExecutionPolicy Bypass -File C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1 -Role video_modern_ltx25",
+        "receipt_contract": "orange.captain_planet.video_artifact.v2",
+        "checks": {
+          "availability_state_is_explicit": true,
+          "candidate_is_not_lease_eligible": true,
+          "installed_has_observed_artifacts": true,
+          "installed_has_runtime_artifact_proof": true,
+          "installed_has_source_runner": true,
+          "lease_memory_is_known_and_within_ceiling": true,
+          "command_is_renderable": true,
+          "route_declares_receipt_contract": true
+        },
+        "findings": []
+      },
+      {
+        "schema": "orange.creative-route-dry-run.v1",
+        "status": "DRY_RUN_READY_QUALITY_UNASSESSED",
+        "role": "video_fallback_ltxv098",
+        "capability": "image_to_video",
+        "model": "Lightricks/LTX-Video ltxv-2b-0.9.8-distilled",
+        "declared_availability": {
+          "state": "installed_runtime_proven_quality_unassessed",
+          "lease_eligible": true,
+          "observed_at": "2026-08-27T03:15:00Z",
+          "observed_host": "CODEXA",
+          "truth_note": "LTXV 0.9.8 weights and motion artifact were observed. This is not the LTX-2.x lane and studio quality was not proven."
+        },
+        "installed_claim": true,
+        "candidate_claim": false,
+        "decision": {
+          "allowed": true,
+          "reason": "single_specialist_lease",
+          "requested_bytes": 51539607552,
+          "ceiling_bytes": 53687091200,
+          "max_active_heavy_leases": 1,
+          "unload": []
+        },
+        "memory_evidence": "conservative_48gib_lease_bound_peak_not_instrumented",
+        "required_artifacts": [
+          {
+            "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/ltxv-2b-0.9.8-distilled.safetensors",
+            "bytes": 6340744492
+          },
+          {
+            "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/ltxv-spatial-upscaler-0.9.8.safetensors",
+            "bytes": 505024432
+          },
+          {
+            "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/PixArt-XL-2-1024-MS/text_encoder/model-00001-of-00002.safetensors",
+            "bytes": 9989150328
+          },
+          {
+            "path": "C:/AtomEons/ai-box/creative/LTX-Video/models/orangefive/ltxv-2b-0.9.8/PixArt-XL-2-1024-MS/text_encoder/model-00002-of-00002.safetensors",
+            "bytes": 9060119392
+          },
+          {
+            "path": "C:/AtomEons/ai-box/receipts/captain-planet/artifacts/flux2/orangefive-flux2-klein-proof.png",
+            "minimum_bytes": 100000
+          }
+        ],
+        "proof": {
+          "declared_state": "runtime_artifact_proven_quality_unassessed",
+          "receipt_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ltxv\\ltx-video-runtime-proof.json",
+          "receipt_exists": true,
+          "receipt_status": "CAPTAIN_PLANET_VIDEO_RUNTIME_PROVEN_QUALITY_UNASSESSED",
+          "runtime_execution_proven": true,
+          "studio_quality_proven": false,
+          "read_error": null
+        },
+        "source_script": {
+          "path": "C:\\AtomEons\\Orange5\\scripts\\codexa-ltx-video-artifact-proof.py",
+          "exists": true
+        },
+        "command": [
+          "powershell",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1",
+          "-Role",
+          "video_fallback_ltxv098"
+        ],
+        "command_text": "powershell -ExecutionPolicy Bypass -File C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1 -Role video_fallback_ltxv098",
+        "receipt_contract": "orange.captain_planet.video_artifact.v1",
+        "checks": {
+          "availability_state_is_explicit": true,
+          "candidate_is_not_lease_eligible": true,
+          "installed_has_observed_artifacts": true,
+          "installed_has_runtime_artifact_proof": true,
+          "installed_has_source_runner": true,
+          "lease_memory_is_known_and_within_ceiling": true,
+          "command_is_renderable": true,
+          "route_declares_receipt_contract": true
+        },
+        "findings": []
+      },
+      {
+        "schema": "orange.creative-route-dry-run.v1",
+        "status": "DRY_RUN_READY_QUALITY_UNASSESSED",
+        "role": "speech_qwen3_tts",
+        "capability": "speech_generation",
+        "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+        "declared_availability": {
+          "state": "installed_runtime_proven_quality_unassessed",
+          "lease_eligible": true,
+          "observed_at": "2026-08-27T03:20:00Z",
+          "observed_host": "CODEXA",
+          "truth_note": "A 4.52 GB local model directory and a real speech artifact were observed. Listening quality remains unassessed."
+        },
+        "installed_claim": true,
+        "candidate_claim": false,
+        "decision": {
+          "allowed": true,
+          "reason": "single_specialist_lease",
+          "requested_bytes": 17179869184,
+          "ceiling_bytes": 53687091200,
+          "max_active_heavy_leases": 1,
+          "unload": []
+        },
+        "memory_evidence": "conservative_bound_on_48gb_xpu_artifact_run_peak_not_instrumented",
+        "required_artifacts": [
+          {
+            "path": "C:/AtomEons/ai-box/models/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+            "minimum_bytes": 4500000000,
+            "kind": "directory"
+          }
+        ],
+        "proof": {
+          "declared_state": "runtime_artifact_proven_quality_unassessed",
+          "receipt_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\qwen3-tts-runtime-proof.json",
+          "receipt_exists": true,
+          "receipt_status": "CAPTAIN_PLANET_TTS_RUNTIME_PROVEN_QUALITY_UNASSESSED",
+          "runtime_execution_proven": true,
+          "studio_quality_proven": false,
+          "read_error": null
+        },
+        "source_script": {
+          "path": "C:\\AtomEons\\Orange5\\scripts\\codexa-qwen-tts-artifact-proof.py",
+          "exists": true
+        },
+        "command": [
+          "powershell",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1",
+          "-Role",
+          "speech_qwen3_tts"
+        ],
+        "command_text": "powershell -ExecutionPolicy Bypass -File C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1 -Role speech_qwen3_tts",
+        "receipt_contract": "orange.captain_planet.tts_artifact.v1",
+        "checks": {
+          "availability_state_is_explicit": true,
+          "candidate_is_not_lease_eligible": true,
+          "installed_has_observed_artifacts": true,
+          "installed_has_runtime_artifact_proof": true,
+          "installed_has_source_runner": true,
+          "lease_memory_is_known_and_within_ceiling": true,
+          "command_is_renderable": true,
+          "route_declares_receipt_contract": true
+        },
+        "findings": []
+      },
+      {
+        "schema": "orange.creative-route-dry-run.v1",
+        "status": "DRY_RUN_READY_QUALITY_UNASSESSED",
+        "role": "music_ace_step15",
+        "capability": "music_generation_and_editing",
+        "model": "ACE-Step/Ace-Step1.5 turbo",
+        "declared_availability": {
+          "state": "installed_runtime_proven_quality_unassessed",
+          "lease_eligible": true,
+          "observed_at": "2026-08-27T03:15:00Z",
+          "observed_host": "CODEXA",
+          "truth_note": "Turbo, embedding, and VAE weights plus a real music artifact were observed. Listening quality remains unassessed."
+        },
+        "installed_claim": true,
+        "candidate_claim": false,
+        "decision": {
+          "allowed": true,
+          "reason": "single_specialist_lease",
+          "requested_bytes": 21474836480,
+          "ceiling_bytes": 53687091200,
+          "max_active_heavy_leases": 1,
+          "unload": []
+        },
+        "memory_evidence": "official_recommended_20gb_bound_and_codexa_artifact_run_peak_not_instrumented",
+        "required_artifacts": [
+          {
+            "path": "C:/AtomEons/ai-box/creative/ACE-Step-1.5/checkpoints/acestep-v15-turbo/model.safetensors",
+            "bytes": 4787825604
+          },
+          {
+            "path": "C:/AtomEons/ai-box/creative/ACE-Step-1.5/checkpoints/Qwen3-Embedding-0.6B/model.safetensors",
+            "bytes": 1191586416
+          },
+          {
+            "path": "C:/AtomEons/ai-box/creative/ACE-Step-1.5/checkpoints/vae/diffusion_pytorch_model.safetensors",
+            "bytes": 337431388
+          }
+        ],
+        "proof": {
+          "declared_state": "runtime_artifact_proven_quality_unassessed",
+          "receipt_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ace-step\\ace-step-runtime-proof.json",
+          "receipt_exists": true,
+          "receipt_status": "CAPTAIN_PLANET_MUSIC_RUNTIME_PROVEN_QUALITY_UNASSESSED",
+          "runtime_execution_proven": true,
+          "studio_quality_proven": false,
+          "read_error": null
+        },
+        "source_script": {
+          "path": "C:\\AtomEons\\Orange5\\scripts\\codexa-ace-step-artifact-proof.py",
+          "exists": true
+        },
+        "command": [
+          "powershell",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1",
+          "-Role",
+          "music_ace_step15"
+        ],
+        "command_text": "powershell -ExecutionPolicy Bypass -File C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1 -Role music_ace_step15",
+        "receipt_contract": "orange.captain_planet.music_artifact.v1",
+        "checks": {
+          "availability_state_is_explicit": true,
+          "candidate_is_not_lease_eligible": true,
+          "installed_has_observed_artifacts": true,
+          "installed_has_runtime_artifact_proof": true,
+          "installed_has_source_runner": true,
+          "lease_memory_is_known_and_within_ceiling": true,
+          "command_is_renderable": true,
+          "route_declares_receipt_contract": true
+        },
+        "findings": []
+      },
+      {
+        "schema": "orange.creative-route-dry-run.v1",
+        "status": "CANDIDATE_BLOCKED_NOT_INSTALLED",
+        "role": "three_d_hunyuan21",
+        "capability": "image_to_3d_pbr_asset",
+        "model": "tencent/Hunyuan3D-2.1",
+        "declared_availability": {
+          "state": "candidate_not_observed",
+          "lease_eligible": false,
+          "observed_at": "2026-08-27T03:15:00Z",
+          "observed_host": "CODEXA",
+          "truth_note": "No source, environment, or weights were observed. Candidate only; no download is claimed."
+        },
+        "installed_claim": false,
+        "candidate_claim": true,
+        "decision": {
+          "allowed": false,
+          "reason": "candidate_or_unavailable",
+          "requested_bytes": 34359738368,
+          "ceiling_bytes": 53687091200,
+          "max_active_heavy_leases": 1,
+          "unload": []
+        },
+        "memory_evidence": "vendor_reports_29gb_combined_not_measured_on_codexa",
+        "required_artifacts": [],
+        "proof": {
+          "declared_state": "candidate_no_artifact_proof",
+          "receipt_path": null,
+          "receipt_exists": false,
+          "receipt_status": null,
+          "runtime_execution_proven": false,
+          "studio_quality_proven": false,
+          "read_error": null
+        },
+        "source_script": {
+          "path": null,
+          "exists": false
+        },
+        "command": [
+          "powershell",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1",
+          "-Role",
+          "three_d_hunyuan21"
+        ],
+        "command_text": "powershell -ExecutionPolicy Bypass -File C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1 -Role three_d_hunyuan21",
+        "receipt_contract": "orange.captain_planet.three_d_artifact.v1",
+        "checks": {
+          "availability_state_is_explicit": true,
+          "candidate_is_not_lease_eligible": true,
+          "installed_has_observed_artifacts": true,
+          "installed_has_runtime_artifact_proof": true,
+          "installed_has_source_runner": true,
+          "lease_memory_is_known_and_within_ceiling": true,
+          "command_is_renderable": true,
+          "route_declares_receipt_contract": true
+        },
+        "findings": []
+      },
+      {
+        "schema": "orange.creative-route-dry-run.v1",
+        "status": "CANDIDATE_BLOCKED_NOT_INSTALLED",
+        "role": "document_refine_paddleocr_vl16",
+        "capability": "document_parse_layout_refinement",
+        "model": "PaddlePaddle/PaddleOCR-VL-1.6",
+        "declared_availability": {
+          "state": "candidate_not_observed",
+          "lease_eligible": false,
+          "observed_at": "2026-08-27T03:15:00Z",
+          "observed_host": "CODEXA",
+          "truth_note": "No PaddleOCR-VL source, environment, or weights were observed. Candidate only; no download is claimed."
+        },
+        "installed_claim": false,
+        "candidate_claim": true,
+        "decision": {
+          "allowed": false,
+          "reason": "candidate_or_unavailable",
+          "requested_bytes": 8589934592,
+          "ceiling_bytes": 53687091200,
+          "max_active_heavy_leases": 1,
+          "unload": []
+        },
+        "memory_evidence": "0.9b_parameter_estimate_not_measured_on_codexa",
+        "required_artifacts": [],
+        "proof": {
+          "declared_state": "candidate_no_artifact_proof",
+          "receipt_path": null,
+          "receipt_exists": false,
+          "receipt_status": null,
+          "runtime_execution_proven": false,
+          "studio_quality_proven": false,
+          "read_error": null
+        },
+        "source_script": {
+          "path": null,
+          "exists": false
+        },
+        "command": [
+          "powershell",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1",
+          "-Role",
+          "document_refine_paddleocr_vl16"
+        ],
+        "command_text": "powershell -ExecutionPolicy Bypass -File C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1 -Role document_refine_paddleocr_vl16",
+        "receipt_contract": "orange.captain_planet.document_refinement_artifact.v1",
+        "checks": {
+          "availability_state_is_explicit": true,
+          "candidate_is_not_lease_eligible": true,
+          "installed_has_observed_artifacts": true,
+          "installed_has_runtime_artifact_proof": true,
+          "installed_has_source_runner": true,
+          "lease_memory_is_known_and_within_ceiling": true,
+          "command_is_renderable": true,
+          "route_declares_receipt_contract": true
+        },
+        "findings": []
+      },
+      {
+        "schema": "orange.creative-route-dry-run.v1",
+        "status": "CANDIDATE_BLOCKED_NOT_INSTALLED",
+        "role": "image_video_refine_seedvr2",
+        "capability": "image_video_restoration",
+        "model": "ByteDance-Seed/SeedVR2-7B",
+        "declared_availability": {
+          "state": "candidate_not_observed",
+          "lease_eligible": false,
+          "observed_at": "2026-08-27T03:15:00Z",
+          "observed_host": "CODEXA",
+          "truth_note": "No SeedVR2 source, environment, or weights were observed. Candidate only; no download is claimed."
+        },
+        "installed_claim": false,
+        "candidate_claim": true,
+        "decision": {
+          "allowed": false,
+          "reason": "candidate_or_unavailable",
+          "requested_bytes": 34359738368,
+          "ceiling_bytes": 53687091200,
+          "max_active_heavy_leases": 1,
+          "unload": []
+        },
+        "memory_evidence": "conservative_candidate_estimate_not_measured_on_codexa",
+        "required_artifacts": [],
+        "proof": {
+          "declared_state": "candidate_no_artifact_proof",
+          "receipt_path": null,
+          "receipt_exists": false,
+          "receipt_status": null,
+          "runtime_execution_proven": false,
+          "studio_quality_proven": false,
+          "read_error": null
+        },
+        "source_script": {
+          "path": null,
+          "exists": false
+        },
+        "command": [
+          "powershell",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1",
+          "-Role",
+          "image_video_refine_seedvr2"
+        ],
+        "command_text": "powershell -ExecutionPolicy Bypass -File C:/AtomEons/Orange5/14-SUPERSTACK/invoke-captain-planet-route.ps1 -Role image_video_refine_seedvr2",
+        "receipt_contract": "orange.captain_planet.refinement_artifact.v1",
+        "checks": {
+          "availability_state_is_explicit": true,
+          "candidate_is_not_lease_eligible": true,
+          "installed_has_observed_artifacts": true,
+          "installed_has_runtime_artifact_proof": true,
+          "installed_has_source_runner": true,
+          "lease_memory_is_known_and_within_ceiling": true,
+          "command_is_renderable": true,
+          "route_declares_receipt_contract": true
+        },
+        "findings": []
+      }
+    ]
+  },
+  "sha256": "fa8032c3237cb7e76661c358586e37d2f377be6d98bae2640e787f6551f00c41"
+}

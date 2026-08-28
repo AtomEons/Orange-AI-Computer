@@ -1,0 +1,132 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "nav-live-russia-seeded",
+  "query": "agent episodic semantic memory evidence https://raw.githubusercontent.com/AIRI-Institute/AriGraph/main/README.md https://raw.githubusercontent.com/yandex-research/StructMemEval/main/README.md",
+  "searchQuery": "agent episodic semantic memory evidence",
+  "generatedAt": "2026-08-26T03:49:16.966Z",
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1269969097",
+      "title": "Apaarmeet/Coding-Harness",
+      "url": "https://github.com/Apaarmeet/Coding-Harness",
+      "summary": "A Python coding agent harness that works with Gemini, Anthropic, and OpenAI. Features 13 built-in tools (read/write/edit files, bash, grep, glob, web search, URL fetch, questions, todos, memory, sub-agents, skills), a three-tier memory system (semantic/episodic/procedural), parallel sub-agent orchestration, and both CLI and TUI interfaces.",
+      "updatedAt": "2026-08-26T02:20:58Z",
+      "license": null,
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "episodic",
+          "semantic",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "github",
+      "sourceId": "1344827733",
+      "title": "giurlanda/deep-memory-agent",
+      "url": "https://github.com/giurlanda/deep-memory-agent",
+      "summary": "Factory for building LangChain deepagents equipped with episodic, semantic, and procedural memory.",
+      "updatedAt": "2026-08-25T21:49:06Z",
+      "license": "MIT",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "episodic",
+          "semantic",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "github",
+      "sourceId": "1329468362",
+      "title": "CogKnowEdge-Solutions/Context-Memory-Layer",
+      "url": "https://github.com/CogKnowEdge-Solutions/Context-Memory-Layer",
+      "summary": "A persistent context and memory layer that gives agents short-term conversation context, long-term knowledge, episodic experience, and semantic facts with retrieval for relevant context.",
+      "updatedAt": "2026-08-25T20:07:54Z",
+      "license": "MIT",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "episodic",
+          "semantic",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "github",
+      "sourceId": "1342353123",
+      "title": "thevisionhub/agent-sleep",
+      "url": "https://github.com/thevisionhub/agent-sleep",
+      "summary": "Episodic Memory -> Sleep Consolidation -> Semantic Recall for AI agents. MCP server for Antigravity, Claude, and Cursor.",
+      "updatedAt": "2026-08-24T17:14:34Z",
+      "license": "MIT",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "episodic",
+          "semantic",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "github",
+      "sourceId": "1154785536",
+      "title": "alibaizhanov/mengram",
+      "url": "https://github.com/alibaizhanov/mengram",
+      "summary": "Human-like memory for AI agents — semantic, episodic & procedural. Experience-driven procedures that learn from failures. Free API, Python & JS SDKs, LangChain, CrewAI & OpenClaw integrations.",
+      "updatedAt": "2026-08-24T13:28:06Z",
+      "license": "Apache-2.0",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "episodic",
+          "semantic",
+          "memory"
+        ]
+      }
+    },
+    {
+      "provider": "direct",
+      "sourceId": "574bbcb5135216c4",
+      "title": "raw.githubusercontent.com",
+      "url": "https://raw.githubusercontent.com/AIRI-Institute/AriGraph/main/README.md",
+      "summary": "# AriGraph: Learning Knowledge Graph World Models with Episodic Memory for LLM Agents AriGraph functions as the external memory architecture for large language models (LLMs), featuring a knowledge graph that is built from the ground up. This memory, configured as a semantic knowledge graph with added episodic vertices and edges, greatly improves the performance of Retrieval-Augmented Generation (RAG) in text-based games. Currently, AriGraph is a key component of the Ariadne agent, crafted to nav",
+      "updatedAt": null,
+      "license": null,
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "episodic",
+          "semantic",
+          "memory"
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "sha256": "9cc04fe881279235b29744ebee05b2a741a6bc425eb351a3bb43c555611238f4"
+}

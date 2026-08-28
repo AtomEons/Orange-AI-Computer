@@ -1,0 +1,30 @@
+{
+  "experiment": "120-inject-after-sort",
+  "injection_point": "AFTER B8_SORT (immediately before brotli x2)",
+  "formula_library": [
+    "status_ok_default",
+    "mesh_ratio_derivation"
+  ],
+  "corpus_sha256": "03da0e5cf04adf965ae580cb8c74ab4db9d8058b6ca246478fef57b6de944df1",
+  "raw_bytes": 2075585,
+  "total_bytes": 44127,
+  "ratio": 47.0366,
+  "vs_m19": -0.0334,
+  "encode_ms": 1624.79,
+  "decode_ms": 107.22,
+  "lossless": true,
+  "components": {
+    "mesh_tpl": 119,
+    "mesh_data": 6935,
+    "shapes_br2": 30066,
+    "a_idx": 111,
+    "a_v": 455,
+    "other_idx": 5381,
+    "formula_flags": 23,
+    "pos_runs": 989,
+    "seed": 48
+  },
+  "unique_shapes_other": 1567,
+  "verdict": "AMBER",
+  "generated_at": "2026-06-27T14:58:11.355Z"
+}

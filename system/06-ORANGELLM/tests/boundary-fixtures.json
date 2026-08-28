@@ -1,0 +1,135 @@
+{
+  "schema": "orange5.boundary-fixtures.v0",
+  "description": "Test fixtures for the Frontier-Isolation Boundary. Each fixture states a request the boundary middleware should ALLOW or REJECT, and the expected status code.",
+  "fixtures": {
+    "allowed": [
+      {
+        "id": "ok-healthz",
+        "method": "GET",
+        "path": "/healthz",
+        "headers": {},
+        "expected_status": 200
+      },
+      {
+        "id": "ok-models",
+        "method": "GET",
+        "path": "/v1/models",
+        "headers": {},
+        "expected_status": 200
+      },
+      {
+        "id": "ok-chat-completions",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "headers": { "content-type": "application/json" },
+        "body": { "messages": [{ "role": "user", "content": "hello" }] },
+        "expected_status": 503,
+        "expected_status_reason": "PR-02: gateway is up but Smart Skinny not yet wired (lands in PR-03)"
+      },
+      {
+        "id": "ok-bearer-auth-passthrough",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "headers": { "authorization": "Bearer sk-test-key-1234567890" },
+        "body": { "messages": [{ "role": "user", "content": "hello" }] },
+        "expected_status": 503,
+        "expected_status_reason": "Bearer tokens allowed (BYO frontier API key)"
+      }
+    ],
+    "rejected": [
+      {
+        "id": "reject-path-traversal",
+        "method": "GET",
+        "path": "/../etc/passwd",
+        "expected_status": 403,
+        "expected_reason_includes": "forbidden path pattern"
+      },
+      {
+        "id": "reject-admin-prefix",
+        "method": "GET",
+        "path": "/admin/users",
+        "expected_status": 403,
+        "expected_reason_includes": "forbidden path pattern"
+      },
+      {
+        "id": "reject-shell-exec",
+        "method": "POST",
+        "path": "/exec/run",
+        "expected_status": 403,
+        "expected_reason_includes": "forbidden path pattern"
+      },
+      {
+        "id": "reject-mirage-mount-direct",
+        "method": "GET",
+        "path": "/mirage/postgres_write",
+        "expected_status": 403,
+        "expected_reason_includes": "forbidden path pattern"
+      },
+      {
+        "id": "reject-codexa-direct",
+        "method": "POST",
+        "path": "/codexa/command",
+        "expected_status": 403,
+        "expected_reason_includes": "forbidden path pattern"
+      },
+      {
+        "id": "reject-unknown-v1-route",
+        "method": "POST",
+        "path": "/v1/files",
+        "expected_status": 404,
+        "expected_reason_includes": "endpoint not exposed"
+      },
+      {
+        "id": "reject-unknown-route",
+        "method": "GET",
+        "path": "/random",
+        "expected_status": 404,
+        "expected_reason_includes": "endpoint not exposed"
+      },
+      {
+        "id": "reject-mirage-header",
+        "method": "GET",
+        "path": "/v1/models",
+        "headers": { "x-mirage-mount": "postgres_write" },
+        "expected_status": 403,
+        "expected_reason_includes": "forbidden header"
+      },
+      {
+        "id": "reject-orangebox-header",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "headers": { "x-orangebox-command": "shutdown" },
+        "body": { "messages": [{ "role": "user", "content": "hi" }] },
+        "expected_status": 403,
+        "expected_reason_includes": "forbidden header"
+      },
+      {
+        "id": "reject-codexa-header",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "headers": { "x-codexa-rail": "exec" },
+        "body": { "messages": [{ "role": "user", "content": "hi" }] },
+        "expected_status": 403,
+        "expected_reason_includes": "forbidden header"
+      },
+      {
+        "id": "reject-internal-header",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "headers": { "x-internal-route": "vault" },
+        "body": { "messages": [{ "role": "user", "content": "hi" }] },
+        "expected_status": 403,
+        "expected_reason_includes": "forbidden header"
+      },
+      {
+        "id": "reject-non-bearer-auth",
+        "method": "POST",
+        "path": "/v1/chat/completions",
+        "headers": { "authorization": "Basic dXNlcjpwYXNz" },
+        "body": { "messages": [{ "role": "user", "content": "hi" }] },
+        "expected_status": 401,
+        "expected_reason_includes": "Bearer"
+      }
+    ]
+  }
+}

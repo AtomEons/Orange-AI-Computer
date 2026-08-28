@@ -1,0 +1,119 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "public-agent",
+  "card_id": "public-agent-email-send",
+  "capability": "public-agent.email.send",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["to", "subject", "body_text"],
+    "properties": {
+      "to": {
+        "type": "array",
+        "items": { "type": "string", "format": "email", "maxLength": 320 },
+        "minItems": 1,
+        "maxItems": 50,
+        "uniqueItems": true
+      },
+      "cc": {
+        "type": "array",
+        "items": { "type": "string", "format": "email", "maxLength": 320 },
+        "maxItems": 50,
+        "uniqueItems": true
+      },
+      "bcc": {
+        "type": "array",
+        "items": { "type": "string", "format": "email", "maxLength": 320 },
+        "maxItems": 50,
+        "uniqueItems": true
+      },
+      "subject": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 998
+      },
+      "body_text": {
+        "type": "string",
+        "description": "Plain-text body. Always required so receipts can capture a readable record even when an HTML alternative is also sent.",
+        "minLength": 1,
+        "maxLength": 100000
+      },
+      "body_html": {
+        "type": "string",
+        "description": "Optional HTML alternative. Runner sanitizes against a strict allowlist before send.",
+        "maxLength": 200000
+      },
+      "from_label": {
+        "type": "string",
+        "description": "Display name. The sending address itself is fixed by the lease and cannot be overridden by the planner.",
+        "maxLength": 128
+      },
+      "reply_to": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 320
+      },
+      "attachments": {
+        "type": "array",
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sandbox_ref", "filename"],
+          "properties": {
+            "sandbox_ref": { "type": "string", "pattern": "^sandbox://", "minLength": 11, "maxLength": 4096 },
+            "filename": { "type": "string", "minLength": 1, "maxLength": 255 },
+            "content_type": { "type": "string", "minLength": 1, "maxLength": 128 }
+          }
+        }
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["message_id", "accepted_recipients", "rejected_recipients", "provider"],
+    "properties": {
+      "message_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+      "provider": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "accepted_recipients": {
+        "type": "array",
+        "items": { "type": "string", "format": "email" }
+      },
+      "rejected_recipients": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["address", "reason"],
+          "properties": {
+            "address": { "type": "string", "format": "email" },
+            "reason": { "type": "string", "maxLength": 256 }
+          }
+        }
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 1,
+    "scopes": [
+      "net.egress:api.postmarkapp.com",
+      "net.egress:api.sendgrid.com",
+      "secrets.read:email.provider-key",
+      "fs.read:sandbox://attachments/"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 1,
+    "egress_allowlist": ["api.postmarkapp.com", "api.sendgrid.com"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:24:00Z",
+  "vendor": "frontier-offload",
+  "version": "0.1.0",
+  "summary": "Transactional email send via an operator-supplied provider. Per-send human approval; sender address pinned to the lease.",
+  "tags": ["public-agent", "email", "send", "external-side-effect"],
+  "notes": "Default lease grants exactly one invocation and requires human approval at issuance — this card sends mail to real people and cannot be unsent. Bulk / sequence sending must compose multiple leases; the planner cannot multiplex sends through one approval."
+}

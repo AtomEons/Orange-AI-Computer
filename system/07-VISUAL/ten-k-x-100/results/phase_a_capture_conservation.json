@@ -1,0 +1,209 @@
+{
+  "date": "2026-07-11",
+  "doctrine": "AEYES1_GPT_DOCTRINE_2026-07-11.md (spine seq 103)",
+  "probes": [
+    {
+      "A": "orange.jpg",
+      "B": "apple.jpg",
+      "property": "different-fruit-similar-shape-color"
+    },
+    {
+      "A": "orange.jpg",
+      "B": "orange_t1.5.png",
+      "property": "same-orange-different-source-frame"
+    },
+    {
+      "A": "orange.jpg",
+      "B": "hue-shifted-orange-red.jpg",
+      "property": "same-material-hue-shifted"
+    },
+    {
+      "A": "orange.jpg",
+      "B": "basketball1.png",
+      "property": "orange-vs-basketball-similar-color-different-texture"
+    },
+    {
+      "A": "apple.jpg",
+      "B": "baboon.jpg",
+      "property": "apple-vs-baboon-very-different"
+    }
+  ],
+  "results": [
+    {
+      "probe": "different-fruit-similar-shape-color",
+      "A": "orange.jpg",
+      "B": "apple.jpg",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.14638854297637194,
+          "noise": 0.3879489637092996,
+          "ratio": 0.37733969328518363,
+          "verdict": "COLLAPSED",
+          "dim": 12
+        },
+        "lgn": {
+          "gap": 0.23400987714122937,
+          "noise": 0.25375587895730284,
+          "ratio": 0.922185046915126,
+          "verdict": "COLLAPSED",
+          "dim": 13
+        },
+        "it_80": {
+          "gap": 0.26860660620803856,
+          "noise": 0.29151828619194203,
+          "ratio": 0.9214056851005981,
+          "verdict": "COLLAPSED",
+          "dim": 80
+        },
+        "axis_bundle": {
+          "gap": 0.17805952721295734,
+          "noise": 0.08456749844428173,
+          "ratio": 2.105531445160033,
+          "verdict": "WEAK",
+          "dim": 162
+        }
+      }
+    },
+    {
+      "probe": "same-orange-different-source-frame",
+      "A": "orange.jpg",
+      "B": "orange_t1.5.png",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.11209666297435793,
+          "noise": 0.3879489637092996,
+          "ratio": 0.2889469323556562,
+          "verdict": "COLLAPSED",
+          "dim": 12
+        },
+        "lgn": {
+          "gap": 0.11553361571229878,
+          "noise": 0.25375587895730284,
+          "ratio": 0.45529434110859973,
+          "verdict": "COLLAPSED",
+          "dim": 13
+        },
+        "it_80": {
+          "gap": 0.16237958348258621,
+          "noise": 0.29151828619194203,
+          "ratio": 0.5570133716266154,
+          "verdict": "COLLAPSED",
+          "dim": 80
+        },
+        "axis_bundle": {
+          "gap": 1.4098924798590855,
+          "noise": 0.08456749844428173,
+          "ratio": 16.671800701164283,
+          "verdict": "PRESERVED",
+          "dim": 162
+        }
+      }
+    },
+    {
+      "probe": "same-material-hue-shifted",
+      "A": "orange.jpg",
+      "B": "hue-shifted-orange-red.jpg",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.02496977842370703,
+          "noise": 0.3879489637092996,
+          "ratio": 0.06436356520961747,
+          "verdict": "COLLAPSED",
+          "dim": 12
+        },
+        "lgn": {
+          "gap": 0.21903475078099613,
+          "noise": 0.25375587895730284,
+          "ratio": 0.8631711378708632,
+          "verdict": "COLLAPSED",
+          "dim": 13
+        },
+        "it_80": {
+          "gap": 0.15828627146300842,
+          "noise": 0.29151828619194203,
+          "ratio": 0.5429720156861421,
+          "verdict": "COLLAPSED",
+          "dim": 80
+        },
+        "axis_bundle": {
+          "gap": 0.10837926812104597,
+          "noise": 0.08456749844428173,
+          "ratio": 1.2815711723157202,
+          "verdict": "WEAK",
+          "dim": 162
+        }
+      }
+    },
+    {
+      "probe": "orange-vs-basketball-similar-color-different-texture",
+      "A": "orange.jpg",
+      "B": "basketball1.png",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.04791500856905095,
+          "noise": 0.3879489637092996,
+          "ratio": 0.12350853604793988,
+          "verdict": "COLLAPSED",
+          "dim": 12
+        },
+        "lgn": {
+          "gap": 1.1669593493741144,
+          "noise": 0.25375587895730284,
+          "ratio": 4.598748033618831,
+          "verdict": "PRESERVED",
+          "dim": 13
+        },
+        "it_80": {
+          "gap": 0.533449195410568,
+          "noise": 0.29151828619194203,
+          "ratio": 1.8298996003953363,
+          "verdict": "WEAK",
+          "dim": 80
+        },
+        "axis_bundle": {
+          "gap": 0.379467883742062,
+          "noise": 0.08456749844428173,
+          "ratio": 4.487159851276418,
+          "verdict": "PRESERVED",
+          "dim": 162
+        }
+      }
+    },
+    {
+      "probe": "apple-vs-baboon-very-different",
+      "A": "apple.jpg",
+      "B": "baboon.jpg",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.21500164767590343,
+          "noise": 0.19914970045758038,
+          "ratio": 1.0795981474333154,
+          "verdict": "WEAK",
+          "dim": 12
+        },
+        "lgn": {
+          "gap": 0.4826988719492565,
+          "noise": 0.2134133758920363,
+          "ratio": 2.2618023351706364,
+          "verdict": "WEAK",
+          "dim": 13
+        },
+        "it_80": {
+          "gap": 0.21777817919687817,
+          "noise": 0.31584535066999175,
+          "ratio": 0.6895088964739006,
+          "verdict": "COLLAPSED",
+          "dim": 80
+        },
+        "axis_bundle": {
+          "gap": 0.20755073712570582,
+          "noise": 0.24446498362177443,
+          "ratio": 0.8489998610468453,
+          "verdict": "COLLAPSED",
+          "dim": 162
+        }
+      }
+    }
+  ],
+  "duration_s": 65.69582059999999
+}

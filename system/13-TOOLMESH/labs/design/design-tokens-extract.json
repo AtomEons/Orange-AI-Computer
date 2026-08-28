@@ -1,0 +1,85 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "design",
+  "card_id": "design-tokens-extract",
+  "capability": "design.tokens.extract",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["source_ref", "source_kind"],
+    "properties": {
+      "source_ref": {
+        "type": "string",
+        "description": "Sandbox reference. For 'figma' kind, the runner expects a JSON dump produced by figma-fetch upstream — this card does not call Figma directly.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "source_kind": {
+        "type": "string",
+        "enum": ["figma-json", "css", "tailwind-config", "style-dictionary"]
+      },
+      "include": {
+        "type": "array",
+        "description": "Token categories to extract. Closed enum matches the W3C Design Tokens community draft.",
+        "items": {
+          "type": "string",
+          "enum": ["color", "typography", "spacing", "radius", "shadow", "border", "duration", "easing", "opacity"]
+        },
+        "minItems": 1,
+        "uniqueItems": true,
+        "default": ["color", "typography", "spacing", "radius", "shadow"]
+      },
+      "naming": {
+        "type": "string",
+        "description": "Output token name casing convention.",
+        "enum": ["kebab", "camel", "pascal", "snake"],
+        "default": "kebab"
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["tokens_ref", "token_count"],
+    "properties": {
+      "tokens_ref": {
+        "type": "string",
+        "description": "Sandbox reference to a W3C-Design-Tokens-shaped JSON document.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "token_count": { "type": "integer", "minimum": 0 },
+      "by_category": {
+        "type": "object",
+        "additionalProperties": { "type": "integer", "minimum": 0 }
+      },
+      "warnings": {
+        "type": "array",
+        "items": { "type": "string", "maxLength": 500 },
+        "maxItems": 100
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 50,
+    "scopes": [
+      "fs.read:sandbox://design/",
+      "fs.write:sandbox://design/tokens/",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30
+  },
+  "risk_class": "sandboxed",
+  "last_verified_at": "2026-06-25T00:22:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Parse a Figma JSON dump, CSS file, Tailwind config, or Style Dictionary source and emit a W3C-Design-Tokens-shaped JSON token tree.",
+  "tags": ["design", "tokens", "figma", "css", "tailwind", "w3c-dtcg"],
+  "notes": "This card is offline by design — the planner is expected to chain a separate fetch card upstream when the source is a remote Figma file. Keeping tokenization offline removes credentials from the hot path."
+}

@@ -1,0 +1,28 @@
+{"schema":"orange.report.v1","action":"zeus.session.record","status":"completed",
+ "summary":"ZEUS session 2026-07-31 - seven scanner findings across six labs, all measured via proprietary AtomEons range-read scanner, direct verification survived falsifier attack",
+ "confidence":0.95,
+ "evidence":[
+  "REFUTED=false",
+  "F24 verified: GLM-5.1 vs GLM-5.2 bias distance measured 0.000000 exact on original zai-org checkpoints, reproducer aem/lab/bias_prior_sweep.py",
+  "F27 verified: DeepSeek V3 V3.1 R1 R1-0528 pairwise bias 0.000000; V3 vs V3.2-Exp 0.997297 (arch change) - fresh full-precision reads",
+  "F28 verified: K2-Instruct-0905 vs K2-Thinking 0.000000; K2-Base vs K2-Instruct-0905 0.0992 despite same 384 experts - rule is per-lineage-branch",
+  "F30 verified: Mixtral-8x7B vs Instruct svd 0.002566 - softmax+aux lab also freezes",
+  "F31 verified: OLMoE-0924 vs 0924-Instruct svd 0.003161; 0125 pair 0.002108 - fifth lab confirms",
+  "F33 verified: Qwen3-30B/80B/235B Instruct-vs-Thinking pairs all inside collapsed band (0.000201-0.001265)",
+  "F34 verified: MiniMax-Text-01 vs M1-40k svd 0.004229 - sixth-family confirmation",
+  "F22 refuted-and-narrowed by fresh falsifier: original GLM-4.5-Air vs 4.6 distance 0.8209 (retrain), only 4.6-4.7 near-identical",
+  "F26 refuted-and-narrowed: within-model dense sampling shows first-MoE-layer peak in 5 of 10 frontier models, not universal",
+  "F29 refuted-and-narrowed by F30/F31: not sigmoid+noaux-specific",
+  "F32 refuted-and-narrowed: Qwen2 same aux=0.001 as Qwen3 but Qwen2 freezes - per-model-line not per-lab",
+  "F35 refuted-and-narrowed: Phi-3.5 vs mini 0.117 independent, mini vs tiny 0.017 marginal but calibration says independent-with-family-resemblance",
+  "Threshold retighten checked: SVD_COLLAPSED 0.005 SVD_SAME_MAP 0.02 tested against 96-model cache, 52 collapsed pairs versus 100 previously, no confirmed findings lost",
+  "Composer selftest PASS across 8 cases including cross-family unmeasurable refusal"
+ ],
+ "actionsTaken":[
+  "seven findings verified by direct measurement of measured tensor distances",
+  "five candidates tested by falsifier and refuted with narrower surviving claims",
+  "five pipeline defects found and fixed by self-audit (per-layer dup, trivial re-uploads, size-driven outliers, frankenmerge contamination, bucket-composition bias)",
+  "ZEUS Panel Composer shipped with two-channel router-collapse detection covering 96 frontier models, no surviving objection to the composer selftest"
+ ],
+ "blockers":[],
+ "receiptPath":"C:/AtomEons/Orange5/10-RECEIPTS/zeus-sessions/2026-07-31-zeus-session.json"}

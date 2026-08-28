@@ -1,0 +1,100 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "analytics",
+  "card_id": "chart-render",
+  "capability": "analytics.chart",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["chart_type", "data"],
+    "properties": {
+      "chart_type": {
+        "type": "string",
+        "description": "Vetted chart primitive. Anything more exotic should be composed in Vega-Lite via the 'vega-lite' kind below.",
+        "enum": ["line", "bar", "stacked-bar", "area", "scatter", "histogram", "box", "heatmap", "vega-lite"]
+      },
+      "data": {
+        "type": "object",
+        "description": "Source frame.",
+        "additionalProperties": false,
+        "required": ["kind"],
+        "properties": {
+          "kind": { "type": "string", "enum": ["sandbox-file", "inline"] },
+          "ref": { "type": "string", "minLength": 1, "maxLength": 4096 },
+          "rows": {
+            "type": "array",
+            "maxItems": 50000,
+            "items": { "type": "object", "additionalProperties": true }
+          }
+        }
+      },
+      "encoding": {
+        "type": "object",
+        "description": "Field-to-channel mapping. Required for all chart_types except 'vega-lite' (which carries its own spec).",
+        "properties": {
+          "x": { "type": "string" },
+          "y": { "type": "string" },
+          "color": { "type": "string" },
+          "size": { "type": "string" },
+          "facet": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "vega_lite_spec": {
+        "type": "object",
+        "description": "Full Vega-Lite v5 spec when chart_type='vega-lite'. The data block is overridden by the runner using the 'data' field above; specs may not embed remote URLs.",
+        "additionalProperties": true
+      },
+      "title": { "type": "string", "maxLength": 256 },
+      "width": { "type": "integer", "minimum": 200, "maximum": 4096, "default": 800 },
+      "height": { "type": "integer", "minimum": 200, "maximum": 4096, "default": 480 },
+      "format": {
+        "type": "string",
+        "description": "Output rasterization format. SVG is preferred for sharpness; PNG when a fixed bitmap is needed.",
+        "enum": ["svg", "png"],
+        "default": "svg"
+      },
+      "sink_ref": {
+        "type": "string",
+        "description": "Sandbox path to write the rendered chart. Omit to receive the rendered bytes inline as base64.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["format"],
+    "properties": {
+      "format": { "type": "string", "enum": ["svg", "png"] },
+      "sink_ref": { "type": "string", "description": "Present when sink_ref was provided in inputs." },
+      "image_b64": { "type": "string", "description": "Base64 payload when no sink_ref was provided. Bounded by the runner's response-size cap." },
+      "width": { "type": "integer", "minimum": 1 },
+      "height": { "type": "integer", "minimum": 1 },
+      "rows_used": { "type": "integer", "minimum": 0 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 50,
+    "scopes": [
+      "fs.read:sandbox://data/",
+      "fs.write:sandbox://charts/",
+      "process.spawn:chart-renderer",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30
+  },
+  "risk_class": "sandboxed",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Render a chart (vetted primitives or a Vega-Lite spec) from a sandbox-staged frame to SVG/PNG. No network, no fonts beyond the renderer's bundled set.",
+  "tags": ["analytics", "chart", "viz", "vega-lite", "svg", "png"],
+  "notes": "Charts are visualization, not analysis — never use a rendered image as a receipt that an underlying claim is true. Pair with summarize-metric or anomaly-detect for the numeric evidence."
+}

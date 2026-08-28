@@ -1,0 +1,77 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "security",
+  "card_id": "security-sbom-generate",
+  "capability": "security.sbom.generate",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["target_ref"],
+    "properties": {
+      "target_ref": {
+        "type": "string",
+        "description": "Sandbox reference to a project root, lockfile, or container image tarball.",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "target_kind": {
+        "type": "string",
+        "enum": ["source-tree", "container-image", "lockfile"],
+        "default": "source-tree"
+      },
+      "format": {
+        "type": "string",
+        "enum": ["cyclonedx-json", "cyclonedx-xml", "spdx-json", "spdx-tag-value"],
+        "default": "cyclonedx-json"
+      },
+      "include_dev": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["sbom_ref", "format", "component_count"],
+    "properties": {
+      "sbom_ref": {
+        "type": "string",
+        "pattern": "^sandbox://",
+        "minLength": 11,
+        "maxLength": 4096
+      },
+      "format": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "component_count": { "type": "integer", "minimum": 0 },
+      "ecosystems_detected": {
+        "type": "array",
+        "items": { "type": "string", "maxLength": 32 },
+        "maxItems": 20,
+        "uniqueItems": true
+      },
+      "generator": { "type": "string", "minLength": 1, "maxLength": 64 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 20,
+    "scopes": [
+      "fs.read:sandbox://workspace/",
+      "fs.write:sandbox://security/sbom/",
+      "process.spawn:syft",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 10
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:28:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Generate a CycloneDX or SPDX SBOM from a source tree, lockfile, or container image. Offline; produces a signable artifact for downstream attestation.",
+  "tags": ["security", "sbom", "cyclonedx", "spdx", "supply-chain", "read-only"],
+  "notes": "Upstream of security-dep-audit (the SBOM can be matched against OSV) and of releaseops-attest (the SBOM is the body of the SLSA attestation). Container-image mode requires the image to already be on the sandbox filesystem — this card does not pull from registries."
+}

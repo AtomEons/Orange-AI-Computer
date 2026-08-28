@@ -1,0 +1,78 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "automation",
+  "card_id": "ifttt-bridge",
+  "capability": "automation.ifttt",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["event_name"],
+    "properties": {
+      "event_name": {
+        "type": "string",
+        "description": "IFTTT Webhooks event name (the 'maker' trigger). Must be present in the operator's IFTTT allowlist; arbitrary event names are rejected at lease time.",
+        "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$",
+        "minLength": 1,
+        "maxLength": 64
+      },
+      "value1": {
+        "type": "string",
+        "description": "First positional IFTTT value (maps to {{Value1}} in the applet).",
+        "maxLength": 4096
+      },
+      "value2": {
+        "type": "string",
+        "description": "Second positional IFTTT value.",
+        "maxLength": 4096
+      },
+      "value3": {
+        "type": "string",
+        "description": "Third positional IFTTT value.",
+        "maxLength": 4096
+      },
+      "extra": {
+        "type": "object",
+        "description": "Optional JSON object body (IFTTT Pro / Webhooks JSON variant). When supplied, value1/2/3 are still forwarded for compatibility.",
+        "additionalProperties": true
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["delivered"],
+    "properties": {
+      "delivered": {
+        "type": "boolean",
+        "description": "True when IFTTT's webhook endpoint returned 2xx. IFTTT does not report whether the applet's downstream action actually succeeded — only that the trigger was accepted."
+      },
+      "http_status": { "type": "integer", "minimum": 100, "maximum": 599 },
+      "response_excerpt": {
+        "type": "string",
+        "description": "First 512 bytes of IFTTT's response body, for diagnostics.",
+        "maxLength": 512
+      },
+      "latency_ms": { "type": "integer", "minimum": 0 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 30,
+    "scopes": [
+      "net.egress:maker.ifttt.com",
+      "secrets.read:ifttt.maker-key"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 10,
+    "egress_allowlist": ["maker.ifttt.com"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "ifttt",
+  "version": "0.1.0",
+  "summary": "Bridge a mesh event to an IFTTT Webhooks ('maker') trigger so downstream applets fire. Event-name allowlist enforced at lease issuance.",
+  "tags": ["automation", "ifttt", "bridge", "webhooks", "byo-key"],
+  "notes": "IFTTT's trigger acknowledgement does not guarantee the downstream applet succeeded. For receipts that need end-to-end confirmation, pair with a verification capability against the target system (e.g. read-back from the destination)."
+}

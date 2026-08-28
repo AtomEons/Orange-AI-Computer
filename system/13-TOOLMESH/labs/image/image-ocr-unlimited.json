@@ -1,0 +1,119 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "image",
+  "card_id": "image-ocr-unlimited",
+  "capability": "image.ocr.long-doc",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["image_ref"],
+    "properties": {
+      "image_ref": {
+        "type": "string",
+        "description": "Sandbox reference to image, image sequence, or PDF. PDFs are rasterized internally at the configured DPI via PyMuPDF. Multi-page sequences accepted as ordered array of refs joined by '|' OR as a single PDF path.",
+        "minLength": 8,
+        "maxLength": 4096
+      },
+      "mode": {
+        "type": "string",
+        "enum": ["gundam", "base"],
+        "default": "gundam",
+        "description": "Processing mode per the upstream model card. 'gundam' = 640x640 patches (faster, lower memory). 'base' = 1024x1024 patches (higher fidelity, more compute)."
+      },
+      "max_pages": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 200,
+        "default": 50,
+        "description": "Hard ceiling on pages processed in one inference call. Inputs above this are rejected; chunk caller-side."
+      },
+      "pdf_dpi": {
+        "type": "integer",
+        "minimum": 150,
+        "maximum": 600,
+        "default": 300,
+        "description": "Rasterization DPI when the input is a PDF."
+      },
+      "no_repeat_ngram_size": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 64,
+        "default": 35,
+        "description": "n-gram repeat avoidance parameter from the upstream model card. Higher values reduce repetition risk on long documents."
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["text", "engine"],
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "Full extracted text across all pages. Multi-page outputs include '\\n--- page N ---\\n' separators between page texts."
+      },
+      "pages": {
+        "type": "array",
+        "description": "Per-page text array. Present for multi-page inputs (PDF or sequence).",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["page", "text"],
+          "properties": {
+            "page": { "type": "integer", "minimum": 1 },
+            "text": { "type": "string" }
+          }
+        }
+      },
+      "engine": {
+        "type": "string",
+        "description": "Engine identity + revision for receipt citation, e.g. 'baidu-unlimited-ocr-3b@safetensors-bf16-2026-06'.",
+        "pattern": "^baidu-unlimited-ocr",
+        "minLength": 21,
+        "maxLength": 96
+      },
+      "context_tokens_used": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 32768,
+        "description": "Model context tokens consumed by this inference. Upstream model card declares 32768 as the hard maximum."
+      },
+      "mode_used": {
+        "type": "string",
+        "enum": ["gundam", "base"],
+        "description": "Echo of the processing mode applied. Useful for downstream comparison against the requested mode."
+      }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 50,
+    "scopes": [
+      "fs.read:sandbox://images/",
+      "fs.read:sandbox://documents/",
+      "proc.spawn:unlimited-ocr-server",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:00:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Long-horizon multi-page OCR via Baidu Unlimited-OCR 3B, with native PDF rasterization and 32K-token document context.",
+  "tags": [
+    "vision",
+    "ocr",
+    "text",
+    "long-document",
+    "pdf",
+    "multi-page",
+    "unlimited-ocr",
+    "baidu",
+    "vlm-3b",
+    "mit-license"
+  ]
+}

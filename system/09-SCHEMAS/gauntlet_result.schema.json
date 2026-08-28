@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ae.gauntlet.v0",
+  "title": "AE Gauntlet Result v0",
+  "type": "object",
+  "required": ["gauntlet_id", "started_at", "finished_at", "ok", "gates"],
+  "properties": {
+    "gauntlet_id": { "type": "string" },
+    "started_at": { "type": "string" },
+    "finished_at": { "type": "string" },
+    "ok": { "type": "boolean" },
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate_id", "name", "pass"],
+        "properties": {
+          "gate_id": { "type": "string" },
+          "name": { "type": "string" },
+          "pass": { "type": "boolean" },
+          "evidence": { "type": "array" }
+        }
+      }
+    }
+  }
+}

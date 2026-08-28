@@ -1,0 +1,268 @@
+{
+  "RECOGNIZE_TAU": 0.9,
+  "observations": [
+    {
+      "fixture": "apple",
+      "light": "raw",
+      "nodeId": "N_1",
+      "wasNew": true,
+      "sim": null
+    },
+    {
+      "fixture": "apple",
+      "light": "sun",
+      "nodeId": "N_2",
+      "wasNew": true,
+      "sim": 0.712032334536952
+    },
+    {
+      "fixture": "apple",
+      "light": "candle",
+      "nodeId": "N_3",
+      "wasNew": true,
+      "sim": 0.7607654349960149
+    },
+    {
+      "fixture": "apple",
+      "light": "moon",
+      "nodeId": "N_2",
+      "wasNew": false,
+      "sim": 0.912131814632402
+    },
+    {
+      "fixture": "apple",
+      "light": "crt",
+      "nodeId": "N_4",
+      "wasNew": true,
+      "sim": 0.5706974013845796
+    },
+    {
+      "fixture": "apple",
+      "light": "neon",
+      "nodeId": "N_2",
+      "wasNew": false,
+      "sim": 0.9435086787374173
+    },
+    {
+      "fixture": "baboon",
+      "light": "raw",
+      "nodeId": "N_5",
+      "wasNew": true,
+      "sim": 0.8904546615026998
+    },
+    {
+      "fixture": "baboon",
+      "light": "sun",
+      "nodeId": "N_5",
+      "wasNew": false,
+      "sim": 0.999943761768418
+    },
+    {
+      "fixture": "baboon",
+      "light": "candle",
+      "nodeId": "N_5",
+      "wasNew": false,
+      "sim": 0.9903605642125045
+    },
+    {
+      "fixture": "baboon",
+      "light": "moon",
+      "nodeId": "N_5",
+      "wasNew": false,
+      "sim": 0.9887116213429259
+    },
+    {
+      "fixture": "baboon",
+      "light": "crt",
+      "nodeId": "N_5",
+      "wasNew": false,
+      "sim": 0.9941649664134847
+    },
+    {
+      "fixture": "baboon",
+      "light": "neon",
+      "nodeId": "N_5",
+      "wasNew": false,
+      "sim": 0.9549613649796356
+    },
+    {
+      "fixture": "basketball",
+      "light": "raw",
+      "nodeId": "N_6",
+      "wasNew": true,
+      "sim": 0.8862284455240156
+    },
+    {
+      "fixture": "basketball",
+      "light": "sun",
+      "nodeId": "N_6",
+      "wasNew": false,
+      "sim": 0.9814371781349582
+    },
+    {
+      "fixture": "basketball",
+      "light": "candle",
+      "nodeId": "N_6",
+      "wasNew": false,
+      "sim": 0.9697441064819255
+    },
+    {
+      "fixture": "basketball",
+      "light": "moon",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9569346616864244
+    },
+    {
+      "fixture": "basketball",
+      "light": "crt",
+      "nodeId": "N_7",
+      "wasNew": true,
+      "sim": 0.7590577307887042
+    },
+    {
+      "fixture": "basketball",
+      "light": "neon",
+      "nodeId": "N_2",
+      "wasNew": false,
+      "sim": 0.9640747280938319
+    },
+    {
+      "fixture": "board",
+      "light": "raw",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9075342527259346
+    },
+    {
+      "fixture": "board",
+      "light": "sun",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9598857859287633
+    },
+    {
+      "fixture": "board",
+      "light": "candle",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9651635633968665
+    },
+    {
+      "fixture": "board",
+      "light": "moon",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9813341630964442
+    },
+    {
+      "fixture": "board",
+      "light": "crt",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9823868960069125
+    },
+    {
+      "fixture": "board",
+      "light": "neon",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9576947494234233
+    },
+    {
+      "fixture": "building",
+      "light": "raw",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9790540351676794
+    },
+    {
+      "fixture": "building",
+      "light": "sun",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9864826231139233
+    },
+    {
+      "fixture": "building",
+      "light": "candle",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.946684276206141
+    },
+    {
+      "fixture": "building",
+      "light": "moon",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9830864676662864
+    },
+    {
+      "fixture": "building",
+      "light": "crt",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9638605414022906
+    },
+    {
+      "fixture": "building",
+      "light": "neon",
+      "nodeId": "N_3",
+      "wasNew": false,
+      "sim": 0.9560579644694255
+    },
+    {
+      "fixture": "orange",
+      "light": "raw",
+      "nodeId": "N_2",
+      "wasNew": false,
+      "sim": 0.9338969625051025
+    },
+    {
+      "fixture": "orange",
+      "light": "sun",
+      "nodeId": "N_2",
+      "wasNew": false,
+      "sim": 0.9426652016685962
+    },
+    {
+      "fixture": "orange",
+      "light": "candle",
+      "nodeId": "N_2",
+      "wasNew": false,
+      "sim": 0.9029001509328245
+    },
+    {
+      "fixture": "orange",
+      "light": "moon",
+      "nodeId": "N_8",
+      "wasNew": true,
+      "sim": 0.8958360383876568
+    },
+    {
+      "fixture": "orange",
+      "light": "crt",
+      "nodeId": "N_9",
+      "wasNew": true,
+      "sim": 0.8707511557127415
+    },
+    {
+      "fixture": "orange",
+      "light": "neon",
+      "nodeId": "N_10",
+      "wasNew": true,
+      "sim": 0.8906806600951014
+    }
+  ],
+  "stats": {
+    "frames": 36,
+    "totalNodes": 10,
+    "confirmedNodes": 4,
+    "unconfirmedNodes": 6,
+    "meanPersistence": 3.6,
+    "maxPersistence": 14
+  },
+  "invariancePasses": 3,
+  "discPasses": 7,
+  "discTotal": 15
+}

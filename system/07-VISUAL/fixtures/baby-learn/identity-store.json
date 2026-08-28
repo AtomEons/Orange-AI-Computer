@@ -1,0 +1,19 @@
+{
+  "labels": [
+    {
+      "label": "orange",
+      "descriptor": {
+        "mean_R": 0.5589441752222641,
+        "mean_G": 0.4419819265981046,
+        "mean_B": 0.23782866259067637,
+        "mean_RG": 0.11696224862415955,
+        "mean_BY": -0.262634388319508,
+        "texture_var": 0.0312043005916931,
+        "log_size": -2.4541233548253123,
+        "log_aspect": -0.40416724939256443
+      },
+      "source": "orange.jpg (union of 3 warm regions)",
+      "learned_at": "2026-07-06T00:00:00Z"
+    }
+  ]
+}

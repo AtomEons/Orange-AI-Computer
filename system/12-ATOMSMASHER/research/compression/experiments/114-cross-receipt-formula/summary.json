@@ -1,0 +1,50 @@
+{
+  "experiment": "114-cross-receipt-formula",
+  "ratio": 27.669,
+  "edges_used": 5,
+  "cross_formulas_total": 5,
+  "net_bytes_saved": 2000571,
+  "total": 75014,
+  "lossless": true,
+  "baseline_m19_ratio": 47.071,
+  "vs_m19_delta": -19.402,
+  "encode_ms": 9461.9,
+  "formulas_sample": [
+    {
+      "type": "step",
+      "field": "payload.dropped",
+      "step": 0,
+      "base": 0,
+      "support": 3126
+    },
+    {
+      "type": "step",
+      "field": "payload.chunks",
+      "step": 0,
+      "base": 1,
+      "support": 119
+    },
+    {
+      "type": "step",
+      "field": "payload.active",
+      "step": 0,
+      "base": 1,
+      "support": 75
+    },
+    {
+      "type": "step",
+      "field": "payload.features_registered",
+      "step": 0,
+      "base": 620,
+      "support": 78
+    },
+    {
+      "type": "step",
+      "field": "payload.order_retention",
+      "step": 0,
+      "base": 1,
+      "support": 78
+    }
+  ],
+  "notes": "Mined 5 cross-receipt constant-step formulas. Applied 5 to elide derivable payload fields. Stores base+step + per-formula presence bitmap + side-channel key order."
+}

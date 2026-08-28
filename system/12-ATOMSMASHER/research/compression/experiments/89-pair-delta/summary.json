@@ -1,0 +1,12 @@
+{
+  "experiment": "89-pair-delta",
+  "total_bytes": 78922,
+  "ratio": 26.299,
+  "delta_vs_m19": -20.772,
+  "stream_bytes": 78874,
+  "seed_bytes": 48,
+  "enc_ms": 16448,
+  "dec_ms": 1145,
+  "lossless": true,
+  "N": 6224
+}

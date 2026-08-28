@@ -1,0 +1,17 @@
+{
+  "experiment": "126-action-sequence-dict",
+  "corpus_sha256": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "raw_bytes": 2075585,
+  "total_bytes": 44296,
+  "ratio": 46.8572,
+  "m19_ratio": 47.07,
+  "delta_vs_m19": -0.2128,
+  "enc_ms": 1662.2,
+  "dec_ms": 81.6,
+  "pair_dict_size": 95,
+  "action_stream_original": 1567,
+  "action_stream_tokenized": 784,
+  "pair_dict_bytes": 162,
+  "lossless": true,
+  "verdict": "AMBER"
+}

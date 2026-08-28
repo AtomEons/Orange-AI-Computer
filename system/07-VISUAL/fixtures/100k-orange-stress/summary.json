@@ -1,0 +1,72 @@
+{
+  "N": 100000,
+  "ingest_seconds": 9.77,
+  "ingest_throughput_sigs_per_sec": 10235.414534288639,
+  "label_mix": {
+    "orange_synth": 55216,
+    "apple_synth": 29909,
+    "off_synth": 14875,
+    "needles": 5
+  },
+  "bucket_stats": {
+    "total": 100000,
+    "families": [
+      "orange",
+      "red",
+      "yellow",
+      "green",
+      "cyan",
+      "blue",
+      "violet",
+      "magenta",
+      "warm_neutral",
+      "cool_neutral",
+      "dark",
+      "bright"
+    ],
+    "per_family": [
+      65027,
+      938,
+      293,
+      80,
+      5,
+      0,
+      23,
+      31050,
+      34,
+      23,
+      626,
+      1901
+    ],
+    "per_radius": [
+      0,
+      774,
+      45637,
+      52895,
+      694
+    ],
+    "buckets_filled": 36,
+    "buckets_capacity": 60,
+    "utilization": 0.6,
+    "max_bucket_size": 36775
+  },
+  "query_latency_ms": {
+    "mean": 1101.1370531539917,
+    "p50": 616.6978759765625,
+    "p95": 4416.60693359375,
+    "p99": 8130.50390625,
+    "max": 13265.310546875
+  },
+  "needle_recall": {
+    "1": 2,
+    "5": 2,
+    "20": 2,
+    "100": 2
+  },
+  "label_recall": {
+    "orange_top1_pct": 100,
+    "apple_top1_pct": 96
+  },
+  "disk_bytes": 142073223,
+  "bytes_per_signature": 1420.73223
+}

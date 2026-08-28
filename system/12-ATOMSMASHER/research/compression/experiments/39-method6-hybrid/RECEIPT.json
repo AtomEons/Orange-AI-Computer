@@ -1,0 +1,20 @@
+{
+  "experiment": "39-method6-hybrid",
+  "generated_at": "2026-06-26T13:19:24.357Z",
+  "mesh_count": 1565,
+  "other_count": 4659,
+  "other_unique_shapes": 1567,
+  "distinct_mesh_summary_templates": 1,
+  "components": {
+    "mesh_template": 119,
+    "mesh_data": 11248,
+    "mesh_ca_dict": 52,
+    "other_shapes": 36287,
+    "other_idx": 5154,
+    "position_bitmap": 693,
+    "seed": 48
+  },
+  "total": 53601,
+  "ratio": 38.72,
+  "roundtrip_lossless": true
+}

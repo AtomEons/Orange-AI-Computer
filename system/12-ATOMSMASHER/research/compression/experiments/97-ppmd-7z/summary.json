@@ -1,0 +1,13 @@
+{
+  "experiment": "97-ppmd-7z",
+  "codec_available": false,
+  "probe": "Command failed: 7z",
+  "status": "N/A",
+  "ratio": null,
+  "vs_M19": null,
+  "enc_ms": null,
+  "dec_ms": null,
+  "lossless": null,
+  "verdict": "N/A",
+  "notes": "7-Zip CLI not installed on this Windows box. Skipped per brief."
+}

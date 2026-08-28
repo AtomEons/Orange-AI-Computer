@@ -1,0 +1,107 @@
+{
+  "schema": "orange5.captain-planet.media-proof-source.v1",
+  "scope": "FOUR_INSTALLED_MEDIA_ARTIFACTS_ONLY",
+  "registry": "14-SUPERSTACK/captain-planet-stack.json",
+  "hunyuan_role": "three_d_hunyuan21",
+  "execution_hold": {
+    "state": "HELD_WHILE_HERMES_NAVIGATOR_LEASE_IS_ACTIVE",
+    "reason": "Operator-directed hold: no model-dependent final run or large-weight rehash while Hermes/Navigator is active.",
+    "allowed": [
+      "local_receipt_reads",
+      "small_media_artifact_sha256",
+      "deterministic_contract_tests"
+    ],
+    "held": [
+      "codexa_model_generation",
+      "codexa_large_weight_content_rehash",
+      "hunyuan3d_activation"
+    ]
+  },
+  "lanes": [
+    {
+      "role": "image_draft_flux2_klein",
+      "medium": "image",
+      "artifact": "10-RECEIPTS/orange5-build/captain-planet/flux2/orangefive-flux2-klein-proof.png",
+      "source_receipt": "10-RECEIPTS/orange5-build/captain-planet/flux2/flux2-image-artifact-proof.json",
+      "technical_receipt": "10-RECEIPTS/orange5-build/captain-planet/flux2/flux2-artifact-quality-proof.json",
+      "expected_technical_status": "CAPTAIN_PLANET_IMAGE_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+      "generation_input": {
+        "kind": "source_receipt_fields",
+        "fields": ["prompt", "seed"]
+      },
+      "criteria": [
+        "prompt_adherence",
+        "object_geometry",
+        "material_coherence",
+        "lighting_coherence",
+        "artifact_and_pseudotext_absence"
+      ]
+    },
+    {
+      "role": "video_fallback_ltxv098",
+      "medium": "video",
+      "artifact": "10-RECEIPTS/orange5-build/captain-planet/ltxv/orangefive-ltxv-2b-proof.mp4",
+      "source_receipt": "10-RECEIPTS/orange5-build/captain-planet/ltxv/ltx-video-artifact-proof.json",
+      "technical_receipt": "10-RECEIPTS/orange5-build/captain-planet/ltxv/ltx-video-artifact-quality-proof.json",
+      "expected_technical_status": "CAPTAIN_PLANET_VIDEO_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+      "generation_input": {
+        "kind": "source_receipt_fields",
+        "fields": ["prompt", "seed"]
+      },
+      "criteria": [
+        "prompt_adherence",
+        "temporal_coherence",
+        "geometry_stability",
+        "camera_motion_quality",
+        "artifact_and_pseudotext_absence"
+      ]
+    },
+    {
+      "role": "speech_qwen3_tts",
+      "medium": "speech",
+      "artifact": "10-RECEIPTS/orange5-build/captain-planet/qwen3-tts/orangefive-qwen3-tts-proof.wav",
+      "source_receipt": "10-RECEIPTS/orange5-build/captain-planet/qwen3-tts/qwen3-tts-artifact-proof.codexa.json",
+      "technical_receipt": "10-RECEIPTS/orange5-build/captain-planet/qwen3-tts/qwen3-tts-artifact-quality-proof.json",
+      "expected_technical_status": "CAPTAIN_PLANET_TTS_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+      "generation_input": {
+        "kind": "recovered_current_runner_constants",
+        "historical_source_receipt_sha256": "062696ba3e9219999ec548e9431a8d58943abffaf077b85636452cbc002193a7",
+        "source_runner": "scripts/codexa-qwen-tts-artifact-proof.py",
+        "source_runner_sha256": "175273edb23c25372390bdac4cb6e166e6d0326b1854b6755f60a3ac42662b60",
+        "values": {
+          "text": "OrangeFive is awake. Evidence leads, receipts prove, and the operator remains in command.",
+          "language": "English",
+          "speaker": "Ryan",
+          "instruction": "Calm technical confidence, concise, no theatrical delivery.",
+          "max_new_tokens": 512
+        }
+      },
+      "criteria": [
+        "exact_text_intelligible",
+        "pronunciation_accuracy",
+        "speaker_fit",
+        "delivery_matches_instruction",
+        "audio_artifact_absence"
+      ]
+    },
+    {
+      "role": "music_ace_step15",
+      "medium": "music",
+      "artifact": "10-RECEIPTS/orange5-build/captain-planet/ace-step/orangefive-ace-step-proof.wav",
+      "source_receipt": "10-RECEIPTS/orange5-build/captain-planet/ace-step/ace-step-artifact-proof.codexa.json",
+      "technical_receipt": "10-RECEIPTS/orange5-build/captain-planet/ace-step/ace-step-artifact-quality-proof.json",
+      "expected_technical_status": "CAPTAIN_PLANET_MUSIC_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+      "generation_input": {
+        "kind": "source_receipt_fields",
+        "fields": ["prompt", "seed"]
+      },
+      "criteria": [
+        "prompt_adherence",
+        "musical_coherence",
+        "arrangement_development",
+        "mix_balance",
+        "audio_artifact_absence"
+      ]
+    }
+  ]
+}

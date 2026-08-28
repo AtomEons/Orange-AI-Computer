@@ -1,0 +1,209 @@
+[
+  {
+    "photo": "lena",
+    "input_entropy": 7.661882158211452,
+    "buckets": [
+      {
+        "category": "orig-15-fields",
+        "count": 15,
+        "entropy": 80.90994279744754
+      },
+      {
+        "category": "reflectance-4-channels",
+        "count": 4,
+        "entropy": 21.10994349105495
+      },
+      {
+        "category": "V1-24-orientation-fields",
+        "count": 24,
+        "entropy": 95.08235379249815
+      },
+      {
+        "category": "retinal-12-fields",
+        "count": 12,
+        "entropy": 20.58282906317786
+      },
+      {
+        "category": "rod-scotopic-field",
+        "count": 1,
+        "entropy": 7.656394009210396
+      },
+      {
+        "category": "axis-bundle-scalars",
+        "count": 162,
+        "entropy": 0.1623908060314611
+      },
+      {
+        "category": "shape+spectral-moments",
+        "count": 19,
+        "entropy": 1.5589385323502774
+      },
+      {
+        "category": "LGN-scalars",
+        "count": 25,
+        "entropy": 2.675084951819779
+      },
+      {
+        "category": "V1+V2+V4-summary-scalars",
+        "count": 43,
+        "entropy": 3.2105173742406197
+      },
+      {
+        "category": "IT-identity-vector",
+        "count": 80,
+        "entropy": 4.627531844966882
+      },
+      {
+        "category": "retinal-12-summary-scalars",
+        "count": 12,
+        "entropy": 1.4182958340544896
+      },
+      {
+        "category": "iris+camera+illum+rod-meta",
+        "count": 15,
+        "entropy": 3.4565647621309536
+      }
+    ],
+    "total_H": 242.45078725898335,
+    "total_units": 412,
+    "ratio": 31.64376353650155
+  },
+  {
+    "photo": "baboon",
+    "input_entropy": 7.541775704573723,
+    "buckets": [
+      {
+        "category": "orig-15-fields",
+        "count": 15,
+        "entropy": 53.97181958918942
+      },
+      {
+        "category": "reflectance-4-channels",
+        "count": 4,
+        "entropy": 5.440732371867558
+      },
+      {
+        "category": "V1-24-orientation-fields",
+        "count": 24,
+        "entropy": 101.33850357945941
+      },
+      {
+        "category": "retinal-12-fields",
+        "count": 12,
+        "entropy": 21.944467482176243
+      },
+      {
+        "category": "rod-scotopic-field",
+        "count": 1,
+        "entropy": 7.7562562732540155
+      },
+      {
+        "category": "axis-bundle-scalars",
+        "count": 162,
+        "entropy": 0.1623908060314611
+      },
+      {
+        "category": "shape+spectral-moments",
+        "count": 19,
+        "entropy": 1.6922718656836107
+      },
+      {
+        "category": "LGN-scalars",
+        "count": 25,
+        "entropy": 0.48217919020227284
+      },
+      {
+        "category": "V1+V2+V4-summary-scalars",
+        "count": 43,
+        "entropy": 3.4907965729672616
+      },
+      {
+        "category": "IT-identity-vector",
+        "count": 80,
+        "entropy": 3.3158098677819328
+      },
+      {
+        "category": "retinal-12-summary-scalars",
+        "count": 12,
+        "entropy": 1.4182958340544896
+      },
+      {
+        "category": "iris+camera+illum+rod-meta",
+        "count": 15,
+        "entropy": 3.1068905956085184
+      }
+    ],
+    "total_H": 204.12041402827617,
+    "total_units": 412,
+    "ratio": 27.065298946040915
+  },
+  {
+    "photo": "orange",
+    "input_entropy": 7.7875808614667665,
+    "buckets": [
+      {
+        "category": "orig-15-fields",
+        "count": 15,
+        "entropy": 66.6740185039484
+      },
+      {
+        "category": "reflectance-4-channels",
+        "count": 4,
+        "entropy": 17.80044211320226
+      },
+      {
+        "category": "V1-24-orientation-fields",
+        "count": 24,
+        "entropy": 88.9657782692889
+      },
+      {
+        "category": "retinal-12-fields",
+        "count": 12,
+        "entropy": 19.43797925078189
+      },
+      {
+        "category": "rod-scotopic-field",
+        "count": 1,
+        "entropy": 7.794480730169787
+      },
+      {
+        "category": "axis-bundle-scalars",
+        "count": 162,
+        "entropy": 0.1623908060314611
+      },
+      {
+        "category": "shape+spectral-moments",
+        "count": 19,
+        "entropy": 1.5569010760354054
+      },
+      {
+        "category": "LGN-scalars",
+        "count": 25,
+        "entropy": 2.835084951819779
+      },
+      {
+        "category": "V1+V2+V4-summary-scalars",
+        "count": 43,
+        "entropy": 2.6223478935325963
+      },
+      {
+        "category": "IT-identity-vector",
+        "count": 80,
+        "entropy": 4.711079890369302
+      },
+      {
+        "category": "retinal-12-summary-scalars",
+        "count": 12,
+        "entropy": 1.4182958340544896
+      },
+      {
+        "category": "iris+camera+illum+rod-meta",
+        "count": 15,
+        "entropy": 3.4565647621309536
+      }
+    ],
+    "total_H": 217.43536408136524,
+    "total_units": 412,
+    "ratio": 27.92078412402025
+  }
+]

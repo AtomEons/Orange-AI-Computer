@@ -1,0 +1,31 @@
+{
+  "experiment": "77-markov-surprise",
+  "N": 6224,
+  "det_bytes": 2075585,
+  "hit_rates_pct": {
+    "id": 0,
+    "action": 32.5,
+    "status": 100,
+    "summary": 3.2,
+    "payload_json": 3.1,
+    "created_at": 4.6
+  },
+  "mask_brotli_bytes": 1522,
+  "literals_brotli_bytes": 127707,
+  "per_field_brotli_bytes": {
+    "id": 53434,
+    "action": 3279,
+    "status": 15,
+    "summary": 27014,
+    "payload_json": 37902,
+    "created_at": 6063
+  },
+  "header_brotli_bytes": 107,
+  "total": 129336,
+  "ratio": 16.048,
+  "delta_vs_m19": -31.023,
+  "encode_ms": 3814.7,
+  "decode_ms": 49.3,
+  "lossless": true,
+  "note": "first-order Markov: predict v[i] == v[i-1] per field; encode mismatches as literals; the most random of the five"
+}

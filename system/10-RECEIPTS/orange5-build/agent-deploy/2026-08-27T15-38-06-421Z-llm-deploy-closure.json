@@ -1,0 +1,101 @@
+{
+  "schema": "orangefive.agent-deploy-closure.v1",
+  "status": "BLOCKED_ARTIFACT_SOURCE_CHURN",
+  "generatedAt": "2026-08-27T15:38:06.421Z",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "scope": [
+    "00-CHARTER/LLM-DEPLOY",
+    "scripts/llm-deploy",
+    "10-RECEIPTS/orange5-build/agent-deploy"
+  ],
+  "sourceCatalog": {
+    "path": "14-SUPERSTACK/captain-planet-stack.json",
+    "sha256": "b9012f31e065e38a2f0d703c41592bbd6614dee7cae630b0bd3f6c6cfbfe16ad",
+    "acquisitionCatalogBound": true,
+    "verifiedUpstreamRoles": 4
+  },
+  "changes": [
+    {
+      "path": "00-CHARTER/LLM-DEPLOY/model-acquisition-catalog.json",
+      "sha256": "2a4b8a3c39375767cf7fa0bd3ca4b8b3ba7161aad8bcca27cdcafaecb3bdadc5",
+      "purpose": "Bind the acquisition overlay to the current receipted Captain Planet catalog."
+    },
+    {
+      "path": "scripts/llm-deploy/deploy-core.mjs",
+      "sha256": "14a90ed249024a9ce5124fd44378046c2ddddd4d2ce10a1e8b1f78c1f6e8c63a",
+      "purpose": "Accept independently pinned Hugging Face repository and revision values per acquired file without weakening URL, size, or SHA-256 checks."
+    },
+    {
+      "path": "scripts/llm-deploy/deploy-probes.mjs",
+      "sha256": "354bddcbfe8062fb18791b963c20e54414cbb9c3f1815fae16bd4089f1bbf49d",
+      "purpose": "Reserve enough SSH execution time for exact remote model checksum proof."
+    },
+    {
+      "path": "scripts/llm-deploy/tests/catalog.test.mjs",
+      "sha256": "5b6e988b30bbdd356128bc43b8e2c3d2bc928e529000017c4c0877fb844b21a8",
+      "purpose": "Regress multi-repository acquisition and remote checksum timeout behavior."
+    }
+  ],
+  "verification": [
+    {
+      "command": "bun C:/AtomEons/Orange5/03-BACKEND/spine-cli.mjs --health",
+      "exitCode": 0,
+      "result": "OrangeBrain live; primary navigator warm on 10.0.0.4."
+    },
+    {
+      "command": "bun test scripts/llm-deploy/tests",
+      "exitCode": 0,
+      "result": "28 pass, 0 fail, 332 expectations across 7 files."
+    },
+    {
+      "command": "verifyModelProvenance imported from scripts/llm-deploy/model-provenance-proof.mjs against current catalogs",
+      "exitCode": 0,
+      "result": "ORANGEFIVE_MODEL_PROVENANCE_GREEN; 4 verified roles; every pinned upstream file matched revision, bytes, and SHA-256."
+    },
+    {
+      "command": "bun scripts/llm-deploy/orange-deploy.mjs discover --data-root C:\\Users\\a\\OrangeBox-Data\\orange5\\agent-deploy-validation-20260827T1529Z --timeout 500",
+      "exitCode": 0,
+      "result": "Portable live discovery completed with external state, Bun 1.3.14 adopted, model choices reported, and no payload lock expected in the source checkout.",
+      "receipt": "C:\\Users\\a\\OrangeBox-Data\\orange5\\agent-deploy-validation-20260827T1529Z\\deploy\\receipts\\discovery-2026-08-27T15-29-58-836Z-c6dabc859e0c.json"
+    },
+    {
+      "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts\\llm-deploy\\pack-orangefive-llm-deploy.ps1 -DryRun",
+      "exitCode": 0,
+      "result": "2381 files; 122506090 payload bytes; credential scan passed; model weights, secrets, receipts, runtime state, and archived products excluded."
+    },
+    {
+      "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts\\llm-deploy\\pack-orangefive-llm-deploy.ps1",
+      "exitCode": 1,
+      "result": "Guarded ZIP verification blocked because scripts/orange5-runtime-control.mjs changed after inventory."
+    },
+    {
+      "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts\\llm-deploy\\pack-orangefive-llm-deploy.ps1",
+      "exitCode": 1,
+      "result": "Single retry blocked because 03-BACKEND/operational-executor.mjs changed after inventory."
+    }
+  ],
+  "coverage": {
+    "portablePreflight": "passed",
+    "bunOllamaAndModelChoices": "passed",
+    "singleAndTwoHostTopology": "passed by deterministic focused tests",
+    "embeddedSecretScan": "passed before artifact snapshot failure",
+    "allDryRunsBeforeMutation": "passed",
+    "extractedInstallReadinessRollback": "passed in guarded temporary-root package test"
+  },
+  "artifact": {
+    "currentSourcePackageProduced": false,
+    "expectedPath": "C:\\Users\\a\\OrangeBox-Data\\orange5\\packages\\OrangeFive-LLM-deploy.zip",
+    "blocker": "Unrelated OrangeFive source files changed during both deterministic package snapshots.",
+    "preexistingArtifact": {
+      "present": true,
+      "lastWriteTimeUtc": "2026-08-27T06:18:29Z",
+      "reportedSha256": "a504e2475f50b097b3a1f211cda9b281bf2cac4e25487c56f368ad6796fa4752",
+      "claim": "STALE_NOT_CURRENT_NOT_RELEASE_PROVEN"
+    }
+  },
+  "git": {
+    "pushed": false,
+    "note": "No Git push or commit was performed. Existing work by other agents was not reverted."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "experiment": "125-schema-aware",
+  "corpus_sha256": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "raw_bytes": 2075585,
+  "total_bytes": 44709,
+  "ratio": 46.4243,
+  "m19_ratio": 47.07,
+  "delta_vs_m19": -0.6457,
+  "enc_ms": 2298,
+  "dec_ms": 84,
+  "stripped_fields": [
+    "action",
+    "status"
+  ],
+  "schema_ref": {
+    "action": "air.compress",
+    "status": "ok"
+  },
+  "lossless": true,
+  "verdict": "AMBER"
+}

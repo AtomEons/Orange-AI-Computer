@@ -1,0 +1,177 @@
+{
+  "experiment": "41-break-brotli",
+  "generated_at": "2026-06-26T22:30:45.632Z",
+  "baseline_brotli": 36287,
+  "results": [
+    {
+      "name": "A1: brotli+dict 50/50 (marginal)",
+      "encoded": 36287,
+      "ratio": 23.28,
+      "verify": "?",
+      "notes": "dict=20380 marg=15907"
+    },
+    {
+      "name": "A2: sort shapes lex + brotli + perm",
+      "encoded": 34394,
+      "ratio": 24.56,
+      "verify": "?",
+      "notes": "br=32253 perm=2141"
+    },
+    {
+      "name": "A3: per-action grouped brotli",
+      "encoded": 50682,
+      "ratio": 16.67,
+      "verify": "?",
+      "notes": "65 action groups"
+    },
+    {
+      "name": "A4: MessagePack + brotli",
+      "encoded": 37601,
+      "ratio": 22.47,
+      "verify": "?",
+      "notes": "msgpack=751705"
+    },
+    {
+      "name": "A5: field-tagged binary + brotli",
+      "encoded": 36911,
+      "ratio": 22.89,
+      "verify": "?",
+      "notes": "raw=669772"
+    },
+    {
+      "name": "A6: field-vocab idx + brotli",
+      "encoded": 36161,
+      "ratio": 23.36,
+      "verify": "?",
+      "notes": "seq=5417 vocabs=30744 (aV=65, stV=2, sumV=1033, payV=954, caV=26)"
+    },
+    {
+      "name": "A7: tplized field-vocab + brotli",
+      "encoded": 42595,
+      "ratio": 19.83,
+      "verify": "?",
+      "notes": "seq=19060 vocabs=23535 (sumT=899, payT=802)"
+    },
+    {
+      "name": "A8: brotli twice (silly, just measuring)",
+      "encoded": 36291,
+      "ratio": 23.28,
+      "verify": "?",
+      "notes": "should be ≥ first; if ≥ confirms incompressibility"
+    },
+    {
+      "name": "A9: similarity-sort first 500 (projected)",
+      "encoded": 43255,
+      "ratio": 19.53,
+      "verify": "?",
+      "notes": "actual_500=13802, scaled to full"
+    },
+    {
+      "name": "A10: xz -9 -e",
+      "encoded": 37720,
+      "ratio": 22.4,
+      "verify": "?",
+      "notes": ""
+    },
+    {
+      "name": "A11: brotli q11 text-mode lgwin24",
+      "encoded": 36287,
+      "ratio": 23.28,
+      "verify": "?",
+      "notes": "delta from baseline 0"
+    },
+    {
+      "name": "A12: action+summary sorted + brotli + invperm",
+      "encoded": 34595,
+      "ratio": 24.42,
+      "verify": "?",
+      "notes": "br=32455 invperm=2140"
+    }
+  ],
+  "sorted_results": [
+    {
+      "name": "A2: sort shapes lex + brotli + perm",
+      "encoded": 34394,
+      "ratio": 24.56,
+      "verify": "?",
+      "notes": "br=32253 perm=2141"
+    },
+    {
+      "name": "A12: action+summary sorted + brotli + invperm",
+      "encoded": 34595,
+      "ratio": 24.42,
+      "verify": "?",
+      "notes": "br=32455 invperm=2140"
+    },
+    {
+      "name": "A6: field-vocab idx + brotli",
+      "encoded": 36161,
+      "ratio": 23.36,
+      "verify": "?",
+      "notes": "seq=5417 vocabs=30744 (aV=65, stV=2, sumV=1033, payV=954, caV=26)"
+    },
+    {
+      "name": "A1: brotli+dict 50/50 (marginal)",
+      "encoded": 36287,
+      "ratio": 23.28,
+      "verify": "?",
+      "notes": "dict=20380 marg=15907"
+    },
+    {
+      "name": "A11: brotli q11 text-mode lgwin24",
+      "encoded": 36287,
+      "ratio": 23.28,
+      "verify": "?",
+      "notes": "delta from baseline 0"
+    },
+    {
+      "name": "A8: brotli twice (silly, just measuring)",
+      "encoded": 36291,
+      "ratio": 23.28,
+      "verify": "?",
+      "notes": "should be ≥ first; if ≥ confirms incompressibility"
+    },
+    {
+      "name": "A5: field-tagged binary + brotli",
+      "encoded": 36911,
+      "ratio": 22.89,
+      "verify": "?",
+      "notes": "raw=669772"
+    },
+    {
+      "name": "A4: MessagePack + brotli",
+      "encoded": 37601,
+      "ratio": 22.47,
+      "verify": "?",
+      "notes": "msgpack=751705"
+    },
+    {
+      "name": "A10: xz -9 -e",
+      "encoded": 37720,
+      "ratio": 22.4,
+      "verify": "?",
+      "notes": ""
+    },
+    {
+      "name": "A7: tplized field-vocab + brotli",
+      "encoded": 42595,
+      "ratio": 19.83,
+      "verify": "?",
+      "notes": "seq=19060 vocabs=23535 (sumT=899, payT=802)"
+    },
+    {
+      "name": "A9: similarity-sort first 500 (projected)",
+      "encoded": 43255,
+      "ratio": 19.53,
+      "verify": "?",
+      "notes": "actual_500=13802, scaled to full"
+    },
+    {
+      "name": "A3: per-action grouped brotli",
+      "encoded": 50682,
+      "ratio": 16.67,
+      "verify": "?",
+      "notes": "65 action groups"
+    }
+  ]
+}

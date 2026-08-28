@@ -1,0 +1,146 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-d4c21bd7db318da5-1787723977984",
+  "query": "current local AI agent orchestration memory compression MCP Bun Windows Intel Arc tools and model runtimes OrangeFive orange5",
+  "searchQuery": "current local agent orchestration memory",
+  "generatedAt": "2026-08-26T05:59:37.989Z",
+  "budgetMs": 60000,
+  "elapsedMs": 764,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.24306v1",
+      "title": "Who is the Agent to Blame? Localizing Faithfulness and Citation Mistakes in Agentic Deep Research",
+      "url": "http://arxiv.org/abs/2608.24306v1",
+      "summary": "Deep research (DR) systems produce long-form cited reports by orchestrating multiple agents that search and synthesize information from the web. Citations are the primary mechanism for evaluating the faithfulness of these reports, yet current DR systems exhibit poor citation recall. Moreover, improving citation recall is challenging because DR systems are complex multi-agent architectures where information passes through agents like a telephone game, and both content and citations can get corrup",
+      "updatedAt": "2026-08-25T09:34:18Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.8,
+        "matched": 4,
+        "queryTerms": 5,
+        "terms": [
+          "current",
+          "local",
+          "agent",
+          "orchestr"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "hackernews",
+      "sourceId": "47934006",
+      "title": "Show HN: Foolery – a local coding factory for orchestrating coding agents",
+      "url": "https://github.com/acartine/foolery",
+      "summary": "Unverified discovery tip. Discussion points: 3. Verify against the creator's official source before use.",
+      "updatedAt": "2026-04-28T13:04:12Z",
+      "points": 3,
+      "license": null,
+      "authorityTier": "discovery_tip_unverified",
+      "relevance": {
+        "score": 0.6,
+        "matched": 3,
+        "queryTerms": 5,
+        "terms": [
+          "local",
+          "agent",
+          "orchestr"
+        ]
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.09029v1",
+      "title": "Physically Constrained Agentic AI for Energy Scheduling",
+      "url": "http://arxiv.org/abs/2608.09029v1",
+      "summary": "Agentic AI extends energy management beyond fixed-form interaction by translating natural-language requests into coordinated scheduling actions. We present a hierarchical ReAct Energy Management System (EMS) in which one orchestrator coordinates specialist agent types for shiftable appliances, EV charging, and thermal control. Physical authorization is separated from language generation: a deterministic critic reconstructs each integrated day-ahead candidate and checks its schema, appliance cycl",
+      "updatedAt": "2026-08-10T02:28:58Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "orchestr"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.06227v1",
+      "title": "From Passive Mirrors to Active Agents: Holonic Digital Twins for Physical AI over Networks",
+      "url": "http://arxiv.org/abs/2608.06227v1",
+      "summary": "Despite advances in artificial intelligence (AI) across multiple sectors, today's AI tools, including deep learning and generative AI, still fail when embedded into physical systems, such as robots and vehicles operating under real-world physical laws. This stems from their inability to maintain reliable world models for long-horizon planning under uncertainty and generalize to unseen scenarios. In this context, wireless networks, through pervasive sensing and communication, can orchestrate phys",
+      "updatedAt": "2026-08-06T16:17:43Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "orchestr"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "hackernews",
+      "sourceId": "48292431",
+      "title": "Show HN: BeeZee – OSS lightweight remote harness orchestration and observability",
+      "url": "https://github.com/BeeZeeAgent/beezee",
+      "summary": "Unverified discovery tip. Discussion points: 1. Verify against the creator's official source before use.",
+      "updatedAt": "2026-05-27T11:12:57Z",
+      "points": 1,
+      "license": null,
+      "authorityTier": "discovery_tip_unverified",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "agent",
+          "orchestr"
+        ]
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "hackernews",
+      "sourceId": "47276507",
+      "title": "Show HN: James Library – Local multi-agent research lab (built on ZeroClaw)",
+      "url": "https://rainlabteam.vercel.app/",
+      "summary": "Unverified discovery tip. Discussion points: 5. Verify against the creator's official source before use.",
+      "updatedAt": "2026-03-06T15:51:05Z",
+      "points": 5,
+      "license": null,
+      "authorityTier": "discovery_tip_unverified",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "local",
+          "agent"
+        ]
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "0e1ae6f42123c66200aa396e4668ba1d647cdc9ceb6f18cf0f5f7a7ad691a873"
+}

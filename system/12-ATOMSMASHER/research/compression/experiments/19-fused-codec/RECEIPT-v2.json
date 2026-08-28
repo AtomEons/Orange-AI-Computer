@@ -1,0 +1,18 @@
+{
+  "experiment": "19-fused-codec-v2",
+  "generated_at": "2026-06-26T11:25:27.993Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes_in": 2075585,
+  "summary_templates": 900,
+  "payload_templates": 802,
+  "summary_nums_total": 21290,
+  "summary_nums_derivable": 12965,
+  "derivable_pct": 60.9,
+  "all_ids_match": true,
+  "pre_brotli_bytes": 692805,
+  "brotli_bytes": 119896,
+  "ratio": 17.31,
+  "roundtrip_lossless": true,
+  "beats_plait": false,
+  "pass": false
+}

@@ -1,0 +1,12 @@
+{
+  "experiment": "106-string-templates",
+  "ratio": 46.575,
+  "encode_ms": 4826,
+  "decode_ms": 361,
+  "lossless": true,
+  "library_size_bytes": 145,
+  "edges_mined": 5,
+  "baseline_m19": 47.071,
+  "vs_m19": -0.496,
+  "notes": "Mined 5 prefix/suffix templates across 4 actions. Templated when prefix+suffix > 50% of avg length."
+}

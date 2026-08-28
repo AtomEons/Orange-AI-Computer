@@ -1,0 +1,84 @@
+{
+  "experiment": "80-m19-okazaki-latency",
+  "corpus": {
+    "path": "C:\\AtomEons\\Orange5\\12-ATOMSMASHER\\research\\compression\\data\\canonical-corpus.jsonl",
+    "receipts": 6224,
+    "rawDetBytes": 2059730,
+    "sha256": "03da0e5cf04adf965ae580cb8c74ab4db9d8058b6ca246478fef57b6de944df1"
+  },
+  "baseline": {
+    "method": "M19 (experiment 59)",
+    "ratio": 47.059,
+    "encodeMsTotal": 2176.34,
+    "msPerReceipt": 0.3497,
+    "lossless": true
+  },
+  "sweep": [
+    {
+      "W": 50,
+      "nWindows": 125,
+      "ratio": 7.3109,
+      "vsFullRatioDelta": -39.7481,
+      "encodeMsTotal": 7350.67,
+      "msPerReceipt": 1.181,
+      "encodedBytes": 283904,
+      "perWindowLossless": true,
+      "concatMatchesFullSha": true,
+      "roundtrip": true
+    },
+    {
+      "W": 100,
+      "nWindows": 63,
+      "ratio": 9.708,
+      "vsFullRatioDelta": -37.351,
+      "encodeMsTotal": 6839.67,
+      "msPerReceipt": 1.0989,
+      "encodedBytes": 213801,
+      "perWindowLossless": true,
+      "concatMatchesFullSha": true,
+      "roundtrip": true
+    },
+    {
+      "W": 200,
+      "nWindows": 32,
+      "ratio": 13.1564,
+      "vsFullRatioDelta": -33.9026,
+      "encodeMsTotal": 12363.88,
+      "msPerReceipt": 1.9865,
+      "encodedBytes": 157762,
+      "perWindowLossless": true,
+      "concatMatchesFullSha": true,
+      "roundtrip": true
+    },
+    {
+      "W": 500,
+      "nWindows": 13,
+      "ratio": 19.4688,
+      "vsFullRatioDelta": -27.5902,
+      "encodeMsTotal": 4794.28,
+      "msPerReceipt": 0.7703,
+      "encodedBytes": 106611,
+      "perWindowLossless": true,
+      "concatMatchesFullSha": true,
+      "roundtrip": true
+    },
+    {
+      "W": 1000,
+      "nWindows": 7,
+      "ratio": 25.3315,
+      "vsFullRatioDelta": -21.7275,
+      "encodeMsTotal": 3344.09,
+      "msPerReceipt": 0.5373,
+      "encodedBytes": 81937,
+      "perWindowLossless": true,
+      "concatMatchesFullSha": true,
+      "roundtrip": true
+    }
+  ],
+  "knee": null,
+  "kneeCriteria": {
+    "ratioLossPct": 5,
+    "msPerReceiptCap": 1
+  },
+  "generated_at": "2026-06-27T14:26:01.864Z"
+}

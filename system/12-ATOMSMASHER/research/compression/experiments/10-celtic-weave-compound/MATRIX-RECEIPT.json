@@ -1,0 +1,50 @@
+{
+  "experiment": "10-celtic-weave-compound-matrix",
+  "generated_at": "2026-06-26T10:06:10.663Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "raw_corpus_bytes": 2075585,
+  "pipelines": [
+    {
+      "pipeline": "plait → brotli",
+      "raw_bytes": 2075585,
+      "pre_brotli_bytes": 2082206,
+      "final_bytes": 114967,
+      "ratio": 18.05,
+      "lossless": true,
+      "elapsed_ms": 12040
+    },
+    {
+      "pipeline": "plait → per-strand spike → brotli",
+      "raw_bytes": 2075585,
+      "pre_brotli_bytes": 793858,
+      "final_bytes": 117517,
+      "ratio": 17.66,
+      "lossless": true,
+      "elapsed_ms": 3164
+    },
+    {
+      "pipeline": "raw → brotli",
+      "raw_bytes": 2075585,
+      "pre_brotli_bytes": 2075585,
+      "final_bytes": 120166,
+      "ratio": 17.27,
+      "lossless": true,
+      "elapsed_ms": 10867
+    },
+    {
+      "pipeline": "spike → brotli",
+      "raw_bytes": 2075585,
+      "pre_brotli_bytes": 677742,
+      "final_bytes": 125309,
+      "ratio": 16.56,
+      "lossless": true,
+      "elapsed_ms": 3556
+    }
+  ],
+  "best_pipeline": "plait → brotli",
+  "best_ratio": 18.05,
+  "baseline_brotli_ratio": 17.27,
+  "compound_win_over_baseline": 0.78,
+  "all_lossless": true,
+  "pass": true
+}

@@ -1,0 +1,53 @@
+model:
+  default: __HERMES_AGENT_MODEL__
+  provider: custom:orange5
+  base_url: __ORANGE_MODEL_URL__
+  context_length: 65536
+  ollama_num_ctx: 65536
+providers:
+  orange5:
+    api: __ORANGE_MODEL_URL__
+    transport: chat_completions
+    default_model: __HERMES_AGENT_MODEL__
+    discover_models: false
+    extra_body:
+      think: false
+      reasoning_effort: none
+terminal:
+  backend: local
+  cwd: '__WORKSPACE_ROOT__'
+  home_mode: profile
+delegation:
+  max_concurrent_children: 6
+  max_spawn_depth: 1
+  orchestrator_enabled: false
+gateway:
+  multiplex_profiles: false
+platforms:
+  api_server:
+    enabled: false
+kanban:
+  dispatch_in_gateway: false
+platform_toolsets:
+  cli: [vision, browser, memory, session_search, todo, kanban, mcp-orange5]
+  api_server: [vision, browser, memory, session_search, todo, kanban, mcp-orange5]
+mcp_servers:
+  orange5:
+    url: '__ORANGE_MCP_URL__'
+    connect_timeout: 10
+    timeout: 120
+    enabled: true
+    supports_parallel_tool_calls: false
+    tools:
+      include: [orange5_health, orange5_receipts]
+      prompts: false
+      resources: false
+agent:
+  disabled_toolsets: [bfl]
+  reasoning_effort: none
+auxiliary:
+  free_only: true
+  title_generation:
+    enabled: false
+security:
+  redact_secrets: true

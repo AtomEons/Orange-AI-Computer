@@ -27,6 +27,12 @@
 
 The interface is not the intelligence. Use Orange through Codex, Claude Code, MCP, an OpenAI-compatible client, or the separately developed Atomic Orange app.
 
+## Current System Source
+
+The complete canonical Orange system snapshot is published in [`system/`](system/). It includes the governed Bun runtime, OrangeBrain and Navigator control path, memory and compression organs, Hermes integration, ToolMesh, receipts, tests, model policy, and Wave 3 operational-intelligence work.
+
+Read the new [AE Phase Fabric technical paper](docs/AE_PHASE_FABRIC_TECHNICAL_PAPER.md) for the implementation, protocol, proof method, measured direct-link results, and the boundary between physical wire throughput and effective synchronized-state throughput.
+
 The public repository is the canonical launch object. Start with the
 [Wave 2 brief](launch/WAVE_2_LAUNCH.md), inspect the
 [evidence ledger](proof/EVIDENCE_LEDGER.md), and then visit

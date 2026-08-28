@@ -1,0 +1,8 @@
+{
+  "experiment": "64-ligase-trained-dict",
+  "ratio": 17.253,
+  "encode_ms": 6236.8,
+  "decode_ms": 20.7,
+  "lossless": true,
+  "notes": "dict from 80% sorted-dedup shapes (1671472B), shipped via brotli prefix-concat"
+}

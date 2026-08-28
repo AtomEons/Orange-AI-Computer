@@ -1,0 +1,49 @@
+{
+  "$schema": "aeyes.identity.config.v2",
+  "purpose": "Canonical winning config for AE Eyes identity recognition, updated 2026-07-06 post cinema-v3 axis-width comparison. Wide-basis (8-axis) attention gives 4/4 with tightest positive-match distances. The 3-axis sweep-108 fallback is preserved for margin-critical use.",
+  "attention": {
+    "strategy": "multi-axis-attention-v2",
+    "axes_default": ["R", "G", "B", "L", "M", "gamma", "RG", "BY"],
+    "axes_fallback_high_margin": ["L", "RG", "BY"],
+    "preproc": "gaussian_1",
+    "minVotes": 1,
+    "iouThresh": 0.4
+  },
+  "warm_rule": {
+    "warm_RG_min": 0.02,
+    "warm_R_minus_B_min": 0.25,
+    "R_plus_G_min": 0.5,
+    "B_max": 0.5
+  },
+  "recognition": {
+    "max_distance": 1.0,
+    "confidence_scale": 1.0
+  },
+  "empirical_evidence": {
+    "cinema_v3_head_to_head": {
+      "v2_3_axes_L_RG_BY": {
+        "test": { "orange.jpg": 0.175, "apple.jpg": 0.184, "fruits.jpg": 0.717, "lena.jpg_min": 1.281 },
+        "correct": "4/4",
+        "gap": 0.564,
+        "note": "biggest safety margin; best for unseen data robustness"
+      },
+      "v3_6_axes_R_G_B_L_M_gamma": {
+        "test": { "orange.jpg": 0.332, "apple.jpg": 0.021, "fruits.jpg": 1.112, "lena.jpg_min": 1.278 },
+        "correct": "3/4",
+        "note": "wider basis without RG/BY drags in mixed-scene warm background; fruits.jpg fails"
+      },
+      "v3_8_full_superset": {
+        "test": { "orange.jpg": 0.125, "apple.jpg": 0.084, "fruits.jpg": 0.816, "lena.jpg_min": 1.053 },
+        "correct": "4/4",
+        "gap": 0.237,
+        "note": "tightest positive matches (0.125, 0.084); smaller safety margin against warm skin"
+      }
+    },
+    "canonical_choice_reason": "8-axis chosen as default per operator directive (R/G/B/L/M/gamma widening); 3-axis retained for margin-critical fallback"
+  },
+  "provenance": {
+    "receipt_seq_30_sweep108": "found threshold 1.0 unlocks 4/4 with 3-axis L+RG+BY",
+    "receipt_seq_31_v3": "confirmed wider basis (8-axis) is 4/4 with tighter positive matches; 6-axis alone (no opponent axes) drops to 3/4",
+    "sweep_metrics": "07-VISUAL/fixtures/sweep-108/metrics.json"
+  }
+}

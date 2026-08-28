@@ -1,0 +1,235 @@
+{
+  "experiment": "46-wildcards",
+  "total_experiments": 38,
+  "b8_baseline": 31482,
+  "sorted_results": [
+    {
+      "name": "W11: 6-bit pack alphabet check",
+      "size": -1,
+      "dB8": -31483,
+      "note": ""
+    },
+    {
+      "name": "W12: shape idx + RLE + brotli",
+      "size": 5963,
+      "dB8": -25519,
+      "note": ""
+    },
+    {
+      "name": "W21: shape idx elias-gamma + brotli",
+      "size": 9142,
+      "dB8": -22340,
+      "note": ""
+    },
+    {
+      "name": "W36: tolower + brotli",
+      "size": 30503,
+      "dB8": -979,
+      "note": "lossless? only if no uppercase used to convey info"
+    },
+    {
+      "name": "W10: token-encode top phrases + brotli",
+      "size": 31239,
+      "dB8": -243,
+      "note": ""
+    },
+    {
+      "name": "W05: brotli twice",
+      "size": 31321,
+      "dB8": -161,
+      "note": ""
+    },
+    {
+      "name": "W13: recursive brotli (already tested in W05)",
+      "size": 31321,
+      "dB8": -161,
+      "note": ""
+    },
+    {
+      "name": "W24: B8 with leading \"action\":\"X\" removed + brotli",
+      "size": 31411,
+      "dB8": -71,
+      "note": "split action into separate stream"
+    },
+    {
+      "name": "W30: B8 + Hamming-greedy within action bucket",
+      "size": 31414,
+      "dB8": -68,
+      "note": "Hamming-NN within bucket"
+    },
+    {
+      "name": "W17: base-64 pack ASCII text",
+      "size": 31482,
+      "dB8": 0,
+      "note": ""
+    },
+    {
+      "name": "W32: brotli lgwin=24 (max)",
+      "size": 31482,
+      "dB8": 0,
+      "note": "should be same; verifies brotli default"
+    },
+    {
+      "name": "W33: brotli text-mode + B8",
+      "size": 31482,
+      "dB8": 0,
+      "note": ""
+    },
+    {
+      "name": "W23: B8 without newlines between shapes",
+      "size": 31494,
+      "dB8": 12,
+      "note": "remove `\\n` separator"
+    },
+    {
+      "name": "W38: JSON-keys-as-prefix + brotli",
+      "size": 31500,
+      "dB8": 18,
+      "note": ""
+    },
+    {
+      "name": "W34: brotli font-mode + B8",
+      "size": 31520,
+      "dB8": 38,
+      "note": ""
+    },
+    {
+      "name": "W37: B8 corpus duplicated then brotli",
+      "size": 31551,
+      "dB8": 69,
+      "note": "should be barely > single; tests brotli efficiency on redundancy"
+    },
+    {
+      "name": "W19: LCS-as-dict prepend + brotli",
+      "size": 31669,
+      "dB8": 187,
+      "note": ""
+    },
+    {
+      "name": "W29: B8 + reverse-string within length-tie",
+      "size": 31718,
+      "dB8": 236,
+      "note": ""
+    },
+    {
+      "name": "W27: B8 reversed (last to first)",
+      "size": 31766,
+      "dB8": 284,
+      "note": ""
+    },
+    {
+      "name": "W04: reverse byte order + brotli",
+      "size": 32064,
+      "dB8": 582,
+      "note": ""
+    },
+    {
+      "name": "W16: rotate bytes left by 3 + brotli",
+      "size": 32531,
+      "dB8": 1049,
+      "note": ""
+    },
+    {
+      "name": "W22: B8 + within-bucket simhash sort",
+      "size": 32782,
+      "dB8": 1300,
+      "note": "simhash within action bucket"
+    },
+    {
+      "name": "W35: bencode-style binary + brotli",
+      "size": 32783,
+      "dB8": 1301,
+      "note": ""
+    },
+    {
+      "name": "W14: MsgPack per shape + concat + brotli",
+      "size": 32789,
+      "dB8": 1307,
+      "note": ""
+    },
+    {
+      "name": "W09: alphabet-remap by freq + brotli",
+      "size": 32846,
+      "dB8": 1364,
+      "note": ""
+    },
+    {
+      "name": "W07: brotli q6 on B8",
+      "size": 35866,
+      "dB8": 4384,
+      "note": ""
+    },
+    {
+      "name": "W28: random shuffle of shapes (control)",
+      "size": 36110,
+      "dB8": 4628,
+      "note": "control: random shuffle should be worst"
+    },
+    {
+      "name": "W03: XOR adjacent shapes + brotli",
+      "size": 39430,
+      "dB8": 7948,
+      "note": ""
+    },
+    {
+      "name": "W18: byte delta + brotli",
+      "size": 39803,
+      "dB8": 8321,
+      "note": ""
+    },
+    {
+      "name": "W08: deflate raw L9 on B8",
+      "size": 55096,
+      "dB8": 23614,
+      "note": ""
+    },
+    {
+      "name": "W39: zlib L9",
+      "size": 55102,
+      "dB8": 23620,
+      "note": ""
+    },
+    {
+      "name": "W06: gzip -9 on B8",
+      "size": 55114,
+      "dB8": 23632,
+      "note": ""
+    },
+    {
+      "name": "W40: base64 + brotli",
+      "size": 59848,
+      "dB8": 28366,
+      "note": "should be worse; control"
+    },
+    {
+      "name": "W02: MTF on shape bytes + brotli",
+      "size": 129434,
+      "dB8": 97952,
+      "note": ""
+    },
+    {
+      "name": "W31: brotli lgwin=10 (1KB window)",
+      "size": 134660,
+      "dB8": 103178,
+      "note": "smaller LZ77 window"
+    },
+    {
+      "name": "W25: word-level Huffman (estimate)",
+      "size": 310215,
+      "dB8": 278733,
+      "note": "tokenize by punctuation boundary"
+    },
+    {
+      "name": "W20: full corpus MTF + brotli",
+      "size": 398193,
+      "dB8": 366711,
+      "note": "full-corpus, not just B8 shapes"
+    },
+    {
+      "name": "W15: IID Shannon byte floor on B8",
+      "size": 544584,
+      "dB8": 513102,
+      "note": ""
+    }
+  ]
+}

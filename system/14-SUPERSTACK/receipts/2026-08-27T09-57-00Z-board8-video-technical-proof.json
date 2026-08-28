@@ -1,0 +1,82 @@
+{
+  "schema": "orange5.captain-planet.artifact-quality-proof.v2",
+  "status": "CAPTAIN_PLANET_VIDEO_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+  "generated_at": "2026-08-27T09:55:04.824Z",
+  "organ": "ltxv_2b_video",
+  "runtime_execution_proven": true,
+  "artifact_technical_quality_proven": true,
+  "perceptual_quality_proven": false,
+  "studio_quality_proven": false,
+  "quality_scope": "DETERMINISTIC_TECHNICAL_ARTIFACT_QUALITY_ONLY",
+  "unresolved_quality_gates": [
+    "prompt_adherence",
+    "temporal_coherence",
+    "geometry_stability",
+    "camera_quality",
+    "human_visual_review",
+    "long_form_continuity",
+    "studio_readiness"
+  ],
+  "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ltxv\\orangefive-ltxv-2b-proof.mp4",
+  "artifact_sha256": "7268140cf3420c7ad360303e66b78b8807887db89f863b3604f69f3e9441f347",
+  "source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ltxv\\ltx-video-artifact-proof.json",
+  "checks": {
+    "source_receipt_contract": true,
+    "source_runtime_status": true,
+    "source_hash_matches": true,
+    "source_size_matches": true,
+    "source_motion_claim_matches": true,
+    "independently_decoded_motion": true,
+    "substantive_duration": true,
+    "substantive_dimensions": true,
+    "substantive_frame_count": true,
+    "temporal_sampling_is_substantive": true,
+    "moving_samples_are_substantive": true,
+    "black_frames_are_bounded": true,
+    "frames_are_not_flat": true
+  },
+  "check_groups": {
+    "runtime": {
+      "source_receipt_contract": true,
+      "source_runtime_status": true,
+      "source_hash_matches": true,
+      "source_size_matches": true,
+      "source_motion_claim_matches": true
+    },
+    "technical_quality": {
+      "independently_decoded_motion": true,
+      "substantive_duration": true,
+      "substantive_dimensions": true,
+      "substantive_frame_count": true,
+      "temporal_sampling_is_substantive": true,
+      "moving_samples_are_substantive": true,
+      "black_frames_are_bounded": true,
+      "frames_are_not_flat": true
+    }
+  },
+  "video": {
+    "codec": "h264",
+    "width": 768,
+    "height": 512,
+    "pixel_format": "yuv420p",
+    "fps": 24,
+    "duration_seconds": 1.375,
+    "frame_count": 33,
+    "decoded_sample_frames": 12,
+    "sampling_fps": 8.727,
+    "sampled_consecutive_mean_abs_delta": 7.8775,
+    "sampled_consecutive_max_abs_delta": 10.7861,
+    "moving_sample_fraction": 1,
+    "black_frame_fraction": 0,
+    "minimum_frame_luminance_stddev": 46.145,
+    "motion_proven": true
+  },
+  "source_created_at": "2026-08-27T00:40:22.024352+00:00",
+  "source_model_id": "Lightricks/LTX-Video ltxv-2b-0.9.8-distilled",
+  "source_model_revision": "8984fa25007f376c1a299016d0957a37a2f797bb",
+  "source_device": "xpu:0 Intel(R) Arc(TM) 140T GPU (48GB)",
+  "source_generation_seconds": 42.822,
+  "prior_receipt": "2026-08-27T09-56-00Z-board8-image-technical-proof.json",
+  "prior_sha256": "ecf6cff12e793bf0c8d43149664da3276a6c6c8be6c8ade53842bed33267cad1",
+  "receipt_sha256": "8de9a7e4367d401b7b485cd8268f5dd62e8a95a0a4d56e0a9b12d6584e5541af"
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "orange.creative-production.v2",
+  "name": "Captain Planet Creative Machine",
+  "execution": "sequential_single_specialist",
+  "registry": "captain-planet-stack.json",
+  "lease_runner": "invoke-captain-planet-route.ps1",
+  "artifact_root": "C:/AtomEons/ai-box/receipts/captain-planet/artifacts",
+  "pipelines": {
+    "image_quality": [
+      "brief",
+      "reference-plan",
+      "image_draft_flux2_klein",
+      "candidate-rank",
+      "image_quality_flux2_dev_when_promoted",
+      "image_video_refine_seedvr2_when_promoted",
+      "visual-review",
+      "receipt"
+    ],
+    "long_video": [
+      "story",
+      "shot-list",
+      "character-bible",
+      "reference-frames",
+      "video_modern_ltx25_when_promoted",
+      "video_fallback_ltxv098",
+      "speech_qwen3_tts",
+      "music_ace_step15",
+      "ffmpeg-assembly",
+      "visual-review",
+      "receipt"
+    ],
+    "music": ["music-brief", "music_ace_step15", "audio-review", "receipt"],
+    "speech": ["voice-brief", "speech_qwen3_tts", "audio-review", "receipt"],
+    "three_d": ["asset-brief", "reference-image", "three_d_hunyuan21_when_promoted", "render-review", "receipt"],
+    "document": ["content-plan", "structured-source", "native-render", "document_refine_paddleocr_vl16_when_promoted", "page-review", "receipt"],
+    "image_refinement": ["source-image", "defect-map", "image_video_refine_seedvr2_when_promoted", "pairwise-review", "receipt"]
+  },
+  "laws": [
+    "Only one heavyweight specialist may hold a lease at a time.",
+    "A candidate is never presented as installed.",
+    "An artifact scaffold is not runtime proof.",
+    "Unknown or over-budget memory is denied.",
+    "Long media is a continuity-controlled sequence, not one unverified generation.",
+    "Every route must produce a command and a receipt.",
+    "A model name is not a capability until a local artifact passes its bakeoff.",
+    "Technical artifact quality proves bounded media integrity, not perceptual or studio quality.",
+    "Installed artifact proof requires a fresh Codexa inventory and independent local decode.",
+    "A planning memory estimate cannot authorize activation without a measured peak-memory receipt."
+  ]
+}

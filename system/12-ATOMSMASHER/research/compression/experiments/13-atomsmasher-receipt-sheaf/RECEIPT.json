@@ -1,0 +1,18 @@
+{
+  "experiment": "13-atomsmasher-receipt-sheaf",
+  "generated_at": "2026-06-26T10:22:22.700Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes_in": 2075585,
+  "num_receipts": 6224,
+  "template_count": 802,
+  "template_collapse_ratio": 7.76,
+  "total_numeric_parameters": 59439,
+  "rle_pairs": 4203,
+  "avg_run_length": 1.48,
+  "ars_stream_bytes": 789356,
+  "ars_brotli_bytes": 133815,
+  "ratio": 15.51,
+  "roundtrip_lossless": true,
+  "beats_plait_baseline": false,
+  "pass": false
+}

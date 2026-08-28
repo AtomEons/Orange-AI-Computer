@@ -1,0 +1,15 @@
+loaded 409 classes
+
+══ Compute Fisher weights for K=100, 200, 300, 409 ══
+  K=47: global Fisher 0s, per-class Fisher 0s
+  K= 47  global=44.7% (margin=0.163)  per-class=13.7%  ensemble=42.9%
+  K=100: global Fisher 10s, per-class Fisher 1s
+  K=100  global=47.8% (margin=0.215)  per-class=14.6%  ensemble=47.1%
+  K=200: global Fisher 73s, per-class Fisher 3s
+  K=200  global=56.5% (margin=0.282)  per-class=24.4%  ensemble=56.2%
+  K=300: global Fisher 287s, per-class Fisher 6s
+  K=300  global=60.6% (margin=0.315)  per-class=29.9%  ensemble=60.2%
+  K=409: global Fisher 747s, per-class Fisher 12s
+  K=409  global=57.3% (margin=0.289)  per-class=27.1%  ensemble=56.8%
+
+total: 1868s

@@ -1,0 +1,12 @@
+﻿{
+    "proof":  "atomic-orange.windows-launch.v1",
+    "exe":  "C:\\AtomEons\\Orange5\\02-ATOMIC-ORANGE-V1\\src-tauri\\target\\release\\Atomic-Chat.exe",
+    "started_at_utc":  "2026-08-27T15:36:14.5075964Z",
+    "pid":  2876,
+    "preexisting_same_path_count":  0,
+    "survived_10_seconds":  true,
+    "exit_code":  null,
+    "observed_executable_path":  "C:\\AtomEons\\Orange5\\02-ATOMIC-ORANGE-V1\\src-tauri\\target\\release\\Atomic-Chat.exe",
+    "observed_command_line":  "\"C:\\AtomEons\\Orange5\\02-ATOMIC-ORANGE-V1\\src-tauri\\target\\release\\Atomic-Chat.exe\" ",
+    "stopped_after_probe":  true
+}

@@ -1,0 +1,335 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-9c7f6014649f165b-1787795494389",
+  "query": "current open source local AI orchestration MCP project memory compression FLUX2 Intel XPU visual quality tools OrangeFive orange5",
+  "searchQuery": "local orchestration mcp project memory compression flux2 intel",
+  "generatedAt": "2026-08-27T01:51:34.425Z",
+  "budgetMs": 60000,
+  "elapsedMs": 726,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1161163182",
+      "title": "tinyhumansai/openhuman",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "summary": "Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.",
+      "updatedAt": "2026-08-27T01:50:35Z",
+      "license": "GPL-3.0",
+      "stars": 38238,
+      "forks": 3762,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8567,
+      "relevance": {
+        "score": 0.5321,
+        "matched": 4,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "orchestr",
+          "memory",
+          "intel"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1164005541",
+      "title": "foryourhealth111-pixel/Vibe-Skills",
+      "url": "https://github.com/foryourhealth111-pixel/Vibe-Skills",
+      "summary": "VibeSkills is a general-purpose Skill that automatically routes local Skills and intelligently orchestrates harness workflows.",
+      "updatedAt": "2026-08-26T22:45:11Z",
+      "license": "Apache-2.0",
+      "stars": 3012,
+      "forks": 244,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8346,
+      "relevance": {
+        "score": 0.3762,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "orchestr",
+          "intel"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2605.12728v1",
+      "title": "Grid-Orch: An LLM-Powered Orchestrator for Distribution Grid Simulation and Analytics",
+      "url": "http://arxiv.org/abs/2605.12728v1",
+      "summary": "The power distribution engineering workforce faces a projected shortage of up to 1.5 million engineers by 2030, creating urgent demand for more accessible analysis tools. This paper introduces Grid-Orch, a framework that bridges Large Language Models (LLMs) and power system simulation through the Model Context Protocol (MCP), enabling engineers to perform complex distribution analyses via natural language. Using OpenDSS as the reference implementation, Grid-Orch provides 36 domain-specific tools",
+      "updatedAt": "2026-05-12T20:31:34Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "orchestr",
+          "project"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "938468965",
+      "title": "musistudio/claude-code-router",
+      "url": "https://github.com/musistudio/claude-code-router",
+      "summary": "One local control plane for every AI agent: route across models, fuse new capabilities, orchestrate tools, and stay fully in control.",
+      "updatedAt": "2026-08-27T01:31:32Z",
+      "license": "MIT",
+      "stars": 36894,
+      "forks": 3095,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8563,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "orchestr"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1197656406",
+      "title": "open-multi-agent/open-multi-agent",
+      "url": "https://github.com/open-multi-agent/open-multi-agent",
+      "summary": "TypeScript AI agent orchestration framework with dynamic workflows. Describe the goal, not the graph: a coordinator plans the task DAG at runtime and runs it on any LLM (Claude, ChatGPT, Gemini, DeepSeek, or local models).",
+      "updatedAt": "2026-08-26T23:35:04Z",
+      "license": "MIT",
+      "stars": 6831,
+      "forks": 2427,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8417,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "orchestr"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1275337471",
+      "title": "redevops-io/sidekick",
+      "url": "https://github.com/redevops-io/sidekick",
+      "summary": "Local coding-agent orchestrator — DAG of auto-approved, git-worktree-isolated sub-sessions across LLM providers (Claude/Kimi/Grok/DeepSeek/local). AGPL-3.0.",
+      "updatedAt": "2026-08-27T01:42:29Z",
+      "license": "AGPL-3.0",
+      "stars": 9,
+      "forks": 0,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.785,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "orchestr"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "243854166",
+      "title": "dotnet/tye",
+      "url": "https://github.com/dotnet/tye",
+      "summary": "Tye is a tool that makes developing, testing, and deploying microservices and distributed applications easier. Project Tye includes a local orchestrator to make developing microservices easier and the ability to deploy microservices to Kubernetes with minimal configuration.",
+      "updatedAt": "2026-08-25T13:48:58Z",
+      "license": "MIT",
+      "stars": 5206,
+      "forks": 512,
+      "ownerType": "Organization",
+      "archived": true,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2543,
+      "relevance": {
+        "score": 0.3762,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "orchestr",
+          "project"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1146686306",
+      "title": "eric-cielo/moflo",
+      "url": "https://github.com/eric-cielo/moflo",
+      "summary": "MoFlo — an opinionated, local-first AI agent orchestration toolkit for Claude Code: semantic memory, learned routing, gates, and spells. No API keys, no cloud, works out of the box.",
+      "updatedAt": "2026-08-27T01:37:28Z",
+      "license": "MIT",
+      "stars": 18,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2056,
+      "relevance": {
+        "score": 0.3762,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "orchestr",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1080184074",
+      "title": "Resonant-Jones/Codexify",
+      "url": "https://github.com/Resonant-Jones/Codexify",
+      "summary": "Local First AI Operating System with Longterm Memory, MultiAgent Orchestration, Persona Switching and more.",
+      "updatedAt": "2026-08-27T01:19:47Z",
+      "license": "NOASSERTION",
+      "stars": 5,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1956,
+      "relevance": {
+        "score": 0.3762,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "orchestr",
+          "memory"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1313044653",
+      "title": "flamexnreal/davinci-resolve-ai-bridge-mcp",
+      "url": "https://github.com/flamexnreal/davinci-resolve-ai-bridge-mcp",
+      "summary": "A local MCP bridge that lets Claude, Codex, Antigravity, and Cursor read and edit the project open in DaVinci Resolve — free version included. Nothing to edit, nothing to repaste.",
+      "updatedAt": "2026-08-27T01:30:06Z",
+      "license": "MIT",
+      "stars": 16,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2046,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "project"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1234091932",
+      "title": "kstrat2001/darkmux",
+      "url": "https://github.com/kstrat2001/darkmux",
+      "summary": "Mission orchestrator and lab for local AI. Launch a mission, watch the graph come alive — every seat runs your own models off the meter, or a hosted endpoint.",
+      "updatedAt": "2026-08-27T01:43:48Z",
+      "license": "MIT",
+      "stars": 6,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1969,
+      "relevance": {
+        "score": 0.2202,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "local",
+          "orchestr"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "5f043efdccb5ec124ffb33ac1c6a053de5ff0f222e7468c37b2d8dceccea61d4"
+}

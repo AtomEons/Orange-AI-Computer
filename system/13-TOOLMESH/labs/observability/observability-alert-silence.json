@@ -1,0 +1,84 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "observability",
+  "card_id": "observability-alert-silence",
+  "capability": "observability.alert.silence",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["backend", "matchers", "duration_seconds", "comment"],
+    "properties": {
+      "backend": {
+        "type": "string",
+        "enum": ["alertmanager", "pagerduty", "opsgenie", "datadog-monitors"]
+      },
+      "matchers": {
+        "type": "array",
+        "description": "Label-value selectors that scope the silence (Alertmanager style: name, value, isRegex).",
+        "minItems": 1,
+        "maxItems": 20,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "value"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1, "maxLength": 128 },
+            "value": { "type": "string", "minLength": 1, "maxLength": 512 },
+            "is_regex": { "type": "boolean", "default": false },
+            "is_equal": { "type": "boolean", "default": true }
+          }
+        }
+      },
+      "duration_seconds": {
+        "type": "integer",
+        "description": "Silence lifetime. Capped at 24h regardless of input.",
+        "minimum": 60,
+        "maximum": 86400
+      },
+      "comment": {
+        "type": "string",
+        "description": "Required justification; written to the silence record and to the Hermes receipt.",
+        "minLength": 8,
+        "maxLength": 1000
+      },
+      "created_by": {
+        "type": "string",
+        "description": "Author label. Defaults to the planner identity from the lease.",
+        "maxLength": 128
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["silence_id", "starts_at", "ends_at", "backend"],
+    "properties": {
+      "silence_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "backend": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "starts_at": { "type": "string", "format": "date-time" },
+      "ends_at": { "type": "string", "format": "date-time" },
+      "matched_alerts_estimate": { "type": "integer", "minimum": 0 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 300,
+    "max_invocations": 3,
+    "scopes": [
+      "net.egress:alertmanager.example.internal",
+      "net.egress:api.pagerduty.com",
+      "secrets.read:observability.alerting"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 5,
+    "egress_allowlist": ["alertmanager.example.internal", "api.pagerduty.com"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:26:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Create a time-bounded alert silence in Alertmanager/PagerDuty/Opsgenie/Datadog. Required justification; per-call human approval.",
+  "tags": ["observability", "alert", "silence", "incident", "external-side-effect"],
+  "notes": "Silencing alerts is a high-trust action — broad matchers can mute production pages. Default lease caps duration at 24h and demands human approval; the runner refuses matcher patterns that are unscoped (e.g. {name=~'.*', value=~'.*'})."
+}

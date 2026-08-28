@@ -1,0 +1,76 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "releaseops",
+  "card_id": "releaseops-rollback",
+  "capability": "releaseops.rollback",
+  "cost_class": "byo-key",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["service", "environment", "reason"],
+    "properties": {
+      "service": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*$",
+        "minLength": 2,
+        "maxLength": 64
+      },
+      "environment": {
+        "type": "string",
+        "enum": ["staging", "production"]
+      },
+      "to_revision": {
+        "type": "string",
+        "description": "Optional explicit revision id to roll back to. Defaults to the last-known-good revision the controller has on file.",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "reason": {
+        "type": "string",
+        "description": "Required free-text justification, written to the deploy receipt and the controller audit log.",
+        "minLength": 8,
+        "maxLength": 1000
+      },
+      "drain_seconds": {
+        "type": "integer",
+        "description": "How long the controller is allowed to drain in-flight traffic before terminating the rolled-back-from revision.",
+        "minimum": 0,
+        "maximum": 300,
+        "default": 30
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["service", "environment", "from_revision", "to_revision", "completed_at"],
+    "properties": {
+      "service": { "type": "string", "minLength": 1, "maxLength": 64 },
+      "environment": { "type": "string", "enum": ["staging", "production"] },
+      "from_revision": { "type": "string", "minLength": 1, "maxLength": 128 },
+      "to_revision": { "type": "string", "minLength": 1, "maxLength": 128 },
+      "completed_at": { "type": "string", "format": "date-time" },
+      "duration_seconds": { "type": "number", "minimum": 0 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 1,
+    "scopes": [
+      "net.egress:argocd.example.internal",
+      "secrets.read:deploy.controller",
+      "deploy.rollback:service"
+    ],
+    "human_approval_required": true,
+    "rate_limit_per_minute": 2,
+    "egress_allowlist": ["argocd.example.internal"]
+  },
+  "risk_class": "external-side-effect",
+  "last_verified_at": "2026-06-25T00:30:00Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Roll a service back to its last-known-good (or explicitly named) revision. Required justification; per-call human approval.",
+  "tags": ["releaseops", "rollback", "deploy", "incident", "external-side-effect"],
+  "notes": "Rollback is intentionally faster than deploy — the operator should be able to break-glass without ceremony. Approval is still required because rolling production back can itself cause incidents (schema-incompat, etc.)."
+}

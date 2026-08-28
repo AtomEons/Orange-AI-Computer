@@ -1,0 +1,38 @@
+{
+  "experiment": "12-turning-key",
+  "generated_at": "2026-06-26T09:59:05.696Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "sequence_length": 6224,
+  "best_d": 2,
+  "ring_size": 3112,
+  "ring_similarity": 0.332,
+  "candidates_analyzed": 4,
+  "top_5_candidates": [
+    {
+      "d": 2,
+      "ringSize": 3112,
+      "similarity": 0.332
+    },
+    {
+      "d": 16,
+      "ringSize": 389,
+      "similarity": 0.325
+    },
+    {
+      "d": 4,
+      "ringSize": 1556,
+      "similarity": 0.323
+    },
+    {
+      "d": 8,
+      "ringSize": 778,
+      "similarity": 0.319
+    }
+  ],
+  "raw_action_stream_bytes": 85273,
+  "turning_key_stream_bytes": 10427,
+  "turning_key_brotli_bytes": 4506,
+  "ratio": 18.92,
+  "roundtrip_lossless": true,
+  "pass": true
+}

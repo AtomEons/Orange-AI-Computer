@@ -1,0 +1,8 @@
+{
+  "experiment": "69-action-rle",
+  "ratio": 16.19,
+  "encode_ms": 5728.83,
+  "decode_ms": 42.96,
+  "lossless": true,
+  "notes": "Action-column RLE on corpus sorted-by-id. 66 unique actions over 6224 rows produced 4203 runs (mean run length 1.48). Rest brotli q11: 119319B, RLE raw: 8406B, vocab brotli: 463B, header: 11B. Total 128199B vs baseline 44095B."
+}

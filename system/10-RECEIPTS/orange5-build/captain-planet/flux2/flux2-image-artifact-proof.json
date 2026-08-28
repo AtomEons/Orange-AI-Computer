@@ -1,0 +1,62 @@
+{
+  "schema": "orange.captain_planet.image_artifact.v1",
+  "status": "IMAGE_ARTIFACT_RUNTIME_PROVEN_QUALITY_UNASSESSED",
+  "created_at": "2026-08-27T00:01:53.687274+00:00",
+  "engine": "ComfyUI",
+  "engine_commit": "a25c7bf2b8c7408d8724f4245dbe09d95992e3a1",
+  "model": "black-forest-labs/FLUX.2-klein-4b-fp8",
+  "model_revisions": {
+    "black-forest-labs/FLUX.2-klein-4b-fp8": "5b4408e59397a4a37ccb46afe426d8ed86379441",
+    "Comfy-Org/z_image_turbo": "08d04455279082882deaabc8d0d09fc914c071e1",
+    "Comfy-Org/flux2-dev": "ab9055628ea245000e610f2aa2c96f4746093546"
+  },
+  "model_hashes": {
+    "diffusion_models/flux-2-klein-4b-fp8.safetensors": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6",
+    "text_encoders/qwen_3_4b.safetensors": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+    "vae/flux2-vae.safetensors": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5"
+  },
+  "device": "xpu:0 Intel(R) Arc(TM) 140T GPU (48GB)",
+  "workflow": "flux2-klein-distilled-4-step-fixed-seed",
+  "seed": 20260826,
+  "prompt": "A precision-engineered orange glass command instrument on a black technical workbench, machined aluminum controls, luminous amber data filaments, physically plausible studio lighting, premium industrial design photography, sharp material detail, no text, no logo",
+  "startup_seconds": 24.316,
+  "generation_seconds": 43.247,
+  "artifact_proven": true,
+  "studio_quality_proven": false,
+  "quality_status": "PENDING_VISUAL_REVIEW_AND_IMAGE_QUALITY_BENCHMARK",
+  "artifact": "C:\\AtomEons\\ai-box\\receipts\\captain-planet\\artifacts\\flux2\\orangefive-flux2-klein-proof.png",
+  "artifact_bytes": 1309650,
+  "artifact_sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1",
+  "pixels": {
+    "format": "PNG",
+    "width": 1024,
+    "height": 1024,
+    "mean_rgb": [
+      50.334,
+      39.721,
+      34.859
+    ],
+    "stddev_rgb": [
+      60.878,
+      42.97,
+      37.378
+    ],
+    "extrema_rgb": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "entropy": 8.206,
+    "nonblank": true
+  },
+  "log": "C:\\AtomEons\\ai-box\\receipts\\captain-planet\\artifacts\\flux2\\comfyui-flux2-proof.log"
+}

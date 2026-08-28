@@ -1,0 +1,19 @@
+{
+  "experiment": "116-train-test-formulas",
+  "ratio_test": 18.071,
+  "ratio_train": 26.268,
+  "edges_mined_train": 1277,
+  "formulas_safe_for_test": 70,
+  "perfect_transfer": 652,
+  "partial_transfer": 431,
+  "overfit_formulas": 10,
+  "coverage_gap": 184,
+  "overfit_rate": 0.78,
+  "net_bytes_saved_test": 381750,
+  "lossless_test": true,
+  "lossless_train": true,
+  "baseline_m19_ratio": 47.071,
+  "vs_m19_delta_test": -29,
+  "encode_ms": 34210.9,
+  "notes": "Mined 1277 edges on 80% train. 652 transfer perfectly to test; 10 overfit; 184 had no test coverage. Picked 70 safe formulas. Test ratio=18.071x vs train ratio=26.268x. Overfit rate=0.78%."
+}

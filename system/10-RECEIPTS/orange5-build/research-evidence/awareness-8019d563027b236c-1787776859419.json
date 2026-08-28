@@ -1,0 +1,18 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-8019d563027b236c-1787776859419",
+  "query": "{\"action\":\"analyze.agent\",\"payload\":{\"parentOrder\":{\"action\":\"audit.current-awareness-promotion\",\"intent\":\"audit.current-awareness-promotion\",\"targetProject\":\"OrangeFive\",\"scope\":null,\"riskLevel\":\"medium\",\"allowedActions\":[\"audit.current-awareness-promotion\"],\"forbiddenActions\":[]},\"agent\":\"security-auditor\",\"delegationId\":\"nav-49c2d6ed-1616-4609-b4bf-09aec6838df1\",\"allowedTools\":[\"read\",\"secret-scan\",\"danger-scan\",\"receipts\"]},\"intent\":\"security-auditor independently evaluates: audit.current-awareness-promotion\",\"targetProject\":\"OrangeFive\",\"orderId\":\"delegate-78482afb-5416-4a10-b63c-52bee787ace9:security-auditor\",\"allowedActions\":[\"analyze.agent\"],\"forbiddenActions\":[],\"riskLevel\":\"medium\",\"requiresReceipt\":true} /no_think OrangeFive orange5",
+  "searchQuery": "action analyze.agent payload parentorder audit.current-awareness-promotion intent targetproject scope",
+  "generatedAt": "2026-08-26T20:40:59.420Z",
+  "budgetMs": 60000,
+  "elapsedMs": 11417,
+  "status": "NO_EVIDENCE",
+  "sources": [],
+  "errors": [
+    {
+      "provider": "github",
+      "error": "source returned HTTP 504"
+    }
+  ],
+  "sha256": "e48ebb0228e9a602c0c3a11fe1113a0d1f7e12939cc8a2286107a35d999daef1"
+}

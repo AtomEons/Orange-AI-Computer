@@ -1,0 +1,65 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-deb9e983105a69d3-1787820492411",
+  "query": "current primary-source AI agent memory retrieval context compression evidence provenance https://arxiv.org/abs/2608.13662 https://arxiv.org/abs/2608.11775",
+  "searchQuery": "primary-source agent memory retrieval context compression evidence provenance",
+  "generatedAt": "2026-08-27T08:48:12.956Z",
+  "budgetMs": 60000,
+  "elapsedMs": 548,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "direct",
+      "sourceId": "032beca969d13125",
+      "title": "[2608.11775] The Sleeping Agent: What Gist-Based Context Compression Loses and Why",
+      "url": "https://arxiv.org/abs/2608.11775",
+      "summary": "[2608.11775] The Sleeping Agent: What Gist-Based Context Compression Loses and Why Skip to main content Search Submit Donate Log in Search arXiv Press Enter to search &middot; Advanced search --> Computer Science > Artificial Intelligence arXiv:2608.11775 (cs) [Submitted on 12 Aug 2026] Title: The Sleeping Agent: What Gist-Based Context Compression Loses and Why Authors: Nicholas E. Kyrkewood View a PDF of the paper titled The Sleeping Agent: What Gist-Based Context Compression Loses and Why, by",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "sourceQuality": 0.9,
+      "relevance": {
+        "score": 0.3259,
+        "matched": 3,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "context",
+          "compression"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "direct",
+      "sourceId": "b3ab73e24fcfc7a0",
+      "title": "[2608.13662] Ontology-Grounded Project Memory for Coding Agents",
+      "url": "https://arxiv.org/abs/2608.13662",
+      "summary": "[2608.13662] Ontology-Grounded Project Memory for Coding Agents Skip to main content Search Submit Donate Log in Search arXiv Press Enter to search &middot; Advanced search --> Computer Science > Artificial Intelligence arXiv:2608.13662 (cs) [Submitted on 13 Aug 2026] Title: Ontology-Grounded Project Memory for Coding Agents Authors: James Adam View a PDF of the paper titled Ontology-Grounded Project Memory for Coding Agents, by James Adam View PDF HTML (experimental) Abstract: Coding agents hav",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "sourceQuality": 0.9,
+      "relevance": {
+        "score": 0.1911,
+        "matched": 2,
+        "queryTerms": 8,
+        "terms": [
+          "agent",
+          "memory"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "412abca160abf83fe0d3b1dc3b026b00b642ee44e3653078bdaf2425d5aeb530"
+}

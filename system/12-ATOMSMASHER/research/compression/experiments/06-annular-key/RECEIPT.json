@@ -1,0 +1,17 @@
+{
+  "experiment": "06-annular-key",
+  "generated_at": "2026-06-26T09:37:44.026Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "distinct_actions": 66,
+  "shannon_entropy_bits": 2.401,
+  "avg_huffman_code_bits": 2.414,
+  "raw_action_stream_bytes": 85273,
+  "huffman_packed_bytes": 1878,
+  "annular_stream_bytes": 3802,
+  "annular_brotli_bytes": 2618,
+  "baseline_brotli_bytes": 4323,
+  "baseline_ratio": 19.73,
+  "ratio": 32.57,
+  "roundtrip_lossless": true,
+  "pass": true
+}

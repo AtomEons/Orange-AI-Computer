@@ -1,0 +1,20 @@
+{
+  "experiment": "90-knn-prediction",
+  "total_bytes": 74307,
+  "ratio": 27.933,
+  "delta_vs_m19": -19.138,
+  "stream_bytes": 74259,
+  "seed_bytes": 48,
+  "enc_ms": 12029,
+  "dec_ms": 691,
+  "lossless": true,
+  "stats": {
+    "used_neighbor": 6158,
+    "used_raw": 66,
+    "total_diff_bytes": 1160465,
+    "total_raw_bytes": 29843
+  },
+  "N": 6224,
+  "k": 3,
+  "bucket_window": 64
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "nav-live-global-capability-scan",
+  "query": "open source agent memory tool orchestration evidence workflow Russia France Spain China 2026",
+  "searchQuery": "open source agent memory tool orchestration evidence workflow russia france",
+  "generatedAt": "2026-08-26T03:47:54.312Z",
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.24883v1",
+      "title": "Impact of Scale-dependent Primordial Non-Gaussianity on Scalar-induced Gravitational Waves",
+      "url": "http://arxiv.org/abs/2608.24883v1",
+      "summary": "Scalar-induced gravitational waves (SIGWs) probe primordial curvature perturbations beyond cosmic microwave background scales, while primordial black holes (PBHs) probe the rare tail of the same statistics. We ask whether SIGW morphology can reveal scale-dependent primordial non-Gaussianity. We adopt the internal-leg separable kernel, $\\mathcal F_{\\rm NL}(\\mathbf{k};\\mathbf q,\\mathbf{k}-\\mathbf q)=\\bar f_{\\rm NL}f(q)f(\\lVert\\mathbf{k}-\\mathbf q\\rVert)$, and compute Gaussian, reducible, and conne",
+      "updatedAt": "2026-08-25T17:59:09Z",
+      "license": null
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.24879v1",
+      "title": "Common tiling functions with small support",
+      "url": "http://arxiv.org/abs/2608.24879v1",
+      "summary": "For $N$ lattices in $\\R^d$ with volume $1$ and pairwise trivial intersections, every nonzero common tiling function has support diameter $Ω(N^{1/d})$, while for lattice families whose fundamental domains have uniformly bounded diameters, the standard convolution construction gives an $O(N)$ upper bound, leaving a gap that has remained open since the work of Kolountzakis and Wolff \\cite{kolwolff-1999Mathematika}. We close this gap by constructing, for every $d\\geq 2$ and all sufficiently large $N",
+      "updatedAt": "2026-08-25T17:57:33Z",
+      "license": null
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.24877v1",
+      "title": "From Seeing to Acting: Smart Glasses as First-Person Intelligence Platforms",
+      "url": "http://arxiv.org/abs/2608.24877v1",
+      "summary": "Smart glasses are evolving from capture and display accessories into first-person intelligence platforms that connect human perception, persistent context, and digital or physical action. Their on-body viewpoint aligns with the wearer's vision, audition, motion, and hand-object interaction, but must operate under tight energy, thermal, privacy, and feedback constraints. Despite rapid progress in augmented reality, egocentric vision, multimodal models, human-computer interaction, and embodied int",
+      "updatedAt": "2026-08-25T17:56:54Z",
+      "license": null
+    }
+  ],
+  "errors": [],
+  "sha256": "835e623c12dfb24843708d0fac82a706b94ab131c2f367f41545ebd84ccec2b9"
+}

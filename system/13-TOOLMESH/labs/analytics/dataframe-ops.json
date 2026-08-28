@@ -1,0 +1,119 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "analytics",
+  "card_id": "dataframe-ops",
+  "capability": "analytics.dataframe",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["source", "operations"],
+    "properties": {
+      "source": {
+        "type": "object",
+        "description": "Where the input frame comes from.",
+        "additionalProperties": false,
+        "required": ["kind"],
+        "properties": {
+          "kind": { "type": "string", "enum": ["sandbox-file", "sql-result", "inline"] },
+          "ref": {
+            "type": "string",
+            "description": "Sandbox path for kind='sandbox-file' (CSV, TSV, Parquet, JSONL) or mesh handle for kind='sql-result'.",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "rows": {
+            "type": "array",
+            "description": "Inline records when kind='inline'. Capped at 10000 rows to keep payloads sane.",
+            "maxItems": 10000,
+            "items": { "type": "object", "additionalProperties": true }
+          }
+        }
+      },
+      "operations": {
+        "type": "array",
+        "description": "Ordered pipeline of vetted dataframe primitives. Each step is deterministic and reviewable; arbitrary code-eval is not exposed here.",
+        "minItems": 1,
+        "maxItems": 50,
+        "items": {
+          "type": "object",
+          "required": ["op"],
+          "properties": {
+            "op": {
+              "type": "string",
+              "enum": ["select", "filter", "rename", "mutate", "groupby-agg", "sort", "join", "pivot", "melt", "drop-duplicates", "fillna", "head", "tail", "sample"]
+            },
+            "args": { "type": "object", "additionalProperties": true }
+          }
+        }
+      },
+      "sink": {
+        "type": "object",
+        "description": "Where to deliver the resulting frame. Defaults to inline rows in the response.",
+        "additionalProperties": false,
+        "properties": {
+          "kind": { "type": "string", "enum": ["inline", "sandbox-file"] },
+          "ref": { "type": "string", "pattern": "^sandbox://", "minLength": 11, "maxLength": 4096 },
+          "format": { "type": "string", "enum": ["csv", "tsv", "parquet", "jsonl"] }
+        }
+      },
+      "max_rows_inline": {
+        "type": "integer",
+        "description": "When sink='inline' (or default), cap on rows returned. Larger frames must use sandbox-file sink.",
+        "minimum": 1,
+        "maximum": 10000,
+        "default": 1000
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["row_count", "columns"],
+    "properties": {
+      "row_count": { "type": "integer", "minimum": 0 },
+      "columns": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["name", "dtype"],
+          "properties": {
+            "name": { "type": "string" },
+            "dtype": { "type": "string", "description": "Normalized Arrow dtype label (e.g. 'int64', 'float64', 'utf8', 'timestamp[ns]')." }
+          }
+        }
+      },
+      "rows": {
+        "type": "array",
+        "description": "Present when sink='inline'. Capped at max_rows_inline.",
+        "items": { "type": "object", "additionalProperties": true }
+      },
+      "sink_ref": {
+        "type": "string",
+        "description": "Present when sink='sandbox-file'. Path of the written artifact."
+      },
+      "operations_applied": { "type": "integer", "minimum": 0 },
+      "duration_ms": { "type": "integer", "minimum": 0 }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 50,
+    "scopes": [
+      "fs.read:sandbox://data/",
+      "fs.write:sandbox://data/out/",
+      "process.spawn:dataframe-engine",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 30
+  },
+  "risk_class": "sandboxed",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Apply a deterministic pipeline of dataframe primitives (filter/select/groupby/join/etc.) to a sandbox-staged frame or a sql-result handle. Sandbox-only I/O.",
+  "tags": ["analytics", "dataframe", "pandas", "polars", "etl"],
+  "notes": "Engine is the mesh-hosted Polars build; pandas-style ops are translated. Avoid pivoting frames with high-cardinality columns — runner imposes a 1 M cell ceiling and will fail with 'cell-budget-exceeded'."
+}

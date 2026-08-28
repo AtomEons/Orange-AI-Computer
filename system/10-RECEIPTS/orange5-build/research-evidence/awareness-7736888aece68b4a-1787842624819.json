@@ -1,0 +1,174 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-7736888aece68b4a-1787842624819",
+  "query": "Choose the OrangeFive route for a code repair. Do not invent evidence. /no_think OrangeFive orange5",
+  "searchQuery": "choose the route for code repair. not invent",
+  "generatedAt": "2026-08-27T14:57:04.830Z",
+  "budgetMs": 60000,
+  "elapsedMs": 652,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.22766v2",
+      "title": "Spatio-temporal Path Optimization for Stabilizer-Code-Protected Quantum Networks",
+      "url": "http://arxiv.org/abs/2608.22766v2",
+      "summary": "Quantum Error Correction~(QEC)-protected direct transmission is a fundamental approach to preserve fragile quantum states while they are physically forwarded across noisy quantum networks. When a logical qubit traverses multiple hops, selected QEC-capable nodes may recover the encoded state before it continues along the route. The feasibility and cost of the final transmission strategy therefore depend on how we jointly choose the path, the recovery locations, and the protection schemes. In this",
+      "updatedAt": "2026-08-25T09:24:54Z",
+      "license": null,
+      "observedAt": "2026-08-27T14:57:04.830Z",
+      "contentSha256": "88970a038bf87637a8ebc636fa922597a88d8c73ad966fd01927618a9037f534",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "88970a038bf87637a8ebc636fa922597a88d8c73ad966fd01927618a9037f534",
+      "immutableRef": "http://arxiv.org/abs/2608.22766v2#orange-evidence-sha256=88970a038bf87637a8ebc636fa922597a88d8c73ad966fd01927618a9037f534",
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.6,
+        "matched": 3,
+        "queryTerms": 5,
+        "terms": [
+          "choose",
+          "route",
+          "code"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "938468965",
+      "title": "musistudio/claude-code-router",
+      "url": "https://github.com/musistudio/claude-code-router",
+      "summary": "One local control plane for every AI agent: route across models, fuse new capabilities, orchestrate tools, and stay fully in control.",
+      "updatedAt": "2026-08-27T14:26:50Z",
+      "license": "MIT",
+      "stars": 36914,
+      "forks": 3097,
+      "ownerType": "User",
+      "archived": false,
+      "observedAt": "2026-08-27T14:57:04.830Z",
+      "contentSha256": "7ae5f4b49b52e6130544232827e3ad1fb3a88804be23f4efb2820573f183c73d",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "7ae5f4b49b52e6130544232827e3ad1fb3a88804be23f4efb2820573f183c73d",
+      "immutableRef": "https://github.com/musistudio/claude-code-router#orange-evidence-sha256=7ae5f4b49b52e6130544232827e3ad1fb3a88804be23f4efb2820573f183c73d",
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8563,
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "route",
+          "code"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2608.21259v1",
+      "title": "Security Games on Series-Parallel Attack Graphs with Adaptive Attackers",
+      "url": "http://arxiv.org/abs/2608.21259v1",
+      "summary": "We study security games on attack graphs, where an adaptive attacker seeks to reach a target by sequentially attempting stochastic controls along the current attack frontier, while a defender allocates limited resources across controls to delay compromise. The attacker may choose among exponentially many attack routes and freely pivot between them as successes and failures are observed, yielding an exponentially large space of contingent attack policies. For any fixed defender allocation, we sho",
+      "updatedAt": "2026-08-21T16:16:31Z",
+      "license": null,
+      "observedAt": "2026-08-27T14:57:04.830Z",
+      "contentSha256": "b0f30c4429eae76d08a7427140611f62acdc4fcb34dce29765c02a3ba4f491d7",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "b0f30c4429eae76d08a7427140611f62acdc4fcb34dce29765c02a3ba4f491d7",
+      "immutableRef": "http://arxiv.org/abs/2608.21259v1#orange-evidence-sha256=b0f30c4429eae76d08a7427140611f62acdc4fcb34dce29765c02a3ba4f491d7",
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "choose",
+          "route"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "hackernews",
+      "sourceId": "48448372",
+      "title": "Show HN: Rayline routes Claude Code subagents to on-device and cheaper models",
+      "url": "https://rayline.ai/",
+      "summary": "Unverified discovery tip. Discussion points: 11. Verify against the creator's official source before use.",
+      "updatedAt": "2026-06-08T17:32:42Z",
+      "points": 11,
+      "license": null,
+      "observedAt": "2026-08-27T14:57:04.830Z",
+      "contentSha256": "ef60a3c1d19de0159f074d2f95a39bb71e3e719fdf797e461ef9545ffa644219",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "ef60a3c1d19de0159f074d2f95a39bb71e3e719fdf797e461ef9545ffa644219",
+      "immutableRef": "https://rayline.ai/#orange-evidence-sha256=ef60a3c1d19de0159f074d2f95a39bb71e3e719fdf797e461ef9545ffa644219",
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2016,
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "route",
+          "code"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1126954227",
+      "title": "ulyngs/digital-habits-blocker",
+      "url": "https://github.com/ulyngs/digital-habits-blocker",
+      "summary": "Source code for 'Digital Habits: Blocker', a powerful app & website blocker for iOS, Mac, Windows, and Android that lets the user choose how hard it is to override",
+      "updatedAt": "2026-08-27T11:15:56Z",
+      "license": null,
+      "stars": 8,
+      "forks": 5,
+      "ownerType": "User",
+      "archived": false,
+      "observedAt": "2026-08-27T14:57:04.830Z",
+      "contentSha256": "249c82a22b0935f03c6420c8944feff10c5677f51998a54f61299a5fdebefe57",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "249c82a22b0935f03c6420c8944feff10c5677f51998a54f61299a5fdebefe57",
+      "immutableRef": "https://github.com/ulyngs/digital-habits-blocker#orange-evidence-sha256=249c82a22b0935f03c6420c8944feff10c5677f51998a54f61299a5fdebefe57",
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1991,
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "choose",
+          "code"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "0990fc47c0f7f03f18785752cac65ce0fb8686bc770635ede0da7d5091ae1cde"
+}

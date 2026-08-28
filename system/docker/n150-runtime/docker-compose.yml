@@ -1,0 +1,22 @@
+services:
+  orange5-n150-runtime:
+    image: node:22-bookworm-slim
+    container_name: orange5-n150-runtime
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    working_dir: /orange5
+    command: ["sh", "/orange5/docker/n150-runtime/entrypoint.sh"]
+    environment:
+      ORANGE5_ORANGELLM_HOST: "0.0.0.0"
+      ORANGE5_ORANGELLM_PORT: "1337"
+      ORANGE5_SMART_SKINNY_HOST: "127.0.0.1"
+      ORANGE5_SMART_SKINNY_PORT: "8797"
+      ORANGE5_OLLAMA_BASE_URL: "http://host.docker.internal:11434"
+      ORANGE5_CODEXA_OLLAMA_URL: "${ORANGE5_CODEXA_OLLAMA_URL:-http://host.docker.internal:11435}"
+      ORANGE5_CODEXA_HEAVY_MODEL: "${ORANGE5_CODEXA_HEAVY_MODEL:-qwen2.5-coder:32b}"
+      ORANGEBOX_RAIL_TOKEN: "${ORANGEBOX_RAIL_TOKEN:-}"
+    volumes:
+      - ../..:/orange5
+    ports:
+      - "${ORANGE5_DOCKER_GATEWAY_PORT:-1338}:1337"
+    restart: unless-stopped

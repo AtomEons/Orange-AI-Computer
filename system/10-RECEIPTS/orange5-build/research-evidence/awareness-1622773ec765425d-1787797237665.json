@@ -1,0 +1,240 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-1622773ec765425d-1787797237665",
+  "query": "{\"intent\":\"Find the highest-impact missing or weak OrangeFive runtime capabilities. Distinguish a proven hole from a speculative improvement. Return exact tests and smallest corrective actions. Do not claim execution.\",\"evidence\":[\"scouts=4/4;sources=19;sha=e29e6f69893c63a5\",\"candidates=19;status=BENCHMARK_REQUIRED;sha=0572db35033aa8af\"],\"context\":{\"scout_briefs\":[{\"id\":\"runtime-orchestration\",\"status\":\"CURRENT_EVIDENCE_READY\",\"source_count\":2,\"compressed_brief\":\"AIR:CURRENT.v1\\nLAW: This is fresh discovery evidence, not installed capability or proof of superiority.\\nLAW: Prefer an existing project component unless a candidate passes compatibility, license, benchmark, and receipt gates.\\nC: [hackernews] Show HN: Orchid – Local-first record and replay for AI agent debugging; freshness=ESTABLISHED; lifecycle=SOURCE_VERIFICATION_REQUIRED; authority=discovery_tip_unverified; quality=0.194; stars=0; license=unknown; source=https://github.com/mario-guerra/orchid-trace; finding=Unverified discovery tip. Discussion points: 4. Verify against the creator's official source before use.; idea=Test Show HN: Orchid – Local-first record and replay for AI agent debugging against Hermes child-report OrangeFive orange5",
+  "searchQuery": "intent find the highest-impact missing weak runtime capabilities.",
+  "generatedAt": "2026-08-27T02:20:37.685Z",
+  "budgetMs": 60000,
+  "elapsedMs": 5601,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "direct",
+      "sourceId": "30f70dc8fef98dcc",
+      "title": "GitHub - mario-guerra/orchid-trace: Orchid - Orchestration interactive debugger - Record, inspect, &amp; replay AI agents · GitHub",
+      "url": "https://github.com/mario-guerra/orchid-trace",
+      "summary": "GitHub - mario-guerra/orchid-trace: Orchid - Orchestration interactive debugger - Record, inspect, &amp; replay AI agents · GitHub Skip to content Navigation Menu Sign in Appearance settings Platform AI CODE CREATION GitHub Copilot Write better code with AI GitHub Copilot app Direct agents from issue to merge MCP Registry Integrate external tools DEVELOPER WORKFLOWS Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes Code Q",
+      "updatedAt": null,
+      "license": null,
+      "authorityTier": "operator_seeded_primary",
+      "sourceQuality": 0.9,
+      "relevance": {
+        "score": 0,
+        "matched": 0,
+        "queryTerms": 7,
+        "terms": [],
+        "distinctiveMatched": 0,
+        "distinctiveTerms": 6,
+        "admitted": false
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "903860968",
+      "title": "actuator/pSlip",
+      "url": "https://github.com/actuator/pSlip",
+      "summary": "pSlip is an Android static analysis tool kit designed to find potentially vulnerable escalation paths by analyzing exported components, intent filters, provider permissions and cryptographic misuse",
+      "updatedAt": "2026-08-02T17:33:08Z",
+      "license": "Apache-2.0",
+      "stars": 27,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7939,
+      "relevance": {
+        "score": 0.4679,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "find",
+          "miss"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1195756346",
+      "title": "andrewstellman/quality-playbook",
+      "url": "https://github.com/andrewstellman/quality-playbook",
+      "summary": "The Quality Playbook is an open-source skill that turns AI coding agents into rigorous quality engineers. Point it at your code, in any language. Feed it whatever docs you have: READMEs, GitHub issues, Discord threads, AI chat history. It figures out your intent, creates a real requirements spec, and does quality engineering to find real defects.",
+      "updatedAt": "2026-08-22T12:49:38Z",
+      "license": "Apache-2.0",
+      "stars": 82,
+      "forks": 10,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8034,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "find"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1340164895",
+      "title": "Tranz007/ux-skills",
+      "url": "https://github.com/Tranz007/ux-skills",
+      "summary": "Agent Skills for working UX designers. Challenge ideas, find blind spots, use the real design system, preserve evidence and decisions, and carry UX intent into engineering.",
+      "updatedAt": "2026-08-27T00:58:29Z",
+      "license": "MIT",
+      "stars": 26,
+      "forks": 2,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7936,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "find"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1171060534",
+      "title": "getcargohq/cargo-skills",
+      "url": "https://github.com/getcargohq/cargo-skills",
+      "summary": "GTM engineering skills for AI coding agents — build lead lists, find & verify emails, waterfall enrichment, lead scoring, CRM sync, and buying-signal monitoring (job changes, funding, tech intent) from Claude Code, Codex, or Cursor. Powered by the Cargo CLI: 138 integrations, 50 data providers.",
+      "updatedAt": "2026-08-24T05:02:40Z",
+      "license": "MIT",
+      "stars": 15,
+      "forks": 3,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7891,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "find"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1172014065",
+      "title": "rohansx/leadecho",
+      "url": "https://github.com/rohansx/leadecho",
+      "summary": "Find buyers before they find your competitors. Self-hostable social intent monitoring for Reddit, Twitter, LinkedIn, HN, and more.",
+      "updatedAt": "2026-08-14T05:41:00Z",
+      "license": null,
+      "stars": 12,
+      "forks": 5,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2023,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "intent",
+          "find"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1188298065",
+      "title": "mpge/look-for-work-claude",
+      "url": "https://github.com/mpge/look-for-work-claude",
+      "summary": "Proactive codebase analysis plugin for Claude Code — dispatches parallel agents to find the highest-impact improvements across architecture, security, performance, and more",
+      "updatedAt": "2026-04-29T18:46:53Z",
+      "license": "MIT",
+      "stars": 4,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.194,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "find",
+          "highest impact"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1195338497",
+      "title": "mpge/look-for-work-codex",
+      "url": "https://github.com/mpge/look-for-work-codex",
+      "summary": "Proactive codebase analysis agent for Codex CLI — find the highest-impact improvements across architecture, security, performance, and more",
+      "updatedAt": "2026-05-13T01:06:34Z",
+      "license": "MIT",
+      "stars": 2,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1895,
+      "relevance": {
+        "score": 0.3119,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "find",
+          "highest impact"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 6,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "4986431525c5801022caa0a2e30aa4da49ac21912323a197bb61c06ac6e4472f"
+}

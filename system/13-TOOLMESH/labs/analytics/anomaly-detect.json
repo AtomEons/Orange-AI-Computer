@@ -1,0 +1,118 @@
+{
+  "schema": "orange5.tool-card.v0",
+  "lab": "analytics",
+  "card_id": "anomaly-detect",
+  "capability": "analytics.anomaly",
+  "cost_class": "free",
+  "latency_class": "seconds",
+  "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["data", "value_column"],
+    "properties": {
+      "data": {
+        "type": "object",
+        "description": "Source series. For time-series methods a 'timestamp_column' is required.",
+        "additionalProperties": false,
+        "required": ["kind"],
+        "properties": {
+          "kind": { "type": "string", "enum": ["sandbox-file", "inline"] },
+          "ref": { "type": "string", "minLength": 1, "maxLength": 4096 },
+          "rows": {
+            "type": "array",
+            "maxItems": 100000,
+            "items": { "type": "object", "additionalProperties": true }
+          }
+        }
+      },
+      "value_column": {
+        "type": "string",
+        "description": "Numeric column to score.",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "timestamp_column": {
+        "type": "string",
+        "description": "Required when method is time-series aware (stl, prophet-residual).",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "group_by": {
+        "type": "array",
+        "description": "Optional grouping columns. Detection runs per group; results carry the group key.",
+        "items": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "maxItems": 4
+      },
+      "method": {
+        "type": "string",
+        "description": "Detection algorithm. 'z-score' and 'iqr' are stateless; 'rolling-z' uses a moving window; 'stl' decomposes seasonality+trend then scores residuals; 'isolation-forest' is multivariate when 'extra_features' is set.",
+        "enum": ["z-score", "iqr", "rolling-z", "stl", "isolation-forest"],
+        "default": "rolling-z"
+      },
+      "threshold": {
+        "type": "number",
+        "description": "Z/score threshold above which a point is flagged. Interpretation depends on method; runner clamps to a sane range.",
+        "minimum": 0.5,
+        "maximum": 10,
+        "default": 3.0
+      },
+      "window": {
+        "type": "integer",
+        "description": "Rolling window length for rolling-z / stl seasonal hint. Ignored by stateless methods.",
+        "minimum": 5,
+        "maximum": 10000,
+        "default": 50
+      },
+      "extra_features": {
+        "type": "array",
+        "description": "Additional columns for multivariate methods. Ignored by univariate methods.",
+        "items": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "maxItems": 32
+      }
+    }
+  },
+  "outputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["anomalies", "rows_scored"],
+    "properties": {
+      "anomalies": {
+        "type": "array",
+        "description": "One entry per flagged point. Score interpretation depends on method (z, IQR-distance, residual-z, isolation score).",
+        "items": {
+          "type": "object",
+          "required": ["index", "score", "value"],
+          "properties": {
+            "index": { "type": "integer", "minimum": 0, "description": "Row index in the source frame." },
+            "timestamp": { "type": "string" },
+            "value": { "type": "number" },
+            "score": { "type": "number" },
+            "group": { "type": "object", "additionalProperties": true }
+          }
+        }
+      },
+      "rows_scored": { "type": "integer", "minimum": 0 },
+      "anomaly_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+      "method": { "type": "string" },
+      "threshold": { "type": "number" }
+    }
+  },
+  "default_lease_template": {
+    "ttl_seconds": 600,
+    "max_invocations": 30,
+    "scopes": [
+      "fs.read:sandbox://data/",
+      "process.spawn:anomaly-engine",
+      "net.egress:none"
+    ],
+    "human_approval_required": false,
+    "rate_limit_per_minute": 20
+  },
+  "risk_class": "read-only",
+  "last_verified_at": "2026-06-25T00:15:22Z",
+  "vendor": "self-hosted",
+  "version": "0.1.0",
+  "summary": "Score a numeric series (or grouped panel) for anomalies using a vetted detector. Stateless methods plus seasonality-aware STL and multivariate isolation-forest.",
+  "tags": ["analytics", "anomaly", "outlier", "time-series", "stl", "isolation-forest"],
+  "notes": "All methods are reviewable and reproducible — no opaque model artifact persists between calls. For monitored production series, drive this card from a scheduled-task and forward findings to a notification capability."
+}

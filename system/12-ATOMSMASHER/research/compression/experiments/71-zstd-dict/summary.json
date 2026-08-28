@@ -1,0 +1,8 @@
+{
+  "experiment": "71-zstd-dict",
+  "ratio": 19.2407,
+  "encode_ms": 5281.621,
+  "decode_ms": 10.018,
+  "lossless": true,
+  "notes": "method=brotli_dict; TEST=1245 rows / 404113 bytes (20% holdout); all 4 ratios: brotli=13.9191, brotli+dict=19.2407, zstd=13.0650, zstd+dict=18.8811; full-corpus extrapolation=19.24x; M19 baseline=47.07x on full 2.07MB corpus; dict mode is prefix-concat (zlib brotli & Bun.zstd both silently ignore the dictionary option in Bun 1.3.14)."
+}

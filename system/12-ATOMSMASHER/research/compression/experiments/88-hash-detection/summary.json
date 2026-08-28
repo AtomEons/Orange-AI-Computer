@@ -1,0 +1,58 @@
+{
+  "experiment": "88-hash-detection",
+  "audit_total_bytes": 2075585,
+  "audit_patterns": {
+    "sha256_64hex": {
+      "count": 336,
+      "bytes": 21504
+    },
+    "rcpt_16hex": {
+      "count": 6284,
+      "bytes": 131964
+    },
+    "hex16_any": {
+      "count": 37,
+      "bytes": 592
+    },
+    "uuid": {
+      "count": 0,
+      "bytes": 0
+    },
+    "base64_20plus": {
+      "count": 959,
+      "bytes": 36138
+    },
+    "org_16hex": {
+      "count": 1,
+      "bytes": 20
+    }
+  },
+  "field_cost_breakdown": {
+    "payload_json": {
+      "sha256": 21504,
+      "rcpt_id": 0,
+      "hex16_other": 592,
+      "org_id": 20
+    }
+  },
+  "derivable_samples_first_200_receipts": 0,
+  "derivable_samples_examples": [],
+  "upper_bound_pipeline": {
+    "plain_brotli_ratio": 17.13,
+    "plain_brotli_bytes": 121167,
+    "elided_brotli_ratio": 17.132,
+    "elided_total_bytes": 121154,
+    "elided_lossless": true,
+    "note": "plain-brotli baseline shows elision impact; M19 already elides rcpt_id so this is the residual gain."
+  },
+  "estimated_m19_impact": {
+    "elidable_bytes_in_corpus": 43048,
+    "est_bytes_saved_after_m19": 915,
+    "est_ratio_with_full_elision": 48.068,
+    "delta_vs_m19": 0.997
+  },
+  "enc_ms": 36562,
+  "dec_ms": 0,
+  "lossless": true,
+  "verdict_note": "audit experiment — primary ratio reported is plain-brotli with vs without hash elision."
+}

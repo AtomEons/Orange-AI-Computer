@@ -1,0 +1,8 @@
+loaded 278 classes, wide_dim = 286
+
+══ WIDE-IT FISHER @ MULTIPLE K ══
+  K= 47 (wide=286D)  Fisher rate=0.0%
+  K=100 (wide=286D)  Fisher rate=0.0%
+  K=200 (wide=286D)  Fisher rate=0.0%
+  K=278 (wide=286D)  Fisher rate=0.0%
+total: 1154s

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orange5.atomsmasher.cartridge.v0",
+  "title": "Orange5 AtomSmasher Cartridge v0",
+  "description": "AtomSmasher Cartridge — pre-compiled domain capability unit, hot-swappable into a model session. Bundles a system_prompt (injected into the model's system role), a list of declared capabilities (used by the Least-action Router for eligibility), and an array of tool_cards (typed tool descriptors the model may invoke). Cartridges are inert descriptors; they don't execute anything themselves. cartridge_id = sha256(canonical({name, version, capabilities, system_prompt, tool_cards})). The id is derived, never stored on disk.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "name",
+    "version",
+    "summary",
+    "capabilities",
+    "system_prompt",
+    "tool_cards"
+  ],
+  "properties": {
+    "schema": {
+      "description": "Schema discriminator. Must be exact.",
+      "const": "orange5.atomsmasher.cartridge.v0"
+    },
+    "name": {
+      "description": "Unique registry key. Lowercase letters, digits, hyphens; must start with a letter and end with letter-or-digit.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*[a-z0-9]$",
+      "minLength": 2,
+      "maxLength": 64
+    },
+    "version": {
+      "description": "Semver. swap() refuses to apply a same-version replacement; bump version to change content.",
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "summary": {
+      "description": "One-line human-facing description. Not part of cartridge_id; can be refined without churning the id.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "capabilities": {
+      "description": "Declared capability ids (dotted, lowercase). Used by the Least-action Router for eligibility. Non-empty.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)*$"
+      },
+      "uniqueItems": true
+    },
+    "system_prompt": {
+      "description": "The text injected into the model's system role when this cartridge is mounted. Should be terse and operational; no chatty preamble.",
+      "type": "string",
+      "minLength": 1
+    },
+    "tool_cards": {
+      "description": "Typed tool descriptors. The model is told these exist; the gateway / tool-runner actually invokes them. Each card has a unique name within the cartridge.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "description", "input_schema"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "input_schema": {
+            "description": "JSON Schema fragment describing the tool's input. Validated as an object only — full per-tool semantics are the tool-runner's responsibility.",
+            "type": "object"
+          }
+        }
+      }
+    },
+    "tags": {
+      "description": "Optional human-facing tags. Not part of cartridge_id.",
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

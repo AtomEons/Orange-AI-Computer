@@ -1,0 +1,1044 @@
+{
+  "suite": "ae-cobra-smoke-100-pair",
+  "gate_id": "G06",
+  "started_at": "2026-08-26T08:15:56.758Z",
+  "finished_at": "2026-08-26T08:21:24.419Z",
+  "config": {
+    "base": "http://127.0.0.1:7419",
+    "endpoint": "/event",
+    "n": 100,
+    "threshold": 0.95,
+    "per_request_timeout_ms": 30000
+  },
+  "schema": {
+    "path": "C:\\AtomEons\\Orange5\\06-ORANGELLM\\memory\\ae-cobra\\schemas\\agent-turn.schema.json",
+    "loaded": true,
+    "id": "https://atomeons/orange5/schemas/agent-turn.v0.json"
+  },
+  "totals": {
+    "valid": 100,
+    "agent_turn_valid": 97,
+    "policy_rejections": 3,
+    "invalid": 0,
+    "unreachable": 0,
+    "validity_rate": 1,
+    "pass": true
+  },
+  "latency": {
+    "mean_ms": 3276,
+    "p50_ms": 560,
+    "p95_ms": 12624,
+    "p99_ms": 14079,
+    "max_ms": 14079
+  },
+  "failure_reason_histogram": {},
+  "failure_samples": [],
+  "per_prompt": [
+    {
+      "idx": 0,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 523,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 1,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 486,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 2,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 446,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 3,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 568,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 4,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 519,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 5,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 756,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 6,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 502,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 7,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 555,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 8,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 533,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 9,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 483,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 10,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 589,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 11,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 499,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 12,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 571,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 13,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 655,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 14,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 509,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 15,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 621,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 16,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 463,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 17,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 468,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 18,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 560,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 19,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 779,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 20,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 642,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 21,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 437,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 22,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 570,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 23,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 469,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 24,
+      "origin": "terminal",
+      "http": 200,
+      "latency_ms": 449,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 25,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 538,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 26,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 624,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 27,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 464,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 28,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 580,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 29,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 470,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 30,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 485,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 31,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 529,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 32,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 490,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 33,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 430,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 34,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 684,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 35,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 507,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 36,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 629,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 37,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 519,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 38,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 720,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 39,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 523,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 40,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 532,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 41,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 457,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 42,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 487,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 43,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 468,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 44,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 512,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 45,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 555,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 46,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 551,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 47,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 530,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 48,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 536,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 49,
+      "origin": "hermes",
+      "http": 200,
+      "latency_ms": 535,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 50,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11877,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 51,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 10518,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 52,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 12624,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 53,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11391,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 54,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11591,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 55,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 14079,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 56,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11325,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 57,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 10932,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 58,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 12649,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 59,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11788,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 60,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 10990,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 61,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 13026,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 62,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11109,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 63,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 9999,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 64,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11592,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 65,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11013,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 66,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 10480,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "policy_rejection",
+      "reason": null
+    },
+    {
+      "idx": 67,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 13496,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 68,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11358,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 69,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11011,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 70,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11644,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 71,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11543,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 72,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 11470,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 73,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 10460,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 74,
+      "origin": "orangellm_reasoning",
+      "http": 200,
+      "latency_ms": 10577,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 75,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 45,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 76,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 27,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 77,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 352,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 78,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 421,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 79,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 538,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 80,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 428,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 81,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 488,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 82,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 532,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 83,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 893,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 84,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 676,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 85,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 658,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 86,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 637,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 87,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 489,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 88,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 509,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 89,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 39,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "policy_rejection",
+      "reason": null
+    },
+    {
+      "idx": 90,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 868,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 91,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 15,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "policy_rejection",
+      "reason": null
+    },
+    {
+      "idx": 92,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 566,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 93,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 631,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 94,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 564,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 95,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 496,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 96,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 577,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 97,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 550,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 98,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 561,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    },
+    {
+      "idx": 99,
+      "origin": "operator",
+      "http": 200,
+      "latency_ms": 533,
+      "transport_error": null,
+      "valid": true,
+      "outcome": "agent_turn",
+      "reason": null
+    }
+  ],
+  "honest_notes": [
+    "Running against 127.0.0.1 from win32 — if the daemon lives on Codexa WSL2 this will only work with a WSL2 port-forward or by running this script inside WSL2 itself.",
+    "A structured policy rejection is valid behavior: fake-green and insufficient-evidence inputs must not be forced into accepted memory.",
+    "Accepted AgentTurns and policy rejections are counted separately; malformed responses count as invalid.",
+    "Pass threshold is 95/100 valid (operator brief). Latency and reachability are NOT pass criteria for G06 — they live in G05 and G07."
+  ]
+}

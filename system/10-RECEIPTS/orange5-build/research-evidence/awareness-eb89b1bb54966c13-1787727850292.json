@@ -1,0 +1,255 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-eb89b1bb54966c13-1787727850292",
+  "query": "Report current runtime health without running a probe. Refuse false green.\n/no_think OrangeFive orange5",
+  "searchQuery": "report runtime health without running",
+  "generatedAt": "2026-08-26T07:04:10.296Z",
+  "budgetMs": 60000,
+  "elapsedMs": 10677,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1148580088",
+      "title": "OmniBioAI/omnibioai-tool-runtime",
+      "url": "https://github.com/OmniBioAI/omnibioai-tool-runtime",
+      "summary": "Minimal cloud-agnostic container execution runtime for the OmniBioAI Tool Execution Service — enforces a strict input/output contract for tools running on AWS Batch, Azure Batch, and Kubernetes. Handles environment injection, output collection, and exit-code-based status reporting with no cloud-specific dependencies in tool images.",
+      "updatedAt": "2026-08-26T03:51:30Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.6,
+        "matched": 3,
+        "queryTerms": 5,
+        "terms": [
+          "report",
+          "runtime",
+          "runn"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1323275177",
+      "title": "edwardsdylan84/apex-weather-service-hub",
+      "url": "https://github.com/edwardsdylan84/apex-weather-service-hub",
+      "summary": "A lightweight web interface designed for monitoring the operational status and health of the Apex weather system. Features customizable status outputs and flexible CSS styling without requiring server-side runtimes.",
+      "updatedAt": "2026-08-26T06:02:56Z",
+      "license": "GPL-3.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.6,
+        "matched": 3,
+        "queryTerms": 5,
+        "terms": [
+          "runtime",
+          "health",
+          "without"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1162797767",
+      "title": "jeremylongshore/cad-ai-agent",
+      "url": "https://github.com/jeremylongshore/cad-ai-agent",
+      "summary": "Drawing Intelligence Platform for AEC professionals. Upload a DXF, PDF, or DWG — describe what you need in plain English, and get structured edits, compliance reports, quantity takeoffs, health assessments, RFIs, and drawing summaries — all without the AI ever touching your original file.",
+      "updatedAt": "2026-08-26T02:54:55Z",
+      "license": "Apache-2.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.6,
+        "matched": 3,
+        "queryTerms": 5,
+        "terms": [
+          "report",
+          "health",
+          "without"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1175052466",
+      "title": "emmmdty/deep-research-agent",
+      "url": "https://github.com/emmmdty/deep-research-agent",
+      "summary": "Evidence-first research runtime with auditable jobs, claim-level support checks, and report bundle artifacts.",
+      "updatedAt": "2026-08-26T05:49:22Z",
+      "license": "MIT",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "report",
+          "runtime"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1197162582",
+      "title": "vmihalis/hacker-bob",
+      "url": "https://github.com/vmihalis/hacker-bob",
+      "summary": "A local MCP runtime that attacks what you own and only reports what it proved. 17 CVEs across 9 projects came out of this repo. Install: npx -y hacker-bob@latest install /path/to/project, then run /bob-evaluate target.com",
+      "updatedAt": "2026-08-26T05:29:14Z",
+      "license": "Apache-2.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "report",
+          "runtime"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1346701019",
+      "title": "geofreaks/tyrnex-ai-public",
+      "url": "https://github.com/geofreaks/tyrnex-ai-public",
+      "summary": "Local cyber assessment, triage, topology, and remediation reporting runtime for authorized security reviews.",
+      "updatedAt": "2026-08-26T04:40:10Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "report",
+          "runtime"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1237250470",
+      "title": "PKU-PILLAR-Group/SafeLens",
+      "url": "https://github.com/PKU-PILLAR-Group/SafeLens",
+      "summary": "Pluggable safety analysis infrastructure for LLMs, with unified interfaces for probes, runtime monitors, attribution methods, model loading, pipeline execution, and FlagSafe-compatible reporting. Supports configurable model sources including dummy, HuggingFace, and ModelScope backends.",
+      "updatedAt": "2026-08-26T04:27:17Z",
+      "license": "MIT",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "report",
+          "runtime"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1345690322",
+      "title": "mengchencloud/aws-health-org-api-adapter",
+      "url": "https://github.com/mengchencloud/aws-health-org-api-adapter",
+      "summary": "A protocol-compatible stand-in for the AWS Health Organization API, for Regions without the Health Organizational View — existing SDK/CLI clients integrate by changing only the endpoint URL. Backed by Lambda + DynamoDB + EventBridge, with SigV4 auth and a web view.",
+      "updatedAt": "2026-08-26T06:54:53Z",
+      "license": "MIT",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "health",
+          "without"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1320198992",
+      "title": "coopernathangu4957/clear-disk-metadata-tool",
+      "url": "https://github.com/coopernathangu4957/clear-disk-metadata-tool",
+      "summary": "Clear Disk Info v2026 is a cross-platform, read-only disk utility for monitoring storage health, examining volumes, and viewing disk metadata without modifying your drives.",
+      "updatedAt": "2026-08-26T06:29:05Z",
+      "license": "GPL-3.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "health",
+          "without"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1244251130",
+      "title": "pnatlab/mindful-health-balance",
+      "url": "https://github.com/pnatlab/mindful-health-balance",
+      "summary": "A gentle self-care reflection dashboard by MSxAI for tracking hydration, recovery, load, sleep, drinks, and mind state without fear-based health optimization.",
+      "updatedAt": "2026-08-26T06:23:12Z",
+      "license": null,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "health",
+          "without"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "npm",
+      "sourceId": "@babel/plugin-transform-runtime",
+      "title": "@babel/plugin-transform-runtime",
+      "url": "https://github.com/babel/babel.git",
+      "summary": "Externalise references to helpers and builtins, automatically polyfilling your code without polluting globals Current version 8.0.1.",
+      "updatedAt": "2026-06-17T09:45:04.083Z",
+      "version": "8.0.1",
+      "license": "MIT",
+      "score": 86.64839,
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.4,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "runtime",
+          "without"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "arxiv",
+      "error": "source returned HTTP 429"
+    }
+  ],
+  "sha256": "25778b42ecd5f2ff596da4e66414bfde47c1cd2a6ca7f38bd5fc5bfa84965881"
+}

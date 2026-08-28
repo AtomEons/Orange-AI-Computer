@@ -1,0 +1,113 @@
+# N150 utility — Graph Weaver embedder (nomic-embed-text STOCK) — systemd unit
+# Path on N150: /etc/systemd/system/n150-embedder.service
+# Source of truth: C:/AtomEons/Orange5/06-ORANGELLM/n150-utility/systemd/n150-embedder.service
+#
+# Wave 1 doctrine: STOCK WEIGHTS ONLY. No custom training, no fine-tunes.
+# This unit owns the second of three co-resident jobs on the N150 utility node
+# (Beelink, 4 cores, 16 GB):
+#
+#   1. origin-based lane classifier   qwen3:0.6b (stock)        (n150-classifier)
+#   2. Graph Weaver embedder          nomic-embed-text (stock)  ← THIS UNIT
+#      Embeds canonized notes for the Graph Weaver index. Pool with bounded
+#      concurrency; batch endpoint for throughput. See embedder/server.mjs
+#      and embedder/pool.mjs for the contract.
+#   3. emergency chat fallback        qwen3:0.6b (stock)        (n150-fallback-chat)
+#
+# Surface (loopback ONLY):
+#   POST /embed         { text, model? }              -> { embedding, model, dim }
+#   POST /embed/batch   { inputs, chunk?, model? }    -> [{ ok, embedding?, error? }, ...]
+#   POST /admin/swap    { model }                     -> hotSwapModel() result
+#   GET  /healthz       liveness + pool stats + bound model tag
+#
+# Hot-swap law: STOCK MODEL VERSIONS only (e.g. nomic-embed-text -> nomic-embed-text:latest).
+# POST /admin/swap performs an in-flight rebind without dropping the listener;
+# the n150-hot-swap@embedder.service oneshot drives it. Arbitrary tags are rejected.
+#
+# Loopback only. Ollama (its own ollama.service unit) holds the weights at
+# 127.0.0.1:11434; this unit is just the pool daemon in front.
+
+[Unit]
+Description=AtomEons N150 utility — Graph Weaver embedder pool (nomic-embed-text stock)
+Documentation=https://atomeons.local/docs/orange5/n150-utility
+Documentation=file:///opt/atomeons/orange5/n150-utility/embedder/server.mjs
+After=network-online.target ollama.service
+Wants=network-online.target
+Requires=ollama.service
+
+[Service]
+Type=simple
+User=atomeons
+Group=atomeons
+WorkingDirectory=/opt/atomeons/orange5/n150-utility/embedder
+
+Environment=NODE_ENV=production
+Environment=OLLAMA_BASE_URL=http://127.0.0.1:11434
+Environment=OLLAMA_EMBED_MODEL=nomic-embed-text
+Environment=N150_EMBEDDER_HOST=127.0.0.1
+Environment=N150_EMBEDDER_PORT=8798
+EnvironmentFile=-/etc/atomeons/n150-embedder.env
+
+ExecStart=/usr/bin/node /opt/atomeons/orange5/n150-utility/embedder/server.mjs
+
+# Hot-swap reload — for parity with the other daemons. The embedder's primary
+# swap path is POST /admin/swap (in-flight), so SIGHUP is a fallback.
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Restart policy. Embedder is doing batch work; if it crashes mid-batch, the
+# orchestrator retries. Restart fast.
+Restart=on-failure
+RestartSec=3s
+StartLimitIntervalSec=60s
+StartLimitBurst=5
+
+# Graceful stop: give the pool 30s to drain in-flight embeds + 15s slack.
+TimeoutStopSec=45s
+KillMode=mixed
+KillSignal=SIGTERM
+
+# Resource caps (Wave 1 doctrine). Embedder pool is the middleweight: 2G allows
+# bounded batch buffers without crowding the fallback-chat (4G) or starving the
+# classifier (1G) and Ollama-resident weights. Pool concurrency is in pool.mjs.
+MemoryMax=2G
+MemoryHigh=1792M
+CPUQuota=200%
+TasksMax=64
+LimitNOFILE=2048
+
+# Hardening — least privilege; outbound HTTP to localhost only.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+# Loopback only — outbound to Ollama at 127.0.0.1:11434 is local, no LAN egress.
+IPAddressDeny=any
+IPAddressAllow=127.0.0.1/32
+IPAddressAllow=::1/128
+
+# Writable carve-out for embedder receipts + pool stats snapshots.
+ReadWritePaths=/opt/atomeons/orange5/n150-utility/embedder/state
+
+# Logging — journald carries structured pool stats lines.
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=n150-embedder
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+{
+  "schema": "orange5.hermes-openai-loopback.v1",
+  "baseUrl": "http://127.0.0.1:8642/v1",
+  "apiKeyEnv": "ORANGE5_HERMES_API_KEY",
+  "model": "orange5-governor",
+  "headers": {
+    "X-Hermes-Session-Id": "client-supplied-per-transcript",
+    "X-Hermes-Session-Key": "client-supplied-stable-user-scope"
+  },
+  "profileRoutes": {
+    "navigator": "http://127.0.0.1:8642/p/navigator/v1",
+    "builder": "http://127.0.0.1:8642/p/builder/v1",
+    "researcher": "http://127.0.0.1:8642/p/researcher/v1",
+    "reviewer": "http://127.0.0.1:8642/p/reviewer/v1",
+    "visual": "http://127.0.0.1:8642/p/visual/v1",
+    "misfit": "http://127.0.0.1:8642/p/misfit/v1"
+  },
+  "security": {
+    "bind": "loopback-only",
+    "cors": "disabled",
+    "distinctProfileKeys": true,
+    "secretsInRepository": false
+  }
+}

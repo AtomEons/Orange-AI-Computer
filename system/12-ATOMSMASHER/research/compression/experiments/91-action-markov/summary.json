@@ -1,0 +1,13 @@
+{
+  "experiment": "91-action-markov",
+  "N": 6224,
+  "actions_vocab": 66,
+  "prediction_accuracy": 0.5062660668380463,
+  "total_bytes": 54900,
+  "ratio": 37.8066,
+  "vs_m19": -9.2634,
+  "enc_ms": 1496,
+  "dec_ms": 123,
+  "lossless": true,
+  "raw_jsonl_bytes": 2075585
+}

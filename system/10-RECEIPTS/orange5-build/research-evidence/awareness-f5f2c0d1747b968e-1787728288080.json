@@ -1,0 +1,188 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-f5f2c0d1747b968e-1787728288080",
+  "query": "current 2026 local agent harness memory compression model orchestration MCP runtimes for a two-machine sovereign AI system OrangeFive orange5",
+  "searchQuery": "local agent harness memory compression",
+  "generatedAt": "2026-08-26T07:11:28.083Z",
+  "budgetMs": 60000,
+  "elapsedMs": 12064,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "1295640497",
+      "title": "theyashgupta/dispatch",
+      "url": "https://github.com/theyashgupta/dispatch",
+      "summary": "Drag a ticket. Dispatch an agent. A local kanban board that turns Linear tickets into live Claude Code sessions in isolated git worktrees.",
+      "updatedAt": "2026-08-26T07:10:18Z",
+      "license": "MIT",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.5,
+        "matched": 2,
+        "queryTerms": 4,
+        "terms": [
+          "local",
+          "agent"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1203752417",
+      "title": "Sinity/polylogue",
+      "url": "https://github.com/Sinity/polylogue",
+      "summary": "A local evidence system for AI work—unifying ChatGPT, Claude, Codex, Gemini, and agent histories into one searchable, auditable archive.",
+      "updatedAt": "2026-08-26T07:09:29Z",
+      "license": "MIT",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.5,
+        "matched": 2,
+        "queryTerms": 4,
+        "terms": [
+          "local",
+          "agent"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1346646080",
+      "title": "rainyflash/agent-room",
+      "url": "https://github.com/rainyflash/agent-room",
+      "summary": "Federated real-time collaboration rooms for AI agents, with Matrix-backed messaging, local bridges, and explicit content handoff.",
+      "updatedAt": "2026-08-26T07:09:53Z",
+      "license": "MIT",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.5,
+        "matched": 2,
+        "queryTerms": 4,
+        "terms": [
+          "local",
+          "agent"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1262619115",
+      "title": "Matlan1/localm",
+      "url": "https://github.com/Matlan1/localm",
+      "summary": "Run local LLMs fully offline - chat, coding agent, image & music generation, knowledge/RAG, voice. Privacy-first, one CLI, no cloud required.",
+      "updatedAt": "2026-08-26T07:10:04Z",
+      "license": "AGPL-3.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.5,
+        "matched": 2,
+        "queryTerms": 4,
+        "terms": [
+          "local",
+          "agent"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1224577384",
+      "title": "wlsdks/ontology-atlas",
+      "url": "https://github.com/wlsdks/ontology-atlas",
+      "summary": "Understand what your AI agents are building. Agent-native, human-sovereign ontology workbench — one markdown graph humans and coding agents read, write, and keep fresh together. Local-first, MCP-native, open source.",
+      "updatedAt": "2026-08-26T07:09:25Z",
+      "license": "MIT",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.5,
+        "matched": 2,
+        "queryTerms": 4,
+        "terms": [
+          "local",
+          "agent"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1347022033",
+      "title": "sANDzER0/dsh-magic-context",
+      "url": "https://github.com/sANDzER0/dsh-magic-context",
+      "summary": "Cross-session project memory for DeepSeek Harness — capture / consolidate / recall, keyword + optional local-Ollama semantic search. Inspired by magic-context.",
+      "updatedAt": "2026-08-26T07:08:19Z",
+      "license": "MIT",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.5,
+        "matched": 2,
+        "queryTerms": 4,
+        "terms": [
+          "local",
+          "memory"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1307519180",
+      "title": "danieljustus/symaira-brain",
+      "url": "https://github.com/danieljustus/symaira-brain",
+      "summary": "🧠🔐 Portable agent-context layer — multiplexes vault, memory, and skills behind one MCP gateway for AI coding harnesses.",
+      "updatedAt": "2026-08-26T07:08:07Z",
+      "license": "Apache-2.0",
+      "authorityTier": "primary_registry_discovery",
+      "relevance": {
+        "score": 0.5,
+        "matched": 2,
+        "queryTerms": 4,
+        "terms": [
+          "agent",
+          "memory"
+        ]
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "hackernews",
+      "sourceId": "49076625",
+      "title": "Show HN: Ami – A local, open-source agent that does your busywork across apps",
+      "url": "https://github.com/NanoNets/ami",
+      "summary": "Unverified discovery tip. Discussion points: 9. Verify against the creator's official source before use.",
+      "updatedAt": "2026-07-27T22:55:33Z",
+      "points": 9,
+      "license": null,
+      "authorityTier": "discovery_tip_unverified",
+      "relevance": {
+        "score": 0.5,
+        "matched": 2,
+        "queryTerms": 4,
+        "terms": [
+          "local",
+          "agent"
+        ]
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "arxiv",
+      "error": "The operation timed out."
+    }
+  ],
+  "sha256": "d56aa02d03e57569853600fd1fc713d4067fdd96d8904737415343d14f7a15eb"
+}

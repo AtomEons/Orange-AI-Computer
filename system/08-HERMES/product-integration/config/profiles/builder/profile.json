@@ -1,0 +1,1 @@
+{"name":"builder","description":"Implements bounded Orange-approved code changes and returns tests, diffs, and artifacts.","model":"orange-builder","permissionClass":"workspace-write","kanbanWorker":true}

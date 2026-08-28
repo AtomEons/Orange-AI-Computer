@@ -1,0 +1,75 @@
+{
+  "kind": "dispatcher-parallelize",
+  "version": "v1",
+  "timestamp_iso": "2026-06-27T18:00:00Z",
+  "operator": "Atom McCree",
+  "task": "Parallelize the 620-feature dispatcher in engines.mjs using Promise.all batches; keep determinism mode sha256-stable; keep 21/21 tests green.",
+  "file_modified": "C:/AtomEons/Orange5/12-ATOMSMASHER/full-scope/engines.mjs",
+  "dispatcher": {
+    "function_located": "FeatureExecutor.runAll()",
+    "fast_path_added": "FeatureExecutor._dispatch(feat, ctx) — skips per-feature SELECT-by-id roundtrip",
+    "engine_dispatch_form": "switch statement, 29 arms — kept as-is for v8 JIT predictability",
+    "batch_size": 32,
+    "partition": {
+      "independent_engines": [
+        "core", "energy", "attention", "code", "security",
+        "equation", "runtime", "agent", "proof",
+        "debt_engaged", "primitive_engaged", "embedding_engaged",
+        "pattern_engaged", "awareness_engaged", "thermo_engaged"
+      ],
+      "dependent_engines": [
+        "heat", "source", "codec", "cache", "routing",
+        "air_engaged", "mode_engaged", "memory_engaged",
+        "cartridge_engaged", "canon_engaged", "pathwave_engaged",
+        "mode", "memory", "awareness"
+      ],
+      "independent_count": 210,
+      "dependent_count": 410,
+      "total": 620
+    }
+  },
+  "changes": [
+    "Helper class instances (AIRCodec, ModePolicyTracker, MemoryLifecycle, AwarenessSnapshot, CartridgeBuilder, CompressionDebtRecorder, PatternDetector, EmbeddingIndex, CanonPressureEngine, PathwaveCompressor, ThermoLedger, MemoryPrimitive, OrderSpine) cached in constructor — eliminates ~7,000 per-sweep allocations.",
+    "Added _dispatch(feat, ctx) fast path used by runAll() — avoids two SELECT-by-id roundtrips on the hot loop.",
+    "runAll() rewritten with Promise.all-batched dispatcher (batchSize=32). Sync handlers resolve in array-index order, preserving full byte-for-byte receipt determinism. Future async handlers gain real parallelism without another dispatcher rewrite.",
+    "Engine dependency partition computed in O(620) and surfaced in the run_all receipt for downstream schedulers.",
+    "All exported APIs (executeFeature, runAll signature, demo, organism mode) preserved."
+  ],
+  "tests_before": 21,
+  "tests_after": 21,
+  "test_suites": {
+    "full-scope.test.mjs": "7/7 PASS",
+    "determinism.test.mjs": "5/5 PASS",
+    "replay-integration.test.mjs": "4/4 PASS",
+    "codec-export.test.mjs": "5/5 PASS"
+  },
+  "determinism": {
+    "sha_under_original": "a54eacd7ac9e654ae9699b82e98c59a722e3f74d4d1a94cd94e754dfa8b97e9b",
+    "sha_under_optimized": "a54eacd7ac9e654ae9699b82e98c59a722e3f74d4d1a94cd94e754dfa8b97e9b",
+    "byte_identical": true,
+    "receipt_count": 1477,
+    "seed_used": "lock-test-seed-2026-06-27",
+    "replay_test_receipt_ids_match": "1491 / 1491 across two demo() runs with same seed"
+  },
+  "bench": {
+    "methodology": "N=30 runs per variant, median + 60% trimmed mean reported across 3 rounds. Each run creates a fresh file-backed Store, runs runAll() (or demo() + LocalProofLab.runProbes() for demo_and_proof), then closes/cleans up — mirrors the test harness.",
+    "platform": "Windows 11 + Bun 1.3.14",
+    "original": {
+      "all_620_execute_live": {"median_round_1_ms": 361.04, "median_round_2_ms": 335.75, "median_round_3_ms": 287.10, "median_avg_ms": 327.96},
+      "demo_and_proof":       {"median_round_1_ms": 427.06, "median_round_2_ms": 410.69, "median_round_3_ms": 307.00, "median_avg_ms": 381.59}
+    },
+    "optimized": {
+      "all_620_execute_live": {"median_round_1_ms": 272.72, "median_round_2_ms": 317.49, "median_round_3_ms": 289.47, "median_avg_ms": 293.23},
+      "demo_and_proof":       {"median_round_1_ms": 340.73, "median_round_2_ms": 358.14, "median_round_3_ms": 391.05, "median_avg_ms": 363.31}
+    },
+    "speedup": {
+      "all_620_execute_live": 1.12,
+      "demo_and_proof": 1.05
+    }
+  },
+  "honesty": [
+    "Bun:sqlite is sync; JS is single-threaded. The Promise.all-batched dispatcher does not unlock real CPU parallelism today — every handler resolves synchronously when its map callback fires. The win comes from skipping per-feature SELECT lookups and from caching engaged-handler helpers, not from the batching itself.",
+    "Promise.all batching is structural prep for a future async-handler upgrade (e.g. a routing handler that fetches an external embedding). When that lands, the batch gate becomes real parallelism with no further dispatcher rewrite.",
+    "The 5–12% speedup is real but modest. Most of the per-feature cost lives inside the engine handlers (routing alone is ~117ms of the ~250ms hot path), and those handlers can't be reordered without breaking receipt determinism. To unlock substantially more we'd need either: (a) routing-engine workset caching for the identical-query case, or (b) worker threads with per-worker SQLite connections (architectural change)."
+  ]
+}

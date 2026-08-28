@@ -1,0 +1,259 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-25c3482460468ac4-1787849158141",
+  "query": "Report current OrangeFive health. Include the active brain model, memory status, Hermes status, AtomSmasher status, and receipt evidence. Do not claim anything unverified. OrangeFive orange5",
+  "searchQuery": "report health. include the active brain memory status",
+  "generatedAt": "2026-08-27T16:45:58.143Z",
+  "budgetMs": 60000,
+  "elapsedMs": 10504,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "github",
+      "sourceId": "119747156",
+      "title": "nerves-hub/nerves_hub_web",
+      "url": "https://github.com/nerves-hub/nerves_hub_web",
+      "summary": "Manage your Nerves device fleet, including firmware updates, health reports, and interactive device consoles.",
+      "updatedAt": "2026-08-27T08:50:48Z",
+      "license": "Apache-2.0",
+      "stars": 268,
+      "forks": 97,
+      "ownerType": "Organization",
+      "archived": false,
+      "observedAt": "2026-08-27T16:45:58.143Z",
+      "contentSha256": "da9095300627effcd30c63b5efb71034f9fb89eb66d80fb5075e0156faadb8c8",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "da9095300627effcd30c63b5efb71034f9fb89eb66d80fb5075e0156faadb8c8",
+      "immutableRef": "https://github.com/nerves-hub/nerves_hub_web#orange-evidence-sha256=da9095300627effcd30c63b5efb71034f9fb89eb66d80fb5075e0156faadb8c8",
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8136,
+      "relevance": {
+        "score": 0.4286,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "report",
+          "health",
+          "active"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "830671604",
+      "title": "StanfordMIMI/Merlin",
+      "url": "https://github.com/StanfordMIMI/Merlin",
+      "summary": "[Nature 2026] Merlin is a 3D VLM for computed tomography that leverages both structured electronic health records (EHR) and unstructured radiology reports for pretraining.",
+      "updatedAt": "2026-08-27T14:00:43Z",
+      "license": "MIT",
+      "stars": 466,
+      "forks": 57,
+      "ownerType": "Organization",
+      "archived": false,
+      "observedAt": "2026-08-27T16:45:58.143Z",
+      "contentSha256": "d528f189ddfbfbaf4a565cfb4d72773f3b8514e4ff64946953127571e74cc582",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "d528f189ddfbfbaf4a565cfb4d72773f3b8514e4ff64946953127571e74cc582",
+      "immutableRef": "https://github.com/StanfordMIMI/Merlin#orange-evidence-sha256=d528f189ddfbfbaf4a565cfb4d72773f3b8514e4ff64946953127571e74cc582",
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8184,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "report",
+          "health"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "246973767",
+      "title": "AiRanthem/xmu-daily-report",
+      "url": "https://github.com/AiRanthem/xmu-daily-report",
+      "summary": "长期维护，无需本地部署，在线fork仓库即可使用的厦大Daily Health Report 健康打卡自动填写脚本",
+      "updatedAt": "2026-07-31T12:18:24Z",
+      "license": "MIT",
+      "stars": 293,
+      "forks": 329,
+      "ownerType": "User",
+      "archived": false,
+      "observedAt": "2026-08-27T16:45:58.143Z",
+      "contentSha256": "adf8ce98b5019022a21558e3e527306002cb663cf71e3a0bbdd244e186a5b938",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "adf8ce98b5019022a21558e3e527306002cb663cf71e3a0bbdd244e186a5b938",
+      "immutableRef": "https://github.com/AiRanthem/xmu-daily-report#orange-evidence-sha256=adf8ce98b5019022a21558e3e527306002cb663cf71e3a0bbdd244e186a5b938",
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8144,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "report",
+          "health"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1162797767",
+      "title": "jeremylongshore/cad-ai-agent",
+      "url": "https://github.com/jeremylongshore/cad-ai-agent",
+      "summary": "Drawing Intelligence Platform for AEC professionals. Upload a DXF, PDF, or DWG — describe what you need in plain English, and get structured edits, compliance reports, quantity takeoffs, health assessments, RFIs, and drawing summaries — all without the AI ever touching your original file.",
+      "updatedAt": "2026-08-26T16:55:01Z",
+      "license": "Apache-2.0",
+      "stars": 27,
+      "forks": 8,
+      "ownerType": "User",
+      "archived": false,
+      "observedAt": "2026-08-27T16:45:58.143Z",
+      "contentSha256": "693e23724298af59181702a4a609f51bf88f8b1d43c773946ed709d9822d00b2",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "693e23724298af59181702a4a609f51bf88f8b1d43c773946ed709d9822d00b2",
+      "immutableRef": "https://github.com/jeremylongshore/cad-ai-agent#orange-evidence-sha256=693e23724298af59181702a4a609f51bf88f8b1d43c773946ed709d9822d00b2",
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7939,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "report",
+          "health"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "578286125",
+      "title": "data-liberation-project/aphis-inspection-reports",
+      "url": "https://github.com/data-liberation-project/aphis-inspection-reports",
+      "summary": "Inspection data and PDFs from the USDA's Animal and Plant Health Inspection Service.",
+      "updatedAt": "2026-08-26T14:13:41Z",
+      "license": null,
+      "stars": 18,
+      "forks": 6,
+      "ownerType": "Organization",
+      "archived": false,
+      "observedAt": "2026-08-27T16:45:58.143Z",
+      "contentSha256": "8dec195d0e185d395b11bb5e27b2a5c7f10285cae86a896d9f5e42718d62f37a",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "8dec195d0e185d395b11bb5e27b2a5c7f10285cae86a896d9f5e42718d62f37a",
+      "immutableRef": "https://github.com/data-liberation-project/aphis-inspection-reports#orange-evidence-sha256=8dec195d0e185d395b11bb5e27b2a5c7f10285cae86a896d9f5e42718d62f37a",
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7906,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "report",
+          "health"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1318676600",
+      "title": "sanketpadhyal/Repart",
+      "url": "https://github.com/sanketpadhyal/Repart",
+      "summary": "Repart is a developer tool that analyzes GitHub repositories and generates interactive reports with architecture diagrams, APIs, dependencies, database relationships, and code health insights. Understand any codebase in minutes instead of spending hours exploring thousands of files.",
+      "updatedAt": "2026-08-27T08:23:44Z",
+      "license": "MIT",
+      "stars": 5,
+      "forks": 4,
+      "ownerType": "User",
+      "archived": false,
+      "observedAt": "2026-08-27T16:45:58.143Z",
+      "contentSha256": "e5929da0327c790fd4bb2f514da29958e170e2869e86d32d06913b0793a87ec7",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "e5929da0327c790fd4bb2f514da29958e170e2869e86d32d06913b0793a87ec7",
+      "immutableRef": "https://github.com/sanketpadhyal/Repart#orange-evidence-sha256=e5929da0327c790fd4bb2f514da29958e170e2869e86d32d06913b0793a87ec7",
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1956,
+      "relevance": {
+        "score": 0.4286,
+        "matched": 3,
+        "queryTerms": 7,
+        "terms": [
+          "report",
+          "health",
+          "active"
+        ],
+        "distinctiveMatched": 3,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1310045865",
+      "title": "gregkozakiewicz/roast-my-design-system",
+      "url": "https://github.com/gregkozakiewicz/roast-my-design-system",
+      "summary": "v5.4.0 · Try it: npx roast-my-design-system@latest · Your AI can write the UI. This makes sure it writes YOUR ui. A health score, receipts, fixes ranked by payoff, rules via --apply, a local MCP server via --mcp (verified in Claude Code, Cursor and Windsurf/Devin), and Claude's read of your numbers embedded in the shareable report.",
+      "updatedAt": "2026-08-27T15:20:33Z",
+      "license": "MIT",
+      "stars": 12,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "observedAt": "2026-08-27T16:45:58.143Z",
+      "contentSha256": "4797d84963aa8065343dfd2fecd707f42a59acceaa5b1588ee4fd1dedfca34b4",
+      "contentHashScope": "provider_metadata_record",
+      "sourceRecordSha256": "4797d84963aa8065343dfd2fecd707f42a59acceaa5b1588ee4fd1dedfca34b4",
+      "immutableRef": "https://github.com/gregkozakiewicz/roast-my-design-system#orange-evidence-sha256=4797d84963aa8065343dfd2fecd707f42a59acceaa5b1588ee4fd1dedfca34b4",
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2023,
+      "relevance": {
+        "score": 0.2857,
+        "matched": 2,
+        "queryTerms": 7,
+        "terms": [
+          "report",
+          "health"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 7,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "arxiv",
+      "error": "source returned HTTP 429"
+    }
+  ],
+  "sha256": "4f7d400705fe4cd69431e0885757f7bee07aaef045800ae3a6c7ae04d1af146b"
+}

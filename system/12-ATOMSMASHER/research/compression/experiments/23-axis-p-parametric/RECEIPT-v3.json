@@ -1,0 +1,139 @@
+{
+  "experiment": "23-axis-p-parametric",
+  "version": "v3-strict-constants",
+  "generated_at": "2026-06-26T12:15:37.164Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "homogeneous_actions": 64,
+  "heterogeneous_actions": 2,
+  "total_const_fields": 247,
+  "total_const_raw_impact": 69881,
+  "top_constants": [
+    {
+      "action": "air.compress",
+      "key": "dropped",
+      "value": "0",
+      "count": 3126,
+      "bytesPer": 12,
+      "total": 37512
+    },
+    {
+      "action": "cache.miss",
+      "key": "key_hash",
+      "value": "\"baedae52dc7a84e0988cec73633b00a4b93d584d95ada3cd9190b8c6b1cc2b8f\"",
+      "count": 53,
+      "bytesPer": 78,
+      "total": 4134
+    },
+    {
+      "action": "organism.run",
+      "key": "stages",
+      "value": "{\"seed\":{\"source_id\":\"src_0262157728bb0539\",\"chunks\":1,\"orders\":3},\"air\":{\"ratio\":0.95,\"atoms\":9,\"citations\":1},\"clc_real\":{\"entities\":8,\"voids\":3,\"ratio\":5.5,\"total_threads\":13},\"mesh\":{\"raw_bytes\":603,\"compressed_bytes\":417,\"ratio\":1.45},\"mesh_full_sweep\":{\"packets\":1551,\"raw_bytes\":792483,\"compressed_bytes\":429214,\"ratio\":1.85},\"crystal\":{\"entities\":44,\"facts\":0,\"decisions\":2,\"boundaries\":7,\"rejections\":0,\"tone_markers\":2,\"ratio\":0.6,\"total_threads\":13},\"workset\":{\"kept\":2,\"input\":13,\"dropped\":11,\"ratio\":0.153846,\"ratio_bytes\":0.310541,\"kept_bytes\":763,\"input_bytes\":2457},\"least_action\":{\"chosen_tier\":\"heavy\",\"decision_id\":\"304d24efcea2499e\",\"reason\":\"least_action\"},\"expansion_warrant\":{\"warrant_id\":\"0871614f563062755b25bb99308cab11aba7568d58cf56652688923fa3b0fece\",\"scope_from\":\"organism.compression.read\",\"scope_to\":\"organism.compression.read_write\",\"expires_at\":\"2026-06-27T09:12:18.560Z\",\"max_uses\":5,\"consume_ok\":true,\"used_count\":1,\"remaining\":4},\"max_compression_report\":{\"air_ratio\":0.95,\"clc_poc_ratio\":5.5,\"mesh_seed_ratio\":1.45,\"crystal_ratio\":0.6,\"mesh_full_sweep_ratio\":1.85,\"mesh_full_sweep_raw_bytes\":792483,\"mesh_full_sweep_compressed_bytes\":429214,\"db_zlib_ratio\":5.91,\"db_brotli_ratio\":10.99,\"db_raw_bytes\":1781760,\"db_zlib_bytes\":301627,\"db_brotli_bytes\":162102,\"pipeline_compound_ratio\":0.78,\"action_dict_ratio\":5.89,\"action_dict_savings_bytes\":34460,\"air_receipt_sweep_avg_ratio\":0.9,\"air_receipt_sweep_raw_bytes\":94144,\"crystal_receipt_sweep_ratio\":8.99,\"crystal_receipt_sweep_raw_bytes\":1214416,\"crystal_receipt_sweep_threads\":6211,\"crystal_receipt_sweep_entities\":1461,\"payload_dedup_factor\":3.37,\"payload_dedup_ratio\":2.02,\"payload_distinct\":1845,\"schema_optimal_ratio\":1.75,\"schema_optimal_savings_bytes\":572900,\"compound_layer1_air_ratio\":2.28,\"compound_layer2_crystal_ratio\":17,\"compound_layer3_mesh_ratio\":7.54,\"compound_layer4_brotli_ratio\":1,\"compound_total_ratio\":291.61,\"compound_raw_bytes\":1221830,\"compound_final_bytes\":4190,\"regen_ratio\":54.48,\"regen_total_bytes\":24315,\"regen_raw_receipt_bytes\":1324670,\"regen_distinct_nonces\":601,\"recursive_pipeline_ratio\":1,\"recursive_conclusion\":\"at_entropy_floor_no_further_compression\",\"dict_baseline_ratio\":10.91,\"dict_primed_ratio\":11.27,\"dict_gain_pct\":0.031},\"wellbeing\":{\"acceptance_passes\":true,\"anti_metric_signals\":0,\"pro_metric_signals\":3,\"monitor_blocked\":false},\"patterns\":{\"constant\":\"detected\",\"linear\":\"y = -73.51 + 34.94 * t\",\"delta\":\"y = -73.51 + 34.94 * t\",\"run_length\":15,\"recurrence\":\"detected\",\"regime_shift\":true,\"trend_plus_cycle\":2120.8785714285714},\"embedding_probes\":{\"fts5_hits\":0,\"binary_hits\":0,\"duplicate_groups\":0},\"canon_pre\":{\"candidates\":7},\"run_all\":{\"attempted\":620,\"ok\":620,\"errors\":0,\"registry_count\":620,\"errors_sample\":[]},\"pathwave\":{\"step_count\":50,\"winner\":\"use_cartridge\",\"hits\":47},\"awareness_snapshot\":{\"total_state\":2306,\"heat\":{\"COOL\":187,\"HOT_ALWAYS\":62,\"WARM\":3}},\"causal_trace_length\":20,\"entropy\":{\"total_receipts\":1548,\"error_receipts\":1,\"distinct_actions\":52,\"entropy_proxy\":0.0336,\"law\":\"Diverse actions on small receipts = high entropy. Few actions on many receipts = canon.\"},\"thermo_tick\":{\"raw_tokens\":62000,\"active_tokens\":3100,\"tokens_avoided\":58900,\"green_score\":0.95,\"mwh_proxy\":47.120000000000005,\"law\":\"Useful retained bit per joule.\"},\"phase_transition\":{\"phase\":\"crystallizing\",\"hot_ratio\":0.246,\"distribution\":{\"COOL\":187,\"HOT_ALWAYS\":62,\"WARM\":3},\"total_atoms\":252}}",
+      "count": 1,
+      "bytesPer": 3433,
+      "total": 3433
+    },
+    {
+      "action": "source.search",
+      "key": "query",
+      "value": "\"continue AtomSmasher with orders hot\"",
+      "count": 53,
+      "bytesPer": 47,
+      "total": 2491
+    },
+    {
+      "action": "workset.build",
+      "key": "query",
+      "value": "\"continue AtomSmasher with orders hot\"",
+      "count": 53,
+      "bytesPer": 47,
+      "total": 2491
+    },
+    {
+      "action": "awareness.snapshot",
+      "key": "law",
+      "value": "\"Awareness = a structured snapshot of what is currently HOT, WARM, COOL, COLD.\"",
+      "count": 21,
+      "bytesPer": 86,
+      "total": 1806
+    },
+    {
+      "action": "order.add",
+      "key": "heat",
+      "value": "\"HOT_ALWAYS\"",
+      "count": 81,
+      "bytesPer": 20,
+      "total": 1620
+    },
+    {
+      "action": "memory.lifecycle",
+      "key": "law",
+      "value": "\"Memory needs provenance, heat, authority, version.\"",
+      "count": 21,
+      "bytesPer": 59,
+      "total": 1239
+    },
+    {
+      "action": "mode.enter",
+      "key": "law",
+      "value": "\"Mode stack governs which evidence level is active.\"",
+      "count": 21,
+      "bytesPer": 59,
+      "total": 1239
+    },
+    {
+      "action": "canon.detect",
+      "key": "law",
+      "value": "\"Repeated successful patterns become canon candidates.\"",
+      "count": 17,
+      "bytesPer": 62,
+      "total": 1054
+    },
+    {
+      "action": "prooflab.probes",
+      "key": "features_registered",
+      "value": "620",
+      "count": 39,
+      "bytesPer": 26,
+      "total": 1014
+    },
+    {
+      "action": "prooflab.probes",
+      "key": "registry_live",
+      "value": "true",
+      "count": 39,
+      "bytesPer": 21,
+      "total": 819
+    },
+    {
+      "action": "prooflab.probes",
+      "key": "order_retention",
+      "value": "1",
+      "count": 39,
+      "bytesPer": 20,
+      "total": 780
+    },
+    {
+      "action": "route.select",
+      "key": "warrants",
+      "value": "[]",
+      "count": 53,
+      "bytesPer": 14,
+      "total": 742
+    },
+    {
+      "action": "source.ingest",
+      "key": "chunks",
+      "value": "1",
+      "count": 60,
+      "bytesPer": 11,
+      "total": 660
+    }
+  ],
+  "stripped_pre_brotli": 1996578,
+  "stripped_brotli": 118534,
+  "recipe_brotli": 4885,
+  "total_lossless": 123419,
+  "ratio": 16.82,
+  "roundtrip_lossless": true,
+  "beats_plait": false
+}

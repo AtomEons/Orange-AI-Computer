@@ -1,0 +1,96 @@
+{
+  "experiment": "16-conditional-markov",
+  "generated_at": "2026-06-26T10:46:15.569Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "vocab_size": 66,
+  "sequence_length": 6224,
+  "entropy_bounds": {
+    "H_A": 2.401,
+    "H_A_given_Aminus1": 2.3176,
+    "H_A_given_Aminus2": 2.1098,
+    "H_A_given_Aminus3": 1.7988
+  },
+  "theoretical_bytes_at_bound": {
+    "H0_bytes": 1869,
+    "H1_bytes": 1804,
+    "H2_bytes": 1642,
+    "H3_bytes": 1400
+  },
+  "theoretical_ratios": {
+    "H0": 45.62,
+    "H1": 47.27,
+    "H2": 51.93,
+    "H3": 60.91
+  },
+  "mutual_information_decay": [
+    {
+      "k": 1,
+      "samples": 6223,
+      "I": 0.0835
+    },
+    {
+      "k": 2,
+      "samples": 6222,
+      "I": 0.0845
+    },
+    {
+      "k": 3,
+      "samples": 6221,
+      "I": 0.0852
+    },
+    {
+      "k": 5,
+      "samples": 6219,
+      "I": 0.0813
+    },
+    {
+      "k": 8,
+      "samples": 6216,
+      "I": 0.0896
+    },
+    {
+      "k": 13,
+      "samples": 6211,
+      "I": 0.0789
+    },
+    {
+      "k": 21,
+      "samples": 6203,
+      "I": 0.0841
+    },
+    {
+      "k": 34,
+      "samples": 6190,
+      "I": 0.0864
+    },
+    {
+      "k": 50,
+      "samples": 6174,
+      "I": 0.0815
+    },
+    {
+      "k": 100,
+      "samples": 6124,
+      "I": 0.0849
+    },
+    {
+      "k": 200,
+      "samples": 6024,
+      "I": 0.0797
+    },
+    {
+      "k": 500,
+      "samples": 5724,
+      "I": 0.0902
+    }
+  ],
+  "range_coder_bytes": 1968,
+  "range_coder_bits_per_sym": 2.5286,
+  "range_coder_ratio_data_only": 43.33,
+  "model_overhead_bytes": 2228,
+  "total_lossless_bytes": 4196,
+  "total_lossless_ratio": 20.32,
+  "roundtrip_lossless": true,
+  "beats_huffman": true,
+  "pass": true
+}

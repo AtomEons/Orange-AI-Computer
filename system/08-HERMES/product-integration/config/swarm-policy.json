@@ -1,0 +1,18 @@
+{
+  "schema": "orange5.swarmgate-policy.v1",
+  "maxImmediateWorkers": 6,
+  "maxSpawnDepth": 2,
+  "maxDurableInProgress": 8,
+  "maxPerProfile": 2,
+  "liveMemoryBudgetGb": 50,
+  "reservedSystemMemoryGb": 8,
+  "modes": {
+    "solo": "Sequential, shared-state, or irreversible work",
+    "triad": "Three independent hypotheses with one synthesis",
+    "swarm": "Up to six independent evidence or ownership partitions",
+    "tree": "One Navigator or Researcher orchestrator plus bounded independent leaves"
+  },
+  "nestedOrchestratorProfiles": ["navigator", "researcher"],
+  "serializedBoundaries": ["orange-mcp-mutation", "shared-file-write", "approval", "release-signing"],
+  "requiredLeafOutput": ["result", "evidence", "confidence", "blockers", "nextAction"]
+}

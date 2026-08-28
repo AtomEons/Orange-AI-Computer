@@ -1,0 +1,13 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-7ace1bcd612b946a-1787843086395",
+  "query": "{\"action\":\"synthesize.delegation\",\"payload\":{\"parentOrder\":{\"action\":\"filesystem.read\",\"intent\":\"Read the OrangeFive master plan title using governed evidence.\",\"targetProject\":\"orange5\",\"scope\":\"C:/AtomEons/Orange5/00-CHARTER/ORANGE5_MASTER_PLAN.md\",\"objective\":null,\"constraints\":[],\"evidence\":[\"governed:filesystem.read:aea8be01d987603e:# AE Orange5 — Master Plan > **Runtime authority:** Th\"],\"riskLevel\":\"read_only\",\"allowedActions\":[\"filesystem.read\"],\"forbiddenActions\":[\"destructive_write\",\"production_deploy\",\"scope_expansion\",\"egress_unbounded\"],\"governedExecution\":{\"action\":\"filesystem.read\",\"resultHash\":\"aea8be01d987603e723b9b84d841980cb6a85bc1b6285cf4fae5aa92c8596923\",\"receiptSha256\":\"8ed726f2abb66de403f777613af51467b4e61c17bca36e57e4dbabddeae2bb6e\",\"excerpt\":\"# AE Orange5 — Master Plan > **Runtime authority:** This file preserves the locked design history. Current > host roles, model residency, en\"}},\"delegationId\":\"nav-b75fdf62-8da3-4f84-968b-5dbf7a14b3f3\",\"department\":\"AE0_FACTORY\",\"childEvidence\":[{\"agent\":\"domain-worker\",\"status\":\"completed\",\"summary\":\"OrangeBrain produced a cognitive report for analyze.agent\",\"evidence\":[\"governed:filesystem.read:aea8be01d987603e:# AE  OrangeFive orange5",
+  "searchQuery": "action synthesize.delegation payload parentorder filesystem.read intent read the",
+  "generatedAt": "2026-08-27T15:04:46.401Z",
+  "budgetMs": 60000,
+  "elapsedMs": 558,
+  "status": "NO_EVIDENCE",
+  "sources": [],
+  "errors": [],
+  "sha256": "f3ce945b281ff7511c070ac949d0d96fdc24bb2463b8939b24df3be9dcb6e6f8"
+}

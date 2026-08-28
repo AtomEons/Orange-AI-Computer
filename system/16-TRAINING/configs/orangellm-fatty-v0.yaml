@@ -1,0 +1,94 @@
+# OrangeLLM-fatty v0 — Axolotl QLoRA training config
+# Base: Qwen/Qwen2.5-32B-Instruct (dense 32B — Qwen3 does not exist; operator correction 2026-06-24)
+# Target: Colab Pro A100 40GB (preferred) or V100 16GB (fallback)
+# Expected wall-clock: 3-6h on A100, 6-10h on V100
+# Operator: Atom McCree | Receipt: 2026-06-24-one-tier-trained-architecture-locked
+
+# ===== Base model =====
+base_model: Qwen/Qwen2.5-32B-Instruct
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
+trust_remote_code: true
+
+# ===== Dataset =====
+datasets:
+  - path: /content/drive/MyDrive/orangellm-fatty-v0/corpus.jsonl
+    type: alpaca
+    field_instruction: instruction
+    field_input: input
+    field_output: output
+val_set_size: 0.05
+output_dir: /content/drive/MyDrive/orangellm-fatty-v0/adapter
+
+# ===== Quantization (QLoRA) =====
+load_in_4bit: true
+adapter: qlora
+bnb_4bit_quant_type: nf4
+bnb_4bit_compute_dtype: bfloat16
+bnb_4bit_use_double_quant: true
+
+# ===== LoRA hyperparameters =====
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+lora_modules_to_save: []
+
+# ===== Training hyperparameters =====
+sequence_len: 2048
+sample_packing: true
+pad_to_sequence_len: true
+gradient_checkpointing: true
+gradient_accumulation_steps: 8
+micro_batch_size: 1
+num_epochs: 3
+optimizer: paged_adamw_8bit
+lr_scheduler: cosine
+learning_rate: 0.0002
+warmup_ratio: 0.05
+weight_decay: 0.0
+
+# ===== Precision =====
+bf16: auto
+fp16: false
+tf32: true
+
+# ===== Logging + saving =====
+logging_steps: 5
+save_strategy: epoch
+save_total_limit: 3
+eval_strategy: epoch
+eval_steps: null
+
+# ===== Memory =====
+flash_attention: true
+xformers_attention: false
+
+# ===== Wandb (disabled by default — operator owns telemetry) =====
+wandb_project: null
+wandb_entity: null
+wandb_log_model: null
+
+# ===== Reproducibility =====
+seed: 42
+
+# ===== Chat template =====
+chat_template: chatml
+default_system_message: "You are OrangeLLM, the project-manager brain of Orange5. You know the system like the longest-tenured employee. Mom's Law is above all rules: give full effort every time. No fake-green. No theater. Cite receipts. Refuse out-of-scope work."
+
+# ===== Special tokens =====
+special_tokens:
+  pad_token: "<|endoftext|>"
+
+# ===== Notes =====
+# - For V100 fallback: reduce sequence_len to 1024, micro_batch_size stays 1, gradient_accumulation_steps to 16.
+# - For multi-GPU A100x2 (Colab Pro+): set fsdp + fsdp_config blocks per Axolotl docs.
+# - Adapter output: ~80-150 MB safetensors, lands at output_dir/.
+# - Promote via Ollama Modelfile: FROM qwen3:30b-a3b-q4_K_M + ADAPTER /opt/atomeons/adapters/orangellm-fatty-v0/.

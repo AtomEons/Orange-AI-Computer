@@ -1,0 +1,90 @@
+{
+  "schema": "orange5.captain-planet.artifact-quality-proof.v2",
+  "status": "CAPTAIN_PLANET_IMAGE_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+  "generated_at": "2026-08-27T09:54:56.401Z",
+  "organ": "flux2_klein_image",
+  "runtime_execution_proven": true,
+  "artifact_technical_quality_proven": true,
+  "perceptual_quality_proven": false,
+  "studio_quality_proven": false,
+  "quality_scope": "DETERMINISTIC_TECHNICAL_ARTIFACT_QUALITY_ONLY",
+  "unresolved_quality_gates": [
+    "prompt_adherence",
+    "object_geometry",
+    "artifact_detection",
+    "aesthetic_quality",
+    "human_visual_review",
+    "studio_readiness"
+  ],
+  "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\orangefive-flux2-klein-proof.png",
+  "artifact_sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1",
+  "source_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\flux2-image-artifact-proof.json",
+  "checks": {
+    "source_receipt_contract": true,
+    "source_runtime_status": true,
+    "source_hash_matches": true,
+    "source_size_matches": true,
+    "dimensions_match": true,
+    "substantive_dimensions": true,
+    "independently_decoded_nonblank": true,
+    "substantive_tonal_range": true,
+    "substantive_luminance_variation": true,
+    "sufficient_tonal_levels": true,
+    "black_clipping_is_bounded": true,
+    "white_clipping_is_bounded": true
+  },
+  "check_groups": {
+    "runtime": {
+      "source_receipt_contract": true,
+      "source_runtime_status": true,
+      "source_hash_matches": true,
+      "source_size_matches": true,
+      "dimensions_match": true
+    },
+    "technical_quality": {
+      "substantive_dimensions": true,
+      "independently_decoded_nonblank": true,
+      "substantive_tonal_range": true,
+      "substantive_luminance_variation": true,
+      "sufficient_tonal_levels": true,
+      "black_clipping_is_bounded": true,
+      "white_clipping_is_bounded": true
+    }
+  },
+  "image": {
+    "codec": "png",
+    "width": 1024,
+    "height": 1024,
+    "pixel_format": "rgb24",
+    "mean_rgb": [
+      50.318,
+      39.718,
+      34.844
+    ],
+    "stddev_rgb": [
+      57.533,
+      39.57,
+      33.738
+    ],
+    "mean_luminance": 41.633,
+    "luminance_stddev": 41.65,
+    "luminance_p05": 0,
+    "luminance_p95": 126,
+    "unique_luminance_levels": 206,
+    "black_pixel_fraction": 0.160156,
+    "white_pixel_fraction": 0,
+    "nonblank": true
+  },
+  "source_created_at": "2026-08-27T00:01:53.687274+00:00",
+  "source_model_id": "black-forest-labs/FLUX.2-klein-4b-fp8",
+  "source_model_revision": {
+    "black-forest-labs/FLUX.2-klein-4b-fp8": "5b4408e59397a4a37ccb46afe426d8ed86379441",
+    "Comfy-Org/z_image_turbo": "08d04455279082882deaabc8d0d09fc914c071e1",
+    "Comfy-Org/flux2-dev": "ab9055628ea245000e610f2aa2c96f4746093546"
+  },
+  "source_device": "xpu:0 Intel(R) Arc(TM) 140T GPU (48GB)",
+  "source_generation_seconds": 43.247,
+  "prior_receipt": "2026-08-27T09-55-00Z-board8-live-inventory.json",
+  "prior_sha256": "9e95b96d57aa1c472c2c5172ef7a7ff0b9a16d9d067276aaa6e908fa554fa998",
+  "receipt_sha256": "576e61b7fcdfcce0b16c4e0cd924c3095fe4a99d7c594363a739ae6798da02a7"
+}

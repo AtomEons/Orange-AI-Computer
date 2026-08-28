@@ -1,0 +1,1224 @@
+{
+  "experiment": "35-batch-of-100",
+  "generated_at": "2026-06-26T13:10:50.809Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "total_experiments": 94,
+  "results": [
+    {
+      "group": "F1",
+      "name": "Non-determinism sources in receipts",
+      "info": "6224+6224",
+      "notes": "random IDs: 6224, wall-clock timestamps: 6224"
+    },
+    {
+      "group": "F2",
+      "name": "Summary→action alignment",
+      "info": "223870/276671",
+      "notes": "80.9% of summary chars in receipts whose summary mentions action"
+    },
+    {
+      "group": "F3",
+      "name": "mesh.compress ratio = round(raw/comp, 2)",
+      "info": "1564/1565",
+      "notes": "99.9% — derivability of ratio field"
+    },
+    {
+      "group": "F4",
+      "name": "organism.run stages count",
+      "info": 21,
+      "notes": "each stage may have produced many receipts"
+    },
+    {
+      "group": "F5",
+      "name": "Distinct receipts (mod id+timestamp)",
+      "info": 2833,
+      "notes": "88 have duplicates; 3391 receipts are repeats"
+    },
+    {
+      "group": "F6",
+      "name": "Avg nearest-receipt edit distance (sample)",
+      "info": 83,
+      "notes": "from 100 random samples vs 50 neighbors each"
+    },
+    {
+      "group": "F7",
+      "name": "Drop mesh.compress.ratio (derivable)",
+      "encoded": 118657,
+      "ratio": 17.49,
+      "lossless": "?",
+      "notes": "saves 23319B raw, -52583B brotli"
+    },
+    {
+      "group": "F8",
+      "name": "5-context action predictability",
+      "info": "1182/6219",
+      "notes": "19.0%"
+    },
+    {
+      "group": "F9",
+      "name": "Input-only encoding (Exp 33 reprise)",
+      "encoded": 34584,
+      "ratio": 60.02,
+      "lossless": "?",
+      "notes": "880 input receipts brotli"
+    },
+    {
+      "group": "F10",
+      "name": "det-IDs + drop-derivable-ratio + brotli",
+      "encoded": 64527,
+      "ratio": 32.17,
+      "lossless": "?",
+      "notes": "Exp 31 + Exp F7 combined"
+    },
+    {
+      "group": "G1",
+      "name": "Brotli with JSON-pattern dict prefix",
+      "encoded": 66046,
+      "ratio": 31.43,
+      "lossless": "?",
+      "notes": "dict=75B, marginal=66046B"
+    },
+    {
+      "group": "G2",
+      "name": "Brotli with action-vocab dict prefix",
+      "encoded": 65827,
+      "ratio": 31.53,
+      "lossless": "?",
+      "notes": "dict=1149B"
+    },
+    {
+      "group": "G3",
+      "name": "Brotli with payload-template dict",
+      "encoded": 62990,
+      "ratio": 32.95,
+      "lossless": "?",
+      "notes": "dict=307694B"
+    },
+    {
+      "group": "G4",
+      "name": "Brotli with unique-audit-receipts dict",
+      "encoded": 18145,
+      "ratio": 114.39,
+      "lossless": "?",
+      "notes": "dict=1154962B, 3132 unique"
+    },
+    {
+      "group": "G5",
+      "name": "Brotli: first half as dict for second half",
+      "encoded": 28164,
+      "ratio": 73.7,
+      "lossless": "?",
+      "notes": "marginal for second half only"
+    },
+    {
+      "group": "G6",
+      "name": "Per-receipt independent brotli sum",
+      "encoded": 1233302,
+      "ratio": 1.68,
+      "lossless": "?",
+      "notes": "6224 brotli streams concatenated; no shared context"
+    },
+    {
+      "group": "G7",
+      "name": "Brotli mode comparison (audit)",
+      "info": "text=66074/generic=66074",
+      "notes": "delta 0B"
+    },
+    {
+      "group": "G8",
+      "name": "Brotli with action-prototypes dict",
+      "encoded": 57336,
+      "ratio": 36.2,
+      "lossless": "?",
+      "notes": "66 actions × 3 prototypes"
+    },
+    {
+      "group": "G9",
+      "name": "Brotli with top-100 20-byte phrases dict",
+      "encoded": 66011,
+      "ratio": 31.44,
+      "lossless": "?",
+      "notes": "1282 top phrase freq"
+    },
+    {
+      "group": "G10",
+      "name": "Best dict size for asymptotic compression",
+      "info": 964512,
+      "notes": "bestRatio=34.52x for non-dict half"
+    },
+    {
+      "group": "H1",
+      "name": "Actions with single payload template",
+      "info": "46/66",
+      "notes": "69.7% — fully homogeneous"
+    },
+    {
+      "group": "H2",
+      "name": "Highest-entropy numeric distribution",
+      "info": "mesh.compress",
+      "notes": "H=8.36 bits/value"
+    },
+    {
+      "group": "H3",
+      "name": "H(payload_tpl) vs H(payload_tpl|action)",
+      "info": "3.60→1.27",
+      "notes": "saves 2.32 bits/sym = 1808 B"
+    },
+    {
+      "group": "H4",
+      "name": "Per-action template+nums brotli sum",
+      "encoded": 40022,
+      "ratio": 51.86,
+      "lossless": "?",
+      "notes": "no order recovery info"
+    },
+    {
+      "group": "H5",
+      "name": "air.compress: ratio-only encoding",
+      "encoded": 1716,
+      "ratio": 1209.55,
+      "lossless": "?",
+      "notes": "3126 ratios, 64 distinct"
+    },
+    {
+      "group": "H6",
+      "name": "mesh.compress: (raw,comp) varint pairs",
+      "encoded": 3427,
+      "ratio": 605.66,
+      "lossless": "?",
+      "notes": "1565 pairs (ratio derived)"
+    },
+    {
+      "group": "H7",
+      "name": "feature.execute distinct features",
+      "info": 39,
+      "notes": "over 620 receipts"
+    },
+    {
+      "group": "H8",
+      "name": "Cache key distinct count",
+      "info": 2,
+      "notes": ""
+    },
+    {
+      "group": "H9",
+      "name": "Best per-action threshold",
+      "info": "T=5",
+      "notes": "ratio=49.58x"
+    },
+    {
+      "group": "H10",
+      "name": "Global-vocab per-receipt encoding",
+      "encoded": 59906,
+      "ratio": 34.65,
+      "lossless": "?",
+      "notes": "numVocab=2601, tplVocab=802+900"
+    },
+    {
+      "group": "I1",
+      "name": "H(summary_tpl | action, payload_tpl)",
+      "info": "0.087",
+      "notes": "vs marginal H(summary_tpl)=3.556"
+    },
+    {
+      "group": "I2",
+      "name": "H(payload_tpl | action, created_at)",
+      "info": "1.045",
+      "notes": "vs H(payload_tpl|action)=1.273"
+    },
+    {
+      "group": "I3",
+      "name": "H((status, created_at) | action)",
+      "info": "3.183",
+      "notes": ""
+    },
+    {
+      "group": "I4",
+      "name": "H(summary_tpl | action, prev_action)",
+      "info": "0.827",
+      "notes": "vs H(s|action)=1.155"
+    },
+    {
+      "group": "I5",
+      "name": "H(payload_tpl | action, time_bin)",
+      "info": "1.273",
+      "notes": "2 distinct minutes"
+    },
+    {
+      "group": "I6",
+      "name": "H(receipt|prev_receipt) vs H(receipt)",
+      "info": "2.50/9.99",
+      "notes": "3132 unique receipts"
+    },
+    {
+      "group": "I7",
+      "name": "H(action bigram)",
+      "info": "4.719",
+      "notes": "332 distinct bigrams"
+    },
+    {
+      "group": "I8",
+      "name": "H(action trigram)",
+      "info": "6.828",
+      "notes": "929 distinct trigrams"
+    },
+    {
+      "group": "I9",
+      "name": "Receipts with cross-references",
+      "info": 6224,
+      "notes": "avg 1.01 refs/receipt"
+    },
+    {
+      "group": "I10",
+      "name": "Receipt-Markov 1st-order (data-only)",
+      "encoded": 8209,
+      "ratio": 252.84,
+      "lossless": "?",
+      "notes": "V=3132, 65669 bits"
+    },
+    {
+      "group": "J1",
+      "name": "Series with CV < 0.1 (near-constant)",
+      "info": 75,
+      "notes": "out of 1359 series total"
+    },
+    {
+      "group": "J2",
+      "name": "Numeric tokens shared across ≥2 actions",
+      "info": "974/1839",
+      "notes": "53.0%"
+    },
+    {
+      "group": "J3",
+      "name": "Decimal-place distribution",
+      "info": "",
+      "notes": "0d×54130, 1d×921, 2d×1804, 3d×2273, 4d×56, 5d×166, 6d×4, 11d×1, 13d×2, 14d×5, 15d×39, 16d×36, 17d×2"
+    },
+    {
+      "group": "J4",
+      "name": "Integer vs float numeric tokens",
+      "info": "54130/5309",
+      "notes": "91.1% integer"
+    },
+    {
+      "group": "J5",
+      "name": "Numeric Huffman optimal cost",
+      "info": "52216B",
+      "notes": "H=7.028 bps × 59439 tokens"
+    },
+    {
+      "group": "J6",
+      "name": "Strictly-monotone numeric series",
+      "info": 73,
+      "notes": "delta encoding helps these"
+    },
+    {
+      "group": "J7",
+      "name": "Stationary series (var ratio < 2)",
+      "info": 291,
+      "notes": ""
+    },
+    {
+      "group": "J8",
+      "name": "Series where >50% values stay constant",
+      "info": 217,
+      "notes": ""
+    },
+    {
+      "group": "J9",
+      "name": "Most common numeric trigram",
+      "info": "|0|",
+      "notes": "count=8714"
+    },
+    {
+      "group": "J10",
+      "name": "Perfectly linear-fit series",
+      "info": 71,
+      "notes": ""
+    },
+    {
+      "group": "K1",
+      "name": "Top inter-field dep candidates",
+      "info": 3836,
+      "notes": "within payloads"
+    },
+    {
+      "group": "K2",
+      "name": "mesh.compress.ratio drop savings",
+      "info": 21754,
+      "notes": "raw byte cost"
+    },
+    {
+      "group": "K3",
+      "name": "Receipts with derivable hash fields",
+      "info": 45,
+      "notes": ""
+    },
+    {
+      "group": "K4",
+      "name": "Summary derivable from (action, payload_tpl)",
+      "info": "952/978",
+      "notes": "97.3% of (action,pay_tpl) groups have 1 summary template"
+    },
+    {
+      "group": "K5",
+      "name": "Created_at delta vs raw size",
+      "info": "18887/130703",
+      "notes": "delta would be smaller; but brotli already catches this"
+    },
+    {
+      "group": "K6",
+      "name": "ID-references replaceable with index",
+      "info": "60/6284",
+      "notes": ""
+    },
+    {
+      "group": "K7",
+      "name": "Cross-field equalities within payloads",
+      "info": 3407,
+      "notes": ""
+    },
+    {
+      "group": "K8",
+      "name": "Receipts duplicable (full byte equality excluding id)",
+      "info": 3092,
+      "notes": "3092/6224"
+    },
+    {
+      "group": "K9",
+      "name": "Payload-hash reuse count",
+      "info": 4369,
+      "notes": "1855 unique payloads"
+    },
+    {
+      "group": "K10",
+      "name": "Schema-folded + det-ID + brotli",
+      "encoded": 64527,
+      "ratio": 32.17,
+      "lossless": "?",
+      "notes": "drops mesh.compress.ratio"
+    },
+    {
+      "group": "L1",
+      "name": "LZW classic on full corpus",
+      "encoded": 370191,
+      "ratio": 5.61,
+      "lossless": "?",
+      "notes": "164529 codes × ~18bit"
+    },
+    {
+      "group": "L2",
+      "name": "Brotli q11 (LZ77 reference)",
+      "encoded": 66074,
+      "ratio": 31.41,
+      "lossless": true,
+      "notes": "reference"
+    },
+    {
+      "group": "L3",
+      "name": "IID byte range-code (Shannon)",
+      "encoded": 1342753,
+      "ratio": 1.55,
+      "lossless": "?",
+      "notes": "H=5.175 bps"
+    },
+    {
+      "group": "L4",
+      "name": "Context-mix order 0+1",
+      "encoded": 956733,
+      "ratio": 2.17,
+      "lossless": "?",
+      "notes": "static mix"
+    },
+    {
+      "group": "L5",
+      "name": "Static Huffman bytes (ceil(H))",
+      "encoded": 1342753,
+      "ratio": 1.55,
+      "lossless": "?",
+      "notes": ""
+    },
+    {
+      "group": "L6",
+      "name": "ANS sim (same as L3 IID floor)",
+      "encoded": 1342753,
+      "ratio": 1.55,
+      "lossless": "?",
+      "notes": "IID floor"
+    },
+    {
+      "group": "L7",
+      "name": "7-bit packing (if all ASCII)",
+      "encoded": 1816137,
+      "ratio": 1.14,
+      "lossless": "?",
+      "notes": "98.9% ASCII"
+    },
+    {
+      "group": "L8",
+      "name": "Max sampled LZ-match length",
+      "info": 100,
+      "notes": "brotli catches up to 16MB matches"
+    },
+    {
+      "group": "L9",
+      "name": "Per-stream brotli (action, time, nums)",
+      "encoded": 52139,
+      "ratio": 39.81,
+      "lossless": "?",
+      "notes": "a=4323 c=6357 n=41459"
+    },
+    {
+      "group": "L10",
+      "name": "Pure arithmetic byte (same as L3)",
+      "encoded": 1342753,
+      "ratio": 1.55,
+      "lossless": "?",
+      "notes": ""
+    },
+    {
+      "group": "M1",
+      "name": "Hurst exponent (action seq)",
+      "info": "0.471",
+      "notes": "0.5=random; >0.5=persistent; <0.5=mean-reverting"
+    },
+    {
+      "group": "M2",
+      "name": "Haar wavelet energy concentration",
+      "info": "95.1%",
+      "notes": "if >99% would compress well"
+    },
+    {
+      "group": "M3",
+      "name": "DCT 99%-energy coefficients (mesh.compress.ratio)",
+      "info": "933/1565",
+      "notes": "59.6% — concentration"
+    },
+    {
+      "group": "M4",
+      "name": "KL transform proxy (see E2)",
+      "info": "see E2",
+      "notes": "scale variance 0.62 from prior batch"
+    },
+    {
+      "group": "M5",
+      "name": "Bottleneck H(receipt)/H(action)",
+      "info": "9.99/2.40",
+      "notes": "cluster ratio 24.0%"
+    },
+    {
+      "group": "M6",
+      "name": "Field info contribution (H per field)",
+      "info": "",
+      "notes": "H(action)=2.40, H(sum_tpl)=3.56, H(pay_tpl)=3.60"
+    },
+    {
+      "group": "M7",
+      "name": "Renyi entropies on action",
+      "info": "H1=2.40, H2=1.61, H∞=0.99",
+      "notes": ""
+    },
+    {
+      "group": "M8",
+      "name": "Mutual information sample",
+      "info": "I(act;sum)=2.40, I(act;pay)=2.32",
+      "notes": ""
+    },
+    {
+      "group": "M9",
+      "name": "Action namespace prefixes",
+      "info": 38,
+      "notes": "mesh,air,equation,feature,debt,cache,route,order,pipeline,prefix,source,pathwave,thermo,memory,prooflab,awareness,embedding,cartridge,workset,mode,agent,canon,crystal,clc,pattern,db,schema,primitive,dictionary,wellbeing,immune,expansion_warrant,organism,payload,action,regeneration,compression,least_action"
+    },
+    {
+      "group": "M10",
+      "name": "Action transition graph density",
+      "info": "332 edges",
+      "notes": "vs 66² possible"
+    },
+    {
+      "group": "N1",
+      "name": "Exp 32 result reprise",
+      "info": "27.32x",
+      "notes": "per-action targeted with det-IDs"
+    },
+    {
+      "group": "N2",
+      "name": "Cond-on-action + det-IDs (est)",
+      "encoded": 69008,
+      "ratio": 30.08,
+      "lossless": "?",
+      "notes": "estimated from prior measurements"
+    },
+    {
+      "group": "N3",
+      "name": "Det-ID + receipt-dedupe + order + brotli",
+      "encoded": 60686,
+      "ratio": 34.2,
+      "lossless": "?",
+      "notes": "3132 unique receipts"
+    },
+    {
+      "group": "N4",
+      "name": "N4-N10: combinations explored",
+      "encoded": 66074,
+      "ratio": 31.41,
+      "lossless": "?",
+      "notes": "see Exp 25-32 for actual stacks"
+    },
+    {
+      "group": "O1",
+      "name": "Self-dict 50/50: first→second",
+      "encoded": 28164,
+      "ratio": 73.7,
+      "lossless": "?",
+      "notes": "second-half marginal ratio 34.50x"
+    },
+    {
+      "group": "O2",
+      "name": "Self-dict 80/20",
+      "encoded": 10222,
+      "ratio": 203.05,
+      "lossless": "?",
+      "notes": "last-20% marginal ratio 36.66x"
+    },
+    {
+      "group": "O3",
+      "name": "Self-dict 5/95",
+      "encoded": 59129,
+      "ratio": 35.1,
+      "lossless": "?",
+      "notes": "O3 target ratio 31.07x"
+    },
+    {
+      "group": "O4",
+      "name": "Self-dict 10/90",
+      "encoded": 55035,
+      "ratio": 37.71,
+      "lossless": "?",
+      "notes": "O4 target ratio 31.64x"
+    },
+    {
+      "group": "O5",
+      "name": "Self-dict 20/80",
+      "encoded": 47348,
+      "ratio": 43.84,
+      "lossless": "?",
+      "notes": "O5 target ratio 32.80x"
+    },
+    {
+      "group": "O6",
+      "name": "Self-dict 30/70",
+      "encoded": 40654,
+      "ratio": 51.05,
+      "lossless": "?",
+      "notes": "O6 target ratio 33.33x"
+    },
+    {
+      "group": "O7",
+      "name": "Self-dict 40/60",
+      "encoded": 33997,
+      "ratio": 61.05,
+      "lossless": "?",
+      "notes": "O7 target ratio 34.24x"
+    },
+    {
+      "group": "O8",
+      "name": "Self-dict 60/40",
+      "encoded": 21057,
+      "ratio": 98.57,
+      "lossless": "?",
+      "notes": "O8 target ratio 36.37x"
+    },
+    {
+      "group": "O9",
+      "name": "Self-dict 70/30",
+      "encoded": 15759,
+      "ratio": 131.71,
+      "lossless": "?",
+      "notes": "O9 target ratio 36.12x"
+    },
+    {
+      "group": "O10",
+      "name": "Self-dict 90/10",
+      "encoded": 4935,
+      "ratio": 420.58,
+      "lossless": "?",
+      "notes": "O10 target ratio 37.94x"
+    }
+  ],
+  "top_compression_results": [
+    {
+      "group": "H5",
+      "name": "air.compress: ratio-only encoding",
+      "encoded": 1716,
+      "ratio": 1209.55,
+      "lossless": "?",
+      "notes": "3126 ratios, 64 distinct"
+    },
+    {
+      "group": "H6",
+      "name": "mesh.compress: (raw,comp) varint pairs",
+      "encoded": 3427,
+      "ratio": 605.66,
+      "lossless": "?",
+      "notes": "1565 pairs (ratio derived)"
+    },
+    {
+      "group": "O10",
+      "name": "Self-dict 90/10",
+      "encoded": 4935,
+      "ratio": 420.58,
+      "lossless": "?",
+      "notes": "O10 target ratio 37.94x"
+    },
+    {
+      "group": "I10",
+      "name": "Receipt-Markov 1st-order (data-only)",
+      "encoded": 8209,
+      "ratio": 252.84,
+      "lossless": "?",
+      "notes": "V=3132, 65669 bits"
+    },
+    {
+      "group": "O2",
+      "name": "Self-dict 80/20",
+      "encoded": 10222,
+      "ratio": 203.05,
+      "lossless": "?",
+      "notes": "last-20% marginal ratio 36.66x"
+    },
+    {
+      "group": "O9",
+      "name": "Self-dict 70/30",
+      "encoded": 15759,
+      "ratio": 131.71,
+      "lossless": "?",
+      "notes": "O9 target ratio 36.12x"
+    },
+    {
+      "group": "G4",
+      "name": "Brotli with unique-audit-receipts dict",
+      "encoded": 18145,
+      "ratio": 114.39,
+      "lossless": "?",
+      "notes": "dict=1154962B, 3132 unique"
+    },
+    {
+      "group": "O8",
+      "name": "Self-dict 60/40",
+      "encoded": 21057,
+      "ratio": 98.57,
+      "lossless": "?",
+      "notes": "O8 target ratio 36.37x"
+    },
+    {
+      "group": "G5",
+      "name": "Brotli: first half as dict for second half",
+      "encoded": 28164,
+      "ratio": 73.7,
+      "lossless": "?",
+      "notes": "marginal for second half only"
+    },
+    {
+      "group": "O1",
+      "name": "Self-dict 50/50: first→second",
+      "encoded": 28164,
+      "ratio": 73.7,
+      "lossless": "?",
+      "notes": "second-half marginal ratio 34.50x"
+    },
+    {
+      "group": "O7",
+      "name": "Self-dict 40/60",
+      "encoded": 33997,
+      "ratio": 61.05,
+      "lossless": "?",
+      "notes": "O7 target ratio 34.24x"
+    },
+    {
+      "group": "F9",
+      "name": "Input-only encoding (Exp 33 reprise)",
+      "encoded": 34584,
+      "ratio": 60.02,
+      "lossless": "?",
+      "notes": "880 input receipts brotli"
+    },
+    {
+      "group": "H4",
+      "name": "Per-action template+nums brotli sum",
+      "encoded": 40022,
+      "ratio": 51.86,
+      "lossless": "?",
+      "notes": "no order recovery info"
+    },
+    {
+      "group": "O6",
+      "name": "Self-dict 30/70",
+      "encoded": 40654,
+      "ratio": 51.05,
+      "lossless": "?",
+      "notes": "O6 target ratio 33.33x"
+    },
+    {
+      "group": "O5",
+      "name": "Self-dict 20/80",
+      "encoded": 47348,
+      "ratio": 43.84,
+      "lossless": "?",
+      "notes": "O5 target ratio 32.80x"
+    },
+    {
+      "group": "L9",
+      "name": "Per-stream brotli (action, time, nums)",
+      "encoded": 52139,
+      "ratio": 39.81,
+      "lossless": "?",
+      "notes": "a=4323 c=6357 n=41459"
+    },
+    {
+      "group": "O4",
+      "name": "Self-dict 10/90",
+      "encoded": 55035,
+      "ratio": 37.71,
+      "lossless": "?",
+      "notes": "O4 target ratio 31.64x"
+    },
+    {
+      "group": "G8",
+      "name": "Brotli with action-prototypes dict",
+      "encoded": 57336,
+      "ratio": 36.2,
+      "lossless": "?",
+      "notes": "66 actions × 3 prototypes"
+    },
+    {
+      "group": "O3",
+      "name": "Self-dict 5/95",
+      "encoded": 59129,
+      "ratio": 35.1,
+      "lossless": "?",
+      "notes": "O3 target ratio 31.07x"
+    },
+    {
+      "group": "H10",
+      "name": "Global-vocab per-receipt encoding",
+      "encoded": 59906,
+      "ratio": 34.65,
+      "lossless": "?",
+      "notes": "numVocab=2601, tplVocab=802+900"
+    },
+    {
+      "group": "N3",
+      "name": "Det-ID + receipt-dedupe + order + brotli",
+      "encoded": 60686,
+      "ratio": 34.2,
+      "lossless": "?",
+      "notes": "3132 unique receipts"
+    },
+    {
+      "group": "G3",
+      "name": "Brotli with payload-template dict",
+      "encoded": 62990,
+      "ratio": 32.95,
+      "lossless": "?",
+      "notes": "dict=307694B"
+    },
+    {
+      "group": "F10",
+      "name": "det-IDs + drop-derivable-ratio + brotli",
+      "encoded": 64527,
+      "ratio": 32.17,
+      "lossless": "?",
+      "notes": "Exp 31 + Exp F7 combined"
+    },
+    {
+      "group": "K10",
+      "name": "Schema-folded + det-ID + brotli",
+      "encoded": 64527,
+      "ratio": 32.17,
+      "lossless": "?",
+      "notes": "drops mesh.compress.ratio"
+    },
+    {
+      "group": "G2",
+      "name": "Brotli with action-vocab dict prefix",
+      "encoded": 65827,
+      "ratio": 31.53,
+      "lossless": "?",
+      "notes": "dict=1149B"
+    },
+    {
+      "group": "G9",
+      "name": "Brotli with top-100 20-byte phrases dict",
+      "encoded": 66011,
+      "ratio": 31.44,
+      "lossless": "?",
+      "notes": "1282 top phrase freq"
+    },
+    {
+      "group": "G1",
+      "name": "Brotli with JSON-pattern dict prefix",
+      "encoded": 66046,
+      "ratio": 31.43,
+      "lossless": "?",
+      "notes": "dict=75B, marginal=66046B"
+    },
+    {
+      "group": "L2",
+      "name": "Brotli q11 (LZ77 reference)",
+      "encoded": 66074,
+      "ratio": 31.41,
+      "lossless": true,
+      "notes": "reference"
+    },
+    {
+      "group": "N4",
+      "name": "N4-N10: combinations explored",
+      "encoded": 66074,
+      "ratio": 31.41,
+      "lossless": "?",
+      "notes": "see Exp 25-32 for actual stacks"
+    },
+    {
+      "group": "N2",
+      "name": "Cond-on-action + det-IDs (est)",
+      "encoded": 69008,
+      "ratio": 30.08,
+      "lossless": "?",
+      "notes": "estimated from prior measurements"
+    }
+  ],
+  "informational_insights": [
+    {
+      "group": "F1",
+      "name": "Non-determinism sources in receipts",
+      "info": "6224+6224",
+      "notes": "random IDs: 6224, wall-clock timestamps: 6224"
+    },
+    {
+      "group": "F2",
+      "name": "Summary→action alignment",
+      "info": "223870/276671",
+      "notes": "80.9% of summary chars in receipts whose summary mentions action"
+    },
+    {
+      "group": "F3",
+      "name": "mesh.compress ratio = round(raw/comp, 2)",
+      "info": "1564/1565",
+      "notes": "99.9% — derivability of ratio field"
+    },
+    {
+      "group": "F4",
+      "name": "organism.run stages count",
+      "info": 21,
+      "notes": "each stage may have produced many receipts"
+    },
+    {
+      "group": "F5",
+      "name": "Distinct receipts (mod id+timestamp)",
+      "info": 2833,
+      "notes": "88 have duplicates; 3391 receipts are repeats"
+    },
+    {
+      "group": "F6",
+      "name": "Avg nearest-receipt edit distance (sample)",
+      "info": 83,
+      "notes": "from 100 random samples vs 50 neighbors each"
+    },
+    {
+      "group": "F8",
+      "name": "5-context action predictability",
+      "info": "1182/6219",
+      "notes": "19.0%"
+    },
+    {
+      "group": "G7",
+      "name": "Brotli mode comparison (audit)",
+      "info": "text=66074/generic=66074",
+      "notes": "delta 0B"
+    },
+    {
+      "group": "G10",
+      "name": "Best dict size for asymptotic compression",
+      "info": 964512,
+      "notes": "bestRatio=34.52x for non-dict half"
+    },
+    {
+      "group": "H1",
+      "name": "Actions with single payload template",
+      "info": "46/66",
+      "notes": "69.7% — fully homogeneous"
+    },
+    {
+      "group": "H2",
+      "name": "Highest-entropy numeric distribution",
+      "info": "mesh.compress",
+      "notes": "H=8.36 bits/value"
+    },
+    {
+      "group": "H3",
+      "name": "H(payload_tpl) vs H(payload_tpl|action)",
+      "info": "3.60→1.27",
+      "notes": "saves 2.32 bits/sym = 1808 B"
+    },
+    {
+      "group": "H7",
+      "name": "feature.execute distinct features",
+      "info": 39,
+      "notes": "over 620 receipts"
+    },
+    {
+      "group": "H8",
+      "name": "Cache key distinct count",
+      "info": 2,
+      "notes": ""
+    },
+    {
+      "group": "H9",
+      "name": "Best per-action threshold",
+      "info": "T=5",
+      "notes": "ratio=49.58x"
+    },
+    {
+      "group": "I1",
+      "name": "H(summary_tpl | action, payload_tpl)",
+      "info": "0.087",
+      "notes": "vs marginal H(summary_tpl)=3.556"
+    },
+    {
+      "group": "I2",
+      "name": "H(payload_tpl | action, created_at)",
+      "info": "1.045",
+      "notes": "vs H(payload_tpl|action)=1.273"
+    },
+    {
+      "group": "I3",
+      "name": "H((status, created_at) | action)",
+      "info": "3.183",
+      "notes": ""
+    },
+    {
+      "group": "I4",
+      "name": "H(summary_tpl | action, prev_action)",
+      "info": "0.827",
+      "notes": "vs H(s|action)=1.155"
+    },
+    {
+      "group": "I5",
+      "name": "H(payload_tpl | action, time_bin)",
+      "info": "1.273",
+      "notes": "2 distinct minutes"
+    },
+    {
+      "group": "I6",
+      "name": "H(receipt|prev_receipt) vs H(receipt)",
+      "info": "2.50/9.99",
+      "notes": "3132 unique receipts"
+    },
+    {
+      "group": "I7",
+      "name": "H(action bigram)",
+      "info": "4.719",
+      "notes": "332 distinct bigrams"
+    },
+    {
+      "group": "I8",
+      "name": "H(action trigram)",
+      "info": "6.828",
+      "notes": "929 distinct trigrams"
+    },
+    {
+      "group": "I9",
+      "name": "Receipts with cross-references",
+      "info": 6224,
+      "notes": "avg 1.01 refs/receipt"
+    },
+    {
+      "group": "J1",
+      "name": "Series with CV < 0.1 (near-constant)",
+      "info": 75,
+      "notes": "out of 1359 series total"
+    },
+    {
+      "group": "J2",
+      "name": "Numeric tokens shared across ≥2 actions",
+      "info": "974/1839",
+      "notes": "53.0%"
+    },
+    {
+      "group": "J3",
+      "name": "Decimal-place distribution",
+      "info": "",
+      "notes": "0d×54130, 1d×921, 2d×1804, 3d×2273, 4d×56, 5d×166, 6d×4, 11d×1, 13d×2, 14d×5, 15d×39, 16d×36, 17d×2"
+    },
+    {
+      "group": "J4",
+      "name": "Integer vs float numeric tokens",
+      "info": "54130/5309",
+      "notes": "91.1% integer"
+    },
+    {
+      "group": "J5",
+      "name": "Numeric Huffman optimal cost",
+      "info": "52216B",
+      "notes": "H=7.028 bps × 59439 tokens"
+    },
+    {
+      "group": "J6",
+      "name": "Strictly-monotone numeric series",
+      "info": 73,
+      "notes": "delta encoding helps these"
+    },
+    {
+      "group": "J7",
+      "name": "Stationary series (var ratio < 2)",
+      "info": 291,
+      "notes": ""
+    },
+    {
+      "group": "J8",
+      "name": "Series where >50% values stay constant",
+      "info": 217,
+      "notes": ""
+    },
+    {
+      "group": "J9",
+      "name": "Most common numeric trigram",
+      "info": "|0|",
+      "notes": "count=8714"
+    },
+    {
+      "group": "J10",
+      "name": "Perfectly linear-fit series",
+      "info": 71,
+      "notes": ""
+    },
+    {
+      "group": "K1",
+      "name": "Top inter-field dep candidates",
+      "info": 3836,
+      "notes": "within payloads"
+    },
+    {
+      "group": "K2",
+      "name": "mesh.compress.ratio drop savings",
+      "info": 21754,
+      "notes": "raw byte cost"
+    },
+    {
+      "group": "K3",
+      "name": "Receipts with derivable hash fields",
+      "info": 45,
+      "notes": ""
+    },
+    {
+      "group": "K4",
+      "name": "Summary derivable from (action, payload_tpl)",
+      "info": "952/978",
+      "notes": "97.3% of (action,pay_tpl) groups have 1 summary template"
+    },
+    {
+      "group": "K5",
+      "name": "Created_at delta vs raw size",
+      "info": "18887/130703",
+      "notes": "delta would be smaller; but brotli already catches this"
+    },
+    {
+      "group": "K6",
+      "name": "ID-references replaceable with index",
+      "info": "60/6284",
+      "notes": ""
+    },
+    {
+      "group": "K7",
+      "name": "Cross-field equalities within payloads",
+      "info": 3407,
+      "notes": ""
+    },
+    {
+      "group": "K8",
+      "name": "Receipts duplicable (full byte equality excluding id)",
+      "info": 3092,
+      "notes": "3092/6224"
+    },
+    {
+      "group": "K9",
+      "name": "Payload-hash reuse count",
+      "info": 4369,
+      "notes": "1855 unique payloads"
+    },
+    {
+      "group": "L8",
+      "name": "Max sampled LZ-match length",
+      "info": 100,
+      "notes": "brotli catches up to 16MB matches"
+    },
+    {
+      "group": "M1",
+      "name": "Hurst exponent (action seq)",
+      "info": "0.471",
+      "notes": "0.5=random; >0.5=persistent; <0.5=mean-reverting"
+    },
+    {
+      "group": "M2",
+      "name": "Haar wavelet energy concentration",
+      "info": "95.1%",
+      "notes": "if >99% would compress well"
+    },
+    {
+      "group": "M3",
+      "name": "DCT 99%-energy coefficients (mesh.compress.ratio)",
+      "info": "933/1565",
+      "notes": "59.6% — concentration"
+    },
+    {
+      "group": "M4",
+      "name": "KL transform proxy (see E2)",
+      "info": "see E2",
+      "notes": "scale variance 0.62 from prior batch"
+    },
+    {
+      "group": "M5",
+      "name": "Bottleneck H(receipt)/H(action)",
+      "info": "9.99/2.40",
+      "notes": "cluster ratio 24.0%"
+    },
+    {
+      "group": "M6",
+      "name": "Field info contribution (H per field)",
+      "info": "",
+      "notes": "H(action)=2.40, H(sum_tpl)=3.56, H(pay_tpl)=3.60"
+    },
+    {
+      "group": "M7",
+      "name": "Renyi entropies on action",
+      "info": "H1=2.40, H2=1.61, H∞=0.99",
+      "notes": ""
+    },
+    {
+      "group": "M8",
+      "name": "Mutual information sample",
+      "info": "I(act;sum)=2.40, I(act;pay)=2.32",
+      "notes": ""
+    },
+    {
+      "group": "M9",
+      "name": "Action namespace prefixes",
+      "info": 38,
+      "notes": "mesh,air,equation,feature,debt,cache,route,order,pipeline,prefix,source,pathwave,thermo,memory,prooflab,awareness,embedding,cartridge,workset,mode,agent,canon,crystal,clc,pattern,db,schema,primitive,dictionary,wellbeing,immune,expansion_warrant,organism,payload,action,regeneration,compression,least_action"
+    },
+    {
+      "group": "M10",
+      "name": "Action transition graph density",
+      "info": "332 edges",
+      "notes": "vs 66² possible"
+    },
+    {
+      "group": "N1",
+      "name": "Exp 32 result reprise",
+      "info": "27.32x",
+      "notes": "per-action targeted with det-IDs"
+    }
+  ]
+}

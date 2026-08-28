@@ -1,0 +1,39 @@
+{
+  "experiment": "32-targeted-per-action-regen",
+  "generated_at": "2026-06-26T12:47:47.647Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "det_corpus_sha256": "03da0e5cf04adf965ae580cb8c74ab4db9d8058b6ca246478fef57b6de944df1",
+  "seed": "orange5-receipt-stream-v1",
+  "high_volume_actions": [
+    {
+      "action": "mesh.compress",
+      "count": 1565,
+      "encoded_bytes": 15306
+    },
+    {
+      "action": "air.compress",
+      "count": 3126,
+      "encoded_bytes": 8230
+    },
+    {
+      "action": "cache.miss",
+      "count": 53,
+      "encoded_bytes": 385
+    },
+    {
+      "action": "prefix.canonicalize",
+      "count": 85,
+      "encoded_bytes": 353
+    }
+  ],
+  "low_volume_actions_count": 62,
+  "high_volume_total_encoded": 24274,
+  "high_volume_total_raw": 1182538,
+  "low_volume_brotli": 47330,
+  "action_sequence_brotli": 4323,
+  "seed_recipe_brotli": 48,
+  "total": 75975,
+  "ratio_vs_det_corpus": 27.32,
+  "ratio_vs_orig_corpus": 27.32,
+  "beats_exp_31": false
+}

@@ -1,0 +1,143 @@
+{
+  "W": {
+    "variant": "W",
+    "correct": 17,
+    "total": 19,
+    "failures": [
+      {
+        "class": "butterfly",
+        "held": "neon",
+        "predicted": "board",
+        "margin": 0.007509337741494093
+      },
+      {
+        "class": "starry_night",
+        "held": "neon",
+        "predicted": "home",
+        "margin": 0.07340282175019475
+      }
+    ]
+  },
+  "W+1_fm_head": {
+    "variant": "W+1_fm_head",
+    "correct": 18,
+    "total": 19,
+    "failures": [
+      {
+        "class": "starry_night",
+        "held": "neon",
+        "predicted": "orange",
+        "margin": 0.015824341081129845
+      }
+    ]
+  },
+  "W+GRAND_1": {
+    "variant": "W+GRAND_1",
+    "correct": 18,
+    "total": 19,
+    "failures": [
+      {
+        "class": "starry_night",
+        "held": "neon",
+        "predicted": "orange",
+        "margin": 0.12092584770282144
+      }
+    ]
+  },
+  "W+GRAND_2": {
+    "variant": "W+GRAND_2",
+    "correct": 17,
+    "total": 19,
+    "failures": [
+      {
+        "class": "butterfly",
+        "held": "neon",
+        "predicted": "pic5",
+        "margin": 0.012591685288748877
+      },
+      {
+        "class": "starry_night",
+        "held": "neon",
+        "predicted": "orange",
+        "margin": 0.09411242682538656
+      }
+    ]
+  },
+  "W+GRAND_3": {
+    "variant": "W+GRAND_3",
+    "correct": 18,
+    "total": 19,
+    "failures": [
+      {
+        "class": "starry_night",
+        "held": "neon",
+        "predicted": "orange",
+        "margin": 0.10019462589223416
+      }
+    ]
+  },
+  "W+GRAND_4": {
+    "variant": "W+GRAND_4",
+    "correct": 18,
+    "total": 19,
+    "failures": [
+      {
+        "class": "starry_night",
+        "held": "neon",
+        "predicted": "orange",
+        "margin": 0.10064447054830872
+      }
+    ]
+  },
+  "W+ALL_WINNERS": {
+    "variant": "W+ALL_WINNERS",
+    "correct": 17,
+    "total": 19,
+    "failures": [
+      {
+        "class": "butterfly",
+        "held": "neon",
+        "predicted": "pic5",
+        "margin": 0.006337782851563389
+      },
+      {
+        "class": "starry_night",
+        "held": "neon",
+        "predicted": "orange",
+        "margin": 0.10603000590051082
+      }
+    ]
+  },
+  "W+FOCUSED_starrynight": {
+    "variant": "W+FOCUSED_starrynight",
+    "correct": 18,
+    "total": 19,
+    "failures": [
+      {
+        "class": "starry_night",
+        "held": "neon",
+        "predicted": "orange",
+        "margin": 0.08552837422145743
+      }
+    ]
+  },
+  "W+narrow_LGN_only": {
+    "variant": "W+narrow_LGN_only",
+    "correct": 17,
+    "total": 19,
+    "failures": [
+      {
+        "class": "butterfly",
+        "held": "neon",
+        "predicted": "board",
+        "margin": 0.007509337741492317
+      },
+      {
+        "class": "starry_night",
+        "held": "neon",
+        "predicted": "home",
+        "margin": 0.07340282175019475
+      }
+    ]
+  }
+}

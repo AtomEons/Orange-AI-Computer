@@ -1,0 +1,36 @@
+{
+  "experiment": "18-schema-constraint-folding",
+  "generated_at": "2026-06-26T11:13:48.240Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "corpus_bytes_in": 2075585,
+  "mesh_compress_ratio_check": {
+    "total": 1565,
+    "exact_match": 1565,
+    "percentage": 100
+  },
+  "functional_deps_found": [
+    {
+      "action": "mesh.compress",
+      "total_receipts": 1565,
+      "numeric_keys": [
+        "compressed_bytes",
+        "ratio",
+        "raw_bytes"
+      ],
+      "functional_dependencies": [
+        {
+          "derived": "ratio",
+          "formula": "round(raw_bytes/compressed_bytes, 2)"
+        }
+      ]
+    }
+  ],
+  "folded_jsonl_bytes": 2052266,
+  "folded_brotli_bytes": 118657,
+  "recipe_overhead_bytes": 59,
+  "total_lossless_bytes": 118716,
+  "ratio": 17.48,
+  "roundtrip_lossless": true,
+  "beats_plait": false,
+  "pass": false
+}

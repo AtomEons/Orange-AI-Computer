@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ae.mission.v0",
+  "title": "AECode Mission v0",
+  "type": "object",
+  "required": ["mission_id", "intent", "scope", "allowed_paths", "forbidden_paths", "target", "gauntlet", "receipt_plan", "rollback_plan"],
+  "properties": {
+    "mission_id": { "type": "string" },
+    "intent": { "type": "string" },
+    "scope": { "type": "string" },
+    "allowed_paths": { "type": "array", "items": { "type": "string" } },
+    "forbidden_paths": { "type": "array", "items": { "type": "string" } },
+    "target": { "type": "object", "required": ["lang"], "properties": { "lang": { "type": "string" } } },
+    "provider_lane": { "type": "string" },
+    "gauntlet": { "type": "object" },
+    "receipt_plan": { "type": "object" },
+    "rollback_plan": { "type": "object" },
+    "approval_required": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

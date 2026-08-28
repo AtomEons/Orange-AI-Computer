@@ -1,0 +1,44 @@
+{
+  "experiment": "115-position-derived",
+  "ratio": 27.462,
+  "edges_used": 14,
+  "net_bytes_saved": 2000005,
+  "total": 75580,
+  "lossless": true,
+  "baseline_m19_ratio": 47.071,
+  "vs_m19_delta": -19.609,
+  "encode_ms": 14094.2,
+  "formulas_sample": [
+    {
+      "field": "payload.dropped",
+      "a": 0,
+      "b": 0,
+      "support": 3126
+    },
+    {
+      "field": "payload.context_tokens",
+      "a": 0,
+      "b": 512,
+      "support": 21
+    },
+    {
+      "field": "payload.chunks",
+      "a": 0,
+      "b": 1,
+      "support": 119
+    },
+    {
+      "field": "payload.active",
+      "a": 0,
+      "b": 1,
+      "support": 75
+    },
+    {
+      "field": "payload.features_registered",
+      "a": 0,
+      "b": 620,
+      "support": 78
+    }
+  ],
+  "notes": "Mined 14 position-derived linear formulas (y = a*i + b). Side-channel key-order stream preserves byte-exact JSON."
+}

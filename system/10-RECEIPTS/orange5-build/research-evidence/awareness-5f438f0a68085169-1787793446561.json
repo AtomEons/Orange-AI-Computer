@@ -1,0 +1,354 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-5f438f0a68085169-1787793446561",
+  "query": "Act as the OrangeFive systems architect. Produce an evidence-first packet for a technical manual: operating theory, two-computer topology, order/report flow, model routing, Brain MCP, Hermes, receipts, and why each boundary exists. Distinguish proven runtime from intent. Do not claim execution. /no_think OrangeFive orange5",
+  "searchQuery": "act the systems architect. produce evidence-first packet for",
+  "generatedAt": "2026-08-27T01:17:26.575Z",
+  "budgetMs": 60000,
+  "elapsedMs": 1250,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2605.26323v3",
+      "title": "Totoro$^+$: An Adaptive and Scalable Edge Federated Learning System",
+      "url": "http://arxiv.org/abs/2605.26323v3",
+      "summary": "Federated Learning (FL) is an emerging distributed machine learning (ML) technique that enables in-situ model training and inference on decentralized edge devices. We propose Totoro$^+$, a novel scalable FL system that enables massive FL applications to run simultaneously on edge networks. The key insight is to explore a distributed hash table (DHT)-based peer-to-peer (P2P) model to re-architect the centralized FL system design into a fully decentralized one. In contrast to previous studies wher",
+      "updatedAt": "2026-06-05T22:00:22Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "arxiv",
+      "sourceId": "2605.00661v1",
+      "title": "Architecting mechanosensitive nanofluidic transport in graphite nanoslits",
+      "url": "http://arxiv.org/abs/2605.00661v1",
+      "summary": "Mechanosensitive ion transport plays a central role in enabling living systems to perceive and adapt to their environment through the deformation of soft, embedded ion channels. In this work, we demonstrate that ion transport within a two-dimensional graphite nanoslit can be rationally engineered to achieve a bipolar, pressure-sensitive response without any structural deformation. The mechanosensitivity arises from the selective charging of one channel inlet, which acts as a reversible source of",
+      "updatedAt": "2026-05-01T13:44:52Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1121262780",
+      "title": "Cocoon-AI/architecture-diagram-generator",
+      "url": "https://github.com/Cocoon-AI/architecture-diagram-generator",
+      "summary": "Generate beautiful dark-themed system architecture diagrams as standalone HTML/SVG files. Works as a Claude AI skill.",
+      "updatedAt": "2026-08-27T01:10:54Z",
+      "license": "MIT",
+      "stars": 7041,
+      "forks": 534,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.842,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "210796618",
+      "title": "puncsky/system-design-and-architecture",
+      "url": "https://github.com/puncsky/system-design-and-architecture",
+      "summary": "Learn how to design large-scale systems. Prep for the system design interview.",
+      "updatedAt": "2026-08-26T11:08:41Z",
+      "license": null,
+      "stars": 3556,
+      "forks": 692,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.836,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "70306859",
+      "title": "Developer-Y/Scalable-Software-Architecture",
+      "url": "https://github.com/Developer-Y/Scalable-Software-Architecture",
+      "summary": "Collection of tech talks, papers and web links on Distributed Systems, Scalability and System Design.",
+      "updatedAt": "2026-08-24T10:50:43Z",
+      "license": "MIT",
+      "stars": 2262,
+      "forks": 466,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8321,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1247201816",
+      "title": "study8677/awesome-architecture",
+      "url": "https://github.com/study8677/awesome-architecture",
+      "summary": "🧭 Architecture-first system design: 26 bilingual tutorials, 25 architecture templates, and 6 end-to-end cases covering distributed systems, AI-native systems, RAG, coding Agents, and production trade-offs.",
+      "updatedAt": "2026-08-26T15:00:55Z",
+      "license": "MIT",
+      "stars": 2211,
+      "forks": 246,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8319,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1241648746",
+      "title": "vkorost/claude-certified-architect-guide",
+      "url": "https://github.com/vkorost/claude-certified-architect-guide",
+      "summary": "Unofficial study guide for Anthropic's Claude Certified Architect (CCAR-F) certification. Covers agentic loops, multi-agent systems, subagents, MCP servers, hooks, tool routing, CLAUDE.md hierarchy, slash commands, plan mode, and Claude Code CI/CD pipelines.",
+      "updatedAt": "2026-08-26T18:52:57Z",
+      "license": "MIT",
+      "stars": 39,
+      "forks": 7,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.797,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1106936787",
+      "title": "Raphasha27/Raphasha27",
+      "url": "https://github.com/Raphasha27/Raphasha27",
+      "summary": "Koketso Raphasha — Full-stack developer, AI engineer & systems architect. Founder @ Kirov Dynamics. Building Africa's digital future.",
+      "updatedAt": "2026-08-26T20:56:35Z",
+      "license": "MIT",
+      "stars": 25,
+      "forks": 4,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7933,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "3589061",
+      "title": "c9/architect",
+      "url": "https://github.com/c9/architect",
+      "summary": "A simple yet powerful plugin system for large-scale node applications",
+      "updatedAt": "2026-08-03T09:26:34Z",
+      "license": "MIT",
+      "stars": 970,
+      "forks": 124,
+      "ownerType": "Organization",
+      "archived": true,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2397,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1046083375",
+      "title": "alex-vdboogaard/finance-microservices-architecture",
+      "url": "https://github.com/alex-vdboogaard/finance-microservices-architecture",
+      "summary": "This is a personal project where I built a microservices-based backend system that simulates inter-account money transfers at scale, reflecting the architecture of modern digital banking infrastructure. The project emphasises scalability, fault tolerance, and event-driven communication using Java Spring Boot and supporting technologies.",
+      "updatedAt": "2026-08-26T20:01:33Z",
+      "license": "MIT",
+      "stars": 12,
+      "forks": 6,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2023,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1214884515",
+      "title": "jimy-r/agent-workspace-architecture",
+      "url": "https://github.com/jimy-r/agent-workspace-architecture",
+      "summary": "Agent-ready knowledge architecture, run daily in Claude Code: turn a coding agent into a system you can hand work to and trust while you're away. Roles library, typed memory, hooks, scheduled agents, delegation queue, self-audits, token budgeting, measurement-gated self-improvement. Interactive tour, fork-ready samples.",
+      "updatedAt": "2026-08-26T23:14:25Z",
+      "license": "MIT",
+      "stars": 8,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1991,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1208109413",
+      "title": "jorgeadev/the-architects-blueprint",
+      "url": "https://github.com/jorgeadev/the-architects-blueprint",
+      "summary": "The Architect's Blueprint: A self-updating repository generating highly technical, premium-tier engineering blogs about system architecture, performance optimization, and viral tech news",
+      "updatedAt": "2026-08-26T20:27:05Z",
+      "license": "MIT",
+      "stars": 8,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1991,
+      "relevance": {
+        "score": 0.3175,
+        "matched": 2,
+        "queryTerms": 5,
+        "terms": [
+          "system",
+          "architect"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 4,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "5ad0870142be991d5c3a0d2cdf6840349a4383b555983803867b9e3c62b36cde"
+}

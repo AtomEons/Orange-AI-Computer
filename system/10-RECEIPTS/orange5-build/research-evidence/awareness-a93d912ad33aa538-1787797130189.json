@@ -1,0 +1,72 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-a93d912ad33aa538-1787797130189",
+  "query": "current open source local first AI orchestration MCP agent runtime Windows Bun reliability observability tools beta releases OrangeFive orange5",
+  "searchQuery": "local first orchestration mcp agent runtime windows bun",
+  "generatedAt": "2026-08-27T02:18:50.221Z",
+  "budgetMs": 45000,
+  "elapsedMs": 1771,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "hackernews",
+      "sourceId": "48660800",
+      "title": "Show HN: Orchid – Local-first record and replay for AI agent debugging",
+      "url": "https://github.com/mario-guerra/orchid-trace",
+      "summary": "Unverified discovery tip. Discussion points: 4. Verify against the creator's official source before use.",
+      "updatedAt": "2026-06-24T14:48:05Z",
+      "points": 4,
+      "license": null,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.194,
+      "relevance": {
+        "score": 0.4083,
+        "matched": 3,
+        "queryTerms": 6,
+        "terms": [
+          "local",
+          "first",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "hackernews",
+      "sourceId": "48292431",
+      "title": "Show HN: BeeZee – OSS lightweight remote harness orchestration and observability",
+      "url": "https://github.com/BeeZeeAgent/beezee",
+      "summary": "Unverified discovery tip. Discussion points: 1. Verify against the creator's official source before use.",
+      "updatedAt": "2026-05-27T11:12:57Z",
+      "points": 1,
+      "license": null,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.186,
+      "relevance": {
+        "score": 0.3333,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "orchestr",
+          "agent"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 3,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [
+    {
+      "provider": "github",
+      "error": "source returned HTTP 403"
+    }
+  ],
+  "sha256": "700d3a8fdbf22314ec0cb1848038dcfd06cae56b8e64762c25d26cfcd4d87654"
+}

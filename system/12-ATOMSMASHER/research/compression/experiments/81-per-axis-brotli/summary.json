@@ -1,0 +1,93 @@
+{
+  "experiment": "81-per-axis-brotli",
+  "corpus_bytes_raw": 2075585,
+  "corpus_receipts": 6224,
+  "corpus_sha256": "03da0e5cf04adf965ae580cb8c74ab4db9d8058b6ca246478fef57b6de944df1",
+  "baselines": {
+    "raw_brotli": {
+      "bytes": 121167,
+      "ratio": 17.13,
+      "encode_ms": 4036.4,
+      "decode_ms": 8.9,
+      "roundtrip": true
+    },
+    "m19_reference": {
+      "bytes": 44072,
+      "ratio": 47.07,
+      "source": "experiment 59"
+    }
+  },
+  "per_axis": {
+    "bytes": 141783,
+    "ratio": 14.64,
+    "delta_vs_m19": -32.43,
+    "encode_ms": 3240.5,
+    "decode_ms": 160.9,
+    "roundtrip": true,
+    "F": 339,
+    "A": 66,
+    "inner_keys_count": 333,
+    "bitmap_bytes_uncompressed": 267632,
+    "bitmap_bytes_compressed": 6065,
+    "header_bytes": 408,
+    "biggest_axis": {
+      "name": "field:id",
+      "bytes": 53434,
+      "pct_of_total": 37.7
+    },
+    "top_10_axes": [
+      {
+        "name": "field:id",
+        "bytes": 53434,
+        "raw_bytes": 136928,
+        "count": 6224
+      },
+      {
+        "name": "field:summary",
+        "bytes": 27361,
+        "raw_bytes": 298750,
+        "count": 6224
+      },
+      {
+        "name": "field:created_at",
+        "bytes": 6357,
+        "raw_bytes": 130704,
+        "count": 6224
+      },
+      {
+        "name": "bitmap",
+        "bytes": 6065
+      },
+      {
+        "name": "field:p.ratio",
+        "bytes": 5465,
+        "raw_bytes": 25351,
+        "count": 4724
+      },
+      {
+        "name": "key_order",
+        "bytes": 4653
+      },
+      {
+        "name": "field:p.raw_bytes",
+        "bytes": 2306,
+        "raw_bytes": 6476,
+        "count": 1569
+      },
+      {
+        "name": "field:p.compressed_bytes",
+        "bytes": 2191,
+        "raw_bytes": 6065,
+        "count": 1566
+      },
+      {
+        "name": "action",
+        "bytes": 1912
+      },
+      {
+        "name": "inner_keys_vocab",
+        "bytes": 1453
+      }
+    ]
+  }
+}

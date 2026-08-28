@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orange5.tool-card.v0",
+  "title": "Orange5 ToolMesh Tool-Card v0",
+  "description": "Tool-Card — a capability indicator that lives inside one of the eleven ToolMesh capability labs (image, video, audio, design, coding, automation, analytics, public-agent, observability, security, releaseops). OrangeLLM consults tool-cards during planning to discover what the mesh CAN do and at what cost/latency before requesting operator approval. Tool-cards are NOT permission-to-execute and are NOT execution descriptors — actual execution is gated by Hermes leases issued against default_lease_template. Tool-cards are JSON-schema'd, hot-reloadable, and side-effect-free. card_id is the stable handle the planner cites; the (lab, card_id) pair is unique within the mesh. last_verified_at is the wall-clock timestamp of the most recent successful health/capability probe; the planner downgrades or skips cards whose verification has gone stale per lab policy.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "lab",
+    "card_id",
+    "capability",
+    "cost_class",
+    "latency_class",
+    "inputs",
+    "outputs",
+    "default_lease_template",
+    "risk_class",
+    "last_verified_at"
+  ],
+  "properties": {
+    "schema": {
+      "description": "Schema discriminator. Must be exact.",
+      "const": "orange5.tool-card.v0"
+    },
+    "lab": {
+      "description": "Which of the eleven ToolMesh capability labs owns this card. Closed enum; new labs require a schema bump.",
+      "type": "string",
+      "enum": [
+        "image",
+        "video",
+        "audio",
+        "design",
+        "coding",
+        "automation",
+        "analytics",
+        "public-agent",
+        "observability",
+        "security",
+        "releaseops"
+      ]
+    },
+    "card_id": {
+      "description": "Stable handle for this card within the mesh. Lowercase letters, digits, hyphens, dots; starts with a letter, ends with letter-or-digit. (lab, card_id) is the unique key the planner cites.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9.-]*[a-z0-9]$",
+      "minLength": 2,
+      "maxLength": 96
+    },
+    "capability": {
+      "description": "Dotted capability id this card advertises (e.g. 'image.generate', 'coding.refactor.python', 'releaseops.deploy.canary'). The Least-action Router matches this against task requirements during planning.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)+$",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "cost_class": {
+      "description": "Coarse cost bucket for planner-time triage. 'free' = no marginal cost; 'byo-key' = operator must supply credentials and bears upstream billing; 'metered' = mesh charges per invocation against a budget. Real cost ceilings live in the lease, not here.",
+      "type": "string",
+      "enum": ["free", "byo-key", "metered"]
+    },
+    "latency_class": {
+      "description": "Coarse latency bucket. 'sub-second' = interactive; 'seconds' = synchronous tool-call within a turn; 'minutes' = long-running, expect lease + async handoff. Real timeouts live in the lease, not here.",
+      "type": "string",
+      "enum": ["sub-second", "seconds", "minutes"]
+    },
+    "inputs": {
+      "description": "JSON Schema fragment describing the input contract the planner will populate. Validated as a JSON-Schema object; deep per-field semantics are the tool-runner's responsibility.",
+      "type": "object"
+    },
+    "outputs": {
+      "description": "JSON Schema fragment describing what a successful invocation returns. Lets the planner reason about downstream chaining without executing the tool.",
+      "type": "object"
+    },
+    "default_lease_template": {
+      "description": "Default Hermes lease template the planner cites when requesting execution rights. The lease — not this card — is the authoritative permission-to-execute. Operator review can override any field at lease-issue time.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ttl_seconds", "max_invocations", "scopes"],
+      "properties": {
+        "ttl_seconds": {
+          "description": "Lease lifetime in seconds. Hermes refuses leases above lab-policy ceiling.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400
+        },
+        "max_invocations": {
+          "description": "Hard cap on tool calls this lease authorizes before re-approval.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "scopes": {
+          "description": "Capability scopes the lease grants (e.g. 'fs.read:/tmp', 'net.egress:api.example.com', 'gpu.use'). Least-privilege; planner is encouraged to narrow these at request time.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "uniqueItems": true
+        },
+        "human_approval_required": {
+          "description": "If true, Hermes will refuse to auto-issue this lease and require explicit operator approval per invocation. Defaults to false; high-risk cards set this true.",
+          "type": "boolean",
+          "default": false
+        },
+        "rate_limit_per_minute": {
+          "description": "Soft cap on invocations per minute under one lease. Optional; absence means lab default.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 600
+        },
+        "egress_allowlist": {
+          "description": "Optional host allowlist for network egress under this lease. Hosts only (no schemes); wildcards permitted as leading '*.'.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(\\*\\.)?[a-z0-9]([a-z0-9-]*[a-z0-9])?(\\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "risk_class": {
+      "description": "Blast-radius bucket the planner and operator see at approval time. 'read-only' = no side effects; 'sandboxed' = effects bounded to mesh-owned scratch space; 'mutating' = writes to operator-owned state; 'external-side-effect' = irreversible action on the world (deploy, post, pay, email). High classes typically pair with human_approval_required=true in the lease template.",
+      "type": "string",
+      "enum": ["read-only", "sandboxed", "mutating", "external-side-effect"]
+    },
+    "last_verified_at": {
+      "description": "Wall-clock timestamp (RFC 3339, UTC) of the most recent successful health/capability probe by the lab's verifier. Hot-reload updates this; stale cards are demoted or skipped by the planner per lab policy.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "vendor": {
+      "description": "Optional human-facing vendor or upstream provider id (e.g. 'openai', 'anthropic', 'self-hosted'). Not authoritative; for surfacing in approval dialogs.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "version": {
+      "description": "Optional semver for the underlying tool/integration. Distinct from card schema version.",
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "summary": {
+      "description": "Optional one-line human-facing description shown in planner traces and approval dialogs.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "tags": {
+      "description": "Optional human-facing tags for discovery / filtering. Not part of routing logic.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      "uniqueItems": true
+    },
+    "deprecated": {
+      "description": "If true, planner avoids selecting this card except when explicitly named. Used during lab migrations.",
+      "type": "boolean",
+      "default": false
+    },
+    "notes": {
+      "description": "Optional free-form notes from the lab maintainer. Not consumed by the planner.",
+      "type": "string",
+      "maxLength": 2000
+    }
+  }
+}

@@ -1,0 +1,68 @@
+[Unit]
+Description=OrangeEye ColPali / ColQwen2.5 ingestion service (Phase-1)
+Documentation=file:///opt/orange5/07-VISUAL/colpali-service/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=colpali
+Group=colpali
+WorkingDirectory=/opt/orange5/07-VISUAL/colpali-service
+
+# Loopback-only. Frontier-Isolation Law: this service must never be reachable
+# off-host. The server.mjs itself binds 127.0.0.1, but we belt-and-suspender.
+Environment=COLPALI_PORT=7440
+Environment=COLPALI_PYTHON=/opt/orange5/07-VISUAL/colpali-service/.venv/bin/python
+Environment=COLPALI_MAX_BYTES=52428800
+Environment=COLPALI_TIMEOUT_MS=180000
+Environment=HF_HOME=/var/lib/colpali/hf
+Environment=TRANSFORMERS_OFFLINE=0
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/usr/local/bin/bun run /opt/orange5/07-VISUAL/colpali-service/server.mjs
+
+Restart=on-failure
+RestartSec=5s
+TimeoutStartSec=30s
+TimeoutStopSec=20s
+
+# Memory ceiling — ColQwen2.5 fp32 on CPU sits around 6-8 GB resident; cap at
+# 10G so an OOM is enforced rather than swapping the host to death.
+MemoryMax=10G
+MemoryHigh=8G
+
+# Filesystem + privilege hardening.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectKernelLogs=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+MemoryDenyWriteExecute=false
+SystemCallArchitectures=native
+
+# Writable paths for HF cache + (eventual) telemetry. Read-only everything else.
+ReadWritePaths=/var/lib/colpali /var/log/colpali
+
+# Network namespace — loopback only.
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+IPAddressDeny=any
+IPAddressAllow=127.0.0.1/32 ::1/128
+
+# Logging.
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=colpali
+
+[Install]
+WantedBy=multi-user.target

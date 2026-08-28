@@ -1,0 +1,242 @@
+{
+  "schema": "orange.research-evidence.v1",
+  "delegationId": "awareness-a63fb5579c2a1c9b-1787759350739",
+  "query": "Explain the active OrangeFive runtime architecture, why receipts govern claims, and the trade-offs of its two-computer design. /no_think OrangeFive orange5",
+  "searchQuery": "explain the active runtime architecture why receipts govern",
+  "generatedAt": "2026-08-26T15:49:10.745Z",
+  "budgetMs": 60000,
+  "elapsedMs": 1149,
+  "status": "EVIDENCE_COLLECTED",
+  "sources": [
+    {
+      "provider": "arxiv",
+      "sourceId": "2606.06663v1",
+      "title": "Explainable Runtime Dependency Tracking for AI-RAN Conflict Monitoring",
+      "url": "http://arxiv.org/abs/2606.06663v1",
+      "summary": "Future AI-integrated Radio Access Networks (AI-RAN) will combine open programmability with learning-enabled xApps, rApps, and control functions that act on shared parameters and key performance indicators (KPIs). For conflict monitoring, it is not enough to know which applications are deployed; the system must also know whether the parameter--KPI dependencies assumed by runtime diagnosis remain valid under the current operating regime. This paper studies a lightweight monitoring primitive for th",
+      "updatedAt": "2026-06-04T19:21:32Z",
+      "license": null,
+      "authorityTier": "primary_research_source",
+      "sourceQuality": 0.855,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "explain",
+          "runtime"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1240421258",
+      "title": "yoheinakajima/activegraph",
+      "url": "https://github.com/yoheinakajima/activegraph",
+      "summary": "Event-sourced graph runtime for durable and stateful agents",
+      "updatedAt": "2026-08-25T12:29:46Z",
+      "license": "Apache-2.0",
+      "stars": 611,
+      "forks": 57,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.8207,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "active",
+          "runtime"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1095330682",
+      "title": "defilantech/LLMKube",
+      "url": "https://github.com/defilantech/LLMKube",
+      "summary": "Kubernetes operator for self-hosted LLM inference across a heterogeneous GPU fleet: NVIDIA CUDA, AMD Vulkan, and Apple Silicon Metal. Runtimes: llama.cpp, vLLM, TGI, mlx-server. Multi-GPU sharding, model caching, OpenAI-compatible endpoints. Apache-2.0, run across homelab and on-prem fleets, actively developed.",
+      "updatedAt": "2026-08-26T08:01:41Z",
+      "license": "Apache-2.0",
+      "stars": 199,
+      "forks": 30,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.811,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "active",
+          "runtime"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1315657610",
+      "title": "WpfLab/WpfRuntime",
+      "url": "https://github.com/WpfLab/WpfRuntime",
+      "summary": "WpfRuntime is an experimental and actively maintained WPF repository based on the open-source dotnet/wpf project. It aims to enable faster iteration, provide a straightforward development experience, and make it easier for the community to build, modify, and experiment with WPF.",
+      "updatedAt": "2026-08-24T06:58:38Z",
+      "license": "MIT",
+      "stars": 10,
+      "forks": 0,
+      "ownerType": "Organization",
+      "archived": false,
+      "authorityTier": "creator_registry_source",
+      "sourceQuality": 0.7858,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "active",
+          "runtime"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "BENCHMARK_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1217609797",
+      "title": "asbrodova/aura-tracker-gcp",
+      "url": "https://github.com/asbrodova/aura-tracker-gcp",
+      "summary": "The self-hosted GCP intelligence engine that explains architecture, investigates failures, and predicts change blast radius—with every conclusion tied to inspectable evidence.",
+      "updatedAt": "2026-08-26T15:20:16Z",
+      "license": "Apache-2.0",
+      "stars": 5,
+      "forks": 0,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.1956,
+      "relevance": {
+        "score": 0.37,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "explain",
+          "architecture"
+        ],
+        "distinctiveMatched": 2,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "255535907",
+      "title": "stitchesjs/stitches",
+      "url": "https://github.com/stitchesjs/stitches",
+      "summary": "[Not Actively Maintained] CSS-in-JS with near-zero runtime, SSR, multi-variant support, and a best-in-class developer experience.",
+      "updatedAt": "2026-08-26T03:39:00Z",
+      "license": "MIT",
+      "stars": 7778,
+      "forks": 257,
+      "ownerType": "Organization",
+      "archived": true,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2578,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "active",
+          "runtime"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "425492873",
+      "title": "SeanLF/still_active",
+      "url": "https://github.com/SeanLF/still_active",
+      "summary": "Cross-ecosystem dependency maintenance auditor: flags unmaintained, archived, stale, and below-the-fix deps across the full transitive graph. Ruby gems natively; npm/pypi/cargo/go/maven/nuget via CycloneDX SBOM. Signals: activity, OpenSSF Scorecard, OSV advisories, libyear, poison-pill, runtime-ceiling. Outputs SARIF/JSON/CycloneDX with CI gates.",
+      "updatedAt": "2026-08-21T15:51:49Z",
+      "license": "MIT",
+      "stars": 18,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2056,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "active",
+          "runtime"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    },
+    {
+      "provider": "github",
+      "sourceId": "1202140332",
+      "title": "ZeetLex/knitting-library",
+      "url": "https://github.com/ZeetLex/knitting-library",
+      "summary": "Knitting Library is a self-hosted personal knitting pattern manager. Upload PDF patterns or scanned image sheets, browse them in a searchable grid, annotate pages, track active projects with a row counter, and manage a full yarn inventory. Built with FastAPI and React, served from one port, with no external dependencies at runtime.",
+      "updatedAt": "2026-08-24T00:18:13Z",
+      "license": "MIT",
+      "stars": 16,
+      "forks": 1,
+      "ownerType": "User",
+      "archived": false,
+      "authorityTier": "discovery_tip_unverified",
+      "sourceQuality": 0.2046,
+      "relevance": {
+        "score": 0.26,
+        "matched": 2,
+        "queryTerms": 6,
+        "terms": [
+          "active",
+          "runtime"
+        ],
+        "distinctiveMatched": 1,
+        "distinctiveTerms": 5,
+        "admitted": true
+      },
+      "lifecycle": "SOURCE_VERIFICATION_REQUIRED",
+      "promotionEligible": false
+    }
+  ],
+  "errors": [],
+  "sha256": "2fe1b4830129cd7882d56921c334027d5bee54c140c39ea3ced2aefd025345bf"
+}

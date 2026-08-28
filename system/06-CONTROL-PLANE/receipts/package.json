@@ -1,0 +1,24 @@
+{
+  "name": "@orange5/receipts",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Orange5 receipts SQLite mirror of 10-RECEIPTS/orange5-build/ markdown. Markdown remains operator-audit truth.",
+  "main": "db.mjs",
+  "imports": {
+    "#sqlite": "./sqlite.mjs"
+  },
+  "scripts": {
+    "ingest": "node ingest.mjs",
+    "backfill": "node ingest.mjs --backfill-only",
+    "weekly": "node weekly.mjs",
+    "endurance:24h": "node endurance-24h.mjs",
+    "endurance:7d": "node endurance-7d-monitor.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0"
+  }
+}

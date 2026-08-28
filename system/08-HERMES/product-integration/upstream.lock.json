@@ -1,0 +1,23 @@
+{
+  "schema": "orange5.hermes-upstream-lock.v1",
+  "repository": "https://github.com/NousResearch/hermes-agent",
+  "package": "hermes-agent",
+  "packageVersion": "0.20.5",
+  "tag": "v2026.8.19",
+  "tagObjectSha": "b05e680e63d39d5a8e3ec0f5842a41d1c4209c03",
+  "commit": "fcbd1076a93841fa88855acce810e342a5b78101",
+  "releasedAt": "2026-08-21T12:16:39Z",
+  "discoveredAt": "2026-08-26T00:00:00Z",
+  "protocol": "2026-07-28",
+  "capabilityFloor": {
+    "mcpMajor": 2,
+    "botMode": true,
+    "cuaVersion": "0.20",
+    "kanban": true,
+    "remoteGatewaySelfHealing": true,
+    "executionStallGuards": true,
+    "updateReceipts": true
+  },
+  "releaseApi": "https://api.github.com/repos/NousResearch/hermes-agent/releases/latest",
+  "tagRefApi": "https://api.github.com/repos/NousResearch/hermes-agent/git/ref/tags/v2026.8.19"
+}

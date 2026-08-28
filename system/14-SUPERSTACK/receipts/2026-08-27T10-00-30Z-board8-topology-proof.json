@@ -1,0 +1,75 @@
+{
+  "schema": "orange5.captain-planet.board8-topology-proof.v1",
+  "status": "CAPTAIN_PLANET_BOARD8_LIVE_TOPOLOGY_NEEDS_WORK",
+  "generated_at": "2026-08-27T10:00:05.041Z",
+  "execution_scope": "NO_LOAD_NO_GENERATION_NO_INSTALL_BOUNDED_LIVE_QUERY",
+  "model_generation_executed": false,
+  "large_weight_hashes_recomputed": false,
+  "checks": {
+    "expected_worker_answered": true,
+    "production_lease_mutex_is_available": true,
+    "no_creative_worker_is_currently_active": true,
+    "at_most_one_ollama_model_is_currently_resident": false,
+    "ollama_residency_probe_succeeded": true,
+    "probe_loaded_no_model": true,
+    "probe_wrote_no_remote_file": true,
+    "three_d_registry_claim_is_candidate_only": true,
+    "three_d_exact_paths_are_absent": true,
+    "three_d_artifact_proof_is_absent": true
+  },
+  "findings": [
+    "at_most_one_ollama_model_is_currently_resident"
+  ],
+  "remote": {
+    "captured_at": "2026-08-27T09:59:11.8153636Z",
+    "host": "CODEXA",
+    "lease_mutex_available": true,
+    "creative_process_count": 0,
+    "creative_processes": [],
+    "running_ollama_model_count": 2,
+    "running_ollama_models": [
+      {
+        "name": "orange-navigator:hot-v1",
+        "size": 3953477548,
+        "size_vram": 0,
+        "expires_at": "2318-12-07T04:46:26.966931607-05:00"
+      },
+      {
+        "name": "orange-navigator:ornith-1.5-9b-q8",
+        "size": 9931241552,
+        "size_vram": 0,
+        "expires_at": "2026-08-27T06:04:11.8027936-04:00"
+      }
+    ],
+    "ollama_probe_error": null,
+    "three_d_role": "three_d_hunyuan21",
+    "three_d_exact_path_probe": [
+      {
+        "path": "C:/AtomEons/ai-box/creative/Hunyuan3D-2.1",
+        "exists": false
+      },
+      {
+        "path": "C:/AtomEons/ai-box/creative/Hunyuan3D",
+        "exists": false
+      },
+      {
+        "path": "C:/AtomEons/ai-box/models/Hunyuan3D-2.1",
+        "exists": false
+      },
+      {
+        "path": "C:/AtomEons/ai-box/models/tencent/Hunyuan3D-2.1",
+        "exists": false
+      }
+    ],
+    "model_loaded_by_probe": false,
+    "files_written_by_probe": false
+  },
+  "limitations": [
+    "Current process and mutex state does not prove a completed real-model lease activation.",
+    "Exact negative paths are bounded evidence, not an exhaustive filesystem search.",
+    "Peak process-tree and shared-GPU memory remain separate activation gates."
+  ],
+  "prior_receipt": "2026-08-27T09-59-50-575Z-creative-route-dry-run.json",
+  "prior_sha256": "07819bf4f60ddb7964846008ef978fae1789fe3a6d13491e56088f48d5bf9d2a",
+  "receipt_sha256": "449108fea4ad19404d139079e2a3967635ed98924e26f46339534afd74654330"
+}

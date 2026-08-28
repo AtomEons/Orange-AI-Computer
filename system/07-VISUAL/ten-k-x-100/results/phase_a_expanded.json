@@ -1,0 +1,1574 @@
+{
+  "date": "2026-07-11",
+  "probes": [
+    {
+      "A": "orange.jpg",
+      "B": "baboon.jpg",
+      "property": "orange-vs-baboon-fruit-vs-primate",
+      "category": "wild-diff"
+    },
+    {
+      "A": "apple.jpg",
+      "B": "baboon.jpg",
+      "property": "apple-vs-baboon-fruit-vs-primate",
+      "category": "wild-diff"
+    },
+    {
+      "A": "orange.jpg",
+      "B": "basketball1.png",
+      "property": "orange-vs-basketball-similar-color-diff-texture",
+      "category": "wild-diff"
+    },
+    {
+      "A": "orange.jpg",
+      "B": "apple.jpg",
+      "property": "orange-vs-apple-different-fruit",
+      "category": "cat-diff"
+    },
+    {
+      "A": "basketball1.png",
+      "B": "basketball2.png",
+      "property": "basketball1-vs-basketball2-same-cat-diff-instance",
+      "category": "cat-diff"
+    },
+    {
+      "A": "orange.jpg",
+      "B": "orange_t1.5.png",
+      "property": "orange-still-vs-video-frame",
+      "category": "same-diff-src"
+    },
+    {
+      "A": "apple.jpg",
+      "B": "apple_t1.5.png",
+      "property": "apple-still-vs-video-frame",
+      "category": "same-diff-src"
+    },
+    {
+      "A": "orange.jpg",
+      "B": "hue-shifted-orange-red.jpg",
+      "property": "orange-hue-shifted-red",
+      "category": "hue-shift"
+    },
+    {
+      "A": "apple.jpg",
+      "B": "hue-shifted-apple-orange.jpg",
+      "property": "apple-hue-shifted-orange",
+      "category": "hue-shift"
+    },
+    {
+      "A": "01-train-orange.png",
+      "B": "02-test-apple.png",
+      "property": "train-orange-vs-test-apple",
+      "category": "cat-diff"
+    },
+    {
+      "A": "01-train-orange.png",
+      "B": "02-test-fruits.png",
+      "property": "train-orange-vs-test-fruits-composite",
+      "category": "same-diff-src"
+    },
+    {
+      "A": "01-train-orange.png",
+      "B": "02-test-lena.png",
+      "property": "train-orange-vs-lena-face",
+      "category": "wild-diff"
+    }
+  ],
+  "results": [
+    {
+      "probe": "orange-vs-baboon-fruit-vs-primate",
+      "category": "wild-diff",
+      "A": "orange.jpg",
+      "B": "baboon.jpg",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.3379352572545258,
+          "noise": 0.0010561280892959276,
+          "ratio": 319.97563617478613,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.4805244367301342,
+          "noise": 0.006682288912207444,
+          "ratio": 71.91015579291924,
+          "verdict": "PRESERVED"
+        },
+        "it_80": {
+          "gap": 0.3810268521308816,
+          "noise": 0.001998866179576336,
+          "ratio": 190.6214913354735,
+          "verdict": "PRESERVED"
+        },
+        "axis_bundle": {
+          "gap": 0.029642799680882848,
+          "noise": 0.00037782957637059225,
+          "ratio": 78.45547711121444,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.6921348802074616,
+          "noise": 0.0017799449539885777,
+          "ratio": 388.8518454778592,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.548029241115928,
+          "noise": 0.022908322452028455,
+          "ratio": 23.922713776337726,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.8810067567661526,
+          "noise": 0.00018131556775314865,
+          "ratio": 4858.969186614994,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.130714303477659,
+          "noise": 0.0001868426550350814,
+          "ratio": 699.5956220656157,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.6170029811472166,
+          "noise": 0.0003216843177202858,
+          "ratio": 1918.038732878857,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.36888706885518996,
+          "noise": 0.00019781903279142768,
+          "ratio": 1864.7703593017231,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.00022451425401323637,
+          "noise": 0.000014571896081750012,
+          "ratio": 15.407346631741374,
+          "verdict": "PRESERVED"
+        },
+        "axis:hu_moments": {
+          "gap": 0.0005174035349720395,
+          "noise": 0.000006041300957444565,
+          "ratio": 85.64438994459533,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.04963414838428768,
+          "noise": 0.0011617307919732868,
+          "ratio": 42.72431162815299,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.000009131422957823997,
+          "noise": 6.838605376438083e-8,
+          "ratio": 133.5275608866926,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.02047496174505594,
+          "noise": 0.00019680714740286242,
+          "ratio": 104.0356613834958,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.9596226721645025,
+          "noise": 0.9482749590015341,
+          "ratio": 1.0119666907316804,
+          "verdict": "WEAK"
+        },
+        "axis:edge": {
+          "gap": 0.04514056374827613,
+          "noise": 0.0007389581366473611,
+          "ratio": 61.086767314151246,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.20676560216310982,
+          "noise": 0.001109417729941055,
+          "ratio": 186.37308254853255,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.32800916740529584,
+          "noise": 0.0002996367582589427,
+          "ratio": 1094.6893475660754,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "apple-vs-baboon-fruit-vs-primate",
+      "category": "wild-diff",
+      "A": "apple.jpg",
+      "B": "baboon.jpg",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.21500164767590343,
+          "noise": 0.0010561280892959276,
+          "ratio": 203.5753521329361,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.4826988719492565,
+          "noise": 0.11573369741242351,
+          "ratio": 4.170772063292267,
+          "verdict": "PRESERVED"
+        },
+        "it_80": {
+          "gap": 0.21777817919687817,
+          "noise": 0.128655666228467,
+          "ratio": 1.6927212425307971,
+          "verdict": "WEAK"
+        },
+        "axis_bundle": {
+          "gap": 0.20755072877707914,
+          "noise": 0.00037782957637059225,
+          "ratio": 549.3236680166723,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.5236790687540904,
+          "noise": 0.0009980254139900122,
+          "ratio": 524.715163976106,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.5461349009207727,
+          "noise": 0.0017302662428995582,
+          "ratio": 315.63633814271657,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.2255208449698421,
+          "noise": 0.00015902080272512008,
+          "ratio": 1418.184546330536,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.2361649489150561,
+          "noise": 0.0001820706485185866,
+          "ratio": 1297.1061004978367,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.6003323278649517,
+          "noise": 0.00020510982532900499,
+          "ratio": 2926.8823514524124,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.36009211520632056,
+          "noise": 0.00016586671726415638,
+          "ratio": 2170.9727011287277,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.0003379952414395092,
+          "noise": 0.000014271160237731935,
+          "ratio": 23.68379555755206,
+          "verdict": "PRESERVED"
+        },
+        "axis:hu_moments": {
+          "gap": 0.0002840521151326998,
+          "noise": 9.87714331451994e-7,
+          "ratio": 287.5852927183183,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.05637524215593916,
+          "noise": 0.0011617307919732868,
+          "ratio": 48.52694147856888,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.000006628132426501394,
+          "noise": 5.0260618139390435e-8,
+          "ratio": 131.8752667967442,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.017992413378702176,
+          "noise": 0.00013193409494203029,
+          "ratio": 136.37425099711908,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.8184777778752941,
+          "noise": 0.6941091059247849,
+          "ratio": 1.1791774101346915,
+          "verdict": "WEAK"
+        },
+        "axis:edge": {
+          "gap": 0.03001071520062548,
+          "noise": 0.00027500285013083654,
+          "ratio": 109.12874243429641,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.5574909290767378,
+          "noise": 0.000678925780543215,
+          "ratio": 821.1367796796345,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.29136262704356286,
+          "noise": 0.0006637926874717956,
+          "ratio": 438.93618074233876,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-vs-basketball-similar-color-diff-texture",
+      "category": "wild-diff",
+      "A": "orange.jpg",
+      "B": "basketball1.png",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.04791500856905095,
+          "noise": 0.0005951445260475311,
+          "ratio": 80.50987024490287,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 1.1669593493741144,
+          "noise": 0.03699783006797128,
+          "ratio": 31.54129167116592,
+          "verdict": "PRESERVED"
+        },
+        "it_80": {
+          "gap": 0.533449195410568,
+          "noise": 0.28160630659549707,
+          "ratio": 1.8943084118383091,
+          "verdict": "WEAK"
+        },
+        "axis_bundle": {
+          "gap": 0.37946787889608274,
+          "noise": 0.000091272876680343,
+          "ratio": 4157.5097958735305,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.6975962318530754,
+          "noise": 0.0017799449539885777,
+          "ratio": 391.92011544507125,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.5199518304725421,
+          "noise": 0.059243474214468385,
+          "ratio": 8.776524965268832,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.9397687991585234,
+          "noise": 0.00018131556775314865,
+          "ratio": 5183.056318903448,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.1702110410602467,
+          "noise": 0.0001868426550350814,
+          "ratio": 910.9859899405093,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.5252078402823008,
+          "noise": 0.0003216843177202858,
+          "ratio": 1632.6808966142542,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.5125665162148509,
+          "noise": 0.00019781903279142768,
+          "ratio": 2591.0879705659067,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.000827490694450236,
+          "noise": 0.000023158990206655398,
+          "ratio": 35.73086248866036,
+          "verdict": "PRESERVED"
+        },
+        "axis:hu_moments": {
+          "gap": 0.9999999999999999,
+          "noise": 0.000006041300957444565,
+          "ratio": 165527.26094000024,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.04700807330096154,
+          "noise": 0.0009459571835191537,
+          "ratio": 49.6936585713974,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.0000061693393893826006,
+          "noise": 6.838605376438083e-8,
+          "ratio": 90.21341413614259,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.020546795897411287,
+          "noise": 0.0007763411811528752,
+          "ratio": 26.466193467798615,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.6928040293162592,
+          "noise": 0.9482749590015341,
+          "ratio": 0.7305940357696805,
+          "verdict": "COLLAPSED"
+        },
+        "axis:edge": {
+          "gap": 0.04569750566133623,
+          "noise": 0.0007389581366473611,
+          "ratio": 61.84045265225028,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.2205342055639567,
+          "noise": 0.0037806860916597684,
+          "ratio": 58.331794869311516,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.11993698958535398,
+          "noise": 0.010184675454175037,
+          "ratio": 11.776221061240378,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-vs-apple-different-fruit",
+      "category": "cat-diff",
+      "A": "orange.jpg",
+      "B": "apple.jpg",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.14638854297637194,
+          "noise": 0.0005951445260475311,
+          "ratio": 245.9714179823955,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.23400987714122937,
+          "noise": 0.11573369741242351,
+          "ratio": 2.021968384085424,
+          "verdict": "WEAK"
+        },
+        "it_80": {
+          "gap": 0.26860660620803856,
+          "noise": 0.128655666228467,
+          "ratio": 2.0877946077481453,
+          "verdict": "WEAK"
+        },
+        "axis_bundle": {
+          "gap": 0.17805951985299276,
+          "noise": 0.000322466030284846,
+          "ratio": 552.1807047263437,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.446531856297341,
+          "noise": 0.0017799449539885777,
+          "ratio": 250.86835146038257,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.35104575340855865,
+          "noise": 0.022908322452028455,
+          "ratio": 15.323939766592325,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.709087633487677,
+          "noise": 0.00018131556775314865,
+          "ratio": 3910.7928915020775,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.1821179681830016,
+          "noise": 0.0001868426550350814,
+          "ratio": 974.7130180140466,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.4482926720449855,
+          "noise": 0.0003216843177202858,
+          "ratio": 1393.5795043474561,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.10488789568402372,
+          "noise": 0.00019781903279142768,
+          "ratio": 530.2214564693238,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.00011348115969992164,
+          "noise": 0.000014571896081750012,
+          "ratio": 7.787672864483749,
+          "verdict": "PRESERVED"
+        },
+        "axis:hu_moments": {
+          "gap": 0.0004157366690323533,
+          "noise": 0.000006041300957444565,
+          "ratio": 68.81575209724488,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.0397164094236633,
+          "noise": 0.0007220807192964479,
+          "ratio": 55.00272803622369,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.000005444331974002207,
+          "noise": 6.838605376438083e-8,
+          "ratio": 79.61172891713063,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.012590988489853388,
+          "noise": 0.00019680714740286242,
+          "ratio": 63.9762765530042,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.6933272185163485,
+          "noise": 0.9482749590015341,
+          "ratio": 0.7311457630879261,
+          "verdict": "COLLAPSED"
+        },
+        "axis:edge": {
+          "gap": 0.029298024271297782,
+          "noise": 0.0007389581366473611,
+          "ratio": 39.64774568180865,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.35593334285072814,
+          "noise": 0.001109417729941055,
+          "ratio": 320.8289657220814,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.037149824898123296,
+          "noise": 0.0006637926874717956,
+          "ratio": 55.96600504837858,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "basketball1-vs-basketball2-same-cat-diff-instance",
+      "category": "cat-diff",
+      "A": "basketball1.png",
+      "B": "basketball2.png",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.029581622188866587,
+          "noise": 0.0004207562138553761,
+          "ratio": 70.30584745929502,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.008362308370965112,
+          "noise": 0.03726942664635555,
+          "ratio": 0.22437448395205817,
+          "verdict": "COLLAPSED"
+        },
+        "it_80": {
+          "gap": 0.0034965803505356626,
+          "noise": 0.28160630659549707,
+          "ratio": 0.01241655555519286,
+          "verdict": "COLLAPSED"
+        },
+        "axis_bundle": {
+          "gap": 0.0001175223048340478,
+          "noise": 0.000091272876680343,
+          "ratio": 1.2875928655742481,
+          "verdict": "WEAK"
+        },
+        "axis:radial_photon": {
+          "gap": 0.04104193687688721,
+          "noise": 0.00016091737264704886,
+          "ratio": 255.04975753554785,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.008373457255373692,
+          "noise": 0.059243474214468385,
+          "ratio": 0.14133974022287732,
+          "verdict": "COLLAPSED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0,
+          "noise": 0.000016289798119154177,
+          "ratio": 0,
+          "verdict": "COLLAPSED"
+        },
+        "axis:subsurface": {
+          "gap": 0.0018637465924887936,
+          "noise": 0.00018355871089400028,
+          "ratio": 10.153408592878232,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.013037543800928007,
+          "noise": 0.0002724820790991793,
+          "ratio": 47.847344104353155,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0,
+          "noise": 0.00003067347255970175,
+          "ratio": 0,
+          "verdict": "COLLAPSED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.000029691681249943092,
+          "noise": 0.000023158990206655398,
+          "ratio": 1.2820801332439071,
+          "verdict": "WEAK"
+        },
+        "axis:hu_moments": {
+          "gap": 0,
+          "noise": 0,
+          "ratio": 0,
+          "verdict": "COLLAPSED_CONSTANT"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.0028584765633559396,
+          "noise": 0.0009459571835191537,
+          "ratio": 3.021782183335004,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 1.3309674235615618e-8,
+          "noise": 4.01178847196997e-8,
+          "ratio": 0.3317641079186801,
+          "verdict": "COLLAPSED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.003561133830699585,
+          "noise": 0.0007763411811528752,
+          "ratio": 4.587073205895456,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.03107911415943052,
+          "noise": 0.7787218347478322,
+          "ratio": 0.039910418293965834,
+          "verdict": "COLLAPSED"
+        },
+        "axis:edge": {
+          "gap": 0.003123217993251943,
+          "noise": 0.00030093193037431193,
+          "ratio": 10.37848655464095,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.007197676977781903,
+          "noise": 0.005129627656694714,
+          "ratio": 1.4031577844423393,
+          "verdict": "WEAK"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.035431238583663344,
+          "noise": 0.010184675454175037,
+          "ratio": 3.4788775295867578,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-still-vs-video-frame",
+      "category": "same-diff-src",
+      "A": "orange.jpg",
+      "B": "orange_t1.5.png",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.11209666297435793,
+          "noise": 0.0008321423913230947,
+          "ratio": 134.70851159995084,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.11553361571229878,
+          "noise": 0.006682288912207444,
+          "ratio": 17.289527171032347,
+          "verdict": "PRESERVED"
+        },
+        "it_80": {
+          "gap": 0.16237958348258621,
+          "noise": 0.001998866179576336,
+          "ratio": 81.23584517148763,
+          "verdict": "PRESERVED"
+        },
+        "axis_bundle": {
+          "gap": 1.409892474874469,
+          "noise": 0.0001333000938916357,
+          "ratio": 10576.83032106954,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.9999417392265436,
+          "noise": 0.0017799449539885777,
+          "ratio": 561.7823950037505,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.14943466669864466,
+          "noise": 0.022908322452028455,
+          "ratio": 6.523160611675986,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.4152535490014769,
+          "noise": 0.00018131556775314865,
+          "ratio": 2290.2255672101037,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.09492658659019175,
+          "noise": 0.0001868426550350814,
+          "ratio": 508.056292458317,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.40686987454533186,
+          "noise": 0.0003216843177202858,
+          "ratio": 1264.8110340868946,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.147630043747273,
+          "noise": 0.00019781903279142768,
+          "ratio": 746.2883710635068,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.00003289332584406229,
+          "noise": 0.000026745566933267665,
+          "ratio": 1.229860856048921,
+          "verdict": "WEAK"
+        },
+        "axis:hu_moments": {
+          "gap": 0.0004561067231995797,
+          "noise": 0.000006041300957444565,
+          "ratio": 75.4980965875453,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.033053250657227286,
+          "noise": 0.0008606221799179029,
+          "ratio": 38.40622683043136,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.000009747840521485083,
+          "noise": 6.838605376438083e-8,
+          "ratio": 142.54135141458167,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.010945675993732413,
+          "noise": 0.00036827354872476107,
+          "ratio": 29.72159154963625,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.7743675102311172,
+          "noise": 0.9482749590015341,
+          "ratio": 0.8166065157372403,
+          "verdict": "COLLAPSED"
+        },
+        "axis:edge": {
+          "gap": 0.017608520207263383,
+          "noise": 0.0007389581366473611,
+          "ratio": 23.828846769524592,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.12985950732004925,
+          "noise": 0.001109417729941055,
+          "ratio": 117.05194879745511,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.15921190697531748,
+          "noise": 0.00273923598632598,
+          "ratio": 58.12274216974697,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "apple-still-vs-video-frame",
+      "category": "same-diff-src",
+      "A": "apple.jpg",
+      "B": "apple_t1.5.png",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.17121668031284723,
+          "noise": 0.0024735811527011706,
+          "ratio": 69.21813748696995,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.3502566596508649,
+          "noise": 0.20205331150564898,
+          "ratio": 1.7334863608066748,
+          "verdict": "WEAK"
+        },
+        "it_80": {
+          "gap": 0.10697214160715916,
+          "noise": 0.18352355820899494,
+          "ratio": 0.5828796185683163,
+          "verdict": "COLLAPSED"
+        },
+        "axis_bundle": {
+          "gap": 1.4142075373471745,
+          "noise": 0.00034596313956315804,
+          "ratio": 4087.7405007159755,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.4905807878363014,
+          "noise": 0.0022305034369688066,
+          "ratio": 219.9417314070528,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.3592477526797114,
+          "noise": 0.0026472123887259316,
+          "ratio": 135.70794478361162,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.2550482401697938,
+          "noise": 0.00034219232053336033,
+          "ratio": 745.3359554424284,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.23600922721428874,
+          "noise": 0.00039750617829971906,
+          "ratio": 593.7246767428559,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.38409242908821495,
+          "noise": 0.0007530453405268054,
+          "ratio": 510.0521952894851,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.41156163108702665,
+          "noise": 0.001745618145683344,
+          "ratio": 235.7684194018937,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.00004336039718838422,
+          "noise": 0.00003494135482400939,
+          "ratio": 1.2409477940045364,
+          "verdict": "WEAK"
+        },
+        "axis:hu_moments": {
+          "gap": 0.00026537871887711477,
+          "noise": 9.87714331451994e-7,
+          "ratio": 268.67962772899483,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.04287090063306249,
+          "noise": 0.0007220807192964479,
+          "ratio": 59.371341025188045,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.000022274951007737065,
+          "noise": 5.0260618139390435e-8,
+          "ratio": 443.18895851938714,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.007620220824232737,
+          "noise": 0.00018364364912676202,
+          "ratio": 41.49460577845955,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.8258723560573812,
+          "noise": 0.912260824855978,
+          "ratio": 0.9053028843891928,
+          "verdict": "COLLAPSED"
+        },
+        "axis:edge": {
+          "gap": 0.013894788794262442,
+          "noise": 0.0003831093265441168,
+          "ratio": 36.26846915892661,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.0575852585156599,
+          "noise": 0.000678925780543215,
+          "ratio": 84.81819392627186,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.038573277806937,
+          "noise": 0.0031824888612651064,
+          "ratio": 12.120475353872349,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "orange-hue-shifted-red",
+      "category": "hue-shift",
+      "A": "orange.jpg",
+      "B": "hue-shifted-orange-red.jpg",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.02496977842370703,
+          "noise": 0.0005951445260475311,
+          "ratio": 41.95582304946349,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.21903475078099613,
+          "noise": 0.018347116014008607,
+          "ratio": 11.938374980228835,
+          "verdict": "PRESERVED"
+        },
+        "it_80": {
+          "gap": 0.15828627146300842,
+          "noise": 0.001998866179576336,
+          "ratio": 79.18802823336453,
+          "verdict": "PRESERVED"
+        },
+        "axis_bundle": {
+          "gap": 0.10837926280264182,
+          "noise": 0.00023318748848051023,
+          "ratio": 464.77306097706924,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.4509995569839089,
+          "noise": 0.0017799449539885777,
+          "ratio": 253.37837328805568,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.3201048551398652,
+          "noise": 0.022908322452028455,
+          "ratio": 13.973299695348098,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.321145528848265,
+          "noise": 0.0004453468069580528,
+          "ratio": 721.1133521801892,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.10317719654852857,
+          "noise": 0.0003146841309316604,
+          "ratio": 327.87543573633667,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.12239328783323997,
+          "noise": 0.0003216843177202858,
+          "ratio": 380.4763897121793,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.17294133245483617,
+          "noise": 0.00032783153021380044,
+          "ratio": 527.531114356358,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.000011122274449984917,
+          "noise": 0.00003259002399004991,
+          "ratio": 0.34127849839511226,
+          "verdict": "COLLAPSED"
+        },
+        "axis:hu_moments": {
+          "gap": 0.0006348995242135162,
+          "noise": 0.000006041300957444565,
+          "ratio": 105.09317921517271,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.018780925970952822,
+          "noise": 0.0013526027580883484,
+          "ratio": 13.88502711431415,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.00000803299291060995,
+          "noise": 6.838605376438083e-8,
+          "ratio": 117.46536710960164,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.005168862100444645,
+          "noise": 0.00019680714740286242,
+          "ratio": 26.263589349547516,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.4564619903519237,
+          "noise": 0.9482749590015341,
+          "ratio": 0.48136037551022715,
+          "verdict": "COLLAPSED"
+        },
+        "axis:edge": {
+          "gap": 0.010307411899252675,
+          "noise": 0.0007389581366473611,
+          "ratio": 13.94857352274001,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.04331843320056817,
+          "noise": 0.0011118833615022467,
+          "ratio": 38.959512031946744,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.002212685343696572,
+          "noise": 0.0003780885094306953,
+          "ratio": 5.852294604319795,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "apple-hue-shifted-orange",
+      "category": "hue-shift",
+      "A": "apple.jpg",
+      "B": "hue-shifted-apple-orange.jpg",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.018801991374423194,
+          "noise": 0.0005724112180163884,
+          "ratio": 32.84700016812893,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.03667534742007307,
+          "noise": 0.13226610056568266,
+          "ratio": 0.27728455940878277,
+          "verdict": "COLLAPSED"
+        },
+        "it_80": {
+          "gap": 0.17817370732127757,
+          "noise": 0.128655666228467,
+          "ratio": 1.3848881479100683,
+          "verdict": "WEAK"
+        },
+        "axis_bundle": {
+          "gap": 1.4142064827919165,
+          "noise": 0.000322466030284846,
+          "ratio": 4385.5983265669765,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.5911624492926455,
+          "noise": 0.0013432269901546001,
+          "ratio": 440.1061426145145,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.38406555779466345,
+          "noise": 0.0017302662428995582,
+          "ratio": 221.96905208706568,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.24456522098170688,
+          "noise": 0.00019011195758315036,
+          "ratio": 1286.4273457114869,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.13831378759618085,
+          "noise": 0.0001820706485185866,
+          "ratio": 759.6709778405669,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.2030223071453645,
+          "noise": 0.00020510982532900499,
+          "ratio": 989.8224369296205,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.26662967550610944,
+          "noise": 0.00016586671726415638,
+          "ratio": 1607.4935339889785,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.000017635843923535133,
+          "noise": 0.000035459724549961235,
+          "ratio": 0.4973485876543396,
+          "verdict": "COLLAPSED"
+        },
+        "axis:hu_moments": {
+          "gap": 0.0003258200468558274,
+          "noise": 9.87714331451994e-7,
+          "ratio": 329.8727541766597,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.015080099659066948,
+          "noise": 0.00109706153659914,
+          "ratio": 13.745901351910335,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.000014661929061715092,
+          "noise": 5.0260618139390435e-8,
+          "ratio": 291.71804097300173,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.002879078997979151,
+          "noise": 0.00018280755845533677,
+          "ratio": 15.749233906444642,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.4826776573815156,
+          "noise": 0.751636357110157,
+          "ratio": 0.6421691191699181,
+          "verdict": "COLLAPSED"
+        },
+        "axis:edge": {
+          "gap": 0.003009784243062232,
+          "noise": 0.0002794631098539682,
+          "ratio": 10.76988030597304,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.02485277531426927,
+          "noise": 0.0007954942585664428,
+          "ratio": 31.241929211477107,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.017013823317727172,
+          "noise": 0.0007055588995035022,
+          "ratio": 24.11396600581426,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "train-orange-vs-test-apple",
+      "category": "cat-diff",
+      "A": "01-train-orange.png",
+      "B": "02-test-apple.png",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.07390168007252551,
+          "noise": 0.0006796903438416932,
+          "ratio": 108.72845368793111,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.19741026228076544,
+          "noise": 0.12794362257008715,
+          "ratio": 1.5429472631402528,
+          "verdict": "WEAK"
+        },
+        "it_80": {
+          "gap": 0.2009159046726307,
+          "noise": 0.01990705350878481,
+          "ratio": 10.092699282893285,
+          "verdict": "PRESERVED"
+        },
+        "axis_bundle": {
+          "gap": 0.14442545605381626,
+          "noise": 0.00011936796831406973,
+          "ratio": 1209.918021506554,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.4344863975247924,
+          "noise": 0.0007712800090963774,
+          "ratio": 563.3315947522503,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.37703862421544493,
+          "noise": 0.0010025350117555014,
+          "ratio": 376.08524370159074,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.4515186264611609,
+          "noise": 0.00035568570036926395,
+          "ratio": 1269.431484010759,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.22539476175011094,
+          "noise": 0.00031025764375743487,
+          "ratio": 726.4760958680158,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.46127887371262744,
+          "noise": 0.00017935296836559035,
+          "ratio": 2571.9054327127924,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.14336623522104858,
+          "noise": 0.00009214761221099269,
+          "ratio": 1555.8323409702612,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.000027953010264971522,
+          "noise": 0.000023484270302266935,
+          "ratio": 1.1902865154074307,
+          "verdict": "WEAK"
+        },
+        "axis:hu_moments": {
+          "gap": 0.0006358528141287762,
+          "noise": 3.890884675466808e-7,
+          "ratio": 1634.2114124790655,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.024383097649058817,
+          "noise": 0.001282210395868639,
+          "ratio": 19.016456057151508,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.000007624556759076428,
+          "noise": 4.373465918471265e-8,
+          "ratio": 174.33671374628145,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.013888356403072993,
+          "noise": 0.00024903351345943324,
+          "ratio": 55.76902566302732,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 1.0514476066661558,
+          "noise": 0.81839241510928,
+          "ratio": 1.2847719348984386,
+          "verdict": "WEAK"
+        },
+        "axis:edge": {
+          "gap": 0.016554706773220518,
+          "noise": 0.0009625091664442039,
+          "ratio": 17.19953154771351,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.3244154841946851,
+          "noise": 0.0040180832731761445,
+          "ratio": 80.73886530934108,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.042886968881164896,
+          "noise": 0.0005880428100799644,
+          "ratio": 72.9317120216689,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "train-orange-vs-test-fruits-composite",
+      "category": "same-diff-src",
+      "A": "01-train-orange.png",
+      "B": "02-test-fruits.png",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.16071453292518226,
+          "noise": 0.0006796903438416932,
+          "ratio": 236.45257635529143,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.1444494136152142,
+          "noise": 0.1157097457796701,
+          "ratio": 1.2483772446468688,
+          "verdict": "WEAK"
+        },
+        "it_80": {
+          "gap": 0.24244967381124752,
+          "noise": 0.0062550743774682956,
+          "ratio": 38.760478162272086,
+          "verdict": "PRESERVED"
+        },
+        "axis_bundle": {
+          "gap": 0.08008000443717686,
+          "noise": 0.00012125346855798633,
+          "ratio": 660.43475200778,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.7578184873419128,
+          "noise": 0.0007712800090963774,
+          "ratio": 982.5465180016322,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.23158714916012035,
+          "noise": 0.0015125820019743306,
+          "ratio": 153.1071696330091,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.5210729823570461,
+          "noise": 0.00010625051391321666,
+          "ratio": 4904.192583789743,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.4530757814644979,
+          "noise": 0.00024716858303250387,
+          "ratio": 1833.0637976142632,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.8093967226614739,
+          "noise": 0.00019544184913665634,
+          "ratio": 4141.368525916523,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.1506014203496051,
+          "noise": 0.00006421886868813975,
+          "ratio": 2345.127272187822,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.00001998596459841487,
+          "noise": 0.000020743857416259145,
+          "ratio": 0.9634642293072148,
+          "verdict": "COLLAPSED"
+        },
+        "axis:hu_moments": {
+          "gap": 0.0006635638295434757,
+          "noise": 4.237266901005383e-7,
+          "ratio": 1566.0184856092753,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.053878293565223064,
+          "noise": 0.001282210395868639,
+          "ratio": 42.019853948168134,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.000006945984332480904,
+          "noise": 4.7941833020388126e-8,
+          "ratio": 144.88357859673408,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.021384423458795106,
+          "noise": 0.00017803864436482942,
+          "ratio": 120.11113393435546,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.9447746158655732,
+          "noise": 0.81839241510928,
+          "ratio": 1.1544273852286588,
+          "verdict": "WEAK"
+        },
+        "axis:edge": {
+          "gap": 0.02715430117081885,
+          "noise": 0.0009918927256839809,
+          "ratio": 27.376247922469663,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.439126402610913,
+          "noise": 0.002820113030641065,
+          "ratio": 155.71234125714858,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.18727090121345918,
+          "noise": 0.0003466040609083439,
+          "ratio": 540.3020977961975,
+          "verdict": "PRESERVED"
+        }
+      }
+    },
+    {
+      "probe": "train-orange-vs-lena-face",
+      "category": "wild-diff",
+      "A": "01-train-orange.png",
+      "B": "02-test-lena.png",
+      "stages": {
+        "retinal_12": {
+          "gap": 0.03999665568906766,
+          "noise": 0.0007067581794997494,
+          "ratio": 56.59171248273023,
+          "verdict": "PRESERVED"
+        },
+        "lgn": {
+          "gap": 0.17095558021481405,
+          "noise": 0.1157097457796701,
+          "ratio": 1.4774518694418435,
+          "verdict": "WEAK"
+        },
+        "it_80": {
+          "gap": 0.31798826640231437,
+          "noise": 0.0062550743774682956,
+          "ratio": 50.83684816726644,
+          "verdict": "PRESERVED"
+        },
+        "axis_bundle": {
+          "gap": 0.140550522566872,
+          "noise": 0.0002477595944777576,
+          "ratio": 567.28589204843,
+          "verdict": "PRESERVED"
+        },
+        "axis:radial_photon": {
+          "gap": 0.705054711031091,
+          "noise": 0.0008089288398274099,
+          "ratio": 871.590523563876,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_histogram": {
+          "gap": 0.2901157817834192,
+          "noise": 0.0011210033533588313,
+          "ratio": 258.8001016358723,
+          "verdict": "PRESERVED"
+        },
+        "axis:photon_correlation": {
+          "gap": 0.6698973763636621,
+          "noise": 0.00010429948195174689,
+          "ratio": 6422.825538803571,
+          "verdict": "PRESERVED"
+        },
+        "axis:subsurface": {
+          "gap": 0.4094370780492085,
+          "noise": 0.00024716858303250387,
+          "ratio": 1656.509387341374,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_color": {
+          "gap": 0.5649412279304197,
+          "noise": 0.00010076082463398522,
+          "ratio": 5606.754708316201,
+          "verdict": "PRESERVED"
+        },
+        "axis:color_ratio": {
+          "gap": 0.5890257841017557,
+          "noise": 0.0000379260005756365,
+          "ratio": 15530.922722185036,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture_vocab": {
+          "gap": 0.0000025525956718298644,
+          "noise": 0.000015826409556109117,
+          "ratio": 0.16128709817474315,
+          "verdict": "COLLAPSED"
+        },
+        "axis:hu_moments": {
+          "gap": 0.00006521800114984497,
+          "noise": 3.890884675466808e-7,
+          "ratio": 167.6174098941148,
+          "verdict": "PRESERVED"
+        },
+        "axis:persistent_homology": {
+          "gap": 0.0338550830964978,
+          "noise": 0.001282210395868639,
+          "ratio": 26.403687885842263,
+          "verdict": "PRESERVED"
+        },
+        "axis:dichromatic": {
+          "gap": 0.000022808935965747512,
+          "noise": 1.091553436832639e-7,
+          "ratio": 208.9584915964555,
+          "verdict": "PRESERVED"
+        },
+        "axis:fourier_mellin": {
+          "gap": 0.017734534972841543,
+          "noise": 0.00017803864436482942,
+          "ratio": 99.61059317268597,
+          "verdict": "PRESERVED"
+        },
+        "axis:texture": {
+          "gap": 0.9845680343571453,
+          "noise": 0.81839241510928,
+          "ratio": 1.203051270001905,
+          "verdict": "WEAK"
+        },
+        "axis:edge": {
+          "gap": 0.048362165945733886,
+          "noise": 0.0006754800707226938,
+          "ratio": 71.59673251942337,
+          "verdict": "PRESERVED"
+        },
+        "axis:specular": {
+          "gap": 0.03766790553469994,
+          "noise": 0.00038859565915224547,
+          "ratio": 96.93341818813849,
+          "verdict": "PRESERVED"
+        },
+        "axis:spatial_frequency": {
+          "gap": 0.21968701707109436,
+          "noise": 0.0002816839074790823,
+          "ratio": 779.9061687164653,
+          "verdict": "PRESERVED"
+        }
+      }
+    }
+  ],
+  "categories": [
+    "wild-diff",
+    "cat-diff",
+    "same-diff-src",
+    "hue-shift"
+  ],
+  "stages_ordered": [
+    "retinal_12",
+    "lgn",
+    "v1",
+    "v2",
+    "v4",
+    "it_80",
+    "axis_bundle",
+    "axis:radial_photon",
+    "axis:photon_histogram",
+    "axis:photon_correlation",
+    "axis:subsurface",
+    "axis:spatial_color",
+    "axis:color_ratio",
+    "axis:texture_vocab",
+    "axis:hu_moments",
+    "axis:persistent_homology",
+    "axis:dichromatic",
+    "axis:fourier_mellin",
+    "axis:texture",
+    "axis:edge",
+    "axis:specular",
+    "axis:spatial_frequency"
+  ],
+  "duration_s": 293.62603870000004
+}

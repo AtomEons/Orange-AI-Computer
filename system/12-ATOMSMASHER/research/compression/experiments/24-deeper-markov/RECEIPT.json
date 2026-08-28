@@ -1,0 +1,189 @@
+{
+  "experiment": "24-deeper-markov",
+  "generated_at": "2026-06-26T12:15:42.207Z",
+  "corpus_sha256_in": "5be5f1b4c6d742e3bbf8d498bc6835590123e9f2242c99a923b82c2b1c6480d4",
+  "field_entropies": {
+    "action": {
+      "H0": 2.4010305659954247,
+      "H1": 2.3176321954964556,
+      "H2": 2.1097504122277417,
+      "H3": 1.7988494736012097
+    },
+    "status": {
+      "H0": 0.002256781086428256,
+      "H1": 0.0022570692237216528,
+      "H2": 0.0022573574296723123,
+      "H3": 0.0022576457042979814
+    },
+    "created_at": {
+      "H0": 4.695612756505848,
+      "H1": 4.583811801582299,
+      "H2": 2.853889363503959,
+      "H3": 0.44295352069088983
+    },
+    "summary_tpl": {
+      "H0": 3.5562024301183452,
+      "H1": 2.7698359897456526,
+      "H2": 2.06992716780424,
+      "H3": 1.5029420702291736
+    },
+    "payload_tpl": {
+      "H0": 3.59710598144565,
+      "H1": 2.8060410006028422,
+      "H2": 2.0795049296459776,
+      "H3": 1.479025019306185
+    }
+  },
+  "field_range_coder_results": {
+    "action": {
+      "V": 66,
+      "by_order": {
+        "0": {
+          "achieved_bps": 6.0445,
+          "theoretical_bps": 2.401,
+          "gap_pct": 151.7,
+          "n_bits": 37621
+        },
+        "1": {
+          "achieved_bps": 2.5294,
+          "theoretical_bps": 2.3176,
+          "gap_pct": 9.1,
+          "n_bits": 15743
+        },
+        "2": {
+          "achieved_bps": 2.8353,
+          "theoretical_bps": 2.1098,
+          "gap_pct": 34.4,
+          "n_bits": 17647
+        },
+        "3": {
+          "achieved_bps": 3.2897,
+          "theoretical_bps": 1.7988,
+          "gap_pct": 82.9,
+          "n_bits": 20475
+        }
+      }
+    },
+    "status": {
+      "V": 2,
+      "by_order": {
+        "0": {
+          "achieved_bps": 1.0003,
+          "theoretical_bps": 0.0023,
+          "gap_pct": 44225.1,
+          "n_bits": 6226
+        },
+        "1": {
+          "achieved_bps": 0.0027,
+          "theoretical_bps": 0.0023,
+          "gap_pct": 21,
+          "n_bits": 17
+        },
+        "2": {
+          "achieved_bps": 0.0029,
+          "theoretical_bps": 0.0023,
+          "gap_pct": 28.1,
+          "n_bits": 18
+        },
+        "3": {
+          "achieved_bps": 0.0034,
+          "theoretical_bps": 0.0023,
+          "gap_pct": 49.4,
+          "n_bits": 21
+        }
+      }
+    },
+    "created_at": {
+      "V": 35,
+      "by_order": {
+        "0": {
+          "achieved_bps": 5.1295,
+          "theoretical_bps": 4.6956,
+          "gap_pct": 9.2,
+          "n_bits": 31926
+        },
+        "1": {
+          "achieved_bps": 4.6295,
+          "theoretical_bps": 4.5838,
+          "gap_pct": 1,
+          "n_bits": 28814
+        },
+        "2": {
+          "achieved_bps": 4.2882,
+          "theoretical_bps": 2.8539,
+          "gap_pct": 50.3,
+          "n_bits": 26690
+        },
+        "3": {
+          "achieved_bps": 4.1791,
+          "theoretical_bps": 0.443,
+          "gap_pct": 843.5,
+          "n_bits": 26011
+        }
+      }
+    },
+    "summary_tpl": {
+      "V": 900,
+      "by_order": {
+        "0": {
+          "achieved_bps": 9.8139,
+          "theoretical_bps": 3.5562,
+          "gap_pct": 176,
+          "n_bits": 61082
+        },
+        "1": {
+          "achieved_bps": 4.6971,
+          "theoretical_bps": 2.7698,
+          "gap_pct": 69.6,
+          "n_bits": 29235
+        },
+        "2": {
+          "achieved_bps": 5.8008,
+          "theoretical_bps": 2.0699,
+          "gap_pct": 180.2,
+          "n_bits": 36104
+        },
+        "3": {
+          "achieved_bps": 6.7797,
+          "theoretical_bps": 1.5029,
+          "gap_pct": 351.1,
+          "n_bits": 42197
+        }
+      }
+    },
+    "payload_tpl": {
+      "V": 802,
+      "by_order": {
+        "0": {
+          "achieved_bps": 9.6477,
+          "theoretical_bps": 3.5971,
+          "gap_pct": 168.2,
+          "n_bits": 60047
+        },
+        "1": {
+          "achieved_bps": 4.6968,
+          "theoretical_bps": 2.806,
+          "gap_pct": 67.4,
+          "n_bits": 29233
+        },
+        "2": {
+          "achieved_bps": 5.7559,
+          "theoretical_bps": 2.0795,
+          "gap_pct": 176.8,
+          "n_bits": 35825
+        },
+        "3": {
+          "achieved_bps": 6.6827,
+          "theoretical_bps": 1.479,
+          "gap_pct": 351.8,
+          "n_bits": 41593
+        }
+      }
+    }
+  },
+  "total_raw_field_bytes": 1248597,
+  "total_3rd_order_floor_bytes": 4066,
+  "theoretical_3rd_order_combined_ratio": 307.08,
+  "total_achieved_combined_bytes": 12530,
+  "achieved_combined_data_ratio": 99.65
+}

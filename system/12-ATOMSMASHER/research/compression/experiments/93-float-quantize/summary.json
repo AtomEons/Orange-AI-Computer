@@ -1,0 +1,14 @@
+{
+  "experiment": "93-float-quantize",
+  "N": 6224,
+  "numbers_total": 82899,
+  "numbers_fully_reconstructed": 79013,
+  "numbers_raw_fallback": 3886,
+  "total_bytes": 63358,
+  "ratio": 32.7596,
+  "vs_m19": -14.3104,
+  "enc_ms": 3931,
+  "dec_ms": 732,
+  "lossless": true,
+  "raw_jsonl_bytes": 2075585
+}

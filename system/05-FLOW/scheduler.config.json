@@ -1,0 +1,11 @@
+{
+  "$schema_note": "AE Flow scheduler config. Intervals in milliseconds. Reloaded on SIGHUP.",
+  "active_interval_ms": 1000,
+  "idle_interval_ms": 10000,
+  "idle_threshold_ticks": 3,
+  "concurrency_cap": 3,
+  "max_tick_drift_ms": 5000,
+  "log_every_n_ticks": 60,
+  "shutdown_grace_ms": 2000,
+  "heartbeat_ms": 30000
+}
