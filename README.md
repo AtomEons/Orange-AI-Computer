@@ -32,6 +32,12 @@ The public repository is the canonical launch object. Start with the
 [evidence ledger](proof/EVIDENCE_LEDGER.md), and then visit
 [Atom Eons](https://atomeons.com) for the wider body of work.
 
+Active development is preserving the next operational-intelligence layer in the
+[Wave 3 Full-Strength Treasury](docs/WAVE3_FULL_STRENGTH_TREASURY.md), with an
+executable [Conservation Kernel](docs/CONSERVATION_KERNEL.md) and bounded
+[STRONGARM discipline](docs/STRONGARM_DISCIPLINE.md). These development records
+do not alter the preview package's receipt-backed status.
+
 ## Install Through An LLM
 
 1. Download <code>OrangeFive-LLM-deploy.zip</code> from the [Wave 2 release](https://github.com/AtomEons/Orange-AI-Computer/releases/tag/wave-2-preview).

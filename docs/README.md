@@ -28,6 +28,9 @@ Markdown is source. Files under `pdf/` and `html/` are generated artifacts.
 5. [Bun Runtime](BUN_RUNTIME.md)
 6. [AtomSmasher Production](ATOMSMASHER_PRODUCTION.md)
 7. [Female Systems Design Innovations](FEMALE_SYSTEMS_DESIGN_INNOVATIONS.md)
+8. [Wave 3 Full-Strength Treasury](WAVE3_FULL_STRENGTH_TREASURY.md)
+9. [Conservation Kernel](CONSERVATION_KERNEL.md)
+10. [STRONGARM Execution Discipline](STRONGARM_DISCIPLINE.md)
 
 ## Manual Set
 
@@ -48,6 +51,9 @@ Markdown is source. Files under `pdf/` and `html/` are generated artifacts.
 | `ATOMIC_ORANGE_NATIVE_APP.md` | native operator surface, runtime crossing, states, and proof |
 | `ATOMSMASHER_PRODUCTION.md` | production workbench reduction, cold truth, operation, and limits |
 | `FEMALE_SYSTEMS_DESIGN_INNOVATIONS.md` | pre-1990 systems principles mapped to present and proposed architecture |
+| `WAVE3_FULL_STRENGTH_TREASURY.md` | 100 preserved mechanisms and the no-weaker-version law |
+| `CONSERVATION_KERNEL.md` | deterministic authority, custody, evidence, semantic, and uncertainty conservation |
+| `STRONGARM_DISCIPLINE.md` | bounded execution pressure, verification handoff, and authority law |
 
 Charter companion: [Wave 2 Captain's Log](../ORANGE_AI_COMPUTER_WAVE2_CAPTAINS_LOG.md).
 
