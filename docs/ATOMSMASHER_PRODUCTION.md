@@ -75,7 +75,7 @@ prompt guarantee, or permission to discard the source corpus.
 ## Operate And Verify
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun run test:atomsmasher
 bun run bench:context-crystal-quality
 bun run atomsmasher -- --help

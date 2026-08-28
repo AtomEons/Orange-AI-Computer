@@ -3,29 +3,28 @@
 This manual explains how to operate Æ Orange AI Computer without confusing a configured
 feature, a model suggestion, or a passing unit test with executed work.
 
-Orange is the product. Æ Orange AI Computer is the release. Orange3 is archived. Orange4
-was a theory phase. Atomic Orange is an optional interface; Orange must remain
-usable headlessly.
+Æ Orange AI Computer is the public product. Atomic Orange is an optional
+interface; the governed backend must remain usable headlessly.
 
-## Current Truth Pin - 2026-08-28
+## Recorded Lab Evidence - 2026-08-28
 
-- `orange-navigator:ornith-1.5-9b-q4km` is the live primary on authenticated
-  Codexa `10.0.0.4`; Q8 is retired from current authority and remains historical evidence.
-- Brain MCP is green with 10 stdio tools and 12 authenticated loopback HTTP
-  tools.
-- The accepted integrated snapshot is green at
-  `10-RECEIPTS/orange5-build/2026-08-28T03-42-45-242Z-integrated-operational-proof.json`.
-- Blue Bench accepted 10/10 exact-path lanes at
-  `10-RECEIPTS/orange5-build/2026-08-28T03-40-44-768Z-blue-bench.json`.
+- One recorded two-computer run routed its primary Navigator through an
+  authenticated compute host at `10.0.0.4`. That does not establish present
+  availability on another system.
+- The selected integrated receipt records 10 stdio and 12 authenticated
+  loopback HTTP Brain MCP tools.
+- The selected 10-lane receipt accepted 10/10 exact-path lanes in that run.
 - Context Crystal passed 5/5 held-out parity at a minimum `1422.901x` across a
   7,056,795-byte corpus.
 - AE Memory passed 23/23 with hybrid MRR `0.9058`, p50 `281 ms`, and p95
   `445 ms`.
 - Media artifacts are technically valid; studio quality is not certified.
-- Hermes Brain MCP delegation completed parent execution, child work, synthesis,
+- One Hermes Brain MCP delegation completed parent execution, child work, synthesis,
   receipt creation, and lease revocation with all ten checks true in
-  `11,409.53 ms`; receipt
-  `10-RECEIPTS/orange5-build/2026-08-28T04-13-22-203Z-brain-mcp-delegation-live-proof.json`.
+  `11,409.53 ms`.
+
+The selected public receipts are under `proof/`. Re-probe the exact target
+before relying on any route, host, model, or endpoint now.
 
 ## 1. Operator Mental Model
 
@@ -46,7 +45,7 @@ prove it.
 From the canonical root:
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun 03-BACKEND/spine-cli.mjs --health
 bun 03-BACKEND/orange.mjs status
 git status --short
@@ -73,10 +72,10 @@ Operational input is `orange.order.v1`. Prefer an order file for durable work.
   "orderId": "example-health-001",
   "action": "read.health",
   "payload": {},
-  "scope": ["C:/AtomEons/Orange5"],
+  "scope": ["C:/path/to/Orange-AI-Computer/system"],
   "allowedActions": ["read"],
   "forbiddenActions": ["delete", "deploy"],
-  "targetProject": "orange5",
+  "targetProject": "orange-ai-computer",
   "riskLevel": "low",
   "requiresReceipt": true
 }

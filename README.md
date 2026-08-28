@@ -1,149 +1,145 @@
 <p align="center">
-  <img src="assets/orange-ai-computer-hero.png" alt="Orange AI Computer control and compute nodes" width="100%">
+  <img src="assets/orange-ai-computer-hero.png" alt="Æ Orange AI Computer control and compute nodes" width="100%">
 </p>
 
 <h1 align="center">Æ Orange AI Computer</h1>
 
-<p align="center"><strong>A local-first intelligence operating layer for models, agents, memory, tools, and proof.</strong></p>
+<p align="center"><strong>Local-first AI operations with explicit authority, inspectable evidence, and receipts.</strong></p>
 
 <p align="center">
-  <img alt="Public preview" src="https://img.shields.io/badge/release-public_preview-ff6a00?style=for-the-badge">
-  <img alt="Windows" src="https://img.shields.io/badge/platform-Windows-111111?style=for-the-badge">
-  <img alt="Bun" src="https://img.shields.io/badge/runtime-Bun-111111?style=for-the-badge">
-  <img alt="Proven package" src="https://img.shields.io/badge/package-PROVEN-2ea043?style=for-the-badge">
+  <img alt="Source available" src="https://img.shields.io/badge/source-current-2ea043?style=for-the-badge">
+  <img alt="Windows first" src="https://img.shields.io/badge/platform-Windows_first-111111?style=for-the-badge">
+  <img alt="Evidence status bounded" src="https://img.shields.io/badge/evidence-bounded-ff6a00?style=for-the-badge">
 </p>
 
 <p align="center">
-  <a href="https://github.com/AtomEons/Orange-AI-Computer/releases/tag/wave-2-preview"><strong>Download the LLM deploy</strong></a>
-  · <a href="OrangeFive-LLM-deploy.proof.json">Package proof</a>
-  · <a href="proof/EVIDENCE_LEDGER.md">Evidence ledger</a>
-  · <a href="docs/README.md">Manuals</a>
-  · <a href="PREVIEW_STATUS.md">Preview status</a>
+  <a href="docs/CURRENT_SOURCE_AND_GAPS.md"><strong>Current source and gaps</strong></a>
+  · <a href="proof/EVIDENCE_LEDGER.md">Public evidence</a>
+  · <a href="docs/QUICK_START.md">Quick start</a>
+  · <a href="PREVIEW_STATUS.md">Status</a>
 </p>
 
 ---
 
-Æ Orange AI Computer turns one Windows computer, or a control computer plus a network AI box, into one governed intelligence system. Models are replaceable workers. Orange owns project truth, routing, memory, compression, tools, agents, receipts, and recovery.
+> **Work in progress:** Æ Orange AI Computer is being built in public. The
+> source is available now for inspection, experimentation, and contribution;
+> current gaps stay visible until live evidence closes them.
 
-The interface is not the intelligence. Use Orange through Codex, Claude Code, MCP, an OpenAI-compatible client, or the separately developed Atomic Orange app.
+Æ Orange AI Computer is a local-first control plane for operating models,
+memory, tools, bounded agents, and compute. Models may propose or perform work
+inside an approved path; deterministic code owns scope, policy, execution
+state, verification, and receipt authority.
 
-## Current System Source
+This repository contains current source, selected public evidence, and public
+manuals. Those are different evidence classes. Source proves that an
+implementation is present. A receipt proves only the named observation it
+records. Neither proves that an arbitrary computer is installed, integrated,
+or ready now.
 
-The complete canonical Orange system snapshot is published in [`system/`](system/). It includes the governed Bun runtime, OrangeBrain and Navigator control path, memory and compression organs, Hermes integration, ToolMesh, receipts, tests, model policy, and Wave 3 operational-intelligence work.
+## What Is Current
 
-Read the new [AE Phase Fabric technical paper](docs/AE_PHASE_FABRIC_TECHNICAL_PAPER.md) for the implementation, protocol, proof method, measured direct-link results, and the boundary between physical wire throughput and effective synchronized-state throughput.
+The current inspectable source is [`system/`](system/). It was published after
+the separately released deploy ZIP and includes later control-plane, native-app,
+research, and integration work. The source tree is the object to review for the
+current implementation; the older ZIP is not a current-source snapshot.
 
-The public repository is the canonical launch object. Start with the
-[Wave 2 brief](launch/WAVE_2_LAUNCH.md), inspect the
-[evidence ledger](proof/EVIDENCE_LEDGER.md), and then visit
-[Atom Eons](https://atomeons.com) for the wider body of work.
+| Public object | What it establishes | What it does not establish |
+|---|---|---|
+| [`system/`](system/) | Current source and checked-in configuration exist | Services are live, dependencies are installed, or every path is green |
+| [`proof/`](proof/) | The named lab runs produced the tracked results | Universal performance, third-party reproduction, or present machine health |
+| [Historical deploy record](docs/HISTORICAL_PACKAGE.md) | One prerelease ZIP passed its recorded package lifecycle | That ZIP contains current `system/` source or launched external runtimes and models |
+| [`docs/`](docs/) | Public operating and review guidance | A manual cannot promote a feature or close an integration gap |
 
-Active development is preserving the next operational-intelligence layer in the
-[Wave 3 Full-Strength Treasury](docs/WAVE3_FULL_STRENGTH_TREASURY.md), with an
-executable [Conservation Kernel](docs/CONSERVATION_KERNEL.md) and bounded
-[STRONGARM discipline](docs/STRONGARM_DISCIPLINE.md). These development records
-do not alter the preview package's receipt-backed status.
+## Current Organs
 
-## Install Through An LLM
+These organs are present in current source. Their names describe ownership
+boundaries, not a blanket runtime-status claim.
 
-1. Download <code>OrangeFive-LLM-deploy.zip</code> from the [Wave 2 release](https://github.com/AtomEons/Orange-AI-Computer/releases/tag/wave-2-preview).
-2. Extract it and open the folder in Codex or Claude Code.
-3. Say: **Read <code>INSTALL_ORANGE.md</code> completely and install Orange AI Computer.**
+| Organ | Current source | Responsibility |
+|---|---|---|
+| Charter and doctrine | [`system/00-CHARTER`](system/00-CHARTER), [`system/01-DOCTRINE`](system/01-DOCTRINE) | Authority, safety, runtime policy, and operator contracts |
+| Control spine | [`system/03-BACKEND`](system/03-BACKEND), [`system/04-CONTROL-PLANE`](system/04-CONTROL-PLANE) | Orders, durable runs, routing decisions, recovery, and completion boundaries |
+| Flow and gateway | [`system/05-FLOW`](system/05-FLOW), [`system/06-ORANGELLM`](system/06-ORANGELLM) | Work scheduling and OpenAI-compatible model access |
+| Memory and compression | [`system/06-ORANGELLM/memory`](system/06-ORANGELLM/memory), [`system/12-ATOMSMASHER`](system/12-ATOMSMASHER) | Retrieval, continuity, compact worksets, and source hydration |
+| Bounded execution and tools | [`system/08-HERMES`](system/08-HERMES), [`system/13-TOOLMESH`](system/13-TOOLMESH) | Governed actions, tool adapters, and authorization gates |
+| Visual and model roles | [`system/07-VISUAL`](system/07-VISUAL), [`system/14-SUPERSTACK`](system/14-SUPERSTACK) | Visual evidence and lease-governed specialist roles |
+| Atomic Orange | [`system/ATOMICORANGE`](system/ATOMICORANGE) | Optional native operator application source |
+| Schemas and receipts | [`system/09-SCHEMAS`](system/09-SCHEMAS), [`system/10-RECEIPTS`](system/10-RECEIPTS) | Contracts, proof artifacts, and audit chains |
+| Integrations and training | [`system/15-INTEGRATIONS`](system/15-INTEGRATIONS), [`system/16-TRAINING`](system/16-TRAINING) | Client bridges, infrastructure adapters, evaluation, and promotion work |
 
-The agent runs one command:
+The product remains usable in a headless design; Atomic Orange is an operator
+surface, not the owner of memory, policy, execution, or proof.
 
-    bun scripts/llm-deploy/orange-deploy.mjs install
+## What Public Evidence Proves
 
-That invocation authorizes the complete deterministic install. Orange discovers hardware, selects one-computer or distributed topology, adopts compatible runtimes, installs missing approved components, configures AI clients, starts hidden services, verifies readiness, and records rollback state.
+The tracked [Public Evidence Ledger](proof/EVIDENCE_LEDGER.md) reports bounded
+results for named runs, including:
 
-If Bun is absent, <code>ORANGE_START.cmd</code> performs the pinned bootstrap path and returns to the deploy engine.
+- a 10-lane lab suite accepted 10/10 lanes in its recorded two-computer run;
+- a 23-case retrieval benchmark recorded MRR `0.9058`;
+- a five-case Context Crystal benchmark preserved its required answers and
+  source pointers on the recorded held-out corpus;
+- one bounded Brain MCP and Hermes filesystem-read delegation completed its
+  authorization, child action, synthesis, receipt, and lease-revocation path;
+- controlled Fixer and link-recovery runs completed for their named injected
+  failures;
+- the latest tracked whole-repository summary found 228 test files, with 227
+  green and one red operational-audit aggregate.
 
-## How Orange Thinks
+These are not claims of general intelligence, universal compression,
+arbitrary autonomy, studio-quality media, cross-platform readiness, or a fully
+green product.
 
-    Operator / Codex / Claude / MCP client
-                        |
-                 orange.order.v1
-                        |
-            Brain MCP + Orange Navigator
-                        |
-         FLOW least-action orchestration
-              /         |          \
-       AE Cobra      Hermes       ToolMesh
-       memory        agents       effectors
-              \         |          /
-              AtomSmasher compression
-                        |
-           evidence + receipt + rollback
-                        |
-                 orange.report.v1
+## Historical Deploy ZIP
 
-| Organ | Responsibility |
-|---|---|
-| **OrangeBrain** | Holds project law and compiles decisions into executable orders. |
-| **Navigator** | Selects reflex, local model, specialist, or heavy-compute paths. |
-| **FLOW** | Keeps work moving through bounded, evidence-aware execution. |
-| **Hermes** | Dispatches role-specific agents and durable work without hidden authority. |
-| **AE Cobra** | Stores durable memory, recalls why, and surfaces prior failures. |
-| **AtomSmasher** | Compresses context and work while preserving source truth. |
-| **ToolMesh** | Exposes governed tools without model bypass. |
-| **Receipts** | Prove actions, hashes, evidence, blockers, and rollback pointers. |
-| **Compute Fabric** | Runs on one computer or discovers a Codexa-class compute node. |
+The GitHub prerelease published on 2026-08-28 contains the legacy-named asset
+`OrangeFive-LLM-deploy.zip`. The tracked report records 2,489 files,
+125,695,306 payload bytes, and this SHA-256:
 
-## Operating Law
+```text
+f841f28d08a1e0fc8b4e7939b07faafc6ea6c90ae27a28cf9f3e5e16bff0e650
+```
 
-- One public product: **Æ Orange AI Computer**.
-- Source evidence and receipts outrank model claims.
-- Models wake by lease instead of occupying memory permanently.
-- No model receives silent authority.
-- No feature is green without its exact live proof.
-- User memory, secrets, logs, and machine state remain outside the payload.
-- Failed probes stay visible. Orange never translates a blocker into success.
+Its extracted-payload proof exercised guarded planning, apply, readiness,
+rollback, data preservation, and payload re-verification without external
+mutation. The proof explicitly did **not** install or launch Bun, Ollama,
+Hermes, external services, model runtimes, or model weights. See the
+[historical package record](docs/HISTORICAL_PACKAGE.md) before using it.
 
-## Package Proof
+## Open Gaps
 
-The Wave 2 deploy ZIP contains **2,492 hash-locked files** representing
-**125,695,306 source payload bytes**. Packaging performed credential scanning,
-archive path/size/hash verification, guarded clean extraction, wrong-approval
-rejection, dry-run-before-mutation checks, apply/readiness proof, rollback,
-data-preservation proof, and post-lifecycle payload verification.
+- No current-source deploy ZIP, package proof, and release asset are published
+  together yet.
+- The historical ZIP is headless and predates current `system/` and Atomic
+  Orange source.
+- Atomic Orange source is present, but no signed current-source installer or
+  independent public end-to-end app proof is published here.
+- Models, credentials, optional runtimes, and external services are not bundled;
+  availability, licensing, download, and target-machine readiness remain live
+  gates.
+- Public integration evidence comes from named Atom Eons lab runs. Arbitrary
+  hardware, other operating systems, external MCP clients, and third-party
+  reproduction remain open coverage.
+- The tracked broad verifier is not wholly green.
 
-    SHA-256
-    f841f28d08a1e0fc8b4e7939b07faafc6ea6c90ae27a28cf9f3e5e16bff0e650
-
-Machine-specific runtime behavior remains receipt-gated. [Preview Status](PREVIEW_STATUS.md) records the deliberately visible field-test limits.
+The detailed register is in [Current Source and Gaps](docs/CURRENT_SOURCE_AND_GAPS.md).
 
 ## Documentation
 
-| Reader | Start here |
+| Need | Document |
 |---|---|
-| New operator | [Quick Start](docs/QUICK_START.md) |
-| System operator | [Operator Manual](docs/OPERATOR_MANUAL.md) |
-| Codex, Claude Code, or another coding model | [LLM Operator Guide](docs/LLM_OPERATOR_GUIDE.md) |
-| Systems engineer | [Technical Architecture](docs/TECHNICAL_ARCHITECTURE.md) |
-| Benchmark reviewer | [Proof and Benchmarks](docs/PROOF_AND_BENCHMARKS.md) |
-| Skeptical reviewer | [Skeptic's Field Guide](docs/SKEPTICS_FIELD_GUIDE.md) |
-| Memory researcher | [Memory and Learning](docs/MEMORY_AND_LEARNING.md) |
-| Compression researcher | [AtomSmasher Production](docs/ATOMSMASHER_PRODUCTION.md) |
-| Incident responder | [Troubleshooting and Recovery](docs/TROUBLESHOOTING_AND_RECOVERY.md) |
+| Understand source, evidence, and gaps | [Current Source and Gaps](docs/CURRENT_SOURCE_AND_GAPS.md) |
+| Inspect the old package boundary | [Historical Package](docs/HISTORICAL_PACKAGE.md) |
+| Start from current source | [Quick Start](docs/QUICK_START.md) |
+| Operate a configured system | [Operator Manual](docs/OPERATOR_MANUAL.md) |
+| Review architecture | [Technical Architecture](docs/TECHNICAL_ARCHITECTURE.md) |
+| Audit claims | [Proof and Benchmarks](docs/PROOF_AND_BENCHMARKS.md) |
+| Diagnose failures | [Troubleshooting and Recovery](docs/TROUBLESHOOTING_AND_RECOVERY.md) |
 
-The complete Markdown and PDF knowledge pack is in [`docs/`](docs). Public
-launch copy and the international distribution surface are in
-[`launch/`](launch).
-
-Launch material is also available in [Spanish, French, German, Brazilian
-Portuguese, Hindi, Arabic, and Russian](launch/LANGUAGES_GLOBAL.md), plus
-[Simplified Chinese, Japanese, and Korean](launch/LANGUAGES_EAST_ASIA.md).
-
-## Repository Map
-
-| File | Purpose |
-|---|---|
-| [AGENTS.md](AGENTS.md) | Installation and repair law for Codex and Claude Code. |
-| [OrangeFive-LLM-deploy.proof.json](OrangeFive-LLM-deploy.proof.json) | Extracted package lifecycle proof. |
-| [OrangeFive-LLM-deploy.report.json](OrangeFive-LLM-deploy.report.json) | Package inventory and verification report. |
-| [OrangeFive-LLM-deploy.zip.sha256](OrangeFive-LLM-deploy.zip.sha256) | Download integrity sidecar. |
-| [PREVIEW_STATUS.md](PREVIEW_STATUS.md) | Honest field-test status. |
+Internal compatibility names still appear inside exact filenames, paths,
+schemas, and commands. They are implementation identifiers, not public product
+or release names.
 
 ---
 
-<p align="center"><strong>Daybreak Blue × Atom Eons</strong><br>Intelligence with a memory, a method, and a receipt.</p>
+<p align="center"><strong>Æ Orange AI Computer</strong><br>Built by Atom Eons.</p>

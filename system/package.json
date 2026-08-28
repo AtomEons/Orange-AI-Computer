@@ -89,6 +89,7 @@
     "proof:models:provenance": "bun scripts/llm-deploy/model-provenance-proof.mjs",
     "test:release:safety": "bun test scripts/tests/release-portability-safety.test.mjs scripts/tests/atomic-orange-license-manifest.test.mjs",
     "proof:release:preflight": "bun scripts/git-promotion-preflight.mjs",
+    "proof:release:evidence": "bun 03-BACKEND/public-evidence-audit.mjs",
     "test:atomsmasher": "bun 12-ATOMSMASHER/full-scope/tests/run-all.mjs",
     "test:atomsmasher:legacy": "bun bin/atomsmasher-smoke-all.mjs",
     "atomsmasher": "bun 12-ATOMSMASHER/full-scope/cli.mjs",

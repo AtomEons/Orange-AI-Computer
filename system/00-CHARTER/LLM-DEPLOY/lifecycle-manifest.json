@@ -1,0 +1,65 @@
+{
+  "schema": "orange.deploy.lifecycle-manifest.v1",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "normalCommand": "bun scripts/llm-deploy/orange-deploy.mjs install",
+  "stateRoot": "%USERPROFILE%/OrangeBox-Data/orange5/deploy",
+  "sourceImmutable": true,
+  "states": [
+    {
+      "id": "SOURCE_VERIFIED",
+      "entryEvidence": ["required paths present", "payload lock valid when packaged"]
+    },
+    {
+      "id": "DISCOVERED",
+      "entryEvidence": ["orange.deploy.discovery.v1", "discoverySha256 valid"]
+    },
+    {
+      "id": "PLANNED",
+      "entryEvidence": ["orange.deploy.plan.v1", "planSha256 valid", "modelSetSha256 valid when models are selected"]
+    },
+    {
+      "id": "APPLYING",
+      "entryEvidence": ["exact plan approval hash accepted", "all dry-run actions completed before first mutation"]
+    },
+    {
+      "id": "APPLIED",
+      "entryEvidence": ["orange.deploy.apply-report.v1", "action ledger has no unresolved failure"]
+    },
+    {
+      "id": "READY",
+      "entryEvidence": ["orange.deploy.readiness.v1 with ready true", "fresh runtime probes passed"]
+    },
+    {
+      "id": "BLOCKED",
+      "entryEvidence": ["integrity, dependency, approval, action, or readiness blocker remains"]
+    },
+    {
+      "id": "ROLLED_BACK",
+      "entryEvidence": ["orange.deploy.rollback.v1", "status ROLLED_BACK_DATA_PRESERVED"]
+    }
+  ],
+  "transitions": [
+    { "from": "SOURCE_VERIFIED", "to": "DISCOVERED", "command": "discover", "mutates": false },
+    { "from": "DISCOVERED", "to": "PLANNED", "command": "plan", "mutates": false },
+    { "from": "PLANNED", "to": "APPLYING", "command": "apply", "mutates": true, "requiresExactApprovalHashes": true },
+    { "from": "APPLYING", "to": "APPLIED", "command": "apply", "mutates": true, "resumable": true },
+    { "from": "APPLIED", "to": "READY", "command": "status", "mutates": false, "requiresFreshProbes": true },
+    { "from": "DISCOVERED", "to": "BLOCKED", "command": "plan", "mutates": false },
+    { "from": "PLANNED", "to": "BLOCKED", "command": "apply", "mutates": false },
+    { "from": "APPLYING", "to": "BLOCKED", "command": "apply", "mutates": true },
+    { "from": "APPLIED", "to": "BLOCKED", "command": "status", "mutates": false },
+    { "from": "APPLIED", "to": "ROLLED_BACK", "command": "rollback", "mutates": true },
+    { "from": "READY", "to": "ROLLED_BACK", "command": "rollback", "mutates": true }
+  ],
+  "receipts": ["discovery", "plan", "apply", "readiness", "rollback", "package"],
+  "exitContract": {
+    "0": "command completed; inspect semantic status",
+    "1": "invalid input, integrity failure, or blocked execution",
+    "2": "readiness or status report produced but not ready"
+  },
+  "claims": {
+    "manifestDescribesRuntimeContract": true,
+    "liveLifecycleExecutedByThisManifest": false
+  }
+}

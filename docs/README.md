@@ -1,92 +1,75 @@
-# Æ Orange AI Computer Documentation Map
+# Æ Orange AI Computer Documentation
 
-This directory is the canonical public manual set for Æ Orange AI Computer.
-Markdown is source. Files under `pdf/` and `html/` are generated artifacts.
+This directory is the public manual set for Æ Orange AI Computer. Markdown is
+the canonical documentation source. PDFs are generated copies and never outrank
+their Markdown or the evidence they cite.
 
-## Reading Paths
+## Start With Truth
 
-### I want to use Orange
+1. [Current Source and Gaps](CURRENT_SOURCE_AND_GAPS.md)
+2. [Historical Package](HISTORICAL_PACKAGE.md)
+3. [Public status](../PREVIEW_STATUS.md)
+4. [Public evidence ledger](../proof/EVIDENCE_LEDGER.md)
 
-1. [Quick Start](QUICK_START.md)
-2. [Operator Manual](OPERATOR_MANUAL.md)
-3. [Troubleshooting and Recovery](TROUBLESHOOTING_AND_RECOVERY.md)
-4. [Atomic Orange Native App](ATOMIC_ORANGE_NATIVE_APP.md)
+## Operate And Inspect
 
-### I am a coding model with no prior memory
-
-1. [LLM Operator Guide](LLM_OPERATOR_GUIDE.md)
-2. [Technical Architecture](TECHNICAL_ARCHITECTURE.md)
-3. [Memory and Learning](MEMORY_AND_LEARNING.md)
-4. [Model Installation Guide](MODEL_INSTALLATION_GUIDE.md)
-
-### I am reviewing the engineering claims
-
-1. [Skeptic's Field Guide](SKEPTICS_FIELD_GUIDE.md)
-2. [Proof and Benchmarks](PROOF_AND_BENCHMARKS.md)
-3. [Receipts and Audit](RECEIPTS_AND_AUDIT.md)
-4. [Features Guide](FEATURES_GUIDE.md)
-5. [Bun Runtime](BUN_RUNTIME.md)
-6. [AtomSmasher Production](ATOMSMASHER_PRODUCTION.md)
-7. [Female Systems Design Innovations](FEMALE_SYSTEMS_DESIGN_INNOVATIONS.md)
-8. [Wave 3 Full-Strength Treasury](WAVE3_FULL_STRENGTH_TREASURY.md)
-9. [Conservation Kernel](CONSERVATION_KERNEL.md)
-10. [STRONGARM Execution Discipline](STRONGARM_DISCIPLINE.md)
-
-## Manual Set
-
-| Manual | Purpose |
+| Document | Purpose |
 |---|---|
-| `QUICK_START.md` | first safe health probe and order |
-| `OPERATOR_MANUAL.md` | daily operation, routes, evidence, recovery |
-| `LLM_OPERATOR_GUIDE.md` | zero-memory instructions for Codex, Claude, local models, and other clients |
-| `TECHNICAL_ARCHITECTURE.md` | system boundaries, data flow, topology, and design rationale |
-| `FEATURES_GUIDE.md` | capability inventory with evidence posture |
-| `MODEL_INSTALLATION_GUIDE.md` | fixed-manifest, role-based model deployment |
-| `BUN_RUNTIME.md` | why Bun owns the deterministic hot path |
-| `SKEPTICS_FIELD_GUIDE.md` | falsifiable answers to likely technical objections |
-| `PROOF_AND_BENCHMARKS.md` | exact evidence, metrics, denominators, and reproduction |
-| `TROUBLESHOOTING_AND_RECOVERY.md` | diagnosis and bounded repair |
-| `MEMORY_AND_LEARNING.md` | durable memory, retrieval, contradiction handling, and governed learning |
-| `RECEIPTS_AND_AUDIT.md` | receipt meaning, precedence, chains, and independent audit |
-| `ATOMIC_ORANGE_NATIVE_APP.md` | native operator surface, runtime crossing, states, and proof |
-| `ATOMSMASHER_PRODUCTION.md` | production workbench reduction, cold truth, operation, and limits |
-| `FEMALE_SYSTEMS_DESIGN_INNOVATIONS.md` | pre-1990 systems principles mapped to present and proposed architecture |
-| `WAVE3_FULL_STRENGTH_TREASURY.md` | 100 preserved mechanisms and the no-weaker-version law |
-| `CONSERVATION_KERNEL.md` | deterministic authority, custody, evidence, semantic, and uncertainty conservation |
-| `STRONGARM_DISCIPLINE.md` | bounded execution pressure, verification handoff, and authority law |
+| [Quick Start](QUICK_START.md) | distinguish source checkout, historical package, and configured runtime |
+| [Operator Manual](OPERATOR_MANUAL.md) | operate a configured system without confusing presence with proof |
+| [LLM Operator Guide](LLM_OPERATOR_GUIDE.md) | exact instructions for a coding model working inside the source tree |
+| [Technical Architecture](TECHNICAL_ARCHITECTURE.md) | boundaries, organs, data flow, and topology |
+| [Features Guide](FEATURES_GUIDE.md) | capability inventory with status vocabulary |
+| [Model Installation Guide](MODEL_INSTALLATION_GUIDE.md) | approval, provenance, acquisition, promotion, and rollback |
+| [Troubleshooting and Recovery](TROUBLESHOOTING_AND_RECOVERY.md) | diagnosis and bounded repair |
 
-Charter companion: [Wave 2 Captain's Log](../ORANGE_AI_COMPUTER_WAVE2_CAPTAINS_LOG.md).
+## Review Claims
 
-## Evidence Authority
+| Document | Purpose |
+|---|---|
+| [Proof and Benchmarks](PROOF_AND_BENCHMARKS.md) | metrics, denominators, receipts, and reproduction commands |
+| [Receipts and Audit](RECEIPTS_AND_AUDIT.md) | proof states, precedence, and chain review |
+| [Skeptic's Field Guide](SKEPTICS_FIELD_GUIDE.md) | falsifiable boundaries and objections |
+| [Bun Runtime](BUN_RUNTIME.md) | deterministic runtime scope and bounded measurements |
+| [Memory and Learning](MEMORY_AND_LEARNING.md) | retrieval, contradiction handling, and promotion limits |
+| [AtomSmasher Production](ATOMSMASHER_PRODUCTION.md) | compact worksets, source hydration, and limits |
+| [Atomic Orange Native App](ATOMIC_ORANGE_NATIVE_APP.md) | app ownership boundary and proof requirements |
+| [Conservation Kernel](CONSERVATION_KERNEL.md) | source-present transition invariants without runtime promotion |
+| [STRONGARM Discipline](STRONGARM_DISCIPLINE.md) | bounded execution pressure and verification handoff |
+| [Systems Design Research](FEMALE_SYSTEMS_DESIGN_INNOVATIONS.md) | sourced research candidates, not implementation claims |
+| [Alpha Adoption Ledger](GLOBAL_SYSTEMS_ALPHA_ADOPTION_LEDGER.md) | fact, candidate, archive, and reject boundaries |
+| [AE Phase Fabric Paper](AE_PHASE_FABRIC_TECHNICAL_PAPER.md) | a specific experimental transport and its measured limits |
 
-When documents conflict, use:
+## Evidence Precedence
 
-1. fresh semantic live probe;
-2. fresh receipt for the exact path;
-3. current executable test;
-4. current source/configuration;
-5. runtime authority;
-6. historical plans;
-7. chat claims.
+When documents conflict, use this order:
 
-A generated PDF never outranks its Markdown source. A manual never turns a
-feature green.
+1. a current semantic live probe for the exact target;
+2. a current receipt for the exact path;
+3. a current executable test for the stated contract;
+4. current source and configuration;
+5. historical package records and plans;
+6. prose claims.
 
-## Rebuild HTML And PDF
+A process start, HTTP 200, file presence, model response, screenshot, or build
+success is not end-to-end proof unless the acceptance contract says it is.
+
+## Preserved History
+
+Planning and idea records using prior internal vocabulary are preserved under
+[`docs/history/internal-development/`](history/internal-development/). They are
+historical inputs, not current public naming, runtime authority, or proof.
+
+## Build PDFs
+
+From the repository root:
 
 ```powershell
-cd C:\AtomEons\Orange5
-bun run docs:build
+bun docs/build-manuals.mjs
 ```
 
-The build uses Bun's Markdown renderer and an installed Chrome or Edge headless
-printer. It emits `00-CHARTER/GUIDES/manual-build-manifest.json` with SHA-256
-hashes for every source and generated artifact.
+The builder writes only under `docs/pdf/` and updates
+`docs/manual-build-manifest.json` with source and output SHA-256 values.
 
-## Editing Law
-
-- Edit Markdown only.
-- Keep machine-specific secrets and tokens out of documentation.
-- Pin claims to a receipt and state what the receipt does not prove.
-- Do not turn research, installation, or configuration into runtime claims.
-- Rebuild generated artifacts after source changes.
+Internal compatibility names appear only where an exact path, schema, artifact,
+or command requires them. The public product name is **Æ Orange AI Computer**.

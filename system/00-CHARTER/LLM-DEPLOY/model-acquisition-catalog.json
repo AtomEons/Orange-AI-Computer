@@ -2,7 +2,7 @@
   "schema": "orange.deploy.model-acquisition-catalog.v1",
   "product": "OrangeFive",
   "sourceCatalog": "14-SUPERSTACK/captain-planet-stack.json",
-  "sourceCatalogSha256": "b9012f31e065e38a2f0d703c41592bbd6614dee7cae630b0bd3f6c6cfbfe16ad",
+  "sourceCatalogSha256": "e20a0c9cf717c25944e4f431c0dad1086e7aac30fd5bc496d541edadacce52de",
   "generatedAt": "2026-08-27T15:28:05.8427878Z",
   "policy": {
     "modelWeightsInPayload": false,

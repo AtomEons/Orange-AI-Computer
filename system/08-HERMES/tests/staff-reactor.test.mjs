@@ -82,4 +82,35 @@ describe("Hermes staff reactor", () => {
     expect(received.every((item) => item.projectNow.projectId === "orange")).toBeTrue();
     expect(received.every((item) => item.projectNow.commitments.includes("no fake green"))).toBeTrue();
   });
+
+  test("shares one canonical order object across all 50 role dispatches", async () => {
+    const received = [];
+    const order = {
+      schema: "orange.order.v1",
+      orderId: "shared-all-50",
+      action: "inspect.shared-order",
+      payload: { shared: true },
+    };
+    const reactor = new StaffReactor({
+      roster: roster(),
+      dispatch: async ({ event, projectNow }) => {
+        received.push({ event, projectNow });
+        return { status: "completed" };
+      },
+    });
+
+    const published = await reactor.publish({
+      id: order.orderId,
+      topic: order.action,
+      order,
+      broadcast: true,
+      requiresModel: false,
+    });
+
+    expect(received).toHaveLength(50);
+    expect(new Set(received.map((item) => item.event)).size).toBe(1);
+    expect(new Set(received.map((item) => item.projectNow.order)).size).toBe(1);
+    expect(received.every((item) => item.event.order === order && item.projectNow.order === order)).toBeTrue();
+    expect(published.event.order).toBe(order);
+  });
 });

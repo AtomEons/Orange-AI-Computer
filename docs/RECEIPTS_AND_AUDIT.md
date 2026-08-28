@@ -87,7 +87,7 @@ inspect the same evidence and reach the same bounded conclusion.
 ## Verify
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun run verify:json
 ```
 

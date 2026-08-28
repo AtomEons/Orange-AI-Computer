@@ -1,0 +1,65 @@
+{
+  "schema": "orange.deploy.discovery-plans.v1",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "evidenceLevel": "static-plan",
+  "runtimeDiscoverySchema": "orange.deploy.discovery.v1",
+  "command": "bun scripts/llm-deploy/orange-deploy.mjs discover",
+  "plans": [
+    {
+      "id": "one-computer",
+      "topology": "single-computer",
+      "selectionRule": "Use when no trusted remote compute node is live-proven or when explicitly selected by the operator.",
+      "nodes": {
+        "control": "local Windows host",
+        "compute": "same local Windows host"
+      },
+      "requiredObservations": [
+        "source and external data roots",
+        "local CPU, logical-core, RAM, disk, and network inventory",
+        "compatible Bun, Ollama, and Hermes installations",
+        "local model files with exact size and SHA-256 evidence",
+        "payload lock and required-file integrity"
+      ],
+      "mutationDuringDiscovery": false,
+      "fallback": null
+    },
+    {
+      "id": "two-computer",
+      "topology": "control-plus-compute",
+      "selectionRule": "Use only after the compute node is returned by the Orange compute fabric with a trusted SSH CIM hardware probe.",
+      "nodes": {
+        "control": "local Windows control host",
+        "computeCandidatesInOrder": [
+          "CODEXA",
+          "CODEXA.local",
+          "10.0.0.4"
+        ]
+      },
+      "requiredObservations": [
+        "all one-computer control-host observations",
+        "trusted remote host identity and user profile",
+        "remote CPU, logical-core, RAM, disk, and network inventory from ssh-cim-live",
+        "remote Ollama, Hermes, and model inventory without adopting remote evidence as local evidence",
+        "resolved external compute state and model-store paths"
+      ],
+      "mutationDuringDiscovery": false,
+      "blockers": [
+        "COMPUTE_NODE_NOT_DISCOVERED",
+        "COMPUTE_HARDWARE_NOT_PROVEN",
+        "COMPUTE_STATE_ROOT_UNRESOLVED"
+      ],
+      "fallback": "Rerun planning with --topology single-computer; never translate a failed two-computer probe into two-computer readiness."
+    }
+  ],
+  "receipts": {
+    "stage": "discovery",
+    "stateFile": "discovery.json",
+    "externalRoot": "%USERPROFILE%/OrangeBox-Data/orange5/deploy"
+  },
+  "claims": {
+    "liveDiscoveryPerformedByThisManifest": false,
+    "liveCodexaProof": false,
+    "liveModelProof": false
+  }
+}

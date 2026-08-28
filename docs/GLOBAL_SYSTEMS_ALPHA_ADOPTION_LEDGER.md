@@ -4,10 +4,10 @@
 **Review date:** 2026-08-28  
 **Operational adoptions authorized here:** none
 
-This ledger reduces the completed systems research to bounded OrangeFive alpha
-decisions. `ADOPT_*` admits only the named experiment or invariant to a proof
+This ledger reduces the completed systems research to bounded alpha decisions
+for Æ Orange AI Computer. `ADOPT_*` admits only the named experiment or invariant to a proof
 queue. It does not mean `OPERATIONAL`, permit production wiring, or satisfy the
-[Orange5 Operational Law](../ORANGE5_OPERATIONAL_LAW.md). `ARCHIVE_*` means do
+[operational law](../system/00-CHARTER/ORANGE5_OPERATIONAL_LAW.md). `ARCHIVE_*` means do
 not implement until its stated reopening condition is met.
 
 ## Claim Discipline
@@ -23,16 +23,16 @@ not implement until its stated reopening condition is met.
   for any candidate below.
 - Citations identify prior work; they do not assign sole invention credit or
   transfer ownership, endorsement, names, data, protocols, cultural knowledge,
-  or community authority to OrangeFive. No cultural analogy authorizes use.
+  or community authority to Æ Orange AI Computer. No cultural analogy authorizes use.
 
 ## Decisions
 
 ### 1. AE Link Work Custody
 
-- **FACT:** [AE Link](../../03-BACKEND/ae-link/README.md) is an isolated,
+- **FACT:** [AE Link](../system/03-BACKEND/ae-link/README.md) is an isolated,
   non-production TCP proof with authenticated frames, channel cursors, replay
   suppression, resume, and a disk journal. Its focused
-  [test](../../03-BACKEND/tests/ae-link.test.mjs) passed 8/8 on 2026-08-28.
+  [test](../system/03-BACKEND/tests/ae-link.test.mjs) passed 8/8 on 2026-08-28.
 - **INFERENCE:** Frame delivery and acknowledgement do not establish who owns
   accepted work, whether cancellation won a race, or whether an external effect
   happened exactly once.
@@ -77,9 +77,9 @@ not implement until its stated reopening condition is met.
 
 ### 3. Calibrated Cost Routing
 
-- **FACT:** The current [least-action router](../../06-ORANGELLM/router-least-action.mjs)
+- **FACT:** The current [least-action router](../system/06-ORANGELLM/router-least-action.mjs)
   uses static relative `est_cost` and nameplate latency values. Its
-  [test](../../06-ORANGELLM/tests/router-least-action.test.mjs) explicitly treats
+  [test](../system/06-ORANGELLM/tests/router-least-action.test.mjs) explicitly treats
   cost as a lookup outside the decision hash. Prior model-calibration research is
   documented by [Gladys West's Space Force biography](https://www.spaceforce.mil/Portals/2/Documents/Space_Pioneers/Space_Pioneers_Bios/SF_Space_Pioneers_Bio_West.pdf)
   and time-indexed prediction work by [Melba Roy Mouton's NASA teams](https://www.nasa.gov/wp-content/uploads/2015/10/goddardviewv13i1print.pdf).
@@ -102,7 +102,7 @@ not implement until its stated reopening condition is met.
 
 ### 4. Active Sensing
 
-- **FACT:** The [AE Eyes photon doctrine](../AEYES1_PHOTON_INFERENCE_DOCTRINE_2026-07-08.md)
+- **FACT:** The [AE Eyes photon doctrine](../system/00-CHARTER/AEYES1_PHOTON_INFERENCE_DOCTRINE_2026-07-08.md)
   lists active sensing as missing. Active perception treats sensing as a choice
   of the next measurement, not passive intake ([Bajcsy, 1988](https://doi.org/10.1109/5.5968)).
 - **INFERENCE:** A bounded extra view can reduce ambiguity, but can also add
@@ -172,7 +172,7 @@ not implement until its stated reopening condition is met.
 
 - **FACT:** [Memory and Learning](MEMORY_AND_LEARNING.md) says indexes and
   compressed views are projections, never replacements for exact source. The
-  bounded [memory receipt](../../10-RECEIPTS/orange5-build/2026-08-27T16-42-16-141Z-memory-quality-benchmark.json)
+  selected [integrated receipt](../proof/2026-08-28T03-42-45-242Z-integrated-operational-proof.json)
   records 23/23 cases, MRR 0.9058, p50 281 ms, and p95 445 ms; it does not prove
   all corpora or projection rebuilds. Machine-independent exchange separation
   has provenance in the [Library of Congress MARC collection](https://findingaids.loc.gov/repositories/29/resources/6461).
@@ -284,7 +284,7 @@ not implement until its stated reopening condition is met.
 ### 12. Federated Registry
 
 - **FACT:** Orange has a local model registry and a separate
-  [read-mostly federation protocol](../../04-CONTROL-PLANE/federation/README.md)
+  [read-mostly federation protocol](../system/04-CONTROL-PLANE/federation/README.md)
   that explicitly does not merge state, identity, authority, or receipt chains.
   Interface-governed multi-party operations have prior documented practice in a
   [NASA Mission Operations Working Group](https://ntrs.nasa.gov/api/citations/20150010989/downloads/20150010989.pdf?attachment=true).

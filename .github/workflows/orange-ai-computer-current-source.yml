@@ -1,0 +1,135 @@
+name: Orange AI Computer Current Source
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: orange-ai-computer-current-source-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package-and-verify:
+    name: Package and verify (Windows)
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout clean source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+
+      - name: Parse release PowerShell
+        shell: pwsh
+        run: |
+          $paths = @(
+            'system/scripts/llm-deploy/pack-orangefive-llm-deploy.ps1',
+            'system/scripts/llm-deploy/package-current-source-from-clean-clone.ps1',
+            'system/scripts/verify-orangefive-source-package.ps1'
+          )
+          foreach ($path in $paths) {
+            $tokens = $null
+            $errors = $null
+            [Management.Automation.Language.Parser]::ParseFile((Resolve-Path $path), [ref]$tokens, [ref]$errors) | Out-Null
+            if ($errors.Count) { throw "$path failed PowerShell parsing: $($errors.Message -join '; ')" }
+          }
+
+      - name: Run focused packaging tests
+        shell: pwsh
+        run: >-
+          bun test
+          system/scripts/llm-deploy/tests/packer.test.mjs
+          system/scripts/llm-deploy/tests/operator-surface.test.mjs
+
+      - name: Package committed source from clean clone
+        shell: pwsh
+        run: |
+          $output = Join-Path $env:RUNNER_TEMP 'orange-ai-computer-current-source'
+          & ./system/scripts/llm-deploy/package-current-source-from-clean-clone.ps1 `
+            -RepositoryRoot $env:GITHUB_WORKSPACE `
+            -DestinationRoot $output
+          if ($LASTEXITCODE -ne 0) { throw 'Clean-clone current-source packaging failed.' }
+          $reportPath = Join-Path $output 'Orange-AI-Computer-Wave-4A-Green.clean-clone-report.json'
+          $report = Get-Content -LiteralPath $reportPath -Raw | ConvertFrom-Json
+          if ($report.status -ne 'VERIFIED' -or -not $report.deterministicRepeat.verified) { throw 'Clean-clone package report is not VERIFIED.' }
+          if ($report.package.releaseProofStatus -ne 'PROVEN' -or $report.publishPerformed) { throw 'Release proof or no-publish contract failed.' }
+
+  brain-mcp-ae-staff:
+    name: Brain MCP and AE Staff (Windows)
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout clean source
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+
+      - name: Verify repaired Brain MCP and AE Staff contracts
+        shell: pwsh
+        run: >-
+          bun test
+          system/03-BACKEND/tests/orange5-brain-mcp-server.test.mjs
+          system/03-BACKEND/tests/orange5-brain-mcp-ae-staff.test.mjs
+          system/03-BACKEND/tests/public-evidence-audit.test.mjs
+
+  atomic-orange-contract:
+    name: Atomic Orange contract, web, and Rust (Windows)
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout clean source
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+
+      - name: Install locked Atomic Orange dependencies
+        shell: pwsh
+        working-directory: system/ATOMICORANGE
+        run: corepack yarn install --immutable
+
+      - name: Build shared core workspace
+        shell: pwsh
+        working-directory: system/ATOMICORANGE
+        run: corepack yarn build:core:workspace
+
+      - name: Verify Atomic Orange runtime contracts
+        shell: pwsh
+        working-directory: system/ATOMICORANGE
+        run: corepack yarn test:contracts
+
+      - name: Verify Atomic Orange web types
+        shell: pwsh
+        working-directory: system/ATOMICORANGE
+        run: corepack yarn workspace @janhq/web-app exec tsc -b
+
+      - name: Verify backend manifest resolver
+        shell: pwsh
+        working-directory: system/ATOMICORANGE
+        run: bun test tests/upstream-backend-resolver.test.mjs
+
+      - name: Check locked Atomic Orange Rust target
+        shell: pwsh
+        working-directory: system/ATOMICORANGE
+        run: cargo check --locked --manifest-path ./src-tauri/Cargo.toml --bin Atomic-Chat

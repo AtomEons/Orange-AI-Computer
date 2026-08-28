@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const repositoryRoot = resolve(import.meta.dir, '..', '..');
-const atomicRoot = join(repositoryRoot, '02-ATOMIC-ORANGE-V1');
+const atomicRoot = join(repositoryRoot, 'ATOMICORANGE');
 const manifestPath = join(atomicRoot, 'LICENSES', 'source-license-manifest.json');
 const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
 
@@ -41,9 +41,9 @@ function packageMetadata(component) {
 }
 
 describe('Atomic Orange source license manifest', () => {
-  test('keeps the audit private, source-only, and explicitly not cleared for redistribution', () => {
-    expect(manifest.repository.visibility).toBe('private');
-    expect(manifest.repository.parentTrackingAtAudit).toBe('untracked');
+  test('records the public tracked source while keeping redistribution clearance explicit', () => {
+    expect(manifest.repository.visibility).toBe('public');
+    expect(manifest.repository.parentTrackingAtAudit).toBe('tracked');
     expect(manifest.scope.kind).toBe('source-only');
     expect(manifest.scope.redistributionStatus).toBe('not-cleared');
     expect(manifest.repositoryFallback.license).toBe('Apache-2.0');

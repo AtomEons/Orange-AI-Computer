@@ -1,8 +1,15 @@
 <img src="https://github.com/AtomicBot-ai/Atomic-Chat/raw/main/assets/logo.png" width="80" alt="Atomic Chat" />
 
-# Atomic Chat
+# Atomic Orange
 
-Local AI app and inference engine for agents. Run open-weight LLMs locally — private, on your machine.
+Atomic Orange is the AtomEons desktop AI operator, built from the current
+Atomic Chat-derived Tauri application and its local inference stack.
+
+This directory is the canonical application root. Use the root `package.json`
+and Yarn commands for development, tests, checks, and packaging. The active
+Rust application manifest is `src-tauri/Cargo.toml`; the earlier standalone
+Rust/WGPU cockpit is preserved under `legacy/rust-wgpu-cockpit/` and is not a
+shipping entrypoint.
 
 <a href="https://github.com/AtomicBot-ai/Atomic-Chat/stargazers"><img src="https://img.shields.io/github/stars/AtomicBot-ai/Atomic-Chat?style=flat&logo=github&label=Stars&color=f5c542" alt="Stars" /></a>&nbsp;
 <a href="https://github.com/AtomicBot-ai/Atomic-Chat/network/members"><img src="https://img.shields.io/github/forks/AtomicBot-ai/Atomic-Chat?style=flat&logo=github&label=Forks&color=4ac1f2" alt="Forks" /></a>&nbsp;
@@ -155,31 +162,33 @@ A few projects already ship first-class support with their own setup docs:
 - Rust (for Tauri)
 - (Apple Silicon) MetalToolchain `xcodebuild -downloadComponent MetalToolchain`
 
-#### Run with Make
+#### Canonical entrypoint
 
-```bash
-git clone https://github.com/AtomicBot-ai/Atomic-Chat
-cd Atomic-Chat
-make dev
+Run these commands from `system/ATOMICORANGE`:
+
+```powershell
+corepack yarn install --immutable
+corepack yarn dev
 ```
 
-This handles everything: installs dependencies, builds core components, and launches the app.
+The root package is the only active application entrypoint:
 
-**Available make targets:**
+- `corepack yarn build` builds and packages the Tauri desktop application for
+  the current platform.
+- `corepack yarn test` runs the root Vitest projects for `core` and `web-app`.
+- `corepack yarn check` builds the shared core and frontend, then checks the
+  locked Tauri Rust manifest.
 
-- `make dev` — full development setup and launch
-- `make build` — production build
-- `make test` — run tests and linting
-- `make clean` — delete everything and start fresh
+`make dev`, `make build`, and `make test` remain orchestration conveniences, but
+they delegate to these root Yarn scripts.
 
 #### Manual Commands
 
-```bash
-yarn install
-yarn build:tauri:plugin:api
-yarn build:core
-yarn build:extensions
-yarn dev
+```powershell
+corepack yarn build:tauri:plugin:api
+corepack yarn build:core
+corepack yarn build:extensions
+corepack yarn dev
 ```
 
 ---

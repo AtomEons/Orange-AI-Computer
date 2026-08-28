@@ -388,7 +388,7 @@ contract.
 
 ## 13. Reproduction
 
-From `C:\AtomEons\Orange5`:
+From the repository's `system/` directory:
 
 ```powershell
 # Current local service state
@@ -413,25 +413,25 @@ transition requires retry.
 ## 14. Implementation Map
 
 ```text
-C:\AtomEons\Orange5\03-BACKEND\ae-phase-protocol.mjs
+system/03-BACKEND/ae-phase-protocol.mjs
   Binary frame, AEAD, receive window, acknowledgements.
 
-C:\AtomEons\Orange5\03-BACKEND\ae-phase-fabric.mjs
+system/03-BACKEND/ae-phase-fabric.mjs
   State compiler, Fabric runtime, path policy, hydration, instrumentation.
 
-C:\AtomEons\Orange5\scripts\ae-phase-service-launcher.mjs
+system/scripts/ae-phase-service-launcher.mjs
   Hidden persistent service launcher.
 
-C:\AtomEons\Orange5\scripts\install-ae-phase-codexa-service.ps1
+system/scripts/install-ae-phase-codexa-service.ps1
   Codexa startup-task and firewall installation.
 
-C:\AtomEons\Orange5\scripts\ae-phase-zing-proof.mjs
+system/scripts/ae-phase-zing-proof.mjs
   Exact shared-basis transform-to-ACK proof.
 
-C:\AtomEons\Orange5\scripts\ae-phase-basis-verify.mjs
+system/scripts/ae-phase-basis-verify.mjs
   Independent basis digest and byte-length verifier.
 
-C:\AtomEons\Orange5\01-DOCTRINE\AE_PHASE_FABRIC_DOCTRINE.md
+system/01-DOCTRINE/AE_PHASE_FABRIC_DOCTRINE.md
   Governing operational law and proof boundary.
 ```
 

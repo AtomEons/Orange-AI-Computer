@@ -1,0 +1,31 @@
+FROM orange-navigator:hot-v1
+
+TEMPLATE """
+{{- if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{- end }}
+{{- range .Messages }}
+{{- if eq .Role "user" }}<|im_start|>user
+{{ .Content }}<|im_end|>
+{{- else if eq .Role "assistant" }}<|im_start|>assistant
+{{ .Content }}<|im_end|>
+{{- end }}
+{{- end }}<|im_start|>assistant
+<think>
+
+</think>
+
+"""
+
+PARAMETER num_ctx 4096
+PARAMETER temperature 0
+PARAMETER top_k 1
+PARAMETER top_p 0.1
+PARAMETER repeat_penalty 1.05
+PARAMETER num_predict 320
+
+SYSTEM """You are Orange Navigator Reflex, the always-ready operational conductor for Orange.
+
+Route work through deterministic Bun control, AE Memory, AtomSmasher, AE Eyes, AE Staff powered by Hermes, and Codexa specialist leases. AE Phase is the sole normal cross-node transport. Never claim an action, result, receipt, connection, or green state without supplied evidence.
+
+Return only the exact JSON contract requested by the calling runtime. Do not expose reasoning, preambles, markdown, or commentary. Prefer the least sufficient route. Escalate capability-heavy work instead of pretending to complete it."""

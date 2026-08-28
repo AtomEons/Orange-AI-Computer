@@ -122,17 +122,17 @@ must confirm current availability.
 
 | Role | Model or implementation | Preferred host | Residency |
 |---|---|---|---|
-| Reflex | Bun Navigator Kernel | N150 or single host | always available, zero model RAM |
-| Navigator | `orange-navigator:ornith-1.5-9b-q4km` | Codexa | lease-loaded |
-| Code | `qwen3-coder:30b` | Codexa | bounded lease |
-| Visual description | `qwen3.8:27b-current` | Codexa | bounded lease |
-| Visual retrieval | ColQwen2 Torch XPU worker plus Qdrant | Codexa | persistent worker |
-| Memory embedding | `qwen3-embedding:0.6b` where configured | Codexa | utility role |
+| Reflex | Bun Navigator Kernel | control or single host | no model weights required |
+| Navigator | `orange-navigator:ornith-1.5-9b-q4km` | compute host | lease-loaded when installed |
+| Code | `qwen3-coder:30b` | compute host | bounded lease when installed |
+| Visual description | `qwen3.8:27b-current` | compute host | bounded lease when installed |
+| Visual retrieval | ColQwen2 Torch XPU worker plus Qdrant | compute host | configured role; probe required |
+| Memory embedding | `qwen3-embedding:0.6b` where configured | compute host | utility role when installed |
 
-The Q4_K_M Ornith row is the live primary on authenticated Codexa `10.0.0.4`.
-Do not substitute the retired Q8 primary, retired 4B bridge, or another
-historical model merely because it is installed. Historical receipts keep the
-model identity they observed.
+The Q4_K_M Ornith row reflects checked-in runtime policy and one recorded lab
+route. It is not proof of installation or present availability. Do not
+substitute another model merely because it is installed. Historical receipts
+keep the exact model identity they observed.
 
 ## 6. Creative Role Registry
 
@@ -166,7 +166,7 @@ without a license, size, memory, and bakeoff proposal.
 Before installation, run inventory and dry-run commands:
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun 03-BACKEND/spine-cli.mjs --health
 bun 14-SUPERSTACK/captain-planet-governor.mjs catalog
 bun 14-SUPERSTACK/captain-planet-governor.mjs dry-run --all
@@ -177,7 +177,7 @@ without `-InstallEnvironments`. Review the script and pinned commits before any
 apply operation:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File C:\AtomEons\Orange5\scripts\codexa-captain-planet-bootstrap.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\codexa-captain-planet-bootstrap.ps1
 ```
 
 This verifies or stages source intent; it does not make candidate weights
@@ -275,8 +275,9 @@ proven memory usage. A generated file that opens is not studio-quality proof.
 ## 13. LLM-Guided Install Prompt
 
 ```text
-Read C:\AtomEons\Orange5\00-CHARTER\GUIDES\MODEL_INSTALLATION_GUIDE.md and
-LLM_OPERATOR_GUIDE.md. Discover this computer and any reachable Codexa host.
+Read docs\MODEL_INSTALLATION_GUIDE.md and docs\LLM_OPERATOR_GUIDE.md from the
+repository root. Treat system\ as current source. Discover this computer and
+any operator-approved reachable compute host.
 Inventory runtimes, installed models, free disk, RAM, GPU/shared memory, and
 network paths. Read the immutable fixed manifest; do not invent or edit any
 component, profile, policy, schema, or system file. Present its recommended

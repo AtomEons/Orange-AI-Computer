@@ -31,13 +31,13 @@ not prove it was routed. An HTTP response does not prove semantic health. A
 file's existence does not prove its content. A screenshot does not prove the
 backend unless both share a run or receipt identity.
 
-## Current Accepted Evidence Set
+## Selected Public Evidence Set
 
 ### Blue Bench
 
 Receipt:
 
-`10-RECEIPTS/orange5-build/2026-08-28T03-40-44-768Z-blue-bench.json`
+[`2026-08-28T03-40-44-768Z-blue-bench.json`](../proof/2026-08-28T03-40-44-768Z-blue-bench.json)
 
 Result: 10 accepted lanes of 10 in that run:
 
@@ -59,7 +59,7 @@ operational suite with exact-path freshness and evidence checks.
 
 Receipt:
 
-`10-RECEIPTS/orange5-build/2026-08-28T03-42-45-242Z-integrated-operational-proof.json`
+[`2026-08-28T03-42-45-242Z-integrated-operational-proof.json`](../proof/2026-08-28T03-42-45-242Z-integrated-operational-proof.json)
 
 Accepted observations include:
 
@@ -78,7 +78,7 @@ Accepted observations include:
 
 Receipt:
 
-`10-RECEIPTS/orange5-build/2026-08-28T04-13-22-203Z-brain-mcp-delegation-live-proof.json`
+[`2026-08-28T04-13-22-203Z-brain-mcp-delegation-live-proof.json`](../proof/2026-08-28T04-13-22-203Z-brain-mcp-delegation-live-proof.json)
 
 Observed path:
 
@@ -138,7 +138,7 @@ universal byte codec and not a guarantee for arbitrary prompts.
 ### Reproduce
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun run bench:context-crystal-quality
 bun run test:atomsmasher
 ```
@@ -173,7 +173,7 @@ fresh receipts and live probes outrank older prose.
 ### Reproduce
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun run bench:memory-quality
 ```
 
@@ -195,7 +195,7 @@ loopback surface serve different callers.
 ### Reproduce
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun run test:orange:mcp
 bun run proof:orange:mcp
 ```
@@ -213,7 +213,7 @@ acceptance condition, not cleanup commentary.
 ### Reproduce
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun run test:orange:effector
 bun run proof:orange:hermes-live
 bun 03-BACKEND/brain-mcp-delegation-live-proof.mjs

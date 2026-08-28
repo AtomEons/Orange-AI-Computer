@@ -2,8 +2,8 @@
 
 ## 1. Scope And Authority
 
-Orange is the product. Æ Orange AI Computer is the active release. This document explains
-the architecture; it is not a green receipt.
+Æ Orange AI Computer is the public product. This document explains the current
+source architecture; it is not a live-health or package receipt.
 
 When sources disagree, use this authority order:
 
@@ -18,17 +18,14 @@ When sources disagree, use this authority order:
 The locked master plan preserves design history, but current runtime authority
 supersedes historical model names, host roles, endpoints, and residency.
 
-### 2026-08-28 truth pin
+### Selected 2026-08-28 evidence
 
-The live primary is `orange-navigator:ornith-1.5-9b-q4km` on authenticated Codexa
-`10.0.0.4`; Q8 is retired from current authority. The accepted integrated
-snapshot is green at
-`10-RECEIPTS/orange5-build/2026-08-28T03-42-45-242Z-integrated-operational-proof.json`.
-Blue Bench accepted 10/10 exact-path lanes in
-`10-RECEIPTS/orange5-build/2026-08-28T03-40-44-768Z-blue-bench.json`.
-Fresh Hermes Brain MCP delegation completed parent mediation, child execution,
-synthesis, receipt creation, and lease revocation with all ten checks true in
-`11,409.53 ms`.
+One recorded lab snapshot routed its primary Navigator through an authenticated
+compute host at `10.0.0.4`. A selected 10-lane suite accepted 10/10 exact paths.
+One selected Hermes Brain MCP delegation completed parent mediation, a bounded
+filesystem read, child execution, synthesis, receipt creation, and lease
+revocation with all ten checks true in `11,409.53 ms`. These observations are
+historical receipts, not present-health guarantees.
 
 ## 2. System Definition
 
@@ -147,7 +144,8 @@ not a model and does not need model RAM.
 Entry point:
 
 ```powershell
-bun C:/AtomEons/Orange5/03-BACKEND/spine-cli.mjs
+Set-Location .\system
+bun 03-BACKEND/spine-cli.mjs
 ```
 
 The spine preflights the order, consults memory and compression, attempts a
@@ -264,7 +262,7 @@ operational views:
 - compression debt;
 - saved-work certificates;
 - canon pressure;
-- pathwaves;
+- workflow replay records;
 - anti-fluff decisions.
 
 The canonical implementation is `12-ATOMSMASHER/full-scope`. Historical

@@ -1,44 +1,47 @@
-# Conservation Kernel
+# Æ Orange AI Computer Conservation Kernel
 
-The Conservation Kernel is the deterministic state-transition authority for AE Orange AI Computer. Models, agents, routers, tools, and user interfaces may propose transitions. They do not decide whether an invalid transition commits.
+The Conservation Kernel source implements deterministic checks for state
+transitions. Models, agents, routers, tools, and interfaces may propose a
+transition; they do not decide whether an invalid transition commits.
 
 ## Conserved Quantities
 
 1. **Authority:** downstream components cannot manufacture authority.
-2. **Custody:** every nonterminal order has one accountable owner and monotonic owner epochs.
+2. **Custody:** every nonterminal order has one accountable owner and monotonic
+   owner epochs.
 3. **Evidence:** confidence cannot increase without new attributable evidence.
-4. **Semantics:** objectives, commitments, constraints, forbidden actions, and acceptance criteria cannot drift during compression or delegation.
-5. **Uncertainty:** uncertainty cannot decrease merely because a model produced an answer.
+4. **Semantics:** objectives, commitments, constraints, forbidden actions, and
+   acceptance criteria cannot drift during compression or delegation.
+5. **Uncertainty:** uncertainty cannot decrease merely because a model returned
+   an answer.
 
-Transactions are either `COMMITTED` or `ROLLED_BACK`. A terminal outcome commits exactly once. Every decision and state is hash-chained on disk.
+Transactions are designed to finish as `COMMITTED` or `ROLLED_BACK`, with one
+terminal result and hash-chained decisions.
 
-## Solar Wave Boundary
+## Source And Proof Boundary
 
-```text
-INTAKE -> COMPILED -> ROUTED -> OFFERED -> PERSISTED
--> STARTED -> OBSERVED -> VERIFIED -> TERMINAL
-```
+Current source is present at:
 
-Each Solar Wave transition carries its Conservation Kernel decision, semantic checksum, evidence, prediction, observation, residual, custody, and terminal status.
+- `system/03-BACKEND/conservation-kernel.mjs`
+- `system/03-BACKEND/solar-wave.mjs`
+- `system/03-BACKEND/spine-cli.mjs`
+- `system/03-BACKEND/tests/conservation-kernel.test.mjs`
 
-## Focused Proof
+The internal `solar-wave.mjs` filename is retained because it is an exact source
+identifier, not a public release label.
 
-The active engineering root contains a focused invariant suite covering authority escalation, confidence inflation, uncertainty erasure, semantic drift, custody theft, exactly one terminal outcome, ledger hashes, and the complete Solar Wave lifecycle.
+The focused source test command is:
 
-```text
+```powershell
+Set-Location .\system
 bun test 03-BACKEND/tests/conservation-kernel.test.mjs
-6 pass / 0 fail / 26 expectations
 ```
 
-This focused proof does not claim whole-system release closure. It proves the exact kernel behavior named above.
+An earlier recorded run reported 6 passing tests and 26 expectations for the
+focused invariant suite. No selected receipt for that run is published under
+the root `proof/` directory. Treat the kernel as current source with focused
+test history, not as a separately promoted runtime organ or package claim.
 
-## Source Paths
-
-The public preview package does not yet include this Wave 3 development organ. Current engineering source:
-
-- `C:\AtomEons\Orange5\03-BACKEND\conservation-kernel.mjs`
-- `C:\AtomEons\Orange5\03-BACKEND\solar-wave.mjs`
-- `C:\AtomEons\Orange5\03-BACKEND\spine-cli.mjs`
-- `C:\AtomEons\Orange5\03-BACKEND\tests\conservation-kernel.test.mjs`
-
-Promotion into the downloadable package requires the later exact-package lifecycle proof.
+The historical deploy ZIP predates this current source. A future package must
+earn a new content lock and lifecycle proof before it can claim to include the
+kernel.

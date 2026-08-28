@@ -345,7 +345,7 @@ async function main() {
   if (!options.zip) throw new Error('Required argument: --zip PATH');
   const zipPath = path.resolve(options.zip);
   if (!existsSync(zipPath)) throw new Error(`ZIP not found: ${zipPath}`);
-  const receiptPath = path.resolve(options.receipt || path.join(path.dirname(zipPath), 'OrangeFive-LLM-deploy.proof.json'));
+  const receiptPath = path.resolve(options.receipt || path.join(path.dirname(zipPath), 'Orange-AI-Computer-Wave-4A-Green.release-proof.json'));
   const proofRoot = mkdtempSync(path.join(os.tmpdir(), 'orangefive-release-proof-'));
   assertSafeTemporaryRoot(proofRoot);
   let report;

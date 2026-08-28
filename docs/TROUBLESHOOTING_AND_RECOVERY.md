@@ -15,7 +15,7 @@ HTTP status is only one observation. Orange recovery asks:
 ## First Minute
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun 03-BACKEND/spine-cli.mjs --health
 bun 03-BACKEND/orange.mjs status
 bun scripts/orange5-runtime-services.mjs status
@@ -100,7 +100,7 @@ or projection while preserving evidence.
 Run the focused live proof:
 
 ```powershell
-bun C:\AtomEons\Orange5\03-BACKEND\brain-mcp-delegation-live-proof.mjs
+bun 03-BACKEND\brain-mcp-delegation-live-proof.mjs
 ```
 
 Inspect the first failed gate:
@@ -262,7 +262,7 @@ When handing a problem to another human or model, include:
 
 ```text
 PRODUCT: Æ Orange AI Computer
-ROOT: C:\AtomEons\Orange5
+SOURCE ROOT: <repository>\system
 GOAL: <one exact result>
 OBSERVED: <semantic status and timestamp>
 EXPECTED: <contract>

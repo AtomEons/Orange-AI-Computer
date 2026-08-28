@@ -287,9 +287,9 @@ Orange's default trust boundary is local-first:
 Hosted models can contribute reasoning or review without becoming the owner of
 Orange's memory, policy, execution proof, or credentials.
 
-## What The Current Evidence Establishes
+## What The Selected Public Evidence Establishes
 
-The fresh 2026-08-28 evidence set establishes, for its exact tested paths:
+The tracked 2026-08-28 evidence set records, for its exact tested paths:
 
 - ten operational lanes accepted in Blue Bench;
 - held-out source-backed Context Crystal parity across five cases;

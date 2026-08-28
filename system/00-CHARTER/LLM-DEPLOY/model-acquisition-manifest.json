@@ -1,0 +1,46 @@
+{
+  "schema": "orange.deploy.model-acquisition-manifest.v1",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "catalog": "00-CHARTER/LLM-DEPLOY/model-acquisition-catalog.json",
+  "sourceCatalog": "14-SUPERSTACK/captain-planet-stack.json",
+  "payloadPolicy": {
+    "modelWeightsIncluded": false,
+    "privateModelsIncluded": false,
+    "credentialsIncluded": false,
+    "metadataOnly": true,
+    "forbiddenFileSuffixes": [
+      ".safetensors",
+      ".gguf",
+      ".ggml",
+      ".ckpt",
+      ".pt",
+      ".pth",
+      ".onnx"
+    ]
+  },
+  "selectionGates": [
+    "role exists in the source catalog",
+    "provenance status is verified-local-artifact",
+    "provenance receipt SHA-256 is present",
+    "license and redistribution posture are explicit",
+    "repository revision and every acquired file SHA-256 are pinned",
+    "live acquired or adopted bytes match the pinned SHA-256"
+  ],
+  "blockedBehavior": "Unresolved provenance, license, runtime provisioning, or checksum evidence blocks selection without substituting another model.",
+  "downloadBehavior": {
+    "startsOnlyAfterApprovedPlan": true,
+    "usesOwnedPartialFiles": true,
+    "supportsHttpRangeResume": true,
+    "streamsSha256": true,
+    "promotesAtomically": true,
+    "credentialBearingUrlsForbidden": true
+  },
+  "catalogEvidencePolicy": "The catalog is packaged as source metadata. Packaging and CI do not refresh or claim the catalog's machine observations.",
+  "claims": {
+    "weightsExcludedFromSourceArchive": true,
+    "liveModelAcquisitionPerformedByPackaging": false,
+    "liveModelProof": false,
+    "liveCodexaProof": false
+  }
+}

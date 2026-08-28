@@ -3,12 +3,9 @@
 This guide explains the Æ Orange AI Computer capability map. It does not promote any
 feature. Status must be refreshed from live probes and receipts.
 
-The accepted 2026-08-28 integrated snapshot is green at
-`10-RECEIPTS/orange5-build/2026-08-28T03-42-45-242Z-integrated-operational-proof.json`.
-Blue Bench accepted 10/10 exact-path lanes in
-`10-RECEIPTS/orange5-build/2026-08-28T03-40-44-768Z-blue-bench.json`.
-The later Hermes Brain MCP delegation also completed with all ten checks true
-in `10-RECEIPTS/orange5-build/2026-08-28T04-13-22-203Z-brain-mcp-delegation-live-proof.json`.
+Selected 2026-08-28 public receipts record one accepted integrated lab snapshot,
+one 10/10 exact-path suite, and one bounded Hermes Brain MCP delegation. They
+are historical observations, not present-health claims.
 
 ## Status Vocabulary
 
@@ -73,7 +70,7 @@ Canonical engine: `12-ATOMSMASHER/full-scope`.
 | Compression Debt | Records downstream cost caused by bad compression |
 | Saved-Work Certificates | Proves equivalent work can be reused |
 | Canon Pressure | Surfaces recurring concepts for operator promotion |
-| Pathwaves | Compresses successful workflow shapes for replay |
+| Workflow replay records | Preserve successful workflow shapes for bounded replay |
 | Anti-Fluff | Keeps filler out of hot operational memory |
 | Full-Scope Registry | Exposes 620 registered features across engine families |
 
@@ -172,25 +169,15 @@ These remain `FUTURE_CANDIDATE` until installed, measured, and baked off:
 Research packets inform decisions. They do not automatically install tools or
 rewrite canon.
 
-## 8. Deployment Features
+## 8. Deployment Source And Package Boundary
 
-- two-computer preferred topology;
-- single-computer supported architecture;
-- immutable Orange deploy payload;
-- pre-authored Hermes profiles and configuration templates;
-- fixed manifest with recommended defaults and optional deselection;
-- adoption of compatible installed Bun, Ollama, models, and tools;
-- automatic download of missing selected components after explicit approval;
-- all mutable runtime state under `%USERPROFILE%\OrangeBox-Data`;
-- hidden service expectation;
-- authenticated Codexa rail;
-- topology discovery requirement for public installs;
-- resumable, checksum-verified model downloads as the installation contract;
-- rollback-safe source and model updates;
-- optional hosted frontier lease.
+Current source includes deployment planning, manifests, topology discovery,
+approval gates, resumable acquisition paths, checksums, external mutable state,
+and rollback code. The historical ZIP exercised only its recorded extracted
+payload contract and did not launch external runtimes or models.
 
-Generic public clean-install, updater, and arbitrary-hardware proof must be
-checked in ReadyForGit. This guide does not claim those gates are closed.
+No current-source package, generic clean-install matrix, updater proof, or
+arbitrary-hardware proof is published. See [Current Source and Gaps](CURRENT_SOURCE_AND_GAPS.md).
 
 ## 9. Optional Hosted Features
 

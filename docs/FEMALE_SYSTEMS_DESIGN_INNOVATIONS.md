@@ -1,13 +1,13 @@
-# OrangeFive Global Systems Design Adoption Ledger
+# Æ Orange AI Computer Systems Design Research Ledger
 
 **Ledger state:** research, not implementation  
 **Research pass:** 2026-08-28  
 **Runtime authority created by this file:** none
 
 This ledger converts historically documented mechanisms into falsifiable
-OrangeFive research candidates. It is not tribute prose, an operational
-inventory, or a claim that OrangeFive implements any person's, team's, or
-community's work.
+research candidates for Æ Orange AI Computer. It is not tribute prose, an
+operational inventory, or a claim that the product implements any person's,
+team's, or community's work.
 
 Names identify sources of prior work. They must not become Orange feature
 names, marketing labels, model identities, or implied endorsements. A mechanism
@@ -17,7 +17,7 @@ credit for a team or institution's result.
 
 ## Ledger Law
 
-- **RESEARCH_ONLY** is a pre-adoption status in this document. At the Orange5
+- **RESEARCH_ONLY** is a pre-adoption status in this document. At the product
   feature-inventory boundary it belongs in research, never in an operational
   bucket.
 - **Exact Orange gap** means that no exact receipt is cited here for the
@@ -983,13 +983,13 @@ record containing:
 9. decision: reject, retain for research, or propose promotion;
 10. for community-held work, the relevant authority and revocation terms.
 
-A passing experiment does not itself authorize product adoption. Normal Orange5
+A passing experiment does not itself authorize product adoption. Normal
 operational law, security review, licensing, community authority, and
 independent runtime proof still apply.
 
 ## Related Guides
 
-- [Orange5 Operational Law](../ORANGE5_OPERATIONAL_LAW.md)
+- [Operational Law](../system/00-CHARTER/ORANGE5_OPERATIONAL_LAW.md)
 - [Technical Architecture](TECHNICAL_ARCHITECTURE.md)
 - [Memory and Learning](MEMORY_AND_LEARNING.md)
 - [Receipts and Audit](RECEIPTS_AND_AUDIT.md)

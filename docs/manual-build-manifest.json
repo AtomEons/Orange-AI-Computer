@@ -1,6 +1,6 @@
 {
-  "schema": "orange5.manual-build-manifest.v1",
-  "generatedAt": "2026-08-28T04:56:33.440Z",
+  "schema": "ae.orange-ai-computer.public-manual-build.v1",
+  "generatedAt": "2026-08-28T19:26:12.733Z",
   "canonicalFormat": "markdown",
   "generator": {
     "bun": "1.3.14",
@@ -9,151 +9,177 @@
   },
   "manuals": [
     {
-      "title": "Æ Orange AI Computer Quick Start",
-      "source": "00-CHARTER/GUIDES/QUICK_START.md",
-      "sourceSha256": "1b46f297e715b49902db838aa34c61d1c829777633bfd832ba1eb35971e7771f",
-      "html": "00-CHARTER/GUIDES/html/quick-start.html",
-      "htmlSha256": "aaffcf8b9c05c75acc504a226f1d2ed4c5d951abe60206408212804980653c88",
-      "pdf": "00-CHARTER/GUIDES/pdf/quick-start.pdf",
-      "pdfSha256": "b2ce3627b7fdfd3a9a1e2fafa527dc37a4fa13eca05d97277ba17f2f2f686271",
-      "pdfBytes": 128620
+      "title": "AE Phase Fabric",
+      "source": "docs/AE_PHASE_FABRIC_TECHNICAL_PAPER.md",
+      "sourceSha256": "89ab66163e2d16a6f975fd3da858d62179051097b58826e4ba5073b24e2013f0",
+      "pdf": "docs/pdf/ae-phase-fabric-technical-paper.pdf",
+      "pdfSha256": "10955b4ed41f01e3792451aaa31487e7d3404cd21e4d79273de43e8cfa23e08e",
+      "pdfBytes": 174734
     },
     {
-      "title": "Æ Orange AI Computer Operator Manual",
-      "source": "00-CHARTER/GUIDES/OPERATOR_MANUAL.md",
-      "sourceSha256": "67153caa1246e3eb278616d083caa19f28c979bfbac2117cf586f61df6b3467e",
-      "html": "00-CHARTER/GUIDES/html/operator-manual.html",
-      "htmlSha256": "8c7e7cd684e32c4edb4093d5e5a1c7c37df756657ae746099e2e8a3e82b281fa",
-      "pdf": "00-CHARTER/GUIDES/pdf/operator-manual.pdf",
-      "pdfSha256": "5c6576edb30aa658401197a727a3241cf4203d3dd4ce7b43863f9a1d01b19b90",
-      "pdfBytes": 165744
-    },
-    {
-      "title": "Æ Orange AI Computer LLM Operator Guide",
-      "source": "00-CHARTER/GUIDES/LLM_OPERATOR_GUIDE.md",
-      "sourceSha256": "9751a13ecc42da8e27961af515ab44b20e0e18244da59561ad025269830cd742",
-      "html": "00-CHARTER/GUIDES/html/llm-operator-guide.html",
-      "htmlSha256": "674ed1950534f26e2fc6e88a83103e78d7e12ec2b20fcad332df47a79c2ad006",
-      "pdf": "00-CHARTER/GUIDES/pdf/llm-operator-guide.pdf",
-      "pdfSha256": "43671df1914119d2039a76655379889674add652b45c066fdf011d44294c44e4",
-      "pdfBytes": 169253
-    },
-    {
-      "title": "Æ Orange AI Computer Technical Architecture",
-      "source": "00-CHARTER/GUIDES/TECHNICAL_ARCHITECTURE.md",
-      "sourceSha256": "3e81f722900b43c035dcdbe0a06f4f9c3bba6e8fad67d694651e7d12d822eee1",
-      "html": "00-CHARTER/GUIDES/html/technical-architecture.html",
-      "htmlSha256": "b387e3e3e4e649ae915e24932701ea96cfb0fb6ba3265760ad94be1a1c98f672",
-      "pdf": "00-CHARTER/GUIDES/pdf/technical-architecture.pdf",
-      "pdfSha256": "9efc480a918f09056de21798b3adc70c1257251a5d7d308dc41e1c21b79b7a44",
-      "pdfBytes": 181255
-    },
-    {
-      "title": "Æ Orange AI Computer Features Guide",
-      "source": "00-CHARTER/GUIDES/FEATURES_GUIDE.md",
-      "sourceSha256": "355c32c49cab47fcfb90a03cfcb609c734abdd305eee3d5fa32c5a1e4f597c9b",
-      "html": "00-CHARTER/GUIDES/html/features-guide.html",
-      "htmlSha256": "4db147e302039ac791a0e12be6ae1301304169ba6bb2829b3b0fd23b2fe6e262",
-      "pdf": "00-CHARTER/GUIDES/pdf/features-guide.pdf",
-      "pdfSha256": "8c0d04cc0d4f3bc77e670fd6425db17d327f759d9e8ab390a42a053e255666bc",
-      "pdfBytes": 183163
-    },
-    {
-      "title": "Æ Orange AI Computer Model Installation Guide",
-      "source": "00-CHARTER/GUIDES/MODEL_INSTALLATION_GUIDE.md",
-      "sourceSha256": "bc54fca8f4548d25825cad95fbce5f733e2f11bafc44aae3d1eb95ee66b79f4f",
-      "html": "00-CHARTER/GUIDES/html/model-installation-guide.html",
-      "htmlSha256": "652d4d64831955c8f9a56e41e620daed788603accf2f1135591ba081232a08bb",
-      "pdf": "00-CHARTER/GUIDES/pdf/model-installation-guide.pdf",
-      "pdfSha256": "6646fc8f2e9aaff1782431077ffe3424880beacba149db2341bbb451eb19ecfb",
-      "pdfBytes": 164482
-    },
-    {
-      "title": "Æ Orange AI Computer Bun Runtime",
-      "source": "00-CHARTER/GUIDES/BUN_RUNTIME.md",
-      "sourceSha256": "6ed70a89e0ab97c2a4bf10f780c29d5e997e0be7bcdf80cecbe80f7412d04bfa",
-      "html": "00-CHARTER/GUIDES/html/bun-runtime.html",
-      "htmlSha256": "52b8b561cb25958a30601593bc0fc1d88a7f37132b0932bf73d862f6e497f4e0",
-      "pdf": "00-CHARTER/GUIDES/pdf/bun-runtime.pdf",
-      "pdfSha256": "425817fb2f038bb39b955dc8f48614b62dc5a010369bc447f4960b7a3aac9a1e",
-      "pdfBytes": 98020
-    },
-    {
-      "title": "Æ Orange AI Computer Memory And Learning",
-      "source": "00-CHARTER/GUIDES/MEMORY_AND_LEARNING.md",
-      "sourceSha256": "3852a3deae65be766d809f3670ea7886f8f2ac3a865b45b0b4df4190dab4d92c",
-      "html": "00-CHARTER/GUIDES/html/memory-and-learning.html",
-      "htmlSha256": "61532e22ed25130d21e54b4d61025c0091c140ecba3a601f36ccf593e5522e35",
-      "pdf": "00-CHARTER/GUIDES/pdf/memory-and-learning.pdf",
-      "pdfSha256": "64a2b2da74ea70bcfd3f2484b71d45449789a7608820e200b51657598ef60e2e",
-      "pdfBytes": 91437
-    },
-    {
-      "title": "Æ Orange AI Computer Receipts And Audit",
-      "source": "00-CHARTER/GUIDES/RECEIPTS_AND_AUDIT.md",
-      "sourceSha256": "c1180d677f6cd7dabbfe51bf70e8deda2ff1283f06dbad7bcebbfbf1a0717390",
-      "html": "00-CHARTER/GUIDES/html/receipts-and-audit.html",
-      "htmlSha256": "c0d8e17b74e24673c4e937062604ea4a97db496a56d86261a99f926f61812bc2",
-      "pdf": "00-CHARTER/GUIDES/pdf/receipts-and-audit.pdf",
-      "pdfSha256": "ed780aaa4ce2ac374fa5c3db0daf1517710bb3f57746c70e70d6c15e433f0bba",
-      "pdfBytes": 100362
-    },
-    {
-      "title": "Æ Orange AI Computer Atomic Orange Native App",
-      "source": "00-CHARTER/GUIDES/ATOMIC_ORANGE_NATIVE_APP.md",
-      "sourceSha256": "60a42783cf15b705d4605671a1d36298586305ffe6c927107f927f566b5be132",
-      "html": "00-CHARTER/GUIDES/html/atomic-orange-native-app.html",
-      "htmlSha256": "3aef250089135a35e4c371289fe2042992262c6eb74f5ea1beb34d05edea2593",
-      "pdf": "00-CHARTER/GUIDES/pdf/atomic-orange-native-app.pdf",
-      "pdfSha256": "9a3b67de9cf5ec0b0f0a9083f9b356466c38bafd49a08ec419b2673a26b15d68",
-      "pdfBytes": 85423
+      "title": "Æ Orange AI Computer Atomic Orange App",
+      "source": "docs/ATOMIC_ORANGE_NATIVE_APP.md",
+      "sourceSha256": "092c1d02a5e40797dff9fac3f75b7823340f064a194ccee22983d471863b01df",
+      "pdf": "docs/pdf/atomic-orange-native-app.pdf",
+      "pdfSha256": "2022efd30c1f8851206ecf3d6321bfb0b1cdf6b73da95ed8abba97c10acf97c5",
+      "pdfBytes": 89148
     },
     {
       "title": "Æ Orange AI Computer AtomSmasher Production",
-      "source": "00-CHARTER/GUIDES/ATOMSMASHER_PRODUCTION.md",
-      "sourceSha256": "40dd974dda686d828858975c15be7a6727a78d480103e4e6d6da099fd6ee734c",
-      "html": "00-CHARTER/GUIDES/html/atomsmasher-production.html",
-      "htmlSha256": "c84ca7e0152f294e5281bbfaecf6a5adc95a9eeffbec4ecc21c578abd5f0ef22",
-      "pdf": "00-CHARTER/GUIDES/pdf/atomsmasher-production.pdf",
-      "pdfSha256": "b7a9d32a4ed0cadd853800c77613edae76431a76cf028ac025c2b5f61a9e994d",
-      "pdfBytes": 89891
+      "source": "docs/ATOMSMASHER_PRODUCTION.md",
+      "sourceSha256": "d2c178f2905a25ceb59cfb249040a6c8e878fb3be2413bd5d830ed0b9fea0bc2",
+      "pdf": "docs/pdf/atomsmasher-production.pdf",
+      "pdfSha256": "e8f6ec76ee2cbdb5259231fdd51a91d404baf71032ef4392d760b1693bc8a9cb",
+      "pdfBytes": 89569
     },
     {
-      "title": "Æ Orange AI Computer Skeptic's Field Guide",
-      "source": "00-CHARTER/GUIDES/SKEPTICS_FIELD_GUIDE.md",
-      "sourceSha256": "373a843c258fd583c2276e5aafef499ed4b9e4bbea6e3a20834c191d6a8f0d62",
-      "html": "00-CHARTER/GUIDES/html/skeptics-field-guide.html",
-      "htmlSha256": "33b2f2a46347b2a4dcaed8fece4c87b6ce16bd239e80d509bd52810015779e2b",
-      "pdf": "00-CHARTER/GUIDES/pdf/skeptics-field-guide.pdf",
-      "pdfSha256": "a7a7b7c73cecd006caba1a97e14fd0f43c777e96fe3d927ba10480cc4acc9d38",
-      "pdfBytes": 137999
+      "title": "Æ Orange AI Computer Bun Runtime",
+      "source": "docs/BUN_RUNTIME.md",
+      "sourceSha256": "6ed70a89e0ab97c2a4bf10f780c29d5e997e0be7bcdf80cecbe80f7412d04bfa",
+      "pdf": "docs/pdf/bun-runtime.pdf",
+      "pdfSha256": "4217d16fde7c07cfe2bb3ce5e3d629a652cfe3c70a6be3cc748723e275b2c6b0",
+      "pdfBytes": 97969
+    },
+    {
+      "title": "Æ Orange AI Computer Conservation Kernel",
+      "source": "docs/CONSERVATION_KERNEL.md",
+      "sourceSha256": "110cb2d80786a9d6f78145f50199acfa77adb59d33884325e44f03bae1a72a7d",
+      "pdf": "docs/pdf/conservation-kernel.pdf",
+      "pdfSha256": "db72529091066567bb03a4ab3ce92aef44146cf8ab00ebe86ff0a4dfce78bba3",
+      "pdfBytes": 73575
+    },
+    {
+      "title": "Æ Orange AI Computer Current Source And Gaps",
+      "source": "docs/CURRENT_SOURCE_AND_GAPS.md",
+      "sourceSha256": "6cf587429cdc4893d7a2c494013bd5c7dd0e8788793b24b297b6a2f1c935819a",
+      "pdf": "docs/pdf/current-source-and-gaps.pdf",
+      "pdfSha256": "985c6a8cac6f75a7f03c90756370a1f8e200ab5009c182b682ffe309593f9fd0",
+      "pdfBytes": 116961
+    },
+    {
+      "title": "Æ Orange AI Computer Features Guide",
+      "source": "docs/FEATURES_GUIDE.md",
+      "sourceSha256": "a7967db5a4a23cc527c6decd9f0a1e7d9d33c317aaeaa3a9e860b9d29e86e74e",
+      "pdf": "docs/pdf/features-guide.pdf",
+      "pdfSha256": "b26bd1bf16e7b3ed5dc64581955a4b9bd763400bab2f511f3e8363e8bc33f7bb",
+      "pdfBytes": 167481
+    },
+    {
+      "title": "Æ Orange AI Computer Systems Design Research Ledger",
+      "source": "docs/FEMALE_SYSTEMS_DESIGN_INNOVATIONS.md",
+      "sourceSha256": "9878c4dc32fd2b78972cc76205e45a4c72233d8309fb2b01c7d23fa9ea98f54e",
+      "pdf": "docs/pdf/female-systems-design-innovations.pdf",
+      "pdfSha256": "4e360da00a2dd9f077f6b59300cfdf0c8c9c0c3ba439084c1d6b5055e253a357",
+      "pdfBytes": 305769
+    },
+    {
+      "title": "Global Systems Alpha Adoption Ledger",
+      "source": "docs/GLOBAL_SYSTEMS_ALPHA_ADOPTION_LEDGER.md",
+      "sourceSha256": "820a0c88743674f25fa05e51a1336ac71572c5d2d797fd7ed17c5064019848f0",
+      "pdf": "docs/pdf/global-systems-alpha-adoption-ledger.pdf",
+      "pdfSha256": "1f802c08cf298108217ea514103615ac19ff2a6fa758e8466268c8e002f3500b",
+      "pdfBytes": 206405
+    },
+    {
+      "title": "Æ Orange AI Computer Historical Deploy Package",
+      "source": "docs/HISTORICAL_PACKAGE.md",
+      "sourceSha256": "8dcd4b55a0ded3a97ad3e6a419566826f4a8cdd55cfc5d3959e36aad9c784ba1",
+      "pdf": "docs/pdf/historical-package.pdf",
+      "pdfSha256": "b182e4fc5860bcfde209729c8a7b5eb2fd002bb036dbfb0d27fa1c6f5e4d2839",
+      "pdfBytes": 87976
+    },
+    {
+      "title": "Æ Orange AI Computer LLM Operator Guide",
+      "source": "docs/LLM_OPERATOR_GUIDE.md",
+      "sourceSha256": "576e16178073b18e896cefb29baec7e6f04c699dc739eac5ff3932c9b9d60d98",
+      "pdf": "docs/pdf/llm-operator-guide.pdf",
+      "pdfSha256": "88ad15f6f4d12806519df5712ad9e9485aec34128ff31f46da1ad82241f3e306",
+      "pdfBytes": 162493
+    },
+    {
+      "title": "Æ Orange AI Computer Memory And Learning",
+      "source": "docs/MEMORY_AND_LEARNING.md",
+      "sourceSha256": "813836a7985110236e3190853a922d979c44faf8e40cbe4834cfa3d1099df13a",
+      "pdf": "docs/pdf/memory-and-learning.pdf",
+      "pdfSha256": "485411164c3cf8b88445b1d8252eabc8c265e8559d2e1968ca93d6a6cb9752c0",
+      "pdfBytes": 90955
+    },
+    {
+      "title": "Æ Orange AI Computer Model Installation Guide",
+      "source": "docs/MODEL_INSTALLATION_GUIDE.md",
+      "sourceSha256": "463f63436a44537abd8e144c1c3f098711dc1f453eecce04460fd47e03c3f3de",
+      "pdf": "docs/pdf/model-installation-guide.pdf",
+      "pdfSha256": "d18a3c79a895919e976833b78620b2acfe655adbe370497e03e00194a217b545",
+      "pdfBytes": 164577
+    },
+    {
+      "title": "Æ Orange AI Computer Operator Manual",
+      "source": "docs/OPERATOR_MANUAL.md",
+      "sourceSha256": "bf5c51ceff8732cddc79f719238132cb1819f0b4300af9b4b892b9938a1090a2",
+      "pdf": "docs/pdf/operator-manual.pdf",
+      "pdfSha256": "a9a3b002619df14af5038b6b104c3fe6fba93159f099f43f1312e71301aea7c5",
+      "pdfBytes": 161652
     },
     {
       "title": "Æ Orange AI Computer Proof And Benchmarks",
-      "source": "00-CHARTER/GUIDES/PROOF_AND_BENCHMARKS.md",
-      "sourceSha256": "08e3aeb6513e911d4410cc591dd534e4ae638f90d8f6509ccd8865fbd87b7d9d",
-      "html": "00-CHARTER/GUIDES/html/proof-and-benchmarks.html",
-      "htmlSha256": "18f5c86f5f086175d328ac4d650a11f1ba48c2ca34f19887678e57f97eeee80d",
-      "pdf": "00-CHARTER/GUIDES/pdf/proof-and-benchmarks.pdf",
-      "pdfSha256": "c937e895749811b07684d3e1bf0742995f67d96c067436c07a217d1f6e36e0eb",
-      "pdfBytes": 154152
+      "source": "docs/PROOF_AND_BENCHMARKS.md",
+      "sourceSha256": "2917995bd98f6e6b40b04fe4ae25cb90f8c80e499e32b6fa2c2d670cfb8e3cb0",
+      "pdf": "docs/pdf/proof-and-benchmarks.pdf",
+      "pdfSha256": "5b8e06871456b40ce17d8fd7cade329fc825e0d330e9af35c39228c838480227",
+      "pdfBytes": 154934
+    },
+    {
+      "title": "Æ Orange AI Computer Quick Start",
+      "source": "docs/QUICK_START.md",
+      "sourceSha256": "48a79ac2f7a52316d2a05084f85f68e00d8eeba7b425c133d51a26b24ba18f87",
+      "pdf": "docs/pdf/quick-start.pdf",
+      "pdfSha256": "eb02c335fd5dfdec589c4cf98cd78e34f7ec2b35b096cdef0e0c27e10842a67a",
+      "pdfBytes": 99922
+    },
+    {
+      "title": "Æ Orange AI Computer Receipts And Audit",
+      "source": "docs/RECEIPTS_AND_AUDIT.md",
+      "sourceSha256": "f1f2b17e40a11316ad2dd77c3c3ff5c62b4dfe8cd89f3c4789f27ccfb91c6ad2",
+      "pdf": "docs/pdf/receipts-and-audit.pdf",
+      "pdfSha256": "c3963f19c9723ca0909e0f4a1080170b80986fa792effbb3057dd352cd2606a9",
+      "pdfBytes": 100346
+    },
+    {
+      "title": "Æ Orange AI Computer Skeptic's Field Guide",
+      "source": "docs/SKEPTICS_FIELD_GUIDE.md",
+      "sourceSha256": "c3b82ab50845914b1378b14e2e11863569551e98e87dbed3071e17ba610303d2",
+      "pdf": "docs/pdf/skeptics-field-guide.pdf",
+      "pdfSha256": "d47bd72eff2011def93db7cb4e109d9a287880e9111af188e59c0b11946f8e50",
+      "pdfBytes": 137978
+    },
+    {
+      "title": "STRONGARM Execution Discipline",
+      "source": "docs/STRONGARM_DISCIPLINE.md",
+      "sourceSha256": "4697be5d3cf3e2e9b8ec7b08262438f2f1e538f7a577518889edcc8e79ac83f8",
+      "pdf": "docs/pdf/strongarm-discipline.pdf",
+      "pdfSha256": "c3785fc36ac0436bcab7859c343144e604834b308443c68198a9ca5bee072be7",
+      "pdfBytes": 68506
+    },
+    {
+      "title": "Æ Orange AI Computer Technical Architecture",
+      "source": "docs/TECHNICAL_ARCHITECTURE.md",
+      "sourceSha256": "22c5d8a42e28b5599788f6f5e21e5ff0a6d74d7666f2b3fd23bb31353dd21882",
+      "pdf": "docs/pdf/technical-architecture.pdf",
+      "pdfSha256": "7283165ba2c460359db466c848d4b371b680ae22deb4a900f4d217ef45ba23c6",
+      "pdfBytes": 177979
     },
     {
       "title": "Æ Orange AI Computer Troubleshooting And Recovery",
-      "source": "00-CHARTER/GUIDES/TROUBLESHOOTING_AND_RECOVERY.md",
-      "sourceSha256": "114baf15f45b058deb569246e442a096b6066e3f7e4c4df96a74d792f7bee588",
-      "html": "00-CHARTER/GUIDES/html/troubleshooting-and-recovery.html",
-      "htmlSha256": "adf6a3beaa71ebb8e0d5309a051200d080baccafa24fbeab853f5004844fce11",
-      "pdf": "00-CHARTER/GUIDES/pdf/troubleshooting-and-recovery.pdf",
-      "pdfSha256": "2a44dfaa3c511bc54aff8f53c4925d47c12118ee172f7a7f8647005f2ecbe5ac",
-      "pdfBytes": 165491
+      "source": "docs/TROUBLESHOOTING_AND_RECOVERY.md",
+      "sourceSha256": "0ce02f11c20b6f0516eee203e8eeb2248666ae204f6f870a967b7a941652577a",
+      "pdf": "docs/pdf/troubleshooting-and-recovery.pdf",
+      "pdfSha256": "db853551aadf18e70fb8e7610372c8b20feec75b174e7112c179a58b6d6a9875",
+      "pdfBytes": 165373
     }
   ],
   "completeBook": {
-    "html": "00-CHARTER/GUIDES/html/orange-ai-computer-complete-manual.html",
-    "htmlSha256": "74072ceca027ee796b9161de92d23d317618a1b6b84ecd98a203145219ea74b5",
-    "pdf": "00-CHARTER/GUIDES/pdf/orange-ai-computer-complete-manual.pdf",
-    "pdfSha256": "9b61c7ede04fd7f4ce8c256aa88b1373dd6d1700047c45e2eb0ca40c3dbd80e9",
-    "pdfBytes": 1070339
+    "pdf": "docs/pdf/orange-ai-computer-public-manuals.pdf",
+    "pdfSha256": "1450a51a1b0a52c411769dc453e60341d153afea06920ab51f9d7082f9c0d7d4",
+    "pdfBytes": 1656115
   }
 }

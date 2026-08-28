@@ -5,48 +5,44 @@ models, and any new account with zero memory.
 
 ## 1. Identity
 
-- Product: Orange.
-- Release: Æ Orange AI Computer.
-- Canonical root: `C:\AtomEons\Orange5`.
-- Orange3: archived.
-- Orange4: theory phase.
+- Public product: Æ Orange AI Computer.
+- Current public source root: `system/` inside this repository.
 - Atomic Orange: optional interface, not the intelligence.
-- N150: deterministic control and development host.
-- Codexa: preferred heavy inference, visual, training, Docker, and long-job
-  host.
+- Control host and compute host are roles, not guaranteed machine names.
 
-Never pivot work to an older Orange folder because it looks more complete.
+Do not pivot to an older package or private development root because it looks
+more complete. Establish the current checkout and evidence boundary first.
 
-## Current Truth Pin - 2026-08-28
+## Selected Public Evidence - 2026-08-28
 
-- Live primary: `orange-navigator:ornith-1.5-9b-q4km` on authenticated Codexa
-  `10.0.0.4`; Q8 is retired from current authority and remains historical evidence.
-- Brain MCP: 10 stdio tools and 12 authenticated loopback HTTP tools.
-- Accepted integrated proof: green at
-  `10-RECEIPTS/orange5-build/2026-08-28T03-42-45-242Z-integrated-operational-proof.json`.
-- Blue Bench: 10/10 exact-path lanes accepted at
-  `10-RECEIPTS/orange5-build/2026-08-28T03-40-44-768Z-blue-bench.json`.
+- One recorded lab run used an authenticated compute host at `10.0.0.4`; this
+  is historical run context, not a default public topology.
+- The selected integrated receipt records 10 stdio and 12 authenticated
+  loopback HTTP Brain MCP tools.
+- A selected 10-lane receipt accepted 10/10 exact paths in that run.
 - Context Crystal: 5/5 held-out parity with minimum `1422.901x` across a
   7,056,795-byte corpus.
 - AE Memory: 23/23 cases with hybrid MRR `0.9058`, p50 `281 ms`, p95 `445 ms`.
 - Media: technical artifact validity only; studio quality is unproved.
-- Hermes Brain MCP delegation: parent mediation, one child, synthesis, receipts,
-  and lease revocation completed with all ten checks true in `11,409.53 ms`;
-  receipt
-  `10-RECEIPTS/orange5-build/2026-08-28T04-13-22-203Z-brain-mcp-delegation-live-proof.json`.
+- One Hermes Brain MCP delegation completed parent mediation, one child,
+  synthesis, receipts, and lease revocation with all ten checks true in
+  `11,409.53 ms`;
+  its selected receipt is published under `proof/`.
 
 Each green receipt remains scoped to the exact workflow it exercised.
 
 ## 2. Cold-Start Recovery Protocol
 
-Before planning or editing:
+For the public source checkout, before planning or editing:
 
-1. Change to `C:\AtomEons\Orange5`.
+1. Change to the repository's `system/` directory.
 2. Read this guide.
-3. Read `..\ORANGE5_RUNTIME_AUTHORITY.md`.
-4. Read `..\..\ORANGEFIVE_CURRENT_OPERATIONAL_TRUTH.md`; treat its timestamp as
-   potentially stale.
-5. Inspect the newest relevant receipt in `10-RECEIPTS\orange5-build`.
+3. Read `00-CHARTER\ORANGE5_RUNTIME_AUTHORITY.md`; the legacy identifier is an
+   exact filename, not the public product name.
+4. Read `ORANGEFIVE_CURRENT_OPERATIONAL_TRUTH.md`; treat its timestamp and lab
+   topology as historical until re-probed.
+5. Inspect selected public receipts under `..\proof` and any more recent local
+   receipt relevant to the exact path.
 6. Run semantic health.
 7. Inspect `git status --short`.
 8. State goal, scope, allowed mutations, evidence, and rollback.
@@ -54,7 +50,7 @@ Before planning or editing:
 10. Preserve any LOOM halt and report it.
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun 03-BACKEND/spine-cli.mjs --health
 bun 03-BACKEND/orange.mjs status
 git status --short
@@ -102,10 +98,10 @@ Use `orange.order.v1`, not freeform operational claims.
   "orderId": "unique-id",
   "action": "read.health",
   "payload": {},
-  "scope": ["C:/AtomEons/Orange5"],
+  "scope": ["C:/path/to/Orange-AI-Computer/system"],
   "allowedActions": ["read"],
   "forbiddenActions": ["delete", "deploy"],
-  "targetProject": "orange5",
+  "targetProject": "orange-ai-computer",
   "riskLevel": "low",
   "requiresReceipt": true
 }
@@ -264,9 +260,9 @@ hide unfinished work.
 ## 13. Fast Recovery Prompt
 
 ```text
-Operate Æ Orange AI Computer from C:\AtomEons\Orange5. Read
-00-CHARTER\GUIDES\LLM_OPERATOR_GUIDE.md and
-00-CHARTER\ORANGE5_RUNTIME_AUTHORITY.md first. Probe semantic health and recent
+Operate Æ Orange AI Computer from the current repository. Treat system\ as the
+source root. Read docs\LLM_OPERATOR_GUIDE.md and the exact internal authority
+file system\00-CHARTER\ORANGE5_RUNTIME_AUTHORITY.md first. Probe semantic health and recent
 receipts. Use orange.order.v1 and orange.report.v1. Reuse existing Orange
 organs, preserve other work, keep one writer per file, and do not call anything
 green without fresh evidence. Use Codexa for heavy leases when available; keep

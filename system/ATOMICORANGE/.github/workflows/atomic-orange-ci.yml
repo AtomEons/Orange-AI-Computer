@@ -36,23 +36,17 @@ jobs:
         shell: pwsh
         run: corepack yarn install --immutable
 
-      - name: Build shared core workspace
+      - name: Build canonical app frontend
         shell: pwsh
-        run: corepack yarn workspace @janhq/core build
+        run: corepack yarn build:web
 
-      - name: Verify Orange runtime contract
+      - name: Verify canonical app contracts
         shell: pwsh
-        run: >-
-          corepack yarn workspace @janhq/web-app vitest --run
-          src/lib/__tests__/model-factory.test.ts
-          src/lib/__tests__/orange-runtime-status.test.ts
-          src/lib/__tests__/custom-chat-transport.harness.test.ts
-          src/lib/__tests__/custom-chat-transport-helpers.test.ts
-          src/components/__tests__/PromptProgress.test.tsx
+        run: corepack yarn test:contracts
 
-      - name: Verify TypeScript
+      - name: Check canonical Tauri package
         shell: pwsh
-        run: corepack yarn workspace @janhq/web-app exec tsc -b
+        run: corepack yarn check:tauri
 
       - name: Verify backend manifest resolver
         shell: pwsh

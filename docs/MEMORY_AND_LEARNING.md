@@ -89,7 +89,7 @@ will be answered correctly.
 ## Verify
 
 ```powershell
-cd C:\AtomEons\Orange5
+Set-Location .\system
 bun run bench:memory-quality
 bun run test:learning-queue
 bun run proof:learning-behavior

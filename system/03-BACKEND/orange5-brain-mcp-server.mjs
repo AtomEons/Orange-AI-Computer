@@ -2,6 +2,7 @@
 import { randomUUID } from "node:crypto";
 import path from "node:path";
 import readline from "node:readline";
+import { isDeepStrictEqual } from "node:util";
 import { dispatchTool, executeOrder, healthSnapshot, readReceipts, ROOT } from "./orange5-headless-core.mjs";
 import { sendLocalAEPhaseEnvelope, waitForAEPhaseEnvelope } from "./ae-phase-fabric.mjs";
 import { executeGovernedTool } from "./hermes-effector.mjs";
@@ -19,6 +20,10 @@ const TASKABLE_TOOLS = new Set(["orange5_order", "orange5_chat", "orange5_delega
 const TASK_STORE = new McpTaskStore();
 const TASK_JOBS = new Map();
 const WORKER_ID = `brain-mcp-${process.pid}`;
+const MCP_HEALTH_PROBE_TIMEOUT_MS = Math.max(
+  100,
+  Math.min(2_000, timeoutValue(process.env.ORANGE5_MCP_HEALTH_PROBE_TIMEOUT_MS, 1_500)),
+);
 const SWARM_MCP_ORDERS = Object.freeze({
   orange5_swarmgate_plan: Object.freeze({
     action: "plan.swarm",
@@ -216,6 +221,7 @@ async function executeToolCall(name, args, taskId = null, { aeStaffClient = DEFA
   const result = name === "ae_staff_health" ? await aeStaffClient.health()
     : name === "ae_staff_list" ? await aeStaffClient.list()
     : name === "ae_staff_order" ? await aeStaffClient.order(assertCanonicalAeStaffMcpArguments(args))
+    : name === "orange5_health" ? await mcpHealthSnapshot()
     : name === "orange5_superstack" ? await superstackStatus()
     : name === "orange5_model_lease" ? await executeModelLease(args)
     : name === "orange5_party_line_read" ? await readPartyLine({
@@ -268,7 +274,7 @@ export function buildSwarmMcpOrder(name, args) {
 export function createAeStaffMcpClient({
   sendEnvelope = sendLocalAEPhaseEnvelope,
   waitEnvelope = waitForAEPhaseEnvelope,
-  readTimeoutMs = timeoutValue(process.env.ORANGE5_AE_STAFF_READ_TIMEOUT_MS, 10_000),
+  readTimeoutMs = timeoutValue(process.env.ORANGE5_AE_STAFF_READ_TIMEOUT_MS, 4_000),
   dispatchTimeoutMs = timeoutValue(process.env.ORANGE5_AE_STAFF_TIMEOUT_MS, 240_000),
 } = {}) {
   if (typeof sendEnvelope !== "function" || typeof waitEnvelope !== "function") {
@@ -287,16 +293,22 @@ export function createAeStaffMcpClient({
       kind: "ae_staff_query_report",
       correlationId: requestId,
     }, { timeoutMs: readTimeoutMs });
-    if (!response?.body || typeof response.body !== "object" || Array.isArray(response.body)) {
-      throw new Error(`AE Staff Phase ${operation} returned no response object`);
+    const payload = assertAeStaffPhaseResponse(response, "ae_staff_query_report", requestId);
+    if (payload.operation !== operation) {
+      throw new Error(`AE Staff Phase query correlation mismatch: expected ${operation}, got ${payload.operation || "missing"}`);
     }
-    return response.body;
+    return payload;
   };
 
   const health = async () => {
     const payload = await query("health");
-    if (typeof payload.ok !== "boolean" || typeof payload.roleCount !== "number") {
+    if (payload.schema !== "orange.hermes-staff-reactor.v1"
+      || typeof payload.ok !== "boolean"
+      || typeof payload.roleCount !== "number") {
       throw new Error("AE Staff health response is missing live status fields");
+    }
+    if (payload.ok === true && (payload.status !== "LIVE" || payload.roleCount !== 50)) {
+      throw new Error("AE Staff health response claimed green without a LIVE 50-role reactor");
     }
     return payload;
   };
@@ -304,6 +316,14 @@ export function createAeStaffMcpClient({
     const payload = await query("list");
     if (payload.schema !== "orange.hermes-staff-reactor.v1" || !Array.isArray(payload.roles)) {
       throw new Error("AE Staff roster response does not match orange.hermes-staff-reactor.v1");
+    }
+    const roleIds = payload.roles.map((role) => role?.id);
+    if (payload.ok === true && (payload.status !== "LIVE"
+      || payload.roleCount !== 50
+      || payload.roles.length !== 50
+      || roleIds.some((roleId) => typeof roleId !== "string" || !roleId.trim())
+      || new Set(roleIds).size !== 50)) {
+      throw new Error("AE Staff roster response claimed green without 50 unique live roles");
     }
     return payload;
   };
@@ -320,9 +340,23 @@ export function createAeStaffMcpClient({
       kind: "ae_staff_report",
       correlationId: requestId,
     }, { timeoutMs: dispatchTimeoutMs });
-    return validateAeStaffDispatch(response.body, event.order, event.targetRoles);
+    const payload = assertAeStaffPhaseResponse(response, "ae_staff_report", requestId);
+    return validateAeStaffDispatch(payload, event);
   };
   return { health, list, order: dispatch, dispatch };
+}
+
+function assertAeStaffPhaseResponse(response, expectedKind, requestId) {
+  if (!response || typeof response !== "object" || Array.isArray(response)) {
+    throw new Error(`AE Staff Phase ${expectedKind} returned no response envelope`);
+  }
+  if (response.kind !== expectedKind || response.correlationId !== requestId) {
+    throw new Error(`AE Staff Phase response correlation mismatch for ${requestId}`);
+  }
+  if (!response.body || typeof response.body !== "object" || Array.isArray(response.body)) {
+    throw new Error(`AE Staff Phase ${expectedKind} returned no response object`);
+  }
+  return response.body;
 }
 
 export function buildAeStaffOrderEvent(args = {}) {
@@ -393,13 +427,25 @@ function normalizeAeStaffOrder(input) {
   };
 }
 
-function validateAeStaffDispatch(payload, order, targetRoles) {
-  if (payload?.event?.order?.schema !== "orange.order.v1"
-    || payload.event.order.orderId !== order.orderId
-    || payload.event.order.action !== order.action) {
+function validateAeStaffDispatch(payload, expectedEvent) {
+  const { order, targetRoles } = expectedEvent;
+  if (payload?.event?.id !== expectedEvent.id
+    || payload.event.correlationId !== expectedEvent.correlationId
+    || payload.event.topic !== order.action
+    || payload.event.order?.action !== order.action) {
+    throw new Error("AE Staff dispatch action correlation does not match the requested order");
+  }
+  if (!isDeepStrictEqual(payload.event.order, order)) {
     throw new Error("AE Staff dispatch did not preserve the canonical orange.order.v1");
   }
+  if (!isDeepStrictEqual(payload.event.targetRoles, targetRoles)) {
+    throw new Error("AE Staff dispatch did not preserve the explicit target-role set");
+  }
   if (!Array.isArray(payload.results)) throw new Error("AE Staff dispatch returned no role results");
+  const resultRoles = payload.results.filter(Boolean).map((item) => item.roleId);
+  if (resultRoles.some((roleId) => !targetRoles.includes(roleId)) || new Set(resultRoles).size !== resultRoles.length) {
+    throw new Error("AE Staff dispatch returned duplicate or unrequested role results");
+  }
   const byRole = new Map(payload.results.filter(Boolean).map((item) => [item.roleId, item]));
   const reports = [];
   const failures = [];
@@ -448,8 +494,12 @@ function validateAeStaffReport(report, orderId, roleId) {
   for (const field of ["actionsTaken", "evidence", "blockers"]) {
     if (!Array.isArray(report[field])) throw new Error(`AE Staff role ${roleId} report ${field} must be an array`);
   }
-  if (report.status === "completed" && report.evidence.length === 0) {
-    throw new Error(`AE Staff role ${roleId} claimed completion without evidence`);
+  if (typeof report.nextAction !== "string" || !report.nextAction.trim()) {
+    throw new Error(`AE Staff role ${roleId} returned no next action`);
+  }
+  if (report.status === "completed"
+    && (report.actionsTaken.length === 0 || report.evidence.length === 0 || report.blockers.length > 0)) {
+    throw new Error(`AE Staff role ${roleId} claimed completion without actions and evidence or with unresolved blockers`);
   }
   if (typeof report.receiptPath !== "string" || !report.receiptPath.trim()) {
     throw new Error(`AE Staff role ${roleId} returned no receipt path`);
@@ -476,6 +526,33 @@ function summarizeAeStaffSnapshot(snapshot) {
 function timeoutValue(value, fallback) {
   const parsed = Number(value);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+async function mcpHealthSnapshot() {
+  const fetchProbe = (url, options, timeoutMs) => fetchHealthJson(
+    url,
+    options,
+    Math.min(timeoutMs, MCP_HEALTH_PROBE_TIMEOUT_MS),
+  );
+  return healthSnapshot({ fetchBrain: fetchProbe, fetchPhase: fetchProbe });
+}
+
+async function fetchHealthJson(url, options = {}, timeoutMs = MCP_HEALTH_PROBE_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const startedAt = Date.now();
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    const text = await response.text();
+    let body;
+    try { body = JSON.parse(text); }
+    catch { body = text; }
+    return { ok: response.ok, status: response.status, latencyMs: Date.now() - startedAt, body };
+  } catch (error) {
+    return { ok: false, status: 0, latencyMs: Date.now() - startedAt, error: error?.message || String(error) };
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function superstackStatus() {
@@ -580,7 +657,7 @@ function resources() {
   ];
 }
 async function readResource(uri, aeStaffClient = DEFAULT_AE_STAFF_CLIENT) {
-  if (uri === "orange5://health") return contents(uri, JSON.stringify(await healthSnapshot(), null, 2), "application/json");
+  if (uri === "orange5://health") return contents(uri, JSON.stringify(await mcpHealthSnapshot(), null, 2), "application/json");
   if (uri === "orange5://ae-staff/health") return contents(uri, JSON.stringify(await aeStaffClient.health(), null, 2), "application/json");
   if (uri === "orange5://ae-staff/list") return contents(uri, JSON.stringify(await aeStaffClient.list(), null, 2), "application/json");
   if (uri === "orange5://receipts/latest") return contents(uri, JSON.stringify(readReceipts(10), null, 2), "application/json");

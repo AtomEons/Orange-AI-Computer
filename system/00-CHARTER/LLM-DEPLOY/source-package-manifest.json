@@ -1,0 +1,101 @@
+{
+  "schema": "orangefive.source-package-manifest.v1",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "snapshotKind": "current-source",
+  "releaseName": "Orange-AI-Computer-Wave-4A-Green",
+  "tagName": "Orange-AI-Computer-Wave-4A-Green",
+  "publicArtifactPrefix": "Orange-AI-Computer-Wave-4A-Green",
+  "sourceRoot": ".",
+  "sourceSets": [
+    {
+      "id": "orangefive-system",
+      "archivePrefix": ".",
+      "kind": "source-and-configuration",
+      "description": "Current OrangeFive system source rooted at system/."
+    },
+    {
+      "id": "atomic-orange-source",
+      "archivePrefix": "ATOMICORANGE",
+      "kind": "source",
+      "description": "Current Atomic Orange application source, license texts, and provenance records.",
+      "redistributionStatus": "not-cleared",
+      "notice": "ATOMICORANGE/NOTICE"
+    }
+  ],
+  "inventory": {
+    "schema": "orangefive.current-source-inventory.v1",
+    "embeddedPath": "orangefive.current-source.inventory.json",
+    "embeddedSha256Path": "orangefive.current-source.inventory.json.sha256",
+    "externalName": "Orange-AI-Computer-Wave-4A-Green.inventory.json",
+    "externalSha256Name": "Orange-AI-Computer-Wave-4A-Green.inventory.json.sha256",
+    "treeHashEncoding": "utf8-lines-of-sha256-space-bytes-space-path-lf",
+    "pathOrder": "ordinal"
+  },
+  "archive": {
+    "name": "Orange-AI-Computer-Wave-4A-Green.zip",
+    "sha256Name": "Orange-AI-Computer-Wave-4A-Green.zip.sha256",
+    "reportName": "Orange-AI-Computer-Wave-4A-Green.report.json",
+    "verificationName": "Orange-AI-Computer-Wave-4A-Green.verification.json",
+    "releaseProofName": "Orange-AI-Computer-Wave-4A-Green.release-proof.json",
+    "cleanCloneReportName": "Orange-AI-Computer-Wave-4A-Green.clean-clone-report.json",
+    "embeddedPayloadLock": "orangefive.payload.lock.json",
+    "entryTimestampUtc": "2000-01-01T00:00:00Z",
+    "verifier": "scripts/verify-orangefive-source-package.ps1"
+  },
+  "requiredPaths": [
+    "ORANGE_START.cmd",
+    "00-CHARTER/LLM-DEPLOY/INSTALL_ORANGE.md",
+    "00-CHARTER/LLM-DEPLOY/orangefive.deploy.json",
+    "00-CHARTER/LLM-DEPLOY/source-package-manifest.json",
+    "00-CHARTER/LLM-DEPLOY/discovery-plans.json",
+    "00-CHARTER/LLM-DEPLOY/lifecycle-manifest.json",
+    "00-CHARTER/LLM-DEPLOY/rollback-manifest.json",
+    "00-CHARTER/LLM-DEPLOY/model-acquisition-manifest.json",
+    "00-CHARTER/LLM-DEPLOY/model-acquisition-catalog.json",
+    "scripts/llm-deploy/orange-deploy.mjs",
+    "scripts/llm-deploy/deploy-core.mjs",
+    "scripts/llm-deploy/deploy-probes.mjs",
+    "scripts/llm-deploy/deploy-runtime.mjs",
+    "scripts/llm-deploy/deploy-downloads.mjs",
+    "scripts/llm-deploy/deploy-clients.mjs",
+    "scripts/llm-deploy/pack-orangefive-llm-deploy.ps1",
+    "scripts/llm-deploy/package-current-source-from-clean-clone.ps1",
+    "scripts/llm-deploy/prove-orangefive-llm-deploy.mjs",
+    "scripts/verify-orangefive-source-package.ps1",
+    "ATOMICORANGE/AGENTS.md",
+    "ATOMICORANGE/LICENSE",
+    "ATOMICORANGE/NOTICE",
+    "ATOMICORANGE/LICENSES/source-license-manifest.json",
+    "ATOMICORANGE/ORANGE_UPSTREAM.md",
+    "ATOMICORANGE/package.json",
+    "ATOMICORANGE/src-tauri/src/main.rs",
+    "ATOMICORANGE/web-app/src/main.tsx"
+  ],
+  "forbiddenFileSuffixes": [
+    ".safetensors",
+    ".gguf",
+    ".ggml",
+    ".ckpt",
+    ".pt",
+    ".pth",
+    ".onnx"
+  ],
+  "excludedClasses": [
+    "Git metadata and ignored dependency or build directories",
+    "model weights and private models",
+    "credentials, tokens, private keys, and machine-local environment files",
+    "runtime databases, user memory, logs, volatile receipts, and generated fixture output",
+    "Orange3, Orange4, archived product roots, commerce, and website assets"
+  ],
+  "claims": {
+    "cleanCloneSourcePackaging": true,
+    "archiveContentVerification": true,
+    "atomicOrangeSourceIncluded": true,
+    "modelWeightsExcluded": true,
+    "packagingPublishesArtifacts": false,
+    "liveModelProof": false,
+    "liveCodexaProof": false,
+    "redistributionClearance": false
+  }
+}

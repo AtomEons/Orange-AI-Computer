@@ -1,101 +1,81 @@
-# OrangeFive Not-Green Ledger
+# Æ Orange AI Computer: Open Work Ledger
 
-**Schema:** `orange5.not-green-ledger.v3`
-**Last refreshed:** 2026-08-28
-**Status:** OPEN - all required live operations are green; perceptual
-studio-media certification remains pending and is not promoted by technical proof.
+**Schema:** `orange5.not-green-ledger.v4`
+**Public product:** Æ Orange AI Computer
+**Status:** source published; current native and deployment packages not yet released
 
-Receipts and direct probes outrank this ledger. A broad green snapshot does not
-promote a later failing, narrower path.
+`orange5` and `OrangeFive` remain internal compatibility identifiers in paths,
+schemas, environment variables, and commands. They are not the public product
+name.
 
-## Accepted Current Truth
+Receipts and direct probes outrank this ledger. A process start is not proof of
+correct behavior, and a focused passing test is not whole-product green.
 
-| Capability | 2026-08-27 truth | Evidence |
-|---|---|---|
-| Live primary Navigator | `orange-navigator:ornith-1.5-9b-q4km` on Codexa `10.0.0.4` | Fresh `spine-cli.mjs --health`; promotion evidence below |
-| Codexa rail | Reachable, authenticated, and executable on `10.0.0.4:8097` | Integrated proof and Brain MCP proof below |
-| Retired Q8 Navigator | Historical receipt identity and optional benchmark inventory; it is not the live primary | Current runtime authority and live health |
-| Brain MCP | Dual transport green: 10 tools over stdio and 12 over authenticated loopback Streamable HTTP | `2026-08-27T08-25-01-953Z-brain-mcp-dual-transport-proof.json` |
-| Historical integrated operation | Accepted Q8-era full snapshot green; this receipt is not relabeled as Q4KM evidence | `2026-08-27T08-25-23-337Z-integrated-operational-proof.json` |
-| Context Crystal held-out quality | 5/5 parity cases; minimum held-out ratio `1422.901x` | `2026-08-27T07-47-05-945Z-context-crystal-quality-parity.json` |
-| Context Crystal live turn | `59.439x` operational context ratio; this is not a 1,000x live-turn claim | Integrated proof above |
-| AE Memory quality | 23/23 cases; hybrid MRR `0.9348` | `2026-08-27T06-13-19-976Z-memory-quality-benchmark.json` |
-| Media runtime | Image, video, speech, and music artifacts are technically valid and independently decoded | Integrated proof above |
-| Media quality | Studio quality is not certified | Integrated proof above |
-| Hermes Brain MCP delegation | Complete in `9395.53 ms`; parent execution mediated, one child completed, synthesis completed, all eight LOOM gates authorized, lease revoked | `2026-08-27T17-31-43-840Z-brain-mcp-delegation-live-proof.json` |
-| AE Cobra live recall | 10/10 gateway queries served by AE Cobra; no fallback; p50 `155.1 ms`, p95 `274.65 ms`, max `809.92 ms` | `2026-08-27T17-36-41-438Z-memory-hot-path-proof.json` |
-| Doctrine guardrails | 27/27 pass after frontier-egress, receipt-chain, project-source, and continuity repairs | Fresh guardrail run `2026-08-27` |
-| Source-backed Navigator Kernel | Canonical Orange memory/topology questions compile locally in `805 ms`; model inference measured `0.01 ms`; open-ended work still leases the Navigator | `2026-08-28T14-38-05-420Z-memory-phase-conversation-proof.json` plus focused route-boundary tests |
-| Memory + AE Phase conversation path | 17/17 live checks: AE Cobra source truth, disk fallback, Codexa mirror, Phase system/model probes, natural conversation, Party Line, and Atomic Orange build | `2026-08-28T14-38-05-420Z-memory-phase-conversation-proof.json` |
-| Native startup authority | Hidden Bun worker returns `ORANGE5_STARTUP_CONTROL_COMPLETE`; gateway and Phase are healthy; popup surface is `none`; PowerShell is not the runtime | `10-RECEIPTS/orange5-build/runtime-logs/orange5-runtime-supervisor-latest.json` |
+## Publicly Inspectable Evidence
 
-Do not publish a fixed full-verifier pass count in operator guidance. Test totals
-change as coverage lands; cite the command and the fresh result from the run
-being reported.
+The current evidence set is indexed in
+[`../../proof/EVIDENCE_LEDGER.md`](../../proof/EVIDENCE_LEDGER.md). The public
+repository currently includes bounded evidence for:
 
-## Active Operational Gaps
+- exact-path Blue Bench lanes;
+- an integrated operations run;
+- held-out Context Crystal operational-context compression;
+- held-out AE Memory retrieval;
+- Bun runtime behavior;
+- AE Eyes runtime behavior;
+- bounded Brain MCP and Hermes delegation;
+- controlled Fixer and Link Sentinel recovery;
+- a bounded current-awareness research order;
+- alpha AE Link custody and calibrated routing experiments.
 
-| Gap | Current evidence | Exact exit condition | Owner |
-|---|---|---|---|
-| Studio media quality | Media lanes prove decodable, nonblank/non-silent, moving where applicable, and hash-stable artifacts. They do not prove human or model-reviewed studio quality. | Cross-prompt human and model quality bakeoff with explicit acceptance criteria and a promotion receipt. | Media quality evaluation |
+Each claim inherits the workload and machine boundary stated in that ledger.
 
-The media-quality gap limits subjective quality claims; it does not erase the
-technical runtime proof and does not block the OrangeFive operational spine.
+## Current Source Included
 
-## Historical Model Transition
+- Operational intelligence spine
+- Navigator Kernel
+- AE Phase Fabric and AE Pulse
+- AE Memory / Cobra
+- Context Crystal and AtomSmasher
+- FLOW
+- Hermes integration and the 50-role AE Staff definitions
+- Brain MCP
+- Party Line
+- Receipt and Fixer components
+- Research-law registry
+- Atomic Orange source
+- Operator, LLM, architecture, and technical manuals
 
-The `2026-08-27T08-30-30-809Z-integrated-operational-proof.json` rerun returned
-`NEEDS_WORK`: it consumed a one-case Q4 Context benchmark while the accepted
-integrated snapshot still named Q8, and its live governed turn did not complete.
-That receipt remains historical evidence and was never allowed to promote a
-candidate merely by being newest. The later navigator bakeoff selected the
-Q4_K_M candidate, and fresh semantic health now names the promoted
-`orange-navigator:ornith-1.5-9b-q4km` tag as live primary.
+Source presence does not by itself prove a clean installation or live runtime.
 
-## Current Evidence Set
+## Required Before The Current Release Is Green
 
-- Live health: `bun 03-BACKEND/spine-cli.mjs --health`
-- Accepted integrated proof:
-  `10-RECEIPTS/orange5-build/2026-08-27T08-25-23-337Z-integrated-operational-proof.json`
-- Concurrent non-accepted integrated rerun:
-  `10-RECEIPTS/orange5-build/2026-08-27T08-30-30-809Z-integrated-operational-proof.json`
-- Navigator promotion bakeoff:
-  `10-RECEIPTS/orange5-build/2026-08-27T10-02-32-980Z-navigator-candidate-bakeoff.json`
-- Brain MCP dual transport:
-  `10-RECEIPTS/orange5-build/2026-08-27T08-25-01-953Z-brain-mcp-dual-transport-proof.json`
-- Context Crystal held-out parity:
-  `10-RECEIPTS/orange5-build/2026-08-27T07-47-05-945Z-context-crystal-quality-parity.json`
-- AE Memory quality:
-  `10-RECEIPTS/orange5-build/2026-08-27T06-13-19-976Z-memory-quality-benchmark.json`
-- Earlier Hermes live execution:
-  `10-RECEIPTS/orange5-build/2026-08-27T01-58-46-801Z-hermes-live-execution-proof.json`
-- Current Hermes Brain MCP delegation:
-  `10-RECEIPTS/orange5-build/2026-08-27T17-31-43-840Z-brain-mcp-delegation-live-proof.json`
-- Current AE Cobra hot-path proof:
-  `10-RECEIPTS/orange5-build/2026-08-27T17-36-41-438Z-memory-hot-path-proof.json`
-- Current memory/Phase/conversation proof:
-  `10-RECEIPTS/orange5-build/2026-08-28T14-38-05-420Z-memory-phase-conversation-proof.json`
-- Current native startup proof:
-  `10-RECEIPTS/orange5-build/runtime-logs/orange5-runtime-supervisor-latest.json`
+| Requirement | Exit evidence |
+|---|---|
+| Canonical Atomic Orange app | One unambiguous Tauri build entrypoint; web tests, Rust checks, Windows native build, and conversational roundtrip pass from a clean clone |
+| Brain MCP and AE Staff integration | The current integration suite passes roster/health, canonical dispatch, action correlation, false-green rejection, and missing-key handling without timeout |
+| Company-scale execution | A real shared mission completes through AE Phase with bounded Hermes workers, correlated role reports, independent verification, and restart/reconnect evidence |
+| Current deployment archive | A package built from the repaired public commit includes the current system and Atomic Orange source, plus inventory, SHA-256, lifecycle, rollback, and clean-extraction proof |
+| Clean installation | One-computer and two-computer installs pass discovery, model acquisition, startup, reboot persistence, reconnect, and rollback on clean Windows environments |
+| Current GitHub proof | Windows CI passes on the exact release commit and a tag/release points to that commit and its current artifacts |
+| Studio media quality | Cross-prompt image, video, speech, and music outputs pass explicit perceptual acceptance criteria; technical decoding alone is insufficient |
+| Current awareness promotion | Broader source and field evidence proves that quarantined candidates can be promoted without contaminating runtime truth |
 
-## Claim Boundaries
+## Deliberately Excluded From Git
 
-- Live primary means the model named by fresh semantic health, not an installed
-  historical weight or a separate candidate bakeoff.
-- Integrated green means the exact accepted snapshot passed. It does not
-  override a later path-specific timeout.
-- The historical Q4 candidate receipt did not replace Q8-era primary evidence
-  through newest-file selection. Current Q4KM authority comes from the later
-  promotion evidence plus fresh semantic health.
-- Eight LOOM gates authorize a crossing. They do not prove that the delegated
-  worker completed its work.
-- Held-out compression and live-turn compression are separate measurements.
-- Technical media validity is not studio quality.
+- Model weights acquired from their licensed upstream sources
+- Runtime credentials and tokens
+- Machine state, memory databases, and private operator data
+- Local caches, logs, and temporary build products
 
-**Bottom line:** OrangeFive has a green operational spine: live Q4KM Ornith
-primary routing, authenticated Codexa, current dual-transport MCP, completed
-Hermes delegation, live low-latency AE Cobra memory, held-out Context Crystal
-quality proof, source-backed sub-second canonical system answers, an AE Phase
-startup authority with no popup shell, and technically valid media. The ledger
-stays open only for the separate studio-media perceptual quality claim. No fake
-green.
+These exclusions are product boundaries, not missing source.
+
+## Release Rule
+
+The existing `wave-2-preview` download is a historical field-test package. It
+does not contain the current public source snapshot or Atomic Orange. It must not
+be presented as the current Æ Orange AI Computer package.
+
+The next release is accepted only when its source commit, archive inventory,
+hashes, clean-install proofs, native app proof, integration tests, and GitHub
+workflow all identify the same build.

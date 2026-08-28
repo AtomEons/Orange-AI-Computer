@@ -3,7 +3,9 @@ param(
   [string]$SourceRoot = '',
   [string]$DestinationRoot = '',
   [switch]$DryRun,
-  [switch]$SkipReleaseProof
+  [switch]$SkipReleaseProof,
+  [switch]$RequireCleanSource,
+  [string]$ExpectedCommit = ''
 )
 
 Set-StrictMode -Version Latest
@@ -26,7 +28,7 @@ function Test-PayloadExclusion([string]$RelativePath) {
   $relative = $RelativePath.Replace('\', '/')
   $segments = @($relative.Split('/'))
   $leaf = $segments[-1]
-  $excludedProductRoots = @('02-ATOMIC-ORANGE-V1', 'ATOMICORANGE', '19-ARCHIVE')
+  $excludedProductRoots = @('02-ATOMIC-ORANGE-V1', '19-ARCHIVE')
   $allowedRootFiles = @('.dockerignore', '.gitignore', 'ORANGE_START.cmd', 'ORANGEFIVE_CURRENT_OPERATIONAL_TRUTH.md', 'README.md', 'package.json')
   if ($segments[0] -in $excludedProductRoots) { return $true }
   if ($segments.Count -eq 1 -and $segments[0] -notin $allowedRootFiles) { return $true }
@@ -44,6 +46,20 @@ function Test-PayloadExclusion([string]$RelativePath) {
   if ($relative -match '(?i)(private-model|abliterated|credential|secret-token)') { return $true }
   if ($relative -eq 'orangefive.payload.lock.json') { return $true }
   return $false
+}
+
+function Assert-SafeArchivePath([string]$RelativePath) {
+  $relative = $RelativePath.Replace('\', '/')
+  $segments = @($relative.Split('/'))
+  if (
+    [string]::IsNullOrWhiteSpace($relative) -or
+    [IO.Path]::IsPathRooted($relative) -or
+    $relative.Contains(':') -or
+    @($segments | Where-Object { [string]::IsNullOrWhiteSpace($_) -or $_ -eq '.' -or $_ -eq '..' }).Count -gt 0
+  ) {
+    throw "Unsafe deploy archive path: $relative"
+  }
+  return $relative
 }
 
 function Find-HighConfidenceCredential([string]$Path) {
@@ -71,6 +87,93 @@ function Get-Sha256([string]$Path) {
   } finally {
     $algorithm.Dispose()
     $stream.Dispose()
+  }
+}
+
+function Get-BytesSha256([byte[]]$Bytes) {
+  $algorithm = [Security.Cryptography.SHA256]::Create()
+  try {
+    return ([BitConverter]::ToString($algorithm.ComputeHash($Bytes)) -replace '-', '').ToLowerInvariant()
+  } finally {
+    $algorithm.Dispose()
+  }
+}
+
+function ConvertTo-StableJsonBytes([object]$Value, [int]$Depth = 12) {
+  $json = (($Value | ConvertTo-Json -Depth $Depth) -replace "`r`n", "`n") + "`n"
+  return [Text.UTF8Encoding]::new($false).GetBytes($json)
+}
+
+function Sort-RecordsOrdinal([object[]]$Records) {
+  $list = [Collections.Generic.List[object]]::new()
+  foreach ($record in $Records) { $list.Add($record) }
+  $list.Sort([Comparison[object]]{
+    param($left, $right)
+    return [StringComparer]::Ordinal.Compare([string]$left.path, [string]$right.path)
+  })
+  return @($list.ToArray())
+}
+
+function Get-TreeSha256([object[]]$Records) {
+  $builder = [Text.StringBuilder]::new()
+  foreach ($record in (Sort-RecordsOrdinal $Records)) {
+    [void]$builder.Append([string]$record.sha256)
+    [void]$builder.Append(' ')
+    [void]$builder.Append(([long]$record.bytes).ToString([Globalization.CultureInfo]::InvariantCulture))
+    [void]$builder.Append(' ')
+    [void]$builder.Append([string]$record.path)
+    [void]$builder.Append("`n")
+  }
+  return Get-BytesSha256 ([Text.UTF8Encoding]::new($false).GetBytes($builder.ToString()))
+}
+
+function Get-GitSourceProvenance([string]$Root) {
+  $git = Get-Command git.exe -ErrorAction SilentlyContinue
+  if (-not $git) { $git = Get-Command git -ErrorAction SilentlyContinue }
+  if (-not $git) {
+    if ($RequireCleanSource) { throw 'Git is required when -RequireCleanSource is set.' }
+    return [ordered]@{ kind = 'filesystem'; commit = $null; repositoryTree = $null; sourceTree = $null; sourcePath = $null; clean = $null }
+  }
+
+  $previousErrorAction = $ErrorActionPreference
+  $ErrorActionPreference = 'Continue'
+  try {
+    $repositoryOutput = & $git.Source -C $Root rev-parse --show-toplevel 2>$null
+    $repositoryExitCode = $LASTEXITCODE
+  } finally {
+    $ErrorActionPreference = $previousErrorAction
+  }
+  $repositoryRoot = ($repositoryOutput | Out-String).Trim()
+  if ($repositoryExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($repositoryRoot)) {
+    if ($RequireCleanSource) { throw 'The deploy source must be inside a Git worktree when -RequireCleanSource is set.' }
+    return [ordered]@{ kind = 'filesystem'; commit = $null; repositoryTree = $null; sourceTree = $null; sourcePath = $null; clean = $null }
+  }
+
+  $repositoryRoot = Get-NormalizedFullPath $repositoryRoot
+  if (-not (Test-ContainedPath $Root $repositoryRoot)) { throw "Deploy source is outside its Git worktree: $Root" }
+  $sourcePath = $Root.Substring($repositoryRoot.Length).TrimStart('\', '/').Replace('\', '/')
+  if ([string]::IsNullOrWhiteSpace($sourcePath)) { $sourcePath = '.' }
+  $commit = (& $git.Source -C $repositoryRoot rev-parse HEAD | Out-String).Trim()
+  $repositoryTree = (& $git.Source -C $repositoryRoot rev-parse 'HEAD^{tree}' | Out-String).Trim()
+  $sourceTreeSpec = if ($sourcePath -eq '.') { 'HEAD^{tree}' } else { "HEAD:$sourcePath" }
+  $sourceTree = (& $git.Source -C $repositoryRoot rev-parse $sourceTreeSpec | Out-String).Trim()
+  if ($LASTEXITCODE -ne 0 -or $commit -notmatch '^[a-f0-9]{40,64}$' -or $repositoryTree -notmatch '^[a-f0-9]{40,64}$' -or $sourceTree -notmatch '^[a-f0-9]{40,64}$') {
+    throw 'Unable to resolve deterministic Git commit and tree provenance for the deploy source.'
+  }
+  $status = @(& $git.Source -C $repositoryRoot status --porcelain=v1 --untracked-files=all)
+  if ($LASTEXITCODE -ne 0) { throw 'Unable to inspect Git cleanliness for the deploy source.' }
+  $clean = $status.Count -eq 0
+  if ($RequireCleanSource -and -not $clean) { throw 'Clean-source packaging refused a Git worktree with tracked or untracked changes.' }
+  if (-not [string]::IsNullOrWhiteSpace($ExpectedCommit) -and $commit -ne $ExpectedCommit.ToLowerInvariant()) {
+    throw "Clean-source packaging expected commit $ExpectedCommit but found $commit."
+  }
+  return [ordered]@{
+    kind = if ($RequireCleanSource) { 'git-clean-checkout' } else { 'git-worktree' }
+    commit = $commit
+    repositoryTree = $repositoryTree
+    sourceTree = $sourceTree
+    sourcePath = $sourcePath
+    clean = $clean
   }
 }
 
@@ -124,8 +227,15 @@ function Get-PayloadSourceFiles([string]$Root) {
   $git = Get-Command git.exe -ErrorAction SilentlyContinue
   if (-not $git) { $git = Get-Command git -ErrorAction SilentlyContinue }
   if ($git) {
-    $relativeFiles = @(& $git.Source -C $Root ls-files --cached --others --exclude-standard)
-    if ($LASTEXITCODE -eq 0) {
+    $previousErrorAction = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+      $relativeFiles = @(& $git.Source -C $Root ls-files --cached --others --exclude-standard 2>$null)
+      $gitListExitCode = $LASTEXITCODE
+    } finally {
+      $ErrorActionPreference = $previousErrorAction
+    }
+    if ($gitListExitCode -eq 0) {
       foreach ($relative in $relativeFiles) {
         $normalized = ([string]$relative).Replace('\', '/')
         if (Test-PayloadExclusion $normalized) { continue }
@@ -157,8 +267,8 @@ function Get-PayloadSourceFiles([string]$Root) {
 }
 
 function Assert-SourceSnapshot([object[]]$Expected, [string]$Root) {
-  $current = @(Get-PayloadSourceFiles $Root | ForEach-Object {
-    $relative = $_.FullName.Substring($Root.Length).TrimStart('\', '/').Replace('\', '/')
+  $current = @(Sort-RecordsOrdinal @(Get-PayloadSourceFiles $Root | ForEach-Object {
+    $relative = Assert-SafeArchivePath $_.FullName.Substring($Root.Length).TrimStart('\', '/').Replace('\', '/')
     if (-not (Test-PayloadExclusion $relative)) {
       [pscustomobject][ordered]@{
         path = $relative
@@ -166,7 +276,7 @@ function Assert-SourceSnapshot([object[]]$Expected, [string]$Root) {
         sha256 = Get-Sha256 $_.FullName
       }
     }
-  } | Sort-Object path)
+  }))
   if ($current.Count -ne $Expected.Count) {
     throw "Source payload changed during packaging: expected $($Expected.Count) files, found $($current.Count)."
   }
@@ -183,6 +293,7 @@ $SourceRoot = Get-NormalizedFullPath $SourceRoot
 $DestinationRoot = Get-NormalizedFullPath $DestinationRoot
 if (-not (Test-Path -LiteralPath $SourceRoot -PathType Container)) { throw "Source root does not exist: $SourceRoot" }
 if (Test-ContainedPath $DestinationRoot $SourceRoot) { throw 'ZIP output must live outside the immutable OrangeFive payload.' }
+$sourceProvenance = Get-GitSourceProvenance $SourceRoot
 
 $manifestPath = Join-Path $SourceRoot '00-CHARTER\LLM-DEPLOY\orangefive.deploy.json'
 if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) { throw "Deploy manifest is missing: $manifestPath" }
@@ -190,10 +301,36 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.schema -ne 'orange.deploy.manifest.v1' -or $manifest.product -ne 'Orange' -or $manifest.release -ne 'OrangeFive') {
   throw 'The packer accepts only the Orange release OrangeFive deploy manifest.'
 }
+$sourcePackageManifestPath = Join-Path $SourceRoot '00-CHARTER\LLM-DEPLOY\source-package-manifest.json'
+if (-not (Test-Path -LiteralPath $sourcePackageManifestPath -PathType Leaf)) { throw "Source package manifest is missing: $sourcePackageManifestPath" }
+$sourcePackageManifest = Get-Content -LiteralPath $sourcePackageManifestPath -Raw | ConvertFrom-Json
+if ($sourcePackageManifest.schema -ne 'orangefive.source-package-manifest.v1' -or $sourcePackageManifest.product -ne 'Orange' -or $sourcePackageManifest.release -ne 'OrangeFive') {
+  throw 'The source package manifest identity is invalid.'
+}
+$expectedPublicNames = @(
+  [string]$sourcePackageManifest.archive.name,
+  [string]$sourcePackageManifest.archive.sha256Name,
+  [string]$sourcePackageManifest.archive.reportName,
+  [string]$sourcePackageManifest.archive.verificationName,
+  [string]$sourcePackageManifest.archive.releaseProofName,
+  [string]$sourcePackageManifest.archive.cleanCloneReportName,
+  [string]$sourcePackageManifest.inventory.externalName,
+  [string]$sourcePackageManifest.inventory.externalSha256Name
+)
+if (
+  $sourcePackageManifest.releaseName -ne 'Orange-AI-Computer-Wave-4A-Green' -or
+  $sourcePackageManifest.tagName -ne 'Orange-AI-Computer-Wave-4A-Green' -or
+  $sourcePackageManifest.publicArtifactPrefix -ne 'Orange-AI-Computer-Wave-4A-Green' -or
+  $sourcePackageManifest.archive.name -ne 'Orange-AI-Computer-Wave-4A-Green.zip' -or
+  $sourcePackageManifest.archive.entryTimestampUtc -ne '2000-01-01T00:00:00Z' -or
+  @($expectedPublicNames | Where-Object { -not $_.StartsWith('Orange-AI-Computer-Wave-4A-Green', [StringComparison]::Ordinal) }).Count -gt 0
+) {
+  throw 'The source package manifest archive contract is invalid.'
+}
 
-$sourceFiles = @(Get-PayloadSourceFiles $SourceRoot | ForEach-Object {
+$sourceFiles = @(Sort-RecordsOrdinal @(Get-PayloadSourceFiles $SourceRoot | ForEach-Object {
   if (-not (Test-ContainedPath $_.FullName $SourceRoot)) { throw "Payload enumeration escaped source root: $($_.FullName)" }
-  $relative = $_.FullName.Substring($SourceRoot.Length).TrimStart('\', '/').Replace('\', '/')
+  $relative = Assert-SafeArchivePath $_.FullName.Substring($SourceRoot.Length).TrimStart('\', '/').Replace('\', '/')
   if (-not (Test-PayloadExclusion $relative)) {
     if (($_.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) { throw "Reparse-point files are forbidden in the deploy payload: $relative" }
     $credential = Find-HighConfidenceCredential $_.FullName
@@ -205,7 +342,11 @@ $sourceFiles = @(Get-PayloadSourceFiles $SourceRoot | ForEach-Object {
       sha256 = Get-Sha256 $_.FullName
     }
   }
-} | Sort-Object path)
+}))
+$sourcePathSet = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+foreach ($sourceFile in $sourceFiles) {
+  if (-not $sourcePathSet.Add([string]$sourceFile.path)) { throw "Case-insensitive duplicate source path: $($sourceFile.path)" }
+}
 
 $soulGenomeTemplate = Join-Path $SourceRoot '00-CHARTER\LLM-DEPLOY\soul-genome.public.json'
 if (-not (Test-Path -LiteralPath $soulGenomeTemplate -PathType Leaf)) {
@@ -215,59 +356,118 @@ $privateGenomePath = Join-Path $SourceRoot '13-MODELS\orange-llm\soul_genome.jso
 $privateGenome = if (Test-Path -LiteralPath $privateGenomePath -PathType Leaf) {
   Get-Content -LiteralPath $privateGenomePath -Raw | ConvertFrom-Json
 } else { $null }
+$privateEmail = if ($null -ne $privateGenome) { [string]$privateGenome.sovereign.email } else { '' }
+$privateCity = if ($null -ne $privateGenome) { [string]$privateGenome.location.city } else { '' }
 $redactions = @(
   [pscustomobject]@{ from = $env:USERPROFILE; to = '%USERPROFILE%' },
   [pscustomobject]@{ from = $env:USERPROFILE.Replace('\', '/'); to = '%USERPROFILE%' },
-  [pscustomobject]@{ from = [string]$privateGenome.sovereign.email; to = 'operator@example.invalid' },
-  [pscustomobject]@{ from = [string]$privateGenome.location.city; to = 'Operator locality' }
+  [pscustomobject]@{ from = $privateEmail; to = 'operator@example.invalid' },
+  [pscustomobject]@{ from = $privateCity; to = 'Operator locality' }
 )
 $stageRoot = Join-Path ([IO.Path]::GetTempPath()) ("orange-public-pack-$PID-" + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $stageRoot | Out-Null
-$files = @($sourceFiles | ForEach-Object {
+$files = @(Sort-RecordsOrdinal @($sourceFiles | ForEach-Object {
   Get-PublicArchiveFile -File $_ -StageRoot $stageRoot -Redactions $redactions -SoulGenomeTemplate $soulGenomeTemplate
-} | Sort-Object path)
+}))
 $sanitizedFileCount = @($files | Where-Object { $_.publicSanitized }).Count
 $templateFileCount = @($files | Where-Object { $_.publicTemplate }).Count
 
-$required = @(
-  'ORANGE_START.cmd',
-  '00-CHARTER/LLM-DEPLOY/INSTALL_ORANGE.md',
-  '00-CHARTER/LLM-DEPLOY/orangefive.deploy.json',
-  '00-CHARTER/LLM-DEPLOY/model-acquisition-catalog.json',
-  'scripts/llm-deploy/orange-deploy.mjs',
-  'scripts/llm-deploy/deploy-core.mjs',
-  'scripts/llm-deploy/deploy-probes.mjs',
-  'scripts/llm-deploy/deploy-runtime.mjs'
-  'scripts/llm-deploy/deploy-downloads.mjs'
-  'scripts/llm-deploy/deploy-clients.mjs'
-  'scripts/llm-deploy/pack-orangefive-llm-deploy.ps1'
-  'scripts/llm-deploy/prove-orangefive-llm-deploy.mjs'
-)
+$required = @($sourcePackageManifest.requiredPaths | ForEach-Object { Assert-SafeArchivePath ([string]$_) })
 $included = @($files | ForEach-Object { $_.path })
 $missing = @($required | Where-Object { $_ -notin $included })
 if ($missing.Count) { throw "Required deploy payload files are missing: $($missing -join ', ')" }
+$atomicOrangeFiles = @($files | Where-Object { ([string]$_.path).StartsWith('ATOMICORANGE/', [StringComparison]::Ordinal) })
+if ($atomicOrangeFiles.Count -eq 0) { throw 'Atomic Orange source is missing from the current-source deploy payload.' }
+$sourcePayloadBytes = [long]0
+foreach ($file in $files) { $sourcePayloadBytes += [long]$file.bytes }
+$atomicOrangeBytes = [long]0
+foreach ($file in $atomicOrangeFiles) { $atomicOrangeBytes += [long]$file.bytes }
+$sourceTreeSha256 = Get-TreeSha256 $files
+$atomicOrangeTreeSha256 = Get-TreeSha256 $atomicOrangeFiles
+
+$contractPaths = [ordered]@{
+  sourcePackage = '00-CHARTER/LLM-DEPLOY/source-package-manifest.json'
+  discoveryPlans = '00-CHARTER/LLM-DEPLOY/discovery-plans.json'
+  lifecycle = '00-CHARTER/LLM-DEPLOY/lifecycle-manifest.json'
+  rollback = '00-CHARTER/LLM-DEPLOY/rollback-manifest.json'
+  modelAcquisition = '00-CHARTER/LLM-DEPLOY/model-acquisition-manifest.json'
+}
+$contractHashes = [ordered]@{}
+foreach ($contractName in $contractPaths.Keys) {
+  $contractPath = [string]$contractPaths[$contractName]
+  $record = @($files | Where-Object { $_.path -eq $contractPath }) | Select-Object -First 1
+  if (-not $record) { throw "Current-source contract is missing from payload inventory: $contractPath" }
+  $contractHashes[$contractName] = [ordered]@{ path = $contractPath; sha256 = [string]$record.sha256 }
+}
+
+$inventoryPath = Assert-SafeArchivePath ([string]$sourcePackageManifest.inventory.embeddedPath)
+$inventoryShaPath = Assert-SafeArchivePath ([string]$sourcePackageManifest.inventory.embeddedSha256Path)
+$sourceInventory = [ordered]@{
+  schema = 'orangefive.current-source-inventory.v1'
+  product = 'Orange'
+  release = 'OrangeFive'
+  snapshotKind = 'current-source'
+  hashAlgorithm = 'sha256'
+  treeHashEncoding = 'utf8-lines-of-sha256-space-bytes-space-path-lf'
+  pathOrder = 'ordinal'
+  sourceControl = $sourceProvenance
+  cleanSourceRequired = [bool]$RequireCleanSource
+  sourceFileCount = $files.Count
+  sourceBytes = $sourcePayloadBytes
+  sourceTreeSha256 = $sourceTreeSha256
+  atomicOrange = [ordered]@{
+    archivePrefix = 'ATOMICORANGE/'
+    fileCount = $atomicOrangeFiles.Count
+    bytes = $atomicOrangeBytes
+    treeSha256 = $atomicOrangeTreeSha256
+  }
+  contracts = $contractHashes
+  files = @($files | ForEach-Object { [ordered]@{ path = $_.path; bytes = $_.bytes; sha256 = $_.sha256 } })
+}
+$inventoryBytes = ConvertTo-StableJsonBytes $sourceInventory 14
+$inventorySha256 = Get-BytesSha256 $inventoryBytes
+$inventoryShaBytes = [Text.Encoding]::ASCII.GetBytes("$inventorySha256  $inventoryPath`n")
+$inventoryAbsolutePath = Join-Path $stageRoot $inventoryPath
+$inventoryShaAbsolutePath = Join-Path $stageRoot $inventoryShaPath
+New-Item -ItemType Directory -Force -Path (Split-Path -Parent $inventoryAbsolutePath) | Out-Null
+New-Item -ItemType Directory -Force -Path (Split-Path -Parent $inventoryShaAbsolutePath) | Out-Null
+[IO.File]::WriteAllBytes($inventoryAbsolutePath, $inventoryBytes)
+[IO.File]::WriteAllBytes($inventoryShaAbsolutePath, $inventoryShaBytes)
+$inventoryRecords = @(
+  [pscustomobject][ordered]@{ path = $inventoryPath; absolutePath = $inventoryAbsolutePath; bytes = [long]$inventoryBytes.Length; sha256 = $inventorySha256; publicSanitized = $false; publicTemplate = $false },
+  [pscustomobject][ordered]@{ path = $inventoryShaPath; absolutePath = $inventoryShaAbsolutePath; bytes = [long]$inventoryShaBytes.Length; sha256 = (Get-BytesSha256 $inventoryShaBytes); publicSanitized = $false; publicTemplate = $false }
+)
+$payloadFiles = @(Sort-RecordsOrdinal @($files + $inventoryRecords))
 $payloadBytes = [long]0
-foreach ($file in $files) { $payloadBytes += [long]$file.bytes }
+foreach ($file in $payloadFiles) { $payloadBytes += [long]$file.bytes }
 
 $payloadLock = [ordered]@{
   schema = 'orangefive.payload-lock.v1'
   product = 'Orange'
   release = 'OrangeFive'
   hashAlgorithm = 'sha256'
-  fileCount = $files.Count
-  files = @($files | ForEach-Object { [ordered]@{ path = $_.path; bytes = $_.bytes; sha256 = $_.sha256 } })
+  fileCount = $payloadFiles.Count
+  files = @($payloadFiles | ForEach-Object { [ordered]@{ path = $_.path; bytes = $_.bytes; sha256 = $_.sha256 } })
 }
-$lockJson = ($payloadLock | ConvertTo-Json -Depth 8) + "`n"
-$zipPath = Join-Path $DestinationRoot 'OrangeFive-LLM-deploy.zip'
+$lockBytes = ConvertTo-StableJsonBytes $payloadLock 10
+$zipName = [string]$sourcePackageManifest.archive.name
+$zipPath = Join-Path $DestinationRoot $zipName
 
 $plan = [ordered]@{
   schema = 'orangefive.deploy-pack-plan.v1'
   mode = if ($DryRun) { 'dry-run' } else { 'apply' }
   sourceRoot = $SourceRoot
   destination = $zipPath
-  fileCount = $files.Count
+  sourceControl = $sourceProvenance
+  sourceFileCount = $files.Count
+  fileCount = $payloadFiles.Count
   payloadBytes = $payloadBytes
   embeddedLock = 'orangefive.payload.lock.json'
+  embeddedInventory = $inventoryPath
+  sourceTreeSha256 = $sourceTreeSha256
+  inventorySha256 = $inventorySha256
+  atomicOrange = $sourceInventory.atomicOrange
+  publishPerformed = $false
   credentialScan = 'passed'
   publicSanitization = [ordered]@{
     filesTransformed = $sanitizedFileCount
@@ -292,7 +492,7 @@ $archive = [IO.Compression.ZipArchive]::new($stream, [IO.Compression.ZipArchiveM
 $fixedTime = [DateTimeOffset]::new(2000, 1, 1, 0, 0, 0, [TimeSpan]::Zero)
 $archiveError = $null
 try {
-  foreach ($file in $files) {
+  foreach ($file in $payloadFiles) {
     $entry = $archive.CreateEntry([string]$file.path, [IO.Compression.CompressionLevel]::Optimal)
     $entry.LastWriteTime = $fixedTime
     try { $input = [IO.File]::OpenRead([string]$file.absolutePath) }
@@ -302,8 +502,8 @@ try {
   }
   $lockEntry = $archive.CreateEntry('orangefive.payload.lock.json', [IO.Compression.CompressionLevel]::Optimal)
   $lockEntry.LastWriteTime = $fixedTime
-  $writer = [IO.StreamWriter]::new($lockEntry.Open(), [Text.UTF8Encoding]::new($false))
-  try { $writer.Write($lockJson) } finally { $writer.Dispose() }
+  $lockOutput = $lockEntry.Open()
+  try { $lockOutput.Write($lockBytes, 0, $lockBytes.Length) } finally { $lockOutput.Dispose() }
 } catch {
   $archiveError = $_
 } finally {
@@ -320,8 +520,11 @@ $verifyArchive = [IO.Compression.ZipArchive]::new($verifyStream, [IO.Compression
 $verificationError = $null
 try {
   $entries = @($verifyArchive.Entries)
-  if ($entries.Count -ne ($files.Count + 1)) { throw "ZIP verification count mismatch: expected $($files.Count + 1), got $($entries.Count)" }
-  if (@($entries.FullName | Sort-Object -Unique).Count -ne $entries.Count) { throw 'ZIP verification found duplicate entry names.' }
+  if ($entries.Count -ne ($payloadFiles.Count + 1)) { throw "ZIP verification count mismatch: expected $($payloadFiles.Count + 1), got $($entries.Count)" }
+  $entryNames = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+  foreach ($archiveEntry in $entries) {
+    if (-not $entryNames.Add([string]$archiveEntry.FullName)) { throw "ZIP verification found a duplicate entry name: $($archiveEntry.FullName)" }
+  }
   foreach ($requiredPath in $required) {
     if ($requiredPath -notin @($entries.FullName)) { throw "ZIP verification is missing required entry: $requiredPath" }
   }
@@ -333,9 +536,8 @@ try {
     throw 'Embedded payload lock identity verification failed.'
   }
   $lockFiles = @($verifiedLock.files)
-  if ([int]$verifiedLock.fileCount -ne $files.Count -or $lockFiles.Count -ne $files.Count) { throw 'Embedded payload lock count verification failed.' }
-  $lockNames = @($lockFiles | ForEach-Object { [string]$_.path })
-  if (@($lockNames | Sort-Object -Unique).Count -ne $lockNames.Count) { throw 'Embedded payload lock contains duplicate paths.' }
+  if ([int]$verifiedLock.fileCount -ne $payloadFiles.Count -or $lockFiles.Count -ne $payloadFiles.Count) { throw 'Embedded payload lock count verification failed.' }
+  $lockNames = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
   foreach ($record in $lockFiles) {
     $recordPath = ([string]$record.path).Replace('\', '/')
     if ([string]::IsNullOrWhiteSpace($recordPath) -or [IO.Path]::IsPathRooted($recordPath) -or $recordPath.Split('/') -contains '..') {
@@ -344,6 +546,7 @@ try {
     if ([string]$record.sha256 -notmatch '^[a-f0-9]{64}$' -or [long]$record.bytes -lt 0) {
       throw "Embedded payload lock contains invalid checksum metadata: $recordPath"
     }
+    if (-not $lockNames.Add($recordPath)) { throw "Embedded payload lock contains a duplicate path: $recordPath" }
     $entry = $verifyArchive.GetEntry($recordPath)
     if (-not $entry) { throw "ZIP verification is missing locked entry: $recordPath" }
     if ([long]$entry.Length -ne [long]$record.bytes) { throw "ZIP verification byte mismatch: $recordPath" }
@@ -371,8 +574,36 @@ Move-Item -LiteralPath $temporaryZip -Destination $zipPath
 }
 
 $zipSha256 = Get-Sha256 $zipPath
-Set-Content -LiteralPath "$zipPath.sha256" -Value "$zipSha256  OrangeFive-LLM-deploy.zip" -Encoding ascii
-$proofReceiptPath = Join-Path $DestinationRoot 'OrangeFive-LLM-deploy.proof.json'
+$zipShaPath = Join-Path $DestinationRoot ([string]$sourcePackageManifest.archive.sha256Name)
+Set-Content -LiteralPath $zipShaPath -Value "$zipSha256  $zipName" -Encoding ascii
+$externalInventoryName = [string]$sourcePackageManifest.inventory.externalName
+$externalInventoryShaName = [string]$sourcePackageManifest.inventory.externalSha256Name
+if ([IO.Path]::GetFileName($externalInventoryName) -ne $externalInventoryName -or [IO.Path]::GetFileName($externalInventoryShaName) -ne $externalInventoryShaName) {
+  throw 'External inventory names must be plain file names.'
+}
+$externalInventoryPath = Join-Path $DestinationRoot $externalInventoryName
+$externalInventoryShaPath = Join-Path $DestinationRoot $externalInventoryShaName
+[IO.File]::WriteAllBytes($externalInventoryPath, $inventoryBytes)
+[IO.File]::WriteAllBytes($externalInventoryShaPath, $inventoryShaBytes)
+$sourceVerificationPath = Join-Path $DestinationRoot ([string]$sourcePackageManifest.archive.verificationName)
+$sourceVerificationSha256 = $null
+try {
+  $sourceVerifierPath = Join-Path $SourceRoot (([string]$sourcePackageManifest.archive.verifier).Replace('/', '\'))
+  if (-not (Test-Path -LiteralPath $sourceVerifierPath -PathType Leaf)) { throw "Source package verifier is missing: $sourceVerifierPath" }
+  $sourceVerificationOutput = (& $sourceVerifierPath -ZipPath $zipPath -ExpectedZipSha256 $zipSha256 -Json | Out-String).Trim()
+  $sourceVerification = $sourceVerificationOutput | ConvertFrom-Json
+  if ($sourceVerification.status -ne 'VERIFIED' -or $sourceVerification.inventory.sha256 -ne $inventorySha256 -or $sourceVerification.inventory.sourceTreeSha256 -ne $sourceTreeSha256) {
+    throw 'Independent current-source package verification did not return the expected VERIFIED receipt.'
+  }
+  [IO.File]::WriteAllText($sourceVerificationPath, (($sourceVerification | ConvertTo-Json -Depth 12) -replace "`r`n", "`n") + "`n", [Text.UTF8Encoding]::new($false))
+  $sourceVerificationSha256 = Get-Sha256 $sourceVerificationPath
+} catch {
+  foreach ($artifact in @($zipPath, $zipShaPath, $externalInventoryPath, $externalInventoryShaPath, $sourceVerificationPath)) {
+    if (Test-Path -LiteralPath $artifact) { Remove-Item -LiteralPath $artifact -Force }
+  }
+  throw
+}
+$proofReceiptPath = Join-Path $DestinationRoot ([string]$sourcePackageManifest.archive.releaseProofName)
 $proofStatus = 'SKIPPED_BY_EXPLICIT_SWITCH'
 $proofReceiptSha256 = $null
 if (-not $SkipReleaseProof) {
@@ -388,15 +619,16 @@ if (-not $SkipReleaseProof) {
     $proofStatus = [string]$proof.status
     $proofReceiptSha256 = Get-Sha256 $proofReceiptPath
   } catch {
-    if (Test-Path -LiteralPath $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
-    if (Test-Path -LiteralPath "$zipPath.sha256") { Remove-Item -LiteralPath "$zipPath.sha256" -Force }
+    foreach ($artifact in @($zipPath, $zipShaPath, $externalInventoryPath, $externalInventoryShaPath, $sourceVerificationPath, $proofReceiptPath)) {
+      if (Test-Path -LiteralPath $artifact) { Remove-Item -LiteralPath $artifact -Force }
+    }
     throw
   }
 }
 # The extracted proof can take minutes. Re-hash the source after it finishes so
 # a concurrent edit cannot leave a valid but already-stale release archive.
 Assert-SourceSnapshot -Expected $sourceFiles -Root $SourceRoot
-$reportPath = Join-Path $DestinationRoot 'OrangeFive-LLM-deploy.report.json'
+$reportPath = Join-Path $DestinationRoot ([string]$sourcePackageManifest.archive.reportName)
 $report = [ordered]@{
   schema = 'orangefive.deploy-pack-report.v1'
   status = 'PACKED'
@@ -404,16 +636,29 @@ $report = [ordered]@{
   release = 'OrangeFive'
   zipPath = $zipPath
   zipSha256 = $zipSha256
-  sidecarPath = "$zipPath.sha256"
-  fileCount = $files.Count
+  sidecarPath = $zipShaPath
+  sourceControl = $sourceProvenance
+  sourceFileCount = $files.Count
+  fileCount = $payloadFiles.Count
   payloadBytes = $payloadBytes
+  sourceTreeSha256 = $sourceTreeSha256
+  inventoryPath = $externalInventoryPath
+  inventorySha256Path = $externalInventoryShaPath
+  inventorySha256 = $inventorySha256
+  atomicOrange = $sourceInventory.atomicOrange
+  lifecycleManifestSha256 = $contractHashes.lifecycle.sha256
+  rollbackManifestSha256 = $contractHashes.rollback.sha256
+  modelAcquisitionManifestSha256 = $contractHashes.modelAcquisition.sha256
+  publishPerformed = $false
   credentialScan = 'passed'
   publicSanitization = [ordered]@{
     filesTransformed = $sanitizedFileCount
     operatorGenomeTemplates = $templateFileCount
   }
   archiveVerification = 'passed'
-  archiveVerificationMode = 'entry-count-path-size-sha256'
+  archiveVerificationMode = 'entry-count-path-size-sha256-inventory-contracts-fixed-time'
+  sourceVerificationPath = $sourceVerificationPath
+  sourceVerificationSha256 = $sourceVerificationSha256
   sourceSnapshotVerified = $true
   extractedReleaseProof = $proofStatus
   proofReceiptPath = if ($SkipReleaseProof) { $null } else { $proofReceiptPath }

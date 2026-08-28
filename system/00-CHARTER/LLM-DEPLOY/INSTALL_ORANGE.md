@@ -58,20 +58,31 @@ The bootstrap installs only the pinned deploy runtime, then returns here.
 ## Release Package Proof
 
 The release ZIP is built outside the source tree and is not complete until the
-packer verifies every archived entry against the embedded size and SHA-256
-lock, then extracts it into a guarded operating-system temporary root. The
-extracted proof rejects wrong plan and model-set hashes before state creation,
-proves all dry-runs precede mutation, approved apply, READY, rollback, preserved
-data, post-rollback non-readiness, and an unchanged payload without external
-mutation:
+The release packaging path resolves one committed source revision, creates a
+detached local clone with normalized line endings, requires both the source and
+clone to be clean, packages twice, and rejects any ZIP, inventory, or source-tree
+hash drift:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/llm-deploy/pack-orangefive-llm-deploy.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/llm-deploy/package-current-source-from-clean-clone.ps1
 ```
 
-The package directory receives the ZIP, its SHA-256 sidecar, the extracted
-proof receipt, and the package report. `-SkipReleaseProof` exists only for
-isolated packer tests; a skipped proof is not a releasable package.
+`Orange-AI-Computer-Wave-4A-Green.zip` contains the current Orange system and
+Atomic Orange source, an embedded source inventory and inventory SHA-256, and a
+payload lock covering every entry except the lock itself. Model acquisition is
+metadata-only; model weights remain excluded. The independent source verifier
+checks fixed timestamps, safe paths, all file hashes, Atomic Orange presence,
+and the lifecycle, rollback, and model-acquisition contracts. The extracted
+release proof then rejects wrong plan and model-set hashes before state creation,
+proves all dry-runs precede mutation, approved apply, READY, rollback, preserved
+data, post-rollback non-readiness, and an unchanged payload without external
+mutation.
+
+The package directory receives only `Orange-AI-Computer-Wave-4A-Green*`
+artifacts: ZIP and checksum, inventory and checksum, source verification,
+release proof, package report, and clean-clone report. Packaging does not
+publish or upload them. `-SkipReleaseProof` exists only for isolated packer
+tests; a skipped proof is not a releasable package.
 
 `model-acquisition-catalog.json` is bound to the exact source catalog hash.
 It records acquisition only where local receipts, installed bytes, immutable

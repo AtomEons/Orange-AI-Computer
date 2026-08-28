@@ -3,11 +3,11 @@
   "manifestId": "atomic-orange-source-license-manifest.v1",
   "auditedAt": "2026-08-27",
   "repository": {
-    "name": "Atomic Orange V1",
-    "path": "02-ATOMIC-ORANGE-V1",
-    "visibility": "private",
-    "parentRepositoryHeadAtAudit": "2f8ac2feea2c3fdf32bf8d5b5aaebe20920ab452",
-    "parentTrackingAtAudit": "untracked",
+    "name": "Atomic Orange",
+    "path": "ATOMICORANGE",
+    "visibility": "public",
+    "parentRepositoryHeadAtAudit": "65770931e11b5a7de3f0ad0058b56ad3bdc711c8",
+    "parentTrackingAtAudit": "tracked",
     "upstream": {
       "repository": "AtomicBot-ai/Atomic-Chat",
       "tag": "v2.0.23",

@@ -1,0 +1,47 @@
+{
+  "schema": "orange.deploy.rollback-manifest.v1",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "command": "bun scripts/llm-deploy/orange-deploy.mjs rollback",
+  "inputRequirements": [
+    "stored orange.deploy.plan.v1 is present",
+    "planSha256 is valid",
+    "modelSetSha256 is valid when present"
+  ],
+  "actionOrder": "reverse successful apply order",
+  "actions": [
+    {
+      "kind": "deployment.activate",
+      "operation": "deactivate the approved plan",
+      "preservesData": true
+    },
+    {
+      "kind": "orange.clients.configure",
+      "operation": "restore only Orange-managed client files whose installed SHA-256 still matches the applied SHA-256",
+      "preservesOperatorEdits": true
+    },
+    {
+      "kind": "hermes.gateway.start",
+      "operation": "stop only the Orange-owned gateway process",
+      "preservesUnownedProcesses": true
+    }
+  ],
+  "alwaysPreserved": [
+    "model files and verified model assets",
+    "Orange-owned partial download caches and ownership sidecars",
+    "runtimes adopted or installed outside the payload",
+    "user memory and runtime databases",
+    "credentials, logs, receipts, and action ledger",
+    "immutable packaged source"
+  ],
+  "result": {
+    "schema": "orange.deploy.rollback.v1",
+    "status": "ROLLED_BACK_DATA_PRESERVED",
+    "postRollbackReadiness": "ROLLED_BACK"
+  },
+  "failurePolicy": "Record rollback.failed evidence and return BLOCKED; never erase preserved data to force success.",
+  "claims": {
+    "manifestDescribesRollbackContract": true,
+    "liveRollbackExecutedByThisManifest": false
+  }
+}
