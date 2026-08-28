@@ -1,0 +1,399 @@
+{
+  "schema": "orange5.calibrated-cost-router-proof.v1",
+  "status": "CALIBRATED_COST_ROUTER_ALPHA_GREEN",
+  "generated_at": "2026-08-28T06:40:42.351Z",
+  "scope": "isolated calibrated multi-objective route-selection alpha over a frozen deterministic telemetry fixture",
+  "checks": {
+    "frozen_fixture_has_120_tasks": true,
+    "chronological_train_test_split": true,
+    "held_out_mae_improved_at_least_10_percent": true,
+    "no_increase_in_safety_critical_route_errors": true,
+    "deterministic_replay": true,
+    "uncertainty_monotonic_under_sparse_evidence": true,
+    "focused_tests_passed": true
+  },
+  "promotion": {
+    "required_held_out_mae_improvement_rate": 0.1,
+    "observed_held_out_mae_improvement_rate": 0.955984334375,
+    "baseline_aggregate_mae": 0.063178504642,
+    "calibrated_aggregate_mae": 0.002780843935,
+    "baseline_safety_critical_route_errors": 0,
+    "calibrated_safety_critical_route_errors": 0,
+    "realized_objective_improvement_rate": 0.125096596906
+  },
+  "fixture": {
+    "task_count": 120,
+    "train_count": 84,
+    "held_out_count": 36,
+    "chronological_cutoff_exclusive": "2026-01-04T12:00:00.000Z",
+    "fixture_sha256": "1a3051a85448ad0cdec803181b7d4c837b410e096e9cde2d344e4fc5df9df2d5",
+    "scalar_held_out_observations": 720,
+    "cost_dimensions": [
+      "wallTimeMs",
+      "computeProxy",
+      "failureProbability",
+      "qualityPenalty",
+      "monetaryCostUsd"
+    ]
+  },
+  "baseline": {
+    "prediction": {
+      "aggregateMae": 0.063178504642,
+      "byDimension": {
+        "wallTimeMs": 0.039088383012,
+        "computeProxy": 0.047092461936,
+        "failureProbability": 0.081971938542,
+        "qualityPenalty": 0.105983243194,
+        "monetaryCostUsd": 0.041756496528
+      },
+      "scalarObservations": 720
+    },
+    "selection": {
+      "safetyCriticalRouteErrors": 0,
+      "averageRealizedObjective": 0.182711587376,
+      "routeCounts": {
+        "reflex": 0,
+        "navigator": 32,
+        "specialist": 0,
+        "guarded_specialist": 4
+      }
+    }
+  },
+  "calibrated": {
+    "prediction": {
+      "aggregateMae": 0.002780843935,
+      "byDimension": {
+        "wallTimeMs": 0.002631844349,
+        "computeProxy": 0.002068811471,
+        "failureProbability": 0.004399297778,
+        "qualityPenalty": 0.003855454444,
+        "monetaryCostUsd": 0.000948811632
+      },
+      "scalarObservations": 720
+    },
+    "selection": {
+      "safetyCriticalRouteErrors": 0,
+      "averageRealizedObjective": 0.15985498958,
+      "routeCounts": {
+        "reflex": 0,
+        "navigator": 0,
+        "specialist": 32,
+        "guarded_specialist": 4
+      }
+    }
+  },
+  "calibration_evidence": {
+    "model_fingerprint": "43d4f3d9ea92ec938fe9037f6b296abe53e1ab6dc230193a6e8ed2f7beba64d4",
+    "benchmark_fingerprint": "23926ecb7cb1915167f9e85adf410cc07c09350c26e9c1534895b048ec8a7808",
+    "deterministic_replay_fingerprint": "23926ecb7cb1915167f9e85adf410cc07c09350c26e9c1534895b048ec8a7808",
+    "no_future_data_leakage": true,
+    "uncertainty_monotonic_under_sparse_evidence": true,
+    "uncertainty_probe": {
+      "sparse": {
+        "overall": 0.13670476,
+        "perDimension": {
+          "wallTimeMs": 0.13632835,
+          "computeProxy": 0.13571762,
+          "failureProbability": 0.13846141,
+          "qualityPenalty": 0.13823431,
+          "monetaryCostUsd": 0.13478212
+        },
+        "evidenceCount": 4,
+        "availableEvidenceCount": 84,
+        "featureDistance": 0.17436998
+      },
+      "dense": {
+        "overall": 0.038982,
+        "perDimension": {
+          "wallTimeMs": 0.03860558,
+          "computeProxy": 0.03799486,
+          "failureProbability": 0.04073865,
+          "qualityPenalty": 0.04051155,
+          "monetaryCostUsd": 0.03705936
+        },
+        "evidenceCount": 84,
+        "availableEvidenceCount": 84,
+        "featureDistance": 0.17436998
+      }
+    },
+    "residuals_by_route_and_dimension": {
+      "reflex": {
+        "wallTimeMs": {
+          "count": 84,
+          "mean": 0,
+          "mae": 27.16400817,
+          "rmse": 32.8022223,
+          "maxAbs": 70.2908227
+        },
+        "computeProxy": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.02571357,
+          "rmse": 0.03099372,
+          "maxAbs": 0.05943836
+        },
+        "failureProbability": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00364693,
+          "rmse": 0.00430674,
+          "maxAbs": 0.0082305
+        },
+        "qualityPenalty": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00401325,
+          "rmse": 0.00458414,
+          "maxAbs": 0.00919328
+        },
+        "monetaryCostUsd": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00003652,
+          "rmse": 0.00004474,
+          "maxAbs": 0.00011651
+        }
+      },
+      "navigator": {
+        "wallTimeMs": {
+          "count": 84,
+          "mean": 1e-8,
+          "mae": 26.39766422,
+          "rmse": 31.3181789,
+          "maxAbs": 65.12505027
+        },
+        "computeProxy": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.02680666,
+          "rmse": 0.03198595,
+          "maxAbs": 0.06019431
+        },
+        "failureProbability": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00410687,
+          "rmse": 0.00474291,
+          "maxAbs": 0.00967285
+        },
+        "qualityPenalty": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00395666,
+          "rmse": 0.00451581,
+          "maxAbs": 0.0083494
+        },
+        "monetaryCostUsd": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00007291,
+          "rmse": 0.00008509,
+          "maxAbs": 0.00016266
+        }
+      },
+      "specialist": {
+        "wallTimeMs": {
+          "count": 84,
+          "mean": 1e-8,
+          "mae": 25.90720961,
+          "rmse": 29.98272234,
+          "maxAbs": 63.3863193
+        },
+        "computeProxy": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.02443053,
+          "rmse": 0.0291939,
+          "maxAbs": 0.06958958
+        },
+        "failureProbability": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00370827,
+          "rmse": 0.00427421,
+          "maxAbs": 0.00895941
+        },
+        "qualityPenalty": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00386479,
+          "rmse": 0.00453944,
+          "maxAbs": 0.00921133
+        },
+        "monetaryCostUsd": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00007105,
+          "rmse": 0.00008167,
+          "maxAbs": 0.00014464
+        }
+      },
+      "guarded_specialist": {
+        "wallTimeMs": {
+          "count": 84,
+          "mean": 3e-8,
+          "mae": 26.7353668,
+          "rmse": 30.99459593,
+          "maxAbs": 64.99434288
+        },
+        "computeProxy": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.02915399,
+          "rmse": 0.03476473,
+          "maxAbs": 0.0777229
+        },
+        "failureProbability": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00354693,
+          "rmse": 0.00427338,
+          "maxAbs": 0.00918343
+        },
+        "qualityPenalty": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.0035681,
+          "rmse": 0.00424655,
+          "maxAbs": 0.00945108
+        },
+        "monetaryCostUsd": {
+          "count": 84,
+          "mean": 0,
+          "mae": 0.00007678,
+          "rmse": 0.00008829,
+          "maxAbs": 0.00016346
+        }
+      }
+    },
+    "source_task_ids": [
+      "route-task-001",
+      "route-task-002",
+      "route-task-003",
+      "route-task-004",
+      "route-task-005",
+      "route-task-006",
+      "route-task-007",
+      "route-task-008",
+      "route-task-009",
+      "route-task-010",
+      "route-task-011",
+      "route-task-012",
+      "route-task-013",
+      "route-task-014",
+      "route-task-015",
+      "route-task-016",
+      "route-task-017",
+      "route-task-018",
+      "route-task-019",
+      "route-task-020",
+      "route-task-021",
+      "route-task-022",
+      "route-task-023",
+      "route-task-024",
+      "route-task-025",
+      "route-task-026",
+      "route-task-027",
+      "route-task-028",
+      "route-task-029",
+      "route-task-030",
+      "route-task-031",
+      "route-task-032",
+      "route-task-033",
+      "route-task-034",
+      "route-task-035",
+      "route-task-036",
+      "route-task-037",
+      "route-task-038",
+      "route-task-039",
+      "route-task-040",
+      "route-task-041",
+      "route-task-042",
+      "route-task-043",
+      "route-task-044",
+      "route-task-045",
+      "route-task-046",
+      "route-task-047",
+      "route-task-048",
+      "route-task-049",
+      "route-task-050",
+      "route-task-051",
+      "route-task-052",
+      "route-task-053",
+      "route-task-054",
+      "route-task-055",
+      "route-task-056",
+      "route-task-057",
+      "route-task-058",
+      "route-task-059",
+      "route-task-060",
+      "route-task-061",
+      "route-task-062",
+      "route-task-063",
+      "route-task-064",
+      "route-task-065",
+      "route-task-066",
+      "route-task-067",
+      "route-task-068",
+      "route-task-069",
+      "route-task-070",
+      "route-task-071",
+      "route-task-072",
+      "route-task-073",
+      "route-task-074",
+      "route-task-075",
+      "route-task-076",
+      "route-task-077",
+      "route-task-078",
+      "route-task-079",
+      "route-task-080",
+      "route-task-081",
+      "route-task-082",
+      "route-task-083",
+      "route-task-084"
+    ],
+    "trained_through": "2026-01-04T11:00:00.000Z"
+  },
+  "focused_tests": {
+    "command": [
+      "C:\\Users\\a\\.bun\\bin\\bun.exe",
+      "test",
+      "03-BACKEND/tests/calibrated-cost-router.test.mjs"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "tests_passed": 11,
+    "tests_failed": 0,
+    "output_sha256": "3a035331891e4276b4372832cfc15f30ef856d0804d8645d59ee1d28d62738fc",
+    "output_tail": [
+      "(pass) calibrated multi-objective cost router alpha > predicts every cost dimension and exposes residual and uncertainty evidence [48.92ms]",
+      "(pass) calibrated multi-objective cost router alpha > uncertainty rises monotonically as historical evidence becomes sparse [27.37ms]",
+      "(pass) calibrated multi-objective cost router alpha > replays the held-out benchmark byte-for-byte deterministically [173.58ms]",
+      "(pass) calibrated multi-objective cost router alpha > beats the static baseline by at least ten percent on held-out aggregate MAE [45.35ms]",
+      "(pass) calibrated multi-objective cost router alpha > never increases safety-critical route errors versus the static policy [24.72ms]",
+      "(pass) calibrated multi-objective cost router alpha > refuses alpha green whenever the calibrated model does not beat baseline [69.55ms]",
+      "(pass) calibrated multi-objective cost router alpha > promotes only the complete held-out evidence bundle and keeps alpha scope explicit [24.00ms]",
+      "",
+      " 11 pass",
+      " 0 fail",
+      " 201 expect() calls",
+      "Ran 11 tests across 1 file. [3.05s]"
+    ]
+  },
+  "source_files": {
+    "03-BACKEND/calibrated-cost-router.mjs": "473ab6fe75e6690fb08ba5b4ccc28f33a89ede2146e3abc688333c9b8cdb318c",
+    "03-BACKEND/tests/calibrated-cost-router.test.mjs": "2df1a3a606381bd9b495362ffebe210de88e2e0c375127d00ac70c05a44a3d0d",
+    "03-BACKEND/calibrated-cost-router-proof.mjs": "ca2ebc0332ba3345fe2235b7177906361a302b14962554311632d06d5eb85119"
+  },
+  "claim_boundary": {
+    "isolated_alpha_proven": true,
+    "live_orange_routing_changed": false,
+    "production_router_promoted": false,
+    "real_operator_traffic_benchmarked": false,
+    "synthetic_fixture_disclosed": true,
+    "statement": "This receipt proves only the deterministic isolated alpha and its held-out synthetic telemetry result; production routing requires shadow traffic and a separate promotion receipt."
+  },
+  "prior_receipt": "2026-08-28T06-40-23-309Z-ae-cobra-codexa-mirror.json",
+  "prior_sha256": "16eeb6b94f9f5e3acbbc40a371db591a7272bedf707ad7fcf10f340934120b3b",
+  "receipt_sha256": "a2ef377f28e2dd3eff0549c7e4037a204952b7140ee24260c4073190321502b2"
+}

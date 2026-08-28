@@ -1,0 +1,71 @@
+{
+  "schema": "orange5.current-awareness-delegation-live-proof.v1",
+  "status": "CURRENT_AWARENESS_DELEGATION_GREEN",
+  "generated_at": "2026-08-28T06:43:35.562Z",
+  "order_id": "awareness-live-08d93cc9-bafd-4b20-a499-23e63dd1c953",
+  "scope": "live read-only AE2 evidence acquisition through Navigator and Hermès",
+  "checks": {
+    "delegation_complete": true,
+    "current_source_evidence_present": true,
+    "evidence_artifact_present": true,
+    "hermes_lease_minted": true,
+    "one_bounded_child_complete": true,
+    "child_receipt_backed": true,
+    "synthesis_complete": true,
+    "synthesis_receipt_backed": true,
+    "hermes_authorized_both_actions": true,
+    "hermes_lease_revoked": true,
+    "no_execution_error": true
+  },
+  "evidence": {
+    "status": "EVIDENCE_COLLECTED",
+    "source_count": 6,
+    "artifact_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\research-evidence\\nav-719942fe-be5e-4a7a-b6f0-30f3c9bb44c0.json",
+    "sha256": "913e204816e2e88db639c226a26ff03abf07d4859786d68cc9c687525bf6ec55",
+    "recovered_from_current_awareness": false
+  },
+  "route": {
+    "lane": "local-fast",
+    "model": "orange-navigator:ornith-1.5-9b-q4km",
+    "decisionId": "c48a9a01bc386ef7654bf6163566dc33d43778e0e911c8d7a8127139999a99c8"
+  },
+  "governance": {
+    "lease_id": "lease_1787899417640_3ce3d574",
+    "authorized_actions": 2,
+    "lease_revoked": true
+  },
+  "reports": [
+    {
+      "ok": true,
+      "status": "completed",
+      "lane": "reflex",
+      "model": null,
+      "receipt": {
+        "receipt_id": "rcpt_571e0ea326e73503",
+        "hash": "ca88aa60ac1e2fc689960d0d4b4f2918f900576a14fed743efd34bc34dc775bb",
+        "seq": 1059
+      }
+    }
+  ],
+  "synthesis": {
+    "ok": true,
+    "status": "completed",
+    "lane": "reflex",
+    "model": null,
+    "receipt": {
+      "receipt_id": "rcpt_e3e83515cc1fe202",
+      "hash": "b6b3d5dad9069746198b0c1dd592c244ee6cefc96728f166966ada739931693e",
+      "seq": 1060
+    }
+  },
+  "blockers": [],
+  "result_sha256": "0df25b9acfac1918a76892afcd1a9df1eab486a6b52e97ae1f9c4f2236f78d21",
+  "claim_boundary": {
+    "evidence_continuity_proven_for_this_order": true,
+    "universal_research_recall_proven": false,
+    "candidate_promoted_to_production": false
+  },
+  "prior_receipt": "orange5-operational-audit-20260828T064145Z.json",
+  "prior_sha256": "49672db0db8f7d1c2d1db3bc8431a2927871fc3b33055b347ec1aeacfa94ef55",
+  "receipt_sha256": "601c4b90a7491d18bde9ef6810abf1cde09f630bbc3d874c155f820f658eaddf"
+}

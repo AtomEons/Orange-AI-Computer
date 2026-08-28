@@ -3,22 +3,22 @@
   "status": "PROVEN",
   "product": "Orange",
   "release": "OrangeFive",
-  "generatedAt": "2026-08-27T16:11:03.446Z",
+  "generatedAt": "2026-08-28T07:31:23.654Z",
   "zip": {
     "file": "OrangeFive-LLM-deploy.zip",
-    "sha256": "fd66fdf8d660d746bd5b5d00fd6bc65a9aebdd747376e2a3791d5bba9234f596",
+    "sha256": "f841f28d08a1e0fc8b4e7939b07faafc6ea6c90ae27a28cf9f3e5e16bff0e650",
     "sidecarVerified": true
   },
   "extractedPayload": {
     "lockVerified": true,
-    "lockSha256": "54c955e1bc14161f0d7a39b1685547757261211b4be41fc9edf2aa20628d8343",
-    "fileCount": 2386,
+    "lockSha256": "e947bc7f5f3c248c0ebcbde52a71ea30f78269ff0a73c3e935ff7089b1f43104",
+    "fileCount": 2489,
     "catalogSha256": "b9012f31e065e38a2f0d703c41592bbd6614dee7cae630b0bd3f6c6cfbfe16ad",
     "acquisitionCatalogSha256": "2a4b8a3c39375767cf7fa0bd3ca4b8b3ba7161aad8bcca27cdcafaecb3bdadc5",
     "resolvedCatalogSha256": "189458b48038e4b905e3bd7206fe9d1da0cde646f2c38c86d238562a319c2da0"
   },
   "approval": {
-    "planSha256": "55418b2487b730436d8c09e50fa4412417703b9f81102355d8e88d786f1d0bde",
+    "planSha256": "1a7392deaf4549bbb69b81af519e9bed450b2c850644bc4477305652189e17c8",
     "modelSetSha256": null,
     "noModelsSelected": true
   },
@@ -33,22 +33,22 @@
     "dataRoot": "state"
   },
   "apply": {
-    "file": "apply-2026-08-27T16-11-11-007Z-be7822de8fa7.json",
+    "file": "apply-2026-08-28T07-31-31-699Z-b29e976c2d22.json",
     "schema": "orange.deploy.stage-receipt.v1",
     "status": "APPLIED",
-    "sha256": "7a7a2be8f5aa55c169b15100a2d077be97add8ca53ae8ec08122af40c294c9a7"
+    "sha256": "7b78637d521757fca1a7285cde29c338d41fbbe0eecee1719142253092f50145"
   },
   "readiness": {
-    "file": "readiness-55418b2487b730436d8c09e50fa4412417703b9f81102355d8e88d786f1d0bde.json",
+    "file": "readiness-1a7392deaf4549bbb69b81af519e9bed450b2c850644bc4477305652189e17c8.json",
     "schema": "orange.deploy.readiness.v1",
     "status": "READY",
-    "sha256": "79ad0f6ca3bfc635337293610cf3f469ab095094ee4e09a844c5ee91cd22362b"
+    "sha256": "a56b656a8120f59c0fe18c0ece11d002a8698fc4aeca0f1022431220fd7d56de"
   },
   "rollback": {
-    "file": "rollback-2026-08-27T16-11-18-800Z-8213b28029d7.json",
+    "file": "rollback-2026-08-28T07-31-38-332Z-7ba9d6fd6e36.json",
     "schema": "orange.deploy.stage-receipt.v1",
     "status": "ROLLED_BACK_DATA_PRESERVED",
-    "sha256": "7c7fae212b90b5688dd5760d33283962be8545786c45712932e562e71bf858e6"
+    "sha256": "67742b5ac26efc2db5b543f6fc1c323e02175bf18e1659c945184c3f9d1471f5"
   },
   "postRollback": {
     "status": "ROLLED_BACK",
@@ -67,7 +67,7 @@
     "Does not prove network availability of pinned upstream model URLs.",
     "Runtime and model readiness still require live probes on the approved target topology."
   ],
-  "receiptPath": "C:\\Users\\a\\Downloads\\Orange-AI-Computer-release\\OrangeFive-LLM-deploy.proof.json",
+  "receiptPath": "C:\\Users\\a\\Downloads\\Orange-AI-Computer-Wave2\\OrangeFive-LLM-deploy.proof.json",
   "safeTemporaryRoot": {
     "parent": "C:\\Users\\a\\AppData\\Local\\Temp",
     "namingPolicy": "orangefive-release-proof-*",

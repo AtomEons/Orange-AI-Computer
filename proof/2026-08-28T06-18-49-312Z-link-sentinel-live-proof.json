@@ -1,0 +1,78 @@
+{
+  "schema": "orange5.link-sentinel-live-proof.v1",
+  "status": "ORANGE5_LINK_SENTINEL_GREEN",
+  "generatedAt": "2026-08-28T06:19:28.304Z",
+  "checks": {
+    "initial_sentinel_healthy": true,
+    "initial_eyes_healthy": true,
+    "exact_tunnel_owner_proven": true,
+    "controlled_outage_observed": true,
+    "sentinel_recovered_eyes": true,
+    "replacement_tunnel_is_exact": true,
+    "replacement_pid_changed": true,
+    "neighboring_orange_pids_unchanged": true,
+    "popup_surface_none": true
+  },
+  "before": {
+    "1337": 4808,
+    "7419": 5000,
+    "7430": 14720,
+    "7431": 19020,
+    "7432": 12556,
+    "7440": 8012
+  },
+  "after": {
+    "1337": 4808,
+    "7419": 5000,
+    "7430": 14720,
+    "7431": 19020,
+    "7432": 12556,
+    "7440": 14784
+  },
+  "sentinel": {
+    "schema": "orange5.link-sentinel.v1",
+    "ok": true,
+    "status": "healthy",
+    "popupSurface": "none",
+    "runtime": "bun",
+    "pid": 12556,
+    "cycles": 7,
+    "intervalMs": 15000,
+    "hosts": [
+      "10.0.99.1",
+      "CODEXA",
+      "10.0.0.4"
+    ],
+    "endpoints": {
+      "ae-eyes": {
+        "status": "healthy",
+        "healthy": true,
+        "host": "10.0.99.1",
+        "pid": 14784,
+        "consecutiveFailures": 0,
+        "reconnectAttempts": 0,
+        "nextAttemptAt": 0,
+        "lastCheckedAt": "2026-08-28T06:19:10.482Z",
+        "lastHealthyAt": "2026-08-28T06:19:11.577Z",
+        "blocker": null
+      },
+      "qdrant": {
+        "status": "healthy",
+        "healthy": true,
+        "host": null,
+        "pid": null,
+        "consecutiveFailures": 0,
+        "reconnectAttempts": 0,
+        "nextAttemptAt": 0,
+        "lastCheckedAt": "2026-08-28T06:19:10.482Z",
+        "lastHealthyAt": "2026-08-28T06:19:10.482Z",
+        "blocker": null
+      }
+    },
+    "generatedAt": "2026-08-28T06:19:11.692Z"
+  },
+  "sha256": "a78af095ec4db9c7cfcc56776d21db62b7d8cfe7c0bd643f20684074f8312e43",
+  "prior_receipt": "2026-08-28T06-17-18-129Z-ae-cobra-codexa-mirror.json",
+  "prior_sha256": "727c7308f79a424ab79e1bdb6b8002395478db862bdee32416fdfb8fa9683aca",
+  "receipt_sha256": "0fa3a5b6b3af448a11ff1378aa91c04eb589084cd1530ec1a522763fa5c42bc5"
+}

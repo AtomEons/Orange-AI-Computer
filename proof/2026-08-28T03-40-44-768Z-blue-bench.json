@@ -1,0 +1,20 @@
+{
+  "schema": "orange5-blue-bench.root-receipt.v1",
+  "status": "ORANGEFIVE_BLUE_BENCH_GREEN",
+  "generated_at": "2026-08-28T03:41:20.517Z",
+  "run_id": "2026-08-28T03-40-44-768Z",
+  "lane_counts": {
+    "green": 10,
+    "blocked": 0,
+    "total": 10
+  },
+  "manifest_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\blue-bench\\2026-08-28T03-40-44-768Z\\manifest.json",
+  "manifest_file_sha256": "aee1a9b35f12225c5fe7ea09c487cf684637fc048458c478912ca03c7e560145",
+  "results_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\blue-bench\\2026-08-28T03-40-44-768Z\\results.json",
+  "results_file_sha256": "4e898aad41014338bc0e0024bf56b0eaefec203e9a94542cd2a679ea43d9a2cb",
+  "report_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\blue-bench\\2026-08-28T03-40-44-768Z\\report.md",
+  "report_file_sha256": "cd995e01cb379f3112523fc61a77906050def8a83ec2f344b09d287789d49e74",
+  "prior_receipt": "2026-08-28T03-39-45-539Z-ae-cobra-codexa-mirror.json",
+  "prior_sha256": "b0be99b13339cb5b8514002dda4fa89027df27bf9b125309707182f23d12b779",
+  "receipt_sha256": "dec483f8cb3a59a48d915f2b32475c79072389950876dbff52823f702ea8dd75"
+}

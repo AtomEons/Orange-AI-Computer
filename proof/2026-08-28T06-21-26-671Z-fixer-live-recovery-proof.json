@@ -1,0 +1,360 @@
+{
+  "schema": "orangefive.fixer-live-recovery-proof.v1",
+  "status": "ORANGEFIVE_FIXER_LIVE_RECOVERY_GREEN",
+  "generated_at": "2026-08-28T06:21:35.669Z",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "runId": "fixer-live-2026-08-28T06-21-26-671Z",
+  "defectId": "fixer-live-2026-08-28T06-21-26-671Z-brain-mcp-down",
+  "target": "brain-mcp",
+  "recovery_ms": 2740,
+  "total_ms": 8992,
+  "checks": {
+    "baseline_all_owned_services_green": true,
+    "target_owned_pid_proven": true,
+    "controlled_fault_stopped_target": true,
+    "defect_reproduced_and_isolated": true,
+    "hermes_authorized_repair": true,
+    "governed_repair_receipt_exists": true,
+    "target_recovered": true,
+    "target_process_replaced": true,
+    "neighboring_services_not_restarted": true,
+    "regression_suite_green": true,
+    "fixer_case_closed": true,
+    "fixer_case_hash_chain_valid": true,
+    "party_line_lifecycle_complete": true,
+    "no_fallback_recovery": true
+  },
+  "baseline": {
+    "memory": {
+      "ok": true,
+      "pid": 5000
+    },
+    "hermes": {
+      "ok": true,
+      "pid": 14720
+    },
+    "link-sentinel": {
+      "ok": true,
+      "pid": 12556
+    },
+    "orangellm": {
+      "ok": true,
+      "pid": 4808
+    },
+    "brain-mcp": {
+      "ok": true,
+      "pid": 14644
+    }
+  },
+  "final": {
+    "memory": {
+      "ok": true,
+      "pid": 5000
+    },
+    "hermes": {
+      "ok": true,
+      "pid": 14720
+    },
+    "link-sentinel": {
+      "ok": true,
+      "pid": 12556
+    },
+    "orangellm": {
+      "ok": true,
+      "pid": 4808
+    },
+    "brain-mcp": {
+      "ok": true,
+      "pid": 18828
+    }
+  },
+  "fixerCase": {
+    "schema": "orange.fixer.case.v1",
+    "defectId": "fixer-live-2026-08-28T06-21-26-671Z-brain-mcp-down",
+    "runId": "fixer-live-2026-08-28T06-21-26-671Z",
+    "source": "controlled-live-health-fault",
+    "severity": "high",
+    "state": "closed",
+    "attempts": 1,
+    "reproducer": {
+      "command": [
+        "C:\\Users\\a\\.bun\\bin\\bun.exe",
+        "C:\\AtomEons\\Orange5\\scripts\\orange5-runtime-services.mjs",
+        "stop",
+        "brain-mcp"
+      ],
+      "expected": "health endpoint unavailable",
+      "observed": {
+        "ok": false,
+        "status": 0,
+        "error": "Unable to connect. Is the computer able to access the url?"
+      }
+    },
+    "suspectedBoundary": "Brain MCP owned Bun service on loopback port 7431",
+    "repairOrder": {
+      "schema": "orange.order.v1",
+      "orderId": "fixer-live-2026-08-28T06-21-26-671Z-repair",
+      "action": "process.run",
+      "intent": "restore the owned Brain MCP service without restarting neighboring Orange services",
+      "scope": "C:\\AtomEons\\Orange5",
+      "allowedActions": [
+        "process.run"
+      ],
+      "forbiddenActions": [
+        "filesystem.delete",
+        "service.restart.all"
+      ],
+      "targetProject": "C:\\AtomEons\\Orange5",
+      "riskLevel": "high",
+      "requiresReceipt": true,
+      "operatorApproved": true
+    },
+    "hermesLease": {
+      "id": "lease_1787898089325_df01854d",
+      "actor": "orange-fixer",
+      "allowed": [
+        "process.run"
+      ],
+      "expires_at": 1787898209325
+    },
+    "evidence": [
+      {
+        "type": "baseline_runtime_status",
+        "ok": true,
+        "services": {
+          "memory": {
+            "pid": 5000,
+            "ok": true
+          },
+          "hermes": {
+            "pid": 14720,
+            "ok": true
+          },
+          "link-sentinel": {
+            "pid": 12556,
+            "ok": true
+          },
+          "orangellm": {
+            "pid": 4808,
+            "ok": true
+          },
+          "brain-mcp": {
+            "pid": 14644,
+            "ok": true
+          }
+        }
+      },
+      {
+        "type": "fault_injection",
+        "ok": true,
+        "target": "brain-mcp",
+        "stoppedPid": 14644
+      },
+      {
+        "type": "isolation",
+        "ok": true,
+        "neighboringServicesExpectedUnchanged": [
+          "memory",
+          "hermes",
+          "link-sentinel",
+          "orangellm"
+        ]
+      },
+      {
+        "type": "repair_scope",
+        "ok": true,
+        "target": "brain-mcp"
+      },
+      {
+        "type": "hermes_lease",
+        "ok": true,
+        "leaseId": "lease_1787898089325_df01854d"
+      },
+      {
+        "type": "governed_repair_execution",
+        "ok": true,
+        "report": {
+          "ok": true,
+          "schema": "orange.report.v1",
+          "orderId": "fixer-live-2026-08-28T06-21-26-671Z-repair",
+          "status": "ok",
+          "confidence": 1,
+          "actionsTaken": [
+            "Hermes authorized process.run",
+            "executed process.run"
+          ],
+          "evidence": [
+            {
+              "type": "hermes_gate_chain",
+              "lease_id": "lease_1787898089325_df01854d",
+              "gates": [
+                {
+                  "id": "order_schema",
+                  "pass": true
+                },
+                {
+                  "id": "report_schema",
+                  "pass": true
+                },
+                {
+                  "id": "receipt_spine",
+                  "pass": true
+                },
+                {
+                  "id": "human_approval",
+                  "pass": true
+                },
+                {
+                  "id": "codexa_lease",
+                  "pass": true
+                },
+                {
+                  "id": "openai_gateway",
+                  "pass": true
+                },
+                {
+                  "id": "mcp_default",
+                  "pass": true
+                },
+                {
+                  "id": "false_green_guard",
+                  "pass": true
+                }
+              ]
+            },
+            {
+              "type": "execution_result",
+              "action": "process.run",
+              "command": [
+                "C:\\Users\\a\\.bun\\bin\\bun.exe",
+                "C:\\AtomEons\\Orange5\\scripts\\orange5-runtime-services.mjs",
+                "start",
+                "brain-mcp"
+              ],
+              "exit_code": 0,
+              "signal": null,
+              "stdout": "{\"schema\":\"orange5.runtime-services.v1\",\"action\":\"start\",\"ok\":true,\"services\":[{\"name\":\"brain-mcp\",\"entry\":\"03-BACKEND/orange5-brain-mcp-http.mjs\",\"health\":\"http://127.0.0.1:7431/health\",\"ok\":true,\"reused\":false,\"pid\":18828,\"observed\":{\"ok\":true,\"schema\":\"orange.mcp-http-health.v1\",\"server\":{\"name\":\"orangefive-brain\",\"version\":\"1.2.0\"},\"protocol\":\"2026-07-28\",\"endpoint\":\"/mcp\",\"transport\":\"streamable-http\",\"authRequired\":false}}]}\n",
+              "stderr": "",
+              "output_truncated": false,
+              "result_hash": "e14955a16f7cc614560b82916457af9d5d57427dd1b90df582f967d7da0c18ff"
+            },
+            {
+              "type": "receipt",
+              "path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\fixer-live-2026-08-28T06-21-26-671Z-repair-governed-tool.json",
+              "sha256": "6b354545b0769ad4122faf754e1e5b5f1608459babb057345c65434bea1bbe8c"
+            }
+          ],
+          "blockers": [],
+          "nextAction": "review governed tool result",
+          "receiptPath": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\fixer-live-2026-08-28T06-21-26-671Z-repair-governed-tool.json"
+        }
+      },
+      {
+        "type": "exact_path_verification",
+        "ok": true,
+        "health": {
+          "ok": true,
+          "status": 200,
+          "body": {
+            "ok": true,
+            "schema": "orange.mcp-http-health.v1",
+            "server": {
+              "name": "orangefive-brain",
+              "version": "1.2.0"
+            },
+            "protocol": "2026-07-28",
+            "endpoint": "/mcp",
+            "transport": "streamable-http",
+            "authRequired": false
+          }
+        },
+        "target": {
+          "beforePid": 14644,
+          "afterPid": 18828
+        },
+        "neighboringPids": {
+          "memory": {
+            "before": 5000,
+            "after": 5000
+          },
+          "hermes": {
+            "before": 14720,
+            "after": 14720
+          },
+          "link-sentinel": {
+            "before": 12556,
+            "after": 12556
+          },
+          "orangellm": {
+            "before": 4808,
+            "after": 4808
+          }
+        },
+        "recoveryMs": 2740
+      },
+      {
+        "type": "regression_suite",
+        "ok": true,
+        "paths": [
+          "03-BACKEND/tests/fixer.test.mjs",
+          "scripts/tests/runtime-service-pid-ownership.test.mjs"
+        ]
+      }
+    ],
+    "rollback": {
+      "command": [
+        "C:\\Users\\a\\.bun\\bin\\bun.exe",
+        "C:\\AtomEons\\Orange5\\scripts\\orange5-runtime-services.mjs",
+        "stop",
+        "brain-mcp"
+      ],
+      "recovery": [
+        "C:\\Users\\a\\.bun\\bin\\bun.exe",
+        "C:\\AtomEons\\Orange5\\scripts\\orange5-runtime-services.mjs",
+        "start",
+        "brain-mcp"
+      ],
+      "scope": "Brain MCP only"
+    },
+    "regression": {
+      "path": "C:\\AtomEons\\Orange5\\03-BACKEND\\tests\\fixer.test.mjs",
+      "paths": [
+        "03-BACKEND/tests/fixer.test.mjs",
+        "scripts/tests/runtime-service-pid-ownership.test.mjs"
+      ],
+      "passed": true,
+      "exitCode": 0
+    },
+    "receiptPath": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\fixer-live-2026-08-28T06-21-26-671Z-repair-governed-tool.json",
+    "createdAt": "2026-08-28T06:21:28.495Z",
+    "updatedAt": "2026-08-28T06:21:33.962Z",
+    "closedAt": "2026-08-28T06:21:33.962Z",
+    "caseHash": "f29fc0c7ee70574b0abdd34dcb46229a54e0251efc2de5361b3126ca18b0bdf7"
+  },
+  "caseVerification": {
+    "ok": true,
+    "defectId": "fixer-live-2026-08-28T06-21-26-671Z-brain-mcp-down",
+    "state": "closed",
+    "events": 9,
+    "headHash": "72c7f41c71f8fd5be6c07f9de23f660c12362a94d3d3b7fe085d2b459dee6264",
+    "errors": []
+  },
+  "lifecycle_event_ids": [
+    "pl-f737b797a895ae18544f",
+    "pl-04c36d44b7a4bc62281f",
+    "pl-4dad4fbe602ce943b98e",
+    "pl-29e577ef29f2947c474a",
+    "pl-d6119f49391f5b705437",
+    "pl-f84e9150ad8d975774b6",
+    "pl-08154859f45088c6f7e6",
+    "pl-d6badb5eb970c4808bc6",
+    "pl-271e5211e11e5d2f9106"
+  ],
+  "governed_repair_receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\fixer-live-2026-08-28T06-21-26-671Z-repair-governed-tool.json",
+  "fallbackRecoveryUsed": false,
+  "error": null,
+  "prior_receipt": "fixer-live-2026-08-28T06-21-26-671Z-repair-governed-tool.json",
+  "prior_sha256": "e55e990c4490beb585730447840ea11ab64e2badd56dcd43b4bbf48461dc0d08",
+  "receipt_sha256": "eab744b06c75ce010409efab2595a2116d25fe957ed921f739d9bca1d896e99e"
+}

@@ -1,0 +1,97 @@
+{
+  "schema": "orange5.brain-mcp-delegation-live-proof.v1",
+  "status": "ORANGE5_BRAIN_MCP_DELEGATION_GREEN",
+  "generatedAt": "2026-08-28T04:13:33.612Z",
+  "endpoint": "http://127.0.0.1:7431/mcp",
+  "elapsedMs": 11409.53,
+  "checks": {
+    "http_ok": true,
+    "delegation_complete": true,
+    "parent_execution_mediated": true,
+    "parent_execution_ok": true,
+    "parent_receipt_exists": true,
+    "one_child_complete": true,
+    "synthesis_complete": true,
+    "hermes_authorized_all": true,
+    "hermes_lease_revoked": true,
+    "approved_least_action_path_used": true
+  },
+  "delegation": {
+    "id": "nav-97822ae4-cad7-4354-bfeb-388cdaa0f714",
+    "orderId": "brain-mcp-live-2026-08-28T04-13-22-203Z",
+    "department": "AE0_FACTORY",
+    "parentExecution": {
+      "status": "ok",
+      "action": "filesystem.read",
+      "resultHash": "aea8be01d987603e723b9b84d841980cb6a85bc1b6285cf4fae5aa92c8596923",
+      "receiptPath": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\brain-mcp-live-2026-08-28T04-13-22-203Z:source-execution-governed-tool.json",
+      "receiptSha256": "f26044fb4cb538f87d7ff0a901f7f75ea68ce81f09e4e0db062ae59d55853d1d"
+    },
+    "agentModel": "orange-navigator",
+    "childReceipts": [
+      {
+        "receipt_id": "rcpt_28b1c058d42712ff",
+        "hash": "7f86bde5b788b5204322f6b6bac9a968ec7d36c4357129cef8ba8e8af4b104ff",
+        "seq": 1036
+      }
+    ],
+    "childReports": [
+      {
+        "ok": true,
+        "status": "completed",
+        "lane": "reflex",
+        "model": null,
+        "output": {
+          "status": "completed",
+          "confidence": 1,
+          "actionsTaken": [],
+          "evidence": [
+            "governed:filesystem.read:aea8be01d987603e"
+          ],
+          "findings": [
+            "governed action filesystem.read completed with result aea8be01d987603e",
+            "# AE Orange5 — Master Plan > **Runtime authority:** This file preserves the locked design history. Current > host roles, model residency, en"
+          ],
+          "blockers": [],
+          "nextAction": "return verified source finding to parent delegation"
+        },
+        "modelAuthority": null
+      }
+    ],
+    "synthesisReceipt": {
+      "receipt_id": "rcpt_f7773e93eaa06dc1",
+      "hash": "c22398a95b73ad8b3851eedbb4f05f90ef7ff438c1a946797d8edeb268a1b113",
+      "seq": 1037
+    },
+    "synthesisReport": {
+      "ok": true,
+      "status": "completed",
+      "lane": "reflex",
+      "model": null,
+      "output": {
+        "status": "completed",
+        "findings": [
+          {
+            "agent": "domain-worker",
+            "summary": "Verified governed filesystem.read execution for domain-worker",
+            "receipt": {
+              "receipt_id": "rcpt_28b1c058d42712ff",
+              "hash": "7f86bde5b788b5204322f6b6bac9a968ec7d36c4357129cef8ba8e8af4b104ff"
+            }
+          }
+        ],
+        "evidence": [
+          "governed:filesystem.read:aea8be01d987603e"
+        ],
+        "blockers": [],
+        "nextAction": "delegation complete"
+      },
+      "modelAuthority": null
+    }
+  },
+  "error": null,
+  "sha256": "92b37240159fa3a9c10a42eb5bb4f194210543471f697e38df3c793242d1a174",
+  "prior_receipt": "2026-08-28T04-10-23-978Z-brain-mcp-delegation-live-proof.json",
+  "prior_sha256": "a688006cc1f24faba50be188e282bd4b35c799bbe376871e92dcdbbb60e6e007",
+  "receipt_sha256": "93a50681827158d550caf8ae25f498809ac4ab6e0296654b3e483a889e1bbd47"
+}

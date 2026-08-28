@@ -1,0 +1,110 @@
+{
+  "schema": "orange5.ae-link-custody-proof.v1",
+  "status": "AE_LINK_CUSTODY_ALPHA_GREEN",
+  "generated_at": "2026-08-28T06:32:47.434Z",
+  "scope": "isolated AE Link custody and transactional write-once effector proof; no production transport promotion",
+  "checks": {
+    "focused_tests_passed": true,
+    "every_transition_survived_process_cut": true,
+    "exactly_one_external_effect_per_cut": true,
+    "exactly_one_terminal_event_per_cut": true,
+    "pre_start_cancel_won": true,
+    "in_flight_cancel_blocked_new_effect": true,
+    "owner_epoch_fenced_stale_workers": true,
+    "orphan_recovery_reused_idempotency": true
+  },
+  "crash_matrix": [
+    {
+      "crashAt": "offer",
+      "state": "TERMINAL",
+      "outcome": "completed",
+      "custodyValid": true,
+      "effectCount": 1,
+      "terminalEvents": 1
+    },
+    {
+      "crashAt": "persist",
+      "state": "TERMINAL",
+      "outcome": "completed",
+      "custodyValid": true,
+      "effectCount": 1,
+      "terminalEvents": 1
+    },
+    {
+      "crashAt": "start",
+      "state": "TERMINAL",
+      "outcome": "completed",
+      "custodyValid": true,
+      "effectCount": 1,
+      "terminalEvents": 1
+    },
+    {
+      "crashAt": "grant",
+      "state": "TERMINAL",
+      "outcome": "completed",
+      "custodyValid": true,
+      "effectCount": 1,
+      "terminalEvents": 1
+    },
+    {
+      "crashAt": "effect",
+      "state": "TERMINAL",
+      "outcome": "completed",
+      "custodyValid": true,
+      "effectCount": 1,
+      "terminalEvents": 1
+    },
+    {
+      "crashAt": "commit",
+      "state": "TERMINAL",
+      "outcome": "completed",
+      "custodyValid": true,
+      "effectCount": 1,
+      "terminalEvents": 1
+    },
+    {
+      "crashAt": "terminal",
+      "state": "TERMINAL",
+      "outcome": "completed",
+      "custodyValid": true,
+      "effectCount": 1,
+      "terminalEvents": 1
+    }
+  ],
+  "race_matrix": {
+    "preStartCancelRejectedStart": true,
+    "inFlightCancelRejectedNewEffect": true,
+    "handoffRejectedStaleOwner": true,
+    "orphanRecoveryRejectedOldOwner": true,
+    "orphanRecoveryReusedGrant": true,
+    "orphanRecoverySuppressedDuplicateEffect": true,
+    "orphanRecoveryEffectCount": 1
+  },
+  "focused_tests": {
+    "command": [
+      "C:\\Users\\a\\.bun\\bin\\bun.exe",
+      "test",
+      "03-BACKEND/tests/ae-link.test.mjs",
+      "03-BACKEND/tests/ae-link-custody.test.mjs",
+      "03-BACKEND/tests/ae-link-custody-model.test.mjs"
+    ],
+    "exit_code": 0,
+    "output_sha256": "b8ca3b94233c053e57aee80b7603845b02e01b51bdede5a24413ed41f6f8fafd"
+  },
+  "source_files": {
+    "03-BACKEND/ae-link/custody.mjs": "e0323a0fec2178efebd34550cd8d0b7e394b91b5565735e92ad41a797483f091",
+    "03-BACKEND/ae-link-custody-proof.mjs": "a6ba77bde094f062c4ebf89d44d4a4cefbf2b1738d227d58bd3132eea0bbbe85",
+    "03-BACKEND/tests/ae-link.test.mjs": "562206262ecaa093dd2b3098e7a7a3dfea205befe0f87c21697b9c728e741197",
+    "03-BACKEND/tests/ae-link-custody.test.mjs": "9a18b2082788837e1a925f2591800212b9da4ce3871a569e9c068cab1e199bc4",
+    "03-BACKEND/tests/ae-link-custody-model.test.mjs": "2d4cf08a699e1ba01f9c89f0e93d2f9ab2f3833ec7a44d22ceb58e03c138207b"
+  },
+  "claim_boundary": {
+    "isolated_custody_proven": true,
+    "arbitrary_external_effect_exactly_once_proven": false,
+    "production_ae_link_promoted": false,
+    "reason": "Exactly-once behavior requires the target effector to honor the durable idempotency key; this proof uses SQLite uniqueness and full-sync transactions."
+  },
+  "prior_receipt": "2026-08-28T06-32-14-324Z-ae-cobra-codexa-mirror.json",
+  "prior_sha256": "1a84efbec48966f24b518c4b4bee2cfa4368b0db6577935db2e58f32e0d1dfda",
+  "receipt_sha256": "2a8f0ced3715ef9a3788c41283928d095076526f5a62abe813cdd731842e447b"
+}

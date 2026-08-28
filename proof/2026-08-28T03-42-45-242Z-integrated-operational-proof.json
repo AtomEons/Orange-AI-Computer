@@ -1,0 +1,2527 @@
+{
+  "schema": "orangefive.integrated-operational-proof.v1",
+  "status": "ORANGEFIVE_INTEGRATED_OPERATIONAL_GREEN",
+  "generated_at": "2026-08-28T03:42:45.242Z",
+  "product": "Orange",
+  "release": "OrangeFive",
+  "operational_green": true,
+  "studio_media_quality_proven": false,
+  "groups": {
+    "runtime": {
+      "ok": true,
+      "checks": {
+        "status_green": true,
+        "fresh_under_24h": true,
+        "all_organs_green": true,
+        "shell_free_runtime": true,
+        "gateway_live": true,
+        "codexa_authorized": true,
+        "no_live_blockers": true,
+        "live_governed_model_turn": true,
+        "live_route_model_matches_current_fabric": true,
+        "live_route_node_matches_current_fabric": true
+      },
+      "health": {
+        "schema": "orange.health.v1",
+        "product": "Orange",
+        "release": "OrangeFive",
+        "status": "OPERATIONAL",
+        "operational": true,
+        "generatedAt": "2026-08-28T03:42:00.414Z",
+        "gateway": {
+          "url": "http://127.0.0.1:1337",
+          "ready": true,
+          "latencyMs": 286,
+          "version": "orange5.orangellm.v0.7.0-party-line"
+        },
+        "activeBrain": {
+          "tier": "navigator",
+          "model": "orange-navigator:ornith-1.5-9b-q4km",
+          "host": "10.0.0.4",
+          "live": true
+        },
+        "reflex": {
+          "ready": true,
+          "runtime": "bun-deterministic-router",
+          "modelResident": false
+        },
+        "fabric": {
+          "schema": "orange.compute-fabric.v1",
+          "status": "OPERATIONAL_DISTRIBUTED",
+          "operational": true,
+          "mode": "distributed",
+          "generatedAt": "2026-08-28T03:42:00.399Z",
+          "localFallbackReady": true,
+          "operatorDecisionRequired": false,
+          "decisionReason": null,
+          "configuredNodes": [],
+          "selections": {
+            "inference": {
+              "nodeId": "codexa",
+              "name": "Codexa",
+              "host": "10.0.0.4",
+              "local": false,
+              "kind": "ollama",
+              "url": "http://10.0.0.4:11434",
+              "latencyMs": 165,
+              "models": [
+                "orange-navigator:ornith-1.5-9b-q4km",
+                "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                "orange-navigator:ornith-1.5-9b-q8",
+                "orange-navigator:ornith15-9b-q8",
+                "qwen3.8:27b-current",
+                "qwen3-coder:30b",
+                "qwen3-embedding:0.6b",
+                "atomeons-hermes-4-14b:latest",
+                "orange-navigator:hot-v1",
+                "orangebrain-trained:v0",
+                "qwen3:30b-a3b"
+              ]
+            },
+            "navigator": {
+              "nodeId": "codexa",
+              "name": "Codexa",
+              "host": "10.0.0.4",
+              "local": false,
+              "kind": "ollama",
+              "url": "http://10.0.0.4:11434",
+              "latencyMs": 165,
+              "model": "orange-navigator:ornith-1.5-9b-q4km",
+              "actualModel": "orange-navigator:ornith-1.5-9b-q4km",
+              "models": [
+                "orange-navigator:ornith-1.5-9b-q4km",
+                "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                "orange-navigator:ornith-1.5-9b-q8",
+                "orange-navigator:ornith15-9b-q8",
+                "qwen3.8:27b-current",
+                "qwen3-coder:30b",
+                "qwen3-embedding:0.6b",
+                "atomeons-hermes-4-14b:latest",
+                "orange-navigator:hot-v1",
+                "orangebrain-trained:v0",
+                "qwen3:30b-a3b"
+              ]
+            },
+            "code": {
+              "nodeId": "codexa",
+              "name": "Codexa",
+              "host": "10.0.0.4",
+              "local": false,
+              "kind": "ollama",
+              "url": "http://10.0.0.4:11434",
+              "latencyMs": 165,
+              "model": "qwen3-coder:30b",
+              "actualModel": "qwen3-coder:30b",
+              "models": [
+                "orange-navigator:ornith-1.5-9b-q4km",
+                "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                "orange-navigator:ornith-1.5-9b-q8",
+                "orange-navigator:ornith15-9b-q8",
+                "qwen3.8:27b-current",
+                "qwen3-coder:30b",
+                "qwen3-embedding:0.6b",
+                "atomeons-hermes-4-14b:latest",
+                "orange-navigator:hot-v1",
+                "orangebrain-trained:v0",
+                "qwen3:30b-a3b"
+              ]
+            },
+            "heavy": {
+              "nodeId": "codexa",
+              "name": "Codexa",
+              "host": "10.0.0.4",
+              "local": false,
+              "kind": "ollama",
+              "url": "http://10.0.0.4:11434",
+              "latencyMs": 165,
+              "model": "qwen3:30b-a3b",
+              "actualModel": "qwen3:30b-a3b",
+              "models": [
+                "orange-navigator:ornith-1.5-9b-q4km",
+                "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                "orange-navigator:ornith-1.5-9b-q8",
+                "orange-navigator:ornith15-9b-q8",
+                "qwen3.8:27b-current",
+                "qwen3-coder:30b",
+                "qwen3-embedding:0.6b",
+                "atomeons-hermes-4-14b:latest",
+                "orange-navigator:hot-v1",
+                "orangebrain-trained:v0",
+                "qwen3:30b-a3b"
+              ]
+            },
+            "rail": {
+              "nodeId": "codexa",
+              "name": "Codexa",
+              "host": "10.0.0.4",
+              "local": false,
+              "kind": "rail",
+              "url": "http://10.0.0.4:8097",
+              "latencyMs": 165,
+              "models": [],
+              "authorized": true,
+              "tokenConfigured": true,
+              "status": "VERIFIED"
+            },
+            "eyes": {
+              "nodeId": "codexa-tunnel",
+              "name": "Codexa Private Tunnel",
+              "host": "localhost",
+              "local": false,
+              "kind": "eyes",
+              "url": "http://localhost:7440",
+              "latencyMs": 199,
+              "models": []
+            }
+          },
+          "nodes": [
+            {
+              "id": "local",
+              "name": "WIN-IB7K3UTA9DS",
+              "host": "127.0.0.1",
+              "local": true,
+              "physicalRemote": false,
+              "trusted": true,
+              "priority": 10,
+              "source": "local",
+              "ports": {
+                "ollama": 11434,
+                "openai": 11436,
+                "rail": 8097,
+                "eyes": 7440
+              },
+              "online": true,
+              "probedAt": "2026-08-28T03:41:59.176Z",
+              "capabilities": {
+                "ollama": {
+                  "ready": true,
+                  "kind": "ollama",
+                  "url": "http://127.0.0.1:11434",
+                  "models": [
+                    "nomic-embed-text:latest",
+                    "llava:7b",
+                    "qwen3:0.6b"
+                  ],
+                  "modelInventory": [
+                    {
+                      "name": "nomic-embed-text:latest",
+                      "model": "nomic-embed-text:latest",
+                      "modified_at": "2026-07-29T14:06:12.5933752-05:00",
+                      "size": 274302450,
+                      "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "nomic-bert",
+                        "families": [
+                          "nomic-bert"
+                        ],
+                        "parameter_size": "137M",
+                        "quantization_level": "F16",
+                        "context_length": 2048,
+                        "embedding_length": 768
+                      },
+                      "capabilities": [
+                        "embedding"
+                      ]
+                    },
+                    {
+                      "name": "llava:7b",
+                      "model": "llava:7b",
+                      "modified_at": "2026-07-05T19:02:22.067431-05:00",
+                      "size": 4733363377,
+                      "digest": "8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "llama",
+                        "families": [
+                          "llama",
+                          "clip"
+                        ],
+                        "parameter_size": "7B",
+                        "quantization_level": "Q4_0",
+                        "context_length": 32768,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion",
+                        "vision"
+                      ]
+                    },
+                    {
+                      "name": "qwen3:0.6b",
+                      "model": "qwen3:0.6b",
+                      "modified_at": "2026-06-23T05:46:20.1817998-05:00",
+                      "size": 522653767,
+                      "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "751.63M",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 40960,
+                        "embedding_length": 1024
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    }
+                  ],
+                  "latencyMs": 193
+                },
+                "openai": {
+                  "ready": false,
+                  "kind": "openai",
+                  "url": null,
+                  "models": [],
+                  "modelInventory": [],
+                  "latencyMs": 190
+                },
+                "inference": {
+                  "ready": true,
+                  "kind": "ollama",
+                  "url": "http://127.0.0.1:11434",
+                  "models": [
+                    "nomic-embed-text:latest",
+                    "llava:7b",
+                    "qwen3:0.6b"
+                  ],
+                  "modelInventory": [
+                    {
+                      "name": "nomic-embed-text:latest",
+                      "model": "nomic-embed-text:latest",
+                      "modified_at": "2026-07-29T14:06:12.5933752-05:00",
+                      "size": 274302450,
+                      "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "nomic-bert",
+                        "families": [
+                          "nomic-bert"
+                        ],
+                        "parameter_size": "137M",
+                        "quantization_level": "F16",
+                        "context_length": 2048,
+                        "embedding_length": 768
+                      },
+                      "capabilities": [
+                        "embedding"
+                      ]
+                    },
+                    {
+                      "name": "llava:7b",
+                      "model": "llava:7b",
+                      "modified_at": "2026-07-05T19:02:22.067431-05:00",
+                      "size": 4733363377,
+                      "digest": "8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "llama",
+                        "families": [
+                          "llama",
+                          "clip"
+                        ],
+                        "parameter_size": "7B",
+                        "quantization_level": "Q4_0",
+                        "context_length": 32768,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion",
+                        "vision"
+                      ]
+                    },
+                    {
+                      "name": "qwen3:0.6b",
+                      "model": "qwen3:0.6b",
+                      "modified_at": "2026-06-23T05:46:20.1817998-05:00",
+                      "size": 522653767,
+                      "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "751.63M",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 40960,
+                        "embedding_length": 1024
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    }
+                  ],
+                  "latencyMs": 193
+                },
+                "rail": {
+                  "ready": false,
+                  "authorized": false,
+                  "tokenConfigured": false,
+                  "status": null,
+                  "authStatus": 0,
+                  "authLatencyMs": 191,
+                  "url": null,
+                  "latencyMs": 191
+                },
+                "eyes": {
+                  "ready": true,
+                  "url": "http://127.0.0.1:7440",
+                  "latencyMs": 165
+                }
+              }
+            },
+            {
+              "id": "codexa",
+              "name": "Codexa",
+              "host": "10.0.0.4",
+              "local": false,
+              "physicalRemote": false,
+              "trusted": true,
+              "priority": 100,
+              "source": "orange_default",
+              "ports": {
+                "ollama": 11434,
+                "openai": 11436,
+                "rail": 8097,
+                "eyes": 7440
+              },
+              "online": true,
+              "probedAt": "2026-08-28T03:42:00.353Z",
+              "capabilities": {
+                "ollama": {
+                  "ready": true,
+                  "kind": "ollama",
+                  "url": "http://10.0.0.4:11434",
+                  "models": [
+                    "orange-navigator:ornith-1.5-9b-q4km",
+                    "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                    "orange-navigator:ornith-1.5-9b-q8",
+                    "orange-navigator:ornith15-9b-q8",
+                    "qwen3.8:27b-current",
+                    "qwen3-coder:30b",
+                    "qwen3-embedding:0.6b",
+                    "atomeons-hermes-4-14b:latest",
+                    "orange-navigator:hot-v1",
+                    "orangebrain-trained:v0",
+                    "qwen3:30b-a3b"
+                  ],
+                  "modelInventory": [
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km",
+                      "modified_at": "2026-08-27T06:01:58.4815222-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "modified_at": "2026-08-27T04:00:37.733223-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q8",
+                      "model": "orange-navigator:ornith-1.5-9b-q8",
+                      "modified_at": "2026-08-27T00:10:46.4809813-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith15-9b-q8",
+                      "model": "orange-navigator:ornith15-9b-q8",
+                      "modified_at": "2026-08-26T23:45:35.6306294-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3.8:27b-current",
+                      "model": "qwen3.8:27b-current",
+                      "modified_at": "2026-08-26T18:31:24.3625355-04:00",
+                      "size": 16464440744,
+                      "digest": "ec0d8fbe4052e14a69939d5319315d7bb10445e07e01e0176f35b6910c8d541a",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "27.3B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-coder:30b",
+                      "model": "qwen3-coder:30b",
+                      "modified_at": "2026-08-26T06:18:59.8489545-04:00",
+                      "size": 18556700761,
+                      "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-embedding:0.6b",
+                      "model": "qwen3-embedding:0.6b",
+                      "modified_at": "2026-08-26T01:41:20.250777-04:00",
+                      "size": 639150858,
+                      "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+                      "details": {
+                        "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "595.78M",
+                        "quantization_level": "Q8_0",
+                        "context_length": 32768,
+                        "embedding_length": 1024
+                      },
+                      "capabilities": [
+                        "embedding"
+                      ]
+                    },
+                    {
+                      "name": "atomeons-hermes-4-14b:latest",
+                      "model": "atomeons-hermes-4-14b:latest",
+                      "modified_at": "2026-07-30T15:59:40.2155634-04:00",
+                      "size": 9001754206,
+                      "digest": "41c8fc6bf669e16d05d602532c07a8d3a5d7cffb237e36e6166184baf9c2300f",
+                      "details": {
+                        "parent_model": "C:\\Users\\Atom\\.ollama\\models\\blobs\\sha256-7ad9be1e446e3da0c149fdf55284c90be666d3e13c6e2581587853f4f9538073",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "14.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 40960,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:hot-v1",
+                      "model": "orange-navigator:hot-v1",
+                      "modified_at": "2026-07-29T16:51:07.8626941-04:00",
+                      "size": 2497294770,
+                      "digest": "28c6185539e1c423280cfe3009ba8a6d9029e45b838066553dcfc2f3bca4fcea",
+                      "details": {
+                        "parent_model": "qwen3:4b",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "4.0B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2560
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    },
+                    {
+                      "name": "orangebrain-trained:v0",
+                      "model": "orangebrain-trained:v0",
+                      "modified_at": "2026-07-29T16:38:13.5684731-04:00",
+                      "size": 20119847288,
+                      "digest": "8c0a6f19aa10ef657708a972d6bc4f2abecb8e127d5b9dd84542ec4aa3821fd6",
+                      "details": {
+                        "parent_model": "qwen2.5:32b-instruct-q4_K_M",
+                        "format": "gguf",
+                        "family": "qwen2",
+                        "families": [
+                          "qwen2",
+                          "qwen2"
+                        ],
+                        "parameter_size": "32.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 32768,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3:30b-a3b",
+                      "model": "qwen3:30b-a3b",
+                      "modified_at": "2026-06-29T03:32:16.6504237-04:00",
+                      "size": 18556699314,
+                      "digest": "ad815644918f0eaab341c12b67837cc6dd4562342cdaf118f83d5d554cb37226",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    }
+                  ],
+                  "latencyMs": 165
+                },
+                "openai": {
+                  "ready": false,
+                  "kind": "openai",
+                  "url": null,
+                  "models": [],
+                  "modelInventory": [],
+                  "latencyMs": 941
+                },
+                "inference": {
+                  "ready": true,
+                  "kind": "ollama",
+                  "url": "http://10.0.0.4:11434",
+                  "models": [
+                    "orange-navigator:ornith-1.5-9b-q4km",
+                    "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                    "orange-navigator:ornith-1.5-9b-q8",
+                    "orange-navigator:ornith15-9b-q8",
+                    "qwen3.8:27b-current",
+                    "qwen3-coder:30b",
+                    "qwen3-embedding:0.6b",
+                    "atomeons-hermes-4-14b:latest",
+                    "orange-navigator:hot-v1",
+                    "orangebrain-trained:v0",
+                    "qwen3:30b-a3b"
+                  ],
+                  "modelInventory": [
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km",
+                      "modified_at": "2026-08-27T06:01:58.4815222-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "modified_at": "2026-08-27T04:00:37.733223-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q8",
+                      "model": "orange-navigator:ornith-1.5-9b-q8",
+                      "modified_at": "2026-08-27T00:10:46.4809813-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith15-9b-q8",
+                      "model": "orange-navigator:ornith15-9b-q8",
+                      "modified_at": "2026-08-26T23:45:35.6306294-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3.8:27b-current",
+                      "model": "qwen3.8:27b-current",
+                      "modified_at": "2026-08-26T18:31:24.3625355-04:00",
+                      "size": 16464440744,
+                      "digest": "ec0d8fbe4052e14a69939d5319315d7bb10445e07e01e0176f35b6910c8d541a",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "27.3B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-coder:30b",
+                      "model": "qwen3-coder:30b",
+                      "modified_at": "2026-08-26T06:18:59.8489545-04:00",
+                      "size": 18556700761,
+                      "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-embedding:0.6b",
+                      "model": "qwen3-embedding:0.6b",
+                      "modified_at": "2026-08-26T01:41:20.250777-04:00",
+                      "size": 639150858,
+                      "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+                      "details": {
+                        "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "595.78M",
+                        "quantization_level": "Q8_0",
+                        "context_length": 32768,
+                        "embedding_length": 1024
+                      },
+                      "capabilities": [
+                        "embedding"
+                      ]
+                    },
+                    {
+                      "name": "atomeons-hermes-4-14b:latest",
+                      "model": "atomeons-hermes-4-14b:latest",
+                      "modified_at": "2026-07-30T15:59:40.2155634-04:00",
+                      "size": 9001754206,
+                      "digest": "41c8fc6bf669e16d05d602532c07a8d3a5d7cffb237e36e6166184baf9c2300f",
+                      "details": {
+                        "parent_model": "C:\\Users\\Atom\\.ollama\\models\\blobs\\sha256-7ad9be1e446e3da0c149fdf55284c90be666d3e13c6e2581587853f4f9538073",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "14.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 40960,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:hot-v1",
+                      "model": "orange-navigator:hot-v1",
+                      "modified_at": "2026-07-29T16:51:07.8626941-04:00",
+                      "size": 2497294770,
+                      "digest": "28c6185539e1c423280cfe3009ba8a6d9029e45b838066553dcfc2f3bca4fcea",
+                      "details": {
+                        "parent_model": "qwen3:4b",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "4.0B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2560
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    },
+                    {
+                      "name": "orangebrain-trained:v0",
+                      "model": "orangebrain-trained:v0",
+                      "modified_at": "2026-07-29T16:38:13.5684731-04:00",
+                      "size": 20119847288,
+                      "digest": "8c0a6f19aa10ef657708a972d6bc4f2abecb8e127d5b9dd84542ec4aa3821fd6",
+                      "details": {
+                        "parent_model": "qwen2.5:32b-instruct-q4_K_M",
+                        "format": "gguf",
+                        "family": "qwen2",
+                        "families": [
+                          "qwen2",
+                          "qwen2"
+                        ],
+                        "parameter_size": "32.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 32768,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3:30b-a3b",
+                      "model": "qwen3:30b-a3b",
+                      "modified_at": "2026-06-29T03:32:16.6504237-04:00",
+                      "size": 18556699314,
+                      "digest": "ad815644918f0eaab341c12b67837cc6dd4562342cdaf118f83d5d554cb37226",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    }
+                  ],
+                  "latencyMs": 165
+                },
+                "rail": {
+                  "ready": true,
+                  "authorized": true,
+                  "tokenConfigured": true,
+                  "status": "VERIFIED",
+                  "authStatus": 200,
+                  "authLatencyMs": 1352,
+                  "url": "http://10.0.0.4:8097",
+                  "latencyMs": 165
+                },
+                "eyes": {
+                  "ready": false,
+                  "url": null,
+                  "latencyMs": 941
+                }
+              }
+            },
+            {
+              "id": "codexa-direct",
+              "name": "Codexa Direct",
+              "host": "10.0.99.1",
+              "local": false,
+              "physicalRemote": false,
+              "trusted": true,
+              "priority": 20,
+              "source": "orange_known_alias",
+              "ports": {
+                "ollama": 11434,
+                "openai": 11436,
+                "rail": 8097,
+                "eyes": 7440
+              },
+              "online": true,
+              "probedAt": "2026-08-28T03:42:00.319Z",
+              "capabilities": {
+                "ollama": {
+                  "ready": true,
+                  "kind": "ollama",
+                  "url": "http://10.0.99.1:11434",
+                  "models": [
+                    "orange-navigator:ornith-1.5-9b-q4km",
+                    "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                    "orange-navigator:ornith-1.5-9b-q8",
+                    "orange-navigator:ornith15-9b-q8",
+                    "qwen3.8:27b-current",
+                    "qwen3-coder:30b",
+                    "qwen3-embedding:0.6b",
+                    "atomeons-hermes-4-14b:latest",
+                    "orange-navigator:hot-v1",
+                    "orangebrain-trained:v0",
+                    "qwen3:30b-a3b"
+                  ],
+                  "modelInventory": [
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km",
+                      "modified_at": "2026-08-27T06:01:58.4815222-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "modified_at": "2026-08-27T04:00:37.733223-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q8",
+                      "model": "orange-navigator:ornith-1.5-9b-q8",
+                      "modified_at": "2026-08-27T00:10:46.4809813-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith15-9b-q8",
+                      "model": "orange-navigator:ornith15-9b-q8",
+                      "modified_at": "2026-08-26T23:45:35.6306294-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3.8:27b-current",
+                      "model": "qwen3.8:27b-current",
+                      "modified_at": "2026-08-26T18:31:24.3625355-04:00",
+                      "size": 16464440744,
+                      "digest": "ec0d8fbe4052e14a69939d5319315d7bb10445e07e01e0176f35b6910c8d541a",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "27.3B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-coder:30b",
+                      "model": "qwen3-coder:30b",
+                      "modified_at": "2026-08-26T06:18:59.8489545-04:00",
+                      "size": 18556700761,
+                      "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-embedding:0.6b",
+                      "model": "qwen3-embedding:0.6b",
+                      "modified_at": "2026-08-26T01:41:20.250777-04:00",
+                      "size": 639150858,
+                      "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+                      "details": {
+                        "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "595.78M",
+                        "quantization_level": "Q8_0",
+                        "context_length": 32768,
+                        "embedding_length": 1024
+                      },
+                      "capabilities": [
+                        "embedding"
+                      ]
+                    },
+                    {
+                      "name": "atomeons-hermes-4-14b:latest",
+                      "model": "atomeons-hermes-4-14b:latest",
+                      "modified_at": "2026-07-30T15:59:40.2155634-04:00",
+                      "size": 9001754206,
+                      "digest": "41c8fc6bf669e16d05d602532c07a8d3a5d7cffb237e36e6166184baf9c2300f",
+                      "details": {
+                        "parent_model": "C:\\Users\\Atom\\.ollama\\models\\blobs\\sha256-7ad9be1e446e3da0c149fdf55284c90be666d3e13c6e2581587853f4f9538073",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "14.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 40960,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:hot-v1",
+                      "model": "orange-navigator:hot-v1",
+                      "modified_at": "2026-07-29T16:51:07.8626941-04:00",
+                      "size": 2497294770,
+                      "digest": "28c6185539e1c423280cfe3009ba8a6d9029e45b838066553dcfc2f3bca4fcea",
+                      "details": {
+                        "parent_model": "qwen3:4b",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "4.0B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2560
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    },
+                    {
+                      "name": "orangebrain-trained:v0",
+                      "model": "orangebrain-trained:v0",
+                      "modified_at": "2026-07-29T16:38:13.5684731-04:00",
+                      "size": 20119847288,
+                      "digest": "8c0a6f19aa10ef657708a972d6bc4f2abecb8e127d5b9dd84542ec4aa3821fd6",
+                      "details": {
+                        "parent_model": "qwen2.5:32b-instruct-q4_K_M",
+                        "format": "gguf",
+                        "family": "qwen2",
+                        "families": [
+                          "qwen2",
+                          "qwen2"
+                        ],
+                        "parameter_size": "32.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 32768,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3:30b-a3b",
+                      "model": "qwen3:30b-a3b",
+                      "modified_at": "2026-06-29T03:32:16.6504237-04:00",
+                      "size": 18556699314,
+                      "digest": "ad815644918f0eaab341c12b67837cc6dd4562342cdaf118f83d5d554cb37226",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    }
+                  ],
+                  "latencyMs": 164
+                },
+                "openai": {
+                  "ready": false,
+                  "kind": "openai",
+                  "url": null,
+                  "models": [],
+                  "modelInventory": [],
+                  "latencyMs": 941
+                },
+                "inference": {
+                  "ready": true,
+                  "kind": "ollama",
+                  "url": "http://10.0.99.1:11434",
+                  "models": [
+                    "orange-navigator:ornith-1.5-9b-q4km",
+                    "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                    "orange-navigator:ornith-1.5-9b-q8",
+                    "orange-navigator:ornith15-9b-q8",
+                    "qwen3.8:27b-current",
+                    "qwen3-coder:30b",
+                    "qwen3-embedding:0.6b",
+                    "atomeons-hermes-4-14b:latest",
+                    "orange-navigator:hot-v1",
+                    "orangebrain-trained:v0",
+                    "qwen3:30b-a3b"
+                  ],
+                  "modelInventory": [
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km",
+                      "modified_at": "2026-08-27T06:01:58.4815222-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "modified_at": "2026-08-27T04:00:37.733223-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q8",
+                      "model": "orange-navigator:ornith-1.5-9b-q8",
+                      "modified_at": "2026-08-27T00:10:46.4809813-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith15-9b-q8",
+                      "model": "orange-navigator:ornith15-9b-q8",
+                      "modified_at": "2026-08-26T23:45:35.6306294-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3.8:27b-current",
+                      "model": "qwen3.8:27b-current",
+                      "modified_at": "2026-08-26T18:31:24.3625355-04:00",
+                      "size": 16464440744,
+                      "digest": "ec0d8fbe4052e14a69939d5319315d7bb10445e07e01e0176f35b6910c8d541a",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "27.3B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-coder:30b",
+                      "model": "qwen3-coder:30b",
+                      "modified_at": "2026-08-26T06:18:59.8489545-04:00",
+                      "size": 18556700761,
+                      "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-embedding:0.6b",
+                      "model": "qwen3-embedding:0.6b",
+                      "modified_at": "2026-08-26T01:41:20.250777-04:00",
+                      "size": 639150858,
+                      "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+                      "details": {
+                        "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "595.78M",
+                        "quantization_level": "Q8_0",
+                        "context_length": 32768,
+                        "embedding_length": 1024
+                      },
+                      "capabilities": [
+                        "embedding"
+                      ]
+                    },
+                    {
+                      "name": "atomeons-hermes-4-14b:latest",
+                      "model": "atomeons-hermes-4-14b:latest",
+                      "modified_at": "2026-07-30T15:59:40.2155634-04:00",
+                      "size": 9001754206,
+                      "digest": "41c8fc6bf669e16d05d602532c07a8d3a5d7cffb237e36e6166184baf9c2300f",
+                      "details": {
+                        "parent_model": "C:\\Users\\Atom\\.ollama\\models\\blobs\\sha256-7ad9be1e446e3da0c149fdf55284c90be666d3e13c6e2581587853f4f9538073",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "14.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 40960,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:hot-v1",
+                      "model": "orange-navigator:hot-v1",
+                      "modified_at": "2026-07-29T16:51:07.8626941-04:00",
+                      "size": 2497294770,
+                      "digest": "28c6185539e1c423280cfe3009ba8a6d9029e45b838066553dcfc2f3bca4fcea",
+                      "details": {
+                        "parent_model": "qwen3:4b",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "4.0B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2560
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    },
+                    {
+                      "name": "orangebrain-trained:v0",
+                      "model": "orangebrain-trained:v0",
+                      "modified_at": "2026-07-29T16:38:13.5684731-04:00",
+                      "size": 20119847288,
+                      "digest": "8c0a6f19aa10ef657708a972d6bc4f2abecb8e127d5b9dd84542ec4aa3821fd6",
+                      "details": {
+                        "parent_model": "qwen2.5:32b-instruct-q4_K_M",
+                        "format": "gguf",
+                        "family": "qwen2",
+                        "families": [
+                          "qwen2",
+                          "qwen2"
+                        ],
+                        "parameter_size": "32.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 32768,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3:30b-a3b",
+                      "model": "qwen3:30b-a3b",
+                      "modified_at": "2026-06-29T03:32:16.6504237-04:00",
+                      "size": 18556699314,
+                      "digest": "ad815644918f0eaab341c12b67837cc6dd4562342cdaf118f83d5d554cb37226",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    }
+                  ],
+                  "latencyMs": 164
+                },
+                "rail": {
+                  "ready": true,
+                  "authorized": true,
+                  "tokenConfigured": true,
+                  "status": "VERIFIED",
+                  "authStatus": 200,
+                  "authLatencyMs": 1317,
+                  "url": "http://10.0.99.1:8097",
+                  "latencyMs": 164
+                },
+                "eyes": {
+                  "ready": false,
+                  "url": null,
+                  "latencyMs": 940
+                }
+              }
+            },
+            {
+              "id": "codexa-tunnel",
+              "name": "Codexa Private Tunnel",
+              "host": "localhost",
+              "local": false,
+              "physicalRemote": true,
+              "trusted": true,
+              "priority": 90,
+              "source": "orange_private_tunnel",
+              "ports": {
+                "ollama": 11437,
+                "openai": 11436,
+                "rail": 18097,
+                "eyes": 7440
+              },
+              "online": true,
+              "probedAt": "2026-08-28T03:41:59.380Z",
+              "capabilities": {
+                "ollama": {
+                  "ready": true,
+                  "kind": "ollama",
+                  "url": "http://localhost:11437",
+                  "models": [
+                    "orange-navigator:ornith-1.5-9b-q4km",
+                    "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                    "orange-navigator:ornith-1.5-9b-q8",
+                    "orange-navigator:ornith15-9b-q8",
+                    "qwen3.8:27b-current",
+                    "qwen3-coder:30b",
+                    "qwen3-embedding:0.6b",
+                    "atomeons-hermes-4-14b:latest",
+                    "orange-navigator:hot-v1",
+                    "orangebrain-trained:v0",
+                    "qwen3:30b-a3b"
+                  ],
+                  "modelInventory": [
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km",
+                      "modified_at": "2026-08-27T06:01:58.4815222-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "modified_at": "2026-08-27T04:00:37.733223-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q8",
+                      "model": "orange-navigator:ornith-1.5-9b-q8",
+                      "modified_at": "2026-08-27T00:10:46.4809813-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith15-9b-q8",
+                      "model": "orange-navigator:ornith15-9b-q8",
+                      "modified_at": "2026-08-26T23:45:35.6306294-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3.8:27b-current",
+                      "model": "qwen3.8:27b-current",
+                      "modified_at": "2026-08-26T18:31:24.3625355-04:00",
+                      "size": 16464440744,
+                      "digest": "ec0d8fbe4052e14a69939d5319315d7bb10445e07e01e0176f35b6910c8d541a",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "27.3B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-coder:30b",
+                      "model": "qwen3-coder:30b",
+                      "modified_at": "2026-08-26T06:18:59.8489545-04:00",
+                      "size": 18556700761,
+                      "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-embedding:0.6b",
+                      "model": "qwen3-embedding:0.6b",
+                      "modified_at": "2026-08-26T01:41:20.250777-04:00",
+                      "size": 639150858,
+                      "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+                      "details": {
+                        "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "595.78M",
+                        "quantization_level": "Q8_0",
+                        "context_length": 32768,
+                        "embedding_length": 1024
+                      },
+                      "capabilities": [
+                        "embedding"
+                      ]
+                    },
+                    {
+                      "name": "atomeons-hermes-4-14b:latest",
+                      "model": "atomeons-hermes-4-14b:latest",
+                      "modified_at": "2026-07-30T15:59:40.2155634-04:00",
+                      "size": 9001754206,
+                      "digest": "41c8fc6bf669e16d05d602532c07a8d3a5d7cffb237e36e6166184baf9c2300f",
+                      "details": {
+                        "parent_model": "C:\\Users\\Atom\\.ollama\\models\\blobs\\sha256-7ad9be1e446e3da0c149fdf55284c90be666d3e13c6e2581587853f4f9538073",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "14.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 40960,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:hot-v1",
+                      "model": "orange-navigator:hot-v1",
+                      "modified_at": "2026-07-29T16:51:07.8626941-04:00",
+                      "size": 2497294770,
+                      "digest": "28c6185539e1c423280cfe3009ba8a6d9029e45b838066553dcfc2f3bca4fcea",
+                      "details": {
+                        "parent_model": "qwen3:4b",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "4.0B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2560
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    },
+                    {
+                      "name": "orangebrain-trained:v0",
+                      "model": "orangebrain-trained:v0",
+                      "modified_at": "2026-07-29T16:38:13.5684731-04:00",
+                      "size": 20119847288,
+                      "digest": "8c0a6f19aa10ef657708a972d6bc4f2abecb8e127d5b9dd84542ec4aa3821fd6",
+                      "details": {
+                        "parent_model": "qwen2.5:32b-instruct-q4_K_M",
+                        "format": "gguf",
+                        "family": "qwen2",
+                        "families": [
+                          "qwen2",
+                          "qwen2"
+                        ],
+                        "parameter_size": "32.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 32768,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3:30b-a3b",
+                      "model": "qwen3:30b-a3b",
+                      "modified_at": "2026-06-29T03:32:16.6504237-04:00",
+                      "size": 18556699314,
+                      "digest": "ad815644918f0eaab341c12b67837cc6dd4562342cdaf118f83d5d554cb37226",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    }
+                  ],
+                  "latencyMs": 378
+                },
+                "openai": {
+                  "ready": false,
+                  "kind": "openai",
+                  "url": null,
+                  "models": [],
+                  "modelInventory": [],
+                  "latencyMs": 164
+                },
+                "inference": {
+                  "ready": true,
+                  "kind": "ollama",
+                  "url": "http://localhost:11437",
+                  "models": [
+                    "orange-navigator:ornith-1.5-9b-q4km",
+                    "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                    "orange-navigator:ornith-1.5-9b-q8",
+                    "orange-navigator:ornith15-9b-q8",
+                    "qwen3.8:27b-current",
+                    "qwen3-coder:30b",
+                    "qwen3-embedding:0.6b",
+                    "atomeons-hermes-4-14b:latest",
+                    "orange-navigator:hot-v1",
+                    "orangebrain-trained:v0",
+                    "qwen3:30b-a3b"
+                  ],
+                  "modelInventory": [
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km",
+                      "modified_at": "2026-08-27T06:01:58.4815222-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "model": "orange-navigator:ornith-1.5-9b-q4km-candidate",
+                      "modified_at": "2026-08-27T04:00:37.733223-04:00",
+                      "size": 5780091701,
+                      "digest": "bcdb09bc1cf23d1887db6d71668bd6c150c38ae41a6c01da41bf17323d4970a1",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.2B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith-1.5-9b-q8",
+                      "model": "orange-navigator:ornith-1.5-9b-q8",
+                      "modified_at": "2026-08-27T00:10:46.4809813-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:ornith15-9b-q8",
+                      "model": "orange-navigator:ornith15-9b-q8",
+                      "modified_at": "2026-08-26T23:45:35.6306294-04:00",
+                      "size": 9527502438,
+                      "digest": "8e618cb63dd223066e4dfea3605336b9426aea0ecc8b026d0478cb6068b8c3a2",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "9.0B",
+                        "quantization_level": "Q8_0",
+                        "context_length": 262144,
+                        "embedding_length": 4096
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3.8:27b-current",
+                      "model": "qwen3.8:27b-current",
+                      "modified_at": "2026-08-26T18:31:24.3625355-04:00",
+                      "size": 16464440744,
+                      "digest": "ec0d8fbe4052e14a69939d5319315d7bb10445e07e01e0176f35b6910c8d541a",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen35",
+                        "families": [
+                          "qwen35"
+                        ],
+                        "parameter_size": "27.3B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-coder:30b",
+                      "model": "qwen3-coder:30b",
+                      "modified_at": "2026-08-26T06:18:59.8489545-04:00",
+                      "size": 18556700761,
+                      "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3-embedding:0.6b",
+                      "model": "qwen3-embedding:0.6b",
+                      "modified_at": "2026-08-26T01:41:20.250777-04:00",
+                      "size": 639150858,
+                      "digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+                      "details": {
+                        "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "595.78M",
+                        "quantization_level": "Q8_0",
+                        "context_length": 32768,
+                        "embedding_length": 1024
+                      },
+                      "capabilities": [
+                        "embedding"
+                      ]
+                    },
+                    {
+                      "name": "atomeons-hermes-4-14b:latest",
+                      "model": "atomeons-hermes-4-14b:latest",
+                      "modified_at": "2026-07-30T15:59:40.2155634-04:00",
+                      "size": 9001754206,
+                      "digest": "41c8fc6bf669e16d05d602532c07a8d3a5d7cffb237e36e6166184baf9c2300f",
+                      "details": {
+                        "parent_model": "C:\\Users\\Atom\\.ollama\\models\\blobs\\sha256-7ad9be1e446e3da0c149fdf55284c90be666d3e13c6e2581587853f4f9538073",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "14.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 40960,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion"
+                      ]
+                    },
+                    {
+                      "name": "orange-navigator:hot-v1",
+                      "model": "orange-navigator:hot-v1",
+                      "modified_at": "2026-07-29T16:51:07.8626941-04:00",
+                      "size": 2497294770,
+                      "digest": "28c6185539e1c423280cfe3009ba8a6d9029e45b838066553dcfc2f3bca4fcea",
+                      "details": {
+                        "parent_model": "qwen3:4b",
+                        "format": "gguf",
+                        "family": "qwen3",
+                        "families": [
+                          "qwen3"
+                        ],
+                        "parameter_size": "4.0B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2560
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    },
+                    {
+                      "name": "orangebrain-trained:v0",
+                      "model": "orangebrain-trained:v0",
+                      "modified_at": "2026-07-29T16:38:13.5684731-04:00",
+                      "size": 20119847288,
+                      "digest": "8c0a6f19aa10ef657708a972d6bc4f2abecb8e127d5b9dd84542ec4aa3821fd6",
+                      "details": {
+                        "parent_model": "qwen2.5:32b-instruct-q4_K_M",
+                        "format": "gguf",
+                        "family": "qwen2",
+                        "families": [
+                          "qwen2",
+                          "qwen2"
+                        ],
+                        "parameter_size": "32.8B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 32768,
+                        "embedding_length": 5120
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools"
+                      ]
+                    },
+                    {
+                      "name": "qwen3:30b-a3b",
+                      "model": "qwen3:30b-a3b",
+                      "modified_at": "2026-06-29T03:32:16.6504237-04:00",
+                      "size": 18556699314,
+                      "digest": "ad815644918f0eaab341c12b67837cc6dd4562342cdaf118f83d5d554cb37226",
+                      "details": {
+                        "parent_model": "",
+                        "format": "gguf",
+                        "family": "qwen3moe",
+                        "families": [
+                          "qwen3moe"
+                        ],
+                        "parameter_size": "30.5B",
+                        "quantization_level": "Q4_K_M",
+                        "context_length": 262144,
+                        "embedding_length": 2048
+                      },
+                      "capabilities": [
+                        "completion",
+                        "tools",
+                        "thinking"
+                      ]
+                    }
+                  ],
+                  "latencyMs": 378
+                },
+                "rail": {
+                  "ready": false,
+                  "authorized": false,
+                  "tokenConfigured": false,
+                  "status": null,
+                  "authStatus": 0,
+                  "authLatencyMs": 164,
+                  "url": null,
+                  "latencyMs": 164
+                },
+                "eyes": {
+                  "ready": true,
+                  "url": "http://localhost:7440",
+                  "latencyMs": 199
+                }
+              }
+            }
+          ],
+          "untrustedDiscovered": [],
+          "sha256": "166273e274a1e618c3f0c06b0b20d6fc5004acf276028bf61e7c0d97273fda73"
+        },
+        "codexa": {
+          "host": "10.0.0.4",
+          "railPort": 8097,
+          "reachable": true,
+          "authorized": true,
+          "executable": true,
+          "nodeId": "codexa"
+        },
+        "activeProject": {
+          "name": "OrangeFive",
+          "root": "C:\\AtomEons\\Orange5",
+          "goal": "Operate, test, and improve the single OrangeFive system end to end. Preserve Orange order/report contracts, route all model turns through the governed harness, use Codexa for heavy work, prove every operational claim, and never fake green.",
+          "lockSha256": "ebe8cb98218bb131e4d0611c9d8b748eebcdf0ccced5abd47ec264b4e318d3ea"
+        },
+        "compatibility": {
+          "legacyCommandPort8787": false,
+          "legacyModelAdapter8797": false,
+          "requiredForHeadless": false
+        },
+        "receipts": {
+          "persisted": 1035,
+          "path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\spine-chain.jsonl"
+        },
+        "blockers": []
+      },
+      "live_turn": {
+        "ok": true,
+        "http_status": 200,
+        "order_id": "gw-order-5c9f689a-06f1-4c2a-afcd-af8df7a6e9d6",
+        "report_valid": true,
+        "report_status": "needs_action",
+        "route": {
+          "lane": "navigator",
+          "requested_tier": "navigator",
+          "execution_tier": "navigator",
+          "route_mode": "specialist",
+          "requested_model": "orange-navigator:ornith-1.5-9b-q4km",
+          "effective_model": "orange-navigator:ornith-1.5-9b-q4km",
+          "requested_host": "10.0.0.4",
+          "effective_host": "10.0.0.4",
+          "requested_node": "codexa",
+          "effective_node": "codexa",
+          "model": "orange-navigator:ornith-1.5-9b-q4km",
+          "host": "10.0.0.4"
+        },
+        "route_truth_repair": null,
+        "receipt": {
+          "id": "rcpt_34ab832e70bdf347",
+          "seq": 1035,
+          "hash": "d9276c943aad556f59e63634e9e5df1ef86eeacfa5a63f54c7f796cca1f3a3d6",
+          "path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\spine-chain.jsonl"
+        },
+        "memory_sources": [
+          "ae_cobra"
+        ],
+        "context_crystal": {
+          "raw_bytes": 130307,
+          "hot_bytes": 2274,
+          "physical_context_ratio": 57.303,
+          "raw_tokens_estimated": 52128,
+          "hot_tokens_estimated": 910,
+          "tokens_not_injected": 51218,
+          "operational_context_ratio": 57.284,
+          "input_sources": 12,
+          "input_chunks": 171,
+          "selected_chunks": 3,
+          "equation_packets": 0,
+          "target_200x_met": false,
+          "target_1000x_met": false
+        },
+        "compression": {
+          "consulted": true,
+          "ok": true,
+          "schema": "orange5.atomsmasher.sieve.v1",
+          "form": "deflate",
+          "lossless": true,
+          "raw_bytes": 1374,
+          "compressed_bytes": 744,
+          "savings_bytes": 630,
+          "ratio": 1.846774,
+          "regression": false,
+          "fluff_verdict": "pass",
+          "workset_id": "0a8379a7d7a74f1bb9f688e294010d6452d69b067b662d7dc616934f8bb6f5f7",
+          "workset_kept": 1,
+          "least_action_tier": "heavy",
+          "raw_sha256": "edd47f48d66edffce8ba06c6aebd30ee0265f477a2ce401e6578b7f3d4412e5f"
+        },
+        "route_falsehood": false,
+        "failure_detail": null
+      }
+    },
+    "context_crystal": {
+      "ok": true,
+      "checks": {
+        "status_green": true,
+        "fresh_under_24h": true,
+        "receipt_hash_valid": true,
+        "held_out_cases_complete": true,
+        "every_case_quality_parity": true,
+        "every_source_pointer_verified": true,
+        "every_case_over_1000x": true
+      },
+      "receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-08-27T07-47-05-945Z-context-crystal-quality-parity.json",
+      "cases": "5/5",
+      "ratios": {
+        "minimum": 1422.901,
+        "maximum": 1445.487
+      },
+      "corpus": {
+        "sources": 794,
+        "bytes": 7056795
+      }
+    },
+    "memory": {
+      "ok": true,
+      "checks": {
+        "status_green": true,
+        "fresh_under_24h": true,
+        "receipt_hash_valid": true,
+        "held_out_cases_complete": true,
+        "mrr_above_threshold": true,
+        "latency_below_threshold": true,
+        "hybrid_beats_ablations": true,
+        "contradiction_debt_resolved": true,
+        "contradiction_receipt_exists": true
+      },
+      "receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-08-27T16-42-16-141Z-memory-quality-benchmark.json",
+      "cases": "23/23",
+      "mrr": 0.9058,
+      "latency_ms": {
+        "p50": 281,
+        "p95": 445,
+        "max": 573
+      },
+      "retrieval_bakeoff": {
+        "lexical": {
+          "passed": 20,
+          "total": 23,
+          "mean_reciprocal_rank": 0.8435,
+          "latency_p95_ms": 342
+        },
+        "dense": {
+          "passed": 21,
+          "total": 23,
+          "mean_reciprocal_rank": 0.8478,
+          "latency_p95_ms": 440
+        },
+        "hybrid": {
+          "passed": 23,
+          "total": 23,
+          "mean_reciprocal_rank": 0.9058,
+          "latency_p95_ms": 445
+        }
+      },
+      "contradiction_debt": {
+        "recorded": 3,
+        "unresolved": 0,
+        "resolution_law": "fresh receipts and live probes outrank older prose",
+        "receipt_path": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-08-27T16-42-16-141Z-memory-contradiction-debt.json",
+        "receipt_sha256": "09709a829fe570e3b92670696d7a10b4f58afa898b69604b552e2a8fb3253ac5"
+      }
+    },
+    "brain_mcp": {
+      "ok": true,
+      "checks": {
+        "status_green": true,
+        "fresh_under_24h": true,
+        "receipt_hash_valid": true,
+        "proof_checks_green": true,
+        "live_http_endpoint": true
+      },
+      "receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-08-28T02-28-40-434Z-brain-mcp-dual-transport-proof.json",
+      "observed_health": {
+        "stdioStatus": "OPERATIONAL",
+        "httpStatus": "OPERATIONAL",
+        "statusDriftObserved": false,
+        "gatewayReady": true,
+        "codexa": {
+          "host": "10.0.0.4",
+          "railPort": 8097,
+          "reachable": true,
+          "authorized": true,
+          "executable": true,
+          "nodeId": "codexa"
+        }
+      }
+    },
+    "hermes": {
+      "ok": true,
+      "checks": {
+        "status_green": true,
+        "fresh_under_24h": true,
+        "receipt_hash_valid": true,
+        "proof_checks_green": true,
+        "refusal_and_execution_both_proven": true
+      },
+      "receipt": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\2026-08-27T14-58-12-666Z-hermes-live-execution-proof.json",
+      "process": {
+        "orderId": "hermes-live-process-2026-08-27T14-58-12-666Z",
+        "status": "ok",
+        "action": "process.run",
+        "exitCode": 0,
+        "bytes": null,
+        "resultHash": "5748c3720216156758c997afd1bb3bb055d48b7dccc193d8e50877570580955f",
+        "gates": [
+          "order_schema",
+          "report_schema",
+          "receipt_spine",
+          "human_approval",
+          "codexa_lease",
+          "openai_gateway",
+          "mcp_default",
+          "false_green_guard"
+        ],
+        "receiptPath": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\hermes-live-process-2026-08-27T14-58-12-666Z-governed-tool.json",
+        "receiptSha256": "6ae5d8cc1b62ec5fa78cb4ad8a7a5fccae49f6ca7ab7c9746ae39e59a3294573"
+      },
+      "read": {
+        "orderId": "hermes-live-read-2026-08-27T14-58-12-666Z",
+        "status": "ok",
+        "action": "filesystem.read",
+        "exitCode": null,
+        "bytes": 42756,
+        "resultHash": "16ce83b61ca85dbfd87997e5b1e053d39762ba43111ec61ecf7e4a67ba1147b7",
+        "gates": [
+          "order_schema",
+          "report_schema",
+          "receipt_spine",
+          "human_approval",
+          "codexa_lease",
+          "openai_gateway",
+          "mcp_default",
+          "false_green_guard"
+        ],
+        "receiptPath": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\hermes-live-read-2026-08-27T14-58-12-666Z-governed-tool.json",
+        "receiptSha256": "0a568509878ebbfc6a785b27190fe5dcb7fabcfecd40edaa9ee4efdabf82faf5"
+      }
+    },
+    "captain_planet": {
+      "ok": true,
+      "runtime_functional": true,
+      "studio_quality_proven": false,
+      "quality_status": "PENDING_CROSS_PROMPT_HUMAN_AND_MODEL_QUALITY_BENCHMARK",
+      "lanes": {
+        "tts": {
+          "ok": true,
+          "checks": {
+            "prior_receipt_hash_valid": true,
+            "prior_runtime_proven": true,
+            "independent_runtime_proven": true,
+            "artifact_hash_stable": true,
+            "quality_not_overclaimed": true
+          },
+          "status": "CAPTAIN_PLANET_TTS_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+          "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\qwen3-tts\\orangefive-qwen3-tts-proof.wav",
+          "artifact_sha256": "90598b2975622c98fec213664e3c023aa624a8efd7286c91a4517ebc1de63452",
+          "technical_metrics": {
+            "audio_format": 1,
+            "channels": 1,
+            "sample_rate": 24000,
+            "byte_rate": 48000,
+            "block_align": 2,
+            "bits_per_sample": 16,
+            "bytes": 280364,
+            "frames": 140160,
+            "duration_seconds": 5.84,
+            "rms": 0.074653,
+            "peak": 0.714844,
+            "rms_dbfs": -22.539,
+            "peak_dbfs": -2.916,
+            "dc_offset": -0.000032,
+            "active_sample_fraction": 0.674287,
+            "clipped_sample_fraction": 0,
+            "non_silent": true
+          }
+        },
+        "music": {
+          "ok": true,
+          "checks": {
+            "prior_receipt_hash_valid": true,
+            "prior_runtime_proven": true,
+            "independent_runtime_proven": true,
+            "artifact_hash_stable": true,
+            "quality_not_overclaimed": true
+          },
+          "status": "CAPTAIN_PLANET_MUSIC_TECHNICAL_QUALITY_PROVEN_LISTENING_UNASSESSED",
+          "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ace-step\\orangefive-ace-step-proof.wav",
+          "artifact_sha256": "399f4cd4a48f0b1e60ae1fb4191929501079e81d697968e96ac7a0853525f31d",
+          "technical_metrics": {
+            "audio_format": 1,
+            "channels": 2,
+            "sample_rate": 48000,
+            "byte_rate": 192000,
+            "block_align": 4,
+            "bits_per_sample": 16,
+            "bytes": 2304044,
+            "frames": 576000,
+            "duration_seconds": 12,
+            "rms": 0.112085,
+            "peak": 0.891235,
+            "rms_dbfs": -19.009,
+            "peak_dbfs": -1,
+            "dc_offset": 0.000722,
+            "active_sample_fraction": 0.511657,
+            "clipped_sample_fraction": 0,
+            "non_silent": true
+          }
+        },
+        "image": {
+          "ok": true,
+          "checks": {
+            "prior_receipt_hash_valid": true,
+            "prior_runtime_proven": true,
+            "independent_runtime_proven": true,
+            "artifact_hash_stable": true,
+            "quality_not_overclaimed": true
+          },
+          "status": "CAPTAIN_PLANET_IMAGE_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+          "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\flux2\\orangefive-flux2-klein-proof.png",
+          "artifact_sha256": "7f0e6fad5a41cf86e773541f82c8af9e8d99c8b09933d2928e610a6ee40ee6f1",
+          "technical_metrics": {
+            "codec": "png",
+            "width": 1024,
+            "height": 1024,
+            "pixel_format": "rgb24",
+            "mean_rgb": [
+              50.318,
+              39.718,
+              34.844
+            ],
+            "stddev_rgb": [
+              57.533,
+              39.57,
+              33.738
+            ],
+            "mean_luminance": 41.633,
+            "luminance_stddev": 41.65,
+            "luminance_p05": 0,
+            "luminance_p95": 126,
+            "unique_luminance_levels": 206,
+            "black_pixel_fraction": 0.160156,
+            "white_pixel_fraction": 0,
+            "nonblank": true
+          }
+        },
+        "video": {
+          "ok": true,
+          "checks": {
+            "prior_receipt_hash_valid": true,
+            "prior_runtime_proven": true,
+            "independent_runtime_proven": true,
+            "artifact_hash_stable": true,
+            "quality_not_overclaimed": true
+          },
+          "status": "CAPTAIN_PLANET_VIDEO_TECHNICAL_QUALITY_PROVEN_VISUAL_QUALITY_UNASSESSED",
+          "artifact": "C:\\AtomEons\\Orange5\\10-RECEIPTS\\orange5-build\\captain-planet\\ltxv\\orangefive-ltxv-2b-proof.mp4",
+          "artifact_sha256": "7268140cf3420c7ad360303e66b78b8807887db89f863b3604f69f3e9441f347",
+          "technical_metrics": {
+            "codec": "h264",
+            "width": 768,
+            "height": 512,
+            "pixel_format": "yuv420p",
+            "fps": 24,
+            "duration_seconds": 1.375,
+            "frame_count": 33,
+            "decoded_sample_frames": 12,
+            "sampling_fps": 8.727,
+            "sampled_consecutive_mean_abs_delta": 7.8775,
+            "sampled_consecutive_max_abs_delta": 10.7861,
+            "moving_sample_fraction": 1,
+            "black_frame_fraction": 0,
+            "minimum_frame_luminance_stddev": 46.145,
+            "motion_proven": true
+          }
+        }
+      }
+    }
+  },
+  "blockers": [],
+  "honest_limits": [
+    "Creative artifacts are independently decoded and runtime-proven; studio quality is not yet certified.",
+    "A 1,000x Context Crystal ratio is proven on the 6.77 MB held-out corpus, not asserted for every possible live turn.",
+    "The live Navigator turn proves governed cognitive routing, not host mutation or tool execution."
+  ],
+  "prior_receipt": "2026-08-28T03-40-44-768Z-blue-bench.json",
+  "prior_sha256": "88987ef46c444c6c52bdf0e4aed326650b94b5c10ffa258b6ed151f73116be30",
+  "receipt_sha256": "1719cb258aed2d0746d0ce3a97d1cf9eaf54e6f4cacac6ec78788f130b3ab358"
+}

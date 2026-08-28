@@ -3,17 +3,21 @@
     "status":  "PACKED",
     "product":  "Orange",
     "release":  "OrangeFive",
-    "zipPath":  "C:\\Users\\a\\Downloads\\Orange-AI-Computer-release\\OrangeFive-LLM-deploy.zip",
-    "zipSha256":  "fd66fdf8d660d746bd5b5d00fd6bc65a9aebdd747376e2a3791d5bba9234f596",
-    "sidecarPath":  "C:\\Users\\a\\Downloads\\Orange-AI-Computer-release\\OrangeFive-LLM-deploy.zip.sha256",
-    "fileCount":  2386,
-    "payloadBytes":  122553758,
+    "zipPath":  "C:\\Users\\a\\Downloads\\Orange-AI-Computer-Wave2\\OrangeFive-LLM-deploy.zip",
+    "zipSha256":  "f841f28d08a1e0fc8b4e7939b07faafc6ea6c90ae27a28cf9f3e5e16bff0e650",
+    "sidecarPath":  "C:\\Users\\a\\Downloads\\Orange-AI-Computer-Wave2\\OrangeFive-LLM-deploy.zip.sha256",
+    "fileCount":  2489,
+    "payloadBytes":  125695306,
     "credentialScan":  "passed",
+    "publicSanitization":  {
+                               "filesTransformed":  35,
+                               "operatorGenomeTemplates":  1
+                           },
     "archiveVerification":  "passed",
     "archiveVerificationMode":  "entry-count-path-size-sha256",
     "sourceSnapshotVerified":  true,
     "extractedReleaseProof":  "PROVEN",
-    "proofReceiptPath":  "C:\\Users\\a\\Downloads\\Orange-AI-Computer-release\\OrangeFive-LLM-deploy.proof.json",
-    "proofReceiptSha256":  "31e223d03da628c5859ea7b62640e533e29f5d206943f098b0f97e4d89a42ffb",
-    "receiptPath":  "C:\\Users\\a\\Downloads\\Orange-AI-Computer-release\\OrangeFive-LLM-deploy.report.json"
+    "proofReceiptPath":  "C:\\Users\\a\\Downloads\\Orange-AI-Computer-Wave2\\OrangeFive-LLM-deploy.proof.json",
+    "proofReceiptSha256":  "3578533df912031a8a3ab7312efd35abcfbcd28592d209732a6976c57b36fac6",
+    "receiptPath":  "C:\\Users\\a\\Downloads\\Orange-AI-Computer-Wave2\\OrangeFive-LLM-deploy.report.json"
 }

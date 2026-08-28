@@ -2,32 +2,39 @@
   <img src="assets/orange-ai-computer-hero.png" alt="Orange AI Computer control and compute nodes" width="100%">
 </p>
 
-<h1 align="center">Orange AI Computer</h1>
+<h1 align="center">Æ Orange AI Computer</h1>
 
 <p align="center"><strong>A local-first intelligence operating layer for models, agents, memory, tools, and proof.</strong></p>
 
 <p align="center">
-  <img alt="OrangeFive" src="https://img.shields.io/badge/release-OrangeFive-ff6a00?style=for-the-badge">
+  <img alt="Public preview" src="https://img.shields.io/badge/release-public_preview-ff6a00?style=for-the-badge">
   <img alt="Windows" src="https://img.shields.io/badge/platform-Windows-111111?style=for-the-badge">
   <img alt="Bun" src="https://img.shields.io/badge/runtime-Bun-111111?style=for-the-badge">
   <img alt="Proven package" src="https://img.shields.io/badge/package-PROVEN-2ea043?style=for-the-badge">
 </p>
 
 <p align="center">
-  <a href="https://github.com/AtomEons/Orange-AI-Computer/releases/latest"><strong>Download OrangeFive</strong></a>
+  <a href="https://github.com/AtomEons/Orange-AI-Computer/releases/tag/wave-2-preview"><strong>Download the LLM deploy</strong></a>
   · <a href="OrangeFive-LLM-deploy.proof.json">Package proof</a>
+  · <a href="proof/EVIDENCE_LEDGER.md">Evidence ledger</a>
+  · <a href="docs/README.md">Manuals</a>
   · <a href="PREVIEW_STATUS.md">Preview status</a>
 </p>
 
 ---
 
-Orange AI Computer turns one Windows computer, or a control computer plus a network AI box, into one governed intelligence system. Models are replaceable workers. Orange owns project truth, routing, memory, compression, tools, agents, receipts, and recovery.
+Æ Orange AI Computer turns one Windows computer, or a control computer plus a network AI box, into one governed intelligence system. Models are replaceable workers. Orange owns project truth, routing, memory, compression, tools, agents, receipts, and recovery.
 
 The interface is not the intelligence. Use Orange through Codex, Claude Code, MCP, an OpenAI-compatible client, or the separately developed Atomic Orange app.
 
+The public repository is the canonical launch object. Start with the
+[Wave 2 brief](launch/WAVE_2_LAUNCH.md), inspect the
+[evidence ledger](proof/EVIDENCE_LEDGER.md), and then visit
+[Atom Eons](https://atomeons.com) for the wider body of work.
+
 ## Install Through An LLM
 
-1. Download <code>OrangeFive-LLM-deploy.zip</code> from the [latest release](https://github.com/AtomEons/Orange-AI-Computer/releases/latest).
+1. Download <code>OrangeFive-LLM-deploy.zip</code> from the [Wave 2 release](https://github.com/AtomEons/Orange-AI-Computer/releases/tag/wave-2-preview).
 2. Extract it and open the folder in Codex or Claude Code.
 3. Say: **Read <code>INSTALL_ORANGE.md</code> completely and install Orange AI Computer.**
 
@@ -72,7 +79,7 @@ If Bun is absent, <code>ORANGE_START.cmd</code> performs the pinned bootstrap pa
 
 ## Operating Law
 
-- One product: **Orange**. Current release: **OrangeFive**.
+- One public product: **Æ Orange AI Computer**.
 - Source evidence and receipts outrank model claims.
 - Models wake by lease instead of occupying memory permanently.
 - No model receives silent authority.
@@ -82,12 +89,38 @@ If Bun is absent, <code>ORANGE_START.cmd</code> performs the pinned bootstrap pa
 
 ## Package Proof
 
-The deploy ZIP contains **2,386 hash-locked files**. Packaging performed credential scanning, archive path/size/hash verification, guarded clean extraction, wrong-approval rejection, dry-run-before-mutation checks, apply/readiness proof, rollback, data-preservation proof, and post-lifecycle payload verification.
+The Wave 2 deploy ZIP contains **2,492 hash-locked files** representing
+**125,695,306 source payload bytes**. Packaging performed credential scanning,
+archive path/size/hash verification, guarded clean extraction, wrong-approval
+rejection, dry-run-before-mutation checks, apply/readiness proof, rollback,
+data-preservation proof, and post-lifecycle payload verification.
 
     SHA-256
-    fd66fdf8d660d746bd5b5d00fd6bc65a9aebdd747376e2a3791d5bba9234f596
+    f841f28d08a1e0fc8b4e7939b07faafc6ea6c90ae27a28cf9f3e5e16bff0e650
 
 Machine-specific runtime behavior remains receipt-gated. [Preview Status](PREVIEW_STATUS.md) records the deliberately visible field-test limits.
+
+## Documentation
+
+| Reader | Start here |
+|---|---|
+| New operator | [Quick Start](docs/QUICK_START.md) |
+| System operator | [Operator Manual](docs/OPERATOR_MANUAL.md) |
+| Codex, Claude Code, or another coding model | [LLM Operator Guide](docs/LLM_OPERATOR_GUIDE.md) |
+| Systems engineer | [Technical Architecture](docs/TECHNICAL_ARCHITECTURE.md) |
+| Benchmark reviewer | [Proof and Benchmarks](docs/PROOF_AND_BENCHMARKS.md) |
+| Skeptical reviewer | [Skeptic's Field Guide](docs/SKEPTICS_FIELD_GUIDE.md) |
+| Memory researcher | [Memory and Learning](docs/MEMORY_AND_LEARNING.md) |
+| Compression researcher | [AtomSmasher Production](docs/ATOMSMASHER_PRODUCTION.md) |
+| Incident responder | [Troubleshooting and Recovery](docs/TROUBLESHOOTING_AND_RECOVERY.md) |
+
+The complete Markdown and PDF knowledge pack is in [`docs/`](docs). Public
+launch copy and the international distribution surface are in
+[`launch/`](launch).
+
+Launch material is also available in [Spanish, French, German, Brazilian
+Portuguese, Hindi, Arabic, and Russian](launch/LANGUAGES_GLOBAL.md), plus
+[Simplified Chinese, Japanese, and Korean](launch/LANGUAGES_EAST_ASIA.md).
 
 ## Repository Map
 
@@ -101,4 +134,4 @@ Machine-specific runtime behavior remains receipt-gated. [Preview Status](PREVIE
 
 ---
 
-<p align="center"><strong>AtomEons · Intelligence with a memory, a method, and a receipt.</strong></p>
+<p align="center"><strong>Daybreak Blue × Atom Eons</strong><br>Intelligence with a memory, a method, and a receipt.</p>
