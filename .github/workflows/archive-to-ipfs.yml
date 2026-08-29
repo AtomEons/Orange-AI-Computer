@@ -1,0 +1,143 @@
+name: Archive to IPFS & Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: 'Commit SHA to archive'
+        required: true
+        default: 'b0689fd6a9d877c4ddf312d543a3adfbb58693e8'
+  schedule:
+    - cron: '0 0 * * *' # daily at 00:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  archive-and-pin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout specific commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.commit_sha }}
+
+      - name: Prepare archive and git bundle
+        id: build
+        run: |
+          set -euo pipefail
+          SHORT_SHA=$(echo "${{ inputs.commit_sha }}" | cut -c1-12)
+          ARCHIVE_NAME="orange-ai-computer-${SHORT_SHA}.tar.gz"
+          BUNDLE_NAME="orange-ai-computer-${SHORT_SHA}.bundle"
+
+          # Create a git bundle with full history
+          git bundle create "$BUNDLE_NAME" --all
+
+          # Create a source archive (exclude .git to keep tar small)
+          git ls-files -z | xargs -0 tar --no-recursion -czf "$ARCHIVE_NAME"
+
+          echo "archive=$ARCHIVE_NAME" >> "$GITHUB_OUTPUT"
+          echo "bundle=$BUNDLE_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Upload archive to web3.storage
+        id: web3
+        env:
+          WEB3_TOKEN: ${{ secrets.WEB3_STORAGE_TOKEN }}
+        run: |
+          set -euo pipefail
+          ARCHIVE="$([[ -f "${{ steps.build.outputs.archive }}" ]] && echo "${{ steps.build.outputs.archive }}" || (echo "${{ steps.build }}"))"
+          # web3.storage accepts raw file uploads
+          RESP_FILE="web3_response.json"
+          curl -s -X POST "https://api.web3.storage/upload" \
+            -H "Authorization: Bearer $WEB3_TOKEN" \
+            -H "Content-Type: application/octet-stream" \
+            --data-binary @"$ARCHIVE" > "$RESP_FILE"
+
+          if [ -s "$RESP_FILE" ]; then
+            CID=$(jq -r .cid "$RESP_FILE")
+          else
+            echo "{"error":"empty response"}" > "$RESP_FILE"
+            CID=""
+          fi
+          echo "resp=$(cat $RESP_FILE | jq -c '.')" >> "$GITHUB_OUTPUT"
+          echo "cid=$CID" >> "$GITHUB_OUTPUT"
+
+      - name: Upload archive to nft.storage
+        id: nft
+        env:
+          NFT_TOKEN: ${{ secrets.NFT_STORAGE_TOKEN }}
+        run: |
+          set -euo pipefail
+          ARCHIVE="$([[ -f "${{ steps.build.outputs.archive }}" ]] && echo "${{ steps.build.outputs.archive }}" || (echo "${{ steps.build }}"))"
+          RESP_FILE="nft_response.json"
+          curl -s -X POST "https://api.nft.storage/upload" \
+            -H "Authorization: Bearer $NFT_TOKEN" \
+            -H "Content-Type: application/octet-stream" \
+            --data-binary @"$ARCHIVE" > "$RESP_FILE"
+
+          if [ -s "$RESP_FILE" ]; then
+            # nft.storage nests cid under "value.cid"
+            CID=$(jq -r '.value.cid // .cid // empty' "$RESP_FILE")
+          else
+            echo "{"error":"empty response"}" > "$RESP_FILE"
+            CID=""
+          fi
+          echo "resp=$(cat $RESP_FILE | jq -c '.')" >> "$GITHUB_OUTPUT"
+          echo "cid=$CID" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        id: release
+        uses: actions/create-release@v1
+        with:
+          tag_name: archive-${{ inputs.commit_sha }}
+          release_name: Archive for ${{ inputs.commit_sha }}
+          body: |
+            Archived commit: ${{ inputs.commit_sha }}
+
+            web3.storage cid: ${{ steps.web3.outputs.cid }}
+            nft.storage cid: ${{ steps.nft.outputs.cid }}
+
+            (Artifacts attached: tar.gz and git bundle)
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload bundle to Release
+        uses: softprops/action-upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: ${{ steps.build.outputs.bundle }}
+          asset_name: ${{ steps.build.outputs.bundle }}
+          asset_content_type: application/octet-stream
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload archive to Release
+        uses: softprops/action-upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: ${{ steps.build.outputs.archive }}
+          asset_name: ${{ steps.build.outputs.archive }}
+          asset_content_type: application/gzip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Post release comment with CIDs
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const web3Cid = core.getInput('web3_cid');
+            const nftCid = core.getInput('nft_cid');
+            const releaseId = parseInt(process.env.RELEASE_ID || '0');
+            const body = `Persistent archives for commit ${{ inputs.commit_sha }}\n\n- web3.storage CID: ${web3Cid}\n- nft.storage CID: ${nftCid}\n\nArtifacts: tar.gz and git bundle attached to this release.`;
+            const release = await github.rest.repos.getRelease({ owner: context.repo.owner, repo: context.repo.repo, release_id: ${'{'}{ steps.release.outputs.id }${'}'} });
+            await github.rest.repos.updateRelease({ owner: context.repo.owner, repo: context.repo.repo, release_id: release.data.id, body });
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        inputs:
+          web3_cid: ${{ steps.web3.outputs.cid }}
+          nft_cid: ${{ steps.nft.outputs.cid }}
+
